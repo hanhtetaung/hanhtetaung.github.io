@@ -1,14 +1,12 @@
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  darkMode: 'class',
-  content: ["./src/**/*.{html,js}"],
+const withMT = require("@material-tailwind/react/utils/withMT");
+ 
+module.exports = withMT({
+  content: [
+    "./src/pages/**/*.{js,jsx,ts,tsx}",
+    "./src/components/**/*.{js,jsx,ts,tsx}",
+  ],
   theme: {
-    extend: {
-      colors: {
-        primary: '#06191d',
-        secondary: '#00c5c8',
-      }
-    },
+    extend: {},
   },
   plugins: [],
-}
+});

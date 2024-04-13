@@ -1,11 +1,63 @@
 import * as React from 'react'
+import Navbar from '../components/navbar'
+import TimeLine from '../components/timeline'
+import Footer from '../components/footer'
+import Contact from '../components/contact'
+import { Typography } from "@material-tailwind/react";
 
 const IndexPage = () => {
     return (
         <main>
-            <h1>Hello world</h1>
-            <h2>Morning!!!</h2>
-            <h3>How are you?</h3>
+            <Navbar />
+            <div className="container mx-auto px-4">
+                <section className='py-20'>
+                    <Typography variant='h3'>
+                        Hello, I'm Han Htet Aung 
+                    </Typography>
+
+                    <Typography variant='h5'>
+                    A student of Computer Science, with a specialization in software development
+                    </Typography>
+
+                    <br/>
+
+                    <Typography variant="paragraph">
+                    As a student, I enjoy in learning fundamental principles of computer science like Computer Organization & Architecture, Operating System,  Programming Languages and Data Structure & Algorithms.
+                    </Typography>
+
+                    <br/>
+
+                    <Typography variant="paragraph">
+                    As a developer, I use Java building enterprise solution to get robust performance and strong ecosystem. I use NodeJS and PHP to build web application for simplicity and ease of use. I tried Golang to build a scalable and reliable software.
+                    </Typography>
+
+                    <br/>
+
+                    <Typography variant='h6'>Find me on</Typography>
+                    <Contact />
+                </section>
+
+                <section >
+                    <Typography variant='h4'>Projects</Typography>
+                    <br/>
+                    <Typography variant='h6'>Hospital Management System</Typography>
+                    <Typography variant='paragraph'>Laravel-based</Typography>
+                    <br/>
+                    <Typography variant='h6'>Scheduling Management System</Typography>
+                    <Typography variant='paragraph'>Spring-based</Typography>
+                    <br/>
+                    <Typography variant='h6'>Cinema</Typography>
+                    <Typography variant='paragraph'>React-based</Typography>
+                </section>
+               
+                <section className='py-20'>
+                    <Typography variant='h4'>Stages of Journery</Typography>
+                    <br/>
+                    <TimeLine />
+                </section>
+            </div>
+
+            <Footer/>
         </main>
     )
 }

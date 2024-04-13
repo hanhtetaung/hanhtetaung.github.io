@@ -1,3 +1,7 @@
 module.exports = {
-    pathPrefix: "/portfolio",
-  }
+  pathPrefix: "/portfolio",
+  plugins: [
+    'gatsby-plugin-postcss',
+    `gatsby-plugin-provide-react`,
+  ],
+}
