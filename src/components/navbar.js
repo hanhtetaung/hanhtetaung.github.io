@@ -1,9 +1,11 @@
 import {
   Navbar,
-  MobileNav,
+  Collapse,
   Typography,
   IconButton,
 } from "@material-tailwind/react";
+
+import { Link } from "gatsby"
  
 export default function NavbarDefault() {
   const [openNav, setOpenNav] = React.useState(false);
@@ -23,10 +25,7 @@ export default function NavbarDefault() {
         color="blue-gray"
         className="flex items-center gap-x-2 p-1 font-medium"
       >
- 
-        <a href="#" className="flex items-center">
-          Home
-        </a>
+        <Link to="/" className="flex items-center">Home</Link> 
       </Typography>
       <Typography
         as="li"
@@ -34,15 +33,13 @@ export default function NavbarDefault() {
         color="blue-gray"
         className="flex items-center gap-x-2 p-1 font-medium"
       >
-        <a href="#" className="flex items-center">
-          Blog
-        </a>
+        <Link to="/blog" className="flex items-center">Blog</Link>
       </Typography>
     </ul>
   );
  
   return (
-    <Navbar className="mx-auto rounded-none max-w-screen px-4 py-2 lg:px-8 lg:py-4">
+    <Navbar className="mx-auto rounded-none max-w-full px-4 py-2 lg:px-8 lg:py-4">
       <div className="container mx-auto flex items-center justify-between text-blue-gray-900">
         <Typography
           as="a"
@@ -91,11 +88,11 @@ export default function NavbarDefault() {
           )}
         </IconButton>
       </div>
-      <MobileNav open={openNav}>
+      <Collapse open={openNav}>
         <div className="container mx-auto">
           {navList}
         </div>
-      </MobileNav>
+      </Collapse>
     </Navbar>
   );
 }

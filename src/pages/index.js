@@ -3,6 +3,7 @@ import Navbar from '../components/navbar'
 import TimeLine from '../components/timeline'
 import Footer from '../components/footer'
 import Contact from '../components/contact'
+import ProjectLink from '../components/project-link'
 import { Typography } from "@material-tailwind/react";
 
 const IndexPage = () => {
@@ -40,14 +41,17 @@ const IndexPage = () => {
                 <section >
                     <Typography variant='h4'>Projects</Typography>
                     <br/>
-                    <Typography variant='h6'>Hospital Management System</Typography>
-                    <Typography variant='paragraph'>Laravel-based</Typography>
+
+                    <ProjectLink link='https://github.com/Juzbird11/hospital-management' name='Hospital Management System' language='Laravel-based' />
                     <br/>
-                    <Typography variant='h6'>Scheduling Management System</Typography>
-                    <Typography variant='paragraph'>Spring-based</Typography>
+
+                    <ProjectLink link='https://github.com/Juzbird11/scheduling-system' name='Scheduling Management System' language='Spring-based' />
                     <br/>
-                    <Typography variant='h6'>Cinema</Typography>
-                    <Typography variant='paragraph'>React-based</Typography>
+
+                    <ProjectLink link='https://github.com/Juzbird11/cinema' name='Cinema' language='React-based' />
+                    <br />
+
+                    <ProjectLink link='https://github.com/Juzbird11/drawing-board' name='Drawing Board' language='Java-based' />
                 </section>
                
                 <section className='py-20'>
