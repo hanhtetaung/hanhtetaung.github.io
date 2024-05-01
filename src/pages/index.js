@@ -66,4 +66,6 @@ const IndexPage = () => {
     )
 }
 
+export const Head = () => <title>Porfolio</title>
+
 export default IndexPage

@@ -24,4 +24,6 @@ const NotFoundPage = () => {
     )
 }
 
+export const Head = () => <title>Porfolio | 404</title>
+
 export default NotFoundPage
