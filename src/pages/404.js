@@ -14,7 +14,7 @@ const NotFoundPage = () => {
                             404
                         </Typography>
 
-                        <Typography variant='subtitle1'>
+                        <Typography variant='small'>
                             Page Not Found
                         </Typography>
                     </section>
