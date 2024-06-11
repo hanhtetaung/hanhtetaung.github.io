@@ -7,7 +7,7 @@ export default function IconButtonRounded() {
   return (
     <div className="flex gap-4">
         <IconButton variant="text">
-          <a href="https://github.com/Juzbird11" target="_blank">
+          <a href="https://github.com/hanhtetaung" target="_blank">
             <img src={Githublogo} alt="Github" />
           </a>
         </IconButton>

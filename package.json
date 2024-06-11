@@ -12,7 +12,7 @@
     "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "deploy": "gatsby build && gh-pages --repo git@github.com:Juzbird11/juzbird11.github.io.git -d public -b main"
+    "deploy": "gatsby build && gh-pages --repo git@github.com:hanhtetaung/hanhtetaung.github.io.git -d public -b main"
   },
   "dependencies": {
     "@heroicons/react": "^2.1.3",

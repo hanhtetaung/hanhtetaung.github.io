@@ -42,16 +42,16 @@ const IndexPage = () => {
                     <Typography variant='h4'>Projects</Typography>
                     <br/>
 
-                    <ProjectLink link='https://github.com/Juzbird11/hospital-management' name='Hospital Management System' language='Laravel-based' />
+                    <ProjectLink link='https://github.com/hanhtetaung/hospital-management' name='Hospital Management System' language='Laravel-based' />
                     <br/>
 
-                    <ProjectLink link='https://github.com/Juzbird11/scheduling-system' name='Scheduling Management System' language='Spring-based' />
+                    <ProjectLink link='https://github.com/hanhtetaung/scheduling-system' name='Scheduling Management System' language='Spring-based' />
                     <br/>
 
-                    <ProjectLink link='https://github.com/Juzbird11/cinema' name='Cinema' language='React-based' />
+                    <ProjectLink link='https://github.com/hanhtetaung/cinema' name='Cinema' language='React-based' />
                     <br />
 
-                    <ProjectLink link='https://github.com/Juzbird11/drawing-board' name='Drawing Board' language='Java-based' />
+                    <ProjectLink link='https://github.com/hanhtetaung/drawing-board' name='Drawing Board' language='Java-based' />
                 </section>
                
                 <section className='py-20'>
