@@ -28,6 +28,16 @@ export default function NavbarDefault() {
       >
         <Link to="/" className="flex items-center">Home</Link> 
       </Typography>
+
+      <Typography
+        as="li"
+        variant="small"
+        color="blue-gray"
+        className="flex items-center gap-x-2 p-1 font-medium"
+      >
+        <Link to="/projects" className="flex items-center">Project</Link>
+      </Typography>
+
       <Typography
         as="li"
         variant="small"

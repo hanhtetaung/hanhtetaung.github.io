@@ -3,5 +3,13 @@ module.exports = {
   plugins: [
     'gatsby-plugin-postcss',
     `gatsby-plugin-provide-react`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `content`,
+        path: `${__dirname}/content/projects`,
+      },
+    },
+    `gatsby-transformer-remark`,
   ],
 }

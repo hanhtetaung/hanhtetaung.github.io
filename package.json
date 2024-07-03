@@ -19,6 +19,8 @@
     "@material-tailwind/react": "^2.1.9",
     "gatsby": "^5.13.3",
     "gatsby-plugin-provide-react": "^1.0.2",
+    "gatsby-source-filesystem": "^5.13.1",
+    "gatsby-transformer-remark": "^6.13.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   }
