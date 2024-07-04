@@ -1,11 +1,12 @@
 import { Typography } from "@material-tailwind/react";
+import { Link } from "gatsby"
 
 export default function ProjectLink({link, name, language}) {
     return (
         <>
-            <a href={link} target='_blank'>
-                <Typography variant='h6' className='text-blue-700'>{name} &#x1F517;</Typography>
-            </a>
+            <Link to={link}>
+                <Typography variant='h6' className='text-blue-700'>{name}</Typography>
+            </Link>
             <Typography variant='paragraph'>{language}</Typography>
         </>
     );

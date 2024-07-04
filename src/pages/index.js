@@ -4,7 +4,7 @@ import TimeLine from '../components/timeline'
 import Footer from '../components/footer'
 import Contact from '../components/contact'
 import ProjectLink from '../components/project-link'
-import { Typography } from "@material-tailwind/react";
+import { Typography } from "@material-tailwind/react"
 
 const IndexPage = () => {
     return (
