@@ -4,7 +4,7 @@ import { Typography } from "@material-tailwind/react";
 
 const Projects = () => {
     return (
-        <section className='py-14'>
+        <section>
             <Typography variant='h4'>Projects & Experience</Typography>
             <br/>
 

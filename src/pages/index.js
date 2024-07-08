@@ -5,6 +5,7 @@ import Footer from '../components/footer'
 import Contact from '../components/contact'
 import ProjectLink from '../components/project-link'
 import { Typography } from "@material-tailwind/react"
+import Projects from '../components/projects'
 
 const IndexPage = () => {
     return (
@@ -38,21 +39,7 @@ const IndexPage = () => {
                     <Contact />
                 </section>
 
-                <section >
-                    <Typography variant='h4'>Projects</Typography>
-                    <br/>
-
-                    <ProjectLink link='https://github.com/hanhtetaung/hospital-management' name='Hospital Management System' language='Laravel-based' />
-                    <br/>
-
-                    <ProjectLink link='https://github.com/hanhtetaung/scheduling-system' name='Scheduling Management System' language='Spring-based' />
-                    <br/>
-
-                    <ProjectLink link='https://github.com/hanhtetaung/cinema' name='Cinema' language='React-based' />
-                    <br />
-
-                    <ProjectLink link='https://github.com/hanhtetaung/drawing-board' name='Drawing Board' language='Java-based' />
-                </section>
+                <Projects />
                
                 <section className='py-20'>
                     <Typography variant='h4'>Stages of Journery</Typography>
