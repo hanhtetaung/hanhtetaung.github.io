@@ -3,16 +3,14 @@ import Navbar from '../components/navbar'
 import TimeLine from '../components/timeline'
 import Footer from '../components/footer'
 import Contact from '../components/contact'
-import ProjectLink from '../components/project-link'
 import { Typography } from "@material-tailwind/react"
-import Projects from '../components/projects'
 
 const IndexPage = () => {
     return (
         <main>
             <Navbar />
             <div className="container mx-auto px-4">
-                <section className='py-20'>
+                <section className='py-16'>
                     <Typography variant='h3'>
                         Hello, I'm Han Htet Aung 
                     </Typography>
@@ -38,10 +36,8 @@ const IndexPage = () => {
                     <Typography variant='h6'>Find me on</Typography>
                     <Contact />
                 </section>
-
-                <Projects />
                
-                <section className='py-20'>
+                <section className='pb-16'>
                     <Typography variant='h4'>Stages of Journery</Typography>
                     <br/>
                     <TimeLine />

@@ -7,7 +7,7 @@ const IndexPage = () => {
     return (
         <main>
             <Navbar />
-            <div className="container mx-auto py-14">
+            <div className="container mx-auto py-16 p-4">
                 <Projects />
             </div>
             <Footer/>
