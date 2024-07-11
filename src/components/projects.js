@@ -8,10 +8,7 @@ const Projects = () => {
             <Typography variant='h4'>Projects & Experience</Typography>
             <br/>
 
-            <ProjectLink link='#' name='Hospital Management System' language='Laravel-based' />
-            <br/>
-
-            <ProjectLink link='#' name='Scheduling Management System' language='Spring-based' />
+            <ProjectLink link='/projects/hospital-management-system' name='Hospital Management System' language='Laravel-based' />
             <br/>
 
             <ProjectLink link='/projects/cinema' name='Cinema' language='React-based' />
