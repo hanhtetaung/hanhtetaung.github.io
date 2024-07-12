@@ -15,6 +15,10 @@ const Projects = () => {
             <br />
 
             <ProjectLink link='/projects/drawing-board' name='Drawing Board' language='Java-based' />
+            <br />
+
+            <ProjectLink link='/projects/chess-board' name='Chess Board' language='Java-based' />
+            <br />
         </section>
     )
 }
