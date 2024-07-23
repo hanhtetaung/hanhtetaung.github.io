@@ -7,7 +7,7 @@ export default function ProjectLink({link, name, language}) {
             <Link to={link}>
                 <Typography variant='h6' className='text-blue-700'>{name}</Typography>
             </Link>
-            <Typography variant='paragraph'>{language}</Typography>
+            <Typography variant='paragraph'>Technologies: {language}</Typography>
         </>
     );
 }
