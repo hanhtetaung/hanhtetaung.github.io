@@ -35,7 +35,7 @@ export default function NavbarDefault() {
         color="blue-gray"
         className="flex items-center gap-x-2 p-1 font-medium"
       >
-        <Link to="/projects" className="flex items-center">Project</Link>
+        <Link to="/projects" className="flex items-center">Projects</Link>
       </Typography>
 
       <Typography
@@ -44,7 +44,7 @@ export default function NavbarDefault() {
         color="blue-gray"
         className="flex items-center gap-x-2 p-1 font-medium"
       >
-        <Link to="/blog" className="flex items-center">Blog</Link>
+        <Link to="/logs" className="flex items-center">Logs</Link>
       </Typography>
     </ul>
   );
