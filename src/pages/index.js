@@ -27,9 +27,9 @@ const IndexPage = () => {
 
                     <br/>
 
-                    <Typography variant="paragraph">
+                    {/* <Typography variant="paragraph">
                     As a developer, I use Java building enterprise solution to get robust performance and strong ecosystem. I use NodeJS and PHP to build web application for simplicity and ease of use. I tried Golang to build a scalable and reliable software.
-                    </Typography>
+                    </Typography> */}
 
                     <br/>
 
