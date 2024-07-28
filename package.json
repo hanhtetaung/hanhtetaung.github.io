@@ -11,8 +11,7 @@
     "start": "gatsby develop",
     "build": "gatsby build",
     "serve": "gatsby serve",
-    "clean": "gatsby clean",
-    "deploy": "gatsby build && gh-pages --repo git@github.com:hanhtetaung/hanhtetaung.github.io.git -d public -b main"
+    "clean": "gatsby clean"
   },
   "dependencies": {
     "@heroicons/react": "^2.1.3",

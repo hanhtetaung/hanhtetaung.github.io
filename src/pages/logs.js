@@ -20,6 +20,6 @@ const BlogPage = () => {
     )
 }
 
-export const Head = () => <title>Porfolio | Blog</title>
+export const Head = () => <title>Porfolio | Logs</title>
 
 export default BlogPage
