@@ -15,7 +15,7 @@ const IndexPage = () => {
                         Hello, I'm Han Htet Aung 
                     </Typography>
 
-                    <Typography variant='h5'>
+                    <Typography variant='lead'>
                     A student of Computer Science, with a specialization in software development
                     </Typography>
 
@@ -27,13 +27,7 @@ const IndexPage = () => {
 
                     <br/>
 
-                    {/* <Typography variant="paragraph">
-                    As a developer, I use Java building enterprise solution to get robust performance and strong ecosystem. I use NodeJS and PHP to build web application for simplicity and ease of use. I tried Golang to build a scalable and reliable software.
-                    </Typography> */}
-
-                    <br/>
-
-                    <Typography variant='h6'>Find me on</Typography>
+                    <Typography variant='small' className='font-semibold'>Find me on</Typography>
                     <Contact />
                 </section>
                
@@ -49,6 +43,13 @@ const IndexPage = () => {
     )
 }
 
-export const Head = () => <title>Porfolio</title>
+export const Head = () => {
+    return(
+        <>
+            <html lang="en" />
+            <title>Portfolio</title>
+        </>
+    )
+}
 
 export default IndexPage
