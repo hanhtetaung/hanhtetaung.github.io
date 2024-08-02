@@ -8,16 +8,16 @@ const Projects = () => {
             <Typography variant='h4'>Projects & Experience</Typography>
             <br/>
 
-            <ProjectLink link='/projects/hospital-management-system' name='Hospital Management System' language='HTML, CSS, JavaScript, PHP/Laravel, MySQL' />
+            <ProjectLink link='/projects/hospital-management-system' name='Hospital Management System' technologies='Bootstrap, AdminLTE, Laravel, MariaDB' />
             <br/>
 
-            <ProjectLink link='/projects/cinema' name='Cinema' language='JavaScript/React' />
+            <ProjectLink link='/projects/cinema' name='Cinema' technologies='React' />
             <br />
 
-            <ProjectLink link='/projects/drawing-board' name='Drawing Board' language='JavaSE, Swing' />
+            <ProjectLink link='/projects/drawing-board' name='Drawing Board' technologies='JavaSE, Swing' />
             <br />
 
-            <ProjectLink link='/projects/chess-board' name='Chess Board' language='JavaSE' />
+            <ProjectLink link='/projects/chess-board' name='Chess Board' technologies='JavaSE' />
             <br />
         </section>
     )
