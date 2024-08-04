@@ -8,6 +8,8 @@ const Projects = () => {
             <Typography variant='h4' className='mb-4'>Projects & Experience</Typography>
 
             <div className='grid lg:grid-cols-2 gap-4'>
+                <ProjectLink link='/projects/portfolio' name='Portfolio' technologies='React, Gatsby, Tailwind CSS, Github Actions' />
+
                 <ProjectLink link='/projects/hospital-management-system' name='Hospital Management System' technologies='Bootstrap, AdminLTE, Laravel, MariaDB' />
 
                 <ProjectLink link='/projects/cinema' name='Cinema' technologies='React' />
