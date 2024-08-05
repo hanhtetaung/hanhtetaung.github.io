@@ -9,7 +9,7 @@ const BlogPost = ({data, children}) => {
       <title>Portfolio | {data.mdx.frontmatter.title}</title>
       <Navbar />
         <div className='container mx-auto p-4 py-16'>
-          <div className='prose min-w overflow-hidden prose-ul:leading-6 prose-a:text-blue-800'>{children}</div>
+          <div className='prose min-w-full overflow-hidden prose-ul:leading-6 prose-a:text-blue-800'>{children}</div>
         </div>
       <Footer/>
     </main>
