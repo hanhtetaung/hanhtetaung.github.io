@@ -22,7 +22,7 @@ const IndexPage = () => {
                     <br/>
 
                     <Typography variant="paragraph">
-                    As a student, I enjoy in learning fundamental principles of computer science like Computer Organization & Architecture, Operating System,  Programming Languages and Data Structure & Algorithms.
+                    As a student, I study fundamental principles of computer science, like Computer Organization & Architecture, Operating System, Programming Languages and Data Structure & Algorithms.
                     </Typography>
 
                     <br/>

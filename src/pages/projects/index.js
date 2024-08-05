@@ -15,6 +15,6 @@ const IndexPage = () => {
     )
 }
 
-export const Head = () => <title>Porfolio</title>
+export const Head = () => <title>Portfolio | Projects</title>
 
 export default IndexPage
