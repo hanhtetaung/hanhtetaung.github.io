@@ -1,6 +1,5 @@
-import * as React from 'react'
-import { Typography } from '@material-tailwind/react'
 
+import { Typography } from '@material-tailwind/react'
 import Layout from '../components/layout'
 
 

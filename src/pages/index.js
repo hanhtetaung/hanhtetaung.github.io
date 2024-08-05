@@ -1,4 +1,4 @@
-import * as React from 'react'
+
 import TimeLine from '../components/timeline'
 import Contact from '../components/contact'
 import { Typography } from "@material-tailwind/react"

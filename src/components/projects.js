@@ -1,4 +1,4 @@
-import * as React from 'react'
+
 import ProjectLink from '../components/project-link'
 import { Typography } from "@material-tailwind/react";
 
