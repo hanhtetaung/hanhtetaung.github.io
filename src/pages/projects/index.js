@@ -4,7 +4,7 @@ import Layout from '../../components/layout'
 
 const IndexPage = () => {
     return (
-        <Layout seotitle={'Projects'}>
+        <Layout>
             <Projects />
         </Layout>
     )

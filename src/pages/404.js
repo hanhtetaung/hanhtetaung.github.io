@@ -6,7 +6,7 @@ import Layout from '../components/layout'
 
 const NotFoundPage = () => {
     return (
-        <Layout seotitle={'Not Found'}>
+        <Layout>
             <section className='text-center'>
                 <Typography variant='h1'>
                     404

@@ -6,7 +6,7 @@ import Layout from '../../components/layout'
 const BlogPost = ({data, children}) => {
 
   return (
-    <Layout seotitle={data.mdx.frontmatter.title}>
+    <Layout>
       <div className='prose min-w-full overflow-hidden prose-ul:leading-6 prose-a:text-blue-800'>{children}</div>
     </Layout>
   )
