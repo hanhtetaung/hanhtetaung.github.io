@@ -7,7 +7,8 @@ export default function Layout({ children, seotitle }) {
     return (
         <main>
             <html lang="en" />
-            <title>Portfolio {seotitle ? `| ${seotitle}` : ''} </title>
+            {/* <title>Portfolio {seotitle ? `| ${seotitle}` : ''} </title> */}
+            <title>Portfolio</title>
             <Navbar/>
             <div className='container mx-auto py-14'>
                 {children}
