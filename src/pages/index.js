@@ -38,13 +38,4 @@ const IndexPage = () => {
     )
 }
 
-// export const Head = () => {
-//     return(
-//         <>
-//             <html lang="en" />
-//             <title>Portfolio</title>
-//         </>
-//     )
-// }
-
 export default IndexPage
