@@ -3,12 +3,10 @@ import TimeLine from '../components/timeline'
 import Contact from '../components/contact'
 import { Typography } from "@material-tailwind/react"
 
-import Layout from '../components/layout'
-
 const IndexPage = () => {
     return (
-        <Layout>
-            <section>
+        <>
+             <section>
                 <Typography variant='h3'>
                     Hello, I'm Han Htet Aung 
                 </Typography>
@@ -34,7 +32,7 @@ const IndexPage = () => {
                 <br/>
                 <TimeLine />
             </section>
-        </Layout>
+        </>
     )
 }
 
