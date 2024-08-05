@@ -1,18 +1,14 @@
 import * as React from 'react'
 import { graphql } from 'gatsby'
-import Navbar from '../../components/navbar'
-import Footer from '../../components/footer'
+import Layout from '../../components/layout'
+
 
 const BlogPost = ({data, children}) => {
+
   return (
-    <main>
-      <title>Portfolio | {data.mdx.frontmatter.title}</title>
-      <Navbar />
-        <div className='container mx-auto p-4 py-16'>
-          <div className='prose min-w-full overflow-hidden prose-ul:leading-6 prose-a:text-blue-800'>{children}</div>
-        </div>
-      <Footer/>
-    </main>
+    <Layout seotitle={data.mdx.frontmatter.title}>
+      <div className='prose min-w-full overflow-hidden prose-ul:leading-6 prose-a:text-blue-800'>{children}</div>
+    </Layout>
   )
 }
 

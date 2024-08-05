@@ -1,25 +1,20 @@
-import * as React from 'react'
-import Navbar from '../components/navbar'
-import Footer from '../components/footer'
 import { Typography } from "@material-tailwind/react";
+
+import Layout from '../components/layout';
 
 
 const BlogPage = () => {
     return (
-        <main>
-            <Navbar/>
-                <div className='container flex justify-center mx-auto px-4'>
-                    <section className='py-20'>
-                        <Typography variant='h3'>
-                            Coming Soon
-                        </Typography>
-                    </section>
-                </div>
-            <Footer />
-        </main>
+        <Layout>
+            <section>
+                <Typography variant='h3' className='text-center'>
+                    Coming Soon
+                </Typography>
+            </section>
+        </Layout>
     )
 }
 
-export const Head = () => <title>Porfolio | Logs</title>
+export const Head = () => <title>Portfolio | Logs</title>
 
 export default BlogPage
