@@ -1,4 +1,6 @@
 
+import Layout from "./src/components/layout";
+
 export const onRenderBody = ({ setHtmlAttributes }) => {
   setHtmlAttributes({ lang: "en" });
 };
