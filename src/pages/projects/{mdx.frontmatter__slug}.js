@@ -1,12 +1,16 @@
 
 import { graphql } from 'gatsby'
-
+import { Link } from 'gatsby';
 
 const BlogPost = ({data, children}) => {
 
   return (
     <>
-      <div className='prose min-w-full overflow-hidden prose-ul:leading-6 prose-a:text-blue-800'>{children}</div>
+      <Link to="/projects" className="text-blue-600">
+      &#8701; Back
+      </Link>
+
+      <div className='mt-6 prose min-w-full overflow-hidden prose-ul:leading-6 prose-a:text-blue-800'>{children}</div>
     </>
   )
 }
