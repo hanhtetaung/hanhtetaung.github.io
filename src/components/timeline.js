@@ -10,7 +10,7 @@ export default function DefaultTimeline() {
           <Timeline>
             <TimeLineItem stage="Initial Stage" sentence="Developing software without fundamental computer science principles" />
 
-            <TimeLineItem stage="Second Stage" sentence="Studying fundamental concepts in Computer Architecture, Operating System, Data Structure & Algorithms and Programming Languages" />
+            <TimeLineItem stage="Second Stage" sentence="Studying fundamental concepts in computer science" />
 
             <TimeLineItem stage="Third Stage" sentence="Utilizing tools to simplify the development process" />
             <TimeLineItem stage="Still Counting" sentence="" />
