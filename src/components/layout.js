@@ -8,7 +8,7 @@ export default function Layout({ children }) {
             <html lang="en" />
             <title>Portfolio</title>
             <Navbar/>
-            <div className='container mx-auto py-10'>
+            <div className='container mx-auto px-4 py-10'>
                 {children}
             </div>
             <Footer/>
