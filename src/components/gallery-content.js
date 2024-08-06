@@ -11,7 +11,7 @@ export function GalleryContent({images}) {
     <div className="grid gap-4">
       <Typography variant="lead" className="font-bold">Images</Typography>
       
-      <div className="grid grid-cols-5 lg:grid-cols-10 gap-4">
+      <div className="grid grid-cols-4 md:grid-cols-5 lg:grid-cols-8 gap-4">
         {images.map((image, index) => {
           const imageData = getImage(image);
           return (
@@ -22,7 +22,7 @@ export function GalleryContent({images}) {
               <GatsbyImage
                 image={imageData}
                 alt={`Content Images ${index + 1}`}
-                className="border border-black h-20 max-w-full cursor-pointer object-cover object-center"
+                className="border border-black h-15 md:h-20 max-w-full cursor-pointer"
 
               />
             </div>
@@ -34,7 +34,7 @@ export function GalleryContent({images}) {
         <GatsbyImage
           image={active}
           alt=""
-          className="border-2 border-black h-auto w-full max-w-full object-cover object-center md:h-[480px]"
+          className="border-2 border-black w-full"
         />
       </div>
     </div>
