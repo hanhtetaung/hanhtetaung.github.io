@@ -13,7 +13,11 @@ export const ActiveLinkContext = createContext();
  
 export default function NavbarDefault() {
   const [openNav, setOpenNav] = useState(false);
-  const [activePath, setActivePath] = React.useState(window.location.pathname);
+  const [activePath, setActivePath] = React.useState('');
+
+  useEffect(() => {
+    setActivePath(window.location.pathname);
+  }, [])
 
   useEffect(() => {
     window.addEventListener(
