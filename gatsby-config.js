@@ -1,6 +1,12 @@
 module.exports = {
   pathPrefix: "/portfolio",
   plugins: [
+    {
+      resolve: 'gatsby-plugin-manifest',
+      options: {
+        "icon": `${__dirname}/imgs/robin.png`
+      }
+    },
     'gatsby-plugin-postcss',
     `gatsby-plugin-provide-react`,
     {

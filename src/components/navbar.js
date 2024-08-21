@@ -5,7 +5,7 @@ import {
 } from "@material-tailwind/react";
 
 import {useState, useEffect, createContext} from "react";
-import Logo from '../../imgs/logo.png'
+import Logo from '../../imgs/robin.png'
 import { Link } from "gatsby"
 import NavbarItem from "./navbar-item";
 
