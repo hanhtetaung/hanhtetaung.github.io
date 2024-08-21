@@ -10,7 +10,7 @@ import { Link } from "gatsby"
 
 export default function ProjectLink({link, name, technologies}) {
     return (
-        <Card className="rounded-none border-black border-2">
+        <Card className="rounded-none border-black border-2 bg-inherit">
             <CardBody className="pb-4">
                 <Typography variant="h5" color="blue-gray" className="">
                 {name}
