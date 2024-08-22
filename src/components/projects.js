@@ -12,9 +12,9 @@ const Projects = () => {
 
                 <ProjectLink link='/projects/hospital-management-system' name='Hospital Management System' technologies='Bootstrap, AdminLTE, Laravel, MariaDB' />
 
-                <ProjectLink link='/projects/cinema' name='Cinema' technologies='React' />
-
                 <ProjectLink link='/projects/drawing-board' name='Drawing Board' technologies='JavaSE, Swing' />
+
+                <ProjectLink link='/projects/cinema' name='Cinema' technologies='React' />
 
                 <ProjectLink link='/projects/chess-board' name='Chess Board' technologies='JavaSE' />
             </div>
