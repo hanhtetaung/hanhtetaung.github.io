@@ -6,6 +6,9 @@ module.exports = withMT({
     "./src/components/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
+    colors: {
+      'root-color': '#edf2f7'
+    },
     extend: {},
   },
   plugins: [require('@tailwindcss/typography')],
