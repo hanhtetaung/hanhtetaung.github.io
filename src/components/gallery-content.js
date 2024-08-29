@@ -28,9 +28,8 @@ export function GalleryContent({images}) {
           const imageData = getImage(image);
 
           return (
-            <>
+            <div key={index}>
               <div
-                key={index}
                 onClick={() => toggleModal(imageData)}
                 >
                 <GatsbyImage
@@ -50,7 +49,7 @@ export function GalleryContent({images}) {
                     />
                 </div>
               )}
-            </>
+            </div>
           );
         })}
       </div>
