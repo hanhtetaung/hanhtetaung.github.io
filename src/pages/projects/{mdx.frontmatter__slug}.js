@@ -6,11 +6,11 @@ import { GalleryContent } from '../../components/gallery-content';
 const BlogPost = ({data, children}) => {  
   return (
     <>
-      <Link to="/projects" className="text-blue-600">
+      <Link to="/projects" className="text-blue-700">
       &#8701; Back
       </Link>
 
-      <div className='my-8 prose min-w-full overflow-hidden prose-ul:leading-6 prose-a:text-blue-800'>{children}</div>
+      <div className='my-8 prose min-w-full overflow-hidden prose-ul:leading-6 prose-a:text-blue-700'>{children}</div>
 
       { data.mdx.frontmatter.images && <GalleryContent images={data.mdx.frontmatter.images} /> } 
     </>

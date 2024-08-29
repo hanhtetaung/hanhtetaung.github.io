@@ -21,7 +21,7 @@ export default function ProjectLink({link, name, technologies}) {
             </CardBody>
             <CardFooter className="pt-0">
                 <Link to={link} className="inline-block">
-                <Button size="sm" variant="text" className="flex items-center gap-2 text-blue-600">
+                <Button size="sm" variant="text" className="flex items-center gap-2 text-blue-700">
                     See details &#xa0; &#8702;
                 </Button>
                 </Link>

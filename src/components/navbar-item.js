@@ -16,7 +16,7 @@ export default function NavbarItem({name, path}) {
       >
         <Link 
         to={path}
-        className={`flex p-1 ${ activePath === path ? 'border-b-2 border-blue-500 text-blue-500' : ''}`}
+        className={`flex p-1 ${ activePath === path ? 'border-b-2 border-blue-700 text-blue-700' : ''}`}
         onClick={() => setActivePath(path)}
         >
           {name}
