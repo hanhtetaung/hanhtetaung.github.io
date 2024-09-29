@@ -9,11 +9,14 @@ const Projects = () => {
 
             <div className='grid lg:grid-cols-2 gap-4'>
 
-                <ProjectLink link='/projects/portfolio' name='Portfolio' technologies='React, Gatsby, Material Tailwind, Github Actions' />
+                <ProjectLink link='/projects/pitch-track' name='PitchTrack' technologies='Node.js, NestJS, MongoDB, Github Actions, AzureVMs' />
 
-                <ProjectLink link='/projects/hospital-management-system' name='Hospital Management System' technologies='Blade, Bootstrap, AdminLTE, Laravel, MariaDB' />
+                <ProjectLink link='/projects/ticket-tango' name='Ticket Tango' technologies='React, Next.js, MUI, MongoDB, Vercel' />
 
-                <ProjectLink link='/projects/ticket-tango' name='Ticket Tango' technologies='React, Next.js, MUI, MongoDB' />
+                <ProjectLink link='/projects/portfolio' name='Portfolio' technologies='React, Gatsby, Tailwind CSS, Github Actions' />
+
+                <ProjectLink link='/projects/hospital-management-system' name='Hospital Management System' technologies='Blade, Bootstrap, Laravel, MariaDB' />
+
 
                 <ProjectLink link='/projects/drawing-board' name='Drawing Board' technologies='JavaSE, Swing' />
 

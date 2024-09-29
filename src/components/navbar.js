@@ -30,7 +30,7 @@ export default function NavbarDefault() {
       <ul className="mt-2 mb-4 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
         <NavbarItem name="Home" path="/" />
         <NavbarItem name="Projects" path="/projects/" />
-        <NavbarItem name="Logs" path="/logs/" />
+        {/* <NavbarItem name="Logs" path="/logs/" /> */}
       </ul>
     </ActiveLinkContext.Provider>
   );
