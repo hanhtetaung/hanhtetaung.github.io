@@ -13,7 +13,7 @@ const Projects = () => {
 
                 <ProjectLink link='/projects/ticket-tango' name='Ticket Tango' technologies='React, Next.js, MUI, MongoDB, Vercel' />
 
-                <ProjectLink link='/projects/portfolio' name='Portfolio' technologies='React, Gatsby, Tailwind CSS, Github Actions' />
+                <ProjectLink link='/projects/portfolio' name='Portfolio' technologies='React, Gatsby, Tailwind CSS, Github Actions, Github Pages' />
 
                 <ProjectLink link='/projects/hospital-management-system' name='Hospital Management System' technologies='Blade, Bootstrap, Laravel, MariaDB' />
 
