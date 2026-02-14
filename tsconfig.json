@@ -4,6 +4,10 @@
     "lib": [
       "ESNext"
     ],
+    "paths": {
+      "@components/*": ["./src/components/*"],
+      "@layouts/*": ["./src/layouts/*"]
+    },
     "target": "ESNext",
     "module": "Preserve",
     "moduleDetection": "force",
