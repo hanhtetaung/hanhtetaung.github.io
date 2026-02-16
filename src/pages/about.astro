@@ -1,9 +1,64 @@
 ---
 import MySiteLayout from "@layouts/MySiteLayout.astro";
+import Timeline from "@components/Timeline.astro";
+import FaceIcon from "@images/face-icon.png";
 ---
 
 <MySiteLayout title="About">
-	<h1 class="text-4xl font-bold grid place-items-center h-[50vh]">
-		Coming Soon
-	</h1>
+	<section class="relative mt-40">
+		<img
+			src={FaceIcon.src}
+			alt="Face Icon"
+			class="w-40 h-40 rounded-full absolute -top-30 left-20 -z-10"
+		>
+		<p
+			class="lg:text-lg p-8 bg-[#43d0ad] my-10 rounded-xl border-4 border-r-8 border-b-8 border-[#232322] font-serif"
+		>
+			Hi, I’m Han, a software dev who happily builds software. I’m passionate
+			about exploring tools and using them in the right place.
+			<span class="lg:font-bold inline lg:bg-[#fffffa] lg:border-2 lg:p-1"
+				>I don’t reinvent the wheel;</span
+			>instead, I find it on the Internet or ask AI. My view on building
+			software is like LEGO—placing one brick on top of another. I enjoy keeping
+			my code clean and organized.
+		</p>
+	</section>
+
+	<section>
+		<h2 class="text-2xl lg:text-4xl font-bold my-8">Timeline</h2>
+
+		<ol
+			class="relative space-y-8 before:absolute before:-ml-px before:h-full before:w-0.5 before:rounded-full before:bg-gray-200 lg:space-y-0 lg:flex lg:gap-8 lg:before:-mt-px lg:before:h-0.5 lg:before:w-full"
+		>
+			<Timeline
+				color="bg-[#14b5e5]"
+				timeColor="bg-[#14b5e5]"
+				titleColor="bg-[#dcffa8]"
+				descriptionColor="bg-[#a599ff]"
+				date="Aug 2021 - Jul 2022"
+				title="Software Dev"
+				description="Started this journey by building websites and developing applications using Laravel."
+			/>
+
+			<Timeline
+				color="bg-[#d485ea]"
+				descriptionColor="bg-[#a4f4b4]"
+				titleColor="bg-[#ff8633]"
+				timeColor="bg-[#d485ea]"
+				date="Aug 2022 - May 2025"
+				title="Student"
+				description="Continued and completed my previously unfinished degree at a different university."
+			/>
+
+			<Timeline
+				color="bg-[#43d0ad]"
+				timeColor="bg-[#43d0ad]"
+				titleColor="bg-[#fefc78]"
+				descriptionColor="bg-[#f38ba3]"
+				date="Sep 2025 - Present"
+				title="Software Dev"
+				description="Working as a remote software developer using Next.js, with gratitude for the opportunity."
+			/>
+		</ol>
+	</section>
 </MySiteLayout>
