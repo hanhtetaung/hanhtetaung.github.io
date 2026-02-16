@@ -5,18 +5,19 @@ import Navbar from "@components/Navbar.astro";
 
 const { title } = Astro.props;
 ---
+
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{title}</title>
-  </head>
-  <body class="bg-[#fefbf6]">
-    <Navbar />
-    <hr>
-    <main class="w-[80%] mx-auto">
-        <slot />
-      </main>
-      <Footer />
-  </body>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>{title}</title>
+	</head>
+	<body class="bg-[#fefbf6]">
+		<Navbar/>
+		<hr>
+		<main class="w-[80%] mx-auto">
+			<slot/>
+		</main>
+		<Footer/>
+	</body>
 </html>

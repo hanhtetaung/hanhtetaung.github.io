@@ -1,16 +1,14 @@
 ---
-
 const { backgroundColor, header, description } = Astro.props;
-
 ---
 
 <li
-  class="border-5 rounded-xl border-[#232322] lg:p-10  flex space-x-5 place-items-center"
-  style={backgroundColor ? `background-color: ${backgroundColor}` : undefined}
+	class="border-5 rounded-xl border-[#232322] lg:p-10  flex space-x-5 place-items-center"
+	style={backgroundColor ? `background-color: ${backgroundColor}` : undefined}
 >
-    <slot />
-    <article class="space-y-1">
-        <h3 class="text-xl">{header}</h3>
-        <p>{description}</p>
-    </article>
+	<slot/>
+	<article class="space-y-1">
+		<h3 class="text-xl">{header}</h3>
+		<p>{description}</p>
+	</article>
 </li>
