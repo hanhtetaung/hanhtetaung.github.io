@@ -4,7 +4,8 @@
 		"lib": ["ESNext"],
 		"paths": {
 			"@components/*": ["./src/components/*"],
-			"@layouts/*": ["./src/layouts/*"]
+			"@layouts/*": ["./src/layouts/*"],
+			"@images/*": ["./src/images/*"]
 		},
 		"target": "ESNext",
 		"module": "Preserve",

@@ -1,19 +1,22 @@
 ---
+import AstroLogo from "@images/tech-logos/astro.svg";
 import TechStackCard from "@components/TechStackCard.astro";
-import AstroLogo from "../images/astro.svg";
-import BunLogo from "../images/bun.svg";
-import CloudflareLogo from "../images/cloudflare.svg";
-import GitHubLogo from "../images/github.svg";
-import ReactLogo from "../images/react.svg";
-import SpaceshipLogo from "../images/spaceship.svg";
-import TailwindLogo from "../images/tailwindcss.svg";
-import TypeScriptLogo from "../images/typescript.svg";
+import BiomeLogo from "@images/tech-logos/biome.svg";
+import BunLogo from "@images/tech-logos/bun.svg";
+import CloudflareLogo from "@images/tech-logos/cloudflare.svg";
+import CursorLogo from "@images/tech-logos/cursor.svg";
+import GitHubLogo from "@images/tech-logos/github.svg";
+import ReactLogo from "@images/tech-logos/react.svg";
+import SpaceshipLogo from "@images/tech-logos/spaceship.svg";
+import TailwindLogo from "@images/tech-logos/tailwindcss.svg";
+import TypeScriptLogo from "@images/tech-logos/typescript.svg";
 ---
 
 <section>
 	<hr>
-	<h1 class="text-4xl font-bold text-center py-2">Tech Stack</h1>
+	<h1 class="text-4xl font-bold text-center py-2">Tools</h1>
 	<hr>
+
 	<ul class="grid grid-cols-2 gap-4 pt-6">
 		<TechStackCard
 			backgroundColor="#14b5e5"
@@ -77,6 +80,22 @@ import TypeScriptLogo from "../images/typescript.svg";
 			description="Use Spaceship to buy domains."
 		>
 			<SpaceshipLogo class="w-20 h-20"/>
+		</TechStackCard>
+
+		<TechStackCard
+			backgroundColor="#fefc78"
+			header="Biome"
+			description="Use Biome to lint and format your code."
+		>
+			<BiomeLogo class="w-20 h-20"/>
+		</TechStackCard>
+
+		<TechStackCard
+			backgroundColor="#fefc78"
+			header="Cursor"
+			description="Use Cursor to write code."
+		>
+			<CursorLogo class="w-20 h-20"/>
 		</TechStackCard>
 	</ul>
 </section>

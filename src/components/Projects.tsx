@@ -1,5 +1,5 @@
 import { Accordion } from "@components/base/Accordion";
-import sksSolarMyanmar from "../images/sks-solar-myanmar.png";
+import sksSolarMyanmar from "@images/projects/sks-solar-myanmar.png";
 
 export default function Projects() {
 	return (
