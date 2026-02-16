@@ -1,83 +1,30 @@
 ---
-import AstroLogo from "@images/tech-logos/astro.svg";
-import TechStackCard from "@components/TechStackCard.astro";
-import BiomeLogo from "@images/tech-logos/biome.svg";
-import BunLogo from "@images/tech-logos/bun.svg";
-import CursorLogo from "@images/tech-logos/cursor.svg";
-import GitHubLogo from "@images/tech-logos/github.svg";
-import ReactLogo from "@images/tech-logos/react.svg";
-import TailwindLogo from "@images/tech-logos/tailwindcss.svg";
-import TypeScriptLogo from "@images/tech-logos/typescript.svg";
+import CardStack from "@components/base/CardStack.tsx";
 ---
 
-<section>
-	<hr>
-	<h1 class="text-2xl lg:text-4xl font-bold text-center py-2">Tools</h1>
-	<hr>
+<section class="relative">
+	<div
+		id="tools-sticky-bar"
+		class="sticky top-0 z-10 bg-[#fefbf6] py-1 transition-[visibility,opacity,transform] duration-300 ease-out [&.tools-sticky-bar--hidden]:invisible [&.tools-sticky-bar--hidden]:opacity-0 [&.tools-sticky-bar--hidden]:-translate-y-full"
+	>
+		<hr>
+		<h1 class="text-2xl lg:text-4xl font-bold text-center py-2">Tools</h1>
+		<hr>
+	</div>
 
-	<ul class="lg:grid lg:grid-cols-2 lg:gap-4 pt-6 space-y-4 lg:space-y-0">
-		<TechStackCard
-			backgroundColor="#14b5e5"
-			header="React"
-			description="Use React to build user interactions."
-		>
-			<ReactLogo class="w-20 h-20"/>
-		</TechStackCard>
+	<CardStack client:load/>
 
-		<TechStackCard
-			backgroundColor="#ff8633"
-			header="TypeScript"
-			description="Use TypeScript to write maintainable code."
-		>
-			<TypeScriptLogo class="w-18 h-18"/>
-		</TechStackCard>
-
-		<TechStackCard
-			backgroundColor="#d485ea"
-			header="Astro"
-			description="Use Astro to fast build websites."
-		>
-			<AstroLogo class="w-20 h-20"/>
-		</TechStackCard>
-
-		<TechStackCard
-			backgroundColor="#0ca95b"
-			header="Tailwind CSS"
-			description="Use Tailwind CSS to build custom styles."
-		>
-			<TailwindLogo class="w-20 h-20"/>
-		</TechStackCard>
-
-		<TechStackCard
-			backgroundColor="#43d0ad"
-			header="Bun"
-			description="Use Bun to build instantly fast."
-		>
-			<BunLogo class="w-20 h-20"/>
-		</TechStackCard>
-
-		<TechStackCard
-			backgroundColor="#f38ba3"
-			header="GitHub"
-			description="Use GitHub to host and version control code."
-		>
-			<GitHubLogo class="w-20 h-20"/>
-		</TechStackCard>
-
-		<TechStackCard
-			backgroundColor="#a78bfa"
-			header="Biome"
-			description="Use Biome to lint and format code."
-		>
-			<BiomeLogo class="w-20 h-20"/>
-		</TechStackCard>
-
-		<TechStackCard
-			backgroundColor="#fefc78"
-			header="Cursor"
-			description="Use Cursor as a code editor."
-		>
-			<CursorLogo class="w-20 h-20"/>
-		</TechStackCard>
-	</ul>
+	<script>
+	const bar = document.getElementById("tools-sticky-bar");
+	if (bar) {
+		window.addEventListener("tools-sticky-bar", (e) => {
+			const detail = (e as CustomEvent<{ hide?: boolean }>).detail;
+			if (detail?.hide) {
+				bar.classList.add("tools-sticky-bar--hidden");
+			} else {
+				bar.classList.remove("tools-sticky-bar--hidden");
+			}
+		});
+	}
+	</script>
 </section>
