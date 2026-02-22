@@ -1,16 +1,17 @@
 ---
 import MySiteLayout from "@layouts/MySiteLayout.astro";
 import Timeline from "@components/Timeline.astro";
-import FaceIcon from "@images/face-icon.png";
+import FaceIcon from "@images/face-icon.avif";
+import { Image } from "astro:assets";
 ---
 
 <MySiteLayout title="About">
 	<section class="relative mt-40">
-		<img
-			src={FaceIcon.src}
+		<Image
+			src={FaceIcon}
 			alt="Face Icon"
 			class="w-40 h-40 rounded-full absolute -top-30 left-20 -z-10"
-		>
+		/>
 		<p
 			class="lg:text-lg p-8 bg-[#43d0ad] my-10 rounded-xl border-4 border-r-8 border-b-8 border-[#232322] font-serif"
 		>

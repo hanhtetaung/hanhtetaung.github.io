@@ -1,8 +1,8 @@
 import { Accordion } from "@base-ui/react/accordion";
 import AccordionItem from "@components/base/AccordionItem";
 
-import PortfolioImage from "@images/projects/portfolio.png";
-import SKSLogo from "@images/projects/sks-solar-myanmar.png";
+import PortfolioImage from "@images/projects/portfolio.avif";
+import SKSLogo from "@images/projects/sks-solar-myanmar.avif";
 import AstroLogo from "@images/tech-logos/astro.svg";
 import ReactLogo from "@images/tech-logos/react.svg";
 import SimpleIconsLogo from "@images/tech-logos/simpleicons.svg";
@@ -24,7 +24,7 @@ const projectsData = [
 		],
 	},
 	{
-		title: "SKS Solar Myanmar",
+		title: "SKS Solar",
 		description:
 			"A website for SKS SOLAR (SALES & SERVICES) COMPANY LIMITED, a solar energy company based in Myanmar. It shows their solar products, services, and company information, helping customers learn about their solutions and contact them easily.",
 		image: SKSLogo.src,

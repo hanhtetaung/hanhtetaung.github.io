@@ -1,6 +1,13 @@
 {
 	"files": {
-		"includes": ["**", "!.astro"]
+		"includes": [
+			"**",
+			"!.astro",
+			"!dist/**/*",
+			"!node_modules/**/*",
+			"!public/**/*",
+			"!src/images/**/*"
+		]
 	},
 	"assist": {
 		"actions": {
