@@ -1,11 +1,261 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    Hello world
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Han Htet Aung — Web Designer</title>
+  </head>
+  <body>
+    <!-- ══════════════════════════════ NAV ══════════════════════════════ -->
+    <header class="nav">
+      <a class="nav__logo" href="#">
+        <img
+          src="/assets/images/avatar.jpg"
+          alt="Han Htet Aung"
+          width="36"
+          height="36"
+        />
+      </a>
+      <nav class="nav__links">
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="mailto:hanhtetaung.dev@gmail.com" class="hire-me-button">
+          Hire me
+        </a>
+      </nav>
+    </header>
+
+    <main>
+      <!-- ══════════════════════════════ HERO ══════════════════════════════ -->
+      <section class="hero" id="home">
+        <hgroup>
+          <p class="hero__intro">I'm Han Htet Aung</p>
+          <h1 class="hero__name">Web Designer</h1>
+          <p class="hero__tagline">I design &amp; develop websites</p>
+        </hgroup>
+      </section>
+
+      <!-- ══════════════════════════════ MY WORK ══════════════════════════════ -->
+      <section class="work section" id="work">
+        <h2>My Work</h2>
+        <ul>
+          <details>
+            <summary>SKS.Solar</summary>
+            <div>
+              <figure>
+                <img src="/assets/images/sks-solar-thumb.jpg" alt="SKS Solar" />
+                <figcaption>Screenshot of SKS Solar hero section</figcaption>
+              </figure>
+
+              <div>
+                <h3>SKS.Solar</h3>
+                <p>
+                  A website for SKS SOLAR (SALES & SERVICES) COMPANY LIMITED, a
+                  solar energy company based in Myanmar. It shows their solar
+                  products, services, and company information, helping customers
+                  learn about their solutions and contact them easily.
+                </p>
+
+                <a href="#">View</a>
+              </div>
+            </div>
+          </details>
+        </ul>
+      </section>
+
+      <!-- ══════════════════════════════ SPECIALIZE ══════════════════════════════ -->
+      <section class="specialize section" id="services">
+        <h2 class="section-label">Specialize</h2>
+
+        <div class="specialize__grid">
+          <!-- Web Design -->
+          <article class="specialize__card">
+            <div>
+              <h3 class="specialize__card-header">Web Design</h3>
+              <ul class="specialize__tags">
+                <li>Layout</li>
+                <li>Color</li>
+                <li>Typography</li>
+                <li>Spacing</li>
+              </ul>
+            </div>
+
+            <p>Figma</p>
+          </article>
+
+          <!-- Web Development -->
+          <article class="specialize__card">
+            <div>
+              <h3 class="specialize__card-header">Web Development</h3>
+              <ul class="specialize__tags">
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+                <li>GSAP</li>
+              </ul>
+            </div>
+
+            <p>VS Code</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- ══════════════════════════════ TIMELINE ══════════════════════════════ -->
+      <section class="timeline section" id="timeline">
+        <h2 class="section-label">Timeline</h2>
+
+        <ul class="timeline">
+          <li>
+            <time datetime="2021">2021</time> &ndash;
+            <time datetime="2022">2022</time>
+            <h4>Software Developer</h4>
+            <p>
+              Started my journey as a software developer, building web
+              applications and learning the fundamentals.
+            </p>
+          </li>
+
+          <li>
+            <time datetime="2022">2022</time> &ndash;
+            <time datetime="2025">2025</time>
+
+            <h4>Student</h4>
+            <p>
+              Graduated with a Bachelor of Science in Computer Science in 2025.
+            </p>
+          </li>
+
+          <li>
+            <time datetime="2025">2025</time> &ndash;
+            <time datetime="2026">2026</time>
+
+            <h4>Software Developer</h4>
+            <p>Worked as a remote software developer in a US-based company.</p>
+          </li>
+        </ul>
+
+        <a href="/about" class="timeline__link">Learn more → Full Timeline</a>
+      </section>
+
+      <!-- ══════════════════════════════ WHY HIRE ME ══════════════════════════════ -->
+      <section class="why section" id="why">
+        <h2 class="section-label">Why Hire me?</h2>
+
+        <ol>
+          <li>
+            <div>
+              <h3>Working Man</h3>
+              <p>
+                I'm consistent on one thing: always giving my best. I take pride
+                in doing things properly and take full ownership of everything I
+                do. When I commit to something, I follow through.
+              </p>
+            </div>
+
+            <img src="your-logo.svg" alt="Working Man" width="48" height="48" />
+          </li>
+
+          <li>
+            <div>
+              <h3>Detail-oriented Person</h3>
+              <p>
+                I pay close attention to every detail, because the little things
+                matter. I know the difference between good work and great work
+                lives in the details.
+              </p>
+            </div>
+            <img src="your-logo.svg" alt="Working Man" width="48" height="48" />
+          </li>
+
+          <li>
+            <div>
+              <h3>Positive Thinker</h3>
+              <p>
+                A positive mindset helps me create better work and stronger
+                collaborations. I focus on solutions rather than problems. Good
+                energy builds great work.
+              </p>
+            </div>
+            <img src="your-logo.svg" alt="Working Man" width="48" height="48" />
+          </li>
+        </ol>
+      </section>
+
+      <!-- ══════════════════════════════ CTA — CALL ME, SINGAPORE ══════════════════════════════ -->
+      <section class="cta section" id="contact">
+        <h2>Call me, Singapore</h2>
+
+        <p>
+          I'm looking for a web design role in Singapore — one that will
+          challenge me, sharpen my creativity, and help me grow. If your team is
+          hardworking, detail-oriented, and a positive thinker, then I'm the one
+          for you.
+        </p>
+
+        <a href="mailto:hanhtetaung.dev@gmail.com" class="btn btn-primary">
+          Hire me
+        </a>
+
+        <div class="cta__illustration">
+          <img
+            src="/assets/images/singapore-lion.png"
+            alt="Merlion illustration"
+          />
+        </div>
+      </section>
+
+      <!-- ══════════════════════════════ QUOTE ══════════════════════════════ -->
+      <section class="quote section">
+        <blockquote class="quote__block">
+          <p>
+            What I hear, I forget.<br />
+            What I see, I remember.<br />
+            What I do I understand
+          </p>
+          <p>— Confucius</p>
+        </blockquote>
+      </section>
+    </main>
+
+    <!-- ══════════════════════════════ FOOTER ══════════════════════════════ -->
+    <footer class="footer">
+      <p class="footer__copy">© Han Htet Aung 2026. All rights reserved</p>
+
+      <nav class="footer__nav" aria-label="Sitemap">
+        <h4>Sitemap</h4>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/work">Work</a></li>
+          <li><a href="/about">About</a></li>
+        </ul>
+      </nav>
+
+      <div class="footer__social">
+        <h4>Contact me on:</h4>
+        <ul>
+          <li>
+            <a href="mailto:hello@hanhtetaung.com">Gmail</a>
+          </li>
+
+          <li>
+            <a
+              href="https://linkedin.com/in/hanhtetaung"
+              target="_blank"
+              rel="noopener"
+              >LinkedIn</a
+            >
+          </li>
+
+          <li>
+            <a
+              href="https://linkedin.com/in/hanhtetaung"
+              target="_blank"
+              rel="noopener"
+              >Github</a
+            >
+          </li>
+        </ul>
+      </div>
+    </footer>
+  </body>
 </html>
