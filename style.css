@@ -1,0 +1,552 @@
+@font-face {
+  font-family: "Chicle";
+  src: url("/assets/fonts/Chicle-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "StackSans";
+  src: url("/assets/fonts/StackSansText-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "StackSans";
+  src: url("/assets/fonts/StackSansText-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+
+/* 1. Use a more-intuitive box-sizing model */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* 2. Remove default margin */
+*:not(dialog) {
+  margin: 0;
+}
+
+/* 3. Enable keyword animations */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    interpolate-size: allow-keywords;
+  }
+}
+
+body {
+  /* 4. Increase line-height */
+  line-height: 1.5;
+  /* 5. Improve text rendering */
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 6. Improve media defaults */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* 7. Inherit fonts for form controls */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* 8. Avoid text overflows */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+/* 9. Improve line wrapping */
+p {
+  text-wrap: pretty;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}
+
+/*
+  10. Create a root stacking context
+*/
+#root,
+#__next {
+  isolation: isolate;
+}
+
+:root {
+  --color-bg-primary: #fff4e4;
+  --color-bg-secondary: #fffaf4;
+  --color-cyan: #0e7490;
+  --color-teal: #0f766e;
+  --color-pink: #be185d;
+  --color-text: #000000;
+  --font-heading: "Chicle", serif;
+  --font-body: "StackSans", sans-serif;
+  font-size: 10px;
+}
+
+body {
+  background: var(--color-bg-primary);
+  font-family: var(--font-body);
+  font-weight: 400;
+}
+
+/* header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+  margin: auto;
+  padding: 1.6rem 4rem;
+  font-size: 1.5rem;
+}
+
+/* logo image */
+.header__logo img {
+  width: fit-content;
+  height: 10rem;
+  border-radius: 50%;
+  display: block;
+}
+
+/* nav */
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.nav__link {
+  text-decoration: none;
+  color: var(--color-text);
+}
+
+.hire-me-button {
+  text-decoration: none;
+  display: block;
+  width: fit-content;
+  margin: auto;
+}
+
+.hire-me-button svg {
+  width: 14rem;
+  height: 10rem;
+  transition: transform 0.3s ease;
+}
+
+.hire-me-button:hover svg {
+  transform: rotate(10deg) scale(1.05);
+}
+
+/* --------- Hero ----------- */
+.hero {
+  display: flex;
+  justify-content: center;
+  padding-block: 15rem;
+  background-color: var(--color-bg-primary);
+  background-image:
+    linear-gradient(to right, #ccc 1px, transparent 1px),
+    linear-gradient(to bottom, #ccc 1px, transparent 1px);
+  background-size: 2rem 2rem;
+}
+
+.hero__intro {
+  text-align: left;
+  font-size: 2rem;
+  margin: 0;
+}
+
+.hero__title {
+  text-align: center;
+  font-family: var(--font-heading);
+  font-size: 10rem;
+  margin: 0;
+}
+
+.hero__tagline {
+  text-align: right;
+  font-size: 2rem;
+  margin: 0;
+}
+
+.container {
+  width: 80%;
+  margin-inline: auto;
+  font-size: 2rem;
+}
+
+.section-title {
+  font-family: var(--font-heading);
+  font-size: 6rem;
+  margin-bottom: 3rem;
+}
+
+/* --------- My Work ----------- */
+.my-work {
+  background-color: var(--color-bg-secondary);
+  padding-block: 10rem;
+  font-size: 2rem;
+}
+
+.my-work__accordion {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid black;
+  justify-content: center;
+}
+
+/* ── Each project (details) ── */
+.project {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid black;
+  height: 60rem;
+  overflow: hidden;
+}
+
+/* ── Summary (vertical tab on left) ── */
+.project__summary {
+  writing-mode: sideways-lr;
+  padding: 1.5rem 1rem;
+  font-size: 3rem;
+  flex-shrink: 0;
+  text-align: center;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+.project__summary:focus {
+  outline: none;
+}
+
+/* ── Content ── */
+.project__content {
+  display: flex;
+  gap: 1.5rem;
+  overflow: hidden;
+  height: 100%;
+}
+
+.project__image {
+  height: 100%;
+  width: 70rem;
+  border: 1px solid black;
+}
+
+.project__info {
+  gap: 1rem;
+  padding: 5rem;
+
+  width: 60rem;
+}
+
+.project__name {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+.project__description {
+  width: 35ch;
+}
+
+.project__link {
+  display: inline-block;
+  font-size: 1.5rem;
+  width: fit-content;
+  border: 1px solid var(--color-pink);
+  color: var(--color-pink);
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  margin-top: 1.5rem;
+}
+
+/* ── Animation accordin── */
+::details-content {
+  transition:
+    width 0.4s ease,
+    content-visibility 0.4s ease allow-discrete;
+  width: 0;
+}
+
+[open]::details-content {
+  width: var(--open-size);
+}
+
+/* Prevent Click Open Tag */
+.my-work__accordion:has(.project[open]) .project[open] .project__summary {
+  pointer-events: none;
+  cursor: default;
+}
+
+/* ---- Specialize In ------------ */
+
+.specialize {
+  padding-block: 10rem;
+}
+
+.specialize__grid {
+  display: flex;
+  gap: 5rem;
+}
+
+.card {
+  display: flex;
+  border: 3px solid #000;
+  border-radius: 0rem 4rem 4rem 0rem;
+}
+
+.card__tool {
+  writing-mode: sideways-lr;
+  font-size: 4rem;
+  text-align: center;
+  padding: 2rem 1rem;
+  background-color: var(--color-cyan);
+  border-right: 3px dashed var(--color-bg-primary);
+  color: var(--color-bg-primary);
+}
+
+.card__title {
+  font-size: 3rem;
+}
+
+.card__content {
+  padding: 2rem;
+}
+
+.card__tags {
+  padding: 0rem;
+  margin: 1rem 0rem;
+}
+
+.card__tag {
+  display: inline-block;
+  font-size: 1.5rem;
+  border-radius: 2rem 3rem;
+  border: 1px solid #333;
+  padding: 1rem 1.5rem;
+}
+
+/* ------------- Timeline -------------- */
+
+.timeline {
+  background-color: var(--color-bg-secondary);
+  padding-block: 10rem;
+}
+
+.timeline__list {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 5rem;
+}
+
+.timeline__item {
+  display: grid;
+  grid-template-columns: auto auto 1fr;
+  gap: 0 1rem;
+  align-items: start;
+  align-self: stretch;
+}
+
+.timeline__icon {
+  height: 10rem;
+  width: 10rem;
+  margin: auto;
+}
+
+.timeline__connector {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  align-self: stretch;
+}
+
+.timeline__dot {
+  width: 0.75rem;
+  position: absolute;
+  top: 1rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  background: var(--color-cyan);
+}
+
+.timeline__line {
+  width: 2px;
+  flex: 1;
+  background: var(--color-cyan);
+  min-height: 2rem; /* ensures line always shows */
+}
+
+.timeline__content {
+  padding-bottom: 3rem;
+}
+
+.timeline__period {
+  color: var(--color-cyan);
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid var(--color-cyan);
+  width: fit-content;
+  padding: 0.25rem 0.5rem;
+}
+
+.timeline_period-present {
+  background-color: var(--color-cyan);
+  padding: 0.3rem 1rem;
+  color: var(--color-bg-primary);
+}
+
+.timeline__role {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.timeline__description {
+  font-size: 1.5rem;
+  width: 65ch;
+}
+
+.timeline__link {
+  text-align: center;
+  display: block;
+  width: fit-content;
+  margin: 0 auto;
+  color: var(--color-pink);
+}
+
+/* ---------------- Why Hire Me ----------------- */
+
+.why-hire-me {
+  padding-block: 10rem;
+}
+
+.why-hire-me__list {
+  counter-reset: why-counter;
+  list-style: none;
+}
+
+.why-hire-me__item {
+  counter-increment: why-counter;
+  display: flex;
+  margin-bottom: 10rem;
+  align-items: center;
+}
+
+.why-hire-me__title::before {
+  content: counter(why-counter) " .";
+  color: #000000;
+  font-family: var(--font-heading);
+  margin-right: 1.5rem;
+  font-size: 3rem;
+}
+
+.why-hire-me__title {
+  font-size: 5rem;
+  font-family: var(--font-heading);
+  color: var(--color-cyan);
+}
+
+.why-hire-me__description {
+  max-width: 55ch;
+}
+
+.why-hire-me__icon {
+  height: 20rem;
+  width: fit-content;
+}
+
+/* ---------- CTA ---------------- */
+
+.cta {
+  background: var(--color-bg-secondary);
+  padding-top: 10rem;
+  padding-bottom: 20rem;
+  position: relative;
+}
+
+.cta__title {
+  text-align: center;
+}
+
+.cta__description {
+  max-width: 60ch;
+  margin: 3rem auto;
+  text-align: center;
+}
+
+.cta__button {
+  margin: 0 auto;
+  width: fit-content;
+  display: block;
+}
+
+.cta__image {
+  position: absolute;
+  right: 10rem;
+  bottom: 0;
+  height: 30rem;
+  width: fit-content;
+}
+
+/* ------------ Quote ------------------- */
+
+.quote {
+  padding-top: 10rem;
+  padding-bottom: 5rem;
+}
+
+.quote__block {
+  text-align: center;
+  font-family: var(--font-heading);
+  font-size: 6rem;
+}
+
+.footer-divider {
+  border: none;
+  border-top: 1px solid var(--color-cyan);
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  margin: 5rem auto;
+  font-size: 2rem;
+}
+
+.footer-nav {
+  min-width: 40rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer-nav__list {
+  padding: 0rem 1rem;
+}
+
+.footer-social__list {
+  padding: 0rem 1rem;
+}
