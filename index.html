@@ -4,258 +4,605 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Han Htet Aung — Web Designer</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <!-- ══════════════════════════════ NAV ══════════════════════════════ -->
-    <header class="nav">
-      <a class="nav__logo" href="#">
+    <header class="header">
+      <a class="header__logo" href="#">
         <img
-          src="/assets/images/avatar.jpg"
+          src="/assets/icons/profile_logo.svg"
           alt="Han Htet Aung"
-          width="36"
-          height="36"
+          width="50"
+          height="50"
         />
       </a>
-      <nav class="nav__links">
-        <a href="/">Home</a>
-        <a href="/about">About</a>
-        <a href="mailto:hanhtetaung.dev@gmail.com" class="hire-me-button">
+
+      <nav class="nav">
+        <a class="nav__link" href="/">Home</a>
+        <a class="nav__link" href="/about">About</a>
+        <!-- <a class="hire-me-button" href="mailto:hanhtetaung.dev@gmail.com">
           Hire me
+        </a> -->
+
+        <a class="hire-me-button" href="mailto:you@email.com">
+          <svg viewBox="0 0 320 220" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="m0 110 25-25-15-40 40 15-5-40 35 22L90 5l25 27 15-32 30 28 30-28 15 32 25-27 10 37 35-22-5 40 40-15-15 40 25 25-25 25 15 40-40-15 5 40-35-22-10 37-25-27-15 32-30-28-30 28-15-32-25 27-10-37-35 22 5-40-40 15 15-40Z"
+              fill="#be185d"
+              stroke="#1a1a1a"
+              stroke-width="3"
+              stroke-linejoin="round"
+            />
+            <text
+              x="160"
+              y="118"
+              text-anchor="middle"
+              font-size="4rem"
+              fill="#fff4e4"
+            >
+              Hire Me
+            </text>
+          </svg>
         </a>
       </nav>
     </header>
 
     <main>
       <!-- ══════════════════════════════ HERO ══════════════════════════════ -->
-      <section class="hero" id="home">
-        <hgroup>
+      <section class="hero">
+        <hgroup class="hero__group">
           <p class="hero__intro">I'm Han Htet Aung</p>
-          <h1 class="hero__name">Web Designer</h1>
+          <h1 class="hero__title">Web Designer</h1>
           <p class="hero__tagline">I design &amp; develop websites</p>
         </hgroup>
       </section>
 
+      <!-- Line Divider  -->
+      <div class="cloud-divider">
+        <svg
+          viewBox="0 0 1200 80"
+          xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="none"
+        >
+          <path
+            d="
+              M0,80
+              L0,40
+              Q50,10 100,35
+              Q130,0 170,20
+              Q210,-10 250,25
+              Q290,0 330,30
+              Q370,5 410,28
+              Q450,-5 490,22
+              Q530,2 570,30
+              Q610,0 650,25
+              Q690,5 730,28
+              Q770,-5 810,22
+              Q850,2 890,30
+              Q930,0 970,25
+              Q1010,5 1050,28
+              Q1090,-5 1130,22
+              Q1160,5 1200,30
+              L1200,80
+              Z
+              "
+            fill="var(--color-bg-secondary)"
+          />
+        </svg>
+      </div>
+
       <!-- ══════════════════════════════ MY WORK ══════════════════════════════ -->
-      <section class="work section" id="work">
-        <h2>My Work</h2>
-        <ul>
-          <details>
-            <summary>SKS.Solar</summary>
-            <div>
-              <figure>
-                <img src="/assets/images/sks-solar-thumb.jpg" alt="SKS Solar" />
-                <figcaption>Screenshot of SKS Solar hero section</figcaption>
+      <section class="my-work">
+        <div class="container">
+          <h2 class="section-title">My Work</h2>
+        </div>
+
+        <div class="my-work__accordion">
+          <details class="project" name="project" open>
+            <summary class="project__summary">SKS.Solar</summary>
+            <div class="project__content">
+              <figure class="project__figure">
+                <img
+                  class="project__image"
+                  src="/assets/images/skssolar.png"
+                  alt="SKS Solar"
+                />
               </figure>
-
-              <div>
-                <h3>SKS.Solar</h3>
-                <p>
+              <div class="project__info">
+                <h3 class="project__name">SKS.Solar</h3>
+                <p class="project__description">
                   A website for SKS SOLAR (SALES & SERVICES) COMPANY LIMITED, a
-                  solar energy company based in Myanmar. It shows their solar
-                  products, services, and company information, helping customers
-                  learn about their solutions and contact them easily.
+                  solar energy company based in Myanmar.
                 </p>
-
-                <a href="#">View</a>
+                <a class="project__link" href="#">View Website &#8594;</a>
               </div>
             </div>
           </details>
-        </ul>
-      </section>
 
-      <!-- ══════════════════════════════ SPECIALIZE ══════════════════════════════ -->
-      <section class="specialize section" id="services">
-        <h2 class="section-label">Specialize</h2>
-
-        <div class="specialize__grid">
-          <!-- Web Design -->
-          <article class="specialize__card">
-            <div>
-              <h3 class="specialize__card-header">Web Design</h3>
-              <ul class="specialize__tags">
-                <li>Layout</li>
-                <li>Color</li>
-                <li>Typography</li>
-                <li>Spacing</li>
-              </ul>
+          <details class="project" name="project" open>
+            <summary class="project__summary">SKS.Solar</summary>
+            <div class="project__content">
+              <figure class="project__figure">
+                <img
+                  class="project__image"
+                  src="/assets/images/skssolar.png"
+                  alt="SKS Solar"
+                />
+              </figure>
+              <div class="project__info">
+                <h3 class="project__name">SKS.Solar</h3>
+                <p class="project__description">
+                  A website for SKS SOLAR (SALES & SERVICES) COMPANY LIMITED, a
+                  solar energy company based in Myanmar.
+                </p>
+                <a class="project__link" href="#">View Website </a>
+              </div>
             </div>
-
-            <p>Figma</p>
-          </article>
-
-          <!-- Web Development -->
-          <article class="specialize__card">
-            <div>
-              <h3 class="specialize__card-header">Web Development</h3>
-              <ul class="specialize__tags">
-                <li>HTML</li>
-                <li>CSS</li>
-                <li>JavaScript</li>
-                <li>GSAP</li>
-              </ul>
-            </div>
-
-            <p>VS Code</p>
-          </article>
+          </details>
         </div>
       </section>
 
-      <!-- ══════════════════════════════ TIMELINE ══════════════════════════════ -->
-      <section class="timeline section" id="timeline">
-        <h2 class="section-label">Timeline</h2>
+      <!-- Reverse Line -->
+      <div class="cloud-divider">
+        <svg
+          viewBox="0 0 1200 80"
+          xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="none"
+        >
+          <path
+            d="
+      M0,0
+      L1200,0
+      L1200,40
+      Q1160,75 1130,58
+      Q1090,85 1050,62
+      Q1010,75 970,55
+      Q930,80 890,50
+      Q850,78 810,58
+      Q770,85 730,52
+      Q690,75 650,55
+      Q610,80 570,50
+      Q530,78 490,58
+      Q450,85 410,52
+      Q370,75 330,50
+      Q290,80 250,55
+      Q210,90 170,60
+      Q130,80 100,45
+      Q50,70 0,40
+      Z
+    "
+            fill="var(--color-bg-secondary)"
+          />
+        </svg>
+      </div>
 
-        <ul class="timeline">
-          <li>
-            <time datetime="2021">2021</time> &ndash;
-            <time datetime="2022">2022</time>
-            <h4>Software Developer</h4>
-            <p>
-              Started my journey as a software developer, building web
-              applications and learning the fundamentals.
-            </p>
-          </li>
+      <!-- ══════════════════════════════ SPECIALIZE ══════════════════════════════ -->
+      <section class="specialize">
+        <div class="container">
+          <h2 class="section-title">Specialize In</h2>
 
-          <li>
-            <time datetime="2022">2022</time> &ndash;
-            <time datetime="2025">2025</time>
+          <div class="specialize__grid">
+            <article class="card">
+              <p class="card__tool">Figma</p>
+              <div class="card__content">
+                <h3 class="card__title">Web Design</h3>
+                <ul class="card__tags">
+                  <li class="card__tag">Layout</li>
+                  <li class="card__tag">Color</li>
+                  <li class="card__tag">Typography</li>
+                  <li class="card__tag">Spacing</li>
+                </ul>
+              </div>
+            </article>
 
-            <h4>Student</h4>
-            <p>
-              Graduated with a Bachelor of Science in Computer Science in 2025.
-            </p>
-          </li>
-
-          <li>
-            <time datetime="2025">2025</time> &ndash;
-            <time datetime="2026">2026</time>
-
-            <h4>Software Developer</h4>
-            <p>Worked as a remote software developer in a US-based company.</p>
-          </li>
-        </ul>
-
-        <a href="/about" class="timeline__link">Learn more → Full Timeline</a>
+            <article class="card">
+              <p class="card__tool">VS Code</p>
+              <div class="card__content">
+                <h3 class="card__title">Web Development</h3>
+                <ul class="card__tags">
+                  <li class="card__tag">HTML</li>
+                  <li class="card__tag">CSS</li>
+                  <li class="card__tag">JavaScript</li>
+                  <li class="card__tag">GSAP</li>
+                </ul>
+              </div>
+            </article>
+          </div>
+        </div>
       </section>
+
+      <!-- Line Divider  -->
+      <div class="cloud-divider">
+        <svg
+          viewBox="0 0 1200 80"
+          xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="none"
+        >
+          <path
+            d="
+              M0,80
+              L0,40
+              Q50,10 100,35
+              Q130,0 170,20
+              Q210,-10 250,25
+              Q290,0 330,30
+              Q370,5 410,28
+              Q450,-5 490,22
+              Q530,2 570,30
+              Q610,0 650,25
+              Q690,5 730,28
+              Q770,-5 810,22
+              Q850,2 890,30
+              Q930,0 970,25
+              Q1010,5 1050,28
+              Q1090,-5 1130,22
+              Q1160,5 1200,30
+              L1200,80
+              Z
+              "
+            fill="var(--color-bg-secondary)"
+          />
+        </svg>
+      </div>
+
+      <!-- ══════════════════════════════ TIMELINE ══════════════════════════════ -->
+      <section class="timeline">
+        <div class="container">
+          <h2 class="section-title">Timeline</h2>
+
+          <ul class="timeline__list">
+            <li class="timeline__item">
+              <img
+                class="timeline__icon"
+                src="assets/icons/software-developer.svg"
+                alt="Software Developer Icon"
+                width="48"
+                height="48"
+              />
+              <div class="timeline__connector">
+                <span class="timeline__dot"></span>
+                <span class="timeline__line"></span>
+              </div>
+              <div class="timeline__content">
+                <div class="timeline__period">
+                  <time class="timeline__time" datetime="2021">2021</time>
+                  &ndash;
+                  <time class="timeline__time" datetime="2022">2022</time>
+                </div>
+                <h4 class="timeline__role">Software Developer</h4>
+                <p class="timeline__description">
+                  I landed my first software development role building a
+                  hospital management system through a friend. The system is
+                  still running today.
+                </p>
+              </div>
+            </li>
+
+            <li class="timeline__item">
+              <img
+                class="timeline__icon timeline__icon-student"
+                src="assets/icons/student.svg"
+                alt="Student Icon"
+                width="48"
+                height="48"
+              />
+              <div class="timeline__connector">
+                <span class="timeline__dot"></span>
+                <span class="timeline__line"></span>
+              </div>
+              <div class="timeline__content">
+                <div class="timeline__period">
+                  <time class="timeline__time" datetime="2022">2022</time>
+                  &ndash;
+                  <time class="timeline__time" datetime="2025">2025</time>
+                </div>
+                <h4 class="timeline__role">Student</h4>
+                <p class="timeline__description">
+                  I completed my Bachelor of Science in Computer Science at
+                  Assumption University, Thailand. My favorite subject was
+                  Computer Architecture.
+                </p>
+              </div>
+            </li>
+
+            <li class="timeline__item">
+              <img
+                class="timeline__icon"
+                src="assets/icons/software-developer.svg"
+                alt="Software Developer Icon"
+                width="48"
+                height="48"
+              />
+              <div class="timeline__connector">
+                <span class="timeline__dot"></span>
+                <span class="timeline__line"></span>
+              </div>
+              <div class="timeline__content">
+                <div class="timeline__period">
+                  <time class="timeline__time" datetime="2022">2025</time>
+                  &ndash;
+                  <time class="timeline__time" datetime="2025">2026</time>
+                </div>
+                <h4 class="timeline__role">Software Developer</h4>
+                <p class="timeline__description">
+                  After graduating, I worked remotely as a software developer
+                  for a Singapore-based company for six months through a
+                  friend's referral.
+                </p>
+              </div>
+            </li>
+
+            <li class="timeline__item">
+              <img
+                class="timeline__icon"
+                src="assets/icons/software-developer.svg"
+                alt="Web Design & Develop"
+                width="48"
+                height="48"
+              />
+              <div class="timeline__connector">
+                <span class="timeline__dot"></span>
+                <span class="timeline__line"></span>
+              </div>
+              <div class="timeline__content">
+                <div class="timeline__period timeline_period-present">
+                  <time class="timeline__time" datetime="2026">Present:</time>
+                </div>
+                <h4 class="timeline__role">Web Design & Develop</h4>
+                <p class="timeline__description">
+                  Today, I found my passion in web design and development. I
+                  continue learning and am open to opportunities in this field.
+                  Let’s see how far can go.
+                </p>
+              </div>
+            </li>
+          </ul>
+
+          <a class="timeline__link" href="/about">More → Full Timeline</a>
+        </div>
+      </section>
+
+      <!-- Reverse Line -->
+      <div class="cloud-divider">
+        <svg
+          viewBox="0 0 1200 80"
+          xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="none"
+        >
+          <path
+            d="
+              M0,0
+              L1200,0
+              L1200,40
+              Q1160,75 1130,58
+              Q1090,85 1050,62
+              Q1010,75 970,55
+              Q930,80 890,50
+              Q850,78 810,58
+              Q770,85 730,52
+              Q690,75 650,55
+              Q610,80 570,50
+              Q530,78 490,58
+              Q450,85 410,52
+              Q370,75 330,50
+              Q290,80 250,55
+              Q210,90 170,60
+              Q130,80 100,45
+              Q50,70 0,40
+              Z
+            "
+            fill="var(--color-bg-secondary)"
+          />
+        </svg>
+      </div>
 
       <!-- ══════════════════════════════ WHY HIRE ME ══════════════════════════════ -->
-      <section class="why section" id="why">
-        <h2 class="section-label">Why Hire me?</h2>
+      <section class="why-hire-me">
+        <div class="container">
+          <h2 class="section-title">Why Hire me?</h2>
 
-        <ol>
-          <li>
-            <div>
-              <h3>Working Man</h3>
-              <p>
-                I'm consistent on one thing: always giving my best. I take pride
-                in doing things properly and take full ownership of everything I
-                do. When I commit to something, I follow through.
-              </p>
-            </div>
+          <ol class="why-hire-me__list">
+            <li class="why-hire-me__item">
+              <div class="why-hire-me__content">
+                <h3 class="why-hire-me__title">Working Man</h3>
+                <p class="why-hire-me__description">
+                  I'm consistent on one thing: always giving my best. I take
+                  pride in doing things properly and take full ownership of
+                  everything I do. When I commit to something, I follow through.
+                </p>
+              </div>
 
-            <img src="your-logo.svg" alt="Working Man" width="48" height="48" />
-          </li>
+              <img
+                class="why-hire-me__icon"
+                src="assets/icons/working-man.svg"
+                alt="Working Man Icon"
+                width="48"
+                height="48"
+              />
+            </li>
 
-          <li>
-            <div>
-              <h3>Detail-oriented Person</h3>
-              <p>
-                I pay close attention to every detail, because the little things
-                matter. I know the difference between good work and great work
-                lives in the details.
-              </p>
-            </div>
-            <img src="your-logo.svg" alt="Working Man" width="48" height="48" />
-          </li>
+            <li class="why-hire-me__item">
+              <div class="why-hire-me__content">
+                <h3 class="why-hire-me__title">Detail-oriented Person</h3>
+                <p class="why-hire-me__description">
+                  I pay close attention to every detail, because the little
+                  things matter. I believe the difference between good work and
+                  great work lives in the details.
+                </p>
+              </div>
 
-          <li>
-            <div>
-              <h3>Positive Thinker</h3>
-              <p>
-                A positive mindset helps me create better work and stronger
-                collaborations. I focus on solutions rather than problems. Good
-                energy builds great work.
-              </p>
-            </div>
-            <img src="your-logo.svg" alt="Working Man" width="48" height="48" />
-          </li>
-        </ol>
+              <img
+                class="why-hire-me__icon"
+                src="assets/icons/detail-oriented-person.svg"
+                alt="Detail-oriented Person Icon"
+                width="48"
+                height="48"
+              />
+            </li>
+
+            <li class="why-hire-me__item">
+              <div class="why-hire-me__content">
+                <h3 class="why-hire-me__title">Positive Thinker</h3>
+                <p class="why-hire-me__description">
+                  A positive mindset helps me create better work and stronger
+                  collaborations. I focus on solutions rather than problems.
+                  Good energy builds great work.
+                </p>
+              </div>
+
+              <img
+                class="why-hire-me__icon"
+                src="assets/icons/positive-thinker.svg"
+                alt="Positive Thinker Icon"
+                width="48"
+                height="48"
+              />
+            </li>
+          </ol>
+        </div>
       </section>
 
+      <!-- Line Divider  -->
+      <div class="cloud-divider">
+        <svg
+          viewBox="0 0 1200 80"
+          xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="none"
+        >
+          <path
+            d="
+              M0,80
+              L0,40
+              Q50,10 100,35
+              Q130,0 170,20
+              Q210,-10 250,25
+              Q290,0 330,30
+              Q370,5 410,28
+              Q450,-5 490,22
+              Q530,2 570,30
+              Q610,0 650,25
+              Q690,5 730,28
+              Q770,-5 810,22
+              Q850,2 890,30
+              Q930,0 970,25
+              Q1010,5 1050,28
+              Q1090,-5 1130,22
+              Q1160,5 1200,30
+              L1200,80
+              Z
+              "
+            fill="var(--color-bg-secondary)"
+          />
+        </svg>
+      </div>
+
       <!-- ══════════════════════════════ CTA — CALL ME, SINGAPORE ══════════════════════════════ -->
-      <section class="cta section" id="contact">
-        <h2>Call me, Singapore</h2>
+      <section class="cta">
+        <div class="container">
+          <h2 class="section-title cta__title">Call me, Singapore</h2>
 
-        <p>
-          I'm looking for a web design role in Singapore — one that will
-          challenge me, sharpen my creativity, and help me grow. If your team is
-          hardworking, detail-oriented, and a positive thinker, then I'm the one
-          for you.
-        </p>
+          <p class="cta__description">
+            I'm looking for a web design role in Singapore — one that will
+            challenge me, sharpen my creativity, and help me grow. If your team
+            is hardworking, detail-oriented, and a positive thinker, then I'm
+            the one for you.
+          </p>
 
-        <a href="mailto:hanhtetaung.dev@gmail.com" class="btn btn-primary">
-          Hire me
-        </a>
+          <a class="hire-me-button" href="mailto:you@email.com">
+            <svg viewBox="0 0 320 220" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="m0 110 25-25-15-40 40 15-5-40 35 22L90 5l25 27 15-32 30 28 30-28 15 32 25-27 10 37 35-22-5 40 40-15-15 40 25 25-25 25 15 40-40-15 5 40-35-22-10 37-25-27-15 32-30-28-30 28-15-32-25 27-10-37-35 22 5-40-40 15 15-40Z"
+                fill="#be185d"
+                stroke="#1a1a1a"
+                stroke-width="3"
+                stroke-linejoin="round"
+              />
+              <text
+                x="160"
+                y="118"
+                text-anchor="middle"
+                font-size="40"
+                fill="#fff4e4"
+              >
+                Hire Me
+              </text>
+            </svg>
+          </a>
+        </div>
 
         <div class="cta__illustration">
           <img
-            src="/assets/images/singapore-lion.png"
+            class="cta__image"
+            src="/assets/icons/merlion.svg"
             alt="Merlion illustration"
           />
         </div>
       </section>
 
       <!-- ══════════════════════════════ QUOTE ══════════════════════════════ -->
-      <section class="quote section">
+      <section class="quote">
         <blockquote class="quote__block">
-          <p>
-            What I hear, I forget.<br />
+          <p class="quote__text">
+            " What I hear, I forget.<br />
             What I see, I remember.<br />
-            What I do I understand
+            What I do I understand"
           </p>
-          <p>— Confucius</p>
+          <p class="quote__author">— Confucius</p>
         </blockquote>
       </section>
     </main>
+
+    <hr class="footer-divider" />
 
     <!-- ══════════════════════════════ FOOTER ══════════════════════════════ -->
     <footer class="footer">
       <p class="footer__copy">© Han Htet Aung 2026. All rights reserved</p>
 
-      <nav class="footer__nav" aria-label="Sitemap">
-        <h4>Sitemap</h4>
-        <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="/work">Work</a></li>
-          <li><a href="/about">About</a></li>
-        </ul>
+      <nav class="footer-nav" aria-label="Sitemap">
+        <div>
+          <h4 class="footer-nav__title">Sitemap</h4>
+          <ul class="footer-nav__list">
+            <li class="footer-nav__item">
+              <a class="footer-nav__link" href="/">Home</a>
+            </li>
+            <li class="footer-nav__item">
+              <a class="footer-nav__link" href="/about">About</a>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-social__title">Contact me on:</h4>
+          <ul class="footer-social__list">
+            <li class="footer-social__item">
+              <a
+                class="footer-social__link"
+                href="mailto:hanhtetaung.dev@gmail.com"
+                >Gmail</a
+              >
+            </li>
+            <li class="footer-social__item">
+              <a
+                class="footer-social__link"
+                href="https://linkedin.com/in/han-htet-aung"
+                target="_blank"
+                rel="noopener"
+                >LinkedIn</a
+              >
+            </li>
+            <li class="footer-social__item">
+              <a
+                class="footer-social__link"
+                href="https://github.com/hanhtetaung"
+                target="_blank"
+                rel="noopener"
+                >Github</a
+              >
+            </li>
+          </ul>
+        </div>
       </nav>
-
-      <div class="footer__social">
-        <h4>Contact me on:</h4>
-        <ul>
-          <li>
-            <a href="mailto:hello@hanhtetaung.com">Gmail</a>
-          </li>
-
-          <li>
-            <a
-              href="https://linkedin.com/in/hanhtetaung"
-              target="_blank"
-              rel="noopener"
-              >LinkedIn</a
-            >
-          </li>
-
-          <li>
-            <a
-              href="https://linkedin.com/in/hanhtetaung"
-              target="_blank"
-              rel="noopener"
-              >Github</a
-            >
-          </li>
-        </ul>
-      </div>
     </footer>
   </body>
 </html>
