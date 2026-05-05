@@ -198,10 +198,26 @@ body {
   font-size: 2rem;
 }
 
+.section-title-group {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.section-title-group-why-hire-me {
+  display: block;
+  width: fit-content;
+  line-height: 1rem;
+  margin-bottom: 10rem;
+}
+
+.section-title-icon {
+  margin: 0 auto;
+}
+
 .section-title {
   font-family: var(--font-heading);
   font-size: 6rem;
-  margin-bottom: 3rem;
 }
 
 /* --------- My Work ----------- */
