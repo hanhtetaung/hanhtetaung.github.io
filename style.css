@@ -540,9 +540,115 @@ body {
   font-size: 6rem;
 }
 
+/* --------------- About ------------------  */
+
+.about {
+  padding-top: 8rem;
+  padding-bottom: 12rem;
+}
+
+.about__name {
+  text-align: center;
+  font-family: var(--font-heading);
+  font-size: 10rem;
+  margin-bottom: 3rem;
+}
+
+.about__content {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+}
+
+.about__content img {
+  height: 15rem;
+  width: 15rem;
+}
+
+.about__info {
+  width: 40ch;
+}
+
+.about__info p {
+  margin-bottom: 3rem;
+}
+
+/* --------------- Random Fact ---------------- */
+
+.random-facts {
+  padding-block: 10rem;
+  background-color: var(--color-bg-secondary);
+}
+
+.random-facts__list {
+  display: flex;
+  align-items: end;
+  /* justify-content: center; */
+  gap: 10rem;
+  font-size: 1.5rem;
+  list-style: none;
+}
+
+.random-facts__list img {
+  margin: auto;
+  width: fit-content;
+}
+
+/* -------------- Full Timeline -------------- */
+
+.timeline-details {
+  background: var(--color-bg-primary);
+}
+
+.timeline-details__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+/* center vertical line */
+.timeline-details__list::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  border-left: 2px dashed var(--color-cyan);
+}
+
+.timeline-details__item {
+  width: 45%;
+}
+
+/* odd — left side, dot on right edge */
+.timeline-details__item:nth-child(odd) {
+  align-self: flex-start;
+}
+
+/* even — right side, dot on left edge */
+.timeline-details__item:nth-child(even) {
+  align-self: flex-end;
+}
+
+.timeline-details__item h3 {
+  font-size: 2rem;
+}
+
+.timeline-details__item p {
+  font-size: 1.5rem;
+  text-align: start;
+}
+
+/* ------------- Footer -------------- */
+
 .footer-divider {
   border: none;
   border-top: 1px solid var(--color-cyan);
+  margin-top: 3rem;
 }
 
 .footer {
@@ -553,6 +659,11 @@ body {
   font-size: 2rem;
 }
 
+.footer__credits-link {
+  text-decoration: none;
+  color: var(--color-cyan);
+}
+
 .footer-nav {
   min-width: 40rem;
   display: flex;
@@ -561,8 +672,22 @@ body {
 
 .footer-nav__list {
   padding: 0rem 1rem;
+  text-decoration: none;
+  color: #000;
+}
+
+.footer-nav__link {
+  text-decoration: none;
+  color: #000;
 }
 
 .footer-social__list {
   padding: 0rem 1rem;
+  text-decoration: none;
+  color: #000;
+}
+
+.footer-social__link {
+  text-decoration: none;
+  color: #000;
 }
