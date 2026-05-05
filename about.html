@@ -4,214 +4,342 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Han Htet Aung — Web Designer</title>
-    <!-- <link rel="stylesheet" href="style.css" /> -->
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <!-- ══════════════════════════════ NAV ══════════════════════════════ -->
     <header class="header">
       <a class="header__logo" href="#">
         <img
-          src="/assets/images/avatar.jpg"
+          src="/assets/icons/profile_logo.svg"
           alt="Han Htet Aung"
-          width="36"
-          height="36"
+          width="50"
+          height="50"
         />
       </a>
 
       <nav class="nav">
         <a class="nav__link" href="/">Home</a>
         <a class="nav__link" href="/about">About</a>
-        <a class="hire-me-button" href="mailto:hanhtetaung.dev@gmail.com">
-          Hire me
+        <a class="hire-me-button" href="mailto:johndoe.dev@gmail.com">
+          <svg viewBox="0 0 320 220" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="m0 110 25-25-15-40 40 15-5-40 35 22L90 5l25 27 15-32 30 28 30-28 15 32 25-27 10 37 35-22-5 40 40-15-15 40 25 25-25 25 15 40-40-15 5 40-35-22-10 37-25-27-15 32-30-28-30 28-15-32-25 27-10-37-35 22 5-40-40 15 15-40Z"
+              fill="#be185d"
+              stroke="#1a1a1a"
+              stroke-width="3"
+              stroke-linejoin="round"
+            />
+            <text
+              x="160"
+              y="118"
+              text-anchor="middle"
+              font-size="4rem"
+              fill="#fff4e4"
+            >
+              Hire Me
+            </text>
+          </svg>
         </a>
       </nav>
     </header>
 
     <main>
       <!-- ══════════════════════════════ HERO ══════════════════════════════ -->
-      <section class="hero" id="home">
-        <h1 class="hero__name">About</h1>
+      <section class="about" id="home">
+        <div class="container">
+          <h1 class="about__name">About</h1>
 
-        <div>
-          <img src="profile" alt="profile" />
-          <div>
-            <p>
-              I'm Han Htet Aung, a web designer & developer who loves creating
-              unique experiences on the web.
-            </p>
-            <p>
-              Currently based in Chiang Mai, Thailand — open to work and
-              relocation.
-            </p>
+          <div class="about__content">
+            <img src="assets/images/about-profile.avif" alt="profile" />
+
+            <div class="about__info">
+              <p>
+                I'm Han Htet Aung, a web designer & developer who loves creating
+                unique experiences on the web.
+              </p>
+              <p>
+                Currently based in Chiang Mai, Thailand — open to work and
+                relocation.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
+      <!-- Line Divider  -->
+      <div class="cloud-divider">
+        <svg
+          viewBox="0 0 1200 80"
+          xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="none"
+        >
+          <path
+            d="
+              M0,80
+              L0,40
+              Q50,10 100,35
+              Q130,0 170,20
+              Q210,-10 250,25
+              Q290,0 330,30
+              Q370,5 410,28
+              Q450,-5 490,22
+              Q530,2 570,30
+              Q610,0 650,25
+              Q690,5 730,28
+              Q770,-5 810,22
+              Q850,2 890,30
+              Q930,0 970,25
+              Q1010,5 1050,28
+              Q1090,-5 1130,22
+              Q1160,5 1200,30
+              L1200,80
+              Z
+              "
+            fill="var(--color-bg-secondary)"
+          />
+        </svg>
+      </div>
+
       <!-- ══════════════════════════════ Random Facts ══════════════════════════════ -->
-      <section class="work section" id="work">
-        <h2>Random Facts</h2>
-        <ul>
-          <li>
-            <figure>
-              <img src="birdlogo.svg" alt="#" />
-              <figcaption>I love watching birds</figcaption>
-            </figure>
-          </li>
+      <section class="random-facts">
+        <div class="container">
+          <div class="section-title-group">
+            <h2 class="section-title">Random Facts</h2>
+            <img src="assets/icons/random-facts.svg" alt="Random Fact Logo" />
+          </div>
 
-          <li>
-            <figure>
-              <img src="birdlogo.svg" alt="#" />
-              <figcaption>I'm allergy to seafood</figcaption>
-            </figure>
-          </li>
+          <ul class="random-facts__list">
+            <li>
+              <figure>
+                <img src="assets/icons/watching-bird.svg" alt="Watching Bird" />
+                <figcaption>I love watching birds</figcaption>
+              </figure>
+            </li>
 
-          <li>
-            <figure>
-              <img src="birdlogo.svg" alt="#" />
-              <figcaption>I enjoy travelling</figcaption>
-            </figure>
-          </li>
+            <li>
+              <figure>
+                <img src="assets/icons/seafood.svg" alt="Seafood" />
+                <figcaption>I'm allergy to seafood</figcaption>
+              </figure>
+            </li>
 
-          <li>
-            <figure>
-              <img src="birdlogo.svg" alt="#" />
-              <figcaption>I like running</figcaption>
-            </figure>
-          </li>
-        </ul>
+            <li>
+              <figure>
+                <img src="assets/icons/travelling.svg" alt="Travelling" />
+                <figcaption>I enjoy travelling</figcaption>
+              </figure>
+            </li>
+
+            <li>
+              <figure>
+                <img src="assets/icons/running.svg" alt="Running" />
+                <figcaption>I like running</figcaption>
+              </figure>
+            </li>
+          </ul>
+        </div>
       </section>
+
+      <!-- Reverse Line -->
+      <div class="cloud-divider">
+        <svg
+          viewBox="0 0 1200 80"
+          xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="none"
+        >
+          <path
+            d="
+      M0,0
+      L1200,0
+      L1200,40
+      Q1160,75 1130,58
+      Q1090,85 1050,62
+      Q1010,75 970,55
+      Q930,80 890,50
+      Q850,78 810,58
+      Q770,85 730,52
+      Q690,75 650,55
+      Q610,80 570,50
+      Q530,78 490,58
+      Q450,85 410,52
+      Q370,75 330,50
+      Q290,80 250,55
+      Q210,90 170,60
+      Q130,80 100,45
+      Q50,70 0,40
+      Z
+    "
+            fill="var(--color-bg-secondary)"
+          />
+        </svg>
+      </div>
 
       <!-- ══════════════════════════════ TIMELINE ══════════════════════════════ -->
-      <section class="timeline section" id="timeline">
-        <h2 class="section-label">Timeline</h2>
+      <section class="timeline timeline-details" id="full-timeline">
+        <div class="container">
+          <div class="section-title-group">
+            <h2 class="section-title">Full Timeline</h2>
+            <img src="assets/icons/timeline.svg" alt="Timeline Logo" />
+          </div>
 
-        <ul class="timeline">
-          <li>
-            <h3>2000: The year I was born</h3>
-            <p>
-              I was born and raised in Dawei, Myanmar, in the southern part of
-              the country. It is a lovely coastal city.
-            </p>
-          </li>
+          <ul class="timeline-details__list">
+            <li class="timeline-details__item">
+              <h3>2000: The year I was born</h3>
+              <p>
+                I was born and raised in Dawei, Myanmar, in the southern part of
+                the country. It is a lovely coastal city.
+              </p>
+            </li>
 
-          <li>
-            <h3>2016: Finished High school</h3>
-            <p>
-              I completed high school in Yangon, the economic center of Myanmar.
-            </p>
-          </li>
+            <li class="timeline-details__item">
+              <h3>2016: Finished High school</h3>
+              <p>
+                I completed high school in Yangon, the economic center of
+                Myanmar.
+              </p>
+            </li>
 
-          <li>
-            <h3>2016: Discovered Programming</h3>
-            <p>
-              I was first introduced to programming by my cousin, who worked as
-              a software engineer. My first program was a calculator using
-              VBScript.
-            </p>
-          </li>
+            <li class="timeline-details__item">
+              <h3>2016: Discovered Programming</h3>
+              <p>
+                I was first introduced to programming by my cousin, who worked
+                as a software engineer. My first program was a calculator using
+                VBScript.
+              </p>
+            </li>
 
-          <li>
-            <h3>2017-2020: University of Yangon</h3>
-            <p>
-              I studied Computer Science at the University of Yangon.
-              Unfortunately, COVID-19, the global pandemic, happened during my
-              third year’s first-semester exams. The university shut down and
-              the exams were suspended.
-            </p>
-          </li>
+            <li class="timeline-details__item">
+              <h3>2017-2020: University of Yangon</h3>
+              <p>
+                I studied Computer Science at the University of Yangon.
+                Unfortunately, COVID-19, the global pandemic, happened during my
+                third year’s first-semester exams. The university shut down and
+                the exams were suspended.
+              </p>
+            </li>
 
-          <li>
-            <h3>2021: Software Developer</h3>
-            <p>
-              I landed my first software development role building a hospital
-              management system through a friend, after creating a website for
-              his studio. The system is still running today.
-            </p>
-          </li>
-          <li>
-            <h3>2022: Moved to Thailand</h3>
-            <p>
-              Fortunately, my academic journey continued in Thailand. I
-              continued studying Computer Science at Assumption University as a
-              transfer student.
-            </p>
-          </li>
-          <li>
-            <h3>2025: Graduated in Thailand</h3>
-            <p>
-              I completed my Bachelor of Science in Computer Science at
-              Assumption University, Thailand. My favorite subject was Computer
-              Architecture.
-            </p>
-          </li>
-          <li>
-            <h3>2025: Remote Software Developer</h3>
-            <p>
-              After graduating, I worked remotely as a software developer for a
-              Singapore-based company for six months through a friend's
-              referral.
-            </p>
-          </li>
+            <li class="timeline-details__item">
+              <h3>2021: Software Developer</h3>
+              <p>
+                I landed my first software development role building a hospital
+                management system through a friend, after creating a website for
+                his studio. The system is still running today.
+              </p>
+            </li>
 
-          <li>
-            <h3>Present: Web design & develop</h3>
-            <p>
-              Today, I found my passion in web design and development. I
-              continue learning and am open to opportunities in this field.
-              Let’s see how far can go.
-            </p>
-          </li>
-        </ul>
+            <li class="timeline-details__item">
+              <h3>2022: Moved to Thailand</h3>
+              <p>
+                Fortunately, my academic journey continued in Thailand. I
+                continued studying Computer Science at Assumption University as
+                a transfer student.
+              </p>
+            </li>
+
+            <li class="timeline-details__item">
+              <h3>2025: Graduated in Thailand</h3>
+              <p>
+                I completed my Bachelor of Science in Computer Science at
+                Assumption University, Thailand. My favorite subject was
+                Computer Architecture.
+              </p>
+            </li>
+
+            <li class="timeline-details__item">
+              <h3>2025: Remote Software Developer</h3>
+              <p>
+                After graduating, I worked remotely as a software developer for
+                a Singapore-based company for six months through a friend's
+                referral.
+              </p>
+            </li>
+
+            <li class="timeline-details__item">
+              <h3>Present: Web design & develop</h3>
+              <p>
+                Today, I found my passion in web design and development. I
+                continue learning and am open to opportunities in this field.
+                Let’s see how far can go.
+              </p>
+            </li>
+          </ul>
+        </div>
       </section>
+
+      <a class="hire-me-button" href="mailto:johndoe.dev@gmail.com">
+        <svg viewBox="0 0 320 220" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="m0 110 25-25-15-40 40 15-5-40 35 22L90 5l25 27 15-32 30 28 30-28 15 32 25-27 10 37 35-22-5 40 40-15-15 40 25 25-25 25 15 40-40-15 5 40-35-22-10 37-25-27-15 32-30-28-30 28-15-32-25 27-10-37-35 22 5-40-40 15 15-40Z"
+            fill="#be185d"
+            stroke="#1a1a1a"
+            stroke-width="3"
+            stroke-linejoin="round"
+          />
+          <text
+            x="160"
+            y="118"
+            text-anchor="middle"
+            font-size="4rem"
+            fill="#fff4e4"
+          >
+            Hire Me
+          </text>
+        </svg>
+      </a>
     </main>
 
     <!-- ══════════════════════════════ FOOTER ══════════════════════════════ -->
+    <hr class="footer-divider" />
+
     <footer class="footer">
-      <p class="footer__copy">© Han Htet Aung 2026. All rights reserved</p>
+      <p class="footer__copy">
+        © Han Htet Aung 2026.
+        <a class="footer__credits-link" href="/credits">Credits</a>
+      </p>
 
       <nav class="footer-nav" aria-label="Sitemap">
-        <h4 class="footer-nav__title">Sitemap</h4>
-        <ul class="footer-nav__list">
-          <li class="footer-nav__item">
-            <a class="footer-nav__link" href="/">Home</a>
-          </li>
-          <li class="footer-nav__item">
-            <a class="footer-nav__link" href="/work">Work</a>
-          </li>
-          <li class="footer-nav__item">
-            <a class="footer-nav__link" href="/about">About</a>
-          </li>
-        </ul>
-      </nav>
+        <div>
+          <h4 class="footer-nav__title">Sitemap</h4>
+          <ul class="footer-nav__list">
+            <li class="footer-nav__item">
+              <a class="footer-nav__link" href="/">Home</a>
+            </li>
+            <li class="footer-nav__item">
+              <a class="footer-nav__link" href="/about">About</a>
+            </li>
+          </ul>
+        </div>
 
-      <div class="footer-social">
-        <h4 class="footer-social__title">Contact me on:</h4>
-        <ul class="footer-social__list">
-          <li class="footer-social__item">
-            <a class="footer-social__link" href="mailto:hello@hanhtetaung.com"
-              >Gmail</a
-            >
-          </li>
-          <li class="footer-social__item">
-            <a
-              class="footer-social__link"
-              href="https://linkedin.com/in/hanhtetaung"
-              target="_blank"
-              rel="noopener"
-              >LinkedIn</a
-            >
-          </li>
-          <li class="footer-social__item">
-            <a
-              class="footer-social__link"
-              href="https://github.com/hanhtetaung"
-              target="_blank"
-              rel="noopener"
-              >Github</a
-            >
-          </li>
-        </ul>
-      </div>
+        <div>
+          <h4 class="footer-social__title">Contact me on:</h4>
+          <ul class="footer-social__list">
+            <li class="footer-social__item">
+              <a class="footer-social__link" href="mailto:johndoe.dev@gmail.com"
+                >Gmail</a
+              >
+            </li>
+            <li class="footer-social__item">
+              <a
+                class="footer-social__link"
+                href="#"
+                target="_blank"
+                rel="noopener"
+                >LinkedIn</a
+              >
+            </li>
+            <li class="footer-social__item">
+              <a
+                class="footer-social__link"
+                href="#"
+                target="_blank"
+                rel="noopener"
+                >Github</a
+              >
+            </li>
+          </ul>
+        </div>
+      </nav>
     </footer>
   </body>
 </html>

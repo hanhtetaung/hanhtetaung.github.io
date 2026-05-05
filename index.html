@@ -21,10 +21,6 @@
       <nav class="nav">
         <a class="nav__link" href="/">Home</a>
         <a class="nav__link" href="/about">About</a>
-        <!-- <a class="hire-me-button" href="mailto:johndoe.dev@gmail.com">
-          Hire me
-        </a> -->
-
         <a class="hire-me-button" href="mailto:johndoe.dev@gmail.com">
           <svg viewBox="0 0 320 220" xmlns="http://www.w3.org/2000/svg">
             <path
@@ -95,7 +91,10 @@
       <!-- ══════════════════════════════ MY WORK ══════════════════════════════ -->
       <section class="my-work">
         <div class="container">
-          <h2 class="section-title">My Work</h2>
+          <div class="section-title-group">
+            <h2 class="section-title">My Work</h2>
+            <img src="assets/icons/my-work.svg" alt="My Work Logo" />
+          </div>
         </div>
 
         <div class="my-work__accordion">
@@ -180,7 +179,13 @@
       <!-- ══════════════════════════════ SPECIALIZE ══════════════════════════════ -->
       <section class="specialize">
         <div class="container">
-          <h2 class="section-title">Specialize In</h2>
+          <div class="section-title-group">
+            <h2 class="section-title">Specialize In</h2>
+            <img
+              src="assets/icons/specialize-in.svg"
+              alt="Specialize In Logo"
+            />
+          </div>
 
           <div class="specialize__grid">
             <article class="card">
@@ -249,7 +254,10 @@
       <!-- ══════════════════════════════ TIMELINE ══════════════════════════════ -->
       <section class="timeline">
         <div class="container">
-          <h2 class="section-title">Timeline</h2>
+          <div class="section-title-group">
+            <h2 class="section-title">Timeline</h2>
+            <img src="assets/icons/timeline.svg" alt="Timeline Logo" />
+          </div>
 
           <ul class="timeline__list">
             <li class="timeline__item">
@@ -336,7 +344,7 @@
             <li class="timeline__item">
               <img
                 class="timeline__icon"
-                src="assets/icons/software-developer.svg"
+                src="assets/icons/present.svg"
                 alt="Web Design & Develop"
                 width="48"
                 height="48"
@@ -359,7 +367,9 @@
             </li>
           </ul>
 
-          <a class="timeline__link" href="/about">More → Full Timeline</a>
+          <a class="timeline__link" href="/about#full-timeline"
+            >More → Full Timeline</a
+          >
         </div>
       </section>
 
@@ -400,7 +410,14 @@
       <!-- ══════════════════════════════ WHY HIRE ME ══════════════════════════════ -->
       <section class="why-hire-me">
         <div class="container">
-          <h2 class="section-title">Why Hire me?</h2>
+          <div class="section-title-group section-title-group-why-hire-me">
+            <img
+              src="assets/icons/why-hire-me.svg"
+              alt=""
+              class="section-title-icon"
+            />
+            <h2 class="section-title">Why Hire me?</h2>
+          </div>
 
           <ol class="why-hire-me__list">
             <li class="why-hire-me__item">
@@ -503,10 +520,10 @@
           <h2 class="section-title cta__title">Call me, Singapore</h2>
 
           <p class="cta__description">
-            I'm looking for a web design role in Singapore — one that will
-            challenge me, sharpen my creativity, and help me grow. If your team
-            is hardworking, detail-oriented, and a positive thinker, then I'm
-            the one for you.
+            I'm looking for a web design role in Singapore—one that will
+            challenge me, sharpen my creativity, and help me grow. If you're
+            looking for someone who is hardworking, detail-oriented, and a
+            positive thinker, then I’m the one for you.
           </p>
 
           <a class="hire-me-button" href="mailto:johndoe@gmail.com">
@@ -553,11 +570,14 @@
       </section>
     </main>
 
+    <!-- ══════════════════════════════ FOOTER ══════════════════════════════ -->
     <hr class="footer-divider" />
 
-    <!-- ══════════════════════════════ FOOTER ══════════════════════════════ -->
     <footer class="footer">
-      <p class="footer__copy">© Han Htet Aung 2026. All rights reserved</p>
+      <p class="footer__copy">
+        © Han Htet Aung 2026.
+        <a class="footer__credits-link" href="/credits">Credits</a>
+      </p>
 
       <nav class="footer-nav" aria-label="Sitemap">
         <div>
