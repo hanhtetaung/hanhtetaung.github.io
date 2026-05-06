@@ -772,6 +772,46 @@ body {
   margin-block: 3rem;
 }
 
+/* ------------- Credits -------------- */
+
+.credits {
+  text-align: center;
+  padding-block: 10rem;
+}
+
+.credits h1 {
+  font-family: var(--font-heading);
+  font-size: 10rem;
+}
+
+.credits p {
+  font-family: var(--font-body);
+  font-size: 2rem;
+}
+
+.icon-collection {
+  background: var(--color-bg-secondary);
+}
+
+.icon-collection li {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  padding-block: 2rem;
+  font-size: 2rem;
+  border-bottom: 1px dashed #000;
+}
+
+.icon-collection img {
+  height: 10rem;
+  width: 10rem;
+}
+
+.icon-collection a {
+  text-decoration: none;
+  color: var(--color-cyan);
+}
+
 /* ------------- Footer -------------- */
 
 .footer {
