@@ -9,7 +9,7 @@
   <body>
     <!-- ══════════════════════════════ NAV ══════════════════════════════ -->
     <header class="header">
-      <a class="header__logo" href="#">
+      <a class="header__logo" href="/">
         <img
           src="/assets/icons/profile_logo.svg"
           alt="Han Htet Aung"
@@ -258,9 +258,9 @@
             <li class="timeline-details__item">
               <h3>Present: Web design & develop</h3>
               <p>
-                Today, I found my passion in web design and development. I
-                continue learning and am open to opportunities in this field.
-                Let’s see how far can go.
+                Today, I’ve found my passion in web design and development.
+                Self-taught in design, I learn through research and inspiration,
+                and I’m open to opportunities in this field.
               </p>
             </li>
           </ul>
@@ -287,59 +287,114 @@
           </text>
         </svg>
       </a>
+
+      <!-- Line Divider  -->
+      <div class="cloud-divider">
+        <svg
+          viewBox="0 0 1200 80"
+          xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="none"
+        >
+          <path
+            d="
+              M0,80
+              L0,40
+              Q50,10 100,35
+              Q130,0 170,20
+              Q210,-10 250,25
+              Q290,0 330,30
+              Q370,5 410,28
+              Q450,-5 490,22
+              Q530,2 570,30
+              Q610,0 650,25
+              Q690,5 730,28
+              Q770,-5 810,22
+              Q850,2 890,30
+              Q930,0 970,25
+              Q1010,5 1050,28
+              Q1090,-5 1130,22
+              Q1160,5 1200,30
+              L1200,80
+              Z
+              "
+            fill="var(--color-bg-secondary)"
+          />
+        </svg>
+      </div>
     </main>
 
     <!-- ══════════════════════════════ FOOTER ══════════════════════════════ -->
-    <hr class="footer-divider" />
-
     <footer class="footer">
-      <p class="footer__copy">
-        © Han Htet Aung 2026.
-        <a class="footer__credits-link" href="/credits">Credits</a>
-      </p>
+      <div class="container">
+        <div class="footer__first__section">
+          <div class="footer__profile">
+            <img src="assets/icons/profile_logo.svg" alt="Profile Icon" />
+            <p>
+              Thank You <br />
+              for Visiting
+            </p>
+          </div>
 
-      <nav class="footer-nav" aria-label="Sitemap">
-        <div>
-          <h4 class="footer-nav__title">Sitemap</h4>
-          <ul class="footer-nav__list">
-            <li class="footer-nav__item">
-              <a class="footer-nav__link" href="/">Home</a>
-            </li>
-            <li class="footer-nav__item">
-              <a class="footer-nav__link" href="/about">About</a>
-            </li>
-          </ul>
+          <nav class="footer-nav" aria-label="Sitemap">
+            <div>
+              <h4 class="footer-nav__title">Sitemap</h4>
+              <ul class="footer-nav__list">
+                <li class="footer-nav__item">
+                  <a class="footer-nav__link" href="/">Home</a>
+                </li>
+                <li class="footer-nav__item">
+                  <a class="footer-nav__link" href="/about">About</a>
+                </li>
+                <li class="footer-nav__item">
+                  <a class="footer-nav__link" href="/process">Process</a>
+                </li>
+                <li class="footer-nav__item">
+                  <a class="footer-nav__link" href="/credits">Credits</a>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 class="footer-social__title">Get in touch:</h4>
+              <ul class="footer-social__list">
+                <li class="footer-social__item">
+                  <a
+                    class="footer-social__link"
+                    href="mailto:johndoe.dev@gmail.com"
+                  >
+                    <img src="assets/icons/email.svg" alt="Email Icon" />
+                  </a>
+                </li>
+                <li class="footer-social__item">
+                  <a
+                    class="footer-social__link"
+                    href="#"
+                    target="_blank"
+                    rel="noopener"
+                  >
+                    <img src="assets/icons/github.svg" alt="Github Icon"
+                  /></a>
+                </li>
+                <li class="footer-social__item">
+                  <a
+                    class="footer-social__link"
+                    href="#"
+                    target="_blank"
+                    rel="noopener"
+                  >
+                    <img src="assets/icons/linkedin.svg" alt="Linkedin Icon"
+                  /></a>
+                </li>
+              </ul>
+            </div>
+          </nav>
         </div>
 
-        <div>
-          <h4 class="footer-social__title">Contact me on:</h4>
-          <ul class="footer-social__list">
-            <li class="footer-social__item">
-              <a class="footer-social__link" href="mailto:johndoe.dev@gmail.com"
-                >Gmail</a
-              >
-            </li>
-            <li class="footer-social__item">
-              <a
-                class="footer-social__link"
-                href="#"
-                target="_blank"
-                rel="noopener"
-                >LinkedIn</a
-              >
-            </li>
-            <li class="footer-social__item">
-              <a
-                class="footer-social__link"
-                href="#"
-                target="_blank"
-                rel="noopener"
-                >Github</a
-              >
-            </li>
-          </ul>
-        </div>
-      </nav>
+        <p class="footer__copy">
+          © Han Htet Aung 2026 |
+          <a class="footer__credits-link" href="/credits">Credits</a>
+        </p>
+      </div>
     </footer>
   </body>
 </html>
