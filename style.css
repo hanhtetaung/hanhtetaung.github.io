@@ -737,6 +737,12 @@ body {
   align-items: center;
   gap: 2rem;
   margin-block: 3rem;
+  padding: 0;
+}
+
+.tech-stack__logos img {
+  width: 5rem;
+  height: 5rem;
 }
 
 /* ------------- Credits -------------- */
