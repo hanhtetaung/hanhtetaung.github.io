@@ -679,6 +679,7 @@ body {
   gap: 10rem;
   font-size: 1.5rem;
   list-style: none;
+  padding: 0;
 }
 
 .random-facts__list img {
@@ -1053,6 +1054,10 @@ body {
     font-size: 6rem;
   }
 
+  .section-title-group-my-work img {
+    height: 8rem;
+  }
+
   .my-work__accordion {
     display: block;
     border: 0;
@@ -1097,7 +1102,7 @@ body {
 
   .specialize__process__grid li {
     border-top: 0px solid #000;
-    padding-block: 2.5rem;
+    padding-block: 4rem;
   }
 
   .specialize__process__grid li:first-child {
@@ -1109,7 +1114,7 @@ body {
   }
 
   .specialize__process__grid h4 {
-    font-size: 3rem;
+    font-size: 3.2rem;
   }
 
   .timeline__icon {
@@ -1153,8 +1158,13 @@ body {
   }
 
   .random-facts__list {
-    gap: 5rem;
-    font-size: 1rem;
+    gap: 3rem;
+    font-size: 1.2rem;
+  }
+
+  .section-title-group-random-facts img {
+    height: 8rem;
+    width: 8rem;
   }
 
   .random-facts__list img {
