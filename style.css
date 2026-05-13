@@ -468,6 +468,8 @@ body {
   list-style: none;
   padding: 0;
   margin-bottom: 5rem;
+  display: flex;
+  flex-direction: column-reverse;
 }
 
 .timeline__item {
@@ -629,6 +631,7 @@ body {
   padding-top: 10rem;
   padding-bottom: 5rem;
   text-align: center;
+  background-color: var(--color-bg-secondary);
 }
 
 /* --------------- About ------------------  */
@@ -837,6 +840,10 @@ body {
       rgba(31, 41, 55, 0.04) 35px,
       rgba(31, 41, 55, 0.04) 36px
     );
+}
+
+.workflow-primary-color {
+  background-color: var(--color-bg-primary);
 }
 
 .workflow__cards {
