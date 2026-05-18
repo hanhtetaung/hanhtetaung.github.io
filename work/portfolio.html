@@ -11,7 +11,7 @@
 
     <title>Han Htet Aung — Web Designer</title>
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../style.css" />
     <script
       defer
       src="https://cloud.umami.is/script.js"
@@ -79,7 +79,11 @@
             />
           </svg>
         </a>
-        <a class="hire-me-button" href="mailto:hanhtetaung.dev@gmail.com">
+        <a
+          class="hire-me-button"
+          href="mailto:hanhtetaung.dev@gmail.com"
+          aria-label="Hire Me"
+        >
           <svg viewBox="0 0 320 220" xmlns="http://www.w3.org/2000/svg">
             <path
               d="m0 110 25-25-15-40 40 15-5-40 35 22L90 5l25 27 15-32 30 28 30-28 15 32 25-27 10 37 35-22-5 40 40-15-15 40 25 25-25 25 15 40-40-15 5 40-35-22-10 37-25-27-15 32-30-28-30 28-15-32-25 27-10-37-35 22 5-40-40 15 15-40Z"
@@ -101,22 +105,44 @@
         </a>
       </nav>
     </header>
-    <main>
-      <!-- ══════════════════════════════ Process ══════════════════════════════ -->
-      <section class="process" id="process">
-        <img
-          src="assets/icons/process-icon-1.svg"
-          alt="Process Icon"
-          class="process__icon-1"
-        />
-        <img
-          src="assets/icons/process-icon-2.svg"
-          alt="Process Icon 2"
-          class="process__icon-2"
-        />
 
-        <h1>Process</h1>
-        <p>I take care of everything from design to delivery</p>
+    <main>
+      <!-- ══════════════════════════════ Case Study ══════════════════════════════ -->
+      <section class="case-study__hero">
+        <div class="container">
+          <div>
+            <span>Case Study</span>
+            <h1>Portfolio</h1>
+            <p>
+              A personal portfolio website focused on creating a modern,
+              responsive, and minimal experience that showcases projects,
+              skills, and professional identity with clarity and simplicity.
+            </p>
+            <a
+              class="project__link"
+              href="https://hanhtetaung.dev/"
+              target="_blank"
+              >View Live Website &#8599;</a
+            >
+
+            <ul class="case-study__hero_overview">
+              <li>
+                <p><span>Role:</span> Web Designer & Developer</p>
+              </li>
+              <li>
+                <p>
+                  <span>Scope: </span>
+                  Revamp Website
+                </p>
+              </li>
+            </ul>
+          </div>
+
+          <img
+            src="../assets/images/case-study/portfolio/mockup.avif"
+            alt="Final Product Screenshot"
+          />
+        </div>
       </section>
 
       <!-- Line Divider  -->
@@ -153,24 +179,25 @@
         </svg>
       </div>
 
-      <!-- ══════════════════════════════ Approach ══════════════════════════════ -->
-      <section class="approach">
-        <div class="approach-title">
-          <h2>My Approach</h2>
-          <img src="assets/icons/approach.svg" alt="Approach Logo" />
-        </div>
+      <!-- ══════════════════════════════ Background ══════════════════════════════ -->
+      <section class="case-study__background">
+        <div class="container">
+          <div class="section-title-group">
+            <h2>Background</h2>
+            <img
+              src="../assets/icons/specialize-in.svg"
+              alt="Background Logo"
+            />
+          </div>
 
-        <ul class="approach-grid">
-          <li>
-            <p>Anyone can understand</p>
-          </li>
-          <li>
-            <p>Every detail has a purpose</p>
-          </li>
-          <li>
-            <p>Brings joy and a sense of fun.</p>
-          </li>
-        </ul>
+          <p>
+            This project was created as a personal portfolio website to showcase
+            selected projects and experience in a modern, responsive, and
+            boutique-style presentation. The goal was to create a clean and
+            polished experience with clear structure, minimal visuals, and a
+            strong professional presence.
+          </p>
+        </div>
       </section>
 
       <!-- Reverse Line -->
@@ -207,124 +234,178 @@
         </svg>
       </div>
 
-      <!-- ══════════════════════════════ FOCUS ══════════════════════════════ -->
-      <section class="specialize">
+      <section class="case-study-challenge">
         <div class="container">
           <div class="section-title-group">
-            <h2>Focus</h2>
+            <h2>Challenge</h2>
             <img
-              src="assets/icons/specialize-in.svg"
+              src="../assets/icons/tech-stack.svg"
               alt="Specialize In Logo"
             />
           </div>
+          <p>
+            One of the main challenges of the project was designing a visual
+            direction that felt modern, minimal, and boutique while still
+            maintaining clarity and professionalism. The redesign focused on
+            creating a strong visual identity through typography, spacing,
+            layout, and overall presentation to build a more polished and
+            trustworthy user experience.
+          </p>
+        </div>
+      </section>
+
+      <!-- Line Divider  -->
+      <div class="cloud-divider">
+        <svg
+          viewBox="0 0 1200 80"
+          xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="none"
+        >
+          <path
+            d="
+              M0,80
+              L0,40
+              Q50,10 100,35
+              Q130,0 170,20
+              Q210,-10 250,25
+              Q290,0 330,30
+              Q370,5 410,28
+              Q450,-5 490,22
+              Q530,2 570,30
+              Q610,0 650,25
+              Q690,5 730,28
+              Q770,-5 810,22
+              Q850,2 890,30
+              Q930,0 970,25
+              Q1010,5 1050,28
+              Q1090,-5 1130,22
+              Q1160,5 1200,30
+              L1200,80
+              Z
+              "
+            fill="var(--color-bg-secondary)"
+          />
+        </svg>
+      </div>
+
+      <section class="case-study__process">
+        <div class="container">
+          <div class="section-title-group">
+            <h2>Process</h2>
+            <img src="../assets/icons/work-flow.svg" alt="Specialize In Logo" />
+          </div>
         </div>
 
-        <div class="specialize__grid">
-          <h3>Web Design</h3>
-          <h3>Web Development</h3>
-        </div>
-
-        <ul class="specialize__process__grid">
+        <ul class="case-study__process__grid">
           <li>
             <span>1</span>
             <h3>Research</h3>
           </li>
           <li>
             <span>2</span>
-            <h3>Design</h3>
+            <h3>Wireframe</h3>
           </li>
           <li>
             <span>3</span>
-            <h3>Develop</h3>
+            <h3>Prototype</h3>
           </li>
           <li>
             <span>4</span>
+            <h3>Develop</h3>
+          </li>
+          <li>
+            <span>5</span>
             <h3>Deliver</h3>
           </li>
         </ul>
-      </section>
 
-      <!-- Line Divider  -->
-      <div class="cloud-divider">
-        <svg
-          viewBox="0 0 1200 80"
-          xmlns="http://www.w3.org/2000/svg"
-          preserveAspectRatio="none"
-        >
-          <path
-            d="
-              M0,80
-              L0,40
-              Q50,10 100,35
-              Q130,0 170,20
-              Q210,-10 250,25
-              Q290,0 330,30
-              Q370,5 410,28
-              Q450,-5 490,22
-              Q530,2 570,30
-              Q610,0 650,25
-              Q690,5 730,28
-              Q770,-5 810,22
-              Q850,2 890,30
-              Q930,0 970,25
-              Q1010,5 1050,28
-              Q1090,-5 1130,22
-              Q1160,5 1200,30
-              L1200,80
-              Z
-              "
-            fill="var(--color-bg-secondary)"
-          />
-        </svg>
-      </div>
-
-      <!-- ══════════════════════════════ Workflow ══════════════════════════════ -->
-      <section class="workflow">
         <div class="container">
-          <div class="section-title-group">
-            <h2>Workflow</h2>
-            <img src="assets/icons/work-flow.svg" alt="Specialize In Logo" />
-          </div>
+          <article>
+            <h3>Research</h3>
+            <div>
+              <p>
+                Research ideas and visual references to define the overall
+                direction of the website. This stage focused on exploring modern
+                portfolio layouts, typography, spacing, and boutique-style
+                aesthetics to establish a clear visual foundation.
+              </p>
 
-          <ul class="workflow__cards">
-            <li>
-              <h3>Inspiration</h3>
+              <img
+                src="../assets/images/case-study/portfolio/inspiration.avif"
+                alt=""
+              />
+            </div>
+          </article>
+          <article>
+            <h3>Wireframe</h3>
+            <div>
               <p>
-                Research ideas and references. This produces the foundation and
-                overall direction for how the website should look and feel.
+                Plan the structure and layout of the website through
+                low-fidelity wireframes. This stage focused on content
+                hierarchy, storytelling flow, and user navigation before moving
+                into visual design.
               </p>
-            </li>
-            <li>
-              <h3>Wireframe</h3>
+
+              <img
+                src="../assets/images/case-study/portfolio/wireframe.avif"
+                alt=""
+              />
+            </div>
+          </article>
+          <article>
+            <h3>Prototype</h3>
+            <div>
               <p>
-                Plan the structure and layout of the website. This step produces
-                a simple blueprint and storytelling flow.
+                Build the design system and craft the polished visual interface.
+                This stage focused on transforming the wireframes into final
+                responsive designs with complete visual styling, reusable
+                components, refined layouts, and overall user experience.
               </p>
-            </li>
-            <li>
-              <h3>Design</h3>
+
+              <figure>
+                <figcaption>Design Foundation</figcaption>
+                <img
+                  src="../assets/images/case-study/portfolio/design-foundation.avif"
+                  alt=""
+                />
+              </figure>
+
+              <figure>
+                <figcaption>Final Design</figcaption>
+                <img
+                  src="../assets/images/case-study/portfolio/final-design.avif"
+                  alt=""
+                />
+              </figure>
+            </div>
+          </article>
+          <article>
+            <h3>Develop & Deliver</h3>
+            <div>
               <p>
-                Craft the polished visual interface. This produces the colors,
-                typography, optimized images, and overall visual system for the
-                website.
+                Translate the approved design into a responsive website while
+                maintaining visual consistency across all screen sizes. The
+                project was managed with GitHub and deployed automatically
+                through GitHub Pages and GitHub Actions.
               </p>
-            </li>
-            <li>
-              <h3>Develop</h3>
+
               <p>
-                Build the website from the previous step using HTML, CSS, and
-                JavaScript. This produces the final working code for the
-                website.
+                <span>Hosted on: </span>
+                <a
+                  href="https://github.com/hanhtetaung/hanhtetaung.github.io"
+                  target="_blank"
+                  class="case-study__link"
+                  >hanhtetaung.github.io &#8599;</a
+                >
               </p>
-            </li>
-            <li>
-              <h3>Deliver</h3>
-              <p>
-                Push the code to the repository and automate the deployment
-                process. This produces a live website within seconds.
-              </p>
-            </li>
-          </ul>
+
+              <span>Tech Stack</span>
+              <ul>
+                <li>HTML</li>
+                <li>CSS</li>
+              </ul>
+            </div>
+          </article>
         </div>
       </section>
 
@@ -362,61 +443,51 @@
         </svg>
       </div>
 
-      <!-- ══════════════════════════════ TECH STACK ══════════════════════════════ -->
-      <section class="tech-stack">
+      <!-- ══════════════════════════════ Result ══════════════════════════════ -->
+      <section class="case-study__result">
         <div class="container">
           <div class="section-title-group">
-            <h2>Tech Stack</h2>
-            <img src="assets/icons/tech-stack.svg" alt="Specialize In Logo" />
+            <h2>Result</h2>
+            <img src="../assets/icons/result.svg" alt="Specialize In Logo" />
           </div>
 
           <p>
-            “Man is most free when his tools are proportionate to his needs” -
-            Soetsu Yanagi
+            The project resulted in a modern, responsive, and boutique-style
+            portfolio website with a stronger visual identity and improved user
+            experience. The final website also achieved outstanding Google
+            Lighthouse performance with optimized accessibility, responsiveness,
+            and loading performance.
           </p>
 
-          <ul class="tech-stack__logos">
-            <li>
-              <img src="assets/icons/tech-stack-logo-1.svg" alt="HTML Logo" />
-            </li>
-            <li>
-              <img src="assets/icons/tech-stack-logo-2.svg" alt="CSS Logo" />
-            </li>
-            <li>
-              <img
-                src="assets/icons/tech-stack-logo-3.svg"
-                alt="JavaScript Logo"
-              />
-            </li>
-            <li>
-              <img src="assets/icons/tech-stack-logo-4.svg" alt="Gsap Logo" />
-            </li>
-            <li>
-              <img src="assets/icons/tech-stack-logo-5.svg" alt="Figma Logo" />
-            </li>
-            <li>
-              <img
-                src="assets/icons/tech-stack-logo-6.svg"
-                alt="VS Code Logo"
-              />
-            </li>
-            <li>
-              <img src="assets/icons/tech-stack-logo-7.svg" alt="Chrome Logo" />
-            </li>
-          </ul>
+          <a
+            class="project__link"
+            href="https://hanhtetaung.dev/"
+            target="_blank"
+            >View Live Website &#8599;</a
+          >
+
+          <div class="case-study__result__photos">
+            <img
+              src="../assets/images/case-study/portfolio/mockup.avif"
+              alt=""
+            />
+            <img
+              src="../assets/images/case-study/portfolio/lighthouse.avif"
+              alt=""
+            />
+          </div>
         </div>
       </section>
-    </main>
 
-    <!-- Line Divider  -->
-    <div class="cloud-divider">
-      <svg
-        viewBox="0 0 1200 80"
-        xmlns="http://www.w3.org/2000/svg"
-        preserveAspectRatio="none"
-      >
-        <path
-          d="
+      <!-- Line Divider  -->
+      <div class="cloud-divider">
+        <svg
+          viewBox="0 0 1200 80"
+          xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="none"
+        >
+          <path
+            d="
               M0,80
               L0,40
               Q50,10 100,35
@@ -437,17 +508,19 @@
               L1200,80
               Z
               "
-          fill="var(--color-bg-secondary)"
-        />
-      </svg>
-    </div>
+            fill="var(--color-bg-secondary)"
+          />
+        </svg>
+      </div>
+    </main>
 
     <!-- ══════════════════════════════ FOOTER ══════════════════════════════ -->
+
     <footer class="footer">
       <div class="container">
-        <div class="footer__first__section">
+        <section class="footer__first__section">
           <div class="footer__profile">
-            <img src="assets/icons/profile_logo.svg" alt="Profile Icon" />
+            <img src="../assets/icons/profile_logo.svg" alt="Profile Icon" />
             <p>
               Thank You <br />
               for Visiting
@@ -481,7 +554,7 @@
                     class="footer-social__link"
                     href="mailto:hanhtetaung.dev@gmail.com"
                   >
-                    <img src="assets/icons/email.svg" alt="Email Icon" />
+                    <img src="../assets/icons/email.svg" alt="Email Icon" />
                   </a>
                 </li>
                 <li class="footer-social__item">
@@ -491,7 +564,7 @@
                     target="_blank"
                     rel="noopener"
                   >
-                    <img src="assets/icons/github.svg" alt="Github Icon"
+                    <img src="../assets/icons/github.svg" alt="Github Icon"
                   /></a>
                 </li>
                 <li class="footer-social__item">
@@ -501,13 +574,13 @@
                     target="_blank"
                     rel="noopener"
                   >
-                    <img src="assets/icons/linkedin.svg" alt="Linkedin Icon"
+                    <img src="../assets/icons/linkedin.svg" alt="Linkedin Icon"
                   /></a>
                 </li>
               </ul>
             </div>
           </nav>
-        </div>
+        </section>
 
         <p class="footer__copy">
           © Han Htet Aung 2026 |

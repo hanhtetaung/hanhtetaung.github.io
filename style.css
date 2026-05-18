@@ -104,14 +104,39 @@ h6 {
   --color-text: #000000;
   --font-heading: "Chicle", serif;
   --font-body: "StackSans", sans-serif;
+
   font-size: 10px;
+
+  --ratio: 1.6;
+  --body-font-size: 2rem;
+
+  --small: calc(var(--body-font-size) / var(--ratio));
+  --h3: calc(var(--body-font-size) * var(--ratio));
+  --h2: calc(var(--h3) * var(--ratio));
+  --h1: calc(var(--h2) * var(--ratio));
 }
 
 body {
   background: var(--color-bg-primary);
   font-family: var(--font-body);
   font-weight: 400;
-  font-size: 2rem;
+  font-size: var(--body-font-size);
+}
+
+h1 {
+  font-size: var(--h1);
+  font-family: var(--font-heading);
+  font-weight: normal;
+}
+
+h2 {
+  font-size: var(--h2);
+  font-family: var(--font-heading);
+  font-weight: normal;
+}
+
+h3 {
+  font-size: var(--h3);
 }
 
 /*----------- HEADER -------------*/
@@ -187,23 +212,6 @@ body {
   justify-content: center;
   padding-block: 15rem;
   background-color: var(--color-bg-primary);
-  /* background-image:
-    linear-gradient(to right, #ccc 1px, transparent 1px),
-    linear-gradient(to bottom, #ccc 1px, transparent 1px);
-  background-size: 2rem 2rem; */
-
-  /* background-image:
-    linear-gradient(to right, rgba(0, 0, 0, 0.06) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(0, 0, 0, 0.06) 1px, transparent 1px),
-    radial-gradient(circle, rgba(51, 65, 85, 0.4) 1px, transparent 1px);
-  background-size:
-    20px 20px,
-    20px 20px,
-    20px 20px;
-  background-position:
-    0 0,
-    0 0,
-    0 0; */
   background-image:
     repeating-linear-gradient(
       0deg,
@@ -251,8 +259,6 @@ body {
 
 .hero__title {
   text-align: center;
-  font-family: var(--font-heading);
-  font-size: 10rem;
   margin: 0;
 }
 
@@ -285,11 +291,6 @@ body {
   width: fit-content;
 } */
 
-.section-title {
-  font-family: var(--font-heading);
-  font-size: 6rem;
-}
-
 /* --------- My Work ----------- */
 .my-work {
   background-color: var(--color-bg-secondary);
@@ -312,11 +313,10 @@ body {
   overflow: hidden;
 }
 
-/* ── Summary (vertical tab on left) ── */
+/* ── Summary  ── */
 .project__summary {
   writing-mode: sideways-lr;
   padding: 1.5rem 1rem;
-  font-size: 3rem;
   flex-shrink: 0;
   text-align: center;
   border-left: 1px solid #000;
@@ -350,7 +350,6 @@ body {
 }
 
 .project__name {
-  font-size: 3rem;
   margin-bottom: 0.5rem;
 }
 
@@ -360,7 +359,6 @@ body {
 
 .project__link {
   display: inline-block;
-  font-size: 1.5rem;
   width: fit-content;
   border: 1px solid var(--color-pink);
   color: var(--color-pink);
@@ -401,7 +399,6 @@ body {
 }
 
 .specialize__grid h3 {
-  font-size: 4rem;
   background: var(--color-cyan);
   color: var(--color-bg-primary);
   padding-block: 1rem;
@@ -441,11 +438,7 @@ body {
 }
 
 .specialize__process__grid span {
-  font-size: 6rem;
-}
-
-.specialize__process__grid h4 {
-  font-size: 4rem;
+  font-size: var(--h3);
   color: var(--color-cyan);
 }
 
@@ -460,7 +453,7 @@ body {
 /* ------------- Timeline -------------- */
 
 .timeline {
-  background-color: var(--color-bg-secondary);
+  /* background-color: var(--color-bg-secondary); */
   padding-block: 10rem;
 }
 
@@ -516,11 +509,11 @@ body {
 
 .timeline__period {
   color: var(--color-cyan);
-  font-size: 1.5rem;
   margin-bottom: 1rem;
   border: 1px solid var(--color-cyan);
   width: fit-content;
-  padding: 0.25rem 0.5rem;
+  padding: 0.5rem 0.75rem;
+  font-size: var(--small);
 }
 
 .timeline_period-present {
@@ -530,7 +523,6 @@ body {
 }
 
 .timeline__role {
-  font-size: 3rem;
   margin-bottom: 0.5rem;
 }
 
@@ -550,6 +542,7 @@ body {
 
 .why-hire-me {
   padding-block: 10rem;
+  background: var(--color-bg-secondary);
 }
 
 .why-hire-me__section-title-icon {
@@ -572,15 +565,13 @@ body {
 .why-hire-me__title::before {
   content: counter(why-counter) " .";
   color: #000;
-  font-family: var(--font-heading);
   margin-right: 1.5rem;
-  font-size: 3rem;
 }
 
 .why-hire-me__title {
-  font-size: 5rem;
   font-family: var(--font-heading);
   color: var(--color-cyan);
+  font-weight: normal;
 }
 
 .why-hire-me__description {
@@ -595,20 +586,15 @@ body {
 /* ---------- CTA ---------------- */
 
 .cta {
-  background: var(--color-bg-secondary);
   padding-top: 10rem;
   padding-bottom: 20rem;
   position: relative;
-}
-
-.cta__title {
   text-align: center;
 }
 
 .cta__description {
   max-width: 60ch;
   margin: 3rem auto;
-  text-align: center;
 }
 
 .cta__button {
@@ -632,6 +618,8 @@ body {
   padding-bottom: 5rem;
   text-align: center;
   background-color: var(--color-bg-secondary);
+  font-family: var(--font-heading);
+  font-size: var(--h2);
 }
 
 /* --------------- About ------------------  */
@@ -639,12 +627,11 @@ body {
 .about {
   padding-top: 8rem;
   padding-bottom: 12rem;
+  text-align: center;
 }
 
 .about__name {
   text-align: center;
-  font-family: var(--font-heading);
-  font-size: 10rem;
   margin-bottom: 3rem;
 }
 
@@ -661,6 +648,7 @@ body {
 
 .about__info {
   width: 40ch;
+  text-align: start;
 }
 
 .about__info p {
@@ -680,7 +668,6 @@ body {
   flex-wrap: wrap;
   text-align: center;
   gap: 10rem;
-  font-size: 1.5rem;
   list-style: none;
   padding: 0;
 }
@@ -732,7 +719,6 @@ body {
 }
 
 .timeline-details__item p {
-  font-size: 1.5rem;
   text-align: start;
 }
 
@@ -757,11 +743,6 @@ body {
   right: 10%;
 }
 
-.process h1 {
-  font-family: var(--font-heading);
-  font-size: 10rem;
-}
-
 /* ------------- Approach -------------- */
 
 .approach {
@@ -784,11 +765,6 @@ body {
   gap: 2rem;
 }
 
-.approach-title h2 {
-  font-size: 6rem;
-  font-family: var(--font-heading);
-}
-
 .approach-grid {
   flex: 2;
   display: flex;
@@ -804,7 +780,6 @@ body {
   margin-bottom: -3px;
   border-bottom: 2px solid #000;
   text-align: center;
-  font-size: 2rem;
 }
 
 .workflow {
@@ -863,7 +838,6 @@ body {
   margin-bottom: 10rem;
   color: var(--color-cyan);
   display: block;
-  font-size: 3rem;
 }
 
 .workflow__cards li {
@@ -871,7 +845,6 @@ body {
   padding-block: 2rem;
   padding-inline: 1.5rem;
   flex: 1;
-  font-size: 1.2rem;
   counter-increment: workflow-counter;
 }
 
@@ -895,8 +868,8 @@ body {
   transform: translateY(1rem);
 }
 
-.workflow__cards h3 {
-  font-size: 2.5rem;
+.workflow__cards p {
+  font-size: var(--small);
 }
 
 /* ------------- Tech Stack -------------- */
@@ -927,11 +900,6 @@ body {
   padding-block: 10rem;
 }
 
-.credits h1 {
-  font-family: var(--font-heading);
-  font-size: 10rem;
-}
-
 .icon-collection {
   background: var(--color-bg-secondary);
 }
@@ -941,7 +909,6 @@ body {
   align-items: center;
   gap: 3rem;
   padding-block: 2rem;
-  font-size: 2rem;
   border-bottom: 1px dashed #000;
 }
 
@@ -955,11 +922,136 @@ body {
   color: var(--color-cyan);
 }
 
+/* -------------- Case Study Hero --------------  */
+.case-study__hero {
+  padding-block: 10rem;
+}
+
+.case-study__hero .container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+}
+
+.case-study__hero_overview {
+  margin-top: 3rem;
+  list-style-type: none;
+  padding: 0;
+}
+
+.case-study__hero_overview li {
+  margin-bottom: 2rem;
+}
+
+.case-study__hero_overview p {
+  display: flex;
+  flex-direction: column;
+}
+
+.case-study__hero_overview span {
+  font-weight: bold;
+}
+
+/* -------------- Case Study Background --------------  */
+.case-study__background {
+  background: var(--color-bg-secondary);
+  padding-block: 10rem;
+}
+
+.case-study-challenge {
+  padding-block: 10rem;
+}
+
+/* -------------- Case Study Process --------------  */
+.case-study__process {
+  background: var(--color-bg-secondary);
+  padding-block: 10rem;
+}
+
+.case-study__process__grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  list-style: none;
+  margin-bottom: 4rem;
+  padding-left: 3px;
+  background-image:
+    linear-gradient(to right, #e7e5e4 1px, transparent 1px),
+    linear-gradient(to bottom, #e7e5e4 1px, transparent 1px);
+  background-size: 20px 20px;
+  background-position:
+    0 0,
+    0 0;
+}
+
+.case-study__process__grid li {
+  border-top: 3px solid #000;
+  border-bottom: 3px solid #000;
+  border-right: 3px solid #000;
+  padding-block: 5rem;
+
+  text-align: center;
+}
+
+.case-study__process__grid li:last-child {
+  border-right: 0;
+}
+
+.case-study__process__grid span {
+  color: var(--color-cyan);
+  font-size: var(--h3);
+}
+
+.case-study__process article {
+  padding-block: 5rem;
+  display: grid;
+  grid-template-columns: 0.5fr 1fr;
+}
+
+.case-study__process article p {
+  margin-bottom: 3rem;
+}
+
+.case-study__process article .description {
+  display: flex;
+  gap: 5rem;
+}
+
+.case-study__link {
+  color: var(--color-pink);
+  text-decoration: none;
+}
+
+.case-study__process figure {
+  margin-bottom: 3rem;
+}
+
+.case-study__process figcaption {
+  margin-bottom: 2rem;
+  color: var(--color-cyan);
+}
+
+.case-study__result {
+  padding-block: 10rem;
+}
+
+.case-study__result__photos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  margin-top: 3rem;
+}
+
+.comming-soon {
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 /* ------------- Footer -------------- */
 
 .footer {
   padding-block: 10rem;
-  font-size: 2rem;
   background-color: var(--color-bg-secondary);
 }
 
@@ -976,7 +1068,7 @@ body {
 .footer__profile {
   display: flex;
   gap: 1rem;
-  align-items: start;
+  align-items: center;
   justify-content: center;
 }
 
@@ -987,12 +1079,16 @@ body {
 
 .footer__profile p {
   font-family: var(--font-heading);
-  font-size: 3rem;
+  font-weight: normal;
 }
 
 .footer__credits-link {
   text-decoration: none;
   color: var(--color-cyan);
+}
+
+.footer-nav__header {
+  font-weight: 700;
 }
 
 .footer-nav {
@@ -1018,7 +1114,7 @@ body {
 }
 
 .footer-social__list {
-  padding: 0rem 1rem;
+  padding: 0.5rem 1rem;
   text-decoration: none;
   list-style: none;
   color: #000;
@@ -1040,8 +1136,9 @@ body {
 /* ----------- Mobile View --------------  */
 
 @media (max-width: 768px) {
-  body {
-    font-size: 1.5rem;
+  :root {
+    --body-font-size: 1.6rem;
+    --ratio: 1.6;
   }
 
   .header {
@@ -1079,7 +1176,6 @@ body {
   /* ── Summary (vertical tab on left) ── */
   .project__summary {
     writing-mode: horizontal-tb;
-    font-size: 2rem;
     border-top: 1px solid #000;
     border-bottom: 1px solid #000;
   }
@@ -1098,10 +1194,6 @@ body {
     border-bottom: 1px solid #000;
   }
 
-  .specialize__grid h3 {
-    font-size: 1.5rem;
-  }
-
   .specialize__process__grid {
     display: flex;
     flex-direction: column;
@@ -1116,21 +1208,9 @@ body {
     border-top: 3px solid #000;
   }
 
-  .specialize__process__grid span {
-    font-size: 3.5rem;
-  }
-
-  .specialize__process__grid h4 {
-    font-size: 3.2rem;
-  }
-
   .timeline__icon {
     height: 5rem;
     width: 5rem;
-  }
-
-  .timeline__role {
-    font-size: 2rem;
   }
 
   .timeline__description {
@@ -1139,14 +1219,6 @@ body {
 
   .why-hire-me__item {
     flex-direction: column;
-  }
-
-  .why-hire-me__title::before {
-    font-size: 2rem;
-  }
-
-  .why-hire-me__title {
-    font-size: 2.5rem;
   }
 
   .cta__image {
@@ -1166,7 +1238,6 @@ body {
 
   .random-facts__list {
     gap: 3rem;
-    font-size: 1.2rem;
   }
 
   .section-title-group-random-facts img {
@@ -1176,10 +1247,6 @@ body {
 
   .random-facts__list img {
     height: 7rem;
-  }
-
-  .timeline-details__item p {
-    font-size: 1.2rem;
   }
 
   .timeline-details__list {
@@ -1219,10 +1286,6 @@ body {
     border: none;
   }
 
-  .approach-title h2 {
-    font-size: 3rem;
-  }
-
   .approach-grid {
     list-style: disc;
   }
@@ -1245,14 +1308,46 @@ body {
     transform: translateY(0rem);
   }
 
+  .workflow__cards p {
+    font-size: var(--body);
+  }
+
   .icon-collection li {
     gap: 1rem;
-    font-size: 1.5rem;
   }
 
   .icon-collection img {
     height: 6rem;
     width: 6rem;
+  }
+
+  .case-study__hero .container {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .case-study__process__grid {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .case-study__process__grid li {
+    border-bottom: 0;
+    border-right: 0;
+  }
+
+  .case-study__process__grid li:last-child {
+    border-bottom: 3px solid #000;
+  }
+
+  .case-study__process article {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .case-study__result__photos {
+    display: flex;
+    flex-direction: column;
   }
 
   .footer__first__section {
@@ -1274,5 +1369,9 @@ body {
     text-align: center;
     width: 100%;
     gap: 2rem;
+  }
+
+  .footer__copy {
+    text-align: center;
   }
 }
