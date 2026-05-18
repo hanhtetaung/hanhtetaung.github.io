@@ -437,6 +437,11 @@ h3 {
   border-right: 0;
 }
 
+.specialize__process__grid span {
+  font-size: var(--h3);
+  color: var(--color-cyan);
+}
+
 .specialize__link {
   color: var(--color-pink);
   text-align: center;
@@ -861,6 +866,10 @@ h3 {
 
 .workflow__cards li:nth-child(5) {
   transform: translateY(1rem);
+}
+
+.workflow__cards p {
+  font-size: var(--small);
 }
 
 /* ------------- Tech Stack -------------- */
@@ -1297,6 +1306,10 @@ h3 {
   }
   .workflow__cards li:nth-child(5) {
     transform: translateY(0rem);
+  }
+
+  .workflow__cards p {
+    font-size: var(--body);
   }
 
   .icon-collection li {
