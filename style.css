@@ -126,17 +126,22 @@ body {
 h1 {
   font-size: var(--h1);
   font-family: var(--font-heading);
-  font-weight: normal;
+  font-weight: 400;
 }
 
 h2 {
   font-size: var(--h2);
   font-family: var(--font-heading);
-  font-weight: normal;
+  font-weight: 400;
 }
 
 h3 {
   font-size: var(--h3);
+}
+
+img {
+  width: 100%;
+  height: auto;
 }
 
 /*----------- HEADER -------------*/
@@ -274,7 +279,7 @@ h3 {
 
 .section-title-group {
   display: flex;
-  /* align-items: center; */
+  align-items: center;
   gap: 1rem;
   margin-bottom: 3rem;
 }
@@ -286,15 +291,19 @@ h3 {
   margin-bottom: 10rem;
 }
 
-/* .section-title-group img {
+.section-title-group img {
   height: 100%;
   width: fit-content;
-} */
+}
 
 /* --------- My Work ----------- */
 .my-work {
   background-color: var(--color-bg-secondary);
   padding-block: 10rem;
+}
+
+.my-work .section-title-group {
+  align-items: start;
 }
 
 .my-work__accordion {
@@ -571,7 +580,7 @@ h3 {
 .why-hire-me__title {
   font-family: var(--font-heading);
   color: var(--color-cyan);
-  font-weight: normal;
+  font-weight: 400;
 }
 
 .why-hire-me__description {
@@ -729,6 +738,11 @@ h3 {
   padding-top: 10rem;
   padding-bottom: 15rem;
   position: relative;
+}
+
+.process img {
+  height: 15rem;
+  width: auto;
 }
 
 .process__icon-2 {
@@ -949,7 +963,7 @@ h3 {
 }
 
 .case-study__hero_overview span {
-  font-weight: bold;
+  font-weight: 700;
 }
 
 /* -------------- Case Study Background --------------  */
@@ -1079,7 +1093,7 @@ h3 {
 
 .footer__profile p {
   font-family: var(--font-heading);
-  font-weight: normal;
+  font-weight: 400;
 }
 
 .footer__credits-link {
@@ -1150,18 +1164,6 @@ h3 {
     display: none;
   }
 
-  .section-title {
-    font-size: 3rem;
-  }
-
-  .hero__title {
-    font-size: 6rem;
-  }
-
-  .section-title-group-my-work img {
-    height: 8rem;
-  }
-
   .my-work__accordion {
     display: block;
     border: 0;
@@ -1182,6 +1184,10 @@ h3 {
 
   .project__summary:focus {
     outline: none;
+  }
+
+  .project__description {
+    width: 30ch;
   }
 
   /* ── Content ── */
@@ -1240,11 +1246,6 @@ h3 {
     gap: 3rem;
   }
 
-  .section-title-group-random-facts img {
-    height: 8rem;
-    width: 8rem;
-  }
-
   .random-facts__list img {
     height: 7rem;
   }
@@ -1265,14 +1266,12 @@ h3 {
     width: 100%;
   }
 
-  .process__icon-1 {
-    width: 10rem;
-    height: 10rem;
+  .process img {
+    height: 7rem;
+    width: auto;
   }
 
   .process__icon-2 {
-    width: 7rem;
-    height: 7rem;
     top: 2rem;
   }
 
