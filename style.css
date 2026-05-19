@@ -126,17 +126,22 @@ body {
 h1 {
   font-size: var(--h1);
   font-family: var(--font-heading);
-  font-weight: normal;
+  font-weight: 400;
 }
 
 h2 {
   font-size: var(--h2);
   font-family: var(--font-heading);
-  font-weight: normal;
+  font-weight: 400;
 }
 
 h3 {
   font-size: var(--h3);
+}
+
+img {
+  width: 100%;
+  height: auto;
 }
 
 /*----------- HEADER -------------*/
@@ -571,7 +576,7 @@ h3 {
 .why-hire-me__title {
   font-family: var(--font-heading);
   color: var(--color-cyan);
-  font-weight: normal;
+  font-weight: 400;
 }
 
 .why-hire-me__description {
@@ -949,7 +954,7 @@ h3 {
 }
 
 .case-study__hero_overview span {
-  font-weight: bold;
+  font-weight: 700;
 }
 
 /* -------------- Case Study Background --------------  */
@@ -1079,7 +1084,7 @@ h3 {
 
 .footer__profile p {
   font-family: var(--font-heading);
-  font-weight: normal;
+  font-weight: 400;
 }
 
 .footer__credits-link {
