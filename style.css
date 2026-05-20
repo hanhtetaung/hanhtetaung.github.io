@@ -1062,6 +1062,89 @@ img {
   justify-content: center;
 }
 
+/* ------------- Hire Me ---------------  */
+.hire-me {
+  text-align: center;
+  padding-top: 5rem;
+  padding-bottom: 10rem;
+}
+
+.hire-me .container {
+  display: flex;
+  justify-content: center;
+}
+
+.hire-me form {
+  margin-top: 3rem;
+  display: flex;
+  width: 50%;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.form-first-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.form-first-row input {
+  width: 100%;
+  border: none;
+  padding: 1rem 1.5rem;
+}
+
+textarea {
+  height: 20rem;
+  border: none;
+  padding: 1rem 1.5rem;
+}
+
+.form-first-row input:focus,
+.form-first-row input:valid,
+textarea:valid,
+textarea:focus {
+  outline-color: #0e7490;
+}
+
+.hire-me .submit-button {
+  background-color: var(--color-pink);
+  color: var(--color-bg-secondary);
+  border: none;
+  padding: 1rem 1.5rem;
+  width: 50%;
+}
+
+.hire-me .submit-button:hover {
+  cursor: pointer;
+}
+
+.hire-me__email {
+  font-size: var(--small);
+}
+
+.hire-me__email a {
+  text-decoration: none;
+  color: var(--color-cyan);
+}
+
+.cf-turnstile {
+  text-align: start;
+}
+
+.thank-you {
+  text-align: center;
+  padding-block: 10rem;
+}
+
+.thank-you p {
+  margin-bottom: 5rem;
+}
+
+.thank-you a {
+  color: var(--color-cyan);
+  text-decoration: none;
+}
 /* ------------- Footer -------------- */
 
 .footer {
@@ -1347,6 +1430,14 @@ img {
   .case-study__result__photos {
     display: flex;
     flex-direction: column;
+  }
+
+  .hire-me form {
+    width: 100%;
+  }
+
+  .hire-me .submit-button {
+    width: 100%;
   }
 
   .footer__first__section {
