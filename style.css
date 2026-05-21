@@ -571,6 +571,10 @@ img {
   align-items: center;
 }
 
+.why-hire-me__item:last-child {
+  margin-bottom: 0rem;
+}
+
 .why-hire-me__title::before {
   content: counter(why-counter) " .";
   color: #000;
