@@ -581,6 +581,26 @@
     text-align: center;
   }
 
+  @media (max-width: 768px) {
+    .approach {
+      flex-direction: column;
+    }
+
+    .approach-title {
+      gap: 0;
+      padding-block: 2rem;
+      border: none;
+    }
+
+    .approach-title span {
+      display: none;
+    }
+
+    .approach-grid {
+      list-style: disc;
+    }
+  }
+
   .workflow {
     background-image:
       repeating-linear-gradient(
@@ -1271,20 +1291,6 @@ textarea:focus {
 
   .process__icon-2 {
     top: 2rem;
-  }
-
-  .approach {
-    flex-direction: column;
-  }
-
-  .approach-title {
-    gap: 0;
-    padding-block: 2rem;
-    border: none;
-  }
-
-  .approach-grid {
-    list-style: disc;
   }
 
   .workflow__cards {
