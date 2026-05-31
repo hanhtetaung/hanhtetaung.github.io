@@ -698,6 +698,11 @@
     width: 5rem;
     height: 5rem;
   }
+
+  /* CREDIT  */
+  .credits {
+    text-align: center;
+  }
 }
 
 @layer utilities {
