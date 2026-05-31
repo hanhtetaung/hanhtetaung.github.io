@@ -518,6 +518,166 @@
       display: none;
     }
   }
+
+  /* ------------- Process -------------- */
+
+  .process {
+    text-align: center;
+    position: relative;
+  }
+
+  .process img {
+    height: 15rem;
+    width: auto;
+  }
+
+  .process__icon-2 {
+    position: absolute;
+    top: 40%;
+    left: 20%;
+  }
+
+  .process__icon-1 {
+    position: absolute;
+    bottom: 10%;
+    right: 10%;
+  }
+
+  /* ------------- Approach -------------- */
+
+  .approach {
+    display: flex;
+    background-image: radial-gradient(
+      circle at 1px 1px,
+      rgba(0, 0, 0, 0.35) 1px,
+      transparent 0
+    );
+    background-size: 20px 20px;
+  }
+
+  .approach-title {
+    flex: 4;
+    border: 2px solid #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .approach-grid {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    margin-left: -2px;
+    list-style: none;
+    padding: 0rem;
+    border: 2px solid #000;
+  }
+
+  .approach-grid li {
+    padding-block: 5rem;
+    margin-bottom: -3px;
+    border-bottom: 2px solid #000;
+    text-align: center;
+  }
+
+  .workflow {
+    background-image:
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 20px,
+        rgba(75, 85, 99, 0.08) 20px,
+        rgba(75, 85, 99, 0.08) 21px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 30px,
+        rgba(107, 114, 128, 0.06) 30px,
+        rgba(107, 114, 128, 0.06) 31px
+      ),
+      repeating-linear-gradient(
+        60deg,
+        transparent,
+        transparent 40px,
+        rgba(55, 65, 81, 0.05) 40px,
+        rgba(55, 65, 81, 0.05) 41px
+      ),
+      repeating-linear-gradient(
+        150deg,
+        transparent,
+        transparent 35px,
+        rgba(31, 41, 55, 0.04) 35px,
+        rgba(31, 41, 55, 0.04) 36px
+      );
+  }
+
+  .workflow__cards {
+    display: flex;
+    padding: 0;
+    width: 100%;
+    margin-left: auto;
+    list-style: none;
+    counter-reset: workflow-counter;
+    align-items: stretch;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .workflow__cards li::before {
+    content: "0" counter(workflow-counter);
+    margin-bottom: 10rem;
+    color: var(--color-secondary);
+    display: block;
+  }
+
+  .workflow__cards li {
+    border: 1px solid #000;
+    padding-block: 2rem;
+    padding-inline: 1.5rem;
+    flex: 1;
+    counter-increment: workflow-counter;
+  }
+
+  .worfklow__cards li:nth-child(1) {
+    transform: translateY(0rem);
+  }
+
+  .workflow__cards li:nth-child(2) {
+    transform: translateY(5rem);
+  }
+
+  .workflow__cards li:nth-child(3) {
+    transform: translateY(7rem);
+  }
+
+  .workflow__cards li:nth-child(4) {
+    transform: translateY(4rem);
+  }
+
+  .workflow__cards li:nth-child(5) {
+    transform: translateY(1rem);
+  }
+
+  .workflow__cards p {
+    font-size: var(--small);
+  }
+
+  /* ------------- Tech Stack -------------- */
+
+  .tech-stack__logos {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    gap: 2rem;
+    padding: 0;
+  }
+
+  .tech-stack__logos img {
+    width: 5rem;
+    height: 5rem;
+  }
 }
 
 @layer utilities {
@@ -713,177 +873,6 @@
 
 .timeline-details__item p {
   text-align: start;
-}
-
-/* ------------- Process -------------- */
-
-.process {
-  text-align: center;
-  padding-top: 10rem;
-  padding-bottom: 15rem;
-  position: relative;
-}
-
-.process img {
-  height: 15rem;
-  width: auto;
-}
-
-.process__icon-2 {
-  position: absolute;
-  top: 40%;
-  left: 20%;
-}
-
-.process__icon-1 {
-  position: absolute;
-  bottom: 10%;
-  right: 10%;
-}
-
-/* ------------- Approach -------------- */
-
-.approach {
-  display: flex;
-  background-color: var(--color-bg-secondary);
-  background-image: radial-gradient(
-    circle at 1px 1px,
-    rgba(0, 0, 0, 0.35) 1px,
-    transparent 0
-  );
-  background-size: 20px 20px;
-}
-
-.approach-title {
-  flex: 4;
-  border: 2px solid #000;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 2rem;
-}
-
-.approach-grid {
-  flex: 2;
-  display: flex;
-  flex-direction: column;
-  margin-left: -2px;
-  list-style: none;
-  padding: 0rem;
-  border: 2px solid #000;
-}
-
-.approach-grid li {
-  padding-block: 5rem;
-  margin-bottom: -3px;
-  border-bottom: 2px solid #000;
-  text-align: center;
-}
-
-.workflow {
-  background-color: var(--color-bg-secondary);
-  padding-block: 10rem;
-
-  background-image:
-    repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 20px,
-      rgba(75, 85, 99, 0.08) 20px,
-      rgba(75, 85, 99, 0.08) 21px
-    ),
-    repeating-linear-gradient(
-      90deg,
-      transparent,
-      transparent 30px,
-      rgba(107, 114, 128, 0.06) 30px,
-      rgba(107, 114, 128, 0.06) 31px
-    ),
-    repeating-linear-gradient(
-      60deg,
-      transparent,
-      transparent 40px,
-      rgba(55, 65, 81, 0.05) 40px,
-      rgba(55, 65, 81, 0.05) 41px
-    ),
-    repeating-linear-gradient(
-      150deg,
-      transparent,
-      transparent 35px,
-      rgba(31, 41, 55, 0.04) 35px,
-      rgba(31, 41, 55, 0.04) 36px
-    );
-}
-
-.workflow-primary-color {
-  background-color: var(--color-bg-primary);
-}
-
-.workflow__cards {
-  display: flex;
-  padding: 0;
-  width: 100%;
-  margin-left: auto;
-  list-style: none;
-  counter-reset: workflow-counter;
-  align-items: stretch;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.workflow__cards li::before {
-  content: "0" counter(workflow-counter);
-  margin-bottom: 10rem;
-  color: var(--color-secondary);
-  display: block;
-}
-
-.workflow__cards li {
-  border: 1px solid #000;
-  padding-block: 2rem;
-  padding-inline: 1.5rem;
-  flex: 1;
-  counter-increment: workflow-counter;
-}
-
-.worfklow__cards li:nth-child(1) {
-  transform: translateY(0rem);
-}
-
-.workflow__cards li:nth-child(2) {
-  transform: translateY(5rem);
-}
-
-.workflow__cards li:nth-child(3) {
-  transform: translateY(7rem);
-}
-
-.workflow__cards li:nth-child(4) {
-  transform: translateY(4rem);
-}
-
-.workflow__cards li:nth-child(5) {
-  transform: translateY(1rem);
-}
-
-.workflow__cards p {
-  font-size: var(--small);
-}
-
-/* ------------- Tech Stack -------------- */
-
-.tech-stack__logos {
-  display: flex;
-  list-style: none;
-  align-items: center;
-  gap: 2rem;
-  margin-block: 3rem;
-  padding: 0;
-}
-
-.tech-stack__logos img {
-  width: 5rem;
-  height: 5rem;
 }
 
 /* ------------- Credits -------------- */
