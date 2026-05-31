@@ -1,151 +1,160 @@
-@font-face {
-  font-family: "Chicle";
-  src: url("/assets/fonts/Chicle-Regular.woff2") format("woff2");
-  font-weight: 400;
-  font-display: swap;
-}
+@layer fonts, reset, tokens, base, layout, components, utilities;
 
-@font-face {
-  font-family: "StackSans";
-  src: url("/assets/fonts/StackSansText-Bold.woff2") format("woff2");
-  font-weight: 700;
-  font-display: swap;
-}
+@layer fonts {
+  @font-face {
+    font-family: "Chicle";
+    src: url("/assets/fonts/Chicle-Regular.woff2") format("woff2");
+    font-weight: 400;
+    font-display: swap;
+  }
 
-@font-face {
-  font-family: "StackSans";
-  src: url("/assets/fonts/StackSansText-Regular.woff2") format("woff2");
-  font-weight: 400;
-  font-display: swap;
-}
+  @font-face {
+    font-family: "StackSans";
+    src: url("/assets/fonts/StackSansText-Bold.woff2") format("woff2");
+    font-weight: 700;
+    font-display: swap;
+  }
 
-/* 1. Use a more-intuitive box-sizing model */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-/* 2. Remove default margin */
-*:not(dialog) {
-  margin: 0;
-}
-
-/* 3. Enable keyword animations */
-@media (prefers-reduced-motion: no-preference) {
-  html {
-    interpolate-size: allow-keywords;
+  @font-face {
+    font-family: "StackSans";
+    src: url("/assets/fonts/StackSansText-Regular.woff2") format("woff2");
+    font-weight: 400;
+    font-display: swap;
   }
 }
 
-body {
-  /* 4. Increase line-height */
-  line-height: 1.5;
-  /* 5. Improve text rendering */
-  -webkit-font-smoothing: antialiased;
-}
+@layer reset {
+  /* 1. Use a more-intuitive box-sizing model */
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
 
-/* 6. Improve media defaults */
-img,
-picture,
-video,
-canvas,
-svg {
-  display: block;
-  max-width: 100%;
-}
+  /* 2. Remove default margin */
+  *:not(dialog) {
+    margin: 0;
+  }
 
-/* 7. Inherit fonts for form controls */
-input,
-button,
-textarea,
-select {
-  font: inherit;
-}
+  /* 3. Enable keyword animations */
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      interpolate-size: allow-keywords;
+    }
+  }
 
-/* 8. Avoid text overflows */
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  overflow-wrap: break-word;
-}
+  body {
+    /* 4. Increase line-height */
+    line-height: 1.5;
+    /* 5. Improve text rendering */
+    -webkit-font-smoothing: antialiased;
+  }
 
-/* 9. Improve line wrapping */
-p {
-  text-wrap: pretty;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  text-wrap: balance;
-}
+  /* 6. Improve media defaults */
+  img,
+  picture,
+  video,
+  canvas,
+  svg {
+    display: block;
+    max-width: 100%;
+  }
 
-/*
+  /* 7. Inherit fonts for form controls */
+  input,
+  button,
+  textarea,
+  select {
+    font: inherit;
+  }
+
+  /* 8. Avoid text overflows */
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    overflow-wrap: break-word;
+  }
+
+  /* 9. Improve line wrapping */
+  p {
+    text-wrap: pretty;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    text-wrap: balance;
+  }
+
+  /*
   10. Create a root stacking context
 */
-#root,
-#__next {
-  isolation: isolate;
+  #root,
+  #__next {
+    isolation: isolate;
+  }
 }
 
-:root {
-  --color-bg-primary: #fff4e4;
-  --color-bg-secondary: #fffaf4;
-  --color-cyan: #0e7490;
-  --color-teal: #0f766e;
-  --color-pink: #be185d;
-  --color-text: #000000;
-  --font-heading: "Chicle", serif;
-  --font-body: "StackSans", sans-serif;
+@layer tokens {
+  :root {
+    --color-bg-primary: #fff4e4;
+    --color-bg-secondary: #fffaf4;
+    --color-secondary: #0e7490;
+    --color-teal: #0f766e;
+    --color-primary: #be185d;
+    --color-text: #000000;
+    --font-heading: "Chicle", serif;
+    --font-body: "StackSans", sans-serif;
 
-  font-size: 10px;
+    font-size: 10px;
 
-  --ratio: 1.6;
-  --body-font-size: 2rem;
+    --ratio: 1.6;
+    --body-font-size: 2rem;
 
-  --small: calc(var(--body-font-size) / var(--ratio));
-  --h3: calc(var(--body-font-size) * var(--ratio));
-  --h2: calc(var(--h3) * var(--ratio));
-  --h1: calc(var(--h2) * var(--ratio));
+    --small: calc(var(--body-font-size) / var(--ratio));
+    --h3: calc(var(--body-font-size) * var(--ratio));
+    --h2: calc(var(--h3) * var(--ratio));
+    --h1: calc(var(--h2) * var(--ratio));
+  }
 }
 
-body {
-  background: var(--color-bg-primary);
-  font-family: var(--font-body);
-  font-weight: 400;
-  font-size: var(--body-font-size);
-}
+@layer base {
+  body {
+    background: var(--color-bg-primary);
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: var(--body-font-size);
+  }
 
-h1 {
-  font-size: var(--h1);
-  font-family: var(--font-heading);
-  font-weight: 400;
-}
+  h1 {
+    font-size: var(--h1);
+    font-family: var(--font-heading);
+    font-weight: 400;
+  }
 
-h2 {
-  font-size: var(--h2);
-  font-family: var(--font-heading);
-  font-weight: 400;
-}
+  h2 {
+    font-size: var(--h2);
+    font-family: var(--font-heading);
+    font-weight: 400;
+  }
 
-h3 {
-  font-size: var(--h3);
-}
+  h3 {
+    font-size: var(--h3);
+  }
 
-img {
-  width: 100%;
-  height: auto;
+  img {
+    width: 100%;
+    height: auto;
+  }
 }
 
 /*----------- HEADER -------------*/
-
 .header {
   display: flex;
   justify-content: space-between;
@@ -194,21 +203,34 @@ img {
   stroke-dashoffset: 0;
 }
 
-.hire-me-button {
-  text-decoration: none;
-  display: block;
-  width: fit-content;
-  margin: auto;
+@layer layout {
+  .coming-soon {
+    height: 50rem;
+    display: grid;
+    place-items: center;
+  }
 }
 
-.hire-me-button svg {
-  width: 14rem;
-  height: 10rem;
-  transition: transform 0.3s ease;
-}
+@layer components {
+  .link-button {
+    text-decoration: none;
 
-.hire-me-button:hover svg {
-  transform: rotate(10deg) scale(1.05);
+    color: var(--color-primary);
+    border: 1px solid var(--color-primary);
+    padding-block: 1rem;
+    padding-inline: 2rem;
+  }
+
+  .hire-me-button {
+    text-decoration: none;
+    background: var(--color-primary);
+    color: var(--color-bg-secondary);
+    padding-block: 1rem;
+    padding-inline: 2rem;
+    box-shadow:
+      -4px -2px 16px 0px var(--color-bg-secondary),
+      4px 2px 16px 0px var(--color-primary);
+  }
 }
 
 /* --------- Hero ----------- */
@@ -306,11 +328,48 @@ img {
   align-items: start;
 }
 
-.my-work__accordion {
+.my-work-list {
+  list-style-type: none;
   display: flex;
-  flex-direction: row;
-  border: 1px solid black;
-  justify-content: center;
+  flex-direction: column;
+  gap: 20rem;
+}
+
+.my-work-list__card {
+  display: flex;
+  gap: 10rem;
+  align-items: center;
+}
+
+.my-work-list__card:nth-child(2n) {
+  flex-direction: row-reverse;
+}
+
+.my-work-list__card img {
+  height: 30rem;
+  width: auto;
+}
+
+.my-work-list__card__content p {
+  margin-bottom: 2rem;
+}
+
+.my-work-list__card__category {
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+  gap: 1rem;
+  font-size: var(--small);
+  margin-bottom: 2rem;
+  margin-top: 0.5rem;
+}
+
+.my-work-list__card__category li {
+  background-color: var(--color-secondary);
+  color: var(--color-bg-secondary);
+  padding-block: 0.5rem;
+  padding-inline: 1rem;
+  border-radius: 1rem;
 }
 
 /* ── Each project (details) ── */
@@ -369,29 +428,11 @@ img {
 .project__link {
   display: inline-block;
   width: fit-content;
-  border: 1px solid var(--color-pink);
-  color: var(--color-pink);
+  border: 1px solid var(--color-primary);
+  color: var(--color-primary);
   text-decoration: none;
   padding: 0.5rem 1rem;
   margin-top: 1.5rem;
-}
-
-/* ── Animation accordin── */
-::details-content {
-  transition:
-    width 0.4s ease,
-    content-visibility 0.4s ease allow-discrete;
-  width: 0;
-}
-
-[open]::details-content {
-  width: var(--open-size);
-}
-
-/* Prevent Click Open Tag */
-.my-work__accordion:has(.project[open]) .project[open] .project__summary {
-  pointer-events: none;
-  cursor: default;
 }
 
 /* ---- Specialize In ------------ */
@@ -408,7 +449,7 @@ img {
 }
 
 .specialize__grid h3 {
-  background: var(--color-cyan);
+  background: var(--color-secondary);
   color: var(--color-bg-primary);
   padding-block: 1rem;
   border-right: 3px solid #000;
@@ -448,11 +489,11 @@ img {
 
 .specialize__process__grid span {
   font-size: var(--h3);
-  color: var(--color-cyan);
+  color: var(--color-secondary);
 }
 
 .specialize__link {
-  color: var(--color-pink);
+  color: var(--color-primary);
   text-align: center;
   display: block;
   width: fit-content;
@@ -502,13 +543,13 @@ img {
   top: 1rem;
   height: 0.75rem;
   border-radius: 50%;
-  background: var(--color-cyan);
+  background: var(--color-secondary);
 }
 
 .timeline__line {
   width: 2px;
   flex: 1;
-  background: var(--color-cyan);
+  background: var(--color-secondary);
   min-height: 2rem; /* ensures line always shows */
 }
 
@@ -517,16 +558,16 @@ img {
 }
 
 .timeline__period {
-  color: var(--color-cyan);
+  color: var(--color-secondary);
   margin-bottom: 1rem;
-  border: 1px solid var(--color-cyan);
+  border: 1px solid var(--color-secondary);
   width: fit-content;
   padding: 0.5rem 0.75rem;
   font-size: var(--small);
 }
 
 .timeline_period-present {
-  background-color: var(--color-cyan);
+  background-color: var(--color-secondary);
   padding: 0.3rem 1rem;
   color: var(--color-bg-primary);
 }
@@ -544,7 +585,7 @@ img {
   display: block;
   width: fit-content;
   margin: 0 auto;
-  color: var(--color-pink);
+  color: var(--color-primary);
 }
 
 /* ---------------- Why Hire Me ----------------- */
@@ -583,7 +624,7 @@ img {
 
 .why-hire-me__title {
   font-family: var(--font-heading);
-  color: var(--color-cyan);
+  color: var(--color-secondary);
   font-weight: 400;
 }
 
@@ -714,7 +755,7 @@ img {
   left: 50%;
   top: 0;
   bottom: 0;
-  border-left: 2px dashed var(--color-cyan);
+  border-left: 2px dashed var(--color-secondary);
 }
 
 .timeline-details__item {
@@ -854,7 +895,7 @@ img {
 .workflow__cards li::before {
   content: "0" counter(workflow-counter);
   margin-bottom: 10rem;
-  color: var(--color-cyan);
+  color: var(--color-secondary);
   display: block;
 }
 
@@ -937,7 +978,7 @@ img {
 
 .icon-collection a {
   text-decoration: none;
-  color: var(--color-cyan);
+  color: var(--color-secondary);
 }
 
 /* -------------- Case Study Hero --------------  */
@@ -1015,7 +1056,7 @@ img {
 }
 
 .case-study__process__grid span {
-  color: var(--color-cyan);
+  color: var(--color-secondary);
   font-size: var(--h3);
 }
 
@@ -1035,7 +1076,7 @@ img {
 }
 
 .case-study__link {
-  color: var(--color-pink);
+  color: var(--color-primary);
   text-decoration: none;
 }
 
@@ -1045,7 +1086,7 @@ img {
 
 .case-study__process figcaption {
   margin-bottom: 2rem;
-  color: var(--color-cyan);
+  color: var(--color-secondary);
 }
 
 .case-study__result {
@@ -1112,7 +1153,7 @@ textarea:focus {
 }
 
 .hire-me .submit-button {
-  background-color: var(--color-pink);
+  background-color: var(--color-primary);
   color: var(--color-bg-secondary);
   border: none;
   padding: 1rem 1.5rem;
@@ -1129,7 +1170,7 @@ textarea:focus {
 
 .hire-me__email a {
   text-decoration: none;
-  color: var(--color-cyan);
+  color: var(--color-secondary);
 }
 
 .cf-turnstile {
@@ -1146,7 +1187,7 @@ textarea:focus {
 }
 
 .thank-you a {
-  color: var(--color-cyan);
+  color: var(--color-secondary);
   text-decoration: none;
 }
 /* ------------- Footer -------------- */
@@ -1185,7 +1226,7 @@ textarea:focus {
 
 .footer__credits-link {
   text-decoration: none;
-  color: var(--color-cyan);
+  color: var(--color-secondary);
 }
 
 .footer-nav__header {
