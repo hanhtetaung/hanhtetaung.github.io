@@ -391,7 +391,6 @@
     color: var(--color-bg-secondary);
     padding-block: 0.5rem;
     padding-inline: 1rem;
-    border-radius: 1rem;
   }
 
   @media (max-width: 768px) {
