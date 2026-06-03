@@ -391,7 +391,6 @@
     color: var(--color-bg-secondary);
     padding-block: 0.5rem;
     padding-inline: 1rem;
-    border-radius: 1rem;
   }
 
   @media (max-width: 768px) {
@@ -697,6 +696,11 @@
   .tech-stack__logos img {
     width: 5rem;
     height: 5rem;
+  }
+
+  /* CREDIT  */
+  .credits {
+    text-align: center;
   }
 }
 
