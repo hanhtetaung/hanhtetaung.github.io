@@ -1102,6 +1102,40 @@ textarea:focus {
   text-align: start;
 }
 
+.post-page .context {
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+}
+
+.post-page article img {
+  margin-top: 1rem;
+}
+
+.atomic-design-principle-articles article {
+  margin-block: 8rem;
+  display: grid;
+  grid-template-columns: 0.5fr 1.5fr;
+}
+
+.design-token-architecture article {
+  margin-block: 8rem;
+}
+
+.post-page a {
+  color: var(--color-secondary);
+  text-decoration: none;
+}
+
+.post-page img {
+  width: 100%;
+  max-width: 100rem;
+}
+
+.design-token-architecture article:last-child,
+.atomic-design-principle-articles article:last-child {
+  margin-bottom: 0;
+}
+
 /* ------------- Footer -------------- */
 .footer {
   background-color: var(--color-bg-secondary);
@@ -1353,6 +1387,11 @@ textarea:focus {
   }
 
   .case-study__result__photos {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .post-page article {
     display: flex;
     flex-direction: column;
   }
