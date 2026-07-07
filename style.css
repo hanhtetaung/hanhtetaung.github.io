@@ -1228,7 +1228,7 @@ textarea:focus {
   }
 
   .header {
-    flex-direction: column;
+    flex-direction: row;
     padding: 0.5rem 1rem;
   }
 
