@@ -161,7 +161,7 @@
   }
 
   .hero {
-    padding-block: 15rem;
+    padding-block: 5rem;
   }
 
   .footer {
@@ -192,7 +192,7 @@
     align-items: center;
     width: 80%;
     margin: auto;
-    padding: 1.6rem 4rem;
+    padding-block: 1.6rem;
   }
 
   .header__logo img {
@@ -262,47 +262,48 @@
   }
 
   /* --------- Hero ----------- */
-  .hero {
+  .hero .container {
     display: flex;
-    justify-content: center;
-    background-image:
-      repeating-linear-gradient(
-        0deg,
-        transparent,
-        transparent 19px,
-        rgba(75, 85, 99, 0.08) 19px,
-        rgba(75, 85, 99, 0.08) 20px,
-        transparent 20px,
-        transparent 39px,
-        rgba(75, 85, 99, 0.08) 39px,
-        rgba(75, 85, 99, 0.08) 40px
-      ),
-      repeating-linear-gradient(
-        90deg,
-        transparent,
-        transparent 19px,
-        rgba(75, 85, 99, 0.08) 19px,
-        rgba(75, 85, 99, 0.08) 20px,
-        transparent 20px,
-        transparent 39px,
-        rgba(75, 85, 99, 0.08) 39px,
-        rgba(75, 85, 99, 0.08) 40px
-      ),
-      radial-gradient(
-        circle at 20px 20px,
-        rgba(55, 65, 81, 0.12) 2px,
-        transparent 2px
-      ),
-      radial-gradient(
-        circle at 40px 40px,
-        rgba(55, 65, 81, 0.12) 2px,
-        transparent 2px
-      );
-    background-size:
-      40px 40px,
-      40px 40px,
-      40px 40px,
-      40px 40px;
+    gap: 2rem;
+  }
+
+  .hero__highlight {
+    flex: 1;
+  }
+
+  .hero__highlight li p {
+    color: var(--color-secondary);
+    /* font-size: var(--small); */
+  }
+
+  .hero__content {
+    flex: 1;
+  }
+
+  .hero__highlight ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .hero__highlight li {
+    width: 24ch;
+    margin-block: 3rem;
+    margin-left: auto;
+  }
+
+  .hero__highlight__decorate {
+    height: 20rem;
+    width: 100%;
+    /* background-image: radial-gradient(
+      circle at 1px 1px,
+      rgba(0, 0, 0, 0.35) 1px,
+      transparent 0
+    );
+    background-size: 20px 20px; */
+  }
+
+  .hero__content hr {
+    margin-block: 5rem;
   }
 
   .hero__intro {
@@ -320,17 +321,21 @@
     margin: 0;
   }
 
-  .hero .hire-me-button {
-    display: none;
-  }
-
   @media (max-width: 768px) {
-    .hero {
+    .hero .container {
       flex-direction: column;
-      padding-inline: 2rem;
       gap: 3rem;
-      align-items: center;
       padding-top: 10rem;
+    }
+
+    .hero__highlight__decorate {
+      display: none;
+    }
+
+    .hero__highlight li {
+      width: 24ch;
+      /* margin-block: 3rem; */
+      margin-left: 0;
     }
 
     .hero__group {
@@ -370,10 +375,6 @@
   .my-work-list__card img {
     height: 30rem;
     width: auto;
-  }
-
-  .my-work-list__card__content p {
-    margin-bottom: 2rem;
   }
 
   .my-work-list__card__category {
@@ -707,11 +708,13 @@
 @layer utilities {
   .link-button {
     text-decoration: none;
-
+    display: block;
+    width: fit-content;
     color: var(--color-primary);
     border: 1px solid var(--color-primary);
-    padding-block: 1rem;
-    padding-inline: 2rem;
+    padding-block: 0.5rem;
+    padding-inline: 1.5rem;
+    margin-top: 1rem;
   }
 
   .hire-me-button {
@@ -1014,10 +1017,6 @@
   color: var(--color-secondary);
 }
 
-.case-study__hero__card p {
-  margin-bottom: 2rem;
-}
-
 .case-study__result__photos {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1228,7 +1227,7 @@ textarea:focus {
   }
 
   .header {
-    flex-direction: column;
+    flex-direction: row;
     padding: 0.5rem 1rem;
   }
 
