@@ -265,6 +265,7 @@
   .hero .container {
     display: flex;
     gap: 2rem;
+    padding-top: 0;
   }
 
   .hero__highlight {
