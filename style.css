@@ -265,7 +265,6 @@
   .hero .container {
     display: flex;
     gap: 2rem;
-    padding-top: 0;
   }
 
   .hero__highlight {
@@ -326,7 +325,7 @@
     .hero .container {
       flex-direction: column;
       gap: 3rem;
-      padding-top: 10rem;
+      padding-top: 0;
     }
 
     .hero__highlight__decorate {
@@ -1134,6 +1133,12 @@ textarea:focus {
 .design-token-architecture article:last-child,
 .atomic-design-principle-articles article:last-child {
   margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .post-page__hero {
+    padding-block: 5rem;
+  }
 }
 
 /* ------------- Footer -------------- */
