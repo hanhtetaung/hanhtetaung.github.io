@@ -306,6 +306,17 @@
     margin-block: 5rem;
   }
 
+  .hero__content article {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .hero__content article img {
+    width: 6rem;
+    height: fit-content;
+    margin-top: 1rem;
+  }
+
   .hero__intro {
     text-align: left;
     margin: 0;
