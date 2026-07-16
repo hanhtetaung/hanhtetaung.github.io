@@ -222,7 +222,7 @@
     width: 100%;
     height: 100%;
     fill: none;
-    stroke: black;
+    stroke: var(--color-primary);
     stroke-width: 2;
     stroke-dasharray: 300;
     stroke-dashoffset: 300;
@@ -369,7 +369,7 @@
     list-style-type: none;
     display: flex;
     flex-direction: column;
-    gap: 20rem;
+    /* gap: 10rem; */
     padding: 0;
   }
 
@@ -377,6 +377,8 @@
     display: flex;
     gap: 10rem;
     align-items: center;
+    border-bottom: 1px solid var(--color-text);
+    padding-block: 10rem;
   }
 
   .my-work-list__card:nth-child(2n) {
@@ -769,14 +771,8 @@
 
 .why-hire-me__title::before {
   content: counter(why-counter) " .";
-  color: #000;
-  margin-right: 1.5rem;
-}
-
-.why-hire-me__title {
-  font-family: var(--font-heading);
   color: var(--color-secondary);
-  font-weight: 400;
+  margin-right: 1.5rem;
 }
 
 .why-hire-me__description {
@@ -951,6 +947,10 @@
   padding: 0;
 }
 
+.case-study__hero_overview li ul li {
+  margin: 0;
+}
+
 .case-study__hero_overview li {
   margin-bottom: 2rem;
 }
@@ -962,6 +962,14 @@
 
 .case-study__hero_overview span {
   font-weight: 700;
+}
+
+.case-study__designing-workflow article {
+  margin-bottom: 2rem;
+}
+
+.case-study__designing-design-system p {
+  margin-bottom: 2rem;
 }
 
 /* -------------- Case Study Process --------------  */
