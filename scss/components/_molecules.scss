@@ -1,0 +1,111 @@
+@use "../breakpoints";
+
+.container {
+  width: 80%;
+  margin-inline: auto;
+}
+
+.nav {
+  & ul {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+
+    & a {
+      text-decoration: none;
+      align-self: center;
+      color: var(--color-text);
+    }
+  }
+
+  &--horizontal {
+    & ul {
+      gap: 1rem;
+    }
+  }
+
+  &--vertical {
+    & ul {
+      flex-direction: column;
+    }
+  }
+}
+
+.section-title-group {
+  display: flex;
+  gap: 1rem;
+
+  & .icon {
+    @include breakpoints.phone {
+      display: none;
+    }
+  }
+
+  &--vertical {
+    flex-direction: column;
+    width: fit-content;
+    align-items: center;
+    line-height: 2rem;
+    margin-bottom: 10rem;
+  }
+}
+
+.blog {
+  display: flex;
+  align-items: start;
+  padding: 2rem;
+  gap: 2rem;
+
+  @include breakpoints.phone {
+    padding: 1rem;
+  }
+
+  @include breakpoints.watch {
+    padding: 0rem;
+    flex-direction: column;
+  }
+
+  &__content {
+    max-width: 80ch;
+  }
+
+  & .icon {
+    margin-top: 1rem;
+  }
+
+  & .button--link {
+    margin-top: 1.2rem;
+  }
+}
+
+.showcase {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--color-text);
+  padding-block: 5rem;
+  gap: 10rem;
+
+  &--reverse-direction {
+    flex-direction: row-reverse;
+  }
+
+  @include breakpoints.phone {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  &__category {
+    display: flex;
+    list-style-type: none;
+    flex-wrap: wrap;
+    padding: 0;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    font-size: var(--small);
+  }
+
+  & .button--link {
+    margin-top: 2rem;
+  }
+}

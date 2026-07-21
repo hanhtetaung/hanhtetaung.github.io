@@ -1,0 +1,55 @@
+@use "breakpoints";
+
+@font-face {
+  font-family: "Chicle";
+  src: url("/assets/fonts/Chicle-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "StackSans";
+  src: url("/assets/fonts/StackSansText-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "StackSans";
+  src: url("/assets/fonts/StackSansText-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+
+:root {
+  --color-bg-primary: #fff4e4;
+  --color-bg-secondary: #fffaf4;
+  --color-secondary: #0e7490;
+  --color-teal: #0f766e;
+  --color-primary: #be185d;
+  --color-text: #000000;
+
+  --font-heading: "Chicle", serif;
+  --font-body: "StackSans", sans-serif;
+
+  --font-regular: 400;
+  --font-bold: 700;
+
+  font-size: 10px;
+
+  --ratio: 1.6;
+  --size-body: 2rem;
+
+  --size-small: calc(var(--size-body) / var(--ratio));
+  --size-heading: calc(var(--size-body) * var(--ratio));
+  --size-title: calc(var(--size-heading) * var(--ratio));
+  --size-display: calc(var(--size-title) * var(--ratio));
+
+  @include breakpoints.phone {
+    --size-body: 1.8rem;
+  }
+
+  @include breakpoints.watch {
+    --size-body: 1rem;
+  }
+}

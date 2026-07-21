@@ -1,0 +1,242 @@
+@use "typography";
+@use "breakpoints";
+
+.header {
+  & .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-block: 1.6rem;
+  }
+
+  &__navigation {
+    display: flex;
+    align-items: center;
+    gap: 8rem;
+    overflow-y: auto;
+    @include typography.body;
+
+    @include breakpoints.phone {
+      gap: 4rem;
+    }
+  }
+}
+
+.hero {
+  @include breakpoints.phone {
+    padding-block: 8rem;
+  }
+
+  & .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 20px;
+    grid-template-areas:
+      "one two"
+      "three .";
+
+    @include breakpoints.phone {
+      display: flex;
+      flex-direction: column;
+      gap: 5rem;
+    }
+  }
+
+  &__group {
+    grid-area: one;
+    border-bottom: 1px solid var(--color-text);
+
+    @include breakpoints.phone {
+      border: none;
+    }
+  }
+
+  &__highlight {
+    grid-area: two;
+    text-align: left;
+    list-style: none;
+    padding: 0;
+
+    & li {
+      width: 50ch;
+      margin-block: 2rem;
+      margin-left: auto;
+
+      @include breakpoints.phone {
+        width: 100%;
+      }
+    }
+  }
+
+  & .blog {
+    grid-area: three;
+  }
+}
+
+.work {
+  & .container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__showcases {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    padding: 0;
+    list-style: none;
+  }
+}
+
+.timeline {
+  & .container {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 5rem;
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  &__item {
+    display: grid;
+    grid-template-columns: auto auto 1fr;
+    gap: 0 1rem;
+    align-items: center;
+    align-self: stretch;
+  }
+
+  &__connector {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+    align-self: stretch;
+  }
+
+  &__icon {
+    width: 10rem;
+    height: auto;
+
+    @include breakpoints.phone {
+      display: none;
+    }
+  }
+
+  &__dot {
+    width: 0.75rem;
+    position: absolute;
+    top: 1rem;
+    height: 0.75rem;
+    border-radius: 50%;
+    background: var(--color-secondary);
+  }
+
+  &__line {
+    width: 2px;
+    flex: 1;
+    background: var(--color-secondary);
+    min-height: 2rem;
+  }
+
+  &__content {
+    padding-bottom: 5rem;
+    max-width: 100ch;
+
+    & .badge {
+      margin-bottom: 0.5rem;
+    }
+  }
+}
+
+.why-hire-me {
+  &__list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+  }
+
+  &__article {
+    display: flex;
+
+    @include breakpoints.phone {
+      flex-direction: column-reverse;
+    }
+  }
+
+  &__content {
+    max-width: 100ch;
+  }
+}
+
+.cta {
+  position: relative;
+
+  & .container {
+    display: flex;
+  }
+
+  &__article {
+    gap: 1rem;
+    max-width: 110ch;
+  }
+
+  &__description {
+    margin-bottom: 2rem;
+  }
+
+  & .icon--lg {
+    position: absolute;
+    bottom: 0;
+    right: 10%;
+    max-width: 30rem;
+
+    @include breakpoints.table {
+      display: none;
+    }
+  }
+}
+
+.footer {
+  background-color: var(--color-bg-pirmary);
+  padding-block: 10rem;
+
+  &--secondary {
+    background-color: var(--color-bg-secondary);
+  }
+
+  &__content {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 1rem;
+    justify-content: space-between;
+
+    @include breakpoints.phone {
+      flex-direction: column;
+    }
+  }
+
+  &__profile {
+    display: flex;
+    align-items: center;
+  }
+
+  &__navigation {
+    display: flex;
+    justify-content: space-between;
+    gap: 3rem;
+  }
+
+  & .nav {
+    @include typography.body;
+    margin-top: 0.3rem;
+  }
+}

@@ -1,0 +1,103 @@
+@use "../typography";
+
+.wave-line {
+  display: block;
+  width: 100%;
+  fill: var(--color-bg-secondary);
+}
+
+.logo {
+  min-width: 8rem;
+  max-width: 10rem;
+  height: auto;
+}
+
+.image {
+  min-width: 10rem;
+  max-width: 50rem;
+  height: auto;
+}
+
+.icon--sm {
+  max-width: 3rem;
+  height: auto;
+}
+
+.icon--lg {
+  max-width: 20rem;
+  height: auto;
+}
+
+.icon {
+  max-width: 5rem;
+  height: auto;
+}
+
+.badge {
+  @include typography.small(var(--font-regular), var(--color-bg-secondary));
+  background-color: var(--color-secondary);
+  padding-block: 0.5rem;
+  padding-inline: 1.5rem;
+  width: fit-content;
+  white-space: nowrap;
+  border-radius: 3rem;
+
+  &--outline {
+    background-color: transparent;
+    border: 1px solid var(--color-secondary);
+    @include typography.small(var(--font-regular), var(--color-secondary));
+  }
+}
+
+.link-drawing {
+  text-decoration: none;
+  display: block;
+  padding: 2rem;
+  align-self: center;
+  color: var(--color-text);
+  position: relative;
+
+  &:hover svg {
+    stroke-dashoffset: 0;
+  }
+
+  & svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    fill: none;
+    stroke: var(--color-primary);
+    stroke-width: 2;
+    stroke-dasharray: 300;
+    stroke-dashoffset: 300;
+    transition: stroke-dashoffset 0.5s ease;
+    pointer-events: none;
+  }
+}
+
+.button {
+  text-decoration: none;
+  display: block;
+  width: fit-content;
+  padding-block: 1rem;
+  padding-inline: 2rem;
+  white-space: nowrap;
+  @include typography.body;
+
+  &--primary {
+    @extend .button;
+    background: var(--color-primary);
+    color: var(--color-bg-secondary);
+    box-shadow:
+      -4px -2px 16px 0px var(--color-bg-secondary),
+      4px 2px 16px 0px var(--color-primary);
+  }
+
+  &--link {
+    @extend .button;
+    color: var(--color-primary);
+    border: 1px solid var(--color-primary);
+  }
+}
