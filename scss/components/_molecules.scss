@@ -15,7 +15,6 @@
     & a {
       text-decoration: none;
       align-self: center;
-      color: var(--color-text);
     }
   }
 
@@ -74,7 +73,7 @@
     margin-top: 1rem;
   }
 
-  & .button--link {
+  & .button--outline {
     margin-top: 1.2rem;
   }
 }
@@ -105,7 +104,7 @@
     font-size: var(--small);
   }
 
-  & .button--link {
+  & .button--outline {
     margin-top: 2rem;
   }
 }

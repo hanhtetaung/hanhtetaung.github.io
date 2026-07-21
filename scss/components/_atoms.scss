@@ -1,4 +1,5 @@
-@use "../typography";
+@use "../typography" as typo;
+@use "../breakpoints";
 
 .wave-line {
   display: block;
@@ -23,6 +24,12 @@
   height: auto;
 }
 
+.icon--md {
+  min-width: 5rem;
+  width: 10rem;
+  height: auto;
+}
+
 .icon--lg {
   max-width: 20rem;
   height: auto;
@@ -33,8 +40,14 @@
   height: auto;
 }
 
+.input {
+  border: none;
+  padding: 1rem 1.5rem;
+  @include typo.body;
+}
+
 .badge {
-  @include typography.small(var(--font-regular), var(--color-bg-secondary));
+  @include typo.small(var(--font-regular), var(--color-bg-secondary));
   background-color: var(--color-secondary);
   padding-block: 0.5rem;
   padding-inline: 1.5rem;
@@ -45,7 +58,7 @@
   &--outline {
     background-color: transparent;
     border: 1px solid var(--color-secondary);
-    @include typography.small(var(--font-regular), var(--color-secondary));
+    @include typo.small(var(--font-regular), var(--color-secondary));
   }
 }
 
@@ -81,10 +94,11 @@
   text-decoration: none;
   display: block;
   width: fit-content;
+  border: none;
   padding-block: 1rem;
   padding-inline: 2rem;
   white-space: nowrap;
-  @include typography.body;
+  @include typo.body;
 
   &--primary {
     @extend .button;
@@ -95,9 +109,28 @@
       4px 2px 16px 0px var(--color-primary);
   }
 
-  &--link {
+  &--outline {
     @extend .button;
     color: var(--color-primary);
     border: 1px solid var(--color-primary);
+  }
+
+  &--link {
+    @extend .button;
+    color: var(--color-secondary);
+    display: inline;
+    padding: 0;
+    text-decoration: underline;
+
+    &::after {
+      content: "\2197";
+      margin-left: 0.25rem;
+      display: inline-block;
+    }
+
+    @include breakpoints.watch {
+      @include typo.small;
+      color: var(--color-secondary);
+    }
   }
 }
