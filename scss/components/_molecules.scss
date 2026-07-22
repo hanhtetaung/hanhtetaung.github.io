@@ -31,16 +31,11 @@
   }
 }
 
-.section {
-  &__title {
-  }
-}
-
-.section-title-group {
+.section-title {
   display: flex;
   gap: 1rem;
 
-  & .icon {
+  & img {
     @include breakpoints.phone {
       display: none;
     }
@@ -81,6 +76,10 @@
 
   &__content {
     order: 1;
+
+    @include breakpoints.phone {
+      margin-top: 3rem;
+    }
   }
 
   &__media {
@@ -104,6 +103,18 @@
 
   > * {
     border-block: 1px dashed var(--color-text);
+  }
+}
+
+.grid-2-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+
+  @include breakpoints.phone {
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
   }
 }
 
