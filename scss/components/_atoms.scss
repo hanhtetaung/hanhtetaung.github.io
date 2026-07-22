@@ -1,0 +1,186 @@
+@use "../typography" as typo;
+@use "../breakpoints";
+
+.wave-line {
+  display: block;
+  width: 100%;
+  fill: var(--color-bg-secondary);
+}
+
+.logo {
+  min-width: 8rem;
+  max-width: 10rem;
+  height: auto;
+}
+
+.image {
+  min-width: 10rem;
+  max-width: 50rem;
+  height: auto;
+}
+
+.icon--sm {
+  max-width: 3rem;
+  height: auto;
+}
+
+.icon--md {
+  min-width: 5rem;
+  width: 10rem;
+  height: auto;
+}
+
+.icon--lg {
+  max-width: 20rem;
+  height: auto;
+}
+
+.icon {
+  max-width: 5rem;
+  height: auto;
+}
+
+.input {
+  border: none;
+  padding: 1rem 1.5rem;
+  @include typo.body;
+}
+
+.process-list {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  list-style: none;
+  margin-bottom: 4rem;
+  padding-left: 3px;
+
+  @include breakpoints.phone {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.process-item {
+  background-image:
+    linear-gradient(to right, #e7e5e4 1px, transparent 1px),
+    linear-gradient(to bottom, #e7e5e4 1px, transparent 1px);
+  background-size: 20px 20px;
+  background-position:
+    0 0,
+    0 0;
+
+  // background-image: radial-gradient(
+  //   circle at 1px 1px,
+  //   rgba(0, 0, 0, 0.35) 1px,
+  //   transparent 0
+  // );
+  // background-size: 20px 20px;
+
+  border-top: 3px solid #000;
+  border-bottom: 3px solid #000;
+  border-right: 3px solid #000;
+  padding-block: 5rem;
+
+  text-align: center;
+
+  @include breakpoints.phone {
+    border-bottom: 0;
+    border-right: 0;
+  }
+
+  &--last-child {
+    border-right: 0;
+
+    @include breakpoints.phone {
+      border-bottom: 3px solid #000;
+    }
+  }
+}
+
+.badge {
+  @include typo.small(var(--font-regular), var(--color-bg-secondary));
+  background-color: var(--color-secondary);
+  padding-block: 0.5rem;
+  padding-inline: 1.5rem;
+  width: fit-content;
+  white-space: nowrap;
+  border-radius: 3rem;
+
+  &--outline {
+    background-color: transparent;
+    border: 1px solid var(--color-secondary);
+    @include typo.small(var(--font-regular), var(--color-secondary));
+  }
+}
+
+.link-drawing {
+  text-decoration: none;
+  display: block;
+  padding: 2rem;
+  align-self: center;
+  color: var(--color-text);
+  position: relative;
+
+  &:hover svg {
+    stroke-dashoffset: 0;
+  }
+
+  & svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    fill: none;
+    stroke: var(--color-primary);
+    stroke-width: 2;
+    stroke-dasharray: 300;
+    stroke-dashoffset: 300;
+    transition: stroke-dashoffset 0.5s ease;
+    pointer-events: none;
+  }
+}
+
+.button {
+  text-decoration: none;
+  display: block;
+  width: fit-content;
+  border: none;
+  padding-block: 1rem;
+  padding-inline: 2rem;
+  white-space: nowrap;
+  @include typo.body;
+
+  &--primary {
+    @extend .button;
+    background: var(--color-primary);
+    color: var(--color-bg-secondary);
+    box-shadow:
+      -4px -2px 16px 0px var(--color-bg-secondary),
+      4px 2px 16px 0px var(--color-primary);
+  }
+
+  &--outline {
+    @extend .button;
+    color: var(--color-primary);
+    border: 1px solid var(--color-primary);
+  }
+
+  &--link {
+    @extend .button;
+    color: var(--color-secondary);
+    display: inline;
+    padding: 0;
+    text-decoration: underline;
+
+    &::after {
+      content: "\2197";
+      margin-left: 0.25rem;
+      display: inline-block;
+    }
+
+    @include breakpoints.watch {
+      @include typo.small;
+      color: var(--color-secondary);
+    }
+  }
+}

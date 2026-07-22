@@ -32,7 +32,7 @@
       crossorigin
     />
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="/main.css" />
     <script
       defer
       src="https://cloud.umami.is/script.js"
@@ -42,111 +42,100 @@
   <body>
     <!-- ══════════════════════════════ HEADER ══════════════════════════════ -->
     <header class="header">
-      <a class="header__logo" href="/">
-        <img
-          src="/assets/icons/profile_logo.svg"
-          alt="Han Htet Aung"
-          width="50"
-          height="50"
-        />
-      </a>
-
-      <nav class="nav">
-        <a class="nav__link" href="/"
-          >Home
-          <svg
-            class="draw-circle"
-            width="66"
-            height="32"
-            viewBox="0 0 66 32"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M24.5 4.87939C53 -1.62061 65.5 9.48573 65.5 17.3794C65.5 25.9398 49.397 31.3794 32 31.3794C14.603 31.3794 0.5 24.4398 0.5 15.8794C0.5 7.31898 10 5.8794 27.5 1.8794C28.855 1.8794 34.6901 0.421493 36 0.503179"
-              stroke="#be185d"
-            />
-          </svg>
-        </a>
-        <a class="nav__link" href="/about"
-          >About
-          <svg
-            class="draw-circle"
-            width="66"
-            height="32"
-            viewBox="0 0 66 32"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M24.5 4.87939C53 -1.62061 65.5 9.48573 65.5 17.3794C65.5 25.9398 49.397 31.3794 32 31.3794C14.603 31.3794 0.5 24.4398 0.5 15.8794C0.5 7.31898 10 5.8794 27.5 1.8794C28.855 1.8794 34.6901 0.421493 36 0.503179"
-              stroke="#be185d"
-            />
-          </svg>
+      <div class="container">
+        <a href="/">
+          <img
+            src="/assets/icons/profile_logo.svg"
+            alt="Han Htet Aung"
+            class="logo"
+            width="102"
+            height="73"
+          />
         </a>
 
-        <a class="hire-me-button" href="/hire-me">
-          <span>&#9758;</span>
-          Hire Me
-          <span>&#9756;</span>
-        </a>
-      </nav>
+        <div class="header__navigation">
+          <nav class="nav nav--horizontal">
+            <ul>
+              <li>
+                <a href="/" class="link-drawing"
+                  >Home
+                  <svg>
+                    <use href="assets/sprite.svg#oval-line"></use>
+                  </svg>
+                </a>
+              </li>
+
+              <li>
+                <a href="/about" class="link-drawing"
+                  >About
+                  <svg>
+                    <use href="assets/sprite.svg#oval-line"></use>
+                  </svg>
+                </a>
+              </li>
+            </ul>
+          </nav>
+
+          <a class="button--primary" href="/hire-me">
+            <span>&#9758;</span>
+            Hire Me
+            <span>&#9756;</span>
+          </a>
+        </div>
+      </div>
     </header>
 
     <main>
       <!-- ══════════════════════════════ HERO ══════════════════════════════ -->
       <section class="hero">
         <div class="container">
-          <div class="hero__content">
-            <hgroup class="hero__group">
-              <p class="hero__intro">I'm Han Htet Aung</p>
-              <h1>UX Designer</h1>
+          <hgroup class="hero__group">
+            <p class="hero__intro">I'm Han Htet Aung</p>
+            <h1>UX Designer</h1>
+            <p>
+              Designing human-centered interfaces that power daily business
+              operations
+            </p>
+          </hgroup>
+
+          <ul class="hero__highlight">
+            <li>
+              <p class="small--emphasis">Specialize in</p>
+              <h3>Enterprise UX</h3>
+            </li>
+
+            <li>
+              <p class="small--emphasis">Simplify</p>
+              <h3>Complex workflows</h3>
+            </li>
+
+            <li>
+              <p class="small--emphasis">Scale</p>
+              <h3>Design System</h3>
+            </li>
+          </ul>
+
+          <article class="blog">
+            <img
+              class="icon"
+              src="./assets/images/foundation.svg"
+              alt="Foundation logo"
+            />
+
+            <div class="blog__content">
+              <h3>Foundation for Building Interfaces at Scale</h3>
+
               <p>
-                Designing human-centered interfaces that power daily business
-                operations
+                The principles and foundations I follow to build consistent,
+                scalable user interfaces.
               </p>
-            </hgroup>
-
-            <hr />
-
-            <article>
-              <img src="./assets/images/foundation.svg" alt="Foundation logo" />
-
-              <div>
-                <h3>Foundation for Building Interfaces at Scale</h3>
-                <p>
-                  The principles and foundations I follow to build consistent,
-                  scalable user interfaces.
-                </p>
-                <a
-                  class="link-button"
-                  href="/foundation-building-interfaces-at-scale"
-                  >Read more &#8599;</a
-                >
-              </div>
-            </article>
-          </div>
-
-          <div class="hero__highlight">
-            <div class="hero__highlight__decorate"></div>
-
-            <ul>
-              <li>
-                <p>Specialize in</p>
-                <h3>Enterprise UX</h3>
-              </li>
-
-              <li>
-                <p>Simplify</p>
-                <h3>Complex workflows</h3>
-              </li>
-
-              <li>
-                <p>Scale</p>
-                <h3>Design System</h3>
-              </li>
-            </ul>
-          </div>
+              <a
+                class="button--outline"
+                href="/foundation-building-interfaces-at-scale"
+                >Read more &#8599;</a
+              >
+            </div>
+          </article>
         </div>
       </section>
 
@@ -185,92 +174,102 @@
       </div>
 
       <!-- ══════════════════════════════ MY WORK ══════════════════════════════ -->
-      <section class="my-work">
+      <section class="work">
         <div class="container">
-          <div class="section-title-group">
+          <div class="section-title">
             <h2>Featured Work</h2>
             <img
-              src="assets/icons/my-work.svg"
+              src="/assets/icons/my-work.svg"
               alt="My Work Logo"
+              class="icon"
               height="135"
               width="110"
             />
           </div>
 
-          <ul class="my-work-list">
-            <li class="my-work-list__card">
-              <img
-                src="assets/images/case-study/mmo/mockup.png"
-                alt="MMO Mockup"
-              />
-              <div class="my-work-list__card__content">
-                <h3>MMO</h3>
+          <ul class="work__showcases">
+            <li>
+              <article class="showcase">
+                <img
+                  src="assets/images/case-study/mmo/mockup.png"
+                  alt="MMO Mockup"
+                  class="image"
+                />
+                <div class="showcase__content">
+                  <h3>MMO</h3>
 
-                <ul class="my-work-list__card__category">
-                  <li>Simplify complex workflows</li>
-                  <li>Build Prototype</li>
-                  <li>Design System</li>
-                </ul>
+                  <ul class="showcase__category">
+                    <li class="badge">Simplify complex workflows</li>
+                    <li class="badge">Build Prototype</li>
+                    <li class="badge">Design System</li>
+                  </ul>
 
-                <p>
-                  An internal portal that uses to run daily operations in
-                  hospital.
-                </p>
+                  <p>
+                    An internal portal that uses to run daily operations in
+                    hospital.
+                  </p>
 
-                <a class="link-button" href="/work/mmo"
-                  >View Case Study &#8599;</a
-                >
-              </div>
+                  <a class="button--outline" href="/work/mmo"
+                    >View Case Study &#8599;</a
+                  >
+                </div>
+              </article>
             </li>
 
-            <li class="my-work-list__card">
-              <img
-                src="assets/images/case-study/portfolio/mockup.avif"
-                alt="Portfolio Mockup"
-              />
-              <div class="my-work-list__card__content">
-                <h3>Portfolio</h3>
+            <li>
+              <article class="showcase showcase--reverse-direction">
+                <img
+                  src="assets/images/case-study/portfolio/mockup.avif"
+                  alt="Portfolio Mockup"
+                  class="image"
+                />
+                <div class="showcase__content">
+                  <h3>Portfolio</h3>
 
-                <ul class="my-work-list__card__category">
-                  <li>Research</li>
-                  <li>Web Design</li>
-                  <li>Web Development</li>
-                </ul>
+                  <ul class="showcase__category">
+                    <li class="badge">Research</li>
+                    <li class="badge">Web Design</li>
+                    <li class="badge">Web Development</li>
+                  </ul>
 
-                <p>
-                  A personal portfolio to showcase my work, process, and
-                  approach to web design and development.
-                </p>
+                  <p>
+                    A personal portfolio to showcase my work, process, and
+                    approach to web design and development.
+                  </p>
 
-                <a class="link-button" href="/work/portfolio"
-                  >View Case Study &#8599;</a
-                >
-              </div>
+                  <a class="button--outline" href="/work/portfolio"
+                    >View Case Study &#8599;</a
+                  >
+                </div>
+              </article>
             </li>
 
-            <li class="my-work-list__card">
-              <img
-                src="assets/images/case-study/skssolar/mockup.avif"
-                alt="SKS Mockup"
-              />
-              <div class="my-work-list__card__content">
-                <h3>SKS.Solar</h3>
+            <li>
+              <article class="showcase">
+                <img
+                  src="assets/images/case-study/skssolar/mockup.avif"
+                  alt="SKS Mockup"
+                  class="image"
+                />
+                <div class="showcase__content">
+                  <h3>SKS.Solar</h3>
 
-                <ul class="my-work-list__card__category">
-                  <li>Research</li>
-                  <li>Web Design</li>
-                  <li>Web Development</li>
-                </ul>
+                  <ul class="showcase__category">
+                    <li class="badge">Research</li>
+                    <li class="badge">Web Design</li>
+                    <li class="badge">Web Development</li>
+                  </ul>
 
-                <p>
-                  A website for SKS SOLAR (SALES & SERVICES) COMPANY LIMITED to
-                  showcase its history, services and completed project.
-                </p>
+                  <p>
+                    A website for SKS SOLAR (SALES & SERVICES) COMPANY LIMITED
+                    to showcase its history, services and completed project.
+                  </p>
 
-                <a class="link-button" href="/work/sks-solar"
-                  >View Case Study &#8599;</a
-                >
-              </div>
+                  <a class="button--outline" href="/work/sks-solar"
+                    >View Case Study &#8599;</a
+                  >
+                </div>
+              </article>
             </li>
           </ul>
         </div>
@@ -313,11 +312,12 @@
       <!-- ══════════════════════════════ TIMELINE ══════════════════════════════ -->
       <section class="timeline">
         <div class="container">
-          <div class="section-title-group">
+          <div class="section-title">
             <h2>Experience Overview</h2>
             <img
-              src="assets/icons/timeline.svg"
+              src="/assets/icons/timeline.svg"
               alt="Timeline Logo"
+              class="icon"
               height="36"
               width="76"
             />
@@ -327,21 +327,24 @@
             <li class="timeline__item">
               <img
                 class="timeline__icon"
-                src="assets/icons/software-developer.svg"
+                src="/assets/icons/software-developer.svg"
                 alt="Software Developer Icon"
                 width="48"
                 height="48"
               />
+
               <div class="timeline__connector">
                 <span class="timeline__dot"></span>
                 <span class="timeline__line"></span>
               </div>
+
               <div class="timeline__content">
-                <div class="timeline__period">
-                  <time class="timeline__time" datetime="2021">2021</time>
+                <div class="badge badge--outline">
+                  <time datetime="2021">2021</time>
                   &ndash;
-                  <time class="timeline__time" datetime="2022">2022</time>
+                  <time datetime="2022">2022</time>
                 </div>
+
                 <h3>Software Developer</h3>
                 <p class="timeline__description">
                   I landed my first software development role building a
@@ -354,7 +357,7 @@
             <li class="timeline__item">
               <img
                 class="timeline__icon timeline__icon-student"
-                src="assets/icons/student.svg"
+                src="/assets/icons/student.svg"
                 alt="Student Icon"
                 width="48"
                 height="48"
@@ -364,10 +367,10 @@
                 <span class="timeline__line"></span>
               </div>
               <div class="timeline__content">
-                <div class="timeline__period">
-                  <time class="timeline__time" datetime="2022">2022</time>
+                <div class="badge badge--outline">
+                  <time datetime="2022">2022</time>
                   &ndash;
-                  <time class="timeline__time" datetime="2025">2025</time>
+                  <time datetime="2025">2025</time>
                 </div>
                 <h3>Student</h3>
                 <p class="timeline__description">
@@ -381,7 +384,7 @@
             <li class="timeline__item">
               <img
                 class="timeline__icon"
-                src="assets/icons/software-developer.svg"
+                src="/assets/icons/software-developer.svg"
                 alt="Software Developer Icon"
                 width="48"
                 height="48"
@@ -391,10 +394,10 @@
                 <span class="timeline__line"></span>
               </div>
               <div class="timeline__content">
-                <div class="timeline__period">
-                  <time class="timeline__time" datetime="2022">2025</time>
+                <div class="badge badge--outline">
+                  <time datetime="2022">2025</time>
                   &ndash;
-                  <time class="timeline__time" datetime="2025">2026</time>
+                  <time datetime="2025">2026</time>
                 </div>
                 <h3>Software Developer</h3>
                 <p class="timeline__description">
@@ -407,7 +410,7 @@
             <li class="timeline__item">
               <img
                 class="timeline__icon"
-                src="assets/icons/present.svg"
+                src="/assets/icons/present.svg"
                 alt="Web Design & Develop"
                 width="48"
                 height="48"
@@ -417,8 +420,8 @@
                 <span class="timeline__line"></span>
               </div>
               <div class="timeline__content">
-                <div class="timeline__period timeline_period-present">
-                  <time class="timeline__time" datetime="2026"> Present: </time>
+                <div class="badge">
+                  <time datetime="2026"> Present: </time>
                 </div>
                 <h3>UX Designer</h3>
                 <p class="timeline__description">
@@ -469,75 +472,85 @@
       <!-- ══════════════════════════════ WHY HIRE ME ══════════════════════════════ -->
       <section class="why-hire-me">
         <div class="container">
-          <div class="section-title-group section-title-group-why-hire-me">
+          <div class="section-title section-title--vertical">
             <img
-              src="assets/icons/why-hire-me.svg"
+              src="/assets/icons/why-hire-me.svg"
               alt=""
-              class="why-hire-me__section-title-icon"
+              class="icon"
               height="125"
               width="100"
             />
             <h2>Why Hire me?</h2>
           </div>
 
-          <ol class="why-hire-me__list">
+          <ul class="why-hire-me__list">
             <li class="why-hire-me__item">
-              <div class="why-hire-me__content">
-                <h3 class="why-hire-me__title">Working Man</h3>
-                <p class="why-hire-me__description">
-                  I'm consistent on one thing: always giving my best. I take
-                  pride in doing things properly and take full ownership of
-                  everything I do. When I commit to something, I follow through.
-                </p>
-              </div>
+              <article class="why-hire-me__article">
+                <div class="why-hire-me__content">
+                  <h3><span class="heading--emphasis">1.</span> Working Man</h3>
+                  <p>
+                    I'm consistent on one thing: always giving my best. I take
+                    pride in doing things properly and take full ownership of
+                    everything I do. When I commit to something, I follow
+                    through.
+                  </p>
+                </div>
 
-              <img
-                class="why-hire-me__icon"
-                src="assets/icons/working-man.svg"
-                alt="Working Man Icon"
-                width="48"
-                height="48"
-              />
+                <img
+                  class="icon--lg"
+                  src="/assets/icons/working-man.svg"
+                  alt="Working Man Icon"
+                  width="48"
+                  height="48"
+                />
+              </article>
             </li>
 
             <li class="why-hire-me__item">
-              <div class="why-hire-me__content">
-                <h3 class="why-hire-me__title">Detail-oriented Person</h3>
-                <p class="why-hire-me__description">
-                  I pay close attention to every detail, because the little
-                  things matter. I believe the difference between good work and
-                  great work lives in the details.
-                </p>
-              </div>
-
-              <img
-                class="why-hire-me__icon"
-                src="assets/icons/detail-oriented-person.svg"
-                alt="Detail-oriented Person Icon"
-                width="48"
-                height="48"
-              />
+              <article class="why-hire-me__article">
+                <div class="why-hire-me__content">
+                  <h3>
+                    <span class="heading--emphasis">2.</span> Detail-oriented
+                    Person
+                  </h3>
+                  <p>
+                    I pay close attention to every detail, because the little
+                    things matter. I believe the difference between good work
+                    and great work lives in the details.
+                  </p>
+                </div>
+                <img
+                  class="icon--lg"
+                  src="/assets/icons/detail-oriented-person.svg"
+                  alt="Detail-oriented Person Icon"
+                  width="48"
+                  height="48"
+                />
+              </article>
             </li>
 
             <li class="why-hire-me__item">
-              <div class="why-hire-me__content">
-                <h3 class="why-hire-me__title">Positive Thinker</h3>
-                <p class="why-hire-me__description">
-                  A positive mindset helps me create better work and stronger
-                  collaborations. I focus on solutions rather than problems.
-                  Good energy builds great work.
-                </p>
-              </div>
-
-              <img
-                class="why-hire-me__icon"
-                src="assets/icons/positive-thinker.svg"
-                alt="Positive Thinker Icon"
-                width="48"
-                height="48"
-              />
+              <article class="why-hire-me__article">
+                <div class="why-hire-me__content">
+                  <h3>
+                    <span class="heading--emphasis">3.</span> Positive Thinker
+                  </h3>
+                  <p class="why-hire-me__description">
+                    A positive mindset helps me create better work and stronger
+                    collaborations. I focus on solutions rather than problems.
+                    Good energy builds great work.
+                  </p>
+                </div>
+                <img
+                  class="icon--lg"
+                  src="/assets/icons/positive-thinker.svg"
+                  alt="Positive Thinker Icon"
+                  width="48"
+                  height="48"
+                />
+              </article>
             </li>
-          </ol>
+          </ul>
         </div>
       </section>
 
@@ -578,25 +591,28 @@
       <!-- ══════════════════════════════ CTA — CALL ME, SINGAPORE ══════════════════════════════ -->
       <section class="cta">
         <div class="container">
-          <h2>Call me, Singapore</h2>
+          <article class="cta__article">
+            <h2>Call me, Singapore</h2>
 
-          <p class="cta__description">
-            I'm looking for a UX Designer role in Singapore where I can simplify
-            complex workflows and design intuitive experiences for enterprise
-            products. If you're looking for someone who is hardworking,
-            detail-oriented, and positive-minded, then I’m the one for you.
-          </p>
+            <p class="cta__description">
+              I'm looking for a UX Designer role in Singapore where I can
+              simplify complex workflows and design intuitive experiences for
+              enterprise products.
+            </p>
 
-          <a class="hire-me-button" href="/hire-me">
-            <span>&#9758;</span>
-            Hire Me
-            <span>&#9756;</span>
-          </a>
-        </div>
+            <p class="cta__description">
+              If you're looking for someone who is hardworking, detail-oriented,
+              and positive-minded, then I’m the one for you.
+            </p>
 
-        <div class="cta__illustration">
+            <a class="button--primary" href="/hire-me">
+              <span>&#9758;</span>
+              Hire Me
+              <span>&#9756;</span>
+            </a>
+          </article>
           <img
-            class="cta__image"
+            class="icon--lg"
             src="/assets/icons/merlion.svg"
             alt="Merlion illustration"
           />
@@ -605,81 +621,94 @@
     </main>
 
     <!-- ══════════════════════════════ FOOTER ══════════════════════════════ -->
-    <footer class="footer">
+    <footer class="footer footer--secondary">
       <div class="container">
-        <div class="footer__first__section">
+        <div class="footer__content">
           <div class="footer__profile">
-            <img src="assets/icons/profile_logo.svg" alt="Profile Icon" />
+            <img
+              class="logo"
+              src="/assets/icons/profile_logo.svg"
+              alt="Profile Icon"
+            />
             <p>
               Thank You <br />
               for Visiting
             </p>
           </div>
 
-          <nav class="footer-nav" aria-label="Sitemap">
-            <div>
-              <span class="footer-nav__header">Sitemap</span>
-              <ul class="footer-nav__list">
-                <li class="footer-nav__item">
-                  <a class="footer-nav__link" href="/">Home</a>
-                </li>
-                <li class="footer-nav__item">
-                  <a class="footer-nav__link" href="/about">About</a>
-                </li>
-                <li class="footer-nav__item">
-                  <a class="footer-nav__link" href="/process">Process</a>
-                </li>
-                <li class="footer-nav__item">
-                  <a class="footer-nav__link" href="/credits">Credits</a>
-                </li>
-                <li class="footer-nav__item">
-                  <a class="footer-nav__link" href="/hire-me">Hire me</a>
-                </li>
-                <li class="footer-nav__item">
-                  <a class="footer-nav__link" href="/thank-you">Thank you</a>
-                </li>
-              </ul>
+          <div class="footer__navigation">
+            <div class="foooter__sitemap">
+              <span class="body">Sitemap</span>
+              <nav class="nav nav--vertical">
+                <ul>
+                  <li>
+                    <a href="/" class="button--link">Home</a>
+                  </li>
+                  <li>
+                    <a href="/about" class="button--link">About</a>
+                  </li>
+                  <li>
+                    <a href="/process" class="button--link">Process</a>
+                  </li>
+                  <li>
+                    <a href="/credits" class="button--link">Credits</a>
+                  </li>
+                  <li>
+                    <a href="/hire-me" class="button--link">Hire me</a>
+                  </li>
+                  <li>
+                    <a href="/thank-you" class="button--link">Thank you</a>
+                  </li>
+                </ul>
+              </nav>
             </div>
 
-            <div>
-              <span class="footer-nav__header">Get in touch:</span>
-              <ul class="footer-social__list">
-                <li class="footer-social__item">
-                  <a
-                    class="footer-social__link"
-                    href="mailto:hanhtetaung.dev@gmail.com"
-                  >
-                    <img src="assets/icons/email.svg" alt="Email Icon" />
-                  </a>
-                </li>
-                <li class="footer-social__item">
-                  <a
-                    class="footer-social__link"
-                    href="https://github.com/hanhtetaung/"
-                    target="_blank"
-                    rel="noopener"
-                  >
-                    <img src="assets/icons/github.svg" alt="Github Icon"
-                  /></a>
-                </li>
-                <li class="footer-social__item">
-                  <a
-                    class="footer-social__link"
-                    href="https://www.linkedin.com/in/han-htet-aung/"
-                    target="_blank"
-                    rel="noopener"
-                  >
-                    <img src="assets/icons/linkedin.svg" alt="Linkedin Icon"
-                  /></a>
-                </li>
-              </ul>
+            <div class="footer__social">
+              <span class="body">Get in touch:</span>
+              <nav class="nav nav--horizontal">
+                <ul>
+                  <li>
+                    <a href="mailto:hanhtetaung.dev@gmail.com">
+                      <img
+                        src="/assets/icons/email.svg"
+                        alt="Email Icon"
+                        class="icon--sm"
+                      />
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://github.com/hanhtetaung/"
+                      target="_blank"
+                      rel="noopener"
+                    >
+                      <img
+                        src="/assets/icons/github.svg"
+                        alt="Github Icon"
+                        class="icon--sm"
+                    /></a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.linkedin.com/in/han-htet-aung/"
+                      target="_blank"
+                      rel="noopener"
+                    >
+                      <img
+                        src="/assets/icons/linkedin.svg"
+                        alt="Linkedin Icon"
+                        class="icon--sm"
+                    /></a>
+                  </li>
+                </ul>
+              </nav>
             </div>
-          </nav>
+          </div>
         </div>
 
         <p class="footer__copy">
           © Han Htet Aung 2026 |
-          <a class="footer__credits-link" href="/credits">Credits</a>
+          <a class="button--link" href="/credits">Credits</a>
         </p>
       </div>
     </footer>

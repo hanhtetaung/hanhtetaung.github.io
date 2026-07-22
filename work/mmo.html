@@ -33,7 +33,7 @@
     />
     <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
 
-    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="/main.css" />
     <script
       defer
       src="https://cloud.umami.is/script.js"
@@ -43,412 +43,510 @@
   <body>
     <!-- ══════════════════════════════ HEADER ══════════════════════════════ -->
     <header class="header">
-      <a class="header__logo" href="/">
-        <img
-          src="/assets/icons/profile_logo.svg"
-          alt="Han Htet Aung"
-          width="50"
-          height="50"
-        />
-      </a>
-
-      <nav class="nav">
-        <a class="nav__link" href="/"
-          >Home
-          <svg
-            class="draw-circle"
-            width="66"
-            height="32"
-            viewBox="0 0 66 32"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M24.5 4.87939C53 -1.62061 65.5 9.48573 65.5 17.3794C65.5 25.9398 49.397 31.3794 32 31.3794C14.603 31.3794 0.5 24.4398 0.5 15.8794C0.5 7.31898 10 5.8794 27.5 1.8794C28.855 1.8794 34.6901 0.421493 36 0.503179"
-              stroke="#be185d"
-            />
-          </svg>
-        </a>
-        <a class="nav__link" href="/about"
-          >About
-          <svg
-            class="draw-circle"
-            width="66"
-            height="32"
-            viewBox="0 0 66 32"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M24.5 4.87939C53 -1.62061 65.5 9.48573 65.5 17.3794C65.5 25.9398 49.397 31.3794 32 31.3794C14.603 31.3794 0.5 24.4398 0.5 15.8794C0.5 7.31898 10 5.8794 27.5 1.8794C28.855 1.8794 34.6901 0.421493 36 0.503179"
-              stroke="#be185d"
-            />
-          </svg>
+      <div class="container">
+        <a href="/">
+          <img
+            src="/assets/icons/profile_logo.svg"
+            alt="Han Htet Aung"
+            class="logo"
+            width="102"
+            height="73"
+          />
         </a>
 
-        <a class="hire-me-button" href="/hire-me">
-          <span>&#9758;</span>
-          Hire Me
-          <span>&#9756;</span>
-        </a>
-      </nav>
-    </header>
-
-    <main class="case-study">
-      <section class="case-study__hero">
-        <div class="container">
-          <div class="case-study__hero__card">
-            <span>Case Study</span>
-            <h1>MMO</h1>
-            <p>
-              An internal portal that uses to run daily operations in hospital.
-            </p>
-
-            <ul class="case-study__hero_overview">
+        <div class="header__navigation">
+          <nav class="nav nav--horizontal">
+            <ul>
               <li>
-                <p><span>Role:</span> UX Designer</p>
+                <a href="/" class="link-drawing"
+                  >Home
+                  <svg>
+                    <use href="/assets/sprite.svg#oval-line"></use>
+                  </svg>
+                </a>
               </li>
 
               <li>
-                <span>Scope: </span>
-
-                <ul>
-                  <li>Gather requirements</li>
-                  <li>Simplify complex workflows</li>
-                  <li>Build Prototype</li>
-                  <li>Design System</li>
-                  <li>Developer Handoff</li>
-                </ul>
+                <a href="/about" class="link-drawing"
+                  >About
+                  <svg>
+                    <use href="/assets/sprite.svg#oval-line"></use>
+                  </svg>
+                </a>
               </li>
             </ul>
-          </div>
+          </nav>
 
-          <img
-            src="../assets/images/case-study/mmo/mockup.png"
-            alt="Final Product Screenshot"
-            width="1692"
-            height="886"
-          />
+          <a class="button--primary" href="/hire-me">
+            <span>&#9758;</span>
+            Hire Me
+            <span>&#9756;</span>
+          </a>
         </div>
-      </section>
+      </div>
+    </header>
 
-      <!-- Line Divider 
-      <div class="cloud-divider">
-        <svg
-          viewBox="0 0 1200 80"
-          xmlns="http://www.w3.org/2000/svg"
-          preserveAspectRatio="none"
-        >
-          <path
-            d="
-              M0,80
-              L0,40
-              Q50,10 100,35
-              Q130,0 170,20
-              Q210,-10 250,25
-              Q290,0 330,30
-              Q370,5 410,28
-              Q450,-5 490,22
-              Q530,2 570,30
-              Q610,0 650,25
-              Q690,5 730,28
-              Q770,-5 810,22
-              Q850,2 890,30
-              Q930,0 970,25
-              Q1010,5 1050,28
-              Q1090,-5 1130,22
-              Q1160,5 1200,30
-              L1200,80
-              Z
-              "
-            fill="var(--color-bg-secondary)"
-          />
-        </svg>
-      </div> -->
-
-      <div class="cloud-divider"></div>
-
-      <section class="case-study__background">
+    <main>
+      <section>
         <div class="container">
-          <h2>About the Business</h2>
+          <article class="article article--row">
+            <div class="article__media">
+              <img
+                src="../assets/images/case-study/mmo/mockup.png"
+                alt="Final Product Screenshot"
+                class="image"
+                width="1692"
+                height="886"
+              />
+            </div>
 
-          <p>
-            MMO hospital is a private hospital. With over 50 staff including
-            doctors, nurse, pharmacist, it provides outpatient and inpatient
-            care, emergency services, pharmacy services, and medicine inventory
-            management.
-          </p>
+            <div class="article__content">
+              <div class="article__header">
+                <span class="small--emphasis">Case Study</span>
+                <h1>MMO</h1>
+              </div>
+
+              <div class="article__body">
+                <p>
+                  An internal portal that uses to run daily operations in
+                  hospital.
+                </p>
+
+                <div>
+                  <span class="small--emphasis">Role:</span>
+                  <p>UX Designer</p>
+                </div>
+
+                <div>
+                  <span class="small--emphasis">Scope: </span>
+                  <ul class="article__list">
+                    <li>
+                      <p>Gather requirements</p>
+                    </li>
+                    <li>
+                      <p>Simplify complex workflows</p>
+                    </li>
+                    <li>
+                      <p>Build Prototype</p>
+                    </li>
+                    <li>
+                      <p>Design System</p>
+                    </li>
+                    <li>
+                      <p>Developer Handoff</p>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </article>
         </div>
       </section>
 
-      <section class="case-study__background">
+      <section>
         <div class="container">
-          <h2>Voices from the field</h2>
+          <article class="article">
+            <div class="article__header">
+              <h2>About the Business</h2>
+            </div>
 
-          <ul>
-            <li>
-              “It takes days to prepare monthly sales and inventory reports.” -
-              Business owner
-            </li>
-            <li>
-              “Patient registration takes too many steps.” - Front desk staff
-            </li>
-            <li>
-              "I need an activity history for every transaction." - Business
-              owner
-            </li>
-            <li>“I hate searching for medicines every time.” - Pharmacist</li>
-            <li>
-              “It's difficult to trace who adjusted stock.” - Warehouse staff
-            </li>
-            <li>
-              “I want different permissions for different roles.” - Business
-              owner
-            </li>
-          </ul>
+            <div class="article__body">
+              <p>
+                MMO hospital is a private hospital. With over 50 staff including
+                doctors, nurse, pharmacist, it provides outpatient and inpatient
+                care, emergency services, pharmacy services, and medicine
+                inventory management.
+              </p>
+            </div>
+          </article>
         </div>
       </section>
 
-      <section class="case-study__designing-workflow">
+      <section class="section">
+        <div class="container">
+          <article class="article">
+            <div class="article__header">
+              <h2>Voices from the field</h2>
+            </div>
+
+            <ul class="article__list">
+              <li>
+                <p>
+                  “It takes days to prepare monthly sales and inventory
+                  reports.” -
+                  <span class="small--emphasis"> Business owner </span>
+                </p>
+              </li>
+              <li>
+                <p>
+                  “Patient registration takes too many steps.” -
+                  <span class="small--emphasis"> Front desk staff </span>
+                </p>
+              </li>
+              <li>
+                <p>
+                  "I need an activity history for every transaction." -
+                  <span class="small--emphasis"> Business owner </span>
+                </p>
+              </li>
+              <li>
+                <p>
+                  “I hate searching for medicines every time.” -
+                  <span class="small--emphasis"> Pharmacist </span>
+                </p>
+              </li>
+              <li>
+                <p>
+                  “It's difficult to trace who adjusted stock.” -
+                  <span class="small--emphasis"> Warehouse staff </span>
+                </p>
+              </li>
+              <li>
+                <p>
+                  “I want different permissions for different roles.” -
+                  <span class="small--emphasis"> Business owner </span>
+                </p>
+              </li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
         <div class="container">
           <h2>Designing workflows</h2>
 
-          <article>
-            <h3>Select similar key insights</h3>
+          <article class="article">
+            <div class="article__header">
+              <h3>Select similar key insights</h3>
+            </div>
 
-            <ul>
+            <div class="article__body">
+              <ul class="article__list">
+                <li>
+                  <p>
+                    “We sell medicines and medical supplies to patients every
+                    day.” -
+                    <span class="small--emphasis"> Business owner </span>
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    "Staff need to check stock before completing a sale." -
+                    <span class="small--emphasis"> Pharmacist </span>
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    "Patients expect a fast checkout with minimal waiting." -
+                    <span class="small--emphasis"> Front desk Staff </span>
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    "Every transaction must be recorded for billing and
+                    auditing." -
+                    <span class="small--emphasis"> Finance manager </span>
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    "We need to track who sold each item and when." -
+                    <span class="small--emphasis"> Business owner </span>
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="article">
+            <div class="article__header">
+              <h3>Sell Medical items</h3>
+            </div>
+
+            <div class="article__body">
+              <p>
+                Start → Scan item barcode → Review total → Receive payment →
+                Return Changes → Complete
+              </p>
+            </div>
+          </article>
+
+          <article class="article">
+            <div class="article__header">
+              <h3>Edge case</h3>
+            </div>
+
+            <ul class="article__list">
               <li>
-                “We sell medicines and medical supplies to patients every day.”
-                - Business owner
+                <p>What if the cashier doesn’t have inficient cash?</p>
               </li>
               <li>
-                “Staff need to check stock before completing a sale.” —
-                Pharmacist
+                <p>What if the printer is not working?</p>
               </li>
               <li>
-                “Patients expect a fast checkout with minimal waiting.” — Front
-                desk Staff
-              </li>
-              <li>
-                “Every transaction must be recorded for billing and auditing.” —
-                Finance manager
-              </li>
-              <li>
-                “We need to track who sold each item and when.” — Business owner
+                <p>What if the barcode scanner is not working?</p>
               </li>
             </ul>
           </article>
+        </div>
+      </section>
 
-          <article>
-            <h3>Sell Medical items</h3>
-            <p>
-              Start → Scan item barcode → Review total → Receive payment →
-              Return Changes → Complete
-            </p>
+      <section>
+        <div class="container">
+          <div class="section-title">
+            <h2>Building Interface for selling medical items workflow</h2>
+          </div>
+
+          <article class="article">
+            <div class="article__body">
+              <p>
+                To complete the pirmary workflow, four interfaces are needed at
+                first.
+              </p>
+            </div>
           </article>
 
-          <article>
-            <h3>Edge case</h3>
-            <ul>
-              <li>What if the cashier doesn’t have inficient cash?</li>
+          <div class="stack">
+            <article class="article article--row">
+              <div class="article__header">
+                <h3>1st interface</h3>
+              </div>
+
+              <div class="article__body">
+                <p>
+                  Start sale, Review current staff. Review printer status,
+                  barcode status. Clicking start sale create new unique id and
+                  redirect to next screen with this id.
+                </p>
+
+                <img
+                  src="../assets/images/case-study/mmo/1st-stage.png"
+                  alt="Inspiration Collection"
+                  width="1398"
+                  height="1236"
+                />
+              </div>
+            </article>
+
+            <article class="article article--row">
+              <div class="article__header">
+                <h3>2nd interface</h3>
+              </div>
+
+              <div class="article__body">
+                <p>
+                  Scan barcode item, enter manual barcode item, review total,
+                  items scanned, review total, enter cash received, confirm
+                  payment. Confirm payment go to 3rd interface.
+                </p>
+
+                <img
+                  src="../assets/images/case-study/mmo/2nd-stage.png"
+                  alt="Wireframe Screenshot"
+                  width="1398"
+                  height="1366"
+                />
+              </div>
+            </article>
+
+            <article class="article article--row">
+              <div class="article__header">
+                <h3>3rd interface</h3>
+              </div>
+
+              <div class="article__body">
+                <p>
+                  Review changes, review the receipt printed, Complete sale →
+                  print receipt. it go to final one.
+                </p>
+
+                <img
+                  src="../assets/images/case-study/mmo/3rd-stage.png"
+                  alt="Design Foundation Screenshot"
+                  width="1474"
+                  height="864"
+                />
+              </div>
+            </article>
+
+            <article class="article article--row">
+              <div class="article__header">
+                <h3>final one</h3>
+              </div>
+
+              <div class="article__body">
+                <p>Show complete sale, Go back to home or Next Sale.</p>
+                <img
+                  src="../assets/images/case-study/mmo/final-stage.png"
+                  alt="Design Foundation Screenshot"
+                  width="1474"
+                  height="864"
+                />
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container">
+          <article class="article">
+            <div class="article__header">
+              <h2>100+ workflows in the system</h2>
+            </div>
+
+            <ul class="article__list">
               <li>
-                What if the printer is not working? → It is done for this day
+                <p>Register new employee</p>
               </li>
-              <li>What if the barcode scanner is not working?</li>
+              <li>
+                <p>Generate Inventory Report</p>
+              </li>
+              <li>
+                <p>Request items from warehouse</p>
+              </li>
             </ul>
           </article>
         </div>
       </section>
 
-      <section class="case-study__process">
+      <section>
         <div class="container">
-          <h2>Building Interface for selling medical items workflow</h2>
-          <p>
-            To complete the pirmary workflow, four interfaces are needed at
-            first.
-          </p>
+          <article class="article">
+            <div class="article__header">
+              <h2>One Design System, 100+ Workflows</h2>
+            </div>
 
-          <article>
-            <h3>1st interface</h3>
-            <div>
+            <div class="article__body">
               <p>
-                Start sale, Review current staff. Review printer status, barcode
-                status. Clicking start sale create new unique id and redirect to
-                next screen with this id.
+                A design system keeps interfaces consistent, reusable, and
+                easier to scale as the product grows to 100+ workflows. For
+                example, the same button, input, table, and form patterns are
+                reused across patient registration, inventory, and reporting
+                instead of being redesigned for each workflow.
               </p>
 
-              <img
-                src="../assets/images/case-study/mmo/1st-stage.png"
-                alt="Inspiration Collection"
-                width="1398"
-                height="1236"
-              />
-            </div>
-          </article>
-          <article>
-            <h3>2nd interface</h3>
-            <div>
               <p>
-                Scan barcode item, enter manual barcode item, review total,
-                items scanned, review total, enter cash received, confirm
-                payment. Confirm payment go to 3rd interface.
+                The foundations behind my design approach for scalable
+                interfaces.
               </p>
 
-              <img
-                src="../assets/images/case-study/mmo/2nd-stage.png"
-                alt="Wireframe Screenshot"
-                width="1398"
-                height="1366"
-              />
-            </div>
-          </article>
-          <article>
-            <h3>3rd interface</h3>
-            <div>
-              <p>
-                Review changes, review the receipt printed, Complete sale →
-                print receipt. it go to final one.
-              </p>
-
-              <img
-                src="../assets/images/case-study/mmo/3rd-stage.png"
-                alt="Design Foundation Screenshot"
-                width="1474"
-                height="864"
-              />
-            </div>
-          </article>
-          <article>
-            <h3>final one</h3>
-            <div>
-              <p>Show complete sale, Go back to home or Next Sale.</p>
-              <img
-                src="../assets/images/case-study/mmo/final-stage.png"
-                alt="Design Foundation Screenshot"
-                width="1474"
-                height="864"
-              />
+              <a
+                href="/foundation-building-interfaces-at-scale"
+                class="button--link"
+                >Read the article</a
+              >
             </div>
           </article>
         </div>
       </section>
 
-      <section class="case-study__designing-workflow">
+      <section>
         <div class="container">
-          <h2>100+ workflows in the system</h2>
-          <ul>
-            <li>Register new employee</li>
-            <li>Generate Inventory Report</li>
-            <li>Request items from warehouse</li>
-          </ul>
-        </div>
-      </section>
+          <article class="article">
+            <div class="article__header">
+              <h2>Keep Listening the voices</h2>
+            </div>
 
-      <section class="case-study__designing-design-system">
-        <div class="container">
-          <h2>One Design System, 100+ Workflows</h2>
-          <p>
-            A design system keeps interfaces consistent, reusable, and easier to
-            scale as the product grows to 100+ workflows. For example, the same
-            button, input, table, and form patterns are reused across patient
-            registration, inventory, and reporting instead of being redesigned
-            for each workflow.
-          </p>
-
-          <p>
-            The foundations behind my design approach for scalable interfaces.
-          </p>
-          <a href="/foundation-building-interfaces-at-scale"
-            >Read the article >></a
-          >
-        </div>
-      </section>
-
-      <section class="case-study__designing-workflow">
-        <div class="container">
-          <h2>Keep Listening the voices</h2>
-          <p>The system continues to grow as users' needs change.</p>
+            <div class="article__body">
+              <p>The system continues to grow as users' needs change.</p>
+            </div>
+          </article>
         </div>
       </section>
     </main>
 
     <!-- ══════════════════════════════ FOOTER ══════════════════════════════ -->
 
-    <footer class="footer footer-primary-background">
+    <footer class="footer">
       <div class="container">
-        <section class="footer__first__section">
+        <div class="footer__content">
           <div class="footer__profile">
-            <img src="../assets/icons/profile_logo.svg" alt="Profile Icon" />
+            <img
+              class="logo"
+              src="/assets/icons/profile_logo.svg"
+              alt="Profile Icon"
+            />
             <p>
               Thank You <br />
               for Visiting
             </p>
           </div>
 
-          <nav class="footer-nav" aria-label="Sitemap">
-            <div>
-              <span class="footer-nav__header">Sitemap</span>
-              <ul class="footer-nav__list">
-                <li class="footer-nav__item">
-                  <a class="footer-nav__link" href="/">Home</a>
-                </li>
-                <li class="footer-nav__item">
-                  <a class="footer-nav__link" href="/about">About</a>
-                </li>
-                <li class="footer-nav__item">
-                  <a class="footer-nav__link" href="/process">Process</a>
-                </li>
-                <li class="footer-nav__item">
-                  <a class="footer-nav__link" href="/credits">Credits</a>
-                </li>
-                <li class="footer-nav__item">
-                  <a class="footer-nav__link" href="../hire-me">Hire me</a>
-                </li>
-                <li class="footer-nav__item">
-                  <a class="footer-nav__link" href="../thank-you">Thank you</a>
-                </li>
-              </ul>
+          <div class="footer__navigation">
+            <div class="foooter__sitemap">
+              <span class="body">Sitemap</span>
+              <nav class="nav nav--vertical">
+                <ul>
+                  <li>
+                    <a href="/" class="button--link">Home</a>
+                  </li>
+                  <li>
+                    <a href="/about" class="button--link">About</a>
+                  </li>
+                  <li>
+                    <a href="/process" class="button--link">Process</a>
+                  </li>
+                  <li>
+                    <a href="/credits" class="button--link">Credits</a>
+                  </li>
+                  <li>
+                    <a href="/hire-me" class="button--link">Hire me</a>
+                  </li>
+                  <li>
+                    <a href="/thank-you" class="button--link">Thank you</a>
+                  </li>
+                </ul>
+              </nav>
             </div>
 
-            <div>
-              <span class="footer-nav__header">Get in touch:</span>
-              <ul class="footer-social__list">
-                <li class="footer-social__item">
-                  <a
-                    class="footer-social__link"
-                    href="mailto:hanhtetaung.dev@gmail.com"
-                  >
-                    <img src="../assets/icons/email.svg" alt="Email Icon" />
-                  </a>
-                </li>
-                <li class="footer-social__item">
-                  <a
-                    class="footer-social__link"
-                    href="https://github.com/hanhtetaung/"
-                    target="_blank"
-                    rel="noopener"
-                  >
-                    <img src="../assets/icons/github.svg" alt="Github Icon"
-                  /></a>
-                </li>
-                <li class="footer-social__item">
-                  <a
-                    class="footer-social__link"
-                    href="https://www.linkedin.com/in/han-htet-aung/"
-                    target="_blank"
-                    rel="noopener"
-                  >
-                    <img src="../assets/icons/linkedin.svg" alt="Linkedin Icon"
-                  /></a>
-                </li>
-              </ul>
+            <div class="footer__social">
+              <span class="body">Get in touch:</span>
+              <nav class="nav nav--horizontal">
+                <ul>
+                  <li>
+                    <a href="mailto:hanhtetaung.dev@gmail.com">
+                      <img
+                        src="/assets/icons/email.svg"
+                        alt="Email Icon"
+                        class="icon--sm"
+                      />
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://github.com/hanhtetaung/"
+                      target="_blank"
+                      rel="noopener"
+                    >
+                      <img
+                        src="/assets/icons/github.svg"
+                        alt="Github Icon"
+                        class="icon--sm"
+                    /></a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.linkedin.com/in/han-htet-aung/"
+                      target="_blank"
+                      rel="noopener"
+                    >
+                      <img
+                        src="/assets/icons/linkedin.svg"
+                        alt="Linkedin Icon"
+                        class="icon--sm"
+                    /></a>
+                  </li>
+                </ul>
+              </nav>
             </div>
-          </nav>
-        </section>
+          </div>
+        </div>
 
         <p class="footer__copy">
           © Han Htet Aung 2026 |
-          <a class="footer__credits-link" href="/credits">Credits</a>
+          <a class="button--link" href="/credits">Credits</a>
         </p>
       </div>
     </footer>

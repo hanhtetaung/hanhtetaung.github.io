@@ -1,0 +1,179 @@
+@use "../breakpoints";
+
+.container {
+  width: 80%;
+  margin-inline: auto;
+}
+
+.nav {
+  & ul {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+
+    & a {
+      text-decoration: none;
+      align-self: center;
+    }
+  }
+
+  &--horizontal {
+    & ul {
+      gap: 1rem;
+    }
+  }
+
+  &--vertical {
+    & ul {
+      flex-direction: column;
+    }
+  }
+}
+
+.section-title {
+  display: flex;
+  gap: 1rem;
+
+  & img {
+    @include breakpoints.phone {
+      display: none;
+    }
+  }
+
+  &--vertical {
+    flex-direction: column;
+    width: fit-content;
+    align-items: center;
+    line-height: 2rem;
+    margin-bottom: 10rem;
+  }
+}
+
+.article {
+  display: flex;
+  flex-direction: column;
+  padding-block: 1rem;
+
+  &--row {
+    display: grid;
+    grid-template-columns: 1fr 2.5fr;
+    gap: 1rem;
+
+    @include breakpoints.phone {
+      display: flex;
+    }
+  }
+
+  &__header {
+    margin-bottom: 0.5rem;
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  &__content {
+    order: 1;
+
+    @include breakpoints.phone {
+      margin-top: 3rem;
+    }
+  }
+
+  &__media {
+    order: 2;
+
+    @include breakpoints.phone {
+      order: 1;
+    }
+  }
+
+  &__list {
+    padding-inline: 1rem;
+  }
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+  margin-block: 5rem;
+
+  > * {
+    border-block: 1px dashed var(--color-text);
+  }
+}
+
+.grid-2-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+
+  @include breakpoints.phone {
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+  }
+}
+
+.blog {
+  display: flex;
+  align-items: start;
+  padding: 2rem;
+  gap: 2rem;
+
+  @include breakpoints.phone {
+    padding: 1rem;
+  }
+
+  @include breakpoints.watch {
+    padding: 0rem;
+    flex-direction: column;
+  }
+
+  &__content {
+    max-width: 80ch;
+  }
+
+  & .icon {
+    margin-top: 1rem;
+  }
+
+  & .button--outline {
+    margin-top: 1.2rem;
+  }
+}
+
+.showcase {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--color-text);
+  padding-block: 5rem;
+  gap: 10rem;
+
+  &--reverse-direction {
+    flex-direction: row-reverse;
+  }
+
+  @include breakpoints.phone {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  &__category {
+    display: flex;
+    list-style-type: none;
+    flex-wrap: wrap;
+    padding: 0;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    font-size: var(--small);
+  }
+
+  & .button--outline {
+    margin-top: 2rem;
+  }
+}

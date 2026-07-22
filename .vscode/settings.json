@@ -1,0 +1,23 @@
+{
+  "liveSassCompile.settings.formats": [
+    {
+      "format": "expanded",
+      "extensionName": ".css",
+      "savePath": "/"
+    }
+  ],
+  "liveSassCompile.settings.generateMap": false,
+  "liveServer.settings.mount": [
+    [
+      "/foundation-building-interfaces-at-scale",
+      "./foundation-building-interfaces-at-scale.html"
+    ],
+    ["/about", "./about.html"],
+    ["/credits", "./credits.html"],
+    ["/hire-me", "./hire-me.html"],
+    ["/thank-you", "./thank-you.html"],
+    ["/work/mmo", "./work/mmo.html"],
+    ["/work/portfolio", "./work/portfolio.html"],
+    ["/work/sks-solar", "./work/sks-solar.html"]
+  ]
+}

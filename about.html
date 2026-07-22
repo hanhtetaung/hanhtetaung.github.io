@@ -32,7 +32,7 @@
       crossorigin
     />
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="/main.css" />
     <script
       defer
       src="https://cloud.umami.is/script.js"
@@ -42,55 +42,47 @@
   <body>
     <!-- ══════════════════════════════ HEADER ══════════════════════════════ -->
     <header class="header">
-      <a class="header__logo" href="/">
-        <img
-          src="/assets/icons/profile_logo.svg"
-          alt="Han Htet Aung"
-          width="50"
-          height="50"
-        />
-      </a>
-
-      <nav class="nav">
-        <a class="nav__link" href="/"
-          >Home
-          <svg
-            class="draw-circle"
-            width="66"
-            height="32"
-            viewBox="0 0 66 32"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M24.5 4.87939C53 -1.62061 65.5 9.48573 65.5 17.3794C65.5 25.9398 49.397 31.3794 32 31.3794C14.603 31.3794 0.5 24.4398 0.5 15.8794C0.5 7.31898 10 5.8794 27.5 1.8794C28.855 1.8794 34.6901 0.421493 36 0.503179"
-              stroke="#be185d"
-            />
-          </svg>
-        </a>
-        <a class="nav__link" href="/about"
-          >About
-          <svg
-            class="draw-circle"
-            width="66"
-            height="32"
-            viewBox="0 0 66 32"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M24.5 4.87939C53 -1.62061 65.5 9.48573 65.5 17.3794C65.5 25.9398 49.397 31.3794 32 31.3794C14.603 31.3794 0.5 24.4398 0.5 15.8794C0.5 7.31898 10 5.8794 27.5 1.8794C28.855 1.8794 34.6901 0.421493 36 0.503179"
-              stroke="#be185d"
-            />
-          </svg>
+      <div class="container">
+        <a href="/">
+          <img
+            src="/assets/icons/profile_logo.svg"
+            alt="Han Htet Aung"
+            class="logo"
+            width="102"
+            height="73"
+          />
         </a>
 
-        <a class="hire-me-button" href="/hire-me">
-          <span>&#9758;</span>
-          Hire Me
-          <span>&#9756;</span>
-        </a>
-      </nav>
+        <div class="header__navigation">
+          <nav class="nav nav--horizontal">
+            <ul>
+              <li>
+                <a href="/" class="link-drawing"
+                  >Home
+                  <svg>
+                    <use href="assets/sprite.svg#oval-line"></use>
+                  </svg>
+                </a>
+              </li>
+
+              <li>
+                <a href="/about" class="link-drawing"
+                  >About
+                  <svg>
+                    <use href="assets/sprite.svg#oval-line"></use>
+                  </svg>
+                </a>
+              </li>
+            </ul>
+          </nav>
+
+          <a class="button--primary" href="/hire-me">
+            <span>&#9758;</span>
+            Hire Me
+            <span>&#9756;</span>
+          </a>
+        </div>
+      </div>
     </header>
 
     <main>
@@ -99,20 +91,26 @@
         <div class="container">
           <h1>About</h1>
 
-          <div class="about__content">
-            <img src="assets/images/about-profile.avif" alt="profile" />
+          <article class="about__article">
+            <img
+              class="logo"
+              src="assets/images/about-profile.avif"
+              alt="profile"
+              height="162"
+              width="169"
+            />
 
-            <div class="about__info">
+            <div class="about__content">
               <p>
                 I'm Han Htet Aung, a web designer & developer who loves creating
                 unique experiences on the web.
               </p>
               <p>
-                Currently based in Chiang Mai, Thailand — open to work and
+                Currently based in South East Asia — open to work and
                 relocation.
               </p>
             </div>
-          </div>
+          </article>
         </div>
       </section>
 
@@ -153,10 +151,11 @@
       <!-- ══════════════════════════════ Random Facts ══════════════════════════════ -->
       <section class="random-facts">
         <div class="container">
-          <div class="section-title-group">
+          <div class="section-title">
             <h2>Random Facts</h2>
             <img
-              src="assets/icons/random-facts.svg"
+              class="icon"
+              src="/assets/icons/random-facts.svg"
               alt="Random Fact Logo"
               height="103"
               width="82"
@@ -166,29 +165,45 @@
           <ul class="random-facts__list">
             <li>
               <figure>
-                <img src="assets/icons/watching-bird.svg" alt="Watching Bird" />
-                <figcaption>I love watching birds</figcaption>
+                <img
+                  class="icon--lg"
+                  src="/assets/icons/watching-bird.svg"
+                  alt="Watching Bird"
+                />
+                <figcaption class="body">I love watching birds</figcaption>
               </figure>
             </li>
 
             <li>
               <figure>
-                <img src="assets/icons/seafood.svg" alt="Seafood" />
-                <figcaption>I’m allergic to seafood.</figcaption>
+                <img
+                  class="icon--lg"
+                  src="/assets/icons/seafood.svg"
+                  alt="Seafood"
+                />
+                <figcaption class="body">I’m allergic to seafood.</figcaption>
               </figure>
             </li>
 
             <li>
               <figure>
-                <img src="assets/icons/travelling.svg" alt="Travelling" />
-                <figcaption>I enjoy travelling</figcaption>
+                <img
+                  class="icon--lg"
+                  src="/assets/icons/travelling.svg"
+                  alt="Travelling"
+                />
+                <figcaption class="body">I enjoy travelling</figcaption>
               </figure>
             </li>
 
             <li>
               <figure>
-                <img src="assets/icons/running.svg" alt="Running" />
-                <figcaption>I like running</figcaption>
+                <img
+                  class="icon--lg"
+                  src="/assets/icons/running.svg"
+                  alt="Running"
+                />
+                <figcaption class="body">I like running</figcaption>
               </figure>
             </li>
           </ul>
@@ -230,104 +245,14 @@
       </div>
 
       <!-- ══════════════════════════════ TIMELINE ══════════════════════════════ -->
-      <!-- <section class="timeline timeline-details" id="full-timeline">
-        <div class="container">
-          <div class="section-title-group">
-            <h2>Full Timeline</h2>
-            <img src="assets/icons/timeline.svg" alt="Timeline Logo" />
-          </div>
-
-          <ul class="timeline-details__list">
-            <li class="timeline-details__item">
-              <h3>2000: The year I was born</h3>
-              <p>
-                I was born and raised in Dawei, Myanmar, in the southern part of
-                the country. It is a lovely coastal city.
-              </p>
-            </li>
-
-            <li class="timeline-details__item">
-              <h3>2017: Finished High school</h3>
-              <p>
-                I completed high school in Yangon, the economic center of
-                Myanmar.
-              </p>
-            </li>
-
-            <li class="timeline-details__item">
-              <h3>2017: Discovered Programming</h3>
-              <p>
-                I was first introduced to programming by my cousin, who worked
-                as a software engineer. My first program was a calculator using
-                VBScript.
-              </p>
-            </li>
-
-            <li class="timeline-details__item">
-              <h3>2017-2020: University of Yangon</h3>
-              <p>
-                I studied Computer Science at the University of Yangon. During
-                my third year, the COVID-19 pandemic caused the university to
-                shut down and suspended my exams.
-              </p>
-            </li>
-
-            <li class="timeline-details__item">
-              <h3>2021: Software Developer</h3>
-              <p>
-                I landed my first software development role building a hospital
-                management system to manage inventory, POS, and OPD
-                appointments. The system is still running until now.
-              </p>
-            </li>
-
-            <li class="timeline-details__item">
-              <h3>2022: Moved to Thailand</h3>
-              <p>
-                Fortunately, I was able to continue my academic journey in
-                Thailand, studying Computer Science at Assumption University as
-                a transfer student.
-              </p>
-            </li>
-
-            <li class="timeline-details__item">
-              <h3>2025: Graduated in Thailand</h3>
-              <p>
-                I completed my Bachelor of Science in Computer Science at
-                Assumption University, Thailand. My favorite subject was <br />
-                <q>Computer Architecture</q> .
-              </p>
-            </li>
-
-            <li class="timeline-details__item">
-              <h3>2025: Software Developer</h3>
-              <p>
-                After graduating, I worked remotely for 6 months as a software
-                developer at an event organizing company in Singapore.
-              </p>
-            </li>
-
-            <li class="timeline-details__item">
-              <h3>Present: Web design & develop</h3>
-              <p>
-                Today, I’ve found my passion in web design and development.
-                <br />
-                Self-taught in design, I learn through research and inspiration,
-                and I’m open to opportunities in this field.
-              </p>
-            </li>
-          </ul>
-        </div>
-      </section> -->
-
-      <!-- ══════════════════════════════ TIMELINE ══════════════════════════════ -->
       <section class="timeline">
         <div class="container">
-          <div class="section-title-group">
+          <div class="section-title">
             <h2>Experience Overview</h2>
             <img
-              src="assets/icons/timeline.svg"
+              src="/assets/icons/timeline.svg"
               alt="Timeline Logo"
+              class="icon"
               height="36"
               width="76"
             />
@@ -337,21 +262,24 @@
             <li class="timeline__item">
               <img
                 class="timeline__icon"
-                src="assets/icons/software-developer.svg"
+                src="/assets/icons/software-developer.svg"
                 alt="Software Developer Icon"
                 width="48"
                 height="48"
               />
+
               <div class="timeline__connector">
                 <span class="timeline__dot"></span>
                 <span class="timeline__line"></span>
               </div>
+
               <div class="timeline__content">
-                <div class="timeline__period">
-                  <time class="timeline__time" datetime="2021">2021</time>
+                <div class="badge badge--outline">
+                  <time datetime="2021">2021</time>
                   &ndash;
-                  <time class="timeline__time" datetime="2022">2022</time>
+                  <time datetime="2022">2022</time>
                 </div>
+
                 <h3>Software Developer</h3>
                 <p class="timeline__description">
                   I landed my first software development role building a
@@ -364,7 +292,7 @@
             <li class="timeline__item">
               <img
                 class="timeline__icon timeline__icon-student"
-                src="assets/icons/student.svg"
+                src="/assets/icons/student.svg"
                 alt="Student Icon"
                 width="48"
                 height="48"
@@ -374,10 +302,10 @@
                 <span class="timeline__line"></span>
               </div>
               <div class="timeline__content">
-                <div class="timeline__period">
-                  <time class="timeline__time" datetime="2022">2022</time>
+                <div class="badge badge--outline">
+                  <time datetime="2022">2022</time>
                   &ndash;
-                  <time class="timeline__time" datetime="2025">2025</time>
+                  <time datetime="2025">2025</time>
                 </div>
                 <h3>Student</h3>
                 <p class="timeline__description">
@@ -391,7 +319,7 @@
             <li class="timeline__item">
               <img
                 class="timeline__icon"
-                src="assets/icons/software-developer.svg"
+                src="/assets/icons/software-developer.svg"
                 alt="Software Developer Icon"
                 width="48"
                 height="48"
@@ -401,10 +329,10 @@
                 <span class="timeline__line"></span>
               </div>
               <div class="timeline__content">
-                <div class="timeline__period">
-                  <time class="timeline__time" datetime="2022">2025</time>
+                <div class="badge badge--outline">
+                  <time datetime="2022">2025</time>
                   &ndash;
-                  <time class="timeline__time" datetime="2025">2026</time>
+                  <time datetime="2025">2026</time>
                 </div>
                 <h3>Software Developer</h3>
                 <p class="timeline__description">
@@ -417,7 +345,7 @@
             <li class="timeline__item">
               <img
                 class="timeline__icon"
-                src="assets/icons/present.svg"
+                src="/assets/icons/present.svg"
                 alt="Web Design & Develop"
                 width="48"
                 height="48"
@@ -427,14 +355,14 @@
                 <span class="timeline__line"></span>
               </div>
               <div class="timeline__content">
-                <div class="timeline__period timeline_period-present">
-                  <time class="timeline__time" datetime="2026"> Present: </time>
+                <div class="badge">
+                  <time datetime="2026"> Present: </time>
                 </div>
-                <h3>Web Design & Develop</h3>
+                <h3>UX Designer</h3>
                 <p class="timeline__description">
-                  Today, I’ve found my passion in web design and development.
-                  Self-taught in design, I learn through research and
-                  inspiration, and I’m open to opportunities in this field.
+                  Today, I've found my passion in UX design. Self-taught through
+                  research and hands-on practice, I design intuitive experiences
+                  by simplifying complex workflows.
                 </p>
               </div>
             </li>
@@ -479,13 +407,11 @@
       <!-- ══════════════════════════════ QUOTE ══════════════════════════════ -->
       <section class="quote">
         <div class="container">
-          <blockquote>
-            <p>
-              " What I hear, I forget.<br />
-              What I see, I remember.<br />
-              What I do I understand"
-            </p>
-            <p>— Confucius</p>
+          <blockquote class="title">
+            " What I hear, I forget.<br />
+            What I see, I remember.<br />
+            What I do I understand" <br />
+            — Confucius
           </blockquote>
         </div>
       </section>
@@ -526,81 +452,94 @@
     </main>
 
     <!-- ══════════════════════════════ FOOTER ══════════════════════════════ -->
-    <footer class="footer footer-primary-background">
+    <footer class="footer">
       <div class="container">
-        <div class="footer__first__section">
+        <div class="footer__content">
           <div class="footer__profile">
-            <img src="assets/icons/profile_logo.svg" alt="Profile Icon" />
+            <img
+              class="logo"
+              src="/assets/icons/profile_logo.svg"
+              alt="Profile Icon"
+            />
             <p>
               Thank You <br />
               for Visiting
             </p>
           </div>
 
-          <nav class="footer-nav" aria-label="Sitemap">
-            <div>
-              <span class="footer-nav__header">Sitemap</span>
-              <ul class="footer-nav__list">
-                <li class="footer-nav__item">
-                  <a class="footer-nav__link" href="/">Home</a>
-                </li>
-                <li class="footer-nav__item">
-                  <a class="footer-nav__link" href="/about">About</a>
-                </li>
-                <li class="footer-nav__item">
-                  <a class="footer-nav__link" href="/process">Process</a>
-                </li>
-                <li class="footer-nav__item">
-                  <a class="footer-nav__link" href="/credits">Credits</a>
-                </li>
-                <li class="footer-nav__item">
-                  <a class="footer-nav__link" href="/hire-me">Hire me</a>
-                </li>
-                <li class="footer-nav__item">
-                  <a class="footer-nav__link" href="/thank-you">Thank you</a>
-                </li>
-              </ul>
+          <div class="footer__navigation">
+            <div class="foooter__sitemap">
+              <span class="body">Sitemap</span>
+              <nav class="nav nav--vertical">
+                <ul>
+                  <li>
+                    <a href="/" class="button--link">Home</a>
+                  </li>
+                  <li>
+                    <a href="/about" class="button--link">About</a>
+                  </li>
+                  <li>
+                    <a href="/process" class="button--link">Process</a>
+                  </li>
+                  <li>
+                    <a href="/credits" class="button--link">Credits</a>
+                  </li>
+                  <li>
+                    <a href="/hire-me" class="button--link">Hire me</a>
+                  </li>
+                  <li>
+                    <a href="/thank-you" class="button--link">Thank you</a>
+                  </li>
+                </ul>
+              </nav>
             </div>
 
-            <div>
-              <span class="footer-nav__header">Get in touch:</span>
-              <ul class="footer-social__list">
-                <li class="footer-social__item">
-                  <a
-                    class="footer-social__link"
-                    href="mailto:hanhtetaung.dev@gmail.com"
-                  >
-                    <img src="assets/icons/email.svg" alt="Email Icon" />
-                  </a>
-                </li>
-                <li class="footer-social__item">
-                  <a
-                    class="footer-social__link"
-                    href="https://github.com/hanhtetaung/"
-                    target="_blank"
-                    rel="noopener"
-                  >
-                    <img src="assets/icons/github.svg" alt="Github Icon"
-                  /></a>
-                </li>
-                <li class="footer-social__item">
-                  <a
-                    class="footer-social__link"
-                    href="https://www.linkedin.com/in/han-htet-aung/"
-                    target="_blank"
-                    rel="noopener"
-                  >
-                    <img src="assets/icons/linkedin.svg" alt="Linkedin Icon"
-                  /></a>
-                </li>
-              </ul>
+            <div class="footer__social">
+              <span class="body">Get in touch:</span>
+              <nav class="nav nav--horizontal">
+                <ul>
+                  <li>
+                    <a href="mailto:hanhtetaung.dev@gmail.com">
+                      <img
+                        src="/assets/icons/email.svg"
+                        alt="Email Icon"
+                        class="icon--sm"
+                      />
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://github.com/hanhtetaung/"
+                      target="_blank"
+                      rel="noopener"
+                    >
+                      <img
+                        src="/assets/icons/github.svg"
+                        alt="Github Icon"
+                        class="icon--sm"
+                    /></a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.linkedin.com/in/han-htet-aung/"
+                      target="_blank"
+                      rel="noopener"
+                    >
+                      <img
+                        src="/assets/icons/linkedin.svg"
+                        alt="Linkedin Icon"
+                        class="icon--sm"
+                    /></a>
+                  </li>
+                </ul>
+              </nav>
             </div>
-          </nav>
+          </div>
         </div>
 
         <p class="footer__copy">
           © Han Htet Aung 2026 |
-          <a class="footer__credits-link" href="/credits">Credits</a>
+          <a class="button--link" href="/credits">Credits</a>
         </p>
       </div>
     </footer>

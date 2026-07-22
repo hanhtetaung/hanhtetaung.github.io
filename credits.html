@@ -32,7 +32,7 @@
       crossorigin
     />
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="/main.css" />
     <script
       defer
       src="https://cloud.umami.is/script.js"
@@ -42,62 +42,57 @@
   <body>
     <!-- ══════════════════════════════ HEADER ══════════════════════════════ -->
     <header class="header">
-      <a class="header__logo" href="/">
-        <img
-          src="/assets/icons/profile_logo.svg"
-          alt="Han Htet Aung"
-          width="50"
-          height="50"
-        />
-      </a>
-
-      <nav class="nav">
-        <a class="nav__link" href="/"
-          >Home
-          <svg
-            class="draw-circle"
-            width="66"
-            height="32"
-            viewBox="0 0 66 32"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M24.5 4.87939C53 -1.62061 65.5 9.48573 65.5 17.3794C65.5 25.9398 49.397 31.3794 32 31.3794C14.603 31.3794 0.5 24.4398 0.5 15.8794C0.5 7.31898 10 5.8794 27.5 1.8794C28.855 1.8794 34.6901 0.421493 36 0.503179"
-              stroke="#be185d"
-            />
-          </svg>
-        </a>
-        <a class="nav__link" href="/about"
-          >About
-          <svg
-            class="draw-circle"
-            width="66"
-            height="32"
-            viewBox="0 0 66 32"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M24.5 4.87939C53 -1.62061 65.5 9.48573 65.5 17.3794C65.5 25.9398 49.397 31.3794 32 31.3794C14.603 31.3794 0.5 24.4398 0.5 15.8794C0.5 7.31898 10 5.8794 27.5 1.8794C28.855 1.8794 34.6901 0.421493 36 0.503179"
-              stroke="#be185d"
-            />
-          </svg>
+      <div class="container">
+        <a href="/">
+          <img
+            class="icon--lg"
+            src="/assets/icons/profile_logo.svg"
+            alt="Han Htet Aung"
+            class="logo"
+            width="102"
+            height="73"
+          />
         </a>
 
-        <a class="hire-me-button" href="/hire-me">
-          <span>&#9758;</span>
-          Hire Me
-          <span>&#9756;</span>
-        </a>
-      </nav>
+        <div class="header__navigation">
+          <nav class="nav nav--horizontal">
+            <ul>
+              <li>
+                <a href="/" class="link-drawing"
+                  >Home
+                  <svg>
+                    <use href="assets/sprite.svg#oval-line"></use>
+                  </svg>
+                </a>
+              </li>
+
+              <li>
+                <a href="/about" class="link-drawing"
+                  >About
+                  <svg>
+                    <use href="assets/sprite.svg#oval-line"></use>
+                  </svg>
+                </a>
+              </li>
+            </ul>
+          </nav>
+
+          <a class="button--primary" href="/hire-me">
+            <span>&#9758;</span>
+            Hire Me
+            <span>&#9756;</span>
+          </a>
+        </div>
+      </div>
     </header>
 
     <main>
       <!-- ══════════════════════════════ Credits ══════════════════════════════ -->
       <section class="credits">
-        <h1>Credits</h1>
-        <p>Thanks to the creators behind the icons.</p>
+        <div class="container">
+          <h1>Credits</h1>
+          <p>Thanks to the creators behind the icons.</p>
+        </div>
       </section>
 
       <!-- Line Divider  -->
@@ -135,290 +130,392 @@
       </div>
 
       <!-- ══════════════════════════════ Icon Collection ══════════════════════════════ -->
-      <section class="icon-collection">
+      <section class="credits">
         <div class="container">
-          <ul class="icon-collection__list">
+          <ul class="credits__list">
             <li>
-              <img src="assets/icons/profile_logo.svg" alt="Approach Logo" />
-              <p>By Pimsupa Rukchonlatee</p>
+              <div class="credits__content">
+                <img
+                  class="icon--md"
+                  src="/assets/icons/profile_logo.svg"
+                  alt="Approach Logo"
+                />
+                <p>By Pimsupa Rukchonlatee</p>
+              </div>
             </li>
 
             <li>
-              <img src="assets/icons/approach.svg" alt="Approach Logo" />
-              <p>
-                By Carlos von Dessauer
+              <div class="credits__content">
+                <img
+                  class="icon--md"
+                  src="/assets/icons/approach.svg"
+                  alt="Approach Logo"
+                />
                 <a
                   href="https://thenounproject.com/icon/bird-6684144/"
                   target="_blank"
+                  class="button--link"
                 >
-                  &#8599;
+                  By Carlos von Dessauer
                 </a>
-              </p>
+              </div>
             </li>
 
             <li>
-              <img
-                src="assets/icons/detail-oriented-person.svg"
-                alt="Approach Logo"
-              />
-              <p>
-                By VectorsLab
+              <div class="credits__content">
+                <img
+                  class="icon--md"
+                  src="/assets/icons/detail-oriented-person.svg"
+                  alt="Approach Logo"
+                />
                 <a
                   href="https://thenounproject.com/icon/programmer-5124229/"
                   target="_blank"
-                  >&#8599;</a
+                  class="button--link"
                 >
-              </p>
+                  By VectorsLab
+                </a>
+              </div>
             </li>
 
             <li>
-              <img src="assets/icons/merlion.svg" alt="Approach Logo" />
-              <p>
-                By Isaac haq
+              <div class="credits__content">
+                <img
+                  class="icon--md"
+                  src="/assets/icons/merlion.svg"
+                  alt="Approach Logo"
+                />
                 <a
                   href="https://thenounproject.com/icon/merlion-6990371/"
                   target="_blank"
-                  >&#8599;</a
+                  class="button--link"
                 >
-              </p>
+                  By Isaac haq
+                </a>
+              </div>
             </li>
 
             <li>
-              <img src="assets/icons/my-work.svg" alt="Approach Logo" />
-              <p>
-                By NHA
+              <div class="credits__content">
+                <img
+                  class="icon--md"
+                  src="/assets/icons/my-work.svg"
+                  alt="Approach Logo"
+                />
                 <a
                   href="https://thenounproject.com/icon/peacock-7464259/"
                   target="_blank"
-                  >&#8599;</a
+                  class="button--link"
                 >
-              </p>
+                  By NHA
+                </a>
+              </div>
             </li>
 
             <li>
-              <img
-                src="assets/icons/positive-thinker.svg"
-                alt="Approach Logo"
-              />
-              <p>
-                By moaon
+              <div class="credits__content">
+                <img
+                  class="icon--md"
+                  src="/assets/icons/positive-thinker.svg"
+                  alt="Approach Logo"
+                />
                 <a
                   href="https://thenounproject.com/icon/face-5688226/"
                   target="_blank"
-                  >&#8599;</a
+                  class="button--link"
                 >
-              </p>
+                  By moaon
+                </a>
+              </div>
             </li>
 
             <li>
-              <img src="assets/icons/present.svg" alt="Approach Logo" />
-              <p>
-                By Stepan Belyakov
-
+              <div class="credits__content">
+                <img
+                  class="icon--md"
+                  src="/assets/icons/present.svg"
+                  alt="Approach Logo"
+                />
                 <a
                   href="https://thenounproject.com/icon/computer-4111354/"
                   target="_blank"
-                  >&#8599;</a
+                  class="button--link"
                 >
-              </p>
+                  By Stepan Belyakov
+                </a>
+              </div>
             </li>
 
             <li>
-              <img src="assets/icons/process-icon-1.svg" alt="Process Icon" />
-              <p>
-                By QuinX
+              <div class="credits__content">
+                <img
+                  class="icon--md"
+                  src="/assets/icons/process-icon-1.svg"
+                  alt="Process Icon"
+                />
                 <a
                   href="https://thenounproject.com/icon/coding-8378722/"
                   target="_blank"
-                  >&#8599;</a
+                  class="button--link"
                 >
-              </p>
+                  By QuinX
+                </a>
+              </div>
             </li>
 
             <li>
-              <img src="assets/icons/process-icon-2.svg" alt="Approach Logo" />
-              <p>
-                By White Snow
+              <div class="credits__content">
+                <img
+                  class="icon--md"
+                  src="/assets/icons/process-icon-2.svg"
+                  alt="Approach Logo"
+                />
                 <a
                   href="https://thenounproject.com/icon/design-8326129/"
                   target="_blank"
-                  >&#8599;</a
+                  class="button--link"
                 >
-              </p>
+                  By White Snow
+                </a>
+              </div>
             </li>
 
             <li>
-              <img src="assets/icons/random-facts.svg" alt="Approach Logo" />
-              <p>
-                By Lee Mette
+              <div class="credits__content">
+                <img
+                  class="icon--md"
+                  src="/assets/icons/random-facts.svg"
+                  alt="Approach Logo"
+                />
                 <a
                   href="https://thenounproject.com/icon/birds-170955/"
                   target="_blank"
-                  >&#8599;</a
+                  class="button--link"
                 >
-              </p>
+                  By Lee Mette
+                </a>
+              </div>
             </li>
 
             <li>
-              <img src="assets/icons/running.svg" alt="Running Logo" />
-              <p>
-                By Princess In The Spotlight
+              <div class="credits__content">
+                <img
+                  class="icon--md"
+                  src="/assets/icons/running.svg"
+                  alt="Running Logo"
+                />
                 <a
                   href="https://thenounproject.com/icon/running-7164037/"
                   target="_blank"
-                  >&#8599;</a
+                  class="button--link"
                 >
-              </p>
+                  By Princess In The Spotlight
+                </a>
+              </div>
             </li>
 
             <li>
-              <img src="assets/icons/seafood.svg" alt="Approach Logo" />
-              <p>
-                By Darwin Mulya
+              <div class="credits__content">
+                <img
+                  class="icon--md"
+                  src="/assets/icons/seafood.svg"
+                  alt="Approach Logo"
+                />
                 <a
                   href="https://thenounproject.com/icon/seafood-6474814/"
                   target="_blank"
-                  >&#8599;</a
+                  class="button--link"
                 >
-              </p>
+                  By Darwin Mulya
+                </a>
+              </div>
             </li>
 
             <li>
-              <img
-                src="assets/icons/software-developer.svg"
-                alt="Approach Logo"
-              />
-              <p>
-                By Bricksstock
+              <div class="credits__content">
+                <img
+                  class="icon--md"
+                  src="/assets/icons/software-developer.svg"
+                  alt="Approach Logo"
+                />
                 <a
                   href="https://thenounproject.com/icon/developer-8303824/"
                   target="_blank"
-                  >&#8599;</a
+                  class="button--link"
                 >
-              </p>
+                  By Bricksstock
+                </a>
+              </div>
             </li>
 
             <li>
-              <img src="assets/icons/specialize-in.svg" alt="Penguin Icon" />
-              <p>
-                By Lucas Rathgeb
+              <div class="credits__content">
+                <img
+                  class="icon--md"
+                  src="/assets/icons/specialize-in.svg"
+                  alt="Penguin Icon"
+                />
                 <a
                   href="https://thenounproject.com/icon/penguin-6418789/"
                   target="_blank"
-                  >&#8599;</a
+                  class="button--link"
                 >
-              </p>
+                  By Lucas Rathgeb
+                </a>
+              </div>
             </li>
 
             <li>
-              <img src="assets/icons/student.svg" alt="Approach Logo" />
-              <p>
-                By Chaiconator
+              <div class="credits__content">
+                <img
+                  class="icon--md"
+                  src="/assets/icons/student.svg"
+                  alt="Approach Logo"
+                />
                 <a
                   href="https://thenounproject.com/icon/graduate-6714013/"
                   target="_blank"
-                  >&#8599;</a
+                  class="button--link"
                 >
-              </p>
+                  By Chaiconator
+                </a>
+              </div>
             </li>
 
             <li>
-              <img src="assets/icons/tech-stack.svg" alt="Approach Logo" />
-              <p>
-                By Delwar Hossain
+              <div class="credits__content">
+                <img
+                  class="icon--md"
+                  src="/assets/icons/tech-stack.svg"
+                  alt="Approach Logo"
+                />
                 <a
                   href="https://thenounproject.com/icon/kingfisher-bird-6274353/"
                   target="_blank"
-                  >&#8599;</a
+                  class="button--link"
                 >
-              </p>
+                  By Delwar Hossain
+                </a>
+              </div>
             </li>
 
             <li>
-              <img src="assets/icons/timeline.svg" alt="Flying Bird Icon" />
-              <p>
-                By mac jam
+              <div class="credits__content">
+                <img
+                  class="icon--md"
+                  src="/assets/icons/timeline.svg"
+                  alt="Flying Bird Icon"
+                />
                 <a
                   href="https://thenounproject.com/icon/bird-7010847/"
                   target="_blank"
-                  >&#8599;</a
+                  class="button--link"
                 >
-              </p>
+                  By mac jam
+                </a>
+              </div>
             </li>
 
             <li>
-              <img src="assets/icons/travelling.svg" alt="Approach Logo" />
-              <p>
-                By Iconsden@gmail.com
+              <div class="credits__content">
+                <img
+                  class="icon--md"
+                  src="/assets/icons/travelling.svg"
+                  alt="Approach Logo"
+                />
                 <a
                   href="https://thenounproject.com/icon/travel-5976779/"
                   target="_blank"
-                  >&#8599;</a
+                  class="button--link"
                 >
-              </p>
+                  By Iconsden@gmail.com
+                </a>
+              </div>
             </li>
 
             <li>
-              <img
-                src="assets/icons/watching-bird.svg"
-                alt="Bird Singing Icon"
-              />
-              <p>
-                By Piyapong Khemawattana
+              <div class="credits__content">
+                <img
+                  class="icon--md"
+                  src="/assets/icons/watching-bird.svg"
+                  alt="Bird Singing Icon"
+                />
                 <a
                   href="https://thenounproject.com/icon/bird-8218551/"
                   target="_blank"
-                  >&#8599;</a
+                  class="button--link"
                 >
-              </p>
+                  By Piyapong Khemawattana
+                </a>
+              </div>
             </li>
 
             <li>
-              <img src="assets/icons/why-hire-me.svg" alt="Owl Icon" />
-              <p>
-                By CAMB
+              <div class="credits__content">
+                <img
+                  class="icon--md"
+                  src="/assets/icons/why-hire-me.svg"
+                  alt="Owl Icon"
+                />
                 <a
                   href="https://thenounproject.com/icon/owl-4212053/"
                   target="_blank"
-                  >&#8599;</a
+                  class="button--link"
                 >
-              </p>
+                  By CAMB
+                </a>
+              </div>
             </li>
 
             <li>
-              <img src="assets/icons/working-man.svg" alt="Approach Logo" />
-              <p>
-                By Ameya SK
+              <div class="credits__content">
+                <img
+                  class="icon--md"
+                  src="/assets/icons/working-man.svg"
+                  alt="Approach Logo"
+                />
                 <a
                   href="https://thenounproject.com/icon/man-working-4099412/"
                   target="_blank"
-                  >&#8599;</a
+                  class="button--link"
                 >
-              </p>
+                  By Ameya SK
+                </a>
+              </div>
             </li>
 
             <li>
-              <img src="assets/icons/work-flow.svg" alt="Approach Logo" />
-              <p>
-                By Sumin Lee
+              <div class="credits__content">
+                <img
+                  class="icon--md"
+                  src="/assets/icons/work-flow.svg"
+                  alt="Approach Logo"
+                />
                 <a
                   href="https://thenounproject.com/icon/straight-copper-7408245/"
                   target="_blank"
-                  >&#8599;</a
+                  class="button--link"
                 >
-              </p>
+                  By Sumin Lee
+                </a>
+              </div>
             </li>
 
             <li>
-              <img src="assets/icons/result.svg" alt="Result Logo" />
-              <p>
-                By kukuh amaliawan
+              <div class="credits__content">
+                <img
+                  class="icon--md"
+                  src="/assets/icons/result.svg"
+                  alt="Result Logo"
+                />
                 <a
                   href="https://thenounproject.com/icon/sparrow-6783265/"
                   target="_blank"
-                  >&#8599;</a
+                  class="button--link"
                 >
-              </p>
+                  By kukuh amaliawan
+                </a>
+              </div>
             </li>
           </ul>
         </div>
@@ -460,81 +557,94 @@
     </main>
 
     <!-- ══════════════════════════════ FOOTER ══════════════════════════════ -->
-    <footer class="footer footer-primary-background">
+    <footer class="footer">
       <div class="container">
-        <div class="footer__first__section">
+        <div class="footer__content">
           <div class="footer__profile">
-            <img src="assets/icons/profile_logo.svg" alt="Profile Icon" />
+            <img
+              class="logo"
+              src="/assets/icons/profile_logo.svg"
+              alt="Profile Icon"
+            />
             <p>
               Thank You <br />
               for Visiting
             </p>
           </div>
 
-          <nav class="footer-nav" aria-label="Sitemap">
-            <div>
-              <span class="footer-nav__header">Sitemap</span>
-              <ul class="footer-nav__list">
-                <li class="footer-nav__item">
-                  <a class="footer-nav__link" href="/">Home</a>
-                </li>
-                <li class="footer-nav__item">
-                  <a class="footer-nav__link" href="/about">About</a>
-                </li>
-                <li class="footer-nav__item">
-                  <a class="footer-nav__link" href="/process">Process</a>
-                </li>
-                <li class="footer-nav__item">
-                  <a class="footer-nav__link" href="/credits">Credits</a>
-                </li>
-                <li class="footer-nav__item">
-                  <a class="footer-nav__link" href="/hire-me">Hire me</a>
-                </li>
-                <li class="footer-nav__item">
-                  <a class="footer-nav__link" href="/thank-you">Thank you</a>
-                </li>
-              </ul>
+          <div class="footer__navigation">
+            <div class="foooter__sitemap">
+              <span class="body">Sitemap</span>
+              <nav class="nav nav--vertical">
+                <ul>
+                  <li>
+                    <a href="/" class="button--link">Home</a>
+                  </li>
+                  <li>
+                    <a href="/about" class="button--link">About</a>
+                  </li>
+                  <li>
+                    <a href="/process" class="button--link">Process</a>
+                  </li>
+                  <li>
+                    <a href="/credits" class="button--link">Credits</a>
+                  </li>
+                  <li>
+                    <a href="/hire-me" class="button--link">Hire me</a>
+                  </li>
+                  <li>
+                    <a href="/thank-you" class="button--link">Thank you</a>
+                  </li>
+                </ul>
+              </nav>
             </div>
 
-            <div>
-              <span class="footer-nav__header">Get in touch:</span>
-              <ul class="footer-social__list">
-                <li class="footer-social__item">
-                  <a
-                    class="footer-social__link"
-                    href="mailto:hanhtetaung.dev@gmail.com"
-                  >
-                    <img src="assets/icons/email.svg" alt="Email Icon" />
-                  </a>
-                </li>
-                <li class="footer-social__item">
-                  <a
-                    class="footer-social__link"
-                    href="https://github.com/hanhtetaung/"
-                    target="_blank"
-                    rel="noopener"
-                  >
-                    <img src="assets/icons/github.svg" alt="Github Icon"
-                  /></a>
-                </li>
-                <li class="footer-social__item">
-                  <a
-                    class="footer-social__link"
-                    href="https://www.linkedin.com/in/han-htet-aung/"
-                    target="_blank"
-                    rel="noopener"
-                  >
-                    <img src="assets/icons/linkedin.svg" alt="Linkedin Icon"
-                  /></a>
-                </li>
-              </ul>
+            <div class="footer__social">
+              <span class="body">Get in touch:</span>
+              <nav class="nav nav--horizontal">
+                <ul>
+                  <li>
+                    <a href="mailto:hanhtetaung.dev@gmail.com">
+                      <img
+                        src="/assets/icons/email.svg"
+                        alt="Email Icon"
+                        class="icon--sm"
+                      />
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://github.com/hanhtetaung/"
+                      target="_blank"
+                      rel="noopener"
+                    >
+                      <img
+                        src="/assets/icons/github.svg"
+                        alt="Github Icon"
+                        class="icon--sm"
+                    /></a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.linkedin.com/in/han-htet-aung/"
+                      target="_blank"
+                      rel="noopener"
+                    >
+                      <img
+                        src="/assets/icons/linkedin.svg"
+                        alt="Linkedin Icon"
+                        class="icon--sm"
+                    /></a>
+                  </li>
+                </ul>
+              </nav>
             </div>
-          </nav>
+          </div>
         </div>
 
         <p class="footer__copy">
           © Han Htet Aung 2026 |
-          <a class="footer__credits-link" href="/credits">Credits</a>
+          <a class="button--link" href="/credits">Credits</a>
         </p>
       </div>
     </footer>
