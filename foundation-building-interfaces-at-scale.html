@@ -31,9 +31,9 @@
       type="font/woff2"
       crossorigin
     />
-    <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 
-    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="/main.css" />
     <script
       defer
       src="https://cloud.umami.is/script.js"
@@ -43,82 +43,79 @@
   <body>
     <!-- ══════════════════════════════ HEADER ══════════════════════════════ -->
     <header class="header">
-      <a class="header__logo" href="/">
-        <img
-          src="/assets/icons/profile_logo.svg"
-          alt="Han Htet Aung"
-          width="50"
-          height="50"
-        />
-      </a>
-
-      <nav class="nav">
-        <a class="nav__link" href="/"
-          >Home
-          <svg
-            class="draw-circle"
-            width="66"
-            height="32"
-            viewBox="0 0 66 32"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M24.5 4.87939C53 -1.62061 65.5 9.48573 65.5 17.3794C65.5 25.9398 49.397 31.3794 32 31.3794C14.603 31.3794 0.5 24.4398 0.5 15.8794C0.5 7.31898 10 5.8794 27.5 1.8794C28.855 1.8794 34.6901 0.421493 36 0.503179"
-              stroke="#be185d"
-            />
-          </svg>
-        </a>
-        <a class="nav__link" href="/about"
-          >About
-          <svg
-            class="draw-circle"
-            width="66"
-            height="32"
-            viewBox="0 0 66 32"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M24.5 4.87939C53 -1.62061 65.5 9.48573 65.5 17.3794C65.5 25.9398 49.397 31.3794 32 31.3794C14.603 31.3794 0.5 24.4398 0.5 15.8794C0.5 7.31898 10 5.8794 27.5 1.8794C28.855 1.8794 34.6901 0.421493 36 0.503179"
-              stroke="#be185d"
-            />
-          </svg>
+      <div class="container">
+        <a href="/">
+          <img
+            src="/assets/icons/profile_logo.svg"
+            alt="Han Htet Aung"
+            class="logo"
+            width="102"
+            height="73"
+          />
         </a>
 
-        <a class="hire-me-button" href="/hire-me">
-          <span>&#9758;</span>
-          Hire Me
-          <span>&#9756;</span>
-        </a>
-      </nav>
+        <div class="header__navigation">
+          <nav class="nav nav--horizontal">
+            <ul>
+              <li>
+                <a href="/" class="link-drawing"
+                  >Home
+                  <svg>
+                    <use href="assets/sprite.svg#oval-line"></use>
+                  </svg>
+                </a>
+              </li>
+
+              <li>
+                <a href="/about" class="link-drawing"
+                  >About
+                  <svg>
+                    <use href="assets/sprite.svg#oval-line"></use>
+                  </svg>
+                </a>
+              </li>
+            </ul>
+          </nav>
+
+          <a class="button--primary" href="/hire-me">
+            <span>&#9758;</span>
+            Hire Me
+            <span>&#9756;</span>
+          </a>
+        </div>
+      </div>
     </header>
 
-    <main class="post-page">
+    <main>
       <!-- ══════════════════════════════ Foundation ══════════════════════════════ -->
-      <section class="post-page__hero">
+      <section>
         <div class="container">
-          <h1>Foundation for Building Interfaces at Scale</h1>
+          <article class="article">
+            <div class="article__header">
+              <h1>Foundation for Building Interfaces at Scale</h1>
+            </div>
+            <div class="article__body">
+              <p>
+                Build systems, not interfaces. A design system is the single
+                source of truth for consistent, scalable interfaces.
+              </p>
 
-          <p>
-            Build systems, not interfaces. A design system is the single source
-            of truth for consistent, scalable interfaces.
-          </p>
+              <p><b>On this page</b></p>
 
-          <p class="context"><b>On this page</b></p>
-
-          <ul>
-            <li>
-              <a href="#atomic-design-principle"
-                >Atomic design principle &#10132;</a
-              >
-            </li>
-            <li>
-              <a href="#design-token-architecture"
-                >Design token architecture &#10132;</a
-              >
-            </li>
-          </ul>
+              <ul>
+                <li>
+                  <a href="#atomic-design-principle" class="button--link"
+                    >Atomic design principle
+                  </a>
+                </li>
+                <li>
+                  <a href="#design-token-architecture" class="button--link"
+                    >Design token architecture</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </article>
         </div>
       </section>
 
@@ -156,24 +153,30 @@
         </svg>
       </div>
 
-      <section class="atomic-design-principle" id="atomic-design-principle">
+      <section id="atomic-design-principle">
         <div class="container">
-          <h2>Atomic Design Principle</h2>
+          <article class="article">
+            <h2>Atomic Design Principle</h2>
 
-          <p>
-            Follow Atomic Design principles to create scalable, reusable, and
-            maintainable interface building blocks.
-          </p>
+            <div class="article__body">
+              <p>
+                Follow Atomic Design principles to create scalable, reusable,
+                and maintainable interface building blocks.
+              </p>
 
-          <img
-            src="./assets/images/foundation-building-software/atomic-design.avif"
-            alt=""
-          />
+              <img
+                src="./assets/images/foundation-building-software/atomic-design.avif"
+                alt=""
+              />
+            </div>
+          </article>
 
-          <div class="atomic-design-principle-articles">
-            <article>
-              <h3>Page</h3>
-              <div>
+          <div class="stack">
+            <article class="article article--row">
+              <div class="article__header">
+                <h3>Page</h3>
+              </div>
+              <div class="article__body">
                 <p>
                   A complete interface that composed of multiple organisms.
                   Let’s break down the Strava Activities interface into
@@ -189,9 +192,12 @@
                 />
               </div>
             </article>
-            <article>
-              <h3>Organism</h3>
-              <div>
+
+            <article class="article article--row">
+              <div class="article__header">
+                <h3>Organism</h3>
+              </div>
+              <div class="article__body">
                 <p>
                   A distinct section of an interface composed of molecules,
                   atoms, subatomic particles or even other organisms. The
@@ -207,9 +213,11 @@
                 />
               </div>
             </article>
-            <article>
-              <h3>Molecule</h3>
-              <div>
+            <article class="article article--row">
+              <div class="article__header">
+                <h3>Molecule</h3>
+              </div>
+              <div class="article__body">
                 <p>
                   A simple interface element composed of atoms or subatomic
                   particles as well as other molecules. The example below shows
@@ -224,9 +232,11 @@
                 />
               </div>
             </article>
-            <article>
-              <h3>Atom</h3>
-              <div>
+            <article class="article article--row">
+              <div class="article__header">
+                <h3>Atom</h3>
+              </div>
+              <div class="article__body">
                 <p>
                   A foundational building block of an interface composed of
                   subatomic particles.The illustration below shows an atom
@@ -241,9 +251,11 @@
                 />
               </div>
             </article>
-            <article>
-              <h3>Subatomic particle</h3>
-              <div>
+            <article class="article article--row">
+              <div class="article__header">
+                <h3>Subatomic particle</h3>
+              </div>
+              <div class="article__body">
                 <p>Smallest unit of the system, represents design token.</p>
 
                 <img
@@ -293,20 +305,28 @@
       </div>
 
       <!-- ══════════════════════════════ Design Token Architecture ══════════════════════════════ -->
-      <section class="design-token-architecture" id="design-token-architecture">
+      <section id="design-token-architecture">
         <div class="container">
-          <h2>Design Token Architecture</h2>
+          <article class="article">
+            <div class="article__header">
+              <h2>Design Token Architecture</h2>
+            </div>
 
-          <p>A two-tier architecture is enough: Primitive and Semantic.</p>
+            <div class="article__body">
+              <p>A two-tier architecture is enough: Primitive and Semantic.</p>
 
-          <img
-            src="./assets/images/foundation-building-software/token-architecture.avif"
-            alt=""
-          />
+              <img
+                src="./assets/images/foundation-building-software/token-architecture.avif"
+                alt=""
+              />
+            </div>
+          </article>
 
-          <div>
-            <article>
+          <article class="article">
+            <div class="article__header">
               <h3>Single Source of Truth</h3>
+            </div>
+            <div class="article__body">
               <p>
                 Use semantic tokens to define all interface building blocks. The
                 figma uses slash as separators with all letters lowercase, but
@@ -318,10 +338,14 @@
                 src="./assets/images/foundation-building-software/single-source-of-truth.avif"
                 alt=""
               />
-            </article>
+            </div>
+          </article>
 
-            <article>
+          <article class="article">
+            <div class="article__header">
               <h3>Theming</h3>
+            </div>
+            <div class="article__body">
               <p>
                 A token can point to different value related to mode and when
                 the mode changes, the reference values are updated
@@ -332,10 +356,14 @@
                 src="./assets/images/foundation-building-software/theming.avif"
                 alt=""
               />
-            </article>
+            </div>
+          </article>
 
-            <article>
+          <article class="article">
+            <div class="article__header">
               <h3>Token Structure</h3>
+            </div>
+            <div class="article__body">
               <p>Tokens are named in two parts:</p>
 
               <ol>
@@ -346,10 +374,14 @@
                 src="./assets/images/foundation-building-software/token-structure.avif"
                 alt=""
               />
-            </article>
+            </div>
+          </article>
 
-            <article>
+          <article class="article">
+            <div class="article__header">
               <h3>Design Token Anatomy</h3>
+            </div>
+            <div class="article__body">
               <p>
                 The diagram below shows how primitive, and semantic tokens
                 combine base, and modifier.
@@ -359,12 +391,16 @@
                 src="./assets/images/foundation-building-software/design-token-anatomy.avif"
                 alt="Design Token Anatomy"
               />
-            </article>
+            </div>
+          </article>
 
-            <article>
+          <article class="article">
+            <div class="article__header">
               <h3>Applying Design Tokens</h3>
+            </div>
+            <div class="article__body">
               <p>
-                Here’s an example of how semantic tokens are used throughout a
+                Here's an example of how semantic tokens are used throughout a
                 strava activities page.
               </p>
 
@@ -372,8 +408,8 @@
                 src="./assets/images/foundation-building-software/applying-token.avif"
                 alt="Applying Token photo"
               />
-            </article>
-          </div>
+            </div>
+          </article>
         </div>
       </section>
 
@@ -416,31 +452,38 @@
           <h2>References</h2>
           <ul>
             <li>
-              Atomic Design Principle
               <a
                 href="https://atomicdesign.bradfrost.com/chapter-2/"
                 target="_blank"
-              >
-                &#8599;
+                class="button--link"
+                >Atomic Design Principle
               </a>
             </li>
             <li>
-              ebay Playbook
-              <a href="https://playbook.ebay.com/foundations" target="_blank"
-                >&#8599;</a
+              <a
+                href="https://playbook.ebay.com/foundations"
+                target="_blank"
+                class="button--link"
+                >ebay Playbook</a
               >
             </li>
             <li>
-              SGDS Design
               <a
                 href="https://www.designsystem.tech.gov.sg/foundations/"
+                class="button--link"
                 target="_blank"
-                >&#8599;
+              >
+                SGDS Design
               </a>
             </li>
             <li>
-              Strava
-              <a href="https://www.strava.com/" target="_blank"> &#8599; </a>
+              <a
+                href="https://www.strava.com/"
+                target="_blank"
+                class="button--link"
+              >
+                Strava
+              </a>
             </li>
           </ul>
         </div>
@@ -483,81 +526,94 @@
 
     <!-- ══════════════════════════════ FOOTER ══════════════════════════════ -->
 
-    <footer class="footer footer-primary-background">
+    <footer class="footer">
       <div class="container">
-        <section class="footer__first__section">
+        <div class="footer__content">
           <div class="footer__profile">
-            <img src="../assets/icons/profile_logo.svg" alt="Profile Icon" />
+            <img
+              class="logo"
+              src="/assets/icons/profile_logo.svg"
+              alt="Profile Icon"
+            />
             <p>
               Thank You <br />
               for Visiting
             </p>
           </div>
 
-          <nav class="footer-nav" aria-label="Sitemap">
-            <div>
-              <span class="footer-nav__header">Sitemap</span>
-              <ul class="footer-nav__list">
-                <li class="footer-nav__item">
-                  <a class="footer-nav__link" href="/">Home</a>
-                </li>
-                <li class="footer-nav__item">
-                  <a class="footer-nav__link" href="/about">About</a>
-                </li>
-                <li class="footer-nav__item">
-                  <a class="footer-nav__link" href="/process">Process</a>
-                </li>
-                <li class="footer-nav__item">
-                  <a class="footer-nav__link" href="/credits">Credits</a>
-                </li>
-                <li class="footer-nav__item">
-                  <a class="footer-nav__link" href="../hire-me">Hire me</a>
-                </li>
-                <li class="footer-nav__item">
-                  <a class="footer-nav__link" href="../thank-you">Thank you</a>
-                </li>
-              </ul>
+          <div class="footer__navigation">
+            <div class="foooter__sitemap">
+              <span class="body">Sitemap</span>
+              <nav class="nav nav--vertical">
+                <ul>
+                  <li>
+                    <a href="/" class="button--link">Home</a>
+                  </li>
+                  <li>
+                    <a href="/about" class="button--link">About</a>
+                  </li>
+                  <li>
+                    <a href="/process" class="button--link">Process</a>
+                  </li>
+                  <li>
+                    <a href="/credits" class="button--link">Credits</a>
+                  </li>
+                  <li>
+                    <a href="/hire-me" class="button--link">Hire me</a>
+                  </li>
+                  <li>
+                    <a href="/thank-you" class="button--link">Thank you</a>
+                  </li>
+                </ul>
+              </nav>
             </div>
 
-            <div>
-              <span class="footer-nav__header">Get in touch:</span>
-              <ul class="footer-social__list">
-                <li class="footer-social__item">
-                  <a
-                    class="footer-social__link"
-                    href="mailto:hanhtetaung.dev@gmail.com"
-                  >
-                    <img src="../assets/icons/email.svg" alt="Email Icon" />
-                  </a>
-                </li>
-                <li class="footer-social__item">
-                  <a
-                    class="footer-social__link"
-                    href="https://github.com/hanhtetaung/"
-                    target="_blank"
-                    rel="noopener"
-                  >
-                    <img src="../assets/icons/github.svg" alt="Github Icon"
-                  /></a>
-                </li>
-                <li class="footer-social__item">
-                  <a
-                    class="footer-social__link"
-                    href="https://www.linkedin.com/in/han-htet-aung/"
-                    target="_blank"
-                    rel="noopener"
-                  >
-                    <img src="../assets/icons/linkedin.svg" alt="Linkedin Icon"
-                  /></a>
-                </li>
-              </ul>
+            <div class="footer__social">
+              <span class="body">Get in touch:</span>
+              <nav class="nav nav--horizontal">
+                <ul>
+                  <li>
+                    <a href="mailto:hanhtetaung.dev@gmail.com">
+                      <img
+                        src="/assets/icons/email.svg"
+                        alt="Email Icon"
+                        class="icon--sm"
+                      />
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://github.com/hanhtetaung/"
+                      target="_blank"
+                      rel="noopener"
+                    >
+                      <img
+                        src="/assets/icons/github.svg"
+                        alt="Github Icon"
+                        class="icon--sm"
+                    /></a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.linkedin.com/in/han-htet-aung/"
+                      target="_blank"
+                      rel="noopener"
+                    >
+                      <img
+                        src="/assets/icons/linkedin.svg"
+                        alt="Linkedin Icon"
+                        class="icon--sm"
+                    /></a>
+                  </li>
+                </ul>
+              </nav>
             </div>
-          </nav>
-        </section>
+          </div>
+        </div>
 
         <p class="footer__copy">
           © Han Htet Aung 2026 |
-          <a class="footer__credits-link" href="/credits">Credits</a>
+          <a class="button--link" href="/credits">Credits</a>
         </p>
       </div>
     </footer>

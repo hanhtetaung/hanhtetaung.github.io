@@ -57,7 +57,8 @@
 
   &--row {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 2.5fr;
+    gap: 1rem;
 
     @include breakpoints.phone {
       display: flex;
