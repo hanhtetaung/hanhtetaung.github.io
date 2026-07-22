@@ -53,11 +53,15 @@
   @include body;
 }
 
+.body--emphasis {
+  color: var(--color-secondary);
+}
+
 .small {
   @include small;
 }
 
-.small--caption {
+.small--emphasis {
   @include small(var(--font-bold), var(--color-secondary));
   text-transform: uppercase;
 }

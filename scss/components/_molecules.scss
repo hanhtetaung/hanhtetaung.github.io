@@ -31,6 +31,11 @@
   }
 }
 
+.section {
+  &__title {
+  }
+}
+
 .section-title-group {
   display: flex;
   gap: 1rem;
@@ -47,6 +52,58 @@
     align-items: center;
     line-height: 2rem;
     margin-bottom: 10rem;
+  }
+}
+
+.article {
+  display: flex;
+  flex-direction: column;
+  padding-block: 1rem;
+
+  &--row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    @include breakpoints.phone {
+      display: flex;
+    }
+  }
+
+  &__header {
+    margin-bottom: 0.5rem;
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  &__content {
+    order: 1;
+  }
+
+  &__media {
+    order: 2;
+
+    @include breakpoints.phone {
+      order: 1;
+    }
+  }
+
+  &__list {
+    padding-inline: 1rem;
+  }
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+  margin-block: 5rem;
+
+  > * {
+    border-block: 1px dashed var(--color-text);
   }
 }
 
