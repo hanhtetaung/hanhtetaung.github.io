@@ -55,6 +55,16 @@
   flex-direction: column;
   padding-block: 1rem;
 
+  &--hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+
+    @include breakpoints.phone {
+      display: flex;
+    }
+  }
+
   &--row {
     display: grid;
     grid-template-columns: 1fr 2.5fr;
