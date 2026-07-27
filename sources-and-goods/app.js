@@ -1,10 +1,3 @@
-/* ==========================================================================
-   app.js — turns ELEMENTS (data.js) into a Cytoscape graph, lays it out
-   with fcose, and wires up the click → right-panel interaction.
-   Depends on: cytoscape, cytoscape-fcose (loaded as classic scripts),
-   ELEMENTS (data.js), CY_STYLE (cy-style.js).
-   ========================================================================== */
-
 function toLabel(id) {
   return id
     .split("_")
@@ -55,22 +48,31 @@ const GROUPS = [
   { id: "group-goods", label: "Goods", type: "goods" },
 ];
 
-const groupNodes = GROUPS.map((g) => ({
+const groupNodes = GROUPS.map((g, index) => ({
   data: { id: g.id, label: g.label, type: g.type, isGroup: true },
+  // Force the two main groups to start on completely opposite sides
+  position: { x: index === 0 ? 0 : 1200, y: 0 },
 }));
 
-/* ---- build leaf nodes, with a 'weight' = connection count,
-        used by cy-style.js to size each node like the fcose-gene demo ---- */
-const nodes = ELEMENTS.map((e) => {
+const nodes = ELEMENTS.map((e, index) => {
   const weight = upstreamIds(e).length + downstreamIds(e).length;
+  const typeTrimmed = (e.type || "").trim();
+
+  // Base X position depends on the group
+  const baseX = typeTrimmed === "source" ? 0 : 1200;
+  // Scatter them slightly around the base so fcose has a starting shape
+  const offsetX = ((index % 6) - 2.5) * 40;
+  const offsetY = (Math.floor(index / 6) - 5) * 40;
+
   return {
     data: {
       id: e.id,
       label: e.name,
       type: e.type,
       weight: Math.max(1, weight),
-      parent: "group-" + e.type,
+      parent: "group-" + typeTrimmed,
     },
+    position: { x: baseX + offsetX, y: offsetY },
     classes: "leaf",
   };
 });
@@ -78,7 +80,22 @@ const nodes = ELEMENTS.map((e) => {
 const edges = [];
 ELEMENTS.forEach((e) => {
   upstreamIds(e).forEach((src) => {
-    edges.push({ data: { id: src + "__" + e.id, source: src, target: e.id } });
+    const srcEl = byId[src];
+    let edgeClass = "";
+
+    if (srcEl) {
+      const srcType = (srcEl.type || "").trim();
+      const tgtType = (e.type || "").trim();
+      if (srcType === "source" && tgtType === "goods")
+        edgeClass = "edge-source-goods";
+      else if (srcType === "goods" && tgtType === "goods")
+        edgeClass = "edge-goods-goods";
+    }
+
+    edges.push({
+      data: { id: src + "__" + e.id, source: src, target: e.id },
+      classes: edgeClass,
+    });
   });
 });
 
@@ -95,15 +112,33 @@ const fcoseLayout = () =>
   cy
     .layout({
       name: "fcose",
-      quality: "default",
+      quality: "proof",
       animate: true,
       animationDuration: 700,
-      randomize: true,
+      randomize: false,
       nodeDimensionsIncludeLabels: true,
-      nodeSeparation: 120,
-      idealEdgeLength: 110,
-      nodeRepulsion: 9000,
-      edgeElasticity: 0.45,
+      nodeSeparation: 75,
+      piSepCompounds: true, // CRITICAL: Strictly forbids compound containers from overlapping
+      idealEdgeLength: function (edge) {
+        const targetId = edge.target().id();
+        const targetEl = byId[targetId];
+        if (targetEl) {
+          const tType = (targetEl.type || "").trim();
+          if (tType === "goods") {
+            const ups = upstreamIds(targetEl);
+            const allSources =
+              ups.length > 0 &&
+              ups.every((id) => {
+                const comp = byId[id];
+                return comp && (comp.type || "").trim() === "source";
+              });
+            if (allSources) return 80; // Close, but leaves room for the compound borders
+          }
+        }
+        return 120;
+      },
+      nodeRepulsion: 9000, // Normal repulsion so source nodes stay nicely clustered together
+      edgeElasticity: 0.45, // Normal elasticity
       gravity: 0.25,
       gravityRange: 3.8,
       numIter: 2500,
@@ -145,46 +180,85 @@ function rowItem(id) {
 }
 
 function renderCard(el) {
-  document.getElementById("c-kicker").textContent =
-    el.type === "source" ? "Raw source" : "Goods";
+  const type = (el.type || "").trim();
+  const isSource = type === "source";
+
+  // Header info
+  document.getElementById("c-kicker").textContent = isSource
+    ? "Raw source"
+    : "Goods";
   document.getElementById("c-name").textContent = el.name;
 
   const tag = document.getElementById("c-type");
-  tag.className = "type-tag " + el.type;
-  document.getElementById("c-type-label").textContent = typeLabel[el.type];
+  tag.className = "type-tag " + type;
+  document.getElementById("c-type-label").textContent = typeLabel[type];
 
-  const fromWrap = document.getElementById("c-from");
-  const usedWrap = document.getElementById("c-used");
-  fromWrap.innerHTML = "";
-  usedWrap.innerHTML = "";
-
-  const ups = upstreamIds(el);
-  if (ups.length === 0) {
-    fromWrap.innerHTML =
-      '<span class="none">Nothing — this is a raw source.</span>';
-  } else {
-    ups.forEach((id) => fromWrap.appendChild(rowItem(id)));
-  }
-
+  // Grab DOM elements
   const sourcesSection = document.getElementById("c-sources-section");
   const sourcesWrap = document.getElementById("c-sources");
   sourcesWrap.innerHTML = "";
-  const roots = resolveRootSources(el);
-  const rootsAreNew = roots.some((id) => !ups.includes(id));
-  if (roots.length && rootsAreNew) {
-    roots.forEach((id) => sourcesWrap.appendChild(rowItem(id)));
-    sourcesSection.style.display = "";
-  } else {
+
+  const componentsSection = document.getElementById("c-components-section");
+  const componentsWrap = document.getElementById("c-components");
+  componentsWrap.innerHTML = "";
+
+  const usedSection = document.getElementById("c-used-section");
+  const usedWrap = document.getElementById("c-used");
+  usedWrap.innerHTML = "";
+
+  if (isSource) {
+    // SOURCE VIEW: Only show "Used in"
     sourcesSection.style.display = "none";
-  }
+    componentsSection.style.display = "none";
+    usedSection.style.display = "";
 
-  const downs = downstreamIds(el);
-  if (downs.length === 0) {
-    usedWrap.innerHTML = '<span class="none">Not used in anything yet.</span>';
+    const downs = downstreamIds(el);
+    if (downs.length === 0) {
+      usedWrap.innerHTML =
+        '<span class="none">Not used in anything yet.</span>';
+    } else {
+      downs.forEach((id) => usedWrap.appendChild(rowItem(id)));
+    }
   } else {
-    downs.forEach((id) => usedWrap.appendChild(rowItem(id)));
+    // GOODS VIEW
+    sourcesSection.style.display = "";
+    usedSection.style.display = "none";
+
+    // 1. Sources (Root raw materials traced all the way down)
+    const roots = resolveRootSources(el);
+    if (roots.length === 0) {
+      sourcesWrap.innerHTML = '<span class="none">No raw sources found.</span>';
+    } else {
+      roots.forEach((id) => sourcesWrap.appendChild(rowItem(id)));
+    }
+
+    // 2. Made up of (Direct components/upstreams)
+    const ups = upstreamIds(el);
+
+    // Check if ALL direct components are raw sources
+    const allComponentsAreSources =
+      ups.length > 0 &&
+      ups.every((id) => {
+        const comp = byId[id];
+        return comp && (comp.type || "").trim() === "source";
+      });
+
+    if (allComponentsAreSources) {
+      // Hide "Made up of" section if it's exclusively made of raw sources
+      componentsSection.style.display = "none";
+    } else {
+      // Show "Made up of" if it contains other goods or has no components
+      componentsSection.style.display = "";
+      if (ups.length === 0) {
+        componentsWrap.innerHTML =
+          '<span class="none">No direct components.</span>';
+      } else {
+        ups.forEach((id) => componentsWrap.appendChild(rowItem(id)));
+      }
+    }
   }
 
+  // Trigger card animation
   emptyEl.style.display = "none";
   cardEl.classList.remove("show");
   void cardEl.offsetWidth; // restart animation

@@ -1,13 +1,3 @@
-/* ==========================================================================
-   data.js — the element catalog.
-   Each element is either a source (no inputs) or a good (made from sources
-   and/or goods).
-
-   Just give each element an id (word_word format) and a type — the display
-   name is derived from the id automatically (see toLabel() in app.js), so
-   there's no separate "name" field to keep in sync.
-   ========================================================================== */
-
 const ELEMENTS = [
   // ---- sources (7) ----
   { id: "plant", type: "source" },
@@ -46,12 +36,19 @@ const ELEMENTS = [
   { id: "limestone", type: "goods", components: ["stone"] },
   { id: "rare_earth", type: "goods", components: ["stone"] },
   { id: "steel", type: "goods", components: ["stone"] },
+  { id: "iron", type: "goods", components: ["stone"] },
+  { id: "uranium", type: "goods", components: ["stone"] },
 
   { id: "asphalt", type: "goods", components: ["crude_oil"] },
   { id: "plastic", type: "goods", components: ["crude_oil"] },
   { id: "polyester", type: "goods", components: ["crude_oil"] },
 
   { id: "cement", type: "goods", components: ["stone", "clay"] },
+  {
+    id: "atomic_bomb",
+    type: "goods",
+    components: ["uranium", "steel", "silicon", "copper", "gold", "plastic"],
+  },
 
   {
     id: "pho",
