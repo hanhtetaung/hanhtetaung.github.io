@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sources & Goods</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Cytoscape core + fCoSE layout (fCoSE registers itself automatically
+     once these three scripts are present, in this order) -->
+    <script src="https://unpkg.com/cytoscape/dist/cytoscape.min.js"></script>
+    <script src="https://unpkg.com/layout-base/layout-base.js"></script>
+    <script src="https://unpkg.com/cose-base/cose-base.js"></script>
+    <script src="https://unpkg.com/cytoscape-fcose/cytoscape-fcose.js"></script>
+  </head>
+  <body>
+    <div class="app">
+      <header>
+        <div class="brand">
+          <h1>Sources & Goods</h1>
+        </div>
+        <div class="legend">
+          <span><i class="source"></i>Source</span>
+          <span><i class="material"></i>Material</span>
+          <span><i class="goods"></i>Goods</span>
+        </div>
+      </header>
+
+      <div class="body">
+        <div class="center">
+          <div id="cy"></div>
+          <div class="hint">
+            Click a node to trace its full chain — sources through materials to
+            goods. Node size = number of connections.
+          </div>
+        </div>
+
+        <div class="right">
+          <div class="empty" id="empty">
+            <div class="glyph">?</div>
+            <p>Select an item to see its source and related goods.</p>
+          </div>
+          <div class="card" id="card">
+            <div class="kicker" id="c-kicker">Element</div>
+            <h2 id="c-name">—</h2>
+            <div class="type-tag" id="c-type">
+              <i></i><span id="c-type-label">source</span>
+            </div>
+
+            <div class="section" id="c-sources-section">
+              <h3>Sources</h3>
+              <div class="row-list" id="c-sources"></div>
+            </div>
+
+            <div class="section">
+              <h3>Made from</h3>
+              <div class="row-list" id="c-from"></div>
+            </div>
+
+            <div class="section">
+              <h3>Used in</h3>
+              <div class="row-list" id="c-used"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- data → style → app, in that order -->
+    <script src="data.js"></script>
+    <script src="cy-style.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
