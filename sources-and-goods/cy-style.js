@@ -1,8 +1,8 @@
 /* ==========================================================================
    cy-style.js — the Cytoscape.js stylesheet.
 
-   Elements are grouped into compound containers by type (Source / Material /
-   Goods) — fCoSE lays these out as visual clusters, like the compound fCoSE
+   Elements are grouped into compound containers by type (Source / Goods)
+   — fCoSE lays these out as visual clusters, like the compound fCoSE
    demo. Leaf nodes (the actual elements) are circles sized by how many
    connections they have; group nodes are their dashed, labeled containers.
 
@@ -49,10 +49,6 @@ const CY_STYLE = [
     style: { "background-color": "#a86a2822", "border-color": "#a86a28" },
   },
   {
-    selector: 'node.leaf[type="material"]',
-    style: { "background-color": "#3d7c9822", "border-color": "#3d7c98" },
-  },
-  {
     selector: 'node.leaf[type="goods"]',
     style: { "background-color": "#5a845522", "border-color": "#5a8455" },
   },
@@ -85,14 +81,6 @@ const CY_STYLE = [
       "background-color": "#a86a28",
       "border-color": "#a86a2870",
       color: "#a86a28",
-    },
-  },
-  {
-    selector: 'node:parent[type="material"]',
-    style: {
-      "background-color": "#3d7c98",
-      "border-color": "#3d7c9870",
-      color: "#3d7c98",
     },
   },
   {

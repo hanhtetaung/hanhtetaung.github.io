@@ -10,8 +10,6 @@
 
   --source: #a86a28;
   --source-soft: #a86a2820;
-  --material: #3d7c98;
-  --material-soft: #3d7c9820;
   --goods: #5a8455;
   --goods-soft: #5a845520;
 
@@ -96,9 +94,6 @@ header {
 }
 .legend i.source {
   background: var(--source);
-}
-.legend i.material {
-  background: var(--material);
 }
 .legend i.goods {
   background: var(--goods);
@@ -256,13 +251,6 @@ header {
 .type-tag.source i {
   background: var(--source);
 }
-.type-tag.material {
-  color: var(--material);
-  background: var(--material-soft);
-}
-.type-tag.material i {
-  background: var(--material);
-}
 .type-tag.goods {
   color: var(--goods);
   background: var(--goods-soft);
@@ -314,9 +302,6 @@ header {
 .row-item.source {
   border-left-color: var(--source);
 }
-.row-item.material {
-  border-left-color: var(--material);
-}
 .row-item.goods {
   border-left-color: var(--goods);
 }
@@ -328,9 +313,6 @@ header {
 }
 .row-item.source .dot {
   background: var(--source);
-}
-.row-item.material .dot {
-  background: var(--material);
 }
 .row-item.goods .dot {
   background: var(--goods);

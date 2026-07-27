@@ -52,7 +52,6 @@ function resolveRootSources(el) {
         children together, the way the fcose compound demo does. */
 const GROUPS = [
   { id: "group-source", label: "Sources", type: "source" },
-  { id: "group-material", label: "Materials", type: "material" },
   { id: "group-goods", label: "Goods", type: "goods" },
 ];
 
@@ -119,7 +118,7 @@ fcoseLayout();
 /* ---- interaction ---- */
 const emptyEl = document.getElementById("empty");
 const cardEl = document.getElementById("card");
-const typeLabel = { source: "Source", material: "Material", goods: "Goods" };
+const typeLabel = { source: "Source", goods: "Goods" };
 
 function clearHighlight() {
   cy.elements().removeClass("dim lit selected");
@@ -147,11 +146,7 @@ function rowItem(id) {
 
 function renderCard(el) {
   document.getElementById("c-kicker").textContent =
-    el.type === "source"
-      ? "Raw source"
-      : el.type === "material"
-        ? "Material"
-        : "Goods";
+    el.type === "source" ? "Raw source" : "Goods";
   document.getElementById("c-name").textContent = el.name;
 
   const tag = document.getElementById("c-type");
