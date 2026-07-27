@@ -23,11 +23,10 @@
     <div class="app">
       <header>
         <div class="brand">
-          <h1>Sources & Goods</h1>
+          <h1>Sources & Goods | Knowledge Tree</h1>
         </div>
         <div class="legend">
           <span><i class="source"></i>Source</span>
-          <span><i class="material"></i>Material</span>
           <span><i class="goods"></i>Goods</span>
         </div>
       </header>
@@ -35,10 +34,6 @@
       <div class="body">
         <div class="center">
           <div id="cy"></div>
-          <div class="hint">
-            Click a node to trace its full chain — sources through materials to
-            goods. Node size = number of connections.
-          </div>
         </div>
 
         <div class="right">
@@ -46,26 +41,29 @@
             <div class="glyph">?</div>
             <p>Select an item to see its source and related goods.</p>
           </div>
-          <div class="card" id="card">
+          <div id="card" class="card">
             <div class="kicker" id="c-kicker">Element</div>
             <h2 id="c-name">—</h2>
-            <div class="type-tag" id="c-type">
-              <i></i><span id="c-type-label">source</span>
-            </div>
+            <span id="c-type" class="type-tag"
+              ><i></i><span id="c-type-label">source</span></span
+            >
 
-            <div class="section" id="c-sources-section">
+            <!-- New: Sources Section (Raw materials) -->
+            <div id="c-sources-section" class="section">
               <h3>Sources</h3>
-              <div class="row-list" id="c-sources"></div>
+              <div id="c-sources" class="row-list"></div>
             </div>
 
-            <div class="section">
-              <h3>Made from</h3>
-              <div class="row-list" id="c-from"></div>
+            <!-- New: Made up of Section (Direct components) -->
+            <div id="c-components-section" class="section">
+              <h3>Made up of</h3>
+              <div id="c-components" class="row-list"></div>
             </div>
 
-            <div class="section">
-              <h3>Used in</h3>
-              <div class="row-list" id="c-used"></div>
+            <!-- Used in Section -->
+            <div id="c-used-section" class="section">
+              <h3>To:</h3>
+              <div id="c-used" class="row-list"></div>
             </div>
           </div>
         </div>

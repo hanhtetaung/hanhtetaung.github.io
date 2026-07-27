@@ -10,8 +10,6 @@
 
   --source: #a86a28;
   --source-soft: #a86a2820;
-  --material: #3d7c98;
-  --material-soft: #3d7c9820;
   --goods: #5a8455;
   --goods-soft: #5a845520;
 
@@ -96,9 +94,6 @@ header {
 }
 .legend i.source {
   background: var(--source);
-}
-.legend i.material {
-  background: var(--material);
 }
 .legend i.goods {
   background: var(--goods);
@@ -256,13 +251,6 @@ header {
 .type-tag.source i {
   background: var(--source);
 }
-.type-tag.material {
-  color: var(--material);
-  background: var(--material-soft);
-}
-.type-tag.material i {
-  background: var(--material);
-}
 .type-tag.goods {
   color: var(--goods);
   background: var(--goods-soft);
@@ -314,9 +302,6 @@ header {
 .row-item.source {
   border-left-color: var(--source);
 }
-.row-item.material {
-  border-left-color: var(--material);
-}
 .row-item.goods {
   border-left-color: var(--goods);
 }
@@ -328,9 +313,6 @@ header {
 }
 .row-item.source .dot {
   background: var(--source);
-}
-.row-item.material .dot {
-  background: var(--material);
 }
 .row-item.goods .dot {
   background: var(--goods);
@@ -358,4 +340,85 @@ header {
 }
 ::-webkit-scrollbar-track {
   background: transparent;
+}
+
+/* ---------- RESPONSIVE LAYOUT ---------- */
+@media (max-width: 768px) {
+  /* Stack the panels vertically on smaller screens */
+  .body {
+    grid-template-columns: 1fr;
+    /* Use fr units instead of vh so it respects the header height and doesn't overflow the screen */
+    grid-template-rows: minmax(0, 1.2fr) minmax(0, 0.8fr);
+  }
+
+  .center {
+    min-height: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .right {
+    border-left: none;
+    min-height: 0; /* Crucial: allows the grid item to shrink and trigger its internal scrollbar */
+    overflow-y: auto;
+    overflow-x: hidden; /* Prevents horizontal scrolling */
+    padding: 16px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Adjust header for smaller widths */
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 16px;
+  }
+
+  .brand {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .brand h1 {
+    font-size: 16px;
+  }
+
+  .legend {
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 10px;
+  }
+
+  /* Adjust floating controls and hint for mobile */
+  .controls {
+    top: 10px;
+    left: 10px;
+    gap: 6px;
+  }
+
+  .controls button {
+    padding: 5px 8px;
+    font-size: 9.5px;
+  }
+
+  .hint {
+    display: none; /* Hide the bottom hint on small screens to save space */
+  }
+
+  /* Make the card slightly more compact on mobile */
+  .card {
+    padding: 14px;
+    box-sizing: border-box;
+    width: 100%;
+  }
+
+  .card h2 {
+    font-size: 18px;
+    word-break: break-word; /* Prevents long element names from breaking the layout */
+  }
+
+  .row-item {
+    font-size: 11.5px;
+    padding: 5px 6px;
+  }
 }

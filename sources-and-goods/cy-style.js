@@ -1,15 +1,3 @@
-/* ==========================================================================
-   cy-style.js — the Cytoscape.js stylesheet.
-
-   Elements are grouped into compound containers by type (Source / Material /
-   Goods) — fCoSE lays these out as visual clusters, like the compound fCoSE
-   demo. Leaf nodes (the actual elements) are circles sized by how many
-   connections they have; group nodes are their dashed, labeled containers.
-
-   Light theme: cream/white surfaces, dark ink text, deepened accent colors
-   for contrast against a light background.
-   ========================================================================== */
-
 const CY_STYLE = [
   {
     selector: "node",
@@ -22,24 +10,26 @@ const CY_STYLE = [
     },
   },
 
-  /* ---- leaf elements: sources / materials / goods ---- */
+  /* ---- leaf elements: sources / goods ---- */
+  /* ---- leaf elements: sources / goods ---- */
   {
     selector: "node.leaf",
     style: {
       shape: "ellipse",
-      width: "mapData(weight, 1, 9, 22, 56)",
-      height: "mapData(weight, 1, 9, 22, 56)",
+      width: "mapData(weight, 1, 9, 34, 64)", // Slightly increased minimum size so text fits inside
+      height: "mapData(weight, 1, 9, 34, 64)",
       "background-color": "#fbfaf6",
+      "background-opacity": 0.95, // Solid background so text is readable over crossing edges
       "border-width": 2,
       "border-color": "#cdc6b4",
       label: "data(label)",
       "font-size": 10,
-      "font-weight": 500,
-      "text-valign": "bottom",
-      "text-halign": "center",
-      "text-margin-y": 6,
+      "font-weight": 600,
+      "text-valign": "center", // Centers text vertically inside the node
+      "text-halign": "center", // Centers text horizontally inside the node
+      "text-margin-y": 0, // Removes the bottom offset
       "text-wrap": "wrap",
-      "text-max-width": 90,
+      "text-max-width": 80,
       "min-zoomed-font-size": 6,
       "z-index": 10,
     },
@@ -47,10 +37,6 @@ const CY_STYLE = [
   {
     selector: 'node.leaf[type="source"]',
     style: { "background-color": "#a86a2822", "border-color": "#a86a28" },
-  },
-  {
-    selector: 'node.leaf[type="material"]',
-    style: { "background-color": "#3d7c9822", "border-color": "#3d7c98" },
   },
   {
     selector: 'node.leaf[type="goods"]',
@@ -88,14 +74,6 @@ const CY_STYLE = [
     },
   },
   {
-    selector: 'node:parent[type="material"]',
-    style: {
-      "background-color": "#3d7c98",
-      "border-color": "#3d7c9870",
-      color: "#3d7c98",
-    },
-  },
-  {
     selector: 'node:parent[type="goods"]',
     style: {
       "background-color": "#5a8455",
@@ -121,12 +99,26 @@ const CY_STYLE = [
   { selector: ".dim", style: { opacity: 0.08 } },
   { selector: ".lit", style: { opacity: 1 } },
   { selector: "node.leaf.lit", style: { "background-color": "#eae6d9" } },
+  /* Base lit state (handles width and opacity for all highlighted edges) */
   {
     selector: "edge.lit",
     style: {
-      "line-color": "#1f2328",
       width: 1.8,
       opacity: 1,
+    },
+  },
+  /* Source -> Goods highlighted color */
+  {
+    selector: "edge.edge-source-goods.lit",
+    style: {
+      "line-color": "#a86a28",
+    },
+  },
+  /* Goods -> Goods highlighted color */
+  {
+    selector: "edge.edge-goods-goods.lit",
+    style: {
+      "line-color": "#5a8455",
     },
   },
   { selector: "node.leaf.selected", style: { "border-width": 3.4 } },

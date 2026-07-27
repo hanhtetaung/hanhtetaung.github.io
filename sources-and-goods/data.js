@@ -1,13 +1,3 @@
-/* ==========================================================================
-   data.js — the element catalog.
-   Each element is either a source (no inputs), a material (made from one
-   or more sources), or a good (made from sources, materials, and/or goods).
-
-   Just give each element an id (word_word format) and a type — the display
-   name is derived from the id automatically (see toLabel() in app.js), so
-   there's no separate "name" field to keep in sync.
-   ========================================================================== */
-
 const ELEMENTS = [
   // ---- sources (7) ----
   { id: "plant", type: "source" },
@@ -18,47 +8,52 @@ const ELEMENTS = [
   { id: "stone", type: "source" },
   { id: "water", type: "source" },
 
-  // ---- materials ----
-  { id: "beef", type: "material", sources: ["animal"] },
-  { id: "pork", type: "material", sources: ["animal"] },
-  { id: "silkworm", type: "material", sources: ["animal"] },
-  { id: "chicken", type: "material", sources: ["animal"] },
-  { id: "leather", type: "material", sources: ["animal"] },
-
-  { id: "rice", type: "material", sources: ["plant"] },
-  { id: "wheat", type: "material", sources: ["plant"] },
-  { id: "sugar", type: "material", sources: ["plant"] },
-  { id: "papaya", type: "material", sources: ["plant"] },
-  { id: "lime", type: "material", sources: ["plant"] },
-
-  { id: "glass", type: "material", sources: ["sand"] },
-  { id: "silicon", type: "material", sources: ["sand"] },
-
-  { id: "salt", type: "material", sources: ["water", "stone"] },
-
-  { id: "rubber", type: "material", sources: ["crude_oil", "plant"] },
-
-  { id: "wood", type: "material", sources: ["plant"] },
-
-  { id: "copper", type: "material", sources: ["stone"] },
-  { id: "gold", type: "material", sources: ["stone"] },
-  { id: "silver", type: "material", sources: ["stone"] },
-  { id: "limestone", type: "material", sources: ["stone"] },
-  { id: "rare_earth", type: "material", sources: ["stone"] },
-  { id: "steel", type: "material", sources: ["stone"] },
-
-  { id: "asphalt", type: "material", sources: ["crude_oil"] },
-  { id: "plastic", type: "material", sources: ["crude_oil"] },
-  { id: "nylon", type: "material", sources: ["crude_oil"] },
-  { id: "polyester", type: "material", sources: ["crude_oil"] },
-
-  { id: "cement", type: "material", sources: ["stone", "clay"] },
-
   // ---- goods ----
+  { id: "beef", type: "goods", components: ["animal"] },
+  { id: "pork", type: "goods", components: ["animal"] },
+  { id: "silkworm", type: "goods", components: ["animal"] },
+  { id: "chicken", type: "goods", components: ["animal"] },
+  { id: "leather", type: "goods", components: ["animal"] },
+
+  { id: "rice", type: "goods", components: ["plant"] },
+  { id: "wheat", type: "goods", components: ["plant"] },
+  { id: "sugar", type: "goods", components: ["plant"] },
+  { id: "papaya", type: "goods", components: ["plant"] },
+  { id: "lime", type: "goods", components: ["plant"] },
+
+  { id: "glass", type: "goods", components: ["sand"] },
+  { id: "silicon", type: "goods", components: ["sand"] },
+
+  { id: "salt", type: "goods", components: ["water", "stone"] },
+
+  { id: "rubber", type: "goods", components: ["crude_oil", "plant"] },
+
+  { id: "wood", type: "goods", components: ["plant"] },
+
+  { id: "copper", type: "goods", components: ["stone"] },
+  { id: "gold", type: "goods", components: ["stone"] },
+  { id: "silver", type: "goods", components: ["stone"] },
+  { id: "limestone", type: "goods", components: ["stone"] },
+  { id: "rare_earth", type: "goods", components: ["stone"] },
+  { id: "steel", type: "goods", components: ["stone"] },
+  { id: "iron", type: "goods", components: ["stone"] },
+  { id: "uranium", type: "goods", components: ["stone"] },
+
+  { id: "asphalt", type: "goods", components: ["crude_oil"] },
+  { id: "plastic", type: "goods", components: ["crude_oil"] },
+  { id: "polyester", type: "goods", components: ["crude_oil"] },
+
+  { id: "cement", type: "goods", components: ["stone", "clay"] },
+  {
+    id: "atomic_bomb",
+    type: "goods",
+    components: ["uranium", "steel", "silicon", "copper", "gold", "plastic"],
+  },
+
   {
     id: "pho",
     type: "goods",
-    components: ["rice", "water", "papaya", "lime", "beef", "pork"],
+    components: ["rice", "water", "papaya", "lime", "beef", "pork", "chicken"],
   },
   { id: "bread", type: "goods", components: ["wheat", "water", "salt"] },
   { id: "tooth_brush", type: "goods", components: ["nylon", "plastic"] },
@@ -79,6 +74,13 @@ const ELEMENTS = [
     components: ["plastic"],
   },
   {
+    id: "olive_oil",
+    type: "goods",
+    components: ["plant"],
+  },
+  { id: "nylon", type: "goods", components: ["crude_oil"] },
+
+  {
     id: "road",
     type: "goods",
     components: ["asphalt", "clay"],
@@ -87,5 +89,20 @@ const ELEMENTS = [
     id: "cloth",
     type: "goods",
     components: ["silkworm", "polyester"],
+  },
+  {
+    id: "chair",
+    type: "goods",
+    components: ["wood", "plastic", "leather"],
+  },
+  {
+    id: "sugarcane",
+    type: "goods",
+    components: ["plant"],
+  },
+  {
+    id: "sugar",
+    type: "goods",
+    components: ["sugarcane"],
   },
 ];
