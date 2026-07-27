@@ -449,6 +449,16 @@ img {
   flex-direction: column;
   padding-block: 1rem;
 }
+.article--hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+@media (max-width: 769px) {
+  .article--hero {
+    display: flex;
+  }
+}
 .article--row {
   display: grid;
   grid-template-columns: 1fr 2.5fr;
