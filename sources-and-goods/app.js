@@ -42,16 +42,19 @@ function resolveRootSources(el) {
 
 /* ---- element grouping: one compound container per type ----
         fCoSE treats these as compound parents and clusters their
-        children together, the way the fcose compound demo does. */
+        children together, the way the fcose compound demo does.
+        No styling is applied to these — see cy-style.js. */
 const GROUPS = [
   { id: "group-source", label: "Sources", type: "source" },
   { id: "group-goods", label: "Goods", type: "goods" },
 ];
 
 const groupNodes = GROUPS.map((g, index) => ({
-  data: { id: g.id, label: g.label, type: g.type, isGroup: true },
+  data: { id: g.id, label: g.label, type: g.type },
   // Force the two main groups to start on completely opposite sides
   position: { x: index === 0 ? 0 : 1200, y: 0 },
+  selectable: false,
+  grabbable: false,
 }));
 
 const nodes = ELEMENTS.map((e, index) => {
@@ -285,10 +288,7 @@ function selectNode(id) {
 }
 
 cy.on("tap", "node", (evt) => {
-  if (evt.target.data("isGroup")) {
-    // cy.animate({ fit: { eles: evt.target, padding: 60 } }, { duration: 300 });
-    return;
-  }
+  if (!byId[evt.target.id()]) return; // group container, not a real element
   selectNode(evt.target.id());
 });
 cy.on("tap", (evt) => {

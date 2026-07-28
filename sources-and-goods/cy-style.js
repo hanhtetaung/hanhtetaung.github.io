@@ -48,40 +48,14 @@ const CY_STYLE = [
     },
   },
 
-  /* ---- group containers: compound parent nodes ---- */
+  /* Group containers (compound parents): purely structural for the fCoSE
+     layout, not interactive — no color, no click, no selection highlight. */
   {
-    selector: "node:parent ",
+    selector: "node:parent",
     style: {
-      shape: "round-rectangle ",
-      "background-opacity ": 0.06,
-      "border-width ": 0 /* Removed border completely */,
-      "border-style ": "solid ",
-      padding: 36,
-      label: "data(label) ",
-      "font-family ": "Space Grotesk, sans-serif ",
-      "font-size ": 12.5,
-      "font-weight ": 600,
-      "text-valign ": "top ",
-      "text-halign ": "left ",
-      "text-margin-y ": -14,
-      "text-margin-x ": 8,
-      "text-transform ": "uppercase ",
-      "compound-sizing-wrt-labels ": "include ",
-      "z-index ": 1,
-    },
-  },
-  {
-    selector: 'node:parent[type= "source "]',
-    style: {
-      "background-color ": "#a86a28 ",
-      color: "#a86a28 ",
-    },
-  },
-  {
-    selector: 'node:parent[type= "goods "]',
-    style: {
-      "background-color ": "#5a8455 ",
-      color: "#5a8455 ",
+      events: "no",
+      "background-color": "#fcf5e8",
+      "border-width": 0,
     },
   },
 
