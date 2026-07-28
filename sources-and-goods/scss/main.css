@@ -163,6 +163,20 @@ h6 {
   color: var(--color-text);
 }
 
+.small--source {
+  font-family: var(--font);
+  font-size: var(--size-small);
+  font-weight: var(--font-bold);
+  color: var(--source-color-background);
+}
+
+.small--goods {
+  font-family: var(--font);
+  font-size: var(--size-small);
+  font-weight: var(--font-bold);
+  color: var(--good-color-background);
+}
+
 .small--emphasis {
   font-family: var(--font);
   font-size: var(--size-small);
@@ -172,7 +186,7 @@ h6 {
 
 body {
   background: var(--color-bg-primary);
-  font-family: var(--font-body);
+  font-family: var(--font);
   font-weight: var(--bold);
   font-size: var(--body-font-size);
 }
@@ -489,7 +503,7 @@ img {
   gap: 3rem;
 }
 .card__header {
-  display: block;
+  display: flex;
   gap: 1rem;
   padding-block: 1rem;
   border-bottom: 1px dashed var(--color-text);
@@ -498,6 +512,11 @@ img {
   height: 7rem;
   width: auto;
   margin-bottom: 1.5rem;
+  background: var(--color-bg-primary);
+  border: 1px solid var(--source-color-background);
+  padding-inline: 1rem;
+  padding-block: 1.5rem;
+  min-width: 7rem;
 }
 .card__content {
   display: flex;

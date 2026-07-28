@@ -235,6 +235,7 @@ function renderCard(el) {
   const isSource = type === "source";
 
   cardHeader.kicker.textContent = isSource ? "Source" : "Goods";
+  cardHeader.kicker.className = isSource ? "small--source" : "small--goods";
   cardHeader.name.textContent = el.name;
 
   if (isSource) {
@@ -251,7 +252,7 @@ function renderCard(el) {
     hideSection("sources");
     hideSection("components");
     hideSection("used");
-    fillSection("goods", downstreamIds(el), "Not used in anything yet.");
+    fillSection("goods", downstreamIds(el), "No downstream uses yet");
   } else {
     // GOODS VIEW
     hideSection("goods");
@@ -272,11 +273,11 @@ function renderCard(el) {
     if (allComponentsAreSources) {
       hideSection("components");
     } else {
-      fillSection("components", ups, "No direct components.");
+      fillSection("components", ups, "No downstream uses yet");
     }
 
     // 3. Uses: other goods that include this one as a component
-    fillSection("used", downstreamIds(el), "Not used in anything yet.");
+    fillSection("used", downstreamIds(el), "No downstream uses yet");
   }
 
   // Trigger card animation; apply the node's type as a class

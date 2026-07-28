@@ -61,6 +61,14 @@
   @include small;
 }
 
+.small--source {
+  @include small(var(--font-bold), var(--source-color-background));
+}
+
+.small--goods {
+  @include small(var(--font-bold), var(--good-color-background));
+}
+
 .small--emphasis {
   @include small(var(--font-bold), var(--color-secondary));
 }
