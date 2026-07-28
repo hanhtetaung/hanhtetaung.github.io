@@ -33,11 +33,19 @@ const CY_STYLE = [
   },
   {
     selector: 'node.leaf[type="source"]',
-    style: { "background-color": "#dede71", "border-color": "#a86a28" },
+    style: {
+      "background-color": "#0f7399", // --source-color-background
+      "border-color": "#0f7399",
+      color: "#ffffff", // --source-color-text
+    },
   },
   {
     selector: 'node.leaf[type="goods"]',
-    style: { "background-color": "#42c334", "border-color": "#5a8455" },
+    style: {
+      "background-color": "#1a7b5b", // --good-color-background
+      "border-color": "#1a7b5b",
+      color: "#ffffff", // --good-color-text
+    },
   },
 
   /* ---- group containers: compound parent nodes ---- */

@@ -242,7 +242,6 @@ function renderCard(el) {
   } else {
     // GOODS VIEW
     hideSection("goods");
-    hideSection("used");
 
     // 1. Sources: root raw materials traced all the way down
     fillSection("sources", resolveRootSources(el), "No raw sources found.");
@@ -262,6 +261,9 @@ function renderCard(el) {
     } else {
       fillSection("components", ups, "No direct components.");
     }
+
+    // 3. Uses: other goods that include this one as a component
+    fillSection("used", downstreamIds(el), "Not used in anything yet.");
   }
 
   // Trigger card animation; apply the node's type as a class
