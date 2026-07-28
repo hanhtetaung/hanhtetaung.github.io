@@ -485,20 +485,24 @@ img {
 
 .card {
   flex-direction: column;
+  display: none;
   gap: 3rem;
 }
 .card__header {
+  display: block;
+  gap: 1rem;
   padding-block: 1rem;
   border-bottom: 1px dashed var(--color-text);
+}
+.card__header .icon {
+  height: 7rem;
+  width: auto;
+  margin-bottom: 1.5rem;
 }
 .card__content {
   display: flex;
   flex-direction: column;
   gap: 3rem;
-}
-
-.card {
-  display: none;
 }
 
 .card.show {

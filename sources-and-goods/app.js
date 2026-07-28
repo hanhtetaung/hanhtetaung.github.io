@@ -200,6 +200,7 @@ function rowItem(id, showIcon) {
 // data-section value in index.html, instead of re-querying by id
 // on every renderCard() call.
 const cardHeader = {
+  icon: document.getElementById("c-icon"),
   kicker: document.getElementById("c-kicker"),
   name: document.getElementById("c-name"),
 };
@@ -235,6 +236,15 @@ function renderCard(el) {
 
   cardHeader.kicker.textContent = isSource ? "Source" : "Goods";
   cardHeader.name.textContent = el.name;
+
+  if (isSource) {
+    const iconName = el.id.trim().replace(/_/g, "-");
+    cardHeader.icon.src = `/sources-and-goods/assets/icons/${iconName}.svg`;
+    cardHeader.icon.alt = el.type;
+    cardHeader.icon.style.display = "";
+  } else {
+    cardHeader.icon.style.display = "none";
+  }
 
   if (isSource) {
     // SOURCE VIEW: Only show "Used in"

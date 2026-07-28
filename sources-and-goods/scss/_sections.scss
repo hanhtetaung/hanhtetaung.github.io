@@ -139,11 +139,21 @@
 
 .card {
   flex-direction: column;
+  display: none;
   gap: 3rem;
 
   &__header {
+    display: block;
+
+    gap: 1rem;
     padding-block: 1rem;
     border-bottom: 1px dashed var(--color-text);
+
+    & .icon {
+      height: 7rem;
+      width: auto;
+      margin-bottom: 1.5rem;
+    }
   }
 
   &__content {
@@ -153,10 +163,6 @@
   }
 }
 
-.card {
-  display: none;
-  // clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 0 100%);
-}
 .card.show {
   display: flex;
   animation: rise 0.22s ease;
