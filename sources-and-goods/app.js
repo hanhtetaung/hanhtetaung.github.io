@@ -173,9 +173,17 @@ function highlight(node) {
 function rowItem(id) {
   const e = byId[id];
   const div = document.createElement("div");
-  div.className = "row-item " + e.type;
-  div.innerHTML = `<span class="dot"></span>${e.name}<span class="rtype">${e.type}</span>`;
-  div.addEventListener("click", () => selectNode(id));
+  div.className = e.type + "-section__item";
+
+  const iconName = e.id.trim().replace(/_/g, "-");
+
+  const iconSrc = `/sources-and-goods/assets/icons/${iconName}.svg`;
+
+  div.innerHTML = `
+    <img src="${iconSrc}" alt="${e.type}" class="icon" />
+    <span class="small--emphasis">${e.name}</span>
+  `;
+
   return div;
 }
 

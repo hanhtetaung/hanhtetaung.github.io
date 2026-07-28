@@ -63,5 +63,4 @@
 
 .small--emphasis {
   @include small(var(--font-bold), var(--color-secondary));
-  text-transform: uppercase;
 }

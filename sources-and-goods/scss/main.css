@@ -168,7 +168,6 @@ h6 {
   font-size: var(--size-small);
   font-weight: var(--font-bold);
   color: var(--color-secondary);
-  text-transform: uppercase;
 }
 
 body {
@@ -229,6 +228,11 @@ img {
   }
 }
 
+.icon {
+  height: 4rem;
+  width: auto;
+}
+
 .source-section {
   display: flex;
   flex-direction: column;
@@ -241,6 +245,28 @@ img {
 }
 .source-section__heading .heading {
   color: var(--source-color-text);
+}
+.source-section__sources {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.source-section__item {
+  background: var(--color-bg-primary);
+  border: 2px solid var(--source-color-background);
+  color: var(--source-color-background);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 8rem;
+  gap: 0.5rem;
+  border-radius: 2rem;
+  padding-inline: 1rem;
+  padding-block: 0.5rem;
+}
+.source-section__item .small {
+  color: var(--source-color-background);
 }
 
 .component-section__heading {
