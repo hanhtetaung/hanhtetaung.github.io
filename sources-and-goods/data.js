@@ -14,35 +14,29 @@ const ELEMENTS = [
   { id: "silkworm", type: "goods", components: ["animal"] },
   { id: "chicken", type: "goods", components: ["animal"] },
   { id: "leather", type: "goods", components: ["animal"] },
-
   { id: "rice", type: "goods", components: ["plant"] },
   { id: "wheat", type: "goods", components: ["plant"] },
   { id: "sugar", type: "goods", components: ["plant"] },
   { id: "papaya", type: "goods", components: ["plant"] },
   { id: "lime", type: "goods", components: ["plant"] },
-
   { id: "glass", type: "goods", components: ["sand"] },
   { id: "silicon", type: "goods", components: ["sand"] },
-
   { id: "salt", type: "goods", components: ["water", "stone"] },
-
   { id: "rubber", type: "goods", components: ["crude_oil", "plant"] },
-
   { id: "wood", type: "goods", components: ["plant"] },
-
   { id: "copper", type: "goods", components: ["stone"] },
   { id: "gold", type: "goods", components: ["stone"] },
   { id: "silver", type: "goods", components: ["stone"] },
   { id: "limestone", type: "goods", components: ["stone"] },
   { id: "rare_earth", type: "goods", components: ["stone"] },
-  { id: "steel", type: "goods", components: ["stone"] },
+  { id: "steel", type: "goods", components: ["iron", "stone"] },
   { id: "iron", type: "goods", components: ["stone"] },
-  { id: "uranium", type: "goods", components: ["stone"] },
+  { id: "charcoal", type: "goods", components: ["wood"] },
 
+  { id: "uranium", type: "goods", components: ["stone"] },
   { id: "asphalt", type: "goods", components: ["crude_oil"] },
   { id: "plastic", type: "goods", components: ["crude_oil"] },
   { id: "polyester", type: "goods", components: ["crude_oil"] },
-
   { id: "cement", type: "goods", components: ["stone", "clay"] },
   {
     id: "atomic_bomb",
@@ -59,12 +53,12 @@ const ELEMENTS = [
   { id: "tooth_brush", type: "goods", components: ["nylon", "plastic"] },
 
   {
-    id: "cpu",
+    id: "CPU",
     type: "goods",
     components: ["silicon", "copper", "gold", "silver", "plastic"],
   },
   {
-    id: "electric motor",
+    id: "electric_motor",
     type: "goods",
     components: ["rare_earth", "copper", "gold", "plastic", "silver", "steel"],
   },
@@ -138,7 +132,7 @@ const ELEMENTS = [
   {
     id: "luggage",
     type: "goods",
-    components: ["plastic"],
+    components: ["plastic", "polyester", "nylon", "aluminum", "rubber"],
   },
   {
     id: "apple",
@@ -167,75 +161,71 @@ const ELEMENTS = [
   },
 
   { id: "cassava", type: "goods", components: ["plant"] },
-
   { id: "tapioca_pearl", type: "goods", components: ["cassava"] },
-
   { id: "milk", type: "goods", components: ["animal"] },
-
-  { id: "cake", type: "goods", components: ["wheat", "egg", "sugar"] },
   { id: "ice_cream", type: "goods", components: ["milk", "sugar"] },
 
-  { id: "shoes", type: "goods", components: ["leather", "rubber", "plastic"] },
+  {
+    id: "shoe",
+    type: "goods",
+    components: ["leather", "rubber", "plastic", "nylon", "polyester"],
+  },
 
   { id: "table", type: "goods", components: ["wood", "steel"] },
-  { id: "bed", type: "goods", components: ["wood", "cloth"] },
-  { id: "cabinet", type: "goods", components: ["wood"] },
+  { id: "refrigerant", type: "goods", components: ["crude_oil"] },
+  {
+    id: "air_conditioner",
+    type: "goods",
+    components: [
+      "refrigerant",
+      "steel",
+      "copper",
+      "aluminum",
+      "plastic",
+      "silicon",
+      "glass",
+    ],
+  },
+  {
+    id: "light_bulb",
+    type: "goods",
+    components: ["glass", "steel", "aluminum", "plastic", "silicon"],
+  },
 
-  // Electronics
-  { id: "phone", type: "goods", components: ["cpu", "glass", "plastic"] },
-  { id: "laptop", type: "goods", components: ["cpu", "glass", "plastic"] },
-  { id: "television", type: "goods", components: ["glass", "plastic", "cpu"] },
-  { id: "camera", type: "goods", components: ["glass", "plastic", "cpu"] },
-  { id: "keyboard", type: "goods", components: ["plastic"] },
-  { id: "mouse", type: "goods", components: ["plastic"] },
+  { id: "gasoline", type: "goods", components: ["crude_oil"] },
 
-  // Kitchen
-  { id: "plate", type: "goods", components: ["clay"] },
-  { id: "cup", type: "goods", components: ["glass"] },
-  { id: "knife", type: "goods", components: ["steel"] },
-  { id: "fork", type: "goods", components: ["steel"] },
-  { id: "spoon", type: "goods", components: ["steel"] },
-  { id: "bottle", type: "goods", components: ["glass"] },
-
-  // Construction
   { id: "brick", type: "goods", components: ["clay"] },
-  { id: "wall", type: "goods", components: ["brick", "cement"] },
   {
     id: "house",
     type: "goods",
-    components: ["wood", "glass", "cement", "steel"],
+    components: ["wood", "glass", "cement", "steel", "plastic"],
   },
-  { id: "bridge", type: "goods", components: ["steel", "cement"] },
 
-  // Transport
-  {
-    id: "car",
-    type: "goods",
-    components: ["steel", "glass", "plastic", "rubber"],
-  },
-  { id: "bicycle", type: "goods", components: ["steel", "rubber"] },
-  {
-    id: "motorcycle",
-    type: "goods",
-    components: ["steel", "plastic", "rubber"],
-  },
-  { id: "airplane", type: "goods", components: ["steel", "plastic"] },
   {
     id: "satellite",
     type: "goods",
     components: ["silicon", "steel", "plastic", "gold", "copper"],
   },
 
-  // Stationery
   { id: "paper", type: "goods", components: ["wood"] },
+  { id: "graphite", type: "goods", components: ["stone"] },
   { id: "book", type: "goods", components: ["paper"] },
-  { id: "pencil", type: "goods", components: ["wood"] },
+  { id: "aluminum", type: "goods", components: ["stone"] },
+  {
+    id: "pencil",
+    type: "goods",
+    components: ["wood", "graphite", "clay", "rubber", "aluminum"],
+  },
   { id: "pen", type: "goods", components: ["plastic"] },
 
-  // Bathroom
   { id: "soap", type: "goods", components: ["plant"] },
-  { id: "toothpaste", type: "goods", components: ["water", "plant"] },
-  // Toys
+  { id: "banana", type: "goods", components: ["plant"] },
+  {
+    id: "toothpaste",
+    type: "goods",
+    components: ["water", "abrasives", "surfactants"],
+  },
   { id: "football", type: "goods", components: ["leather", "rubber"] },
-  { id: "doll", type: "goods", components: ["cloth", "plastic"] },
+  { id: "abrasives", type: "goods", components: ["stone", "sand"] },
+  { id: "surfactants", type: "goods", components: ["crude_oil"] },
 ];
