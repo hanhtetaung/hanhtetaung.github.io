@@ -166,6 +166,10 @@ const ELEMENTS = [
     components: ["rice", "seaweeds", "salt"],
   },
 
+  { id: "cassava", type: "goods", components: ["plant"] },
+
+  { id: "tapioca_pearl", type: "goods", components: ["cassava"] },
+
   { id: "milk", type: "goods", components: ["animal"] },
 
   { id: "cake", type: "goods", components: ["wheat", "egg", "sugar"] },
