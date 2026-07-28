@@ -10,8 +10,6 @@ const CY_STYLE = [
     },
   },
 
-  /* ---- leaf elements: sources / goods ---- */
-  /* ---- leaf elements: sources / goods ---- */
   {
     selector: "node.leaf",
     style: {
@@ -21,7 +19,6 @@ const CY_STYLE = [
       "background-color": "#fbfaf6",
       "background-opacity": 0.95, // Solid background so text is readable over crossing edges
       "border-width": 2,
-      "border-color": "#cdc6b4",
       label: "data(label)",
       "font-size": 10,
       "font-weight": 600,
@@ -36,49 +33,29 @@ const CY_STYLE = [
   },
   {
     selector: 'node.leaf[type="source"]',
-    style: { "background-color": "#a86a2822", "border-color": "#a86a28" },
+    style: {
+      "background-color": "#0f7399", // --source-color-background
+      "border-color": "#0f7399",
+      color: "#ffffff", // --source-color-text
+    },
   },
   {
     selector: 'node.leaf[type="goods"]',
-    style: { "background-color": "#5a845522", "border-color": "#5a8455" },
+    style: {
+      "background-color": "#1a7b5b", // --good-color-background
+      "border-color": "#1a7b5b",
+      color: "#ffffff", // --good-color-text
+    },
   },
 
-  /* ---- group containers: compound parent nodes ---- */
+  /* Group containers (compound parents): purely structural for the fCoSE
+     layout, not interactive — no color, no click, no selection highlight. */
   {
     selector: "node:parent",
     style: {
-      shape: "round-rectangle",
-      "background-opacity": 0.06,
-      "border-width": 1.4,
-      "border-style": "dashed",
-      padding: 36,
-      label: "data(label)",
-      "font-family": "Space Grotesk, sans-serif",
-      "font-size": 12.5,
-      "font-weight": 600,
-      "text-valign": "top",
-      "text-halign": "left",
-      "text-margin-y": -14,
-      "text-margin-x": 8,
-      "text-transform": "uppercase",
-      "compound-sizing-wrt-labels": "include",
-      "z-index": 1,
-    },
-  },
-  {
-    selector: 'node:parent[type="source"]',
-    style: {
-      "background-color": "#a86a28",
-      "border-color": "#a86a2870",
-      color: "#a86a28",
-    },
-  },
-  {
-    selector: 'node:parent[type="goods"]',
-    style: {
-      "background-color": "#5a8455",
-      "border-color": "#5a845570",
-      color: "#5a8455",
+      events: "no",
+      "background-color": "#fcf5e8",
+      "border-width": 0,
     },
   },
 
@@ -98,7 +75,6 @@ const CY_STYLE = [
   // dim / highlight states, toggled on tap
   { selector: ".dim", style: { opacity: 0.08 } },
   { selector: ".lit", style: { opacity: 1 } },
-  { selector: "node.leaf.lit", style: { "background-color": "#eae6d9" } },
   /* Base lit state (handles width and opacity for all highlighted edges) */
   {
     selector: "edge.lit",
@@ -111,15 +87,15 @@ const CY_STYLE = [
   {
     selector: "edge.edge-source-goods.lit",
     style: {
-      "line-color": "#a86a28",
+      "line-color": "#a86a28db",
     },
   },
   /* Goods -> Goods highlighted color */
   {
     selector: "edge.edge-goods-goods.lit",
     style: {
-      "line-color": "#5a8455",
+      "line-color": "#5a8455e9",
     },
   },
-  { selector: "node.leaf.selected", style: { "border-width": 3.4 } },
+  { selector: "node.leaf.selected", style: { "border-width": 1.5 } },
 ];

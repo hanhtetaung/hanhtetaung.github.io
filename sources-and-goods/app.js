@@ -42,16 +42,19 @@ function resolveRootSources(el) {
 
 /* ---- element grouping: one compound container per type ----
         fCoSE treats these as compound parents and clusters their
-        children together, the way the fcose compound demo does. */
+        children together, the way the fcose compound demo does.
+        No styling is applied to these — see cy-style.js. */
 const GROUPS = [
   { id: "group-source", label: "Sources", type: "source" },
   { id: "group-goods", label: "Goods", type: "goods" },
 ];
 
 const groupNodes = GROUPS.map((g, index) => ({
-  data: { id: g.id, label: g.label, type: g.type, isGroup: true },
+  data: { id: g.id, label: g.label, type: g.type },
   // Force the two main groups to start on completely opposite sides
   position: { x: index === 0 ? 0 : 1200, y: 0 },
+  selectable: false,
+  grabbable: false,
 }));
 
 const nodes = ELEMENTS.map((e, index) => {
@@ -60,9 +63,9 @@ const nodes = ELEMENTS.map((e, index) => {
 
   // Base X position depends on the group
   const baseX = typeTrimmed === "source" ? 0 : 1200;
-  // Scatter them slightly around the base so fcose has a starting shape
-  const offsetX = ((index % 6) - 2.5) * 40;
-  const offsetY = (Math.floor(index / 6) - 5) * 40;
+  // Start them in a very tight grid (small 15px offsets)
+  const offsetX = ((index % 5) - 2) * 15;
+  const offsetY = (Math.floor(index / 5) - 4) * 15;
 
   return {
     data: {
@@ -112,13 +115,13 @@ const fcoseLayout = () =>
   cy
     .layout({
       name: "fcose",
-      quality: "proof",
+      quality: "proof", // "proof" provides the tightest packing for compound nodes
       animate: true,
       animationDuration: 700,
-      randomize: false,
+      randomize: false, // Keeps layout fixed on every refresh
       nodeDimensionsIncludeLabels: true,
-      nodeSeparation: 75,
-      piSepCompounds: true, // CRITICAL: Strictly forbids compound containers from overlapping
+      nodeSeparation: 10, // VERY small separation to pack source nodes tightly together
+      piSepCompounds: true, // Strictly forbids the two main group boxes from overlapping
       idealEdgeLength: function (edge) {
         const targetId = edge.target().id();
         const targetEl = byId[targetId];
@@ -132,15 +135,15 @@ const fcoseLayout = () =>
                 const comp = byId[id];
                 return comp && (comp.type || "").trim() === "source";
               });
-            if (allSources) return 80; // Close, but leaves room for the compound borders
+            if (allSources) return 80; // Pull simple goods close
           }
         }
-        return 120;
+        return 140; // Standard distance for complex goods
       },
-      nodeRepulsion: 9000, // Normal repulsion so source nodes stay nicely clustered together
-      edgeElasticity: 0.45, // Normal elasticity
-      gravity: 0.25,
-      gravityRange: 3.8,
+      nodeRepulsion: 1500, // LOW repulsion so source nodes don't push each other away
+      edgeElasticity: 0.1, // Low elasticity so edges don't drag the two main groups together
+      gravity: 0.8, // HIGH gravity pulls source nodes tightly into the center of their group
+      gravityRange: 1.5,
       numIter: 2500,
       tile: true,
       fit: true,
@@ -170,72 +173,95 @@ function highlight(node) {
   node.removeClass("dim").addClass("lit selected");
 }
 
-function rowItem(id) {
+function rowItem(id, showIcon) {
   const e = byId[id];
   const div = document.createElement("div");
-  div.className = "row-item " + e.type;
-  div.innerHTML = `<span class="dot"></span>${e.name}<span class="rtype">${e.type}</span>`;
-  div.addEventListener("click", () => selectNode(id));
+  div.className = "selected-item";
+
+  if (showIcon) {
+    const iconName = e.id.trim().replace(/_/g, "-");
+    const iconSrc = `/sources-and-goods/assets/icons/${iconName}.svg`;
+    div.innerHTML = `
+      <img src="${iconSrc}" alt="${e.type}" class="icon" />
+      <span class="small--emphasis">${e.name}</span>
+    `;
+  } else {
+    div.className = "selected-item selected-item--" + e.type;
+    div.innerHTML = `
+      <i class="${e.type}-legend"></i>
+      <span class="small--emphasis">${e.name}</span>
+    `;
+  }
+
   return div;
+}
+
+// Cache the card's header + section DOM nodes once, keyed by the
+// data-section value in index.html, instead of re-querying by id
+// on every renderCard() call.
+const cardHeader = {
+  icon: document.getElementById("c-icon"),
+  kicker: document.getElementById("c-kicker"),
+  name: document.getElementById("c-name"),
+};
+
+const cardSections = ["sources", "components", "used", "goods"].reduce(
+  (acc, key) => {
+    const section = cardEl.querySelector(`[data-section="${key}"]`);
+    acc[key] = { section, list: section.querySelector('[data-role="list"]') };
+    return acc;
+  },
+  {},
+);
+
+// Show/hide a section and, if visible, fill its row-list with `ids`
+// (or an empty-state message when there are none).
+function fillSection(key, ids, emptyMessage) {
+  const { section, list } = cardSections[key];
+  section.style.display = "";
+  list.innerHTML = ids.length
+    ? ""
+    : `<span class="none">${emptyMessage}</span>`;
+  const showIcon = key === "sources";
+  ids.forEach((id) => list.appendChild(rowItem(id, showIcon)));
+}
+
+function hideSection(key) {
+  cardSections[key].section.style.display = "none";
 }
 
 function renderCard(el) {
   const type = (el.type || "").trim();
   const isSource = type === "source";
 
-  // Header info
-  document.getElementById("c-kicker").textContent = isSource
-    ? "Raw source"
-    : "Goods";
-  document.getElementById("c-name").textContent = el.name;
+  cardHeader.kicker.textContent = isSource ? "Source" : "Goods";
+  cardHeader.name.textContent = el.name;
 
-  const tag = document.getElementById("c-type");
-  tag.className = "type-tag " + type;
-  document.getElementById("c-type-label").textContent = typeLabel[type];
-
-  // Grab DOM elements
-  const sourcesSection = document.getElementById("c-sources-section");
-  const sourcesWrap = document.getElementById("c-sources");
-  sourcesWrap.innerHTML = "";
-
-  const componentsSection = document.getElementById("c-components-section");
-  const componentsWrap = document.getElementById("c-components");
-  componentsWrap.innerHTML = "";
-
-  const usedSection = document.getElementById("c-used-section");
-  const usedWrap = document.getElementById("c-used");
-  usedWrap.innerHTML = "";
+  if (isSource) {
+    const iconName = el.id.trim().replace(/_/g, "-");
+    cardHeader.icon.src = `/sources-and-goods/assets/icons/${iconName}.svg`;
+    cardHeader.icon.alt = el.type;
+    cardHeader.icon.style.display = "";
+  } else {
+    cardHeader.icon.style.display = "none";
+  }
 
   if (isSource) {
     // SOURCE VIEW: Only show "Used in"
-    sourcesSection.style.display = "none";
-    componentsSection.style.display = "none";
-    usedSection.style.display = "";
-
-    const downs = downstreamIds(el);
-    if (downs.length === 0) {
-      usedWrap.innerHTML =
-        '<span class="none">Not used in anything yet.</span>';
-    } else {
-      downs.forEach((id) => usedWrap.appendChild(rowItem(id)));
-    }
+    hideSection("sources");
+    hideSection("components");
+    hideSection("used");
+    fillSection("goods", downstreamIds(el), "Not used in anything yet.");
   } else {
     // GOODS VIEW
-    sourcesSection.style.display = "";
-    usedSection.style.display = "none";
+    hideSection("goods");
 
-    // 1. Sources (Root raw materials traced all the way down)
-    const roots = resolveRootSources(el);
-    if (roots.length === 0) {
-      sourcesWrap.innerHTML = '<span class="none">No raw sources found.</span>';
-    } else {
-      roots.forEach((id) => sourcesWrap.appendChild(rowItem(id)));
-    }
+    // 1. Sources: root raw materials traced all the way down
+    fillSection("sources", resolveRootSources(el), "No raw sources found.");
 
-    // 2. Made up of (Direct components/upstreams)
+    // 2. Made up of: direct components/upstreams, hidden entirely when
+    // every direct component is itself a raw source (nothing new to show)
     const ups = upstreamIds(el);
-
-    // Check if ALL direct components are raw sources
     const allComponentsAreSources =
       ups.length > 0 &&
       ups.every((id) => {
@@ -244,25 +270,19 @@ function renderCard(el) {
       });
 
     if (allComponentsAreSources) {
-      // Hide "Made up of" section if it's exclusively made of raw sources
-      componentsSection.style.display = "none";
+      hideSection("components");
     } else {
-      // Show "Made up of" if it contains other goods or has no components
-      componentsSection.style.display = "";
-      if (ups.length === 0) {
-        componentsWrap.innerHTML =
-          '<span class="none">No direct components.</span>';
-      } else {
-        ups.forEach((id) => componentsWrap.appendChild(rowItem(id)));
-      }
+      fillSection("components", ups, "No direct components.");
     }
+
+    // 3. Uses: other goods that include this one as a component
+    fillSection("used", downstreamIds(el), "Not used in anything yet.");
   }
 
-  // Trigger card animation
+  // Trigger card animation; apply the node's type as a class
+  // (e.g., "card show source" or "card show goods")
   emptyEl.style.display = "none";
-  cardEl.classList.remove("show");
-  void cardEl.offsetWidth; // restart animation
-  cardEl.classList.add("show");
+  cardEl.className = "card show " + type;
 }
 
 function selectNode(id) {
@@ -278,10 +298,7 @@ function selectNode(id) {
 }
 
 cy.on("tap", "node", (evt) => {
-  if (evt.target.data("isGroup")) {
-    // cy.animate({ fit: { eles: evt.target, padding: 60 } }, { duration: 300 });
-    return;
-  }
+  if (!byId[evt.target.id()]) return; // group container, not a real element
   selectNode(evt.target.id());
 });
 cy.on("tap", (evt) => {

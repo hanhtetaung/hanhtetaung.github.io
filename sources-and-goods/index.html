@@ -5,12 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sources & Goods</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="/sources-and-goods/scss/main.css" />
 
     <!-- Cytoscape core + fCoSE layout (fCoSE registers itself automatically
      once these three scripts are present, in this order) -->
@@ -20,57 +15,103 @@
     <script src="https://unpkg.com/cytoscape-fcose/cytoscape-fcose.js"></script>
   </head>
   <body>
-    <div class="app">
-      <header>
-        <div class="brand">
-          <h1>Sources & Goods | Knowledge Tree</h1>
-        </div>
-        <div class="legend">
-          <span><i class="source"></i>Source</span>
-          <span><i class="goods"></i>Goods</span>
-        </div>
-      </header>
+    <main class="main">
+      <div class="center">
+        <header class="header">
+          <h1 class="display">Knowledge Tree</h1>
 
-      <div class="body">
-        <div class="center">
-          <div id="cy"></div>
-        </div>
-
-        <div class="right">
-          <div class="empty" id="empty">
-            <div class="glyph">?</div>
-            <p>Select an item to see its source and related goods.</p>
+          <div class="legend">
+            <span class="small"><i class="source-legend"></i>Source</span>
+            <span class="small"><i class="goods-legend"></i>Goods</span>
           </div>
-          <div id="card" class="card">
-            <div class="kicker" id="c-kicker">Element</div>
-            <h2 id="c-name">—</h2>
-            <span id="c-type" class="type-tag"
-              ><i></i><span id="c-type-label">source</span></span
+        </header>
+        <div id="cy"></div>
+      </div>
+
+      <div class="right">
+        <div class="empty" id="empty">
+          <img
+            src="/sources-and-goods/assets/icons/select-node.svg"
+            alt="Select a Node"
+            class="icon-empty"
+          />
+          <div class="empty__content">
+            <h2>Select a node</h2>
+            <p>Select a node to see its source and related goods.</p>
+          </div>
+        </div>
+
+        <div id="card" class="card">
+          <div class="card__header">
+            <img id="c-icon" class="icon" alt="" style="display: none" />
+            <div>
+              <span class="small" id="c-kicker">Element</span>
+              <h2 id="c-name" class="">—</h2>
+            </div>
+          </div>
+
+          <div class="card__content">
+            <!-- Each detail section shares the same shape (heading + row-list)
+                 so app.js can look them up and fill/toggle them generically
+                 via data-section, instead of one-off id lookups per section.
+                 Class names (source-section, component-section, use-section)
+                 are kept as-is since main.css targets them directly. -->
+            <div
+              id="c-sources-section"
+              class="source-section"
+              data-section="sources"
             >
-
-            <!-- New: Sources Section (Raw materials) -->
-            <div id="c-sources-section" class="section">
-              <h3>Sources</h3>
-              <div id="c-sources" class="row-list"></div>
+              <div class="source-section__heading">
+                <h3 class="heading">Sources</h3>
+              </div>
+              <div
+                id="c-sources"
+                class="source-section__list"
+                data-role="list"
+              ></div>
             </div>
 
-            <!-- New: Made up of Section (Direct components) -->
-            <div id="c-components-section" class="section">
-              <h3>Made up of</h3>
-              <div id="c-components" class="row-list"></div>
+            <div
+              id="c-components-section"
+              class="component-section"
+              data-section="components"
+            >
+              <div class="component-section__heading">
+                <h3 class="heading">Components</h3>
+              </div>
+              <div
+                id="c-components"
+                class="component-section__list"
+                data-role="list"
+              ></div>
             </div>
 
-            <!-- Used in Section -->
-            <div id="c-used-section" class="section">
-              <h3>To:</h3>
-              <div id="c-used" class="row-list"></div>
+            <div id="c-used-section" class="use-section" data-section="used">
+              <div class="use-section__heading">
+                <h3 class="heading">Uses</h3>
+              </div>
+              <div id="c-used" class="use-section__list" data-role="list"></div>
+            </div>
+
+            <div
+              id="c-goods-section"
+              class="goods-section"
+              data-section="goods"
+            >
+              <div class="goods-section__heading">
+                <h3 class="heading">Goods</h3>
+              </div>
+              <div
+                id="c-goods"
+                class="goods-section__list"
+                data-role="list"
+              ></div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </main>
 
-    <!-- data → style → app, in that order -->
     <script src="data.js"></script>
     <script src="cy-style.js"></script>
     <script src="app.js"></script>
