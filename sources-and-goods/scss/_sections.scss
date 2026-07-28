@@ -26,22 +26,23 @@
       align-items: center;
       gap: 7px;
     }
-
-    & i {
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      display: inline-block;
-    }
-
-    & i.source {
-      background: var(--source-color-backgorund);
-    }
-
-    & i.goods {
-      background: var(--good-color-background);
-    }
   }
+}
+
+.source-legend {
+  background: var(--source-color-background);
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.goods-legend {
+  background: var(--good-color-background);
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  display: inline-block;
 }
 
 .main {
@@ -81,10 +82,11 @@
 
 .empty {
   display: flex;
+  height: 100%;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   text-align: center;
-  padding-top: 25%;
   gap: 2rem;
 
   @include breakpoints.phone {

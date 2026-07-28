@@ -21,8 +21,8 @@
           <h1 class="display">Knowledge Tree</h1>
 
           <div class="legend">
-            <span class="small"><i class="source"></i>Source</span>
-            <span class="small"><i class="goods"></i>Goods</span>
+            <span class="small"><i class="source-legend"></i>Source</span>
+            <span class="small"><i class="goods-legend"></i>Goods</span>
           </div>
         </header>
         <div id="cy"></div>
@@ -48,28 +48,61 @@
           </div>
 
           <div class="card__content">
-            <!-- New: Sources Section (Raw materials) -->
-            <div id="c-sources-section" class="source-section">
+            <!-- Each detail section shares the same shape (heading + row-list)
+                 so app.js can look them up and fill/toggle them generically
+                 via data-section, instead of one-off id lookups per section.
+                 Class names (source-section, component-section, use-section)
+                 are kept as-is since main.css targets them directly. -->
+            <div
+              id="c-sources-section"
+              class="source-section"
+              data-section="sources"
+            >
               <div class="source-section__heading">
                 <h3 class="heading">Sources</h3>
               </div>
-              <div id="c-sources" class="source-section__sources"></div>
+              <div
+                id="c-sources"
+                class="source-section__list"
+                data-role="list"
+              ></div>
             </div>
 
-            <!-- New: Made up of Section (Direct components) -->
-            <div id="c-components-section" class="component-section">
+            <div
+              id="c-components-section"
+              class="component-section"
+              data-section="components"
+            >
               <div class="component-section__heading">
                 <h3 class="heading">Components</h3>
               </div>
-              <div id="c-components" class="row-list"></div>
+              <div
+                id="c-components"
+                class="component-section__list"
+                data-role="list"
+              ></div>
             </div>
 
-            <!-- Used in Section -->
-            <div id="c-used-section" class="use-section">
+            <div id="c-used-section" class="use-section" data-section="used">
               <div class="use-section__heading">
                 <h3 class="heading">Uses</h3>
               </div>
-              <div id="c-used" class="row-list"></div>
+              <div id="c-used" class="use-section__list" data-role="list"></div>
+            </div>
+
+            <div
+              id="c-goods-section"
+              class="goods-section"
+              data-section="goods"
+            >
+              <div class="goods-section__heading">
+                <h3 class="heading">Goods</h3>
+              </div>
+              <div
+                id="c-goods"
+                class="goods-section__list"
+                data-role="list"
+              ></div>
             </div>
           </div>
         </div>
