@@ -1,0 +1,67 @@
+@mixin display {
+  font-family: var(--font);
+  font-size: var(--size-display);
+  font-weight: var(--font-bold);
+  color: var(--color-text);
+}
+
+@mixin title {
+  font-family: var(--font);
+  font-size: var(--size-title);
+  font-weight: var(--font-bold);
+  color: var(--color-text);
+}
+
+@mixin heading($color: var(--color-text)) {
+  font-family: var(--font);
+  font-size: var(--size-heading);
+  font-weight: var(--font-bold);
+  color: $color;
+}
+
+@mixin body {
+  font-family: var(--font);
+  font-size: var(--size-body);
+  font-weight: var(--font-regular);
+  color: var(--color-text);
+}
+
+@mixin small($weight: var(--font-regular), $color: var(--color-text)) {
+  font-family: var(--font);
+  font-size: var(--size-small);
+  font-weight: $weight;
+  color: $color;
+}
+
+.display {
+  @include display;
+}
+
+.title {
+  @include title;
+}
+
+.heading {
+  @include heading;
+}
+
+.heading--emphasis {
+  @include heading(var(--color-secondary));
+}
+
+.body {
+  @include body;
+}
+
+.body--emphasis {
+  color: var(--color-secondary);
+}
+
+.small {
+  @include small;
+}
+
+.small--emphasis {
+  @include small(var(--font-bold), var(--color-secondary));
+  text-transform: uppercase;
+}

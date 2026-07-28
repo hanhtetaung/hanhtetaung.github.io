@@ -105,4 +105,140 @@ const ELEMENTS = [
     type: "goods",
     components: ["sugarcane"],
   },
+  {
+    id: "tomato",
+    type: "goods",
+    components: ["plant"],
+  },
+  {
+    id: "potato",
+    type: "goods",
+    components: ["plant"],
+  },
+  {
+    id: "onion",
+    type: "goods",
+    components: ["plant"],
+  },
+  {
+    id: "burger",
+    type: "goods",
+    components: ["beef", "onion", "tomato"],
+  },
+  {
+    id: "pasta",
+    type: "goods",
+    components: ["wheat"],
+  },
+  {
+    id: "egg",
+    type: "goods",
+    components: ["chicken"],
+  },
+  {
+    id: "luggage",
+    type: "goods",
+    components: ["plastic"],
+  },
+  {
+    id: "apple",
+    type: "goods",
+    components: ["plant"],
+  },
+  {
+    id: "preservatives",
+    type: "goods",
+    components: ["crude_oil"],
+  },
+  {
+    id: "shampoo",
+    type: "goods",
+    components: ["preservatives", "water"],
+  },
+  {
+    id: "seaweeds",
+    type: "goods",
+    components: ["plant"],
+  },
+  {
+    id: "sushi",
+    type: "goods",
+    components: ["rice", "seaweeds", "salt"],
+  },
+  { id: "milk", type: "goods", components: ["animal"] },
+  { id: "cheese", type: "goods", components: ["milk", "salt"] },
+  { id: "butter", type: "goods", components: ["milk"] },
+  { id: "yogurt", type: "goods", components: ["milk"] },
+  { id: "coffee", type: "goods", components: ["plant", "water"] },
+  { id: "tea", type: "goods", components: ["plant", "water"] },
+  { id: "pizza", type: "goods", components: ["wheat", "cheese", "tomato"] },
+  { id: "cake", type: "goods", components: ["wheat", "egg", "sugar"] },
+  { id: "chocolate", type: "goods", components: ["plant", "sugar"] },
+  { id: "ice_cream", type: "goods", components: ["milk", "sugar"] },
+
+  { id: "shoes", type: "goods", components: ["leather", "rubber", "plastic"] },
+  { id: "hat", type: "goods", components: ["cloth"] },
+  { id: "bag", type: "goods", components: ["cloth", "plastic"] },
+
+  { id: "table", type: "goods", components: ["wood", "steel"] },
+  { id: "bed", type: "goods", components: ["wood", "cloth"] },
+  { id: "cabinet", type: "goods", components: ["wood"] },
+
+  // Electronics
+  { id: "phone", type: "goods", components: ["cpu", "glass", "plastic"] },
+  { id: "laptop", type: "goods", components: ["cpu", "glass", "plastic"] },
+  { id: "television", type: "goods", components: ["glass", "plastic", "cpu"] },
+  { id: "camera", type: "goods", components: ["glass", "plastic", "cpu"] },
+  { id: "keyboard", type: "goods", components: ["plastic"] },
+  { id: "mouse", type: "goods", components: ["plastic"] },
+
+  // Kitchen
+  { id: "plate", type: "goods", components: ["clay"] },
+  { id: "cup", type: "goods", components: ["glass"] },
+  { id: "knife", type: "goods", components: ["steel"] },
+  { id: "fork", type: "goods", components: ["steel"] },
+  { id: "spoon", type: "goods", components: ["steel"] },
+  { id: "bottle", type: "goods", components: ["glass"] },
+
+  // Construction
+  { id: "brick", type: "goods", components: ["clay"] },
+  { id: "wall", type: "goods", components: ["brick", "cement"] },
+  {
+    id: "house",
+    type: "goods",
+    components: ["wood", "glass", "cement", "steel"],
+  },
+  { id: "bridge", type: "goods", components: ["steel", "cement"] },
+
+  // Transport
+  {
+    id: "car",
+    type: "goods",
+    components: ["steel", "glass", "plastic", "rubber"],
+  },
+  { id: "bicycle", type: "goods", components: ["steel", "rubber"] },
+  {
+    id: "motorcycle",
+    type: "goods",
+    components: ["steel", "plastic", "rubber"],
+  },
+  { id: "airplane", type: "goods", components: ["steel", "plastic"] },
+  {
+    id: "satellite",
+    type: "goods",
+    components: ["silicon", "steel", "plastic", "gold", "copper"],
+  },
+
+  // Stationery
+  { id: "paper", type: "goods", components: ["wood"] },
+  { id: "book", type: "goods", components: ["paper"] },
+  { id: "pencil", type: "goods", components: ["wood"] },
+  { id: "pen", type: "goods", components: ["plastic"] },
+
+  // Bathroom
+  { id: "soap", type: "goods", components: ["plant"] },
+  { id: "toothpaste", type: "goods", components: ["water", "plant"] },
+  // Toys
+  { id: "football", type: "goods", components: ["leather", "rubber"] },
+  { id: "doll", type: "goods", components: ["cloth", "plastic"] },
 ];

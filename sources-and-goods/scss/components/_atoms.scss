@@ -1,0 +1,11 @@
+@use "../typography" as typo;
+@use "../breakpoints";
+
+.icon-empty {
+  height: 15rem;
+  width: auto;
+
+  @include breakpoints.phone {
+    height: 7rem;
+  }
+}

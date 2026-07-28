@@ -1,0 +1,41 @@
+@use "../breakpoints";
+
+.source-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  &__heading {
+    background: var(--source-color-background);
+    padding-inline: 1rem;
+    border: 1px solid var(--color-text);
+
+    & .heading {
+      color: var(--source-color-text);
+    }
+  }
+}
+
+.component-section {
+  &__heading {
+    background: var(--good-color-background);
+    padding-inline: 1rem;
+    border: 1px dashed var(--color-text);
+
+    & .heading {
+      color: var(--good-color-text);
+    }
+  }
+}
+
+.use-section {
+  &__heading {
+    background: var(--good-color-background);
+    padding-inline: 1rem;
+    border: 1px solid var(--color-text);
+
+    & .heading {
+      color: var(--good-color-text);
+    }
+  }
+}

@@ -202,6 +202,7 @@ header {
   display: block;
   animation: rise 0.22s ease;
 }
+
 @keyframes rise {
   from {
     opacity: 0;

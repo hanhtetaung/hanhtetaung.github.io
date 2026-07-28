@@ -60,9 +60,9 @@ const nodes = ELEMENTS.map((e, index) => {
 
   // Base X position depends on the group
   const baseX = typeTrimmed === "source" ? 0 : 1200;
-  // Scatter them slightly around the base so fcose has a starting shape
-  const offsetX = ((index % 6) - 2.5) * 40;
-  const offsetY = (Math.floor(index / 6) - 5) * 40;
+  // Start them in a very tight grid (small 15px offsets)
+  const offsetX = ((index % 5) - 2) * 15;
+  const offsetY = (Math.floor(index / 5) - 4) * 15;
 
   return {
     data: {
@@ -112,13 +112,13 @@ const fcoseLayout = () =>
   cy
     .layout({
       name: "fcose",
-      quality: "proof",
+      quality: "proof", // "proof" provides the tightest packing for compound nodes
       animate: true,
       animationDuration: 700,
-      randomize: false,
+      randomize: false, // Keeps layout fixed on every refresh
       nodeDimensionsIncludeLabels: true,
-      nodeSeparation: 75,
-      piSepCompounds: true, // CRITICAL: Strictly forbids compound containers from overlapping
+      nodeSeparation: 10, // VERY small separation to pack source nodes tightly together
+      piSepCompounds: true, // Strictly forbids the two main group boxes from overlapping
       idealEdgeLength: function (edge) {
         const targetId = edge.target().id();
         const targetEl = byId[targetId];
@@ -132,15 +132,15 @@ const fcoseLayout = () =>
                 const comp = byId[id];
                 return comp && (comp.type || "").trim() === "source";
               });
-            if (allSources) return 80; // Close, but leaves room for the compound borders
+            if (allSources) return 80; // Pull simple goods close
           }
         }
-        return 120;
+        return 140; // Standard distance for complex goods
       },
-      nodeRepulsion: 9000, // Normal repulsion so source nodes stay nicely clustered together
-      edgeElasticity: 0.45, // Normal elasticity
-      gravity: 0.25,
-      gravityRange: 3.8,
+      nodeRepulsion: 1500, // LOW repulsion so source nodes don't push each other away
+      edgeElasticity: 0.1, // Low elasticity so edges don't drag the two main groups together
+      gravity: 0.8, // HIGH gravity pulls source nodes tightly into the center of their group
+      gravityRange: 1.5,
       numIter: 2500,
       tile: true,
       fit: true,
@@ -185,13 +185,9 @@ function renderCard(el) {
 
   // Header info
   document.getElementById("c-kicker").textContent = isSource
-    ? "Raw source"
+    ? "Source"
     : "Goods";
   document.getElementById("c-name").textContent = el.name;
-
-  const tag = document.getElementById("c-type");
-  tag.className = "type-tag " + type;
-  document.getElementById("c-type-label").textContent = typeLabel[type];
 
   // Grab DOM elements
   const sourcesSection = document.getElementById("c-sources-section");
@@ -260,9 +256,9 @@ function renderCard(el) {
 
   // Trigger card animation
   emptyEl.style.display = "none";
-  cardEl.classList.remove("show");
-  void cardEl.offsetWidth; // restart animation
-  cardEl.classList.add("show");
+  // Apply the node's type as a class to the card (e.g., "card show source" or "card show goods")
+  const typeTrimmed = (el.type || "").trim();
+  cardEl.className = "card show " + typeTrimmed;
 }
 
 function selectNode(id) {

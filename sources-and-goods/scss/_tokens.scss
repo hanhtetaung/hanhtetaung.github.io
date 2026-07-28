@@ -1,0 +1,52 @@
+@use "breakpoints";
+
+@font-face {
+  font-family: "SpaceGrotesk";
+  src: url("../assets/fonts/SpaceGrotesk-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "SpaceGrotesk";
+  src: url("../assets/fonts/SpaceGrotesk-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-display: swap;
+}
+
+:root {
+  --color-bg-primary: #fcf5e8;
+  --color-bg-secondary: #e3cda4;
+  --color-text: #0e172a;
+
+  --source-color-background: #0f7399;
+  --source-color-text: #ffffff;
+
+  --good-color-background: #1a7b5b;
+  --good-color-text: #ffffff;
+
+  --connector-color: #b1b9c4;
+
+  --font: "SpaceGrotesk", sans-serif;
+
+  --font-regular: 400;
+  --font-bold: 700;
+
+  font-size: 10px;
+
+  --ratio: 1.2;
+  --size-body: 1.6rem;
+
+  --size-small: calc(var(--size-body) / var(--ratio));
+  --size-heading: calc(var(--size-body) * var(--ratio));
+  --size-title: calc(var(--size-heading) * var(--ratio));
+  --size-display: calc(var(--size-title) * var(--ratio));
+
+  @include breakpoints.phone {
+    --size-body: 1.8rem;
+  }
+
+  @include breakpoints.watch {
+    --size-body: 1rem;
+  }
+}
