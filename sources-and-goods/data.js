@@ -165,20 +165,13 @@ const ELEMENTS = [
     type: "goods",
     components: ["rice", "seaweeds", "salt"],
   },
+
   { id: "milk", type: "goods", components: ["animal"] },
-  { id: "cheese", type: "goods", components: ["milk", "salt"] },
-  { id: "butter", type: "goods", components: ["milk"] },
-  { id: "yogurt", type: "goods", components: ["milk"] },
-  { id: "coffee", type: "goods", components: ["plant", "water"] },
-  { id: "tea", type: "goods", components: ["plant", "water"] },
-  { id: "pizza", type: "goods", components: ["wheat", "cheese", "tomato"] },
+
   { id: "cake", type: "goods", components: ["wheat", "egg", "sugar"] },
-  { id: "chocolate", type: "goods", components: ["plant", "sugar"] },
   { id: "ice_cream", type: "goods", components: ["milk", "sugar"] },
 
   { id: "shoes", type: "goods", components: ["leather", "rubber", "plastic"] },
-  { id: "hat", type: "goods", components: ["cloth"] },
-  { id: "bag", type: "goods", components: ["cloth", "plastic"] },
 
   { id: "table", type: "goods", components: ["wood", "steel"] },
   { id: "bed", type: "goods", components: ["wood", "cloth"] },
