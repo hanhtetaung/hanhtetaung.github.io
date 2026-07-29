@@ -1,3 +1,17 @@
+// Mirrors mapData(weight, 1, 9, 34, 64) so other states can size themselves
+// *relative* to the base node size (e.g. 1.2x) instead of hardcoding a
+// second absolute pixel range that has to be kept in sync by hand.
+const BASE_SIZE_MIN = 34;
+const BASE_SIZE_MAX = 64;
+function baseNodeSize(weight) {
+  const w = Math.max(1, Math.min(9, weight ?? 1)); // clamp like mapData does
+  const t = (w - 1) / (9 - 1);
+  return BASE_SIZE_MIN + t * (BASE_SIZE_MAX - BASE_SIZE_MIN);
+}
+function scaledNodeSize(scale) {
+  return (ele) => baseNodeSize(ele.data("weight")) * scale;
+}
+
 const CY_STYLE = [
   {
     selector: "node",
@@ -14,8 +28,8 @@ const CY_STYLE = [
     selector: "node.leaf",
     style: {
       shape: "ellipse",
-      width: "mapData(weight, 1, 9, 34, 64)", // Slightly increased minimum size so text fits inside
-      height: "mapData(weight, 1, 9, 34, 64)",
+      width: scaledNodeSize(1), // Slightly increased minimum size so text fits inside
+      height: scaledNodeSize(1),
       "background-color": "#fbfaf6",
       "background-opacity": 0.95, // Solid background so text is readable over crossing edges
       "border-width": 2,
@@ -110,7 +124,13 @@ const CY_STYLE = [
   },
   {
     selector: "node.leaf.selected",
-    style: { "border-width": 4, "border-color": "#0e172a", opacity: 1 },
+    style: {
+      "border-width": 4,
+      "border-color": "#0e172a",
+      opacity: 1,
+      width: scaledNodeSize(1.5), // 20% bigger than the node's own base size
+      height: scaledNodeSize(1.5),
+    },
   },
 
   /* First-connected: the direct components of the selected node keep their
