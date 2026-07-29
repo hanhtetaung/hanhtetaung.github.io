@@ -46,7 +46,7 @@
   --size-display: calc(var(--size-title) * var(--ratio));
 
   @include breakpoints.phone {
-    --size-body: 1.8rem;
+    --size-body: 1.2rem;
   }
 
   @include breakpoints.watch {

@@ -110,7 +110,7 @@ h6 {
 }
 @media (max-width: 769px) {
   :root {
-    --size-body: 1.8rem;
+    --size-body: 1.2rem;
   }
 }
 @media (max-width: 384px) {
@@ -401,6 +401,14 @@ img {
 
 .goods-legend {
   background: var(--good-color-background);
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.components-legend {
+  background: var(--component-color-background);
   width: 9px;
   height: 9px;
   border-radius: 50%;
