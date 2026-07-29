@@ -159,7 +159,7 @@ const cardEl = document.getElementById("card");
 const typeLabel = { source: "Source", goods: "Goods" };
 
 function clearHighlight() {
-  cy.elements().removeClass("dim lit selected");
+  cy.elements().removeClass("dim lit selected first-connected used-directly");
 }
 
 function highlight(node) {
@@ -171,6 +171,16 @@ function highlight(node) {
   cy.elements().addClass("dim");
   withGroups.removeClass("dim").addClass("lit");
   node.removeClass("dim").addClass("lit selected");
+
+  // First-connected: only the direct (one-hop) components that make up
+  // this node, not the whole ancestor chain. Styling for these — including
+  // the source-vs-goods distinction — lives in cy-style.js.
+  node.incomers("node").addClass("first-connected");
+
+  // Direct one-hop uses (e.g. clicking CPU when Computer uses it directly)
+  // stay at full, normal goods/source color instead of the dimmer
+  // multi-hop opacity — no color/border change, just no dimming.
+  node.outgoers("node").addClass("used-directly");
 }
 
 function rowItem(id, showIcon) {
@@ -273,9 +283,9 @@ function renderCard(el) {
     if (allComponentsAreSources) {
       hideSection("components");
     } else {
-      fillSection("components", ups, "No downstream uses yet");
     }
 
+    fillSection("components", ups, "No downstream uses yet");
     // 3. Uses: other goods that include this one as a component
     fillSection("used", downstreamIds(el), "No downstream uses yet");
   }
@@ -292,10 +302,6 @@ function selectNode(id) {
   clearHighlight();
   highlight(node);
   renderCard(byId[id]);
-  // cy.animate(
-  //   { center: { eles: node }, zoom: Math.max(cy.zoom(), 1) },
-  //   { duration: 300 },
-  // );
 }
 
 cy.on("tap", "node", (evt) => {

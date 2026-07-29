@@ -1,3 +1,17 @@
+// Mirrors mapData(weight, 1, 9, 34, 64) so other states can size themselves
+// *relative* to the base node size (e.g. 1.2x) instead of hardcoding a
+// second absolute pixel range that has to be kept in sync by hand.
+const BASE_SIZE_MIN = 34;
+const BASE_SIZE_MAX = 64;
+function baseNodeSize(weight) {
+  const w = Math.max(1, Math.min(9, weight ?? 1)); // clamp like mapData does
+  const t = (w - 1) / (9 - 1);
+  return BASE_SIZE_MIN + t * (BASE_SIZE_MAX - BASE_SIZE_MIN);
+}
+function scaledNodeSize(scale) {
+  return (ele) => baseNodeSize(ele.data("weight")) * scale;
+}
+
 const CY_STYLE = [
   {
     selector: "node",
@@ -14,8 +28,8 @@ const CY_STYLE = [
     selector: "node.leaf",
     style: {
       shape: "ellipse",
-      width: "mapData(weight, 1, 9, 34, 64)", // Slightly increased minimum size so text fits inside
-      height: "mapData(weight, 1, 9, 34, 64)",
+      width: scaledNodeSize(1), // Slightly increased minimum size so text fits inside
+      height: scaledNodeSize(1),
       "background-color": "#fbfaf6",
       "background-opacity": 0.95, // Solid background so text is readable over crossing edges
       "border-width": 2,
@@ -55,6 +69,7 @@ const CY_STYLE = [
     style: {
       events: "no",
       "background-color": "#fcf5e8",
+      "background-opacity": 0,
       "border-width": 0,
     },
   },
@@ -73,8 +88,12 @@ const CY_STYLE = [
   },
 
   // dim / highlight states, toggled on tap
+  // .dim = fully unrelated to the selection (outside the chain entirely)
   { selector: ".dim", style: { opacity: 0.08 } },
-  { selector: ".lit", style: { opacity: 1 } },
+  {
+    selector: ".lit",
+    style: { opacity: 1 },
+  },
   /* Base lit state (handles width and opacity for all highlighted edges) */
   {
     selector: "edge.lit",
@@ -83,19 +102,61 @@ const CY_STYLE = [
       opacity: 1,
     },
   },
-  /* Source -> Goods highlighted color */
+  /* Nodes that are part of the highlighted chain but not directly
+     connected to the selected node (e.g. selecting Pho lights up
+     Chicken -> Egg, but Egg is two hops away) get a lighter,
+     in-between opacity — distinct from the ".dim" (unrelated) state. */
   {
-    selector: "edge.edge-source-goods.lit",
+    selector: "node.leaf.lit",
+    style: { opacity: 0.8 },
+  },
+  /* Sources stay fully visible in the chain regardless of hop distance. */
+  {
+    selector: 'node.leaf[type="source"].lit',
+    style: { opacity: 1 },
+  },
+  /* Direct one-hop uses (e.g. selecting CPU when Computer uses it directly)
+     stay at their normal, full-opacity goods/source color — plain, no
+     border — unlike deeper multi-hop chain members which stay dimmed. */
+  {
+    selector: "node.leaf.used-directly",
+    style: { opacity: 1 },
+  },
+  {
+    selector: "node.leaf.selected",
     style: {
-      "line-color": "#a86a28db",
+      "border-width": 4,
+      "border-color": "#0e172a",
+      opacity: 1,
+      width: scaledNodeSize(1.5), // 20% bigger than the node's own base size
+      height: scaledNodeSize(1.5),
     },
   },
-  /* Goods -> Goods highlighted color */
+
+  /* First-connected: the direct components of the selected node keep their
+     own type color (source or goods) — no fill override — and get a
+     component-color border as the "directly connected" accent instead.
+     e.g. selecting Banh Mi: Bread stays goods-green with a brown border,
+     not repainted brown. */
   {
-    selector: "edge.edge-goods-goods.lit",
+    selector: "node.leaf.first-connected",
     style: {
-      "line-color": "#5a8455e9",
+      "background-color": "#876418", // --component-color-background
+      color: "#ffffff", // --component-color-text
+      "z-index": 999,
+      "border-width": 0,
+      opacity: 1,
     },
   },
-  { selector: "node.leaf.selected", style: { "border-width": 1.5 } },
+  {
+    selector: 'node.leaf[type="source"].first-connected',
+    style: {
+      "background-color": "#0f7399", // --source-color-background (keep the source's own fill)
+      color: "#ffffff", // --source-color-text
+      "border-width": 4,
+      "border-color": "#876418", // --component-color-background
+      "z-index": 999,
+      opacity: 1,
+    },
+  },
 ];

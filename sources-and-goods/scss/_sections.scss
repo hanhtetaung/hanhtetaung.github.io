@@ -45,6 +45,14 @@
   display: inline-block;
 }
 
+.components-legend {
+  background: var(--component-color-background);
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
 .main {
   height: 100dvh;
   width: 100%;
