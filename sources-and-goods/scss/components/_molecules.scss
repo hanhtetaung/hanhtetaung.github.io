@@ -71,12 +71,12 @@
   gap: 1rem;
 
   &__heading {
-    background: #984e65;
+    background: var(--component-color-background);
     padding-inline: 1rem;
     border: 1px dashed var(--color-text);
 
     & .heading {
-      color: var(--good-color-text);
+      color: var(--component-color-text);
     }
   }
 
@@ -84,6 +84,11 @@
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
+  }
+
+  & .selected-item {
+    border: 2px solid var(--component-color-background);
+    color: var(--component-color-background);
   }
 }
 

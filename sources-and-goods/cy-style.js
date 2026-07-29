@@ -73,8 +73,12 @@ const CY_STYLE = [
   },
 
   // dim / highlight states, toggled on tap
+  // .dim = fully unrelated to the selection (outside the chain entirely)
   { selector: ".dim", style: { opacity: 0.08 } },
-  { selector: ".lit", style: { opacity: 1 } },
+  {
+    selector: ".lit",
+    style: { opacity: 1 },
+  },
   /* Base lit state (handles width and opacity for all highlighted edges) */
   {
     selector: "edge.lit",
@@ -83,19 +87,47 @@ const CY_STYLE = [
       opacity: 1,
     },
   },
-  /* Source -> Goods highlighted color */
+  /* Nodes that are part of the highlighted chain but not directly
+     connected to the selected node (e.g. selecting Pho lights up
+     Chicken -> Egg, but Egg is two hops away) get a lighter,
+     in-between opacity — distinct from the ".dim" (unrelated) state. */
   {
-    selector: "edge.edge-source-goods.lit",
+    selector: "node.leaf.lit",
+    style: { opacity: 0.5 },
+  },
+  /* Sources stay fully visible in the chain regardless of hop distance. */
+  {
+    selector: 'node.leaf[type="source"].lit',
+    style: { opacity: 1 },
+  },
+  {
+    selector: "node.leaf.selected",
+    style: { "border-width": 4, "border-color": "#0e172a", opacity: 1 },
+  },
+
+  /* First-connected: the direct components of the selected goods node get
+     filled with the component color. If a direct component is itself a
+     raw source, its own source color stays as the fill and the component
+     color is only applied as a border, so both identities read clearly. */
+  {
+    selector: "node.leaf.first-connected",
     style: {
-      "line-color": "#a86a28db",
+      "background-color": "#876418", // --component-color-background
+      color: "#ffffff", // --component-color-text
+      "z-index": 999,
+      "border-width": 0,
+      opacity: 1,
     },
   },
-  /* Goods -> Goods highlighted color */
   {
-    selector: "edge.edge-goods-goods.lit",
+    selector: 'node.leaf[type="source"].first-connected',
     style: {
-      "line-color": "#5a8455e9",
+      "background-color": "#0f7399", // --source-color-background (keep the source's own fill)
+      color: "#ffffff", // --source-color-text
+      "border-width": 3,
+      "border-color": "#876418", // --component-color-background
+      "z-index": 999,
+      opacity: 1,
     },
   },
-  { selector: "node.leaf.selected", style: { "border-width": 1.5 } },
 ];

@@ -13,7 +13,7 @@ const ELEMENTS = [
   { id: "pork", type: "goods", components: ["animal"] },
   { id: "silkworm", type: "goods", components: ["animal"] },
   { id: "chicken", type: "goods", components: ["animal"] },
-  { id: "leather", type: "goods", components: ["animal"] },
+  { id: "leather", type: "goods", components: ["animal", "crude_oil"] },
   { id: "rice", type: "goods", components: ["plant"] },
   { id: "wheat", type: "goods", components: ["plant"] },
   { id: "sugar", type: "goods", components: ["plant"] },
@@ -29,9 +29,14 @@ const ELEMENTS = [
   { id: "silver", type: "goods", components: ["stone"] },
   { id: "limestone", type: "goods", components: ["stone"] },
   { id: "rare_earth", type: "goods", components: ["stone"] },
-  { id: "steel", type: "goods", components: ["iron", "stone"] },
+  { id: "steel", type: "goods", components: ["iron"] },
   { id: "iron", type: "goods", components: ["stone"] },
   { id: "charcoal", type: "goods", components: ["wood"] },
+  {
+    id: "noodle",
+    type: "goods",
+    components: ["rice", "egg", "wheat", "water"],
+  },
 
   { id: "uranium", type: "goods", components: ["stone"] },
   { id: "asphalt", type: "goods", components: ["crude_oil"] },
@@ -41,31 +46,56 @@ const ELEMENTS = [
   {
     id: "atomic_bomb",
     type: "goods",
-    components: ["uranium", "steel", "silicon", "copper", "gold", "plastic"],
+    components: [
+      "uranium",
+      "steel",
+      "semiconductor",
+      "copper",
+      "gold",
+      "plastic",
+    ],
   },
 
   {
     id: "pho",
     type: "goods",
-    components: ["rice", "water", "papaya", "lime", "beef", "pork", "chicken"],
+    components: [
+      "noodle",
+      "water",
+      "papaya",
+      "lime",
+      "beef",
+      "pork",
+      "chicken",
+    ],
   },
-  { id: "bread", type: "goods", components: ["wheat", "water", "salt"] },
+  {
+    id: "bread",
+    type: "goods",
+    components: ["wheat", "water", "salt", "yeast"],
+  },
   { id: "tooth_brush", type: "goods", components: ["nylon", "plastic"] },
+  { id: "yeast", type: "goods", components: ["plant"] },
 
   {
     id: "CPU",
     type: "goods",
-    components: ["silicon", "copper", "gold", "silver", "plastic"],
+    components: ["semiconductor", "copper", "gold", "silver", "plastic"],
   },
   {
     id: "electric_motor",
     type: "goods",
-    components: ["rare_earth", "copper", "gold", "plastic", "silver", "steel"],
+    components: ["magnet", "copper", "plastic", "silver", "aluminum"],
   },
   {
     id: "straw",
     type: "goods",
     components: ["plastic"],
+  },
+  {
+    id: "fish",
+    type: "goods",
+    components: ["animal"],
   },
   {
     id: "olive_oil",
@@ -82,7 +112,7 @@ const ELEMENTS = [
   {
     id: "cloth",
     type: "goods",
-    components: ["silkworm", "polyester"],
+    components: ["silkworm", "polyester", "linen", "wool", "cotton"],
   },
   {
     id: "chair",
@@ -115,9 +145,17 @@ const ELEMENTS = [
     components: ["plant"],
   },
   {
-    id: "burger",
+    id: "banh_mi",
     type: "goods",
-    components: ["beef", "onion", "tomato"],
+    components: [
+      "beef",
+      "carrot",
+      "cucumber",
+      "bread",
+      "pork",
+      "cooking_oil",
+      "salt",
+    ],
   },
   {
     id: "pasta",
@@ -125,9 +163,64 @@ const ELEMENTS = [
     components: ["wheat"],
   },
   {
+    id: "nickel",
+    type: "goods",
+    components: ["stone"],
+  },
+  {
+    id: "cobalt",
+    type: "goods",
+    components: ["stone"],
+  },
+  {
+    id: "magnet",
+    type: "goods",
+    components: ["iron", "rare_earth", "nickel", "cobalt"],
+  },
+  {
     id: "egg",
     type: "goods",
     components: ["chicken"],
+  },
+  {
+    id: "diamond",
+    type: "goods",
+    components: ["stone"],
+  },
+  {
+    id: "soybean",
+    type: "goods",
+    components: ["plant"],
+  },
+  {
+    id: "coagulant",
+    type: "goods",
+    components: ["stone"],
+  },
+  {
+    id: "vinegar",
+    type: "goods",
+    components: ["plant", "water"],
+  },
+  {
+    id: "tofu",
+    type: "goods",
+    components: ["soybean", "water", "coagulant"],
+  },
+  {
+    id: "beer",
+    type: "goods",
+    components: ["barley", "water", "hops", "yeast"],
+  },
+  {
+    id: "barley",
+    type: "goods",
+    components: ["plant"],
+  },
+  {
+    id: "hops",
+    type: "goods",
+    components: ["plant"],
   },
   {
     id: "luggage",
@@ -136,6 +229,11 @@ const ELEMENTS = [
   },
   {
     id: "apple",
+    type: "goods",
+    components: ["plant"],
+  },
+  {
+    id: "cooking_oil",
     type: "goods",
     components: ["plant"],
   },
@@ -157,13 +255,21 @@ const ELEMENTS = [
   {
     id: "sushi",
     type: "goods",
-    components: ["rice", "seaweeds", "salt"],
+    components: ["rice", "seaweeds", "salt", "fish"],
+  },
+  {
+    id: "semiconductor",
+    type: "goods",
+    components: ["silicon"],
   },
 
   { id: "cassava", type: "goods", components: ["plant"] },
   { id: "tapioca_pearl", type: "goods", components: ["cassava"] },
+  { id: "cucumber", type: "goods", components: ["plant"] },
+  { id: "carrot", type: "goods", components: ["plant"] },
   { id: "milk", type: "goods", components: ["animal"] },
   { id: "ice_cream", type: "goods", components: ["milk", "sugar"] },
+  { id: "honey", type: "goods", components: ["animal"] },
 
   {
     id: "shoe",
@@ -182,32 +288,39 @@ const ELEMENTS = [
       "copper",
       "aluminum",
       "plastic",
-      "silicon",
+      "semiconductor",
       "glass",
     ],
   },
   {
     id: "light_bulb",
     type: "goods",
-    components: ["glass", "steel", "aluminum", "plastic", "silicon"],
+    components: ["glass", "steel", "aluminum", "plastic", "semiconductor"],
   },
-
+  {
+    id: "washing_machine",
+    type: "goods",
+    components: ["electric_motor", "steel", "semiconductor"],
+  },
   { id: "gasoline", type: "goods", components: ["crude_oil"] },
 
   { id: "brick", type: "goods", components: ["clay"] },
+  { id: "glue", type: "goods", components: ["polymer"] },
+  { id: "polymer", type: "goods", components: ["crude_oil"] },
   {
     id: "house",
     type: "goods",
-    components: ["wood", "glass", "cement", "steel", "plastic"],
+    components: ["wood", "glass", "cement", "steel", "plastic", "brick"],
   },
 
   {
     id: "satellite",
     type: "goods",
-    components: ["silicon", "steel", "plastic", "gold", "copper"],
+    components: ["semiconductor", "steel", "plastic", "gold", "copper"],
   },
 
   { id: "paper", type: "goods", components: ["wood"] },
+  { id: "wool", type: "goods", components: ["animal"] },
   { id: "graphite", type: "goods", components: ["stone"] },
   { id: "book", type: "goods", components: ["paper"] },
   { id: "aluminum", type: "goods", components: ["stone"] },
@@ -216,16 +329,20 @@ const ELEMENTS = [
     type: "goods",
     components: ["wood", "graphite", "clay", "rubber", "aluminum"],
   },
-  { id: "pen", type: "goods", components: ["plastic"] },
 
-  { id: "soap", type: "goods", components: ["plant"] },
   { id: "banana", type: "goods", components: ["plant"] },
+  { id: "cotton", type: "goods", components: ["plant"] },
+  { id: "linen", type: "goods", components: ["plant"] },
   {
     id: "toothpaste",
     type: "goods",
     components: ["water", "abrasives", "surfactants"],
   },
-  { id: "football", type: "goods", components: ["leather", "rubber"] },
+  {
+    id: "football",
+    type: "goods",
+    components: ["leather", "rubber", "polyester", "cotton"],
+  },
   { id: "abrasives", type: "goods", components: ["stone", "sand"] },
   { id: "surfactants", type: "goods", components: ["crude_oil"] },
 ];
