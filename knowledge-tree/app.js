@@ -159,7 +159,9 @@ const cardEl = document.getElementById("card");
 const typeLabel = { source: "Source", goods: "Goods" };
 
 function clearHighlight() {
-  cy.elements().removeClass("dim lit selected first-connected used-directly");
+  cy.elements().removeClass(
+    "dim lit selected first-connected used-directly used-directly-source",
+  );
 }
 
 function highlight(node) {
@@ -178,9 +180,16 @@ function highlight(node) {
   node.incomers("node").addClass("first-connected");
 
   // Direct one-hop uses (e.g. clicking CPU when Computer uses it directly)
-  // stay at full, normal goods/source color instead of the dimmer
-  // multi-hop opacity — no color/border change, just no dimming.
-  node.outgoers("node").addClass("used-directly");
+  // stay at full opacity instead of the dimmer multi-hop opacity. The
+  // orange "used" accent only applies when a GOODS node is clicked;
+  // clicking a SOURCE leaves its directly-used goods at their normal
+  // plain goods color — see cy-style.js for both classes.
+  const outgoers = node.outgoers("node");
+  if (node.data("type") === "source") {
+    outgoers.addClass("used-directly-source");
+  } else {
+    outgoers.addClass("used-directly");
+  }
 }
 
 function rowItem(id, showIcon) {
@@ -283,11 +292,16 @@ function renderCard(el) {
     if (allComponentsAreSources) {
       hideSection("components");
     } else {
+      fillSection("components", ups, "No downstream uses yet");
     }
 
-    fillSection("components", ups, "No downstream uses yet");
     // 3. Uses: other goods that include this one as a component
-    fillSection("used", downstreamIds(el), "No downstream uses yet");
+    const used = downstreamIds(el);
+    if (used.length === 0) {
+      hideSection("used");
+    } else {
+      fillSection("used", used, "No downstream uses yet");
+    }
   }
 
   // Trigger card animation; apply the node's type as a class
