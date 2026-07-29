@@ -55,6 +55,7 @@ const CY_STYLE = [
     style: {
       events: "no",
       "background-color": "#fcf5e8",
+      "background-opacity": 0,
       "border-width": 0,
     },
   },
@@ -93,11 +94,18 @@ const CY_STYLE = [
      in-between opacity — distinct from the ".dim" (unrelated) state. */
   {
     selector: "node.leaf.lit",
-    style: { opacity: 0.5 },
+    style: { opacity: 0.8 },
   },
   /* Sources stay fully visible in the chain regardless of hop distance. */
   {
     selector: 'node.leaf[type="source"].lit',
+    style: { opacity: 1 },
+  },
+  /* Direct one-hop uses (e.g. selecting CPU when Computer uses it directly)
+     stay at their normal, full-opacity goods/source color — plain, no
+     border — unlike deeper multi-hop chain members which stay dimmed. */
+  {
+    selector: "node.leaf.used-directly",
     style: { opacity: 1 },
   },
   {
@@ -105,10 +113,11 @@ const CY_STYLE = [
     style: { "border-width": 4, "border-color": "#0e172a", opacity: 1 },
   },
 
-  /* First-connected: the direct components of the selected goods node get
-     filled with the component color. If a direct component is itself a
-     raw source, its own source color stays as the fill and the component
-     color is only applied as a border, so both identities read clearly. */
+  /* First-connected: the direct components of the selected node keep their
+     own type color (source or goods) — no fill override — and get a
+     component-color border as the "directly connected" accent instead.
+     e.g. selecting Banh Mi: Bread stays goods-green with a brown border,
+     not repainted brown. */
   {
     selector: "node.leaf.first-connected",
     style: {
@@ -124,7 +133,7 @@ const CY_STYLE = [
     style: {
       "background-color": "#0f7399", // --source-color-background (keep the source's own fill)
       color: "#ffffff", // --source-color-text
-      "border-width": 3,
+      "border-width": 4,
       "border-color": "#876418", // --component-color-background
       "z-index": 999,
       opacity: 1,

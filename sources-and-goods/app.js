@@ -159,7 +159,7 @@ const cardEl = document.getElementById("card");
 const typeLabel = { source: "Source", goods: "Goods" };
 
 function clearHighlight() {
-  cy.elements().removeClass("dim lit selected first-connected");
+  cy.elements().removeClass("dim lit selected first-connected used-directly");
 }
 
 function highlight(node) {
@@ -176,6 +176,11 @@ function highlight(node) {
   // this node, not the whole ancestor chain. Styling for these — including
   // the source-vs-goods distinction — lives in cy-style.js.
   node.incomers("node").addClass("first-connected");
+
+  // Direct one-hop uses (e.g. clicking CPU when Computer uses it directly)
+  // stay at full, normal goods/source color instead of the dimmer
+  // multi-hop opacity — no color/border change, just no dimming.
+  node.outgoers("node").addClass("used-directly");
 }
 
 function rowItem(id, showIcon) {
