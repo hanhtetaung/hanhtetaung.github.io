@@ -108,7 +108,7 @@ const CY_STYLE = [
      in-between opacity — distinct from the ".dim" (unrelated) state. */
   {
     selector: "node.leaf.lit",
-    style: { opacity: 0.8 },
+    style: { opacity: 0.7 },
   },
   /* Sources stay fully visible in the chain regardless of hop distance. */
   {

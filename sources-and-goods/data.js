@@ -302,6 +302,16 @@ const ELEMENTS = [
     type: "goods",
     components: ["electric_motor", "steel", "semiconductor"],
   },
+  {
+    id: "bubble_tea",
+    type: "goods",
+    components: ["tapioca_pearl", "tea", "sugar", "water", "tea"],
+  },
+  {
+    id: "tea",
+    type: "goods",
+    components: ["plant"],
+  },
   { id: "gasoline", type: "goods", components: ["crude_oil"] },
 
   { id: "brick", type: "goods", components: ["clay"] },
