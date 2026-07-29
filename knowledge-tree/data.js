@@ -264,6 +264,7 @@ const ELEMENTS = [
   },
 
   { id: "cassava", type: "goods", components: ["plant"] },
+  { id: "avogado", type: "goods", components: ["plant"] },
   { id: "tapioca_pearl", type: "goods", components: ["cassava"] },
   { id: "cucumber", type: "goods", components: ["plant"] },
   { id: "carrot", type: "goods", components: ["plant"] },
@@ -301,6 +302,17 @@ const ELEMENTS = [
     id: "washing_machine",
     type: "goods",
     components: ["electric_motor", "steel", "semiconductor"],
+  },
+
+  {
+    id: "bubble_tea",
+    type: "goods",
+    components: ["tapioca_pearl", "tea", "sugar", "water", "tea"],
+  },
+  {
+    id: "tea",
+    type: "goods",
+    components: ["plant"],
   },
   { id: "gasoline", type: "goods", components: ["crude_oil"] },
 

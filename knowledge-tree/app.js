@@ -190,7 +190,7 @@ function rowItem(id, showIcon) {
 
   if (showIcon) {
     const iconName = e.id.trim().replace(/_/g, "-");
-    const iconSrc = `/sources-and-goods/assets/icons/${iconName}.svg`;
+    const iconSrc = `/knowledge-tree/assets/icons/${iconName}.svg`;
     div.innerHTML = `
       <img src="${iconSrc}" alt="${e.type}" class="icon" />
       <span class="small--emphasis">${e.name}</span>
@@ -250,7 +250,7 @@ function renderCard(el) {
 
   if (isSource) {
     const iconName = el.id.trim().replace(/_/g, "-");
-    cardHeader.icon.src = `/sources-and-goods/assets/icons/${iconName}.svg`;
+    cardHeader.icon.src = `/knowledge-tree/assets/icons/${iconName}.svg`;
     cardHeader.icon.alt = el.type;
     cardHeader.icon.style.display = "";
   } else {
