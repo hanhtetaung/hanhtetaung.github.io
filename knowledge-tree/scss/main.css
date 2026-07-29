@@ -94,8 +94,10 @@ h6 {
   --source-color-text: #ffffff;
   --good-color-background: #1a7b5b;
   --good-color-text: #ffffff;
-  --component-color-background: #876418;
+  --component-color-background: #95722a;
   --component-color-text: #ffffff;
+  --used-in-color-background: #974e89;
+  --used-in-color-text: #ffffff;
   --connector-color: #b1b9c4;
   --font: "SpaceGrotesk", sans-serif;
   --font-regular: 400;
@@ -318,6 +320,9 @@ img {
 .component-section__heading .heading {
   color: var(--component-color-text);
 }
+.component-section__heading .small {
+  color: var(--color-bg-primary);
+}
 .component-section__list {
   display: flex;
   flex-wrap: wrap;
@@ -334,17 +339,21 @@ img {
   gap: 1rem;
 }
 .use-section__heading {
-  background: var(--good-color-background);
+  background: var(--used-in-color-background);
   padding-inline: 1rem;
   border: 1px solid var(--color-text);
 }
 .use-section__heading .heading {
-  color: var(--good-color-text);
+  color: var(--used-in-color-text);
 }
 .use-section__list {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
+}
+.use-section .selected-item {
+  border: 2px solid var(--used-in-color-background);
+  color: var(--used-in-color-background);
 }
 
 .goods-section {
@@ -409,6 +418,14 @@ img {
 
 .components-legend {
   background: var(--component-color-background);
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.use-legend {
+  background: var(--used-in-color-background);
   width: 9px;
   height: 9px;
   border-radius: 50%;
@@ -499,7 +516,7 @@ img {
 .card__content {
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: 5rem;
 }
 
 .card.show {
