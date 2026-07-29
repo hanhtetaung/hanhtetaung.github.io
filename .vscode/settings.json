@@ -18,6 +18,7 @@
     ["/thank-you", "./thank-you.html"],
     ["/work/mmo", "./work/mmo.html"],
     ["/work/portfolio", "./work/portfolio.html"],
-    ["/work/sks-solar", "./work/sks-solar.html"]
+    ["/work/sks-solar", "./work/sks-solar.html"],
+    ["/work/knowledge-tree", "./work/knowledge-tree.html"]
   ]
 }
