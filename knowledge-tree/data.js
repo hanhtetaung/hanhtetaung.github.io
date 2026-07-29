@@ -40,7 +40,7 @@ const ELEMENTS = [
 
   { id: "uranium", type: "goods", components: ["stone"] },
   { id: "asphalt", type: "goods", components: ["crude_oil"] },
-  { id: "plastic", type: "goods", components: ["polymer"] },
+  { id: "plastic", type: "goods", components: ["synthetic_polymer"] },
   { id: "polyester", type: "goods", components: ["crude_oil"] },
   { id: "cement", type: "goods", components: ["stone", "clay"] },
   {
@@ -102,7 +102,7 @@ const ELEMENTS = [
     type: "goods",
     components: ["plant"],
   },
-  { id: "nylon", type: "goods", components: ["polymer"] },
+  { id: "nylon", type: "goods", components: ["synthetic_polymer"] },
 
   {
     id: "road",
@@ -317,11 +317,11 @@ const ELEMENTS = [
   { id: "gasoline", type: "goods", components: ["crude_oil"] },
 
   { id: "brick", type: "goods", components: ["clay"] },
-  { id: "glue", type: "goods", components: ["polymer"] },
+  { id: "glue", type: "goods", components: ["synthetic_polymer"] },
   {
-    id: "polymer",
+    id: "synthetic_polymer",
     type: "goods",
-    components: ["crude_oil", "plant", "animal"],
+    components: ["crude_oil"],
   },
   {
     id: "house",
