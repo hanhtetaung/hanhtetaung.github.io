@@ -8,8 +8,8 @@
 }
 
 .logo {
-  min-width: 8rem;
-  max-width: 10rem;
+  min-width: 4rem;
+  max-width: 8rem;
   height: auto;
 }
 
@@ -31,8 +31,12 @@
 }
 
 .icon--lg {
-  max-width: 20rem;
-  height: auto;
+  height: 14rem;
+  width: auto;
+
+  @include breakpoints.phone {
+    height: 10rem;
+  }
 }
 
 .icon {

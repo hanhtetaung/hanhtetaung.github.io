@@ -126,6 +126,7 @@
 
   &__icon {
     width: 10rem;
+    max-height: 5rem;
     height: auto;
 
     @include breakpoints.phone {
@@ -165,15 +166,31 @@
     padding: 0;
     display: flex;
     flex-direction: column;
-    gap: 5rem;
+    gap: 12rem;
   }
 
   &__article {
     display: flex;
+    gap: 5rem;
 
     @include breakpoints.phone {
       flex-direction: column-reverse;
+      gap: 1rem;
     }
+  }
+
+  & .section-title {
+    flex-direction: column;
+    width: fit-content;
+    align-items: center;
+    gap: 0;
+
+    margin-bottom: 10rem;
+  }
+
+  & .icon {
+    width: 8rem;
+    max-width: 12rem;
   }
 
   &__content {
@@ -201,6 +218,8 @@
     position: absolute;
     bottom: 0;
     right: 10%;
+    height: 30rem;
+    width: auto;
     max-width: 30rem;
 
     @include breakpoints.table {
@@ -229,7 +248,7 @@
   }
 
   & .logo {
-    max-width: 10rem;
+    max-width: 15rem;
     align-self: center;
   }
 
@@ -255,9 +274,11 @@
   }
 
   &__list {
-    position: relative; // required — Masonry uses absolute positioning
+    position: relative;
     list-style-type: none;
     padding: 0;
+    max-height: 100rem;
+    overflow-x: scroll;
   }
 
   &__item {
@@ -268,7 +289,17 @@
   &__icon {
     width: 10rem;
     height: auto;
-    // object-fit: contain;
+
+    @include breakpoints.phone {
+      width: 7rem;
+    }
+  }
+
+  &__icon--lg {
+    width: 20rem;
+    @include breakpoints.phone {
+      width: 14rem;
+    }
   }
 }
 
@@ -292,11 +323,21 @@
   &__list {
     list-style: none;
     padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    overflow-x: scroll;
+
+    @include breakpoints.phone {
+      display: block;
+    }
   }
 
   &__content {
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    max-width: 50rem;
     gap: 3rem;
     padding-block: 2rem;
     border-bottom: 1px dashed #000;
@@ -304,6 +345,13 @@
     @include breakpoints.watch {
       display: block;
     }
+  }
+
+  & .icon--md {
+    height: 10rem;
+    width: auto;
+    min-width: 5rem;
+    max-width: 10rem;
   }
 }
 
@@ -370,9 +418,6 @@
   &__description {
     margin-bottom: 2rem;
   }
-}
-
-.case-study {
 }
 
 .footer {
