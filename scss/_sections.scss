@@ -20,6 +20,10 @@
       gap: 4rem;
     }
   }
+
+  & .button--primary {
+    box-shadow: none;
+  }
 }
 
 .hero {
@@ -367,6 +371,12 @@
     display: flex;
     justify-content: space-between;
     gap: 3rem;
+
+    & .button--link {
+      &::after {
+        content: "";
+      }
+    }
   }
 
   & .nav {
