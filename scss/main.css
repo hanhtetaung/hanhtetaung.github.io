@@ -94,11 +94,10 @@ h6 {
   font-display: swap;
 }
 :root {
-  --color-bg-primary: #fff4e4;
+  --color-bg-primary: #fff5e8;
   --color-bg-secondary: #fffaf4;
-  --color-secondary: #0e7490;
-  --color-teal: #0f766e;
-  --color-primary: #be185d;
+  --color-secondary: #05798e;
+  --color-primary: #a75330;
   --color-text: #000000;
   --font-heading: "Chicle", serif;
   --font-body: "StackSans", sans-serif;
@@ -597,6 +596,9 @@ img {
     gap: 4rem;
   }
 }
+.header .button--primary {
+  box-shadow: none;
+}
 
 @media (max-width: 769px) {
   .hero {
@@ -893,6 +895,9 @@ img {
   display: flex;
   justify-content: space-between;
   gap: 3rem;
+}
+.footer__navigation .button--link::after {
+  content: "";
 }
 .footer .nav {
   margin-top: 0.3rem;

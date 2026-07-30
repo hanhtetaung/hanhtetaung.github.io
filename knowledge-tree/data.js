@@ -98,7 +98,7 @@ const ELEMENTS = [
     components: ["animal"],
   },
   {
-    id: "olive_oil",
+    id: "olive",
     type: "goods",
     components: ["plant"],
   },
@@ -233,10 +233,42 @@ const ELEMENTS = [
     components: ["plant"],
   },
   {
-    id: "cooking_oil",
+    id: "sunflower",
     type: "goods",
     components: ["plant"],
   },
+  {
+    id: "coconut",
+    type: "goods",
+    components: ["plant"],
+  },
+  {
+    id: "jasmine",
+    type: "goods",
+    components: ["plant"],
+  },
+  {
+    id: "ginger",
+    type: "goods",
+    components: ["plant"],
+  },
+  {
+    id: "mint",
+    type: "goods",
+    components: ["plant"],
+  },
+  {
+    id: "infusion",
+    type: "goods",
+    components: ["water", "tea", "sunflower", "ginger", "jasmine", "mint"],
+  },
+
+  {
+    id: "cooking_oil",
+    type: "goods",
+    components: ["olive", "sunflower", "coconut"],
+  },
+
   {
     id: "preservatives",
     type: "goods",
