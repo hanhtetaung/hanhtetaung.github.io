@@ -34,19 +34,16 @@
 .section-title {
   display: flex;
   gap: 1rem;
+  align-items: center;
 
-  & img {
+  & .icon {
+    min-height: 5rem;
+    width: auto;
+    height: fit-content;
+
     @include breakpoints.phone {
       display: none;
     }
-  }
-
-  &--vertical {
-    flex-direction: column;
-    width: fit-content;
-    align-items: center;
-    line-height: 2rem;
-    margin-bottom: 10rem;
   }
 }
 
@@ -162,10 +159,12 @@
   align-items: center;
   padding-block: 5rem;
   padding-inline: 5rem;
-  // border: 1px solid var(--color-text);
-  // border-radius: 5rem;
   box-shadow: 0 4px 12px -4px rgba(0, 0, 0, 0.35);
   gap: 10rem;
+
+  @include breakpoints.phone {
+    padding: 3rem;
+  }
 
   &--reverse-direction {
     flex-direction: row-reverse;
