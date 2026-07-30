@@ -210,20 +210,34 @@
 }
 
 .about {
+  @include breakpoints.phone {
+    padding-block: 8rem;
+  }
   & .container {
-    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    @include breakpoints.phone {
+      display: block;
+      text-align: center;
+    }
+  }
+
+  & .hgroup {
+    display: flex;
+    justify-content: space-between;
   }
 
   & .logo {
-    max-width: 15rem;
+    max-width: 10rem;
     align-self: center;
   }
 
-  &__article {
+  & .article {
     display: flex;
+    flex-direction: row;
     text-align: left;
-    justify-content: center;
-    gap: 5rem;
+    gap: 3rem;
 
     @include breakpoints.phone {
       flex-direction: column;
@@ -231,12 +245,30 @@
       gap: 2rem;
     }
   }
+}
 
-  &__content {
-    max-width: 100ch;
+.tech-collection {
+  & .container {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 2rem;
+  }
+
+  &__list {
+    position: relative; // required — Masonry uses absolute positioning
+    list-style-type: none;
+    padding: 0;
+  }
+
+  &__item {
+    width: fit-content;
+    height: fit-content;
+  }
+
+  &__icon {
+    width: 10rem;
+    height: auto;
+    // object-fit: contain;
   }
 }
 

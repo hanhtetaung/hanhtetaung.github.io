@@ -162,7 +162,7 @@
   &--outline {
     @extend .button;
     color: var(--color-primary);
-    border: 1px solid var(--color-primary);
+    border: 2px solid var(--color-primary);
   }
 
   &--link {
