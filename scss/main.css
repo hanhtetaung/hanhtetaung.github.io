@@ -433,6 +433,7 @@ img {
   display: flex;
   gap: 1rem;
   align-items: center;
+  margin-bottom: 3rem;
 }
 .section-title .icon {
   min-height: 5rem;
@@ -752,9 +753,6 @@ img {
 
 .cta {
   position: relative;
-}
-.cta .container {
-  display: flex;
 }
 .cta__article {
   gap: 1rem;
