@@ -80,8 +80,6 @@
 
 .work {
   & .container {
-    display: flex;
-    flex-direction: column;
   }
 
   &__showcases {
@@ -95,9 +93,6 @@
 
 .timeline {
   & .container {
-    display: flex;
-    flex-direction: column;
-    gap: 3rem;
   }
 
   &__list {
@@ -184,8 +179,6 @@
     width: fit-content;
     align-items: center;
     gap: 0;
-
-    margin-bottom: 10rem;
   }
 
   & .icon {
@@ -270,7 +263,6 @@
   & .container {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
   }
 
   &__list {

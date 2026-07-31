@@ -243,7 +243,6 @@ img {
 }
 
 .icon--sm {
-  max-width: 3rem;
   height: auto;
 }
 
@@ -658,10 +657,6 @@ img {
   grid-area: three;
 }
 
-.work .container {
-  display: flex;
-  flex-direction: column;
-}
 .work__showcases {
   display: flex;
   flex-direction: column;
@@ -670,11 +665,6 @@ img {
   list-style: none;
 }
 
-.timeline .container {
-  display: flex;
-  flex-direction: column;
-  gap: 3rem;
-}
 .timeline__list {
   list-style: none;
   padding: 0;
@@ -751,7 +741,6 @@ img {
   width: fit-content;
   align-items: center;
   gap: 0;
-  margin-bottom: 10rem;
 }
 .why-hire-me .icon {
   width: 8rem;
@@ -828,7 +817,6 @@ img {
 .tech-collection .container {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
 }
 .tech-collection__list {
   position: relative;
