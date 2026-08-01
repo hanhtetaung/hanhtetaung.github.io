@@ -204,6 +204,21 @@ const CY_STYLE = [
       opacity: 1,
     },
   },
+  {
+    selector: "edge.edge-direct",
+    style: {
+      "line-color": "#8b8880", // Highlights immediate 1-hop connections
+      width: 2.5,
+      opacity: 1,
+    },
+  },
+  {
+    selector: "edge.edge-indirect",
+    style: {
+      width: 1.2,
+      opacity: 0.3,
+    },
+  },
   /* Nodes that are part of the highlighted chain but not directly
      connected to the selected node (e.g. selecting Pho lights up
      Chicken -> Egg, but Egg is two hops away) get a lighter,

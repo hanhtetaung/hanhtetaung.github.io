@@ -262,38 +262,40 @@ function arrangeAroundNode(node, ingredientNodes, useNodes) {
 
 function clearHighlight() {
   cy.elements().removeClass(
-    "dim lit selected first-connected used-directly used-directly-source",
+    "dim lit selected first-connected used-directly used-directly-source edge-direct edge-indirect", // Added edge classes
   );
   restoreArrangedPositions();
 }
 
 function highlight(node) {
-  // predecessors()/successors() walk the full directed chain (nodes + edges),
-  // not just one hop — so clicking Pho lights up Beef -> Animal too, not
-  // just the elements it's directly wired to.
+  // predecessors()/successors() walk the full directed chain (nodes + edges)
   const chain = node.predecessors().union(node.successors()).union(node);
   const withGroups = chain.union(chain.ancestors());
   cy.elements().addClass("dim");
   withGroups.removeClass("dim").addClass("lit");
   node.removeClass("dim").addClass("lit selected");
 
-  // First-connected: only the direct (one-hop) components that make up
-  // this node, not the whole ancestor chain. Styling for these — including
-  // the source-vs-goods distinction — lives in cy-style.js.
+  // First-connected: only the direct (one-hop) components
   const firstConnected = node.incomers("node");
   firstConnected.addClass("first-connected");
 
-  // Direct one-hop uses (e.g. clicking CPU when Computer uses it directly)
-  // stay at full opacity instead of the dimmer multi-hop opacity. The
-  // orange "used" accent only applies when a GOODS node is clicked;
-  // clicking a SOURCE leaves its directly-used goods at their normal
-  // plain goods color — see cy-style.js for both classes.
+  // Direct one-hop uses
   const outgoers = node.outgoers("node");
   if (node.data("type") === "source") {
     outgoers.addClass("used-directly-source");
   } else {
     outgoers.addClass("used-directly");
   }
+
+  // --- NEW: Classify edges into direct and indirect ---
+  // Direct edges (1-hop connections to the selected node)
+  const directEdges = node.connectedEdges();
+  directEdges.addClass("edge-direct");
+
+  // Indirect edges (multi-hop connections in the chain, not directly touching the selected node)
+  const indirectEdges = chain.filter("edge").difference(directEdges);
+  indirectEdges.addClass("edge-indirect");
+  // ----------------------------------------------------
 
   arrangeAroundNode(node, firstConnected, outgoers);
 }
