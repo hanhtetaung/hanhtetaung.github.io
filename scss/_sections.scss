@@ -35,10 +35,10 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
-    gap: 20px;
+    gap: 5rem;
     grid-template-areas:
       "one two"
-      "three .";
+      "three three";
 
     @include breakpoints.phone {
       display: flex;
@@ -75,6 +75,34 @@
 
   & .blog {
     grid-area: three;
+  }
+
+  &__product-lists {
+    display: flex;
+    gap: 3rem;
+    padding: 0;
+    overflow-y: scroll;
+    list-style-type: none;
+    grid-area: three;
+
+    & .image {
+      max-height: 12rem;
+      width: auto;
+    }
+  }
+
+  &__product-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    text-decoration: none;
+  }
+
+  & .button--link {
+    text-decoration: none;
+    display: block;
+    font-weight: bold;
+    font-size: var(--size-small);
   }
 }
 
@@ -409,6 +437,35 @@
 .thank-you {
   &__description {
     margin-bottom: 2rem;
+  }
+}
+
+.coming-soon {
+  & .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    @include breakpoints.phone {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 5rem;
+    }
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    @include breakpoints.phone {
+      gap: 1rem;
+    }
+  }
+
+  &__image {
+    max-width: 20rem;
+    max-height: 15rem;
   }
 }
 
