@@ -185,6 +185,7 @@ const CY_STYLE = [
       "z-index": 5,
       "transition-property": "line-color, opacity, width",
       "transition-duration": "120ms",
+      events: "no", // edges are purely visual — no click/tap/hover interaction
     },
   },
 
@@ -239,8 +240,8 @@ const CY_STYLE = [
       "border-width": 4,
       "border-color": TEXT_PRIMARY, // --color-text
       opacity: 1,
-      width: scaledNodeWidth(1.2), // 50% bigger than the node's own fitted size
-      height: scaledNodeHeight(1.2),
+      width: scaledNodeWidth(1.5), // 50% bigger than the node's own fitted size
+      height: scaledNodeHeight(1.5),
       "text-max-width": scaledTextMaxWidth(1.5),
     },
   },
