@@ -158,13 +158,22 @@ const emptyEl = document.getElementById("empty");
 const cardEl = document.getElementById("card");
 const typeLabel = { source: "Source", goods: "Goods" };
 
-/* ---- side arrangement of a selected node's ingredients & uses ----
+/* ---- side / ring arrangement of a selected node's ingredients & uses ----
    When a node is selected, its direct components ("first-connected" /
    ingredients) are pulled out to a vertical stack on the LEFT, and its
    direct uses (outgoers) to a vertical stack on the RIGHT — both centered
-   on the selected node's own height. Original positions are remembered
-   and restored on deselect, so this never permanently disturbs the base
-   fCoSE layout — it's a temporary focus view. */
+   on the selected node's own height.
+
+   Two cases fall back to a full ring around the selected node instead:
+     - the node has no uses (nothing downstream) — a right-only stack
+       would leave the ingredients lopsided on one side
+     - the node is a SOURCE — sources have no ingredients (nothing
+       upstream of them) to begin with, so a right-only stack of uses is
+       just as lopsided; ring them instead
+
+   Original positions are remembered and restored on deselect, so this
+   never permanently disturbs the base fCoSE layout — it's a temporary
+   focus view. */
 let arrangedNeighbors = null; // cytoscape collection currently pulled aside
 const preArrangePositions = new Map(); // id -> {x, y} to restore back to
 
@@ -204,6 +213,31 @@ function arrangeSide(center, nodeRadius, sideNodes, direction) {
   });
 }
 
+// Places `ringNodes` evenly around `center` in a full circle, radius sized
+// so they don't overlap each other or the selected node.
+function arrangeRing(center, nodeRadius, ringNodes) {
+  if (!ringNodes || ringNodes.length === 0) return;
+
+  const maxNeighborRadius = Math.max(
+    ...ringNodes.map((n) => n.outerWidth() / 2),
+  );
+  const gap = 20;
+  const count = ringNodes.length;
+  const circumferenceNeeded = count * (2 * maxNeighborRadius + gap);
+  const minRadius = nodeRadius + maxNeighborRadius + 40;
+  const radius = Math.max(minRadius, circumferenceNeeded / (2 * Math.PI));
+
+  ringNodes.forEach((neighborNode, i) => {
+    const angle = (2 * Math.PI * i) / count - Math.PI / 2; // first node at top
+    const x = center.x + radius * Math.cos(angle);
+    const y = center.y + radius * Math.sin(angle);
+    neighborNode.animate(
+      { position: { x, y } },
+      { duration: 400, easing: "ease-out" },
+    );
+  });
+}
+
 function arrangeAroundNode(node, ingredientNodes, useNodes) {
   const combined = ingredientNodes.union(useNodes);
   if (combined.length === 0) return;
@@ -213,9 +247,17 @@ function arrangeAroundNode(node, ingredientNodes, useNodes) {
 
   const center = node.position();
   const nodeRadius = node.outerWidth() / 2;
+  const isSource = node.data("type") === "source";
 
-  arrangeSide(center, nodeRadius, ingredientNodes, -1); // left = ingredients
-  arrangeSide(center, nodeRadius, useNodes, 1); // right = uses
+  if (isSource) {
+    // Source nodes have no ingredients to begin with (combined === uses);
+    // a goods node with no uses has combined === ingredients. Either way,
+    // ring the one side that exists instead of a lopsided single-side stack.
+    arrangeRing(center, nodeRadius, combined);
+  } else {
+    arrangeSide(center, nodeRadius, ingredientNodes, -1); // left = ingredients
+    arrangeSide(center, nodeRadius, useNodes, 1); // right = uses
+  }
 }
 
 function clearHighlight() {
