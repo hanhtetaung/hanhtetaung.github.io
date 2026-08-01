@@ -330,9 +330,172 @@ cy.on("tap", (evt) => {
   }
 });
 
-document.getElementById("re-layout").addEventListener("click", fcoseLayout);
-document
-  .getElementById("fit")
-  .addEventListener("click", () => cy.fit(undefined, 40));
+const relayoutBtn = document.getElementById("re-layout");
+if (relayoutBtn) relayoutBtn.addEventListener("click", fcoseLayout);
 
-window.addEventListener("resize", () => cy.resize());
+const fitBtn = document.getElementById("fit");
+if (fitBtn) fitBtn.addEventListener("click", () => cy.fit(undefined, 40));
+
+/* ---- search ---- */
+const searchInput = document.getElementById("search-input");
+const searchResultsEl = document.getElementById("search-results");
+
+const MAX_SEARCH_RESULTS = 8;
+
+// Baseline styles applied via JS so the dropdown is visible and positioned
+// correctly even if main.css doesn't define .search-results / .show rules
+// (or defines them differently than expected). main.css can still override
+// any of these since inline styles here only set what's needed to function.
+searchResultsEl.style.listStyle = "none";
+searchResultsEl.style.margin = "0";
+searchResultsEl.style.padding = "0";
+searchResultsEl.style.position = "absolute";
+searchResultsEl.style.top = "100%";
+searchResultsEl.style.left = "0";
+searchResultsEl.style.right = "0";
+searchResultsEl.style.zIndex = "1000";
+searchResultsEl.style.background = "#fff";
+searchResultsEl.style.border = "1px solid #ccc";
+searchResultsEl.style.borderRadius = "6px";
+searchResultsEl.style.maxHeight = "320px";
+searchResultsEl.style.overflowY = "auto";
+searchResultsEl.style.display = "none";
+
+// The dropdown is positioned absolute relative to its container, so the
+// container needs position:relative or it'll anchor to the page instead.
+const searchContainerEl = searchInput.closest(".search-container");
+if (searchContainerEl) {
+  searchContainerEl.style.position = "relative";
+}
+
+// Rank by where the match occurs (name starts with query > word starts
+// with query > substring anywhere), then alphabetically, so typing "co"
+// surfaces "Copper"/"Cotton" above e.g. "Silicon".
+function searchMatches(query) {
+  const q = query.trim().toLowerCase();
+  if (!q) return [];
+
+  const scored = [];
+  ELEMENTS.forEach((el) => {
+    const name = el.name.toLowerCase();
+    const idx = name.indexOf(q);
+    if (idx === -1) return;
+    let score = 2; // substring match anywhere
+    if (idx === 0)
+      score = 0; // starts with query
+    else if (name[idx - 1] === " ") score = 1; // word boundary match
+    scored.push({ el, score });
+  });
+
+  scored.sort(
+    (a, b) => a.score - b.score || a.el.name.localeCompare(b.el.name),
+  );
+
+  return scored.slice(0, MAX_SEARCH_RESULTS).map((s) => s.el);
+}
+
+function closeSearchResults() {
+  searchResultsEl.innerHTML = "";
+  searchResultsEl.classList.remove("show");
+  searchResultsEl.style.display = "none";
+  activeSearchIndex = -1;
+}
+
+function highlightActiveResult() {
+  [...searchResultsEl.children].forEach((li, i) => {
+    const isActive = i === activeSearchIndex;
+    li.classList.toggle("active", isActive);
+    li.style.background = isActive ? "#e0e0e0" : "";
+  });
+}
+
+function chooseSearchResult(el) {
+  selectNode(el.id);
+  // cy.animate(
+  //   { center: { eles: cy.getElementById(el.id) }, zoom: 1.5 },
+  //   { duration: 400 },
+  // );
+  searchInput.value = "";
+  closeSearchResults();
+  searchInput.blur();
+}
+
+function renderSearchResults(query) {
+  const matches = searchMatches(query);
+  activeSearchIndex = -1;
+
+  if (matches.length === 0) {
+    closeSearchResults();
+    return;
+  }
+
+  searchResultsEl.innerHTML = "";
+  matches.forEach((el) => {
+    const li = document.createElement("li");
+    li.className = "search-results__item";
+    li.style.display = "flex";
+    li.style.alignItems = "center";
+    li.style.gap = "8px";
+    li.style.padding = "8px 12px";
+    li.style.cursor = "pointer";
+    li.innerHTML = `
+      <i class="${el.type}-legend"></i>
+      <span class="small--emphasis">${el.name}</span>
+    `;
+    li.addEventListener("mouseenter", () => {
+      li.style.background = "#f0f0f0";
+    });
+    li.addEventListener("mouseleave", () => {
+      if (!li.classList.contains("active")) li.style.background = "";
+    });
+    li.addEventListener("mousedown", (evt) => {
+      // mousedown (not click) fires before the input's blur handler,
+      // so the result is still in the DOM when the user picks it.
+      evt.preventDefault();
+      chooseSearchResult(el);
+    });
+    searchResultsEl.appendChild(li);
+  });
+
+  searchResultsEl.classList.add("show");
+  searchResultsEl.style.display = "block";
+}
+
+let activeSearchIndex = -1;
+
+searchInput.addEventListener("input", (evt) => {
+  renderSearchResults(evt.target.value);
+});
+
+// Keyboard navigation: arrow keys move the highlighted result, Enter
+// selects it, Escape clears the dropdown.
+searchInput.addEventListener("keydown", (evt) => {
+  const items = searchResultsEl.children;
+  if (!items.length) return;
+
+  if (evt.key === "ArrowDown") {
+    evt.preventDefault();
+    activeSearchIndex = (activeSearchIndex + 1) % items.length;
+    highlightActiveResult();
+  } else if (evt.key === "ArrowUp") {
+    evt.preventDefault();
+    activeSearchIndex = (activeSearchIndex - 1 + items.length) % items.length;
+    highlightActiveResult();
+  } else if (evt.key === "Enter") {
+    evt.preventDefault();
+    const query = searchInput.value;
+    const matches = searchMatches(query);
+    const chosen =
+      activeSearchIndex >= 0 ? matches[activeSearchIndex] : matches[0];
+    if (chosen) chooseSearchResult(chosen);
+  } else if (evt.key === "Escape") {
+    searchInput.value = "";
+    closeSearchResults();
+    searchInput.blur();
+  }
+});
+
+searchInput.addEventListener("blur", () => {
+  // Delay so a mousedown-triggered selection above still fires first.
+  setTimeout(closeSearchResults, 100);
+});
