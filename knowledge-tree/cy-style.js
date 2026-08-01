@@ -30,8 +30,87 @@ function baseNodeSize(weight) {
   const t = (w - 1) / (9 - 1);
   return BASE_SIZE_MIN + t * (BASE_SIZE_MAX - BASE_SIZE_MIN);
 }
-function scaledNodeSize(scale) {
-  return (ele) => baseNodeSize(ele.data("weight")) * scale;
+
+// ---- label-aware sizing ----
+// Weight alone decided node size before, with a fixed text-max-width (80)
+// applied on top — so a low-weight node (as small as 34px) could be asked
+// to hold an 80px-wide wrapped label and overflow its own circle. Instead,
+// measure each label's real rendered size and use it as a floor under the
+// weight-based size, so the node is always at least big enough for its
+// own text.
+const LABEL_FONT_SIZE = 10;
+const LABEL_FONT = `600 ${LABEL_FONT_SIZE}px "JetBrains Mono", monospace`;
+const LABEL_LINE_HEIGHT = LABEL_FONT_SIZE * 1.3;
+const LABEL_WRAP_WIDTH = 74; // target width a single line of text wraps at
+const LABEL_PADDING = 12; // inner breathing room before text reaches the edge
+
+const _measureCanvas =
+  typeof document !== "undefined" ? document.createElement("canvas") : null;
+const _measureCtx = _measureCanvas ? _measureCanvas.getContext("2d") : null;
+
+function measureTextWidth(text) {
+  if (!_measureCtx) return text.length * (LABEL_FONT_SIZE * 0.6); // rough fallback
+  _measureCtx.font = LABEL_FONT;
+  return _measureCtx.measureText(text).width;
+}
+
+// Wraps on spaces, mirroring cytoscape's own text-wrap: wrap behavior, so
+// what we measure here matches what cytoscape actually renders.
+function wrapLabel(label) {
+  const words = label.split(" ");
+  const lines = [];
+  let current = "";
+  words.forEach((word) => {
+    const test = current ? current + " " + word : word;
+    if (!current || measureTextWidth(test) <= LABEL_WRAP_WIDTH) {
+      current = test;
+    } else {
+      lines.push(current);
+      current = word;
+    }
+  });
+  if (current) lines.push(current);
+  return lines;
+}
+
+// Cache per-label results since the same label gets measured repeatedly
+// across style function calls (base size, selected size, etc).
+const _labelSizeCache = new Map();
+function labelFitSize(label) {
+  if (_labelSizeCache.has(label)) return _labelSizeCache.get(label);
+  const lines = wrapLabel(label);
+  const widestLine = Math.max(...lines.map(measureTextWidth), 0);
+  const textHeight = lines.length * LABEL_LINE_HEIGHT;
+  // Ellipses waste space in their corners relative to their bounding box,
+  // so inflate past the raw text box to keep wrapped text clear of the
+  // curved edge (roughly sqrt(2) for a fully-inscribed rectangle, a bit
+  // less since text is centered rather than corner-to-corner).
+  const fit = {
+    width: (widestLine + LABEL_PADDING * 2) * 1.3,
+    height: (textHeight + LABEL_PADDING * 2) * 1.5,
+  };
+  _labelSizeCache.set(label, fit);
+  return fit;
+}
+
+function nodeSize(ele) {
+  const base = baseNodeSize(ele.data("weight"));
+  const fit = labelFitSize(ele.data("label") || "");
+  // Use the larger of width/height so the node is always a true circle —
+  // sizing width and height independently (from line width vs. line
+  // count) is what was ovaling multi-line or single-long-word labels.
+  const diameter = Math.max(base, fit.width, fit.height);
+  return { width: diameter, height: diameter };
+}
+function scaledNodeWidth(scale) {
+  return (ele) => nodeSize(ele).width * scale;
+}
+function scaledNodeHeight(scale) {
+  return (ele) => nodeSize(ele).height * scale;
+}
+function scaledTextMaxWidth(scale) {
+  // Keep cytoscape's own wrapping consistent with what we measured above.
+  return () => LABEL_WRAP_WIDTH * scale;
 }
 
 const CY_STYLE = [
@@ -50,8 +129,8 @@ const CY_STYLE = [
     selector: "node.leaf",
     style: {
       shape: "ellipse",
-      width: scaledNodeSize(1), // Slightly increased minimum size so text fits inside
-      height: scaledNodeSize(1),
+      width: scaledNodeWidth(1),
+      height: scaledNodeHeight(1),
       "background-color": "#fbfaf6",
       "background-opacity": 0.95, // Solid background so text is readable over crossing edges
       "border-width": 2,
@@ -62,7 +141,7 @@ const CY_STYLE = [
       "text-halign": "center", // Centers text horizontally inside the node
       "text-margin-y": 0, // Removes the bottom offset
       "text-wrap": "wrap",
-      "text-max-width": 80,
+      "text-max-width": scaledTextMaxWidth(1),
       "min-zoomed-font-size": 6,
       "z-index": 10,
     },
@@ -160,8 +239,9 @@ const CY_STYLE = [
       "border-width": 4,
       "border-color": TEXT_PRIMARY, // --color-text
       opacity: 1,
-      width: scaledNodeSize(1.5), // 20% bigger than the node's own base size
-      height: scaledNodeSize(1.5),
+      width: scaledNodeWidth(1.2), // 50% bigger than the node's own fitted size
+      height: scaledNodeHeight(1.2),
+      "text-max-width": scaledTextMaxWidth(1.5),
     },
   },
 
