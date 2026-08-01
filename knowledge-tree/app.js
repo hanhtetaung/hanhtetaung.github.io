@@ -158,10 +158,71 @@ const emptyEl = document.getElementById("empty");
 const cardEl = document.getElementById("card");
 const typeLabel = { source: "Source", goods: "Goods" };
 
+/* ---- side arrangement of a selected node's ingredients & uses ----
+   When a node is selected, its direct components ("first-connected" /
+   ingredients) are pulled out to a vertical stack on the LEFT, and its
+   direct uses (outgoers) to a vertical stack on the RIGHT — both centered
+   on the selected node's own height. Original positions are remembered
+   and restored on deselect, so this never permanently disturbs the base
+   fCoSE layout — it's a temporary focus view. */
+let arrangedNeighbors = null; // cytoscape collection currently pulled aside
+const preArrangePositions = new Map(); // id -> {x, y} to restore back to
+
+function restoreArrangedPositions() {
+  if (!arrangedNeighbors) return;
+  arrangedNeighbors.forEach((n) => {
+    const pos = preArrangePositions.get(n.id());
+    if (pos)
+      n.animate({ position: pos }, { duration: 300, easing: "ease-out" });
+  });
+  arrangedNeighbors = null;
+  preArrangePositions.clear();
+}
+
+// Stacks `sideNodes` vertically, centered on `center.y`, offset horizontally
+// from `center.x` by `direction` (-1 = left, +1 = right).
+function arrangeSide(center, nodeRadius, sideNodes, direction) {
+  if (!sideNodes || sideNodes.length === 0) return;
+
+  const maxNeighborRadius = Math.max(
+    ...sideNodes.map((n) => n.outerWidth() / 2),
+  );
+  const gap = 24;
+  const spacing = 2 * maxNeighborRadius + gap;
+  const count = sideNodes.length;
+  const totalHeight = (count - 1) * spacing;
+  const startY = center.y - totalHeight / 2;
+  const xOffset = nodeRadius + maxNeighborRadius + 90;
+
+  sideNodes.forEach((neighborNode, i) => {
+    const x = center.x + direction * xOffset;
+    const y = startY + i * spacing;
+    neighborNode.animate(
+      { position: { x, y } },
+      { duration: 400, easing: "ease-out" },
+    );
+  });
+}
+
+function arrangeAroundNode(node, ingredientNodes, useNodes) {
+  const combined = ingredientNodes.union(useNodes);
+  if (combined.length === 0) return;
+
+  combined.forEach((n) => preArrangePositions.set(n.id(), { ...n.position() }));
+  arrangedNeighbors = combined;
+
+  const center = node.position();
+  const nodeRadius = node.outerWidth() / 2;
+
+  arrangeSide(center, nodeRadius, ingredientNodes, -1); // left = ingredients
+  arrangeSide(center, nodeRadius, useNodes, 1); // right = uses
+}
+
 function clearHighlight() {
   cy.elements().removeClass(
     "dim lit selected first-connected used-directly used-directly-source",
   );
+  restoreArrangedPositions();
 }
 
 function highlight(node) {
@@ -177,7 +238,8 @@ function highlight(node) {
   // First-connected: only the direct (one-hop) components that make up
   // this node, not the whole ancestor chain. Styling for these — including
   // the source-vs-goods distinction — lives in cy-style.js.
-  node.incomers("node").addClass("first-connected");
+  const firstConnected = node.incomers("node");
+  firstConnected.addClass("first-connected");
 
   // Direct one-hop uses (e.g. clicking CPU when Computer uses it directly)
   // stay at full opacity instead of the dimmer multi-hop opacity. The
@@ -190,6 +252,8 @@ function highlight(node) {
   } else {
     outgoers.addClass("used-directly");
   }
+
+  arrangeAroundNode(node, firstConnected, outgoers);
 }
 
 function rowItem(id, showIcon) {
@@ -411,10 +475,10 @@ function highlightActiveResult() {
 
 function chooseSearchResult(el) {
   selectNode(el.id);
-  // cy.animate(
-  //   { center: { eles: cy.getElementById(el.id) }, zoom: 1.5 },
-  //   { duration: 400 },
-  // );
+  cy.animate(
+    { center: { eles: cy.getElementById(el.id) }, zoom: 1.5 },
+    { duration: 400 },
+  );
   searchInput.value = "";
   closeSearchResults();
   searchInput.blur();
