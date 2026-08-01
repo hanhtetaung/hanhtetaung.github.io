@@ -517,10 +517,10 @@ function highlightActiveResult() {
 
 function chooseSearchResult(el) {
   selectNode(el.id);
-  cy.animate(
-    { center: { eles: cy.getElementById(el.id) }, zoom: 1.5 },
-    { duration: 400 },
-  );
+  // cy.animate(
+  //   { center: { eles: cy.getElementById(el.id) }, zoom: 1.1 },
+  //   { duration: 400 },
+  // );
   searchInput.value = "";
   closeSearchResults();
   searchInput.blur();
