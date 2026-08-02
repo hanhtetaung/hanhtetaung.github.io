@@ -459,6 +459,20 @@
   }
 }
 
+.page-not-found {
+  & .container {
+    display: flex;
+    align-items: start;
+    gap: 5rem;
+
+    @include breakpoints.phone {
+      gap: 3rem;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+}
+
 .footer {
   background-color: var(--color-bg-pirmary);
   padding-block: 10rem;
