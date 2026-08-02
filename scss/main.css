@@ -1043,3 +1043,7 @@ img {
 .footer .nav {
   margin-top: 0.3rem;
 }
+
+mol-footer[secondary] .footer {
+  background-color: var(--color-bg-secondary);
+}

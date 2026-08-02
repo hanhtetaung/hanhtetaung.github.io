@@ -1,0 +1,1 @@
+import "./mol-footer.js";
