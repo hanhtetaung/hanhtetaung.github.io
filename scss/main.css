@@ -629,9 +629,30 @@ img {
     gap: 5rem;
   }
 }
+.hero__tech {
+  margin-block: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+@media (max-width: 769px) {
+  .hero__tech {
+    margin-bottom: 0;
+  }
+}
+.hero__tech-list {
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+  gap: 2rem;
+}
+.hero__tech-list .icon {
+  width: 2.5rem;
+  height: auto;
+}
 .hero__group {
   grid-area: one;
-  border-bottom: 1px solid var(--color-text);
+  border-bottom: 1px solid var(--color-primary);
 }
 @media (max-width: 769px) {
   .hero__group {
@@ -653,9 +674,6 @@ img {
   .hero__highlight li {
     width: 100%;
   }
-}
-.hero .blog {
-  grid-area: three;
 }
 .hero__product-lists {
   display: flex;
