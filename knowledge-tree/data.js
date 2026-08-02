@@ -72,7 +72,7 @@ const ELEMENTS = [
   {
     id: "bread",
     type: "goods",
-    components: ["wheat", "water", "salt", "yeast"],
+    components: ["wheat", "water", "yeast"],
   },
   { id: "tooth_brush", type: "goods", components: ["nylon", "plastic"] },
   { id: "yeast", type: "goods", components: ["plant"] },
@@ -147,15 +147,7 @@ const ELEMENTS = [
   {
     id: "banh_mi",
     type: "goods",
-    components: [
-      "beef",
-      "carrot",
-      "cucumber",
-      "bread",
-      "pork",
-      "cooking_oil",
-      "salt",
-    ],
+    components: ["beef", "carrot", "cucumber", "bread", "pork", "cooking_oil"],
   },
   {
     id: "pasta",
@@ -258,6 +250,16 @@ const ELEMENTS = [
     components: ["plant"],
   },
   {
+    id: "broccoli",
+    type: "goods",
+    components: ["plant"],
+  },
+  {
+    id: "yogurt",
+    type: "goods",
+    components: ["milk"],
+  },
+  {
     id: "infusion",
     type: "goods",
     components: ["water", "tea", "sunflower", "ginger", "jasmine", "mint"],
@@ -287,7 +289,7 @@ const ELEMENTS = [
   {
     id: "sushi",
     type: "goods",
-    components: ["rice", "seaweeds", "salt", "fish"],
+    components: ["rice", "seaweeds", "fish"],
   },
   {
     id: "semiconductor",
@@ -303,6 +305,12 @@ const ELEMENTS = [
   { id: "milk", type: "goods", components: ["animal"] },
   { id: "ice_cream", type: "goods", components: ["milk", "sugar"] },
   { id: "honey", type: "goods", components: ["animal"] },
+  { id: "passion_fruit", type: "goods", components: ["plant"] },
+  {
+    id: "bo_ne",
+    type: "goods",
+    components: ["egg", "cucumber", "tomato", "bread", "cooking_oil", "beef"],
+  },
 
   {
     id: "shoe",

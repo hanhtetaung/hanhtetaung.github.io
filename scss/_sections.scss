@@ -107,9 +107,6 @@
 }
 
 .work {
-  & .container {
-  }
-
   &__showcases {
     display: flex;
     flex-direction: column;
@@ -120,9 +117,6 @@
 }
 
 .timeline {
-  & .container {
-  }
-
   &__list {
     list-style: none;
     padding: 0;
@@ -221,10 +215,6 @@
 
 .cta {
   position: relative;
-
-  & .container {
-    // display: flex;
-  }
 
   &__article {
     gap: 1rem;
