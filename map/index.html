@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Farm</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        background: #bfe3f7;
+        overflow: hidden;
+      }
+      canvas {
+        display: block;
+        width: 100vw;
+        height: 100vh;
+        cursor: grab;
+        touch-action: none;
+      }
+      canvas.dragging {
+        cursor: grabbing;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="c"></canvas>
+
+    <!--
+  Load order matters here since these are plain scripts sharing globals:
+  1. camera.js  - declares `camera` state
+  2. road.js    - declares `roadPath` + the path-generation function
+  3. assets.js  - generic asset() image loader (not tied to any specific image)
+  4. draw.js    - draw()/drawRoad()/updateRoadPath() (uses scene.js content, defined next)
+  5. scene.js   - EDIT ME: road shape + what's drawn (not run yet, just defines things)
+  6. main.js    - creates `canvas`/`ctx`, then calls draw() for the first time
+  7. input.js   - attaches mouse/touch listeners (needs `canvas` from main.js)
+-->
+    <script src="js/camera.js"></script>
+    <script src="js/road.js"></script>
+    <script src="js/assets.js"></script>
+    <script src="js/draw.js"></script>
+    <script src="js/scene.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/input.js"></script>
+  </body>
+</html>
