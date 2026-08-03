@@ -30,17 +30,19 @@
 
     <!--
   Load order matters here since these are plain scripts sharing globals:
-  1. camera.js  - declares `camera` state, used by everything below
+  1. camera.js  - declares `camera` state
   2. road.js    - declares `roadPath` + the path-generation function
-  3. assets.js  - creates image objects, generates the road once loaded
-  4. draw.js    - defines draw()/drawRoad()/drawObjects() (not run yet)
-  5. main.js    - creates `canvas`/`ctx`, then calls draw() for the first time
-  6. input.js   - attaches mouse/touch listeners (needs `canvas` from main.js)
+  3. assets.js  - generic asset() image loader (not tied to any specific image)
+  4. draw.js    - draw()/drawRoad()/updateRoadPath() (uses scene.js content, defined next)
+  5. scene.js   - EDIT ME: road shape + what's drawn (not run yet, just defines things)
+  6. main.js    - creates `canvas`/`ctx`, then calls draw() for the first time
+  7. input.js   - attaches mouse/touch listeners (needs `canvas` from main.js)
 -->
     <script src="js/camera.js"></script>
     <script src="js/road.js"></script>
     <script src="js/assets.js"></script>
     <script src="js/draw.js"></script>
+    <script src="js/scene.js"></script>
     <script src="js/main.js"></script>
     <script src="js/input.js"></script>
   </body>
