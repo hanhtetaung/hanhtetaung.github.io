@@ -13,19 +13,11 @@ const roadInstructions = [
   { straight: 6 },
   { curve: -60 },
   { straight: 10 },
-  { curve: 40 },
-  { straight: 10 },
-  { curve: 40 },
-  { straight: 10 },
-  { curve: 60 },
-  { straight: 20 },
 ];
 
 function drawObjects() {
-  ctx.drawImage(asset("human"), 400, 180);
   ctx.drawImage(asset("ayutthaya_temple"), 200, 260);
+  ctx.drawImage(asset("plane"), 0, 260);
   ctx.drawImage(asset("tuktuk"), 100, 420);
-  ctx.drawImage(asset("cow"), 100, 300);
-  ctx.drawImage(asset("victory_monument"), 200, 500);
-  ctx.drawImage(asset("plane"), 200, 600);
+  ctx.drawImage(asset("pumpkin_soup"), 200, 420);
 }
