@@ -21,4 +21,5 @@ function drawObjects() {
   ctx.drawImage(asset("plane"), 900, -550);
   ctx.drawImage(asset("car"), 800, 600);
   ctx.drawImage(asset("pumpkin_soup"), 2000, 700);
+  ctx.drawImage(asset("kaffa_bistro"), 3000, 700);
 }
