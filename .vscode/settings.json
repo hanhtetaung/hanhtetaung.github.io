@@ -9,8 +9,8 @@
   "liveSassCompile.settings.generateMap": false,
   "liveServer.settings.mount": [
     [
-      "/foundation-building-interfaces-at-scale",
-      "./foundation-building-interfaces-at-scale.html"
+      "/writings/foundation-building-interfaces-at-scale",
+      "./writings/foundation-building-interfaces-at-scale.html"
     ],
     ["/about", "./about.html"],
     ["/credits", "./credits.html"],
