@@ -90,7 +90,7 @@ export class MolFooter extends LitElement {
         </div>
 
         <p class="footer__copy">
-          © John Doe 2026 |
+          © Han Htet Aung 2026 |
           <a class="button--link" href="/credits">Credits</a>
         </p>
       </div>
