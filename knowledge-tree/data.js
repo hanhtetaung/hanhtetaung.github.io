@@ -185,6 +185,12 @@ const ELEMENTS = [
     components: ["plant"],
   },
   {
+    id: "soy_milk",
+    type: "goods",
+    components: ["soybean", "water"],
+  },
+
+  {
     id: "coagulant",
     type: "goods",
     components: ["stone"],
@@ -295,6 +301,11 @@ const ELEMENTS = [
     id: "semiconductor",
     type: "goods",
     components: ["silicon"],
+  },
+  {
+    id: "pumpkin",
+    type: "goods",
+    components: ["plant"],
   },
 
   { id: "cassava", type: "goods", components: ["plant"] },
