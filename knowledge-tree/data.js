@@ -307,6 +307,11 @@ const ELEMENTS = [
     type: "goods",
     components: ["plant"],
   },
+  {
+    id: "cabbage",
+    type: "goods",
+    components: ["plant"],
+  },
 
   { id: "cassava", type: "goods", components: ["plant"] },
   { id: "avogado", type: "goods", components: ["plant"] },
