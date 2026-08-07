@@ -209,6 +209,18 @@ export class SectionTechCollection extends HTMLElement {
               </a>
             </li>
 
+              <li class="tech-collection__item">
+              <a href="https://bun.com/" target="_blank">
+                <img
+                  class="tech-collection__icon"
+                  src="/assets/tech-collection/bun.svg"
+                  alt="Bun logo"
+                  width="102"
+                  height="73"
+                />
+              </a>
+            </li>
+
             <li class="tech-collection__item">
               <a href="https://www.upwork.com/" target="_blank">
                 <img
