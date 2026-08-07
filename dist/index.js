@@ -1,7 +1,4 @@
-// web-components/sections/header.js
-class SectionHeader extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = `<header class="header">
+class e extends HTMLElement{connectedCallback(){this.innerHTML=`<header class="header">
       <div class="container">
         <a href="/">
           <img
@@ -42,15 +39,7 @@ class SectionHeader extends HTMLElement {
           </a>
         </div>
       </div>
-    </header>`;
-  }
-}
-customElements.define("section-header", SectionHeader);
-
-// web-components/sections/footer.js
-class SectionFooter extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = `<footer class="footer">
+    </header>`}}customElements.define("section-header",e);class s extends HTMLElement{connectedCallback(){this.innerHTML=`<footer class="footer">
       <div class="container">
         <div class="footer__content">
           <div class="footer__profile">
@@ -138,15 +127,7 @@ class SectionFooter extends HTMLElement {
           <a class="button--link" href="/credits">Credits</a>
         </p>
       </div>
-    </footer>`;
-  }
-}
-customElements.define("section-footer", SectionFooter);
-
-// web-components/sections/hero.js
-class SectionHero extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = `<section class="hero">
+    </footer>`}}customElements.define("section-footer",s);class i extends HTMLElement{connectedCallback(){this.innerHTML=`<section class="hero">
       <div class="container">
         <hgroup class="hero__group">
           <p class="hero__intro">I'm Han Htet Aung</p>
@@ -262,15 +243,7 @@ class SectionHero extends HTMLElement {
           </li>
         </ul>
       </div>
-    </section>`;
-  }
-}
-customElements.define("section-hero", SectionHero);
-
-// web-components/sections/case-studies.js
-class SectionCaseStudies extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = `<section class="work">
+    </section>`}}customElements.define("section-hero",i);class a extends HTMLElement{connectedCallback(){this.innerHTML=`<section class="work">
       <div class="container">
         <div class="section-title">
           <h2>Case Studies</h2>
@@ -397,15 +370,7 @@ class SectionCaseStudies extends HTMLElement {
           </li>
         </ul>
       </div>
-    </section>`;
-  }
-}
-customElements.define("section-case-studies", SectionCaseStudies);
-
-// web-components/sections/timeline.js
-class SectionTimeline extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = `<section class="timeline">
+    </section>`}}customElements.define("section-case-studies",a);class t extends HTMLElement{connectedCallback(){this.innerHTML=`<section class="timeline">
       <div class="container">
         <div class="section-title">
           <h2>Experience Overview</h2>
@@ -528,15 +493,7 @@ class SectionTimeline extends HTMLElement {
           </li>
         </ul>
       </div>
-    </section>`;
-  }
-}
-customElements.define("section-timeline", SectionTimeline);
-
-// web-components/sections/why-hire-me.js
-class SectionWhyHireMe extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = `<section class="why-hire-me">
+    </section>`}}customElements.define("section-timeline",t);class l extends HTMLElement{connectedCallback(){this.innerHTML=`<section class="why-hire-me">
       <div class="container">
         <div class="section-title">
           <img
@@ -617,15 +574,7 @@ class SectionWhyHireMe extends HTMLElement {
           </li>
         </ul>
       </div>
-    </section>`;
-  }
-}
-customElements.define("section-why-hire-me", SectionWhyHireMe);
-
-// web-components/sections/cta.js
-class SectionCta extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = `<section class="cta">
+    </section>`}}customElements.define("section-why-hire-me",l);class n extends HTMLElement{connectedCallback(){this.innerHTML=`<section class="cta">
       <div class="container">
         <div class="section-title">
           <h2>Call me, Singapore</h2>
@@ -654,15 +603,7 @@ class SectionCta extends HTMLElement {
           alt="Merlion illustration"
         />
       </div>
-    </section>`;
-  }
-}
-customElements.define("section-cta", SectionCta);
-
-// web-components/components/line-divider-lower.js
-class LineDividerLower extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = `
+    </section>`}}customElements.define("section-cta",n);class o extends HTMLElement{connectedCallback(){this.innerHTML=`
       <div class="cloud-divider">
         <svg
           viewBox="0 0 1200 80"
@@ -695,15 +636,7 @@ class LineDividerLower extends HTMLElement {
           />
         </svg>
       </div>
-    `;
-  }
-}
-customElements.define("line-divider-lower", LineDividerLower);
-
-// web-components/components/line-divider-upper.js
-class LineDividerUpper extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = `
+    `}}customElements.define("line-divider-lower",o);class c extends HTMLElement{connectedCallback(){this.innerHTML=`
     <div class="cloud-divider">
       <svg
         viewBox="0 0 1200 80"
@@ -735,7 +668,4 @@ class LineDividerUpper extends HTMLElement {
           fill="var(--color-bg-secondary)"
         />
       </svg>
-    </div>`;
-  }
-}
-customElements.define("line-divider-upper", LineDividerUpper);
+    </div>`}}customElements.define("line-divider-upper",c);

@@ -1,7 +1,4 @@
-// web-components/sections/header.js
-class SectionHeader extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = `<header class="header">
+class e extends HTMLElement{connectedCallback(){this.innerHTML=`<header class="header">
       <div class="container">
         <a href="/">
           <img
@@ -42,15 +39,7 @@ class SectionHeader extends HTMLElement {
           </a>
         </div>
       </div>
-    </header>`;
-  }
-}
-customElements.define("section-header", SectionHeader);
-
-// web-components/sections/footer.js
-class SectionFooter extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = `<footer class="footer">
+    </header>`}}customElements.define("section-header",e);class s extends HTMLElement{connectedCallback(){this.innerHTML=`<footer class="footer">
       <div class="container">
         <div class="footer__content">
           <div class="footer__profile">
@@ -138,15 +127,7 @@ class SectionFooter extends HTMLElement {
           <a class="button--link" href="/credits">Credits</a>
         </p>
       </div>
-    </footer>`;
-  }
-}
-customElements.define("section-footer", SectionFooter);
-
-// web-components/sections/mmo/intro.js
-class Section extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = `<section>
+    </footer>`}}customElements.define("section-footer",s);class i extends HTMLElement{connectedCallback(){this.innerHTML=`<section>
         <div class="container">
           <article class="article article--hero">
             <div class="article__media">
@@ -200,15 +181,7 @@ class Section extends HTMLElement {
             </div>
           </article>
         </div>
-      </section>`;
-  }
-}
-customElements.define("section-mmo-intro", Section);
-
-// web-components/sections/mmo/about.js
-class Section2 extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = `<section>
+      </section>`}}customElements.define("section-mmo-intro",i);class a extends HTMLElement{connectedCallback(){this.innerHTML=`<section>
         <div class="container">
           <article class="article">
             <div class="article__header">
@@ -225,15 +198,7 @@ class Section2 extends HTMLElement {
             </div>
           </article>
         </div>
-      </section>`;
-  }
-}
-customElements.define("section-mmo-about", Section2);
-
-// web-components/sections/mmo/voices-from-field.js
-class Section3 extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = ` <section class="section">
+      </section>`}}customElements.define("section-mmo-about",a);class t extends HTMLElement{connectedCallback(){this.innerHTML=` <section class="section">
         <div class="container">
           <article class="article">
             <div class="article__header">
@@ -281,15 +246,7 @@ class Section3 extends HTMLElement {
             </ul>
           </article>
         </div>
-      </section>`;
-  }
-}
-customElements.define("section-voices-from-field", Section3);
-
-// web-components/sections/mmo/designing-workflow.js
-class Section4 extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = ` <section class="section">
+      </section>`}}customElements.define("section-voices-from-field",t);class l extends HTMLElement{connectedCallback(){this.innerHTML=` <section class="section">
         <div class="container">
           <h2>Designing workflow</h2>
 
@@ -367,15 +324,7 @@ class Section4 extends HTMLElement {
             </ul>
           </article>
         </div>
-      </section>`;
-  }
-}
-customElements.define("section-designing-workflow", Section4);
-
-// web-components/sections/mmo/building-interfaces.js
-class Section5 extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = `<section>
+      </section>`}}customElements.define("section-designing-workflow",l);class n extends HTMLElement{connectedCallback(){this.innerHTML=`<section>
         <div class="container">
           <div class="section-title">
             <h2>Building Interfaces for selling medical items workflow</h2>
@@ -470,15 +419,7 @@ class Section5 extends HTMLElement {
             </article>
           </div>
         </div>
-      </section>`;
-  }
-}
-customElements.define("section-mmo-building-interfaces", Section5);
-
-// web-components/sections/mmo/multiple-workflows.js
-class Section6 extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = `<section>
+      </section>`}}customElements.define("section-mmo-building-interfaces",n);class c extends HTMLElement{connectedCallback(){this.innerHTML=`<section>
         <div class="container">
           <article class="article">
             <div class="article__header">
@@ -498,15 +439,7 @@ class Section6 extends HTMLElement {
             </ul>
           </article>
         </div>
-      </section>`;
-  }
-}
-customElements.define("section-mmo-multiple-workflows", Section6);
-
-// web-components/sections/mmo/one-design-system.js
-class Section7 extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = `<section>
+      </section>`}}customElements.define("section-mmo-multiple-workflows",c);class r extends HTMLElement{connectedCallback(){this.innerHTML=`<section>
         <div class="container">
           <article class="article">
             <div class="article__header">
@@ -535,15 +468,7 @@ class Section7 extends HTMLElement {
             </div>
           </article>
         </div>
-      </section>`;
-  }
-}
-customElements.define("section-mmo-one-design-system", Section7);
-
-// web-components/sections/mmo/conclusion.js
-class Section8 extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = ` <section>
+      </section>`}}customElements.define("section-mmo-one-design-system",r);class o extends HTMLElement{connectedCallback(){this.innerHTML=` <section>
         <div class="container">
           <article class="article">
             <div class="article__header">
@@ -555,7 +480,4 @@ class Section8 extends HTMLElement {
             </div>
           </article>
         </div>
-      </section>`;
-  }
-}
-customElements.define("section-mmo-conclusion", Section8);
+      </section>`}}customElements.define("section-mmo-conclusion",o);

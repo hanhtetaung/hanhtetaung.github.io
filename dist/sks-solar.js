@@ -1,7 +1,4 @@
-// web-components/sections/header.js
-class SectionHeader extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = `<header class="header">
+class s extends HTMLElement{connectedCallback(){this.innerHTML=`<header class="header">
       <div class="container">
         <a href="/">
           <img
@@ -42,15 +39,7 @@ class SectionHeader extends HTMLElement {
           </a>
         </div>
       </div>
-    </header>`;
-  }
-}
-customElements.define("section-header", SectionHeader);
-
-// web-components/sections/footer.js
-class SectionFooter extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = `<footer class="footer">
+    </header>`}}customElements.define("section-header",s);class e extends HTMLElement{connectedCallback(){this.innerHTML=`<footer class="footer">
       <div class="container">
         <div class="footer__content">
           <div class="footer__profile">
@@ -138,15 +127,7 @@ class SectionFooter extends HTMLElement {
           <a class="button--link" href="/credits">Credits</a>
         </p>
       </div>
-    </footer>`;
-  }
-}
-customElements.define("section-footer", SectionFooter);
-
-// web-components/sections/sks-solar/intro.js
-class Section extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = `  <section>
+    </footer>`}}customElements.define("section-footer",e);class a extends HTMLElement{connectedCallback(){this.innerHTML=`  <section>
         <div class="container">
           <article class="article article--hero">
             <div class="article__media">
@@ -194,15 +175,7 @@ class Section extends HTMLElement {
             </div>
           </article>
         </div>
-      </section>`;
-  }
-}
-customElements.define("section-sks-solar-intro", Section);
-
-// web-components/sections/sks-solar/background.js
-class Section2 extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = `<section class="case-study__background">
+      </section>`}}customElements.define("section-sks-solar-intro",a);class i extends HTMLElement{connectedCallback(){this.innerHTML=`<section class="case-study__background">
         <div class="container">
           <div class="section-title">
             <h2>Background</h2>
@@ -217,15 +190,7 @@ class Section2 extends HTMLElement {
             clear structure, and minimal visuals.
           </p>
         </div>
-      </section>`;
-  }
-}
-customElements.define("section-sks-solar-background", Section2);
-
-// web-components/sections/sks-solar/challenge.js
-class Section3 extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = `<section>
+      </section>`}}customElements.define("section-sks-solar-background",i);class t extends HTMLElement{connectedCallback(){this.innerHTML=`<section>
         <div class="container">
           <div class="section-title">
             <h2>Challenge</h2>
@@ -243,15 +208,7 @@ class Section3 extends HTMLElement {
             </div>
           </article>
         </div>
-      </section>`;
-  }
-}
-customElements.define("section-sks-solar-challenge", Section3);
-
-// web-components/sections/sks-solar/process.js
-class Section4 extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = `<section class="case-study__process">
+      </section>`}}customElements.define("section-sks-solar-challenge",t);class l extends HTMLElement{connectedCallback(){this.innerHTML=`<section class="case-study__process">
         <div class="container">
           <div class="section-title">
             <h2>Process</h2>
@@ -396,15 +353,7 @@ class Section4 extends HTMLElement {
             </article>
           </div>
         </div>
-      </section>`;
-  }
-}
-customElements.define("section-sks-solar-process", Section4);
-
-// web-components/sections/sks-solar/result.js
-class Section5 extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = ` <section>
+      </section>`}}customElements.define("section-sks-solar-process",l);class n extends HTMLElement{connectedCallback(){this.innerHTML=` <section>
         <div class="container">
           <div class="section-title">
             <h2>Result</h2>
@@ -443,7 +392,4 @@ class Section5 extends HTMLElement {
             </div>
           </article>
         </div>
-      </section>`;
-  }
-}
-customElements.define("section-sks-solar-result", Section5);
+      </section>`}}customElements.define("section-sks-solar-result",n);

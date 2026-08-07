@@ -1,7 +1,4 @@
-// web-components/sections/header.js
-class SectionHeader extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = `<header class="header">
+class e extends HTMLElement{connectedCallback(){this.innerHTML=`<header class="header">
       <div class="container">
         <a href="/">
           <img
@@ -42,15 +39,7 @@ class SectionHeader extends HTMLElement {
           </a>
         </div>
       </div>
-    </header>`;
-  }
-}
-customElements.define("section-header", SectionHeader);
-
-// web-components/sections/footer.js
-class SectionFooter extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = `<footer class="footer">
+    </header>`}}customElements.define("section-header",e);class i extends HTMLElement{connectedCallback(){this.innerHTML=`<footer class="footer">
       <div class="container">
         <div class="footer__content">
           <div class="footer__profile">
@@ -138,15 +127,7 @@ class SectionFooter extends HTMLElement {
           <a class="button--link" href="/credits">Credits</a>
         </p>
       </div>
-    </footer>`;
-  }
-}
-customElements.define("section-footer", SectionFooter);
-
-// web-components/sections/foundation-building-interfaces-at-scale/intro.js
-class Section extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = `<section>
+    </footer>`}}customElements.define("section-footer",i);class a extends HTMLElement{connectedCallback(){this.innerHTML=`<section>
         <div class="container">
           <article class="article">
             <div class="article__header">
@@ -175,15 +156,7 @@ class Section extends HTMLElement {
             </div>
           </article>
         </div>
-      </section>`;
-  }
-}
-customElements.define("section-foundation-building-interfaces-at-scale-intro", Section);
-
-// web-components/sections/foundation-building-interfaces-at-scale/atomic-design-principle.js
-class Section2 extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = `<section id="atomic-design-principle">
+      </section>`}}customElements.define("section-foundation-building-interfaces-at-scale-intro",a);class s extends HTMLElement{connectedCallback(){this.innerHTML=`<section id="atomic-design-principle">
         <div class="container">
           <article class="article">
             <h2>Atomic Design Principle</h2>
@@ -298,15 +271,7 @@ class Section2 extends HTMLElement {
             </article>
           </div>
         </div>
-      </section>`;
-  }
-}
-customElements.define("section-atomic-design-principle", Section2);
-
-// web-components/sections/foundation-building-interfaces-at-scale/design-token-architecture.js
-class Section3 extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = `<section id="design-token-architecture">
+      </section>`}}customElements.define("section-atomic-design-principle",s);class t extends HTMLElement{connectedCallback(){this.innerHTML=`<section id="design-token-architecture">
         <div class="container">
           <article class="article">
             <div class="article__header">
@@ -412,15 +377,7 @@ class Section3 extends HTMLElement {
             </div>
           </article>
         </div>
-      </section>`;
-  }
-}
-customElements.define("section-design-token-architecture", Section3);
-
-// web-components/sections/foundation-building-interfaces-at-scale/references.js
-class Section4 extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = `<section class="reference">
+      </section>`}}customElements.define("section-design-token-architecture",t);class l extends HTMLElement{connectedCallback(){this.innerHTML=`<section class="reference">
         <div class="container">
           <h2>References</h2>
           <ul>
@@ -460,7 +417,4 @@ class Section4 extends HTMLElement {
             </li>
           </ul>
         </div>
-      </section>`;
-  }
-}
-customElements.define("section-foundation-building-interfaces-at-scale-references", Section4);
+      </section>`}}customElements.define("section-foundation-building-interfaces-at-scale-references",l);

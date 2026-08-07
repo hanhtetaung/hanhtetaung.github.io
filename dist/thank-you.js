@@ -1,7 +1,4 @@
-// web-components/sections/header.js
-class SectionHeader extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = `<header class="header">
+class a extends HTMLElement{connectedCallback(){this.innerHTML=`<header class="header">
       <div class="container">
         <a href="/">
           <img
@@ -42,15 +39,7 @@ class SectionHeader extends HTMLElement {
           </a>
         </div>
       </div>
-    </header>`;
-  }
-}
-customElements.define("section-header", SectionHeader);
-
-// web-components/sections/footer.js
-class SectionFooter extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = `<footer class="footer">
+    </header>`}}customElements.define("section-header",a);class s extends HTMLElement{connectedCallback(){this.innerHTML=`<footer class="footer">
       <div class="container">
         <div class="footer__content">
           <div class="footer__profile">
@@ -138,15 +127,7 @@ class SectionFooter extends HTMLElement {
           <a class="button--link" href="/credits">Credits</a>
         </p>
       </div>
-    </footer>`;
-  }
-}
-customElements.define("section-footer", SectionFooter);
-
-// web-components/sections/thank-you-intro.js
-class SectionThankYouIntro extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = `<section class="thank-you">
+    </footer>`}}customElements.define("section-footer",s);class e extends HTMLElement{connectedCallback(){this.innerHTML=`<section class="thank-you">
     <div class="container">
         <h1>Thank you!</h1>
         <p class="thank-you__description">
@@ -158,7 +139,4 @@ class SectionThankYouIntro extends HTMLElement {
         Back to home
         </a>
     </div>
-    </section>`;
-  }
-}
-customElements.define("section-thank-you-intro", SectionThankYouIntro);
+    </section>`}}customElements.define("section-thank-you-intro",e);

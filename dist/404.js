@@ -1,7 +1,4 @@
-// web-components/sections/footer.js
-class SectionFooter extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = `<footer class="footer">
+class s extends HTMLElement{connectedCallback(){this.innerHTML=`<footer class="footer">
       <div class="container">
         <div class="footer__content">
           <div class="footer__profile">
@@ -89,15 +86,7 @@ class SectionFooter extends HTMLElement {
           <a class="button--link" href="/credits">Credits</a>
         </p>
       </div>
-    </footer>`;
-  }
-}
-customElements.define("section-footer", SectionFooter);
-
-// web-components/sections/header.js
-class SectionHeader extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = `<header class="header">
+    </footer>`}}customElements.define("section-footer",s);class a extends HTMLElement{connectedCallback(){this.innerHTML=`<header class="header">
       <div class="container">
         <a href="/">
           <img
@@ -138,15 +127,7 @@ class SectionHeader extends HTMLElement {
           </a>
         </div>
       </div>
-    </header>`;
-  }
-}
-customElements.define("section-header", SectionHeader);
-
-// web-components/sections/404-intro.js
-class Section404Intro extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = `<section class="page-not-found">
+    </header>`}}customElements.define("section-header",a);class e extends HTMLElement{connectedCallback(){this.innerHTML=`<section class="page-not-found">
         <div class="container">
           <hgroup>
             <h1>404</h1>
@@ -158,7 +139,4 @@ class Section404Intro extends HTMLElement {
             alt="Coming Soon"
           />
         </div>
-      </section>`;
-  }
-}
-customElements.define("section-404-intro", Section404Intro);
+      </section>`}}customElements.define("section-404-intro",e);

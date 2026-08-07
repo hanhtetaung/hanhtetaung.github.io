@@ -1,7 +1,4 @@
-// web-components/sections/header.js
-class SectionHeader extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = `<header class="header">
+class e extends HTMLElement{connectedCallback(){this.innerHTML=`<header class="header">
       <div class="container">
         <a href="/">
           <img
@@ -42,15 +39,7 @@ class SectionHeader extends HTMLElement {
           </a>
         </div>
       </div>
-    </header>`;
-  }
-}
-customElements.define("section-header", SectionHeader);
-
-// web-components/sections/footer.js
-class SectionFooter extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = `<footer class="footer">
+    </header>`}}customElements.define("section-header",e);class s extends HTMLElement{connectedCallback(){this.innerHTML=`<footer class="footer">
       <div class="container">
         <div class="footer__content">
           <div class="footer__profile">
@@ -138,15 +127,7 @@ class SectionFooter extends HTMLElement {
           <a class="button--link" href="/credits">Credits</a>
         </p>
       </div>
-    </footer>`;
-  }
-}
-customElements.define("section-footer", SectionFooter);
-
-// web-components/sections/portfolio/intro.js
-class Section extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = `<section>
+    </footer>`}}customElements.define("section-footer",s);class i extends HTMLElement{connectedCallback(){this.innerHTML=`<section>
         <div class="container">
           <article class="article article--hero">
             <div class="article__media">
@@ -197,15 +178,7 @@ class Section extends HTMLElement {
             </div>
           </article>
         </div>
-      </section>`;
-  }
-}
-customElements.define("section-portfolio-intro", Section);
-
-// web-components/sections/portfolio/background.js
-class Section2 extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = `<section>
+      </section>`}}customElements.define("section-portfolio-intro",i);class a extends HTMLElement{connectedCallback(){this.innerHTML=`<section>
         <div class="container">
           <div class="section-title">
             <h2>Background</h2>
@@ -223,15 +196,7 @@ class Section2 extends HTMLElement {
             </div>
           </article>
         </div>
-      </section>`;
-  }
-}
-customElements.define("section-portfolio-background", Section2);
-
-// web-components/sections/portfolio/challenge.js
-class Section3 extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = `<section>
+      </section>`}}customElements.define("section-portfolio-background",a);class t extends HTMLElement{connectedCallback(){this.innerHTML=`<section>
         <div class="container">
           <div class="section-title">
             <h2>Challenge</h2>
@@ -250,15 +215,7 @@ class Section3 extends HTMLElement {
             </div>
           </article>
         </div>
-      </section>`;
-  }
-}
-customElements.define("section-portfolio-challenge", Section3);
-
-// web-components/sections/portfolio/process.js
-class Section4 extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = ` <section>
+      </section>`}}customElements.define("section-portfolio-challenge",t);class l extends HTMLElement{connectedCallback(){this.innerHTML=` <section>
         <div class="container">
           <div class="section-title">
             <h2>Process</h2>
@@ -414,15 +371,7 @@ class Section4 extends HTMLElement {
             </article>
           </div>
         </div>
-      </section>`;
-  }
-}
-customElements.define("section-portfolio-process", Section4);
-
-// web-components/sections/portfolio/result.js
-class Section5 extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = ` <section>
+      </section>`}}customElements.define("section-portfolio-process",l);class n extends HTMLElement{connectedCallback(){this.innerHTML=` <section>
         <div class="container">
           <div class="section-title">
             <h2>Result</h2>
@@ -461,7 +410,4 @@ class Section5 extends HTMLElement {
             </div>
           </article>
         </div>
-      </section>`;
-  }
-}
-customElements.define("section-portfolio-result", Section5);
+      </section>`}}customElements.define("section-portfolio-result",n);

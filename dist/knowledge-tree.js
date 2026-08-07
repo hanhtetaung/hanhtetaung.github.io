@@ -1,7 +1,4 @@
-// web-components/sections/header.js
-class SectionHeader extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = `<header class="header">
+class e extends HTMLElement{connectedCallback(){this.innerHTML=`<header class="header">
       <div class="container">
         <a href="/">
           <img
@@ -42,15 +39,7 @@ class SectionHeader extends HTMLElement {
           </a>
         </div>
       </div>
-    </header>`;
-  }
-}
-customElements.define("section-header", SectionHeader);
-
-// web-components/sections/footer.js
-class SectionFooter extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = `<footer class="footer">
+    </header>`}}customElements.define("section-header",e);class s extends HTMLElement{connectedCallback(){this.innerHTML=`<footer class="footer">
       <div class="container">
         <div class="footer__content">
           <div class="footer__profile">
@@ -138,15 +127,7 @@ class SectionFooter extends HTMLElement {
           <a class="button--link" href="/credits">Credits</a>
         </p>
       </div>
-    </footer>`;
-  }
-}
-customElements.define("section-footer", SectionFooter);
-
-// web-components/sections/knowledge-tree/intro.js
-class Section extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = `<section>
+    </footer>`}}customElements.define("section-footer",s);class a extends HTMLElement{connectedCallback(){this.innerHTML=`<section>
         <div class="container">
           <article class="article article--hero">
             <div class="article__media">
@@ -186,15 +167,7 @@ class Section extends HTMLElement {
             </div>
           </article>
         </div>
-      </section>`;
-  }
-}
-customElements.define("section-knowledge-tree-intro", Section);
-
-// web-components/sections/knowledge-tree/overview.js
-class Section2 extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = `<section>
+      </section>`}}customElements.define("section-knowledge-tree-intro",a);class i extends HTMLElement{connectedCallback(){this.innerHTML=`<section>
         <div class="container">
           <article class="article">
             <div class="article__header">
@@ -224,15 +197,7 @@ class Section2 extends HTMLElement {
             </div>
           </article>
         </div>
-      </section>`;
-  }
-}
-customElements.define("section-knowledge-tree-overview", Section2);
-
-// web-components/sections/knowledge-tree/building-block.js
-class Section3 extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = ` <section>
+      </section>`}}customElements.define("section-knowledge-tree-overview",i);class t extends HTMLElement{connectedCallback(){this.innerHTML=` <section>
         <div class="container">
           <article class="article">
             <div class="article__header">
@@ -309,15 +274,7 @@ class Section3 extends HTMLElement {
             </div>
           </article>
         </div>
-      </section>`;
-  }
-}
-customElements.define("section-knowledge-tree-building-block", Section3);
-
-// web-components/sections/knowledge-tree/need-one-interface.js
-class Section4 extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = `<section>
+      </section>`}}customElements.define("section-knowledge-tree-building-block",t);class l extends HTMLElement{connectedCallback(){this.innerHTML=`<section>
         <div class="container">
           <div class="section-title">
             <h2>Need One Interface</h2>
@@ -406,15 +363,7 @@ class Section4 extends HTMLElement {
             </article>
           </div>
         </div>
-      </section>`;
-  }
-}
-customElements.define("section-knowledge-tree-need-one-interface", Section4);
-
-// web-components/sections/knowledge-tree/conclusion.js
-class Section5 extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = ` <section>
+      </section>`}}customElements.define("section-knowledge-tree-need-one-interface",l);class n extends HTMLElement{connectedCallback(){this.innerHTML=` <section>
         <div class="container">
           <article class="article">
             <div class="article__header">
@@ -431,7 +380,4 @@ class Section5 extends HTMLElement {
             </div>
           </article>
         </div>
-      </section>`;
-  }
-}
-customElements.define("section-knowledge-tree-conclusion", Section5);
+      </section>`}}customElements.define("section-knowledge-tree-conclusion",n);

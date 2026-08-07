@@ -1,7 +1,4 @@
-// web-components/sections/header.js
-class SectionHeader extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = `<header class="header">
+class e extends HTMLElement{connectedCallback(){this.innerHTML=`<header class="header">
       <div class="container">
         <a href="/">
           <img
@@ -42,15 +39,7 @@ class SectionHeader extends HTMLElement {
           </a>
         </div>
       </div>
-    </header>`;
-  }
-}
-customElements.define("section-header", SectionHeader);
-
-// web-components/sections/footer.js
-class SectionFooter extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = `<footer class="footer">
+    </header>`}}customElements.define("section-header",e);class a extends HTMLElement{connectedCallback(){this.innerHTML=`<footer class="footer">
       <div class="container">
         <div class="footer__content">
           <div class="footer__profile">
@@ -138,15 +127,7 @@ class SectionFooter extends HTMLElement {
           <a class="button--link" href="/credits">Credits</a>
         </p>
       </div>
-    </footer>`;
-  }
-}
-customElements.define("section-footer", SectionFooter);
-
-// web-components/sections/hire-me-intro.js
-class SectionHireMeIntro extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = `<section class="hire-me">
+    </footer>`}}customElements.define("section-footer",a);class s extends HTMLElement{connectedCallback(){this.innerHTML=`<section class="hire-me">
     <div class="container">
         <h1>Let's Chat</h1>
         <p>I'd be happy to work with you. I'll get back to you later today.</p>
@@ -205,7 +186,4 @@ class SectionHireMeIntro extends HTMLElement {
         </p>
         </form>
     </div>
-    </section>`;
-  }
-}
-customElements.define("section-hire-me-intro", SectionHireMeIntro);
+    </section>`}}customElements.define("section-hire-me-intro",s);

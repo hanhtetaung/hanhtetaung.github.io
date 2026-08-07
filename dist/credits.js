@@ -1,7 +1,4 @@
-// web-components/sections/header.js
-class SectionHeader extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = `<header class="header">
+class s extends HTMLElement{connectedCallback(){this.innerHTML=`<header class="header">
       <div class="container">
         <a href="/">
           <img
@@ -42,15 +39,7 @@ class SectionHeader extends HTMLElement {
           </a>
         </div>
       </div>
-    </header>`;
-  }
-}
-customElements.define("section-header", SectionHeader);
-
-// web-components/sections/footer.js
-class SectionFooter extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = `<footer class="footer">
+    </header>`}}customElements.define("section-header",s);class t extends HTMLElement{connectedCallback(){this.innerHTML=`<footer class="footer">
       <div class="container">
         <div class="footer__content">
           <div class="footer__profile">
@@ -138,28 +127,12 @@ class SectionFooter extends HTMLElement {
           <a class="button--link" href="/credits">Credits</a>
         </p>
       </div>
-    </footer>`;
-  }
-}
-customElements.define("section-footer", SectionFooter);
-
-// web-components/sections/credits-intro.js
-class SectionCreditsIntro extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = `<section class="credits">
+    </footer>`}}customElements.define("section-footer",t);class a extends HTMLElement{connectedCallback(){this.innerHTML=`<section class="credits">
     <div class="container">
       <h1>Credits</h1>
       <p>Thanks to the creators behind the icons.</p>
     </div>
-  </section>`;
-  }
-}
-customElements.define("section-credits-intro", SectionCreditsIntro);
-
-// web-components/sections/creators-list.js
-class SectionCreatorsList extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = `<section class="credits">
+  </section>`}}customElements.define("section-credits-intro",a);class i extends HTMLElement{connectedCallback(){this.innerHTML=`<section class="credits">
       <div class="container">
         <ul class="credits__list">
           <li>
@@ -629,7 +602,4 @@ class SectionCreatorsList extends HTMLElement {
           </li>
         </ul>
       </div>
-    </section>`;
-  }
-}
-customElements.define("section-creators-list", SectionCreatorsList);
+    </section>`}}customElements.define("section-creators-list",i);

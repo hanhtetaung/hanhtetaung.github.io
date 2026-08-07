@@ -1,7 +1,4 @@
-// web-components/sections/header.js
-class SectionHeader extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = `<header class="header">
+class e extends HTMLElement{connectedCallback(){this.innerHTML=`<header class="header">
       <div class="container">
         <a href="/">
           <img
@@ -42,15 +39,7 @@ class SectionHeader extends HTMLElement {
           </a>
         </div>
       </div>
-    </header>`;
-  }
-}
-customElements.define("section-header", SectionHeader);
-
-// web-components/sections/footer.js
-class SectionFooter extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = `<footer class="footer">
+    </header>`}}customElements.define("section-header",e);class t extends HTMLElement{connectedCallback(){this.innerHTML=`<footer class="footer">
       <div class="container">
         <div class="footer__content">
           <div class="footer__profile">
@@ -138,15 +127,7 @@ class SectionFooter extends HTMLElement {
           <a class="button--link" href="/credits">Credits</a>
         </p>
       </div>
-    </footer>`;
-  }
-}
-customElements.define("section-footer", SectionFooter);
-
-// web-components/sections/about-intro.js
-class Section extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = `<section class="about">
+    </footer>`}}customElements.define("section-footer",t);class i extends HTMLElement{connectedCallback(){this.innerHTML=`<section class="about">
         <div class="container">
           <h1>About</h1>
           <article class="article">
@@ -168,15 +149,7 @@ class Section extends HTMLElement {
             </div>
           </article>
         </div>
-      </section>`;
-  }
-}
-customElements.define("section-about-intro", Section);
-
-// web-components/sections/tech-collection.js
-class SectionTechCollection extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = `<section class="tech-collection">
+      </section>`}}customElements.define("section-about-intro",i);class s extends HTMLElement{connectedCallback(){this.innerHTML=`<section class="tech-collection">
         <div class="container">
           <div class="section-title">
             <h2>Tech Collection</h2>
@@ -481,15 +454,7 @@ class SectionTechCollection extends HTMLElement {
             </li>
           </ul>
         </div>
-      </section>`;
-  }
-}
-customElements.define("section-tech-collection", SectionTechCollection);
-
-// web-components/sections/random-facts.js
-class SectionRandomFacts extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = `<section class="random-facts">
+      </section>`}}customElements.define("section-tech-collection",s);class l extends HTMLElement{connectedCallback(){this.innerHTML=`<section class="random-facts">
         <div class="container">
           <div class="section-title">
             <h2>Random Facts</h2>
@@ -548,15 +513,7 @@ class SectionRandomFacts extends HTMLElement {
             </li>
           </ul>
         </div>
-      </section>`;
-  }
-}
-customElements.define("section-random-facts", SectionRandomFacts);
-
-// web-components/sections/timeline.js
-class SectionTimeline extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = `<section class="timeline">
+      </section>`}}customElements.define("section-random-facts",l);class c extends HTMLElement{connectedCallback(){this.innerHTML=`<section class="timeline">
       <div class="container">
         <div class="section-title">
           <h2>Experience Overview</h2>
@@ -679,15 +636,7 @@ class SectionTimeline extends HTMLElement {
           </li>
         </ul>
       </div>
-    </section>`;
-  }
-}
-customElements.define("section-timeline", SectionTimeline);
-
-// web-components/sections/quote.js
-class SectionQuote extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = `<section class="quote">
+    </section>`}}customElements.define("section-timeline",c);class a extends HTMLElement{connectedCallback(){this.innerHTML=`<section class="quote">
         <div class="container">
           <blockquote class="title">
             " What I hear, I forget.<br />
@@ -696,18 +645,4 @@ class SectionQuote extends HTMLElement {
             — Confucius
           </blockquote>
         </div>
-      </section>`;
-  }
-}
-customElements.define("section-quote", SectionQuote);
-
-// web-components/pages/about.js
-document.addEventListener("DOMContentLoaded", () => {
-  const firstItem = document.querySelector(".tech-collection__item");
-  const columnWidth = Math.round(parseFloat(getComputedStyle(firstItem).width)) / 2;
-  new Masonry(".tech-collection__list", {
-    itemSelector: ".tech-collection__item",
-    columnWidth,
-    horizontalOrder: true
-  });
-});
+      </section>`}}customElements.define("section-quote",a);document.addEventListener("DOMContentLoaded",()=>{let o=document.querySelector(".tech-collection__item"),n=Math.round(parseFloat(getComputedStyle(o).width))/2;new Masonry(".tech-collection__list",{itemSelector:".tech-collection__item",columnWidth:n,horizontalOrder:!0})});
