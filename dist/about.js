@@ -144,7 +144,7 @@ class SectionFooter extends HTMLElement {
 customElements.define("section-footer", SectionFooter);
 
 // web-components/sections/about-intro.js
-class SectionAboutIntro extends HTMLElement {
+class Section extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `<section class="about">
         <div class="container">
@@ -171,7 +171,7 @@ class SectionAboutIntro extends HTMLElement {
       </section>`;
   }
 }
-customElements.define("section-about-intro", SectionAboutIntro);
+customElements.define("section-about-intro", Section);
 
 // web-components/sections/tech-collection.js
 class SectionTechCollection extends HTMLElement {

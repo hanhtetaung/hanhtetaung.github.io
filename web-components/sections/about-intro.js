@@ -1,4 +1,4 @@
-export class SectionAboutIntro extends HTMLElement {
+export class Section extends HTMLElement {
   connectedCallback() {
     this.innerHTML = /*html*/ `<section class="about">
         <div class="container">
@@ -26,4 +26,4 @@ export class SectionAboutIntro extends HTMLElement {
   }
 }
 
-customElements.define("section-about-intro", SectionAboutIntro);
+customElements.define("section-about-intro", Section);
