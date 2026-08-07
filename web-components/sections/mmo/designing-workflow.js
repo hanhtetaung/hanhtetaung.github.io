@@ -82,4 +82,4 @@ export class Section extends HTMLElement {
   }
 }
 
-customElements.define("section-designing-workflow", Section);
+customElements.define("section-mmo-designing-workflow", Section);

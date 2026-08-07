@@ -52,4 +52,4 @@ export class Section extends HTMLElement {
   }
 }
 
-customElements.define("section-voices-from-field", Section);
+customElements.define("section-mmo-voices-from-field", Section);

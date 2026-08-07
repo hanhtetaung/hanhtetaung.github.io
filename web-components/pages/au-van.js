@@ -1,4 +1,4 @@
 import "../sections/header";
 import "../sections/footer";
 
-import "../sections/bamboo/intro";
+import "../sections/au-van/intro";

@@ -1,4 +1,4 @@
-import "../sections/header.js";
-import "../sections/footer.js";
+import "../sections/header";
+import "../sections/footer";
 
-import "../sections/coming-soon-intro.js";
+import "../sections/coming-soon-intro";

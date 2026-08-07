@@ -246,7 +246,7 @@ class e extends HTMLElement{connectedCallback(){this.innerHTML=`<header class="h
             </ul>
           </article>
         </div>
-      </section>`}}customElements.define("section-voices-from-field",t);class l extends HTMLElement{connectedCallback(){this.innerHTML=` <section class="section">
+      </section>`}}customElements.define("section-mmo-voices-from-field",t);class l extends HTMLElement{connectedCallback(){this.innerHTML=` <section class="section">
         <div class="container">
           <h2>Designing workflow</h2>
 
@@ -324,7 +324,7 @@ class e extends HTMLElement{connectedCallback(){this.innerHTML=`<header class="h
             </ul>
           </article>
         </div>
-      </section>`}}customElements.define("section-designing-workflow",l);class n extends HTMLElement{connectedCallback(){this.innerHTML=`<section>
+      </section>`}}customElements.define("section-mmo-designing-workflow",l);class n extends HTMLElement{connectedCallback(){this.innerHTML=`<section>
         <div class="container">
           <div class="section-title">
             <h2>Building Interfaces for selling medical items workflow</h2>
