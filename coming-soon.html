@@ -39,80 +39,16 @@
       src="https://cloud.umami.is/script.js"
       data-website-id="bfa1522f-e14a-41de-984a-9dc703fd853b"
     ></script>
-    <script type="module" src="/components/index.js"></script>
+
+    <script type="module" src="/dist/coming-soon.js"></script>
   </head>
   <body>
-    <!-- ══════════════════════════════ HEADER ══════════════════════════════ -->
-    <header class="header">
-      <div class="container">
-        <a href="/">
-          <img
-            src="/assets/images/logo.avif"
-            alt="Han Htet Aung"
-            class="logo"
-            width="102"
-            height="73"
-          />
-        </a>
-
-        <div class="header__navigation">
-          <nav class="nav nav--horizontal">
-            <ul>
-              <li>
-                <a href="/" class="link-drawing"
-                  >Home
-                  <svg>
-                    <use href="/assets/sprite.svg#oval-line"></use>
-                  </svg>
-                </a>
-              </li>
-
-              <li>
-                <a href="/about" class="link-drawing"
-                  >About
-                  <svg>
-                    <use href="/assets/sprite.svg#oval-line"></use>
-                  </svg>
-                </a>
-              </li>
-            </ul>
-          </nav>
-
-          <a class="button--primary" href="/hire-me">
-            Let's chat
-            <span>&#8629;</span>
-          </a>
-        </div>
-      </div>
-    </header>
+    <section-header></section-header>
 
     <main>
-      <section class="coming-soon">
-        <div class="container">
-          <div class="coming-soon__header">
-            <hgroup>
-              <p class="body">Coming Soon</p>
-              <h1>Name</h1>
-            </hgroup>
-
-            <img
-              src="/assets/icons/cuckoo-cock.svg"
-              alt="Coming Soon"
-              class="coming-soon__image"
-            />
-          </div>
-
-          <img
-            src="/assets/images/coming-soon.jpg"
-            class="image"
-            alt="Coming Soon"
-          />
-        </div>
-      </section>
+      <section-coming-soon-intro></section-coming-soon-intro>
     </main>
 
-    <!-- ══════════════════════════════ FOOTER ══════════════════════════════ -->
-
-    <mol-footer secondary></mol-footer>
+    <section-footer secondary></section-footer>
   </body>
 </html>

@@ -8,11 +8,12 @@ body {
 }
 
 main {
-  > section {
+  > * {
     padding-block: 10rem;
     background: var(--color-bg-primary);
+    display: block;
 
-    &:nth-of-type(2n) {
+    &:nth-child(2n) {
       background: var(--color-bg-secondary);
     }
   }

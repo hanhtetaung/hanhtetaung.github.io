@@ -1,12 +1,6 @@
-import { LitElement, html, css } from "/lib/lit/index.js";
-
-export class MolFooter extends LitElement {
-  createRenderRoot() {
-    return this; // render into light DOM, skip shadow root
-  }
-
-  render() {
-    return html` <footer class="footer">
+export class SectionFooter extends HTMLElement {
+  connectedCallback() {
+    this.innerHTML = /*html*/ `<footer class="footer">
       <div class="container">
         <div class="footer__content">
           <div class="footer__profile">
@@ -98,4 +92,4 @@ export class MolFooter extends LitElement {
   }
 }
 
-customElements.define("mol-footer", MolFooter);
+customElements.define("section-footer", SectionFooter);
