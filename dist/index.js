@@ -1,4 +1,4 @@
-class e extends HTMLElement{connectedCallback(){this.innerHTML=`<header class="header">
+class l extends HTMLElement{connectedCallback(){this.innerHTML=`<header class="header">
       <div class="container">
         <a href="/">
           <img
@@ -39,7 +39,7 @@ class e extends HTMLElement{connectedCallback(){this.innerHTML=`<header class="h
           </a>
         </div>
       </div>
-    </header>`}}customElements.define("section-header",e);class s extends HTMLElement{connectedCallback(){this.innerHTML=`<footer class="footer">
+    </header>`}}customElements.define("section-header",l);class o extends HTMLElement{connectedCallback(){this.innerHTML=`<footer class="footer">
       <div class="container">
         <div class="footer__content">
           <div class="footer__profile">
@@ -127,7 +127,7 @@ class e extends HTMLElement{connectedCallback(){this.innerHTML=`<header class="h
           <a class="button--link" href="/credits">Credits</a>
         </p>
       </div>
-    </footer>`}}customElements.define("section-footer",s);class i extends HTMLElement{connectedCallback(){this.innerHTML=`<section class="hero">
+    </footer>`}}customElements.define("section-footer",o);class c extends HTMLElement{connectedCallback(){this.innerHTML=`<section class="hero">
       <div class="container">
         <hgroup class="hero__group">
           <p class="hero__intro">I'm Han Htet Aung</p>
@@ -243,7 +243,22 @@ class e extends HTMLElement{connectedCallback(){this.innerHTML=`<header class="h
           </li>
         </ul>
       </div>
-    </section>`}}customElements.define("section-hero",i);class a extends HTMLElement{connectedCallback(){this.innerHTML=`<section class="work">
+    </section>`}}customElements.define("section-hero",c);class r extends HTMLElement{static get observedAttributes(){return["image","alt","title","description","href","reverse"]}connectedCallback(){this.render()}attributeChangedCallback(){if(this.isConnected)this.render()}render(){let a=this.getAttribute("image")??"",i=this.getAttribute("alt")??"",s=this.getAttribute("title")??"",t=this.getAttribute("description")??"",e=this.getAttribute("href")??"#",u=this.hasAttribute("reverse"),n=[];try{n=JSON.parse(this.getAttribute("categories")??"[]")}catch{n=[]}let _=n.map((f)=>`<li class="badge">${f}</li>`).join("");this.innerHTML=`
+      <article class="showcase${u?" showcase--reverse-direction":""}">
+        <img src="${a}" alt="${i}" class="image" />
+        <div class="showcase__content">
+          <h3>${s}</h3>
+
+          <ul class="showcase__category">
+            ${_}
+          </ul>
+
+          <p>${t}</p>
+
+          <a class="button--outline" href="${e}">View Case Study &#8599;</a>
+        </div>
+      </article>
+    `}}customElements.define("case-study-item",r);var w=[{image:"/assets/images/case-study/knowledge-tree/thumbnail.avif",alt:"Knowledge Tree Thumbnail",title:"Knowledge Tree",categories:["Product Design","User Experience","Design System"],description:"A tool to visualize the connections between everyday goods and their fundamental sources based on my knowledge.",href:"/work/knowledge-tree",reverse:!1},{image:"assets/images/case-study/mmo/thumbnail.avif",alt:"MMO thumbnail",title:"MMO",categories:["Simplify complex workflows","Build Prototype","Design System"],description:"An internal portal that uses to run daily operations in hospital.",href:"/work/mmo",reverse:!0},{image:"/assets/images/case-study/portfolio/mockup.avif",alt:"Portfolio Mockup",title:"Portfolio",categories:["Research","Web Design","Web Development"],description:"A personal portfolio to showcase my work, process, and approach to web design and development.",href:"/work/portfolio",reverse:!1},{image:"/assets/images/case-study/skssolar/mockup.avif",alt:"SKS Mockup",title:"SKS.Solar",categories:["Research","Web Design","Web Development"],description:"A website for SKS SOLAR (SALES & SERVICES) COMPANY LIMITED to showcase its history, services and completed project.",href:"/work/sks-solar",reverse:!0}];class d extends HTMLElement{connectedCallback(){this.innerHTML=`<section class="work">
       <div class="container">
         <div class="section-title">
           <h2>Case Studies</h2>
@@ -255,122 +270,9 @@ class e extends HTMLElement{connectedCallback(){this.innerHTML=`<header class="h
             width="110"
           />
         </div>
-
-        <ul class="work__showcases">
-          <li>
-            <article class="showcase">
-              <img
-                src="/assets/images/case-study/knowledge-tree/thumbnail.avif"
-                alt="Knowledge Tree Thumbnail"
-                class="image"
-              />
-              <div class="showcase__content">
-                <h3>Knowledge Tree</h3>
-
-                <ul class="showcase__category">
-                  <li class="badge">Product Design</li>
-                  <li class="badge">User Experience</li>
-                  <li class="badge">Design System</li>
-                </ul>
-
-                <p>
-                  A tool to visualize the connections between everyday goods and
-                  their fundamental sources based on my knowledge.
-                </p>
-
-                <a class="button--outline" href="/work/knowledge-tree"
-                  >View Case Study &#8599;</a
-                >
-              </div>
-            </article>
-          </li>
-
-          <li>
-            <article class="showcase showcase--reverse-direction">
-              <img
-                src="assets/images/case-study/mmo/thumbnail.avif"
-                alt="MMO thumbnail"
-                class="image"
-              />
-              <div class="showcase__content">
-                <h3>MMO</h3>
-
-                <ul class="showcase__category">
-                  <li class="badge">Simplify complex workflows</li>
-                  <li class="badge">Build Prototype</li>
-                  <li class="badge">Design System</li>
-                </ul>
-
-                <p>
-                  An internal portal that uses to run daily operations in
-                  hospital.
-                </p>
-
-                <a class="button--outline" href="/work/mmo"
-                  >View Case Study &#8599;</a
-                >
-              </div>
-            </article>
-          </li>
-
-          <li>
-            <article class="showcase">
-              <img
-                src="/assets/images/case-study/portfolio/mockup.avif"
-                alt="Portfolio Mockup"
-                class="image"
-              />
-              <div class="showcase__content">
-                <h3>Portfolio</h3>
-
-                <ul class="showcase__category">
-                  <li class="badge">Research</li>
-                  <li class="badge">Web Design</li>
-                  <li class="badge">Web Development</li>
-                </ul>
-
-                <p>
-                  A personal portfolio to showcase my work, process, and
-                  approach to web design and development.
-                </p>
-
-                <a class="button--outline" href="/work/portfolio"
-                  >View Case Study &#8599;</a
-                >
-              </div>
-            </article>
-          </li>
-
-          <li>
-            <article class="showcase showcase--reverse-direction">
-              <img
-                src="/assets/images/case-study/skssolar/mockup.avif"
-                alt="SKS Mockup"
-                class="image"
-              />
-              <div class="showcase__content">
-                <h3>SKS.Solar</h3>
-
-                <ul class="showcase__category">
-                  <li class="badge">Research</li>
-                  <li class="badge">Web Design</li>
-                  <li class="badge">Web Development</li>
-                </ul>
-
-                <p>
-                  A website for SKS SOLAR (SALES & SERVICES) COMPANY LIMITED to
-                  showcase its history, services and completed project.
-                </p>
-
-                <a class="button--outline" href="/work/sks-solar"
-                  >View Case Study &#8599;</a
-                >
-              </div>
-            </article>
-          </li>
-        </ul>
-      </div>
-    </section>`}}customElements.define("section-case-studies",a);class t extends HTMLElement{connectedCallback(){this.innerHTML=`<section class="timeline">
+        <ul class="work__showcases"></ul>
+        </div>
+        </section>`,this.renderShowcases()}renderShowcases(){let a=this.querySelector(".work__showcases"),i=document.createDocumentFragment();w.forEach((s)=>{let t=document.createElement("li"),e=document.createElement("case-study-item");if(e.setAttribute("image",s.image),e.setAttribute("alt",s.alt),e.setAttribute("title",s.title),e.setAttribute("description",s.description),e.setAttribute("href",s.href),e.setAttribute("categories",JSON.stringify(s.categories)),s.reverse)e.setAttribute("reverse","");t.appendChild(e),i.appendChild(t)}),a.appendChild(i)}}customElements.define("section-case-studies",d);class m extends HTMLElement{connectedCallback(){this.innerHTML=`<section class="timeline">
       <div class="container">
         <div class="section-title">
           <h2>Experience Overview</h2>
@@ -493,7 +395,7 @@ class e extends HTMLElement{connectedCallback(){this.innerHTML=`<header class="h
           </li>
         </ul>
       </div>
-    </section>`}}customElements.define("section-timeline",t);class l extends HTMLElement{connectedCallback(){this.innerHTML=`<section class="why-hire-me">
+    </section>`}}customElements.define("section-timeline",m);class h extends HTMLElement{connectedCallback(){this.innerHTML=`<section class="why-hire-me">
       <div class="container">
         <div class="section-title">
           <img
@@ -574,7 +476,7 @@ class e extends HTMLElement{connectedCallback(){this.innerHTML=`<header class="h
           </li>
         </ul>
       </div>
-    </section>`}}customElements.define("section-why-hire-me",l);class n extends HTMLElement{connectedCallback(){this.innerHTML=`<section class="cta">
+    </section>`}}customElements.define("section-why-hire-me",h);class p extends HTMLElement{connectedCallback(){this.innerHTML=`<section class="cta">
       <div class="container">
         <div class="section-title">
           <h2>Call me, Singapore</h2>
@@ -603,7 +505,7 @@ class e extends HTMLElement{connectedCallback(){this.innerHTML=`<header class="h
           alt="Merlion illustration"
         />
       </div>
-    </section>`}}customElements.define("section-cta",n);class o extends HTMLElement{connectedCallback(){this.innerHTML=`
+    </section>`}}customElements.define("section-cta",p);class g extends HTMLElement{connectedCallback(){this.innerHTML=`
       <div class="cloud-divider">
         <svg
           viewBox="0 0 1200 80"
@@ -636,7 +538,7 @@ class e extends HTMLElement{connectedCallback(){this.innerHTML=`<header class="h
           />
         </svg>
       </div>
-    `}}customElements.define("line-divider-lower",o);class c extends HTMLElement{connectedCallback(){this.innerHTML=`
+    `}}customElements.define("line-divider-lower",g);class v extends HTMLElement{connectedCallback(){this.innerHTML=`
     <div class="cloud-divider">
       <svg
         viewBox="0 0 1200 80"
@@ -668,4 +570,4 @@ class e extends HTMLElement{connectedCallback(){this.innerHTML=`<header class="h
           fill="var(--color-bg-secondary)"
         />
       </svg>
-    </div>`}}customElements.define("line-divider-upper",c);
+    </div>`}}customElements.define("line-divider-upper",v);
