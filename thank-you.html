@@ -44,103 +44,15 @@
       defer
     ></script>
     <link rel="preconnect" href="https://challenges.cloudflare.com" />
-    <script type="module" src="/components/index.js"></script>
+    <script type="module" src="/dist/thank-you.js"></script>
   </head>
   <body>
-    <!-- ══════════════════════════════ HEADER ══════════════════════════════ -->
-    <header class="header">
-      <div class="container">
-        <a href="/">
-          <img
-            src="/assets/images/logo.avif"
-            alt="Han Htet Aung"
-            class="logo"
-            width="102"
-            height="73"
-          />
-        </a>
-
-        <div class="header__navigation">
-          <nav class="nav nav--horizontal">
-            <ul>
-              <li>
-                <a href="/" class="link-drawing"
-                  >Home
-                  <svg>
-                    <use href="assets/sprite.svg#oval-line"></use>
-                  </svg>
-                </a>
-              </li>
-
-              <li>
-                <a href="/about" class="link-drawing"
-                  >About
-                  <svg>
-                    <use href="assets/sprite.svg#oval-line"></use>
-                  </svg>
-                </a>
-              </li>
-            </ul>
-          </nav>
-
-          <a class="button--primary" href="/hire-me">
-            Let's chat
-            <span>&#8629;</span>
-          </a>
-        </div>
-      </div>
-    </header>
+    <section-header></section-header>
 
     <main>
-      <!-- ══════════════════════════════ Hire me ══════════════════════════════ -->
-      <section class="thank-you">
-        <div class="container">
-          <h1>Thank you!</h1>
-          <p class="thank-you__description">
-            Thank you for sending me email. I will get back to you later today.
-            Have a good day!
-          </p>
-
-          <a class="button--link" href="/">Back to home</a>
-        </div>
-      </section>
-
-      <!-- Line Divider  -->
-      <div class="cloud-divider">
-        <svg
-          viewBox="0 0 1200 80"
-          xmlns="http://www.w3.org/2000/svg"
-          preserveAspectRatio="none"
-        >
-          <path
-            d="
-              M0,80
-              L0,40
-              Q50,10 100,35
-              Q130,0 170,20
-              Q210,-10 250,25
-              Q290,0 330,30
-              Q370,5 410,28
-              Q450,-5 490,22
-              Q530,2 570,30
-              Q610,0 650,25
-              Q690,5 730,28
-              Q770,-5 810,22
-              Q850,2 890,30
-              Q930,0 970,25
-              Q1010,5 1050,28
-              Q1090,-5 1130,22
-              Q1160,5 1200,30
-              L1200,80
-              Z
-              "
-            fill="var(--color-bg-secondary)"
-          />
-        </svg>
-      </div>
+      <section-thank-you-intro></section-thank-you-intro>
     </main>
 
-    <!-- ══════════════════════════════ FOOTER ══════════════════════════════ -->
-    <mol-footer secondary></mol-footer>
+    <section-footer secondary></section-footer>
   </body>
 </html>

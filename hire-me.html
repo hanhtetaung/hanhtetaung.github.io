@@ -44,152 +44,15 @@
       defer
     ></script>
     <link rel="preconnect" href="https://challenges.cloudflare.com" />
-    <script type="module" src="/components/index.js"></script>
+    <script type="module" src="/dist/hire-me.js"></script>
   </head>
   <body>
-    <!-- ══════════════════════════════ HEADER ══════════════════════════════ -->
-    <header class="header">
-      <div class="container">
-        <a href="/">
-          <img
-            src="/assets/images/logo.avif"
-            alt="Han Htet Aung"
-            class="logo"
-            width="102"
-            height="73"
-          />
-        </a>
-
-        <div class="header__navigation">
-          <nav class="nav nav--horizontal">
-            <ul>
-              <li>
-                <a href="/" class="link-drawing"
-                  >Home
-                  <svg>
-                    <use href="assets/sprite.svg#oval-line"></use>
-                  </svg>
-                </a>
-              </li>
-
-              <li>
-                <a href="/about" class="link-drawing"
-                  >About
-                  <svg>
-                    <use href="assets/sprite.svg#oval-line"></use>
-                  </svg>
-                </a>
-              </li>
-            </ul>
-          </nav>
-
-          <a class="button--primary" href="/hire-me">
-            Let's chat
-            <span>&#8629;</span>
-          </a>
-        </div>
-      </div>
-    </header>
+    <section-header></section-header>
 
     <main>
-      <!-- ══════════════════════════════ Hire me ══════════════════════════════ -->
-      <section class="hire-me">
-        <div class="container">
-          <h1>Let's Chat</h1>
-          <p>
-            I'd be happy to work with you. I'll get back to you later today.
-          </p>
-
-          <form
-            action="https://submit-form.com/elmAjnFC7"
-            data-botpoison-public-key="pk_40990b6d-13e8-439a-96f2-680095e68c36"
-            class="hire-me__form"
-          >
-            <input
-              type="hidden"
-              name="_redirect"
-              value="http://hanhtetaung.dev/thank-you"
-            />
-            <input type="hidden" name="_append" value="false" />
-
-            <div class="hire-me__inputs">
-              <input
-                class="input input-name"
-                type="text"
-                name="name"
-                placeholder="Name*"
-                required
-              />
-              <input
-                class="input input-email"
-                type="email"
-                name="email"
-                placeholder="Email*"
-                required
-              />
-
-              <textarea
-                class="input input-textarea"
-                name="message"
-                placeholder="Message*"
-                required=""
-              ></textarea>
-            </div>
-
-            <div
-              class="cf-turnstile"
-              data-sitekey="0x4AAAAAADTCi7AhwZfhOau6"
-              data-size="flexible"
-            ></div>
-
-            <button type="submit" class="button--primary">Send &#10166;</button>
-            <hr />
-            <p class="hire-me__email">
-              Or hit me up at:
-              <a href="mailto:hanhtetaung.dev@gmail.com" class="button--link"
-                >hanhtetaung.dev@gmail.com</a
-              >
-            </p>
-          </form>
-        </div>
-      </section>
-
-      <!-- Line Divider  -->
-      <div class="cloud-divider">
-        <svg
-          viewBox="0 0 1200 80"
-          xmlns="http://www.w3.org/2000/svg"
-          preserveAspectRatio="none"
-        >
-          <path
-            d="
-              M0,80
-              L0,40
-              Q50,10 100,35
-              Q130,0 170,20
-              Q210,-10 250,25
-              Q290,0 330,30
-              Q370,5 410,28
-              Q450,-5 490,22
-              Q530,2 570,30
-              Q610,0 650,25
-              Q690,5 730,28
-              Q770,-5 810,22
-              Q850,2 890,30
-              Q930,0 970,25
-              Q1010,5 1050,28
-              Q1090,-5 1130,22
-              Q1160,5 1200,30
-              L1200,80
-              Z
-              "
-            fill="var(--color-bg-secondary)"
-          />
-        </svg>
-      </div>
+      <section-hire-me-intro></section-hire-me-intro>
     </main>
 
-    <!-- ══════════════════════════════ FOOTER ══════════════════════════════ -->
-    <mol-footer secondary></mol-footer>
+    <section-footer secondary></section-footer>
   </body>
 </html>

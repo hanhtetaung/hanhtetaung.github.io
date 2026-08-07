@@ -183,11 +183,12 @@ body {
   font-size: var(--body-font-size);
 }
 
-main > section {
+main > * {
   padding-block: 10rem;
   background: var(--color-bg-primary);
+  display: block;
 }
-main > section:nth-of-type(2n) {
+main > *:nth-child(2n) {
   background: var(--color-bg-secondary);
 }
 
@@ -1062,6 +1063,6 @@ img {
   margin-top: 0.3rem;
 }
 
-mol-footer[secondary] .footer {
+section-footer[secondary] .footer {
   background-color: var(--color-bg-secondary);
 }

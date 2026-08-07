@@ -1,12 +1,45 @@
-import { LitElement, html, css } from "/lib/lit/index.js";
+class s extends HTMLElement{connectedCallback(){this.innerHTML=`<header class="header">
+      <div class="container">
+        <a href="/">
+          <img
+            src="/assets/images/logo.avif"
+            alt="Han Htet Aung"
+            class="logo"
+            width="200"
+            height="200"
+          />
+        </a>
 
-export class MolFooter extends LitElement {
-  createRenderRoot() {
-    return this; // render into light DOM, skip shadow root
-  }
+        <div class="header__navigation">
+          <nav class="nav nav--horizontal">
+            <ul>
+              <li>
+                <a href="/" class="link-drawing"
+                  >Home
+                  <svg>
+                    <use href="assets/sprite.svg#oval-line"></use>
+                  </svg>
+                </a>
+              </li>
 
-  render() {
-    return html` <footer class="footer">
+              <li>
+                <a href="/about" class="link-drawing"
+                  >About
+                  <svg>
+                    <use href="assets/sprite.svg#oval-line"></use>
+                  </svg>
+                </a>
+              </li>
+            </ul>
+          </nav>
+
+          <a class="button--primary" href="/hire-me">
+            Let's chat
+            <span>&#8629;</span>
+          </a>
+        </div>
+      </div>
+    </header>`}}customElements.define("section-header",s);class a extends HTMLElement{connectedCallback(){this.innerHTML=`<footer class="footer">
       <div class="container">
         <div class="footer__content">
           <div class="footer__profile">
@@ -94,8 +127,21 @@ export class MolFooter extends LitElement {
           <a class="button--link" href="/credits">Credits</a>
         </p>
       </div>
-    </footer>`;
-  }
-}
+    </footer>`}}customElements.define("section-footer",a);class i extends HTMLElement{connectedCallback(){this.innerHTML=`<section class="coming-soon">
+    <div class="container">
+      <div class="coming-soon__header">
+        <hgroup>
+          <p class="body">Coming Soon</p>
+          <h1>Name</h1>
+        </hgroup>
 
-customElements.define("mol-footer", MolFooter);
+        <img
+          src="/assets/icons/cuckoo-cock.svg"
+          alt="Coming Soon"
+          class="coming-soon__image"
+        />
+      </div>
+
+      <img src="/assets/images/coming-soon.jpg" class="image" alt="Coming Soon" />
+    </div>
+  </section>`}}customElements.define("section-coming-soon-intro",i);

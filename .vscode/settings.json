@@ -22,6 +22,7 @@
     ["/work/knowledge-tree", "./work/knowledge-tree.html"],
     ["/work/au-van", "./work/au-van.html"],
     ["/work/bamboo", "./work/bamboo.html"],
-    ["/coming-soon", "./coming-soon.html"]
+    ["/coming-soon", "./coming-soon.html"],
+    ["/404", "./404.html"]
   ]
 }
