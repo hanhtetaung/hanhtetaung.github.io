@@ -201,6 +201,11 @@ const ELEMENTS = [
     components: ["plant", "water"],
   },
   {
+    id: "bean_sprout",
+    type: "goods",
+    components: ["plant"],
+  },
+  {
     id: "tofu",
     type: "goods",
     components: ["soybean", "water", "coagulant"],
