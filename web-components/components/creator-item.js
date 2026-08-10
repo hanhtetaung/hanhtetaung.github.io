@@ -1,25 +1,44 @@
-export class Component extends HTMLElement {
-  connectedCallback() {
-    this.render();
+import { define } from "../define";
+
+import "../components/app-link";
+import "../components/app-icon";
+
+const styles = /* css */ `
+  :host {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+
   }
 
-  render() {
-    const icon = this.getAttribute("icon") ?? "/assets/icons/default.svg";
-    const alt = this.getAttribute("alt") ?? "Icon";
-    const url = this.getAttribute("url");
-    const name = this.getAttribute("name") ?? "Unknown";
-
-    const credit = url
-      ? `<a href="${url}" target="_blank" class="button--link">By ${name}</a>`
-      : `<p>By ${name}</p>`;
-
-    this.innerHTML = /*html*/ `
-      <div class="credits__content">
-        <img class="icon--md" src="${icon}" alt="${alt}" />
-        ${credit}
-      </div>
-    `;
+  img {
+    width: 2.5rem;
+    height: 2.5rem;
+    object-fit: contain;
+    flex-shrink: 0;
   }
-}
 
-customElements.define("creator-item", Component);
+  a,
+  p {
+    margin: 0;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  a {
+    font-weight: 600;
+  }
+`;
+
+const props = { icon: String, alt: String, url: String, name: String };
+
+const template = ({ icon, alt, url, name }) => /* html */ `
+    <app-icon variant="creator" src="${icon}" alt="${alt}" ></app-icon>
+    ${
+      url
+        ? /*html*/ `<app-link variant="underline" href="${url}" target="_blank" rel="noreferrer">By ${name}</app-link>`
+        : /*html*/ `<p>By ${name}</p>`
+    }
+`;
+
+define("creator-item", { props, styles, template });

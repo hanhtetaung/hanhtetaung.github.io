@@ -1,3 +1,7 @@
+import { define } from "../define";
+import "../components/creator-item";
+import { PHONE } from "../breakpoints";
+
 const creditsData = [
   {
     icon: "/assets/images/logo.avif",
@@ -168,38 +172,54 @@ const creditsData = [
   },
 ];
 
-import "../components/creator-item";
-
-export class SectionCreatorsList extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = /*html*/ `<section class="credits">
-      <div class="container">
-        <ul class="credits__list"></ul>
-      </div>
-    </section>`;
-
-    this.renderCredits();
+const styles = /* css */ `
+  :host {
+    display: block;
   }
 
-  renderCredits() {
-    const list = this.querySelector(".credits__list");
-    const fragment = document.createDocumentFragment();
-
-    creditsData.forEach((c) => {
-      const li = document.createElement("li");
-      const item = document.createElement("creator-item");
-
-      item.setAttribute("icon", c.icon);
-      item.setAttribute("alt", c.alt);
-      item.setAttribute("name", c.name);
-      if (c.url) item.setAttribute("url", c.url);
-
-      li.appendChild(item);
-      fragment.appendChild(li);
-    });
-
-    list.appendChild(fragment);
+  section {
+    width: 80%;
+    margin-inline: auto;
   }
-}
 
-customElements.define("section-creators-list", SectionCreatorsList);
+  ul {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    overflow: scroll;
+
+    @media (max-width: ${PHONE}) {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+`;
+
+const template = () => /* html */ `
+  <section class="credits">
+    <div class="container">
+      <ul class="credits__list">
+        ${creditsData
+          .map(
+            (item) => /* html */ `
+              <li>
+                <creator-item
+                  props='${JSON.stringify({
+                    icon: item.icon,
+                    alt: item.alt,
+                    name: item.name,
+                    url: item.url ?? "",
+                  })}'
+                ></creator-item>
+              </li>
+            `,
+          )
+          .join("")}
+      </ul>
+    </div>
+  </section>
+`;
+
+define("section-creators-list", { styles, template });

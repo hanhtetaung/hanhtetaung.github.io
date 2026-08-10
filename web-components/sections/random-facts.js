@@ -1,66 +1,74 @@
-export class SectionRandomFacts extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = /*html*/ `<section class="random-facts">
-        <div class="container">
-          <div class="section-title">
-            <h2>Random Facts</h2>
-            <img
-              class="icon"
-              src="/assets/icons/birds-singing.svg"
-              alt="Random Fact Logo"
-              height="24"
-              width="24"
-            />
-          </div>
+import { define } from "../define";
+import "../components/app-icon";
 
-          <ul class="random-facts__list">
-            <li>
-              <figure>
-                <img
-                  class="icon--lg"
-                  src="/assets/icons/bird-watching.svg"
-                  alt="Watching Bird"
-                />
-                <figcaption class="body">I love birds</figcaption>
-              </figure>
-            </li>
+const randomFacts = [
+  {
+    src: "/assets/icons/bird-watching.svg",
+    alt: "Watching Bird",
+    text: "I love birds",
+  },
+  {
+    src: "/assets/icons/seafood.svg",
+    alt: "Seafood",
+    text: "I’m allergic to seafood",
+  },
+  {
+    src: "/assets/icons/travelling.svg",
+    alt: "Travelling",
+    text: "I enjoy travelling",
+  },
+  {
+    src: "/assets/icons/running.svg",
+    alt: "Running",
+    text: "I like running",
+  },
+];
 
-            <li>
-              <figure>
-                <img
-                  class="icon--lg"
-                  src="/assets/icons/seafood.svg"
-                  alt="Seafood"
-                />
-                <figcaption class="body">I’m allergic to seafood</figcaption>
-              </figure>
-            </li>
-
-            <li>
-              <figure>
-                <img
-                  class="icon--lg"
-                  src="/assets/icons/travelling.svg"
-                  alt="Travelling"
-                />
-                <figcaption class="body">I enjoy travelling</figcaption>
-              </figure>
-            </li>
-
-            <li>
-              <figure>
-                <img
-                  class="icon--lg"
-                  src="/assets/icons/running.svg"
-                  alt="Running"
-                />
-                <figcaption class="body">I like running</figcaption>
-              </figure>
-            </li>
-          </ul>
-        </div>
-      </section>`;
+const styles = /*css*/ `
+  section {
+    width: 80%;
+    margin-inline: auto;
   }
-}
 
-customElements.define("section-random-facts", SectionRandomFacts);
+  ul {
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10rem;
+  }
+
+  figure {
+    margin: 0;
+    text-align: center;
+  }
+`;
+
+const template = () => /* html */ `
+  <section>
+       <section-title
+        props='${JSON.stringify({
+          name: "Why hire me?",
+          img: "/assets/icons/birds-singing.svg",
+          alt: "Birds-singing Logo",
+        })}'
+      ></section-title>
+
+      <ul>
+        ${randomFacts
+          .map(
+            (fact) => /* html */ `
+              <li>
+                <figure>
+                  <app-icon variant="large" src="${fact.src}" alt="${fact.alt}"></app-icon>
+                  <figcaption class="body">${fact.text}</figcaption>
+                </figure>
+              </li>
+            `,
+          )
+          .join("")}
+      </ul>
+  </section>
+`;
+
+define("section-random-facts", { styles, template });

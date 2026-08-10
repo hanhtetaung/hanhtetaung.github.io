@@ -1,4 +1,6 @@
+import { define } from "../define";
 import "../components/case-study-item";
+import "../components/section-title";
 
 const caseStudies = [
   {
@@ -43,52 +45,54 @@ const caseStudies = [
     description:
       "A website for SKS SOLAR (SALES & SERVICES) COMPANY LIMITED to showcase its history, services and completed project.",
     href: "/work/sks-solar",
-    reverse: true,
+    reverse: false,
   },
 ];
 
-export class Section extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = /*html*/ `<section class="work">
-      <div class="container">
-        <div class="section-title">
-          <h2>Case Studies</h2>
-          <img
-            src="/assets/icons/sparrow.svg"
-            alt="My Work Logo"
-            class="icon"
-            height="135"
-            width="110"
-          />
-        </div>
-        <ul class="work__showcases"></ul>
-        </div>
-        </section>`;
-    this.renderShowcases();
+const styles = /* css */ `
+  :host {
+    background: var(--color-bg-secondary)
   }
 
-  renderShowcases() {
-    const list = this.querySelector(".work__showcases");
-    const fragment = document.createDocumentFragment();
-
-    caseStudies.forEach((cs) => {
-      const li = document.createElement("li");
-      const item = document.createElement("case-study-item");
-
-      item.setAttribute("image", cs.image);
-      item.setAttribute("alt", cs.alt);
-      item.setAttribute("title", cs.title);
-      item.setAttribute("description", cs.description);
-      item.setAttribute("href", cs.href);
-      item.setAttribute("categories", JSON.stringify(cs.categories));
-      if (cs.reverse) item.setAttribute("reverse", "");
-
-      li.appendChild(item);
-      fragment.appendChild(li);
-    });
-
-    list.appendChild(fragment);
+  section {
+    width: 80%;
+    margin-inline: auto;
   }
-}
 
-customElements.define("section-case-studies", Section);
+  ul {
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10rem;
+  }
+`;
+
+const template = () => /* html */ `
+  <section>
+      <section-title
+        props='${JSON.stringify({
+          name: "Case Studies",
+          img: "/assets/icons/sparrow.svg",
+          alt: "Sparrow Logo",
+        })}'
+      ></section-title>
+            
+      <ul>
+        ${caseStudies
+          .map(
+            (cs) => /* html */ `
+              <li>
+                <case-study-item
+                  props='${JSON.stringify(cs)}'
+                  ${cs.reverse ? "reverse" : ""}
+                ></case-study-item>
+              </li>
+            `,
+          )
+          .join("")}
+      </ul>
+  </section>
+`;
+
+define("section-case-studies", { styles, template });
