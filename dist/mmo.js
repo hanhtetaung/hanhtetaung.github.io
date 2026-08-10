@@ -1,133 +1,306 @@
-class e extends HTMLElement{connectedCallback(){this.innerHTML=`<header class="header">
-      <div class="container">
-        <a href="/">
-          <img
+function w(s,a){if(s===void 0){if(a===Array)return[];if(a===Object)return{};if(a===Boolean)return!1;if(a===Number)return 0;return""}if(a===Boolean)return Boolean(s);if(a===Number)return Number(s);return s}function e(s,{props:a={},attrs:r=[],styles:y="",template:n}){let k=["props",...r];class c extends HTMLElement{static observedAttributes=k;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let i={},t=this.getAttribute("props");if(t)try{i=JSON.parse(t)}catch{i={}}let d={};for(let o of Object.keys(a))d[o]=w(i[o],a[o]);return d}_applyForwardedAttrs(){if(r.length===0)return;let i=this.shadowRoot.querySelector("[data-forward]");if(!i)return;for(let t of r)if(this.hasAttribute(t))i.setAttribute(t,this.getAttribute(t));else i.removeAttribute(t)}_render(){let i=this._getProps(),t=typeof n==="function"?n(i):n;this.shadowRoot.innerHTML=`<style>${y}</style>${t}`,this._applyForwardedAttrs()}}customElements.define(s,c)}var _=`
+  :host {
+    --local-bg: transparent;
+    --local-color: var(--color-text);
+    --local-border: 1px solid var(--local-color);
+    --local-decoration: none;
+    --local-direction: row;
+    --local-padding: 1rem 2rem;
+    display: inline-block;
+  }
+
+  a {
+    display: inline-flex;
+    gap: 0.5rem;
+    background: var(--local-bg);
+    color: var(--local-color);
+    border: var(--local-border);
+    text-decoration: var(--local-decoration);
+    padding: var(--local-padding);
+    white-space: nowrap;
+    flex-direction: var(--local-direction);
+  }
+
+  :host([variant="primary"]) {
+    --local-bg: var(--color-primary);
+    --local-color: var(--color-bg-primary);
+  }
+
+  :host([variant="secondary"]) {
+    --local-color: var(--color-primary);
+  }
+
+  :host([variant="underline"]) {
+    --local-color: var(--color-secondary);
+    --local-border: none;
+    --local-decoration: underline;
+    --local-padding: 0;
+  }
+
+  :host([variant="plain"]) {
+    --local-border: none;
+    --local-padding: 0.2rem 0;
+  }
+
+  :host([variant="image"]) {
+    --local-border: none;
+    --local-decoration: underline;
+    --local-padding: 0.2rem 0;
+    --local-color: var(--color-secondary);
+    --local-border: none;
+    --local-direction: column;
+  }
+`,x=["href","target","rel","download"],H=`
+  <a data-forward><slot></slot></a>
+`;e("app-link",{attrs:x,styles:_,template:H});var E=`
+  :host {
+    display: block;
+  }
+
+  img {
+    max-height: 7rem;
+    width: auto;
+  }
+`,T=["width","height","src","alt"],M=()=>"<img data-forward />";e("app-logo",{attrs:T,styles:E,template:M});var l="769px",W="992px";var L=`
+  :host {
+    display: block;
+  }
+
+  header {
+    width: 80%;
+    margin-inline: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-block: 1.6rem;
+  }
+
+  div {
+    display: flex;
+    align-items: center;
+    gap: 8rem;
+    overflow-y: auto;
+  }
+
+  ul {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .button--primary {
+    box-shadow: none;
+  }
+
+  @media (max-width: ${l}) {
+    .header__navigation {
+      gap: 4rem;
+    }
+  }
+`,S=`
+  <header>
+      <app-link variant="plain" href="/">
+        <app-logo
+          src="/assets/images/logo.avif"
+          alt="Logo"
+          width="200"
+          height="200"
+        ></app-logo>
+      </app-link>
+
+      <div>
+        <nav>
+          <ul>
+            <li>
+              <app-link variant="plain" href="/">Home</app-link>
+            </li>
+
+            <li>
+              <app-link variant="plain" href="/about">About</app-link>
+            </li>
+          </ul>
+        </nav>
+
+        <app-link class="button--primary" variant="primary" href="/hire-me">
+          Let's chat &#8629;
+        </app-link>
+      </div>
+  </header>
+`;e("section-header",{template:S,styles:L});var C=`
+  :host {
+    --local-bg: var(--color-secondary);
+    --local-color: var(--color-bg-primary);
+    --local-border: none;
+
+   display: flex;
+   gap: 5rem;
+
+   @media (max-width: ${l}) {
+        flex-direction: column;
+        gap: 3rem;
+        margin-block: 2rem;
+   }
+  }
+
+  ul, ol {
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+    margin: 0;
+    margin-top: 0.5rem
+  }
+
+  span {
+    color: var(--color-secondary);
+    font-size: var(--size-small);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+  }
+
+  nav ol {
+    flex-direction: column;
+  }
+
+  nav ul {
+    gap: 2rem;
+    margin-top: 1rem;
+  }
+`,A=()=>`
+    <nav>
+        <span>Sitemap</span>
+
+        <ol>
+            <li>
+                <app-link href="/" variant="plain">Home</app-link>
+            </li>
+            <li>
+                <app-link href="/about" variant="plain">About</app-link>
+            </li>
+
+            <li>
+                <app-link href="/credits" variant="plain">Credits</app-link>
+            </li>
+            <li>
+                <app-link href="/hire-me" variant="plain">Hire me</app-link>
+            </li>
+            <li>
+                <app-link href="/thank-you" variant="plain">Thank you</app-link>
+            </li>
+        </ol>
+    </nav>
+
+    <nav>
+        <span>Get in touch:</span>
+
+        <ul>
+            <li>
+                <app-link href="mailto:hanhtetaung.dev@gmail.com" variant="image">
+                <img
+                    src="/assets/icons/email.svg"
+                    alt="Email Icon"
+                    class="icon--sm"
+                />
+                </app-link>
+            </li>
+            <li>
+                <app-link
+                href="https://github.com/hanhtetaung/"
+                target="_blank"
+                rel="noopener"
+                variant="image"
+                >
+                <img
+                    src="/assets/icons/github.svg"
+                    alt="Github Icon"
+                    class="icon--sm"
+                />
+                </app-link>
+            </li>
+            <li>
+                <app-link
+                href="https://www.linkedin.com/in/han-htet-aung/"
+                target="_blank"
+                rel="noopener"
+                variant="image"
+                >
+                <img
+                    src="/assets/icons/linkedin.svg"
+                    alt="Linkedin Icon"
+                    class="icon--sm"
+                />
+                </app-link>
+            </li>
+        </ul>
+    </nav>
+`;e("footer-nav",{styles:C,template:A});var R=`
+  :host {
+    --local-bg-color: var(--color-bg-secondary);
+
+    display: block;
+    background-color: var(--local-bg-color);
+    padding-block: 10rem;
+  }
+
+  :host([variant="secondary"]) {
+    --local-bg-color: var(--color-bg-primary);
+  }
+
+  p {
+    margin: 0;
+  }
+
+  footer {
+    width: 80%;
+    margin-inline: auto;
+  }
+
+  
+
+  article {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  @media (max-width: ${l}) {
+    article {
+      display: block;
+    }
+  }
+
+  div {
+    display: flex;
+    gap: 3rem;
+  }
+`,B=`
+  <footer>
+      <article>
+        <div>
+          <app-logo
             src="/assets/images/logo.avif"
-            alt="Han Htet Aung"
-            class="logo"
+            alt="Logo"
             width="200"
             height="200"
-          />
-        </a>
-
-        <div class="header__navigation">
-          <nav class="nav nav--horizontal">
-            <ul>
-              <li>
-                <a href="/" class="link-drawing"
-                  >Home
-                  <svg>
-                    <use href="assets/sprite.svg#oval-line"></use>
-                  </svg>
-                </a>
-              </li>
-
-              <li>
-                <a href="/about" class="link-drawing"
-                  >About
-                  <svg>
-                    <use href="assets/sprite.svg#oval-line"></use>
-                  </svg>
-                </a>
-              </li>
-            </ul>
-          </nav>
-
-          <a class="button--primary" href="/hire-me">
-            Let's chat
-            <span>&#8629;</span>
-          </a>
-        </div>
-      </div>
-    </header>`}}customElements.define("section-header",e);class s extends HTMLElement{connectedCallback(){this.innerHTML=`<footer class="footer">
-      <div class="container">
-        <div class="footer__content">
-          <div class="footer__profile">
-            <img
-              class="logo"
-              src="/assets/images/logo.avif"
-              alt="Profile Icon"
-            />
-            <p>
-              Thank You <br />
-              for Visiting
-            </p>
-          </div>
-
-          <div class="footer__navigation">
-            <div class="foooter__sitemap">
-              <span class="body">Sitemap</span>
-              <nav class="nav nav--vertical">
-                <ul>
-                  <li>
-                    <a href="/" class="button--link">Home</a>
-                  </li>
-                  <li>
-                    <a href="/about" class="button--link">About</a>
-                  </li>
-
-                  <li>
-                    <a href="/credits" class="button--link">Credits</a>
-                  </li>
-                  <li>
-                    <a href="/hire-me" class="button--link">Hire me</a>
-                  </li>
-                  <li>
-                    <a href="/thank-you" class="button--link">Thank you</a>
-                  </li>
-                </ul>
-              </nav>
-            </div>
-
-            <div class="footer__social">
-              <span class="body">Get in touch:</span>
-              <nav class="nav nav--horizontal">
-                <ul>
-                  <li>
-                    <a href="mailto:hanhtetaung.dev@gmail.com">
-                      <img
-                        src="/assets/icons/email.svg"
-                        alt="Email Icon"
-                        class="icon--sm"
-                      />
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="https://github.com/hanhtetaung/"
-                      target="_blank"
-                      rel="noopener"
-                    >
-                      <img
-                        src="/assets/icons/github.svg"
-                        alt="Github Icon"
-                        class="icon--sm"
-                    /></a>
-                  </li>
-                  <li>
-                    <a
-                      href="https://www.linkedin.com/in/han-htet-aung/"
-                      target="_blank"
-                      rel="noopener"
-                    >
-                      <img
-                        src="/assets/icons/linkedin.svg"
-                        alt="Linkedin Icon"
-                        class="icon--sm"
-                    /></a>
-                  </li>
-                </ul>
-              </nav>
-            </div>
-          </div>
+          ></app-logo>
+        
+          <p>
+            Thank You <br />
+            for Visiting
+          </p>
         </div>
 
-        <p class="footer__copy">
-          © Han Htet Aung 2026 |
-          <a class="button--link" href="/credits">Credits</a>
-        </p>
-      </div>
-    </footer>`}}customElements.define("section-footer",s);class i extends HTMLElement{connectedCallback(){this.innerHTML=`<section>
+        <footer-nav></footer-nav>
+      </article>
+
+      <p class="footer__copy">
+        © Han Htet Aung 2026 |
+        <app-link href="/credits" variant="underline">Credits</app-link>
+      </p>
+  </footer>
+`;e("section-footer",{styles:R,template:B});class p extends HTMLElement{connectedCallback(){this.innerHTML=`<section>
         <div class="container">
           <article class="article article--hero">
             <div class="article__media">
@@ -181,7 +354,7 @@ class e extends HTMLElement{connectedCallback(){this.innerHTML=`<header class="h
             </div>
           </article>
         </div>
-      </section>`}}customElements.define("section-mmo-intro",i);class a extends HTMLElement{connectedCallback(){this.innerHTML=`<section>
+      </section>`}}customElements.define("section-mmo-intro",p);class m extends HTMLElement{connectedCallback(){this.innerHTML=`<section>
         <div class="container">
           <article class="article">
             <div class="article__header">
@@ -198,7 +371,7 @@ class e extends HTMLElement{connectedCallback(){this.innerHTML=`<header class="h
             </div>
           </article>
         </div>
-      </section>`}}customElements.define("section-mmo-about",a);class t extends HTMLElement{connectedCallback(){this.innerHTML=` <section class="section">
+      </section>`}}customElements.define("section-mmo-about",m);class h extends HTMLElement{connectedCallback(){this.innerHTML=` <section class="section">
         <div class="container">
           <article class="article">
             <div class="article__header">
@@ -246,7 +419,7 @@ class e extends HTMLElement{connectedCallback(){this.innerHTML=`<header class="h
             </ul>
           </article>
         </div>
-      </section>`}}customElements.define("section-mmo-voices-from-field",t);class l extends HTMLElement{connectedCallback(){this.innerHTML=` <section class="section">
+      </section>`}}customElements.define("section-mmo-voices-from-field",h);class v extends HTMLElement{connectedCallback(){this.innerHTML=` <section class="section">
         <div class="container">
           <h2>Designing workflow</h2>
 
@@ -324,7 +497,7 @@ class e extends HTMLElement{connectedCallback(){this.innerHTML=`<header class="h
             </ul>
           </article>
         </div>
-      </section>`}}customElements.define("section-mmo-designing-workflow",l);class n extends HTMLElement{connectedCallback(){this.innerHTML=`<section>
+      </section>`}}customElements.define("section-mmo-designing-workflow",v);class f extends HTMLElement{connectedCallback(){this.innerHTML=`<section>
         <div class="container">
           <div class="section-title">
             <h2>Building Interfaces for selling medical items workflow</h2>
@@ -419,7 +592,7 @@ class e extends HTMLElement{connectedCallback(){this.innerHTML=`<header class="h
             </article>
           </div>
         </div>
-      </section>`}}customElements.define("section-mmo-building-interfaces",n);class c extends HTMLElement{connectedCallback(){this.innerHTML=`<section>
+      </section>`}}customElements.define("section-mmo-building-interfaces",f);class g extends HTMLElement{connectedCallback(){this.innerHTML=`<section>
         <div class="container">
           <article class="article">
             <div class="article__header">
@@ -439,7 +612,7 @@ class e extends HTMLElement{connectedCallback(){this.innerHTML=`<header class="h
             </ul>
           </article>
         </div>
-      </section>`}}customElements.define("section-mmo-multiple-workflows",c);class r extends HTMLElement{connectedCallback(){this.innerHTML=`<section>
+      </section>`}}customElements.define("section-mmo-multiple-workflows",g);class u extends HTMLElement{connectedCallback(){this.innerHTML=`<section>
         <div class="container">
           <article class="article">
             <div class="article__header">
@@ -468,7 +641,7 @@ class e extends HTMLElement{connectedCallback(){this.innerHTML=`<header class="h
             </div>
           </article>
         </div>
-      </section>`}}customElements.define("section-mmo-one-design-system",r);class o extends HTMLElement{connectedCallback(){this.innerHTML=` <section>
+      </section>`}}customElements.define("section-mmo-one-design-system",u);class b extends HTMLElement{connectedCallback(){this.innerHTML=` <section>
         <div class="container">
           <article class="article">
             <div class="article__header">
@@ -480,4 +653,4 @@ class e extends HTMLElement{connectedCallback(){this.innerHTML=`<header class="h
             </div>
           </article>
         </div>
-      </section>`}}customElements.define("section-mmo-conclusion",o);
+      </section>`}}customElements.define("section-mmo-conclusion",b);
