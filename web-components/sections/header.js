@@ -27,7 +27,7 @@ const styles = /* css */ `
   ul {
     display: flex;
     align-items: center;
-    gap: 2rem;
+    gap: 5rem;
     list-style: none;
     padding: 0;
     margin: 0;

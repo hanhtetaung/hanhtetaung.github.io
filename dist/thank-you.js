@@ -85,7 +85,7 @@ function g(t,o){if(t===void 0){if(o===Array)return[];if(o===Object)return{};if(o
   ul {
     display: flex;
     align-items: center;
-    gap: 2rem;
+    gap: 5rem;
     list-style: none;
     padding: 0;
     margin: 0;

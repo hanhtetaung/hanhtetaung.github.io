@@ -56,7 +56,7 @@ const styles = /* css */ `
      font-size: var(--size-heading);
     font-weight: var(--font-bold);
     font-family: var(--font-body);
-    margin-top: 1rem;
+    margin-block: 1rem;
   }
 
   ul {

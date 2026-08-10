@@ -256,7 +256,7 @@ function h(e,a){if(e===void 0){if(a===Array)return[];if(a===Object)return{};if(a
   ul {
     display: flex;
     align-items: center;
-    gap: 2rem;
+    gap: 5rem;
     list-style: none;
     padding: 0;
     margin: 0;

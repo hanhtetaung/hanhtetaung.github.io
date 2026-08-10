@@ -1,4 +1,4 @@
-function h(t,i){if(t===void 0){if(i===Array)return[];if(i===Object)return{};if(i===Boolean)return!1;if(i===Number)return 0;return""}if(i===Boolean)return Boolean(t);if(i===Number)return Number(t);return t}function e(t,{props:i={},attrs:o=[],styles:s="",template:r}){let p=["props",...o];class c extends HTMLElement{static observedAttributes=p;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let n={},l=this.getAttribute("props");if(l)try{n=JSON.parse(l)}catch{n={}}let m={};for(let d of Object.keys(i))m[d]=h(n[d],i[d]);return m}_applyForwardedAttrs(){if(o.length===0)return;let n=this.shadowRoot.querySelector("[data-forward]");if(!n)return;for(let l of o)if(this.hasAttribute(l))n.setAttribute(l,this.getAttribute(l));else n.removeAttribute(l)}_render(){let n=this._getProps(),l=typeof r==="function"?r(n):r;this.shadowRoot.innerHTML=`<style>${s}</style>${l}`,this._applyForwardedAttrs()}}customElements.define(t,c)}var f=`
+function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t===Boolean)return!1;if(t===Number)return 0;return""}if(t===Boolean)return Boolean(i);if(t===Number)return Number(i);return i}function e(i,{props:t={},attrs:o=[],styles:s="",template:r}){let p=["props",...o];class c extends HTMLElement{static observedAttributes=p;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let n={},l=this.getAttribute("props");if(l)try{n=JSON.parse(l)}catch{n={}}let m={};for(let d of Object.keys(t))m[d]=h(n[d],t[d]);return m}_applyForwardedAttrs(){if(o.length===0)return;let n=this.shadowRoot.querySelector("[data-forward]");if(!n)return;for(let l of o)if(this.hasAttribute(l))n.setAttribute(l,this.getAttribute(l));else n.removeAttribute(l)}_render(){let n=this._getProps(),l=typeof r==="function"?r(n):r;this.shadowRoot.innerHTML=`<style>${s}</style>${l}`,this._applyForwardedAttrs()}}customElements.define(i,c)}var f=`
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -85,7 +85,7 @@ function h(t,i){if(t===void 0){if(i===Array)return[];if(i===Object)return{};if(i
   ul {
     display: flex;
     align-items: center;
-    gap: 2rem;
+    gap: 5rem;
     list-style: none;
     padding: 0;
     margin: 0;
@@ -388,6 +388,9 @@ function h(t,i){if(t===void 0){if(i===Array)return[];if(i===Object)return{};if(i
 
   hgroup {
     margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
   }
 
   article  {
@@ -433,11 +436,11 @@ function h(t,i){if(t===void 0){if(i===Array)return[];if(i===Object)return{};if(i
   
         <span>Toolkit:</span>
         <ul class="toolkits">
-          ${D.map((t)=>`
+          ${D.map((i)=>`
               <li>
                 <app-icon
-                  src=${t.src}
-                  alt=${t.alt}
+                  src=${i.src}
+                  alt=${i.alt}
                 ></app-icon>
               </li>
             `).join("")}
@@ -445,22 +448,22 @@ function h(t,i){if(t===void 0){if(i===Array)return[];if(i===Object)return{};if(i
       </article>
 
       <ul class="highlights">
-         ${z.map((t)=>`
+         ${z.map((i)=>`
                 <li>
-                  <span>${t.title}</span>
-                  <h3>${t.header}</h3>
+                  <span>${i.title}</span>
+                  <h3>${i.header}</h3>
                 </li>
               `).join("")}
       </ul>
 
       <ol>
-        ${P.map((t)=>`
+        ${P.map((i)=>`
           <li>
-            <app-link variant="image" href=${t.href}>
-              <span>${t.name}</span>
+            <app-link variant="image" href=${i.href}>
+              <span>${i.name}</span>
               <img
-                src=${t.src}
-                alt=${t.alt}
+                src=${i.src}
+                alt=${i.alt}
               />
             </app-link>
           </li>
@@ -490,7 +493,7 @@ function h(t,i){if(t===void 0){if(i===Array)return[];if(i===Object)return{};if(i
     --local-color: var(--color-secondary);
     --local-border: 1px solid var(--color-secondary);
   }
-`,N={name:String},C=({name:t})=>`${t}`;e("app-badge",{props:N,styles:E,template:C});var H=`
+`,N={name:String},C=({name:i})=>`${i}`;e("app-badge",{props:N,styles:E,template:C});var H=`
   :host {
     --local-border: 1px solid currentColor;
     --local-decoration: none;
@@ -551,8 +554,8 @@ function h(t,i){if(t===void 0){if(i===Array)return[];if(i===Object)return{};if(i
       display: block;
     }
   }
-`,_={image:String,alt:String,title:String,description:String,href:String,categories:Array},j=({image:t,alt:i,title:o,description:s,href:r,categories:p})=>`
-    <img src="${t}" alt="${i}" />
+`,_={image:String,alt:String,title:String,description:String,href:String,categories:Array},j=({image:i,alt:t,title:o,description:s,href:r,categories:p})=>`
+    <img src="${i}" alt="${t}" />
     <div>
       <h3>${o}</h3>
       <ul>
@@ -595,10 +598,10 @@ function h(t,i){if(t===void 0){if(i===Array)return[];if(i===Object)return{};if(i
       display: none;
     }
   }
-`,W={name:String,img:String,alt:String},J=({name:t,img:i,alt:o})=>`
-    <h2>${t}</h2>
+`,W={name:String,img:String,alt:String},J=({name:i,img:t,alt:o})=>`
+    <h2>${i}</h2>
     <img
-        src=${i}
+        src=${t}
         alt=${o}
         height="36"
         width="76"
@@ -627,11 +630,11 @@ function h(t,i){if(t===void 0){if(i===Array)return[];if(i===Object)return{};if(i
       ></section-title>
             
       <ul>
-        ${K.map((t)=>`
+        ${K.map((i)=>`
               <li>
                 <case-study-item
-                  props='${JSON.stringify(t)}'
-                  ${t.reverse?"reverse":""}
+                  props='${JSON.stringify(i)}'
+                  ${i.reverse?"reverse":""}
                 ></case-study-item>
               </li>
             `).join("")}
@@ -655,7 +658,7 @@ function h(t,i){if(t===void 0){if(i===Array)return[];if(i===Object)return{};if(i
      font-size: var(--size-heading);
     font-weight: var(--font-bold);
     font-family: var(--font-body);
-    margin-top: 1rem;
+    margin-block: 1rem;
   }
 
   ul {
@@ -734,9 +737,9 @@ function h(t,i){if(t===void 0){if(i===Array)return[];if(i===Object)return{};if(i
       ></section-title>
 
       <ul>
-        ${X.map(({icon:t,alt:i,range:o,title:s,description:r})=>`
+        ${X.map(({icon:i,alt:t,range:o,title:s,description:r})=>`
               <li>
-                <app-icon src="${t}" alt="${i}"></app-icon>
+                <app-icon src="${i}" alt="${t}"></app-icon>
 
                 <div class="connector">
                   <span class="dot"></span>
@@ -845,7 +848,7 @@ function h(t,i){if(t===void 0){if(i===Array)return[];if(i===Object)return{};if(i
       gap: 1rem;
     }
   }
-`,te=()=>`
+`,ie=()=>`
   <section>
        <section-title
         variant="vertical"
@@ -853,11 +856,11 @@ function h(t,i){if(t===void 0){if(i===Array)return[];if(i===Object)return{};if(i
       ></section-title>
 
       <ul>
-        ${q.map(({title:t,description:i,icon:o,alt:s},r)=>`
+        ${q.map(({title:i,description:t,icon:o,alt:s},r)=>`
               <li>
                 <article>
-                  <h3><span>${r+1}.</span> ${t}</h3>
-                  <p>${i}</p>
+                  <h3><span>${r+1}.</span> ${i}</h3>
+                  <p>${t}</p>
                 </article>
 
                 <app-icon variant="large" src="${o}" alt="${s}"></app-icon>
@@ -865,7 +868,7 @@ function h(t,i){if(t===void 0){if(i===Array)return[];if(i===Object)return{};if(i
             `).join("")}
       </ul>
   </section>
-`;e("section-why-hire-me",{styles:ee,template:te});var ie=`
+`;e("section-why-hire-me",{styles:ee,template:ie});var te=`
   :host {
     display: block;
     position: relative;
@@ -941,7 +944,7 @@ function h(t,i){if(t===void 0){if(i===Array)return[];if(i===Object)return{};if(i
       />
     </div>
   </section>
-`;e("section-cta",{styles:ie,template:oe});var ae=`
+`;e("section-cta",{styles:te,template:oe});var ae=`
   :host {
     display: block;
     width: 100%;

@@ -85,7 +85,7 @@ function b(s,i){if(s===void 0){if(i===Array)return[];if(i===Object)return{};if(i
   ul {
     display: flex;
     align-items: center;
-    gap: 2rem;
+    gap: 5rem;
     list-style: none;
     padding: 0;
     margin: 0;

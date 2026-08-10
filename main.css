@@ -1,0 +1,56 @@
+@charset "UTF-8";
+
+@font-face {
+  font-family: "Chicle";
+  src: url("/assets/fonts/Chicle-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "StackSans";
+  src: url("/assets/fonts/StackSansText-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: "StackSans";
+  src: url("/assets/fonts/StackSansText-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+
+:root {
+  --color-bg-primary: #fff5e8;
+  --color-bg-secondary: #fffaf4;
+  --color-secondary: #05798e;
+  --color-primary: #a75330;
+  --color-text: #000000;
+  --color-transparent: #00000000;
+  --font-heading: "Chicle", serif;
+  --font-body: "StackSans", sans-serif;
+  --font-regular: 400;
+  --font-bold: 700;
+  font-size: 10px;
+  --ratio: 1.6;
+  --size-body: 2rem;
+  --size-small: calc(var(--size-body) / var(--ratio));
+  --size-heading: calc(var(--size-body) * var(--ratio));
+  --size-title: calc(var(--size-heading) * var(--ratio));
+  --size-display: calc(var(--size-title) * var(--ratio));
+}
+
+body {
+  background: var(--color-bg-primary);
+  font-family: var(--font-body);
+  font-weight: var(--bold);
+  font-size: var(--size-body);
+}
+
+main > * {
+  padding-block: 10rem;
+  background: var(--color-bg-primary);
+  display: block;
+}
+main > *:nth-child(2n) {
+  background: var(--color-bg-secondary);
+}

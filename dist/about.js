@@ -61,7 +61,7 @@ function d(e,o){if(e===void 0){if(o===Array)return[];if(o===Object)return{};if(o
     max-height: 7rem;
     width: auto;
   }
-`,w=["width","height","src","alt"],y=()=>"<img data-forward />";t("app-logo",{attrs:w,styles:u,template:y});var a="769px",tt="992px";var b=`
+`,b=["width","height","src","alt"],w=()=>"<img data-forward />";t("app-logo",{attrs:b,styles:u,template:w});var a="769px",tt="992px";var y=`
   :host {
     display: block;
   }
@@ -85,7 +85,7 @@ function d(e,o){if(e===void 0){if(o===Array)return[];if(o===Object)return{};if(o
   ul {
     display: flex;
     align-items: center;
-    gap: 2rem;
+    gap: 5rem;
     list-style: none;
     padding: 0;
     margin: 0;
@@ -129,7 +129,7 @@ function d(e,o){if(e===void 0){if(o===Array)return[];if(o===Object)return{};if(o
         </app-link>
       </div>
   </header>
-`;t("section-header",{template:k,styles:b});var x=`
+`;t("section-header",{template:k,styles:y});var x=`
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -544,7 +544,7 @@ function d(e,o){if(e===void 0){if(o===Array)return[];if(o===Object)return{};if(o
      font-size: var(--size-heading);
     font-weight: var(--font-bold);
     font-family: var(--font-body);
-    margin-top: 1rem;
+    margin-block: 1rem;
   }
 
   ul {
