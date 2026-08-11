@@ -341,7 +341,7 @@ function h(r,a){if(r===void 0){if(a===Array)return[];if(a===Object)return{};if(a
 
   img {
     width: var(--local-width);
-      height: var(--local-height);
+    height: var(--local-height);
   }
 
   :host([variant="large"]) {
@@ -350,8 +350,15 @@ function h(r,a){if(r===void 0){if(a===Array)return[];if(a===Object)return{};if(a
   }
 
   :host([variant="creator"]) {
-    --local-height: auto;
-    --local-width: 4rem;
+    /* --local-height: auto;
+    --local-width: 4rem; */
+
+    img {
+      min-width: 5rem;
+      max-width: 10rem;
+      height: 10rem;
+      width: auto;
+    }
   }
 
 

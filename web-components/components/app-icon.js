@@ -10,7 +10,7 @@ const styles = /* css */ `
 
   img {
     width: var(--local-width);
-      height: var(--local-height);
+    height: var(--local-height);
   }
 
   :host([variant="large"]) {
@@ -19,8 +19,15 @@ const styles = /* css */ `
   }
 
   :host([variant="creator"]) {
-    --local-height: auto;
-    --local-width: 4rem;
+    /* --local-height: auto;
+    --local-width: 4rem; */
+
+    img {
+      min-width: 5rem;
+      max-width: 10rem;
+      height: 10rem;
+      width: auto;
+    }
   }
 
 

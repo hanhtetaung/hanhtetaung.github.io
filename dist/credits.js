@@ -1,4 +1,4 @@
-function g(t,e){if(t===void 0){if(e===Array)return[];if(e===Object)return{};if(e===Boolean)return!1;if(e===Number)return 0;return}if(e===Boolean)return Boolean(t);if(e===Number)return Number(t);return t}function o(t,{props:e={},attrs:r=[],styles:s="",template:l}){let h=["props",...r];class p extends HTMLElement{static observedAttributes=h;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let n={},a=this.getAttribute("props");if(a)try{n=JSON.parse(a)}catch{n={}}let m={};for(let c of Object.keys(e))m[c]=g(n[c],e[c]);return m}_applyForwardedAttrs(){if(r.length===0)return;let n=this.shadowRoot.querySelector("[data-forward]");if(!n)return;for(let a of r)if(this.hasAttribute(a))n.setAttribute(a,this.getAttribute(a));else n.removeAttribute(a)}_render(){let n=this._getProps(),a=typeof l==="function"?l(n):l;this.shadowRoot.innerHTML=`<style>${s}</style>${a}`,this._applyForwardedAttrs()}}customElements.define(t,p)}var d=`
+function d(t,e){if(t===void 0){if(e===Array)return[];if(e===Object)return{};if(e===Boolean)return!1;if(e===Number)return 0;return}if(e===Boolean)return Boolean(t);if(e===Number)return Number(t);return t}function o(t,{props:e={},attrs:r=[],styles:s="",template:l}){let h=["props",...r];class p extends HTMLElement{static observedAttributes=h;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let a={},n=this.getAttribute("props");if(n)try{a=JSON.parse(n)}catch{a={}}let m={};for(let c of Object.keys(e))m[c]=d(a[c],e[c]);return m}_applyForwardedAttrs(){if(r.length===0)return;let a=this.shadowRoot.querySelector("[data-forward]");if(!a)return;for(let n of r)if(this.hasAttribute(n))a.setAttribute(n,this.getAttribute(n));else a.removeAttribute(n)}_render(){let a=this._getProps(),n=typeof l==="function"?l(a):l;this.shadowRoot.innerHTML=`<style>${s}</style>${n}`,this._applyForwardedAttrs()}}customElements.define(t,p)}var g=`
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -52,7 +52,7 @@ function g(t,e){if(t===void 0){if(e===Array)return[];if(e===Object)return{};if(e
   }
 `,u=["href","target","rel","download"],f=`
   <a data-forward><slot></slot></a>
-`;o("app-link",{attrs:u,styles:d,template:f});var v=`
+`;o("app-link",{attrs:u,styles:g,template:f});var v=`
   :host {
     display: block;
   }
@@ -332,7 +332,7 @@ function g(t,e){if(t===void 0){if(e===Array)return[];if(e===Object)return{};if(e
 
   img {
     width: var(--local-width);
-      height: var(--local-height);
+    height: var(--local-height);
   }
 
   :host([variant="large"]) {
@@ -341,8 +341,15 @@ function g(t,e){if(t===void 0){if(e===Array)return[];if(e===Object)return{};if(e
   }
 
   :host([variant="creator"]) {
-    --local-height: auto;
-    --local-width: 4rem;
+    /* --local-height: auto;
+    --local-width: 4rem; */
+
+    img {
+      min-width: 5rem;
+      max-width: 10rem;
+      height: 10rem;
+      width: auto;
+    }
   }
 
 
@@ -350,26 +357,16 @@ function g(t,e){if(t===void 0){if(e===Array)return[];if(e===Object)return{};if(e
   :host {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 3rem;
-
+    max-width: 50rem;
+    padding-block: 2rem;
+    border-bottom: 1px dashed var(--color-text);
   }
 
-  img {
-    width: 2.5rem;
-    height: 2.5rem;
-    object-fit: contain;
-    flex-shrink: 0;
-  }
-
-  a,
   p {
     margin: 0;
-    color: inherit;
     text-decoration: none;
-  }
-
-  a {
-    font-weight: 600;
   }
 `,I={icon:String,alt:String,url:String,name:String},R=({icon:t,alt:e,url:r,name:s})=>`
     <app-icon variant="creator" src="${t}" alt="${e}" ></app-icon>

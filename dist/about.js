@@ -1,4 +1,4 @@
-function m(e,o){if(e===void 0){if(o===Array)return[];if(o===Object)return{};if(o===Boolean)return!1;if(o===Number)return 0;return}if(o===Boolean)return Boolean(e);if(o===Number)return Number(e);return e}function t(e,{props:o={},attrs:n=[],styles:s="",template:l}){let d=["props",...n];class p extends HTMLElement{static observedAttributes=d;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let i={},r=this.getAttribute("props");if(r)try{i=JSON.parse(r)}catch{i={}}let g={};for(let c of Object.keys(o))g[c]=m(i[c],o[c]);return g}_applyForwardedAttrs(){if(n.length===0)return;let i=this.shadowRoot.querySelector("[data-forward]");if(!i)return;for(let r of n)if(this.hasAttribute(r))i.setAttribute(r,this.getAttribute(r));else i.removeAttribute(r)}_render(){let i=this._getProps(),r=typeof l==="function"?l(i):l;this.shadowRoot.innerHTML=`<style>${s}</style>${r}`,this._applyForwardedAttrs()}}customElements.define(e,p)}var h=`
+function d(e,o){if(e===void 0){if(o===Array)return[];if(o===Object)return{};if(o===Boolean)return!1;if(o===Number)return 0;return}if(o===Boolean)return Boolean(e);if(o===Number)return Number(e);return e}function t(e,{props:o={},attrs:n=[],styles:s="",template:l}){let m=["props",...n];class p extends HTMLElement{static observedAttributes=m;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let i={},r=this.getAttribute("props");if(r)try{i=JSON.parse(r)}catch{i={}}let g={};for(let c of Object.keys(o))g[c]=d(i[c],o[c]);return g}_applyForwardedAttrs(){if(n.length===0)return;let i=this.shadowRoot.querySelector("[data-forward]");if(!i)return;for(let r of n)if(this.hasAttribute(r))i.setAttribute(r,this.getAttribute(r));else i.removeAttribute(r)}_render(){let i=this._getProps(),r=typeof l==="function"?l(i):l;this.shadowRoot.innerHTML=`<style>${s}</style>${r}`,this._applyForwardedAttrs()}}customElements.define(e,p)}var h=`
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -464,7 +464,7 @@ function m(e,o){if(e===void 0){if(o===Array)return[];if(o===Object)return{};if(o
 
   img {
     width: var(--local-width);
-      height: var(--local-height);
+    height: var(--local-height);
   }
 
   :host([variant="large"]) {
@@ -473,8 +473,15 @@ function m(e,o){if(e===void 0){if(o===Array)return[];if(o===Object)return{};if(o
   }
 
   :host([variant="creator"]) {
-    --local-height: auto;
-    --local-width: 4rem;
+    /* --local-height: auto;
+    --local-width: 4rem; */
+
+    img {
+      min-width: 5rem;
+      max-width: 10rem;
+      height: 10rem;
+      width: auto;
+    }
   }
 
 

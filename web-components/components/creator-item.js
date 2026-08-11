@@ -7,26 +7,16 @@ const styles = /* css */ `
   :host {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 3rem;
-
+    max-width: 50rem;
+    padding-block: 2rem;
+    border-bottom: 1px dashed var(--color-text);
   }
 
-  img {
-    width: 2.5rem;
-    height: 2.5rem;
-    object-fit: contain;
-    flex-shrink: 0;
-  }
-
-  a,
   p {
     margin: 0;
-    color: inherit;
     text-decoration: none;
-  }
-
-  a {
-    font-weight: 600;
   }
 `;
 
