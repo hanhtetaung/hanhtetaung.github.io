@@ -1,3 +1,4 @@
+import { TABLE } from "../breakpoints";
 import { define } from "../define";
 
 const styles = /* css */ `
@@ -36,8 +37,8 @@ const styles = /* css */ `
     margin-top: 2rem;
   }
 
-  @media (max-width: 992px) {
-    .image {
+  @media (max-width: ${TABLE}) {
+    img {
       display: none;
     }
   }

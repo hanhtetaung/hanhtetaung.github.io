@@ -1,4 +1,4 @@
-function h(t,i){if(t===void 0){if(i===Array)return[];if(i===Object)return{};if(i===Boolean)return!1;if(i===Number)return 0;return}if(i===Boolean)return Boolean(t);if(i===Number)return Number(t);return t}function e(t,{props:i={},attrs:o=[],styles:s="",template:r}){let p=["props",...o];class c extends HTMLElement{static observedAttributes=p;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let n={},l=this.getAttribute("props");if(l)try{n=JSON.parse(l)}catch{n={}}let m={};for(let d of Object.keys(i))m[d]=h(n[d],i[d]);return m}_applyForwardedAttrs(){if(o.length===0)return;let n=this.shadowRoot.querySelector("[data-forward]");if(!n)return;for(let l of o)if(this.hasAttribute(l))n.setAttribute(l,this.getAttribute(l));else n.removeAttribute(l)}_render(){let n=this._getProps(),l=typeof r==="function"?r(n):r;this.shadowRoot.innerHTML=`<style>${s}</style>${l}`,this._applyForwardedAttrs()}}customElements.define(t,c)}var f=`
+function h(t,i){if(t===void 0){if(i===Array)return[];if(i===Object)return{};if(i===Boolean)return!1;if(i===Number)return 0;return}if(i===Boolean)return Boolean(t);if(i===Number)return Number(t);return t}function e(t,{props:i={},attrs:o=[],styles:s="",template:r}){let d=["props",...o];class c extends HTMLElement{static observedAttributes=d;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let n={},l=this.getAttribute("props");if(l)try{n=JSON.parse(l)}catch{n={}}let g={};for(let m of Object.keys(i))g[m]=h(n[m],i[m]);return g}_applyForwardedAttrs(){if(o.length===0)return;let n=this.shadowRoot.querySelector("[data-forward]");if(!n)return;for(let l of o)if(this.hasAttribute(l))n.setAttribute(l,this.getAttribute(l));else n.removeAttribute(l)}_render(){let n=this._getProps(),l=typeof r==="function"?r(n):r;this.shadowRoot.innerHTML=`<style>${s}</style>${l}`,this._applyForwardedAttrs()}}customElements.define(t,c)}var f=`
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -61,7 +61,7 @@ function h(t,i){if(t===void 0){if(i===Array)return[];if(i===Object)return{};if(i
     max-height: 7rem;
     width: auto;
   }
-`,w=["width","height","src","alt"],b=()=>"<img data-forward />";e("app-logo",{attrs:w,styles:y,template:b});var a="769px",g="992px";var k=`
+`,w=["width","height","src","alt"],b=()=>"<img data-forward />";e("app-logo",{attrs:w,styles:y,template:b});var a="769px",p="992px";var k=`
   :host {
     display: block;
   }
@@ -328,7 +328,7 @@ function h(t,i){if(t===void 0){if(i===Array)return[];if(i===Object)return{};if(i
   }
 
 
-`,O=["src","alt"],T=()=>'<img data-forward width="200" height="200"/>';e("app-icon",{attrs:O,styles:Q,template:T});var D=[{src:"/assets/icons/figma.svg",alt:"Figma Icon"},{src:"/assets/icons/html.svg",alt:"HTML Icon"},{src:"/assets/icons/css.svg",alt:"CSS Icon"},{src:"/assets/icons/javascript.svg",alt:"JavaScript Icon"}],P=[{name:"Knowledge Tree",href:"/work/knowledge-tree",src:"/assets/images/case-study/knowledge-tree/thumbnail.avif",alt:"Knowledge Tree Thumbnail"},{name:"MMO",href:"/work/mmo",src:"/assets/images/case-study/mmo/thumbnail.avif",alt:"MMO Thumbnail"},{name:"Bamboo",href:"/work/bamboo",src:"/assets/images/case-study/bamboo/thumbnail.avif",alt:"Bamboo Thumbnail"}],z=[{title:"Specialize In",header:"Enterprise UX"},{title:"Simplify",header:"Complex workflows"},{title:"Scale",header:"Design System"}],L=`
+`,O=["src","alt"],T=()=>'<img data-forward width="200" height="200"/>';e("app-icon",{attrs:O,styles:Q,template:T});var D=[{src:"/assets/icons/figma.svg",alt:"Figma Icon"},{src:"/assets/icons/html.svg",alt:"HTML Icon"},{src:"/assets/icons/css.svg",alt:"CSS Icon"},{src:"/assets/icons/javascript.svg",alt:"JavaScript Icon"}],L=[{name:"Knowledge Tree",href:"/work/knowledge-tree",src:"/assets/images/case-study/knowledge-tree/thumbnail.avif",alt:"Knowledge Tree Thumbnail"},{name:"MMO",href:"/work/mmo",src:"/assets/images/case-study/mmo/thumbnail.avif",alt:"MMO Thumbnail"},{name:"Bamboo",href:"/work/bamboo",src:"/assets/images/case-study/bamboo/thumbnail.avif",alt:"Bamboo Thumbnail"}],P=[{title:"Specialize In",header:"Enterprise UX"},{title:"Simplify",header:"Complex workflows"},{title:"Scale",header:"Design System"}],z=`
   section {
     width: 80%;
     margin-inline: auto;
@@ -426,7 +426,7 @@ function h(t,i){if(t===void 0){if(i===Array)return[];if(i===Object)return{};if(i
     max-height: 12rem;
     width: auto;
   }
-`,M=`
+`,E=`
   <section>
       <article>
         <hgroup>
@@ -452,7 +452,7 @@ function h(t,i){if(t===void 0){if(i===Array)return[];if(i===Object)return{};if(i
       </article>
 
       <ul class="highlights">
-         ${z.map((t)=>`
+         ${P.map((t)=>`
                 <li>
                   <span>${t.title}</span>
                   <h3>${t.header}</h3>
@@ -461,7 +461,7 @@ function h(t,i){if(t===void 0){if(i===Array)return[];if(i===Object)return{};if(i
       </ul>
 
       <ol>
-        ${P.map((t)=>`
+        ${L.map((t)=>`
           <li>
             <app-link variant="image" href=${t.href}>
               <span>${t.name}</span>
@@ -474,7 +474,7 @@ function h(t,i){if(t===void 0){if(i===Array)return[];if(i===Object)return{};if(i
           `).join("")}
       </ol>
   </section>
-`;e("section-hero",{styles:L,template:M});var E=`
+`;e("section-hero",{styles:z,template:E});var M=`
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -497,7 +497,7 @@ function h(t,i){if(t===void 0){if(i===Array)return[];if(i===Object)return{};if(i
     --local-color: var(--color-secondary);
     --local-border: 1px solid var(--color-secondary);
   }
-`,N={name:String},C=({name:t})=>`${t}`;e("app-badge",{props:N,styles:E,template:C});var H=`
+`,N={name:String},C=({name:t})=>`${t}`;e("app-badge",{props:N,styles:M,template:C});var H=`
   :host {
     --local-border: 1px solid currentColor;
     --local-decoration: none;
@@ -553,17 +553,17 @@ function h(t,i){if(t===void 0){if(i===Array)return[];if(i===Object)return{};if(i
     border-radius: 4px;
   }
 
-  @media (max-width: ${g}) {
+  @media (max-width: ${p}) {
     :host {
       display: block;
     }
   }
-`,j={image:String,alt:String,title:String,description:String,href:String,categories:Array},B=({image:t,alt:i,title:o,description:s,href:r,categories:p})=>`
+`,j={image:String,alt:String,title:String,description:String,href:String,categories:Array},B=({image:t,alt:i,title:o,description:s,href:r,categories:d})=>`
     <img src="${t}" alt="${i}" />
     <div>
       <h3>${o}</h3>
       <ul>
-        ${p.map((c)=>`
+        ${d.map((c)=>`
               <li><app-badge props='${JSON.stringify({name:c})}' variant="primary"></app-badge></li>
             `).join("")}
       </ul>
@@ -916,8 +916,8 @@ function h(t,i){if(t===void 0){if(i===Array)return[];if(i===Object)return{};if(i
     margin-top: 2rem;
   }
 
-  @media (max-width: 992px) {
-    .image {
+  @media (max-width: ${p}) {
+    img {
       display: none;
     }
   }
