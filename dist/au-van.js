@@ -311,6 +311,7 @@ function h(r,a){if(r===void 0){if(a===Array)return[];if(a===Object)return{};if(a
   img {
     max-width: var(--local-width);
     height: var(--local-heigth);
+    width: 100%;
   }
 
   :host([variant="normal"]) {
@@ -345,12 +346,17 @@ function h(r,a){if(r===void 0){if(a===Array)return[];if(a===Object)return{};if(a
   }
 
 
-`,O=["src","alt"],$=()=>'<img data-forward width="200" height="200"/>';o("app-icon",{attrs:O,styles:S,template:$});var L=`
+`,$=["src","alt"],O=()=>'<img data-forward width="200" height="200"/>';o("app-icon",{attrs:$,styles:S,template:O});var L=`
    section {
         margin-inline: auto;
         width: 80%;
         display: flex;
         justify-content: space-between;
+
+        @media (max-width: ${e}) {
+          flex-direction: column;
+          gap: 3rem;
+        }
     }
 
       h1 {
@@ -368,11 +374,11 @@ function h(r,a){if(r===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     margin: 0;
   }
 
-  @media (max-width: ${e}) {
+  /* @media (max-width: ${e}) {
           app-image {
             display: none;
           }
-        }
+        } */
 `,P={name:String,img:String,alt:String},T=({name:r="Name",img:a="/assets/images/coming-soon.jpg",alt:n="Coming Soon"})=>`
   <section>
       <div>

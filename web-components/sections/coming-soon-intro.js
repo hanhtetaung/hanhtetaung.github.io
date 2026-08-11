@@ -10,6 +10,11 @@ const styles = /*css*/ `
         width: 80%;
         display: flex;
         justify-content: space-between;
+
+        @media (max-width: ${PHONE}) {
+          flex-direction: column;
+          gap: 3rem;
+        }
     }
 
       h1 {
@@ -27,11 +32,11 @@ const styles = /*css*/ `
     margin: 0;
   }
 
-  @media (max-width: ${PHONE}) {
+  /* @media (max-width: ${PHONE}) {
           app-image {
             display: none;
           }
-        }
+        } */
 `;
 
 const props = { name: String, img: String, alt: String };

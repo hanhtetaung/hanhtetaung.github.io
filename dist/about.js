@@ -61,7 +61,7 @@ function m(e,o){if(e===void 0){if(o===Array)return[];if(o===Object)return{};if(o
     max-height: 7rem;
     width: auto;
   }
-`,b=["width","height","src","alt"],w=()=>"<img data-forward />";t("app-logo",{attrs:b,styles:u,template:w});var a="769px",tt="992px";var y=`
+`,w=["width","height","src","alt"],b=()=>"<img data-forward />";t("app-logo",{attrs:w,styles:u,template:b});var a="769px",tt="992px";var y=`
   :host {
     display: block;
   }
@@ -311,6 +311,7 @@ function m(e,o){if(e===void 0){if(o===Array)return[];if(o===Object)return{};if(o
   img {
     max-width: var(--local-width);
     height: var(--local-heigth);
+    width: 100%;
   }
 
   :host([variant="normal"]) {

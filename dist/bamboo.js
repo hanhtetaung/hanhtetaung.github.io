@@ -1,4 +1,4 @@
-function g(e,a){if(e===void 0){if(a===Array)return[];if(a===Object)return{};if(a===Boolean)return!1;if(a===Number)return 0;return}if(a===Boolean)return Boolean(e);if(a===Number)return Number(e);return e}function o(e,{props:a={},attrs:n=[],styles:m="",template:l}){let d=["props",...n];class c extends HTMLElement{static observedAttributes=d;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let t={},i=this.getAttribute("props");if(i)try{t=JSON.parse(i)}catch{t={}}let p={};for(let s of Object.keys(a))p[s]=g(t[s],a[s]);return p}_applyForwardedAttrs(){if(n.length===0)return;let t=this.shadowRoot.querySelector("[data-forward]");if(!t)return;for(let i of n)if(this.hasAttribute(i))t.setAttribute(i,this.getAttribute(i));else t.removeAttribute(i)}_render(){let t=this._getProps(),i=typeof l==="function"?l(t):l;this.shadowRoot.innerHTML=`<style>${m}</style>${i}`,this._applyForwardedAttrs()}}customElements.define(e,c)}var h=`
+function h(r,a){if(r===void 0){if(a===Array)return[];if(a===Object)return{};if(a===Boolean)return!1;if(a===Number)return 0;return}if(a===Boolean)return Boolean(r);if(a===Number)return Number(r);return r}function o(r,{props:a={},attrs:n=[],styles:m="",template:l}){let d=["props",...n];class c extends HTMLElement{static observedAttributes=d;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let t={},i=this.getAttribute("props");if(i)try{t=JSON.parse(i)}catch{t={}}let p={};for(let s of Object.keys(a))p[s]=h(t[s],a[s]);return p}_applyForwardedAttrs(){if(n.length===0)return;let t=this.shadowRoot.querySelector("[data-forward]");if(!t)return;for(let i of n)if(this.hasAttribute(i))t.setAttribute(i,this.getAttribute(i));else t.removeAttribute(i)}_render(){let t=this._getProps(),i=typeof l==="function"?l(t):l;this.shadowRoot.innerHTML=`<style>${m}</style>${i}`,this._applyForwardedAttrs()}}customElements.define(r,c)}var g=`
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -52,7 +52,7 @@ function g(e,a){if(e===void 0){if(a===Array)return[];if(a===Object)return{};if(a
   }
 `,f=["href","target","rel","download"],u=`
   <a data-forward><slot></slot></a>
-`;o("app-link",{attrs:f,styles:h,template:u});var v=`
+`;o("app-link",{attrs:f,styles:g,template:u});var v=`
   :host {
     display: block;
   }
@@ -61,7 +61,7 @@ function g(e,a){if(e===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     max-height: 7rem;
     width: auto;
   }
-`,b=["width","height","src","alt"],y=()=>"<img data-forward />";o("app-logo",{attrs:b,styles:v,template:y});var r="769px",G="992px";var k=`
+`,b=["width","height","src","alt"],y=()=>"<img data-forward />";o("app-logo",{attrs:b,styles:v,template:y});var e="769px",G="992px";var k=`
   :host {
     display: block;
   }
@@ -95,7 +95,7 @@ function g(e,a){if(e===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     box-shadow: none;
   }
 
-  @media (max-width: ${r}) {
+  @media (max-width: ${e}) {
     .header__navigation {
       gap: 4rem;
     }
@@ -138,7 +138,7 @@ function g(e,a){if(e===void 0){if(a===Array)return[];if(a===Object)return{};if(a
    display: flex;
    gap: 5rem;
 
-   @media (max-width: ${r}) {
+   @media (max-width: ${e}) {
         flex-direction: column;
         gap: 3rem;
         margin-block: 2rem;
@@ -265,7 +265,7 @@ function g(e,a){if(e===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     align-items: center;
   }
 
-  @media (max-width: ${r}) {
+  @media (max-width: ${e}) {
     article {
       display: block;
     }
@@ -311,6 +311,7 @@ function g(e,a){if(e===void 0){if(a===Array)return[];if(a===Object)return{};if(a
   img {
     max-width: var(--local-width);
     height: var(--local-heigth);
+    width: 100%;
   }
 
   :host([variant="normal"]) {
@@ -345,12 +346,17 @@ function g(e,a){if(e===void 0){if(a===Array)return[];if(a===Object)return{};if(a
   }
 
 
-`,O=["src","alt"],$=()=>'<img data-forward width="200" height="200"/>';o("app-icon",{attrs:O,styles:S,template:$});var L=`
+`,$=["src","alt"],O=()=>'<img data-forward width="200" height="200"/>';o("app-icon",{attrs:$,styles:S,template:O});var L=`
    section {
         margin-inline: auto;
         width: 80%;
         display: flex;
         justify-content: space-between;
+
+        @media (max-width: ${e}) {
+          flex-direction: column;
+          gap: 3rem;
+        }
     }
 
       h1 {
@@ -368,17 +374,17 @@ function g(e,a){if(e===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     margin: 0;
   }
 
-  @media (max-width: ${r}) {
+  /* @media (max-width: ${e}) {
           app-image {
             display: none;
           }
-        }
-`,P={name:String,img:String,alt:String},T=({name:e="Name",img:a="/assets/images/coming-soon.jpg",alt:n="Coming Soon"})=>`
+        } */
+`,P={name:String,img:String,alt:String},T=({name:r="Name",img:a="/assets/images/coming-soon.jpg",alt:n="Coming Soon"})=>`
   <section>
       <div>
         <hgroup>
           <p>Coming Soon</p>
-          <h1>${e}</h1>
+          <h1>${r}</h1>
         </hgroup>
 
         <app-icon

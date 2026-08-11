@@ -11,6 +11,7 @@ const styles = /* css */ `
   img {
     max-width: var(--local-width);
     height: var(--local-heigth);
+    width: 100%;
   }
 
   :host([variant="normal"]) {

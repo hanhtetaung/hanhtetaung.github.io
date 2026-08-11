@@ -771,6 +771,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
   img {
     max-width: var(--local-width);
     height: var(--local-heigth);
+    width: 100%;
   }
 
   :host([variant="normal"]) {
