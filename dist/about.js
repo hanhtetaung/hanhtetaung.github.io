@@ -1,4 +1,4 @@
-function d(e,o){if(e===void 0){if(o===Array)return[];if(o===Object)return{};if(o===Boolean)return!1;if(o===Number)return 0;return}if(o===Boolean)return Boolean(e);if(o===Number)return Number(e);return e}function t(e,{props:o={},attrs:n=[],styles:s="",template:l}){let m=["props",...n];class p extends HTMLElement{static observedAttributes=m;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let i={},r=this.getAttribute("props");if(r)try{i=JSON.parse(r)}catch{i={}}let g={};for(let c of Object.keys(o))g[c]=d(i[c],o[c]);return g}_applyForwardedAttrs(){if(n.length===0)return;let i=this.shadowRoot.querySelector("[data-forward]");if(!i)return;for(let r of n)if(this.hasAttribute(r))i.setAttribute(r,this.getAttribute(r));else i.removeAttribute(r)}_render(){let i=this._getProps(),r=typeof l==="function"?l(i):l;this.shadowRoot.innerHTML=`<style>${s}</style>${r}`,this._applyForwardedAttrs()}}customElements.define(e,p)}var h=`
+function m(e,o){if(e===void 0){if(o===Array)return[];if(o===Object)return{};if(o===Boolean)return!1;if(o===Number)return 0;return}if(o===Boolean)return Boolean(e);if(o===Number)return Number(e);return e}function t(e,{props:o={},attrs:n=[],styles:s="",template:l}){let d=["props",...n];class p extends HTMLElement{static observedAttributes=d;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let i={},r=this.getAttribute("props");if(r)try{i=JSON.parse(r)}catch{i={}}let g={};for(let c of Object.keys(o))g[c]=m(i[c],o[c]);return g}_applyForwardedAttrs(){if(n.length===0)return;let i=this.shadowRoot.querySelector("[data-forward]");if(!i)return;for(let r of n)if(this.hasAttribute(r))i.setAttribute(r,this.getAttribute(r));else i.removeAttribute(r)}_render(){let i=this._getProps(),r=typeof l==="function"?l(i):l;this.shadowRoot.innerHTML=`<style>${s}</style>${r}`,this._applyForwardedAttrs()}}customElements.define(e,p)}var h=`
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -365,7 +365,7 @@ function d(e,o){if(e===void 0){if(o===Array)return[];if(o===Object)return{};if(o
       <h1>About</h1>
       <div>
         <app-image
-          variant="normal"
+          variant="large"
           src="assets/images/about-profile.avif"
           alt="profile"
         ></app-image>
@@ -418,14 +418,14 @@ function d(e,o){if(e===void 0){if(o===Array)return[];if(o===Object)return{};if(o
         height="36"
         width="76"
     />
-`;t("section-title",{props:P,styles:T,template:C});var E=[{href:"https://raindrop.io/",src:"/assets/tech-collection/raindrop-io.svg",alt:"Raindrop-io logo"},{href:"https://www.spendee.com/",src:"/assets/tech-collection/spendee.svg",alt:"Spendee logo"},{href:"https://citymapper.com/",src:"/assets/tech-collection/citymapper.svg",alt:"Citymapper logo"},{href:"https://www.figma.com/",src:"/assets/tech-collection/figma.svg",alt:"Figma logo"},{href:"https://www.strava.com/",src:"/assets/tech-collection/strava.svg",alt:"Strava logo"},{href:"https://www.notion.com/",src:"/assets/tech-collection/notion.svg",alt:"Notion logo"},{href:"https://wise.com/",src:"/assets/tech-collection/wise.svg",alt:"Wise logo"},{href:"https://dayoneapp.com/",src:"/assets/tech-collection/day-one.svg",alt:"Day One logo"},{href:"https://telegram.org/",src:"/assets/tech-collection/telegram.svg",alt:"Telegram logo"},{href:"https://www.redbus.com/",src:"/assets/tech-collection/redbus.svg",alt:"Red Bus logo"},{href:"https://www.iqair.com/",src:"/assets/tech-collection/iqair.svg",alt:"IqAir logo"},{href:"https://www.shazam.com/",src:"/assets/tech-collection/shazam.svg",alt:"Shazam logo"},{href:"https://www.skyscanner.net/",src:"/assets/tech-collection/skyscanner.svg",alt:"Skyscanner logo"},{href:"https://developer.mozilla.org/en-US/docs/Glossary/HTML5",src:"/assets/tech-collection/html5.svg",alt:"HTML5 logo"},{href:"https://developer.mozilla.org/en-US/docs/Web/CSS",src:"/assets/tech-collection/css3.svg",alt:"CSS3 logo"},{href:"https://sass-lang.com/",src:"/assets/tech-collection/sass.svg",alt:"Sass logo"},{href:"https://bun.com/",src:"/assets/tech-collection/bun.svg",alt:"Bun logo"},{href:"https://www.upwork.com/",src:"/assets/tech-collection/upwork.svg",alt:"Upwork logo"},{href:"https://google.com/maps",src:"/assets/tech-collection/google-map.svg",alt:"Google Map logo"},{href:"https://www.airbnb.com/",src:"/assets/tech-collection/airbnb.svg",alt:"Airbnb logo"},{href:"https://ticktick.com/",src:"/assets/tech-collection/ticktick.svg",alt:"Ticktick logo"},{href:"https://unsplash.com/",src:"/assets/tech-collection/unsplash.svg",alt:"Unsplash logo"},{href:"https://oklch.com/",src:"/assets/tech-collection/oklch.svg",alt:"Oklch logo"},{href:"https://vert.sh/",src:"/assets/tech-collection/vert.svg",alt:"Vert logo"},{href:"https://thenounproject.com/",src:"/assets/tech-collection/the-noun-project.svg",alt:"The Noun Project logo"}],L=`
+`;t("section-title",{props:P,styles:T,template:C});var E=[{href:"https://raindrop.io/",src:"/assets/tech-collection/raindrop-io.svg",alt:"Raindrop-io logo"},{href:"https://www.spendee.com/",src:"/assets/tech-collection/spendee.svg",alt:"Spendee logo"},{href:"https://citymapper.com/",src:"/assets/tech-collection/citymapper.svg",alt:"Citymapper logo"},{href:"https://www.figma.com/",src:"/assets/tech-collection/figma.svg",alt:"Figma logo"},{href:"https://www.strava.com/",src:"/assets/tech-collection/strava.svg",alt:"Strava logo"},{href:"https://www.notion.com/",src:"/assets/tech-collection/notion.svg",alt:"Notion logo"},{href:"https://wise.com/",src:"/assets/tech-collection/wise.svg",alt:"Wise logo"},{href:"https://dayoneapp.com/",src:"/assets/tech-collection/day-one.svg",alt:"Day One logo"},{href:"https://telegram.org/",src:"/assets/tech-collection/telegram.svg",alt:"Telegram logo"},{href:"https://www.redbus.com/",src:"/assets/tech-collection/redbus.svg",alt:"Red Bus logo"},{href:"https://www.iqair.com/",src:"/assets/tech-collection/iqair.svg",alt:"IqAir logo"},{href:"https://www.shazam.com/",src:"/assets/tech-collection/shazam.svg",alt:"Shazam logo"},{href:"https://www.skyscanner.net/",src:"/assets/tech-collection/skyscanner.svg",alt:"Skyscanner logo"},{href:"https://developer.mozilla.org/en-US/docs/Glossary/HTML5",src:"/assets/tech-collection/html5.svg",alt:"HTML5 logo"},{href:"https://developer.mozilla.org/en-US/docs/Web/CSS",src:"/assets/tech-collection/css3.svg",alt:"CSS3 logo"},{href:"https://bun.com/",src:"/assets/tech-collection/bun.svg",alt:"Bun logo"},{href:"https://www.upwork.com/",src:"/assets/tech-collection/upwork.svg",alt:"Upwork logo"},{href:"https://google.com/maps",src:"/assets/tech-collection/google-map.svg",alt:"Google Map logo"},{href:"https://www.airbnb.com/",src:"/assets/tech-collection/airbnb.svg",alt:"Airbnb logo"},{href:"https://ticktick.com/",src:"/assets/tech-collection/ticktick.svg",alt:"Ticktick logo"},{href:"https://unsplash.com/",src:"/assets/tech-collection/unsplash.svg",alt:"Unsplash logo"},{href:"https://oklch.com/",src:"/assets/tech-collection/oklch.svg",alt:"Oklch logo"},{href:"https://vert.sh/",src:"/assets/tech-collection/vert.svg",alt:"Vert logo"},{href:"https://thenounproject.com/",src:"/assets/tech-collection/the-noun-project.svg",alt:"The Noun Project logo"}],L=`
   section {
     width: 80%;
     margin-inline: auto;
   }
 
   ul {
-     position: relative;
+    position: relative;
     list-style-type: none;
     padding: 0;
     max-height: 100rem;
@@ -503,10 +503,10 @@ function d(e,o){if(e===void 0){if(o===Array)return[];if(o===Object)return{};if(o
     margin: 0;
     text-align: center;
   }
-`,M=()=>`
+`,F=()=>`
   <section>
        <section-title
-        props='${JSON.stringify({name:"Why hire me?",img:"/assets/icons/birds-singing.svg",alt:"Birds-singing Logo"})}'
+        props='${JSON.stringify({name:"Random Facts",img:"/assets/icons/birds-singing.svg",alt:"Birds-singing Logo"})}'
       ></section-title>
 
       <ul>
@@ -520,7 +520,7 @@ function d(e,o){if(e===void 0){if(o===Array)return[];if(o===Object)return{};if(o
             `).join("")}
       </ul>
   </section>
-`;t("section-random-facts",{styles:W,template:M});var j=`
+`;t("section-random-facts",{styles:W,template:F});var M=`
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -543,7 +543,7 @@ function d(e,o){if(e===void 0){if(o===Array)return[];if(o===Object)return{};if(o
     --local-color: var(--color-secondary);
     --local-border: 1px solid var(--color-secondary);
   }
-`,F={name:String},J=({name:e})=>`${e}`;t("app-badge",{props:F,styles:j,template:J});var R=[{icon:"/assets/icons/software-developer.svg",alt:"Software Developer Icon",range:"2021-2022",title:"Software Developer",description:"I landed my first software development role building a hospital management system to manage inventory, POS, and OPD appointments. The system is still running today."},{icon:"/assets/icons/student.svg",alt:"Student Icon",range:"2022-2025",title:"Student",description:"I completed my Bachelor of Science in Computer Science at Assumption University, Thailand. My favorite subject was Computer Architecture."},{icon:"/assets/icons/software-developer.svg",alt:"Software Developer Icon",range:"2025-2026",title:"Software Developer",description:"After graduating, I worked remotely for 6 months as a software developer at an event organizing company in Singapore."},{icon:"/assets/icons/full-time-freelancer.svg",alt:"Web Design & Develop",range:"Present",title:"UX Designer",description:"Today, I've found my passion in UX design. Self-taught through research and hands-on practice, I design intuitive experiences by simplifying complex workflows."}],G=`
+`,R={name:String},j=({name:e})=>`${e}`;t("app-badge",{props:R,styles:M,template:j});var J=[{icon:"/assets/icons/software-developer.svg",alt:"Software Developer Icon",range:"2021-2022",title:"Software Developer",description:"I landed my first software development role building a hospital management system to manage inventory, POS, and OPD appointments. The system is still running today."},{icon:"/assets/icons/student.svg",alt:"Student Icon",range:"2022-2025",title:"Student",description:"I completed my Bachelor of Science in Computer Science at Assumption University, Thailand. My favorite subject was Computer Architecture."},{icon:"/assets/icons/software-developer.svg",alt:"Software Developer Icon",range:"2025-2026",title:"Software Developer",description:"After graduating, I worked remotely for 6 months as a software developer at an event organizing company in Singapore."},{icon:"/assets/icons/full-time-freelancer.svg",alt:"Web Design & Develop",range:"Present",title:"UX Designer",description:"Today, I've found my passion in UX design. Self-taught through research and hands-on practice, I design intuitive experiences by simplifying complex workflows."}],G=`
   :host {
     display: block;
   }
@@ -640,7 +640,7 @@ function d(e,o){if(e===void 0){if(o===Array)return[];if(o===Object)return{};if(o
       ></section-title>
 
       <ul>
-        ${R.map(({icon:e,alt:o,range:n,title:s,description:l})=>`
+        ${J.map(({icon:e,alt:o,range:n,title:s,description:l})=>`
               <li>
                 <app-icon src="${e}" alt="${o}"></app-icon>
 

@@ -2,6 +2,7 @@ import { define } from "../../define";
 
 import "../../components/app-image";
 import "../../components/app-link";
+import { PHONE } from "../../breakpoints";
 
 const styles = /* css */ `
   :host {
@@ -15,6 +16,10 @@ const styles = /* css */ `
     flex-direction: row-reverse;
     justify-content: space-between;
     gap: 3rem;
+
+    @media (max-width: ${PHONE}) {
+      flex-direction: column;
+    }
   }
 
   h1 {
@@ -44,7 +49,7 @@ const styles = /* css */ `
 const template = /* html */ `
   <section>
     <app-image
-      variant="medium"
+      variant="full"
       src="/assets/images/case-study/skssolar/mockup.avif"
       alt="Final Product Screenshot"
       width="1692"

@@ -38,7 +38,7 @@ const template = /* html */ `
       <h1>About</h1>
       <div>
         <app-image
-          variant="normal"
+          variant="large"
           src="assets/images/about-profile.avif"
           alt="profile"
         ></app-image>

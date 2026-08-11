@@ -48,7 +48,7 @@ const template = () => /* html */ `
   <section>
        <section-title
         props='${JSON.stringify({
-          name: "Why hire me?",
+          name: "Random Facts",
           img: "/assets/icons/birds-singing.svg",
           alt: "Birds-singing Logo",
         })}'

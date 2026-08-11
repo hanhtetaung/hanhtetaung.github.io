@@ -1,4 +1,4 @@
-function h(a,t){if(a===void 0){if(t===Array)return[];if(t===Object)return{};if(t===Boolean)return!1;if(t===Number)return 0;return}if(t===Boolean)return Boolean(a);if(t===Number)return Number(a);return a}function e(a,{props:t={},attrs:n=[],styles:d="",template:l}){let m=["props",...n];class p extends HTMLElement{static observedAttributes=m;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let o={},r=this.getAttribute("props");if(r)try{o=JSON.parse(r)}catch{o={}}let c={};for(let s of Object.keys(t))c[s]=h(o[s],t[s]);return c}_applyForwardedAttrs(){if(n.length===0)return;let o=this.shadowRoot.querySelector("[data-forward]");if(!o)return;for(let r of n)if(this.hasAttribute(r))o.setAttribute(r,this.getAttribute(r));else o.removeAttribute(r)}_render(){let o=this._getProps(),r=typeof l==="function"?l(o):l;this.shadowRoot.innerHTML=`<style>${d}</style>${r}`,this._applyForwardedAttrs()}}customElements.define(a,p)}var g=`
+function h(i,a){if(i===void 0){if(a===Array)return[];if(a===Object)return{};if(a===Boolean)return!1;if(a===Number)return 0;return}if(a===Boolean)return Boolean(i);if(a===Number)return Number(i);return i}function e(i,{props:a={},attrs:n=[],styles:d="",template:l}){let m=["props",...n];class c extends HTMLElement{static observedAttributes=m;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let o={},r=this.getAttribute("props");if(r)try{o=JSON.parse(r)}catch{o={}}let p={};for(let s of Object.keys(a))p[s]=h(o[s],a[s]);return p}_applyForwardedAttrs(){if(n.length===0)return;let o=this.shadowRoot.querySelector("[data-forward]");if(!o)return;for(let r of n)if(this.hasAttribute(r))o.setAttribute(r,this.getAttribute(r));else o.removeAttribute(r)}_render(){let o=this._getProps(),r=typeof l==="function"?l(o):l;this.shadowRoot.innerHTML=`<style>${d}</style>${r}`,this._applyForwardedAttrs()}}customElements.define(i,c)}var g=`
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -61,7 +61,7 @@ function h(a,t){if(a===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     max-height: 7rem;
     width: auto;
   }
-`,y=["width","height","src","alt"],b=()=>"<img data-forward />";e("app-logo",{attrs:y,styles:v,template:b});var i="769px",J="992px";var w=`
+`,y=["width","height","src","alt"],b=()=>"<img data-forward />";e("app-logo",{attrs:y,styles:v,template:b});var t="769px",J="992px";var w=`
   :host {
     display: block;
   }
@@ -95,7 +95,7 @@ function h(a,t){if(a===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     box-shadow: none;
   }
 
-  @media (max-width: ${i}) {
+  @media (max-width: ${t}) {
     .header__navigation {
       gap: 4rem;
     }
@@ -138,7 +138,7 @@ function h(a,t){if(a===void 0){if(t===Array)return[];if(t===Object)return{};if(t
    display: flex;
    gap: 5rem;
 
-   @media (max-width: ${i}) {
+   @media (max-width: ${t}) {
         flex-direction: column;
         gap: 3rem;
         margin-block: 2rem;
@@ -235,7 +235,7 @@ function h(a,t){if(a===void 0){if(t===Array)return[];if(t===Object)return{};if(t
             </li>
         </ul>
     </nav>
-`;e("footer-nav",{styles:x,template:S});var _=`
+`;e("footer-nav",{styles:x,template:S});var H=`
   :host {
     --local-bg-color: var(--color-bg-secondary);
 
@@ -265,7 +265,7 @@ function h(a,t){if(a===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     align-items: center;
   }
 
-  @media (max-width: ${i}) {
+  @media (max-width: ${t}) {
     article {
       display: block;
     }
@@ -275,7 +275,7 @@ function h(a,t){if(a===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     display: flex;
     gap: 3rem;
   }
-`,A=`
+`,_=`
   <footer>
       <article>
         <div>
@@ -300,7 +300,7 @@ function h(a,t){if(a===void 0){if(t===Array)return[];if(t===Object)return{};if(t
         <app-link href="/credits" variant="underline">Credits</app-link>
       </p>
   </footer>
-`;e("section-footer",{styles:_,template:A});var H=`
+`;e("section-footer",{styles:H,template:_});var A=`
   :host {
     --local-width: 5rem;
     --local-heigth: auto;
@@ -331,7 +331,7 @@ function h(a,t){if(a===void 0){if(t===Array)return[];if(t===Object)return{};if(t
    :host([variant="full"]) {
     --local-width: 100%;
   }
-`,P=["width","height","src","alt"],T=()=>"<img data-forward />";e("app-image",{attrs:P,styles:H,template:T});var z=`
+`,P=["width","height","src","alt"],E=()=>"<img data-forward />";e("app-image",{attrs:P,styles:A,template:E});var O=`
   :host {
     display: block;
   }
@@ -343,6 +343,10 @@ function h(a,t){if(a===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     flex-direction: row-reverse;
     justify-content: space-between;
     gap: 3rem;
+
+    @media (max-width: ${t}) {
+      flex-direction: column;
+    }
   }
 
   h1 {
@@ -367,10 +371,10 @@ function h(a,t){if(a===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     font-weight: var(--font-bold);
     text-transform: uppercase;
   }
-`,E=`
+`,T=`
   <section>
     <app-image
-      variant="medium"
+      variant="full"
       src="/assets/images/case-study/skssolar/mockup.avif"
       alt="Final Product Screenshot"
       width="1692"
@@ -397,7 +401,7 @@ function h(a,t){if(a===void 0){if(t===Array)return[];if(t===Object)return{};if(t
       </app-link>
     </article>
   </section>
-`;e("section-sks-solar-intro",{styles:z,template:E});var L=`
+`;e("section-sks-solar-intro",{styles:O,template:T});var $=`
   :host {
     display: flex;
     align-items: center;
@@ -427,15 +431,15 @@ function h(a,t){if(a===void 0){if(t===Array)return[];if(t===Object)return{};if(t
       display: none;
     }
   }
-`,O={name:String,img:String,alt:String},$=({name:a,img:t="",alt:n=""})=>`
-    <h2>${a}</h2>
+`,z={name:String,img:String,alt:String},L=({name:i,img:a="",alt:n=""})=>`
+    <h2>${i}</h2>
     <img
-        src=${t}
+        src=${a}
         alt=${n}
         height="36"
         width="76"
     />
-`;e("section-title",{props:O,styles:L,template:$});var N=`
+`;e("section-title",{props:z,styles:$,template:L});var N=`
   :host {
     display: block;
   }
@@ -484,7 +488,7 @@ function h(a,t){if(a===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     grid-template-columns: 1fr 2.5fr;
 
 
-    @media (max-width: ${i}) {
+    @media (max-width: ${t}) {
         display: block;
     }
   }
@@ -500,8 +504,8 @@ function h(a,t){if(a===void 0){if(t===Array)return[];if(t===Object)return{};if(t
   :host([variant="block"]) {
     display: block;
   }
-`,R={title:String},W=({title:a})=>`
-        <h3>${a}</h3>
+`,R={title:String},W=({title:i})=>`
+        <h3>${i}</h3>
 
         <article>
             <slot></slot>
@@ -635,7 +639,7 @@ function h(a,t){if(a===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     padding: 0;
     gap: 3rem;
 
-    @media (max-width: ${i}) {
+    @media (max-width: ${t}) {
       flex-direction: column;
     }
   }

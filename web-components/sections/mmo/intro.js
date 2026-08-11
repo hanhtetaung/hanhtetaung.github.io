@@ -12,13 +12,13 @@ const styles = /* css */ `
     margin-inline: auto;
 
     display: flex;
-        flex-direction: row-reverse;
-        justify-content: space-between;
-        gap: 3rem;
-    
-        @media (max-width: ${PHONE}) {
-          flex-direction: column;
-        }
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    gap: 3rem;
+
+    @media (max-width: ${PHONE}) {
+      flex-direction: column;
+    }
   }
 
 

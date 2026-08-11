@@ -341,13 +341,13 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     margin-inline: auto;
 
     display: flex;
-        flex-direction: row-reverse;
-        justify-content: space-between;
-        gap: 3rem;
-    
-        @media (max-width: ${a}) {
-          flex-direction: column;
-        }
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    gap: 3rem;
+
+    @media (max-width: ${a}) {
+      flex-direction: column;
+    }
   }
 
 

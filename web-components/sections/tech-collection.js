@@ -79,11 +79,6 @@ const techCollection = [
     alt: "CSS3 logo",
   },
   {
-    href: "https://sass-lang.com/",
-    src: "/assets/tech-collection/sass.svg",
-    alt: "Sass logo",
-  },
-  {
     href: "https://bun.com/",
     src: "/assets/tech-collection/bun.svg",
     alt: "Bun logo",
@@ -137,7 +132,7 @@ const styles = /*css*/ `
   }
 
   ul {
-     position: relative;
+    position: relative;
     list-style-type: none;
     padding: 0;
     max-height: 100rem;
