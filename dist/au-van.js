@@ -341,15 +341,17 @@ function h(r,a){if(r===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     height: var(--local-height);
   }
 
+  :host([variant="medium"]) {
+     --local-width: auto;
+    --local-height: 5rem;
+  }
+
   :host([variant="large"]) {
     --local-width: auto;
     --local-height: 10rem;
   }
 
   :host([variant="creator"]) {
-    /* --local-height: auto;
-    --local-width: 4rem; */
-
     img {
       min-width: 5rem;
       max-width: 10rem;

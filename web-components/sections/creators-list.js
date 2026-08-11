@@ -168,7 +168,25 @@ const creditsData = [
     icon: "/assets/icons/cuckoo-cock.svg",
     alt: "Coming Soon Logo",
     url: "https://thenounproject.com/icon/cuckoo-clock-1470212/",
-    name: "Phạm Thanh Lộc",
+    name: "Free Fair & Healthy",
+  },
+  {
+    icon: "/assets/icons/technology.svg",
+    alt: "Technology Logo",
+    url: "https://thenounproject.com/icon/technology-7864424/",
+    name: "Ferdian Mauladi Riziq",
+  },
+  {
+    icon: "/assets/icons/engineering.svg",
+    alt: "Technology Logo",
+    url: "https://thenounproject.com/icon/engineering-8024039/",
+    name: "Omah Icon",
+  },
+  {
+    icon: "/assets/icons/kingfisher.svg",
+    alt: "Kingfisher Logo",
+    url: "https://thenounproject.com/icon/kingfisher-bird-6274353/",
+    name: "Delwar Hossain",
   },
 ];
 

@@ -13,15 +13,17 @@ const styles = /* css */ `
     height: var(--local-height);
   }
 
+  :host([variant="medium"]) {
+     --local-width: auto;
+    --local-height: 5rem;
+  }
+
   :host([variant="large"]) {
     --local-width: auto;
     --local-height: 10rem;
   }
 
   :host([variant="creator"]) {
-    /* --local-height: auto;
-    --local-width: 4rem; */
-
     img {
       min-width: 5rem;
       max-width: 10rem;
