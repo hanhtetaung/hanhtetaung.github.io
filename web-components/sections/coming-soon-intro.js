@@ -19,6 +19,10 @@ const styles = /*css*/ `
     font-family: var(--font-heading);
   }
 
+  hgroup {
+    margin-bottom: 2rem;
+  }
+
   p {
     margin: 0;
   }
@@ -30,23 +34,29 @@ const styles = /*css*/ `
         }
 `;
 
-const template = /* html */ `
+const props = { name: String, img: String, alt: String };
+
+const template = ({
+  name = "Name",
+  img = "/assets/images/coming-soon.jpg",
+  alt = "Coming Soon",
+}) => /* html */ `
   <section>
       <div>
         <hgroup>
-          <p class="body">Coming Soon</p>
-          <h1>Name</h1>
+          <p>Coming Soon</p>
+          <h1>${name}</h1>
         </hgroup>
 
         <app-icon
           variant="large"
           src="/assets/icons/cuckoo-cock.svg"
-          alt="Coming Soon"
+          alt="Cuckoo Cock Logo"
         ></app-icon>
       </div>
 
-      <app-image variant="large" src="/assets/images/coming-soon.jpg" alt="Coming Soon"></app-image>
+      <app-image variant="large" src=${img} alt=${alt}></app-image>
   </section>
 `;
 
-define("section-coming-soon-intro", { styles, template });
+define("section-coming-soon-intro", { props, styles, template });

@@ -4,7 +4,7 @@ function coerce(value, type) {
     if (type === Object) return {};
     if (type === Boolean) return false;
     if (type === Number) return 0;
-    return "";
+    return undefined;
   }
   if (type === Boolean) return Boolean(value);
   if (type === Number) return Number(value);

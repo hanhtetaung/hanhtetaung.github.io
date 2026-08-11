@@ -45,7 +45,7 @@ const caseStudies = [
     description:
       "A website for SKS SOLAR (SALES & SERVICES) COMPANY LIMITED to showcase its history, services and completed project.",
     href: "/work/sks-solar",
-    reverse: false,
+    reverse: true,
   },
 ];
 

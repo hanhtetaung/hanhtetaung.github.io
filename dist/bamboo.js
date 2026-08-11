@@ -1,4 +1,4 @@
-function h(i,a){if(i===void 0){if(a===Array)return[];if(a===Object)return{};if(a===Boolean)return!1;if(a===Number)return 0;return""}if(a===Boolean)return Boolean(i);if(a===Number)return Number(i);return i}function o(i,{props:a={},attrs:n=[],styles:m="",template:l}){let g=["props",...n];class c extends HTMLElement{static observedAttributes=g;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let e={},r=this.getAttribute("props");if(r)try{e=JSON.parse(r)}catch{e={}}let p={};for(let s of Object.keys(a))p[s]=h(e[s],a[s]);return p}_applyForwardedAttrs(){if(n.length===0)return;let e=this.shadowRoot.querySelector("[data-forward]");if(!e)return;for(let r of n)if(this.hasAttribute(r))e.setAttribute(r,this.getAttribute(r));else e.removeAttribute(r)}_render(){let e=this._getProps(),r=typeof l==="function"?l(e):l;this.shadowRoot.innerHTML=`<style>${m}</style>${r}`,this._applyForwardedAttrs()}}customElements.define(i,c)}var f=`
+function g(e,a){if(e===void 0){if(a===Array)return[];if(a===Object)return{};if(a===Boolean)return!1;if(a===Number)return 0;return}if(a===Boolean)return Boolean(e);if(a===Number)return Number(e);return e}function o(e,{props:a={},attrs:n=[],styles:m="",template:l}){let d=["props",...n];class c extends HTMLElement{static observedAttributes=d;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let t={},i=this.getAttribute("props");if(i)try{t=JSON.parse(i)}catch{t={}}let p={};for(let s of Object.keys(a))p[s]=g(t[s],a[s]);return p}_applyForwardedAttrs(){if(n.length===0)return;let t=this.shadowRoot.querySelector("[data-forward]");if(!t)return;for(let i of n)if(this.hasAttribute(i))t.setAttribute(i,this.getAttribute(i));else t.removeAttribute(i)}_render(){let t=this._getProps(),i=typeof l==="function"?l(t):l;this.shadowRoot.innerHTML=`<style>${m}</style>${i}`,this._applyForwardedAttrs()}}customElements.define(e,c)}var h=`
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -50,9 +50,9 @@ function h(i,a){if(i===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     --local-border: none;
     --local-direction: column;
   }
-`,u=["href","target","rel","download"],v=`
+`,f=["href","target","rel","download"],u=`
   <a data-forward><slot></slot></a>
-`;o("app-link",{attrs:u,styles:f,template:v});var b=`
+`;o("app-link",{attrs:f,styles:h,template:u});var v=`
   :host {
     display: block;
   }
@@ -61,7 +61,7 @@ function h(i,a){if(i===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     max-height: 7rem;
     width: auto;
   }
-`,k=["width","height","src","alt"],y=()=>"<img data-forward />";o("app-logo",{attrs:k,styles:b,template:y});var t="769px",N="992px";var x=`
+`,b=["width","height","src","alt"],y=()=>"<img data-forward />";o("app-logo",{attrs:b,styles:v,template:y});var r="769px",G="992px";var k=`
   :host {
     display: block;
   }
@@ -95,7 +95,7 @@ function h(i,a){if(i===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     box-shadow: none;
   }
 
-  @media (max-width: ${t}) {
+  @media (max-width: ${r}) {
     .header__navigation {
       gap: 4rem;
     }
@@ -129,7 +129,7 @@ function h(i,a){if(i===void 0){if(a===Array)return[];if(a===Object)return{};if(a
         </app-link>
       </div>
   </header>
-`;o("section-header",{template:w,styles:x});var _=`
+`;o("section-header",{template:w,styles:k});var x=`
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -138,7 +138,7 @@ function h(i,a){if(i===void 0){if(a===Array)return[];if(a===Object)return{};if(a
    display: flex;
    gap: 5rem;
 
-   @media (max-width: ${t}) {
+   @media (max-width: ${r}) {
         flex-direction: column;
         gap: 3rem;
         margin-block: 2rem;
@@ -235,7 +235,7 @@ function h(i,a){if(i===void 0){if(a===Array)return[];if(a===Object)return{};if(a
             </li>
         </ul>
     </nav>
-`;o("footer-nav",{styles:_,template:A});var H=`
+`;o("footer-nav",{styles:x,template:A});var H=`
   :host {
     --local-bg-color: var(--color-bg-secondary);
 
@@ -265,7 +265,7 @@ function h(i,a){if(i===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     align-items: center;
   }
 
-  @media (max-width: ${t}) {
+  @media (max-width: ${r}) {
     article {
       display: block;
     }
@@ -275,7 +275,7 @@ function h(i,a){if(i===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     display: flex;
     gap: 3rem;
   }
-`,C=`
+`,_=`
   <footer>
       <article>
         <div>
@@ -300,25 +300,102 @@ function h(i,a){if(i===void 0){if(a===Array)return[];if(a===Object)return{};if(a
         <app-link href="/credits" variant="underline">Credits</app-link>
       </p>
   </footer>
-`;o("section-footer",{styles:H,template:C});class d extends HTMLElement{connectedCallback(){this.innerHTML=`  <section class="coming-soon">
-        <div class="container">
-          <div class="coming-soon__header">
-            <hgroup>
-              <p class="body">Coming Soon</p>
-              <h1>Bamboo</h1>
-            </hgroup>
+`;o("section-footer",{styles:H,template:_});var C=`
+  :host {
+    --local-width: 5rem;
+    --local-heigth: auto;
 
-            <img
-              src="/assets/icons/cuckoo-cock.svg"
-              alt="Coming Soon"
-              class="coming-soon__image"
-            />
-          </div>
+    display: block;
+  }
 
-          <img
-            src="/assets/images/case-study/bamboo/thumbnail.avif"
-            class="image"
-            alt="Coming Soon"
-          />
-        </div>
-      </section>`}}customElements.define("section-bamboo-intro",d);
+  img {
+    max-width: var(--local-width);
+    height: var(--local-heigth);
+  }
+
+  :host([variant="normal"]) {
+    --local-width: 12rem;
+    --local-heigth: auto;
+  }
+
+  :host([variant="large"]) {
+    --local-width: 50rem;
+  }
+`,E=["width","height","src","alt"],N=()=>"<img data-forward />";o("app-image",{attrs:E,styles:C,template:N});var S=`
+  :host {
+    --local-width: 3rem;
+    --local-height: auto;
+
+    display: block;
+  }
+
+  img {
+    width: var(--local-width);
+      height: var(--local-height);
+  }
+
+  :host([variant="large"]) {
+    --local-width: auto;
+    --local-height: 10rem;
+  }
+
+  :host([variant="creator"]) {
+    --local-height: auto;
+    --local-width: 4rem;
+  }
+
+
+`,O=["src","alt"],$=()=>'<img data-forward width="200" height="200"/>';o("app-icon",{attrs:O,styles:S,template:$});var L=`
+   section {
+        margin-inline: auto;
+        width: 80%;
+        display: flex;
+        justify-content: space-between;
+    }
+
+      h1 {
+    margin: 0;
+    font-size: var(--size-display);
+    font-weight: var(--font-regular);
+    font-family: var(--font-heading);
+  }
+
+  hgroup {
+    margin-bottom: 2rem;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  @media (max-width: ${r}) {
+          app-image {
+            display: none;
+          }
+        }
+`,P={name:String,img:String,alt:String},T=({name:e="Name",img:a="/assets/images/coming-soon.jpg",alt:n="Coming Soon"})=>`
+  <section>
+      <div>
+        <hgroup>
+          <p>Coming Soon</p>
+          <h1>${e}</h1>
+        </hgroup>
+
+        <app-icon
+          variant="large"
+          src="/assets/icons/cuckoo-cock.svg"
+          alt="Cuckoo Cock Logo"
+        ></app-icon>
+      </div>
+
+      <app-image variant="large" src=${a} alt=${n}></app-image>
+  </section>
+`;o("section-coming-soon-intro",{props:P,styles:L,template:T});var j=`
+  :host {
+    display: block;
+  }
+`,B=`
+  <section-coming-soon-intro
+    props='{"name":"Bamboo", "img": "/assets/images/case-study/bamboo/thumbnail.avif", "alt": "Bamboo Interface"}'
+  ></section-coming-soon-intro>
+`;o("section-bamboo-intro",{styles:j,template:B});
