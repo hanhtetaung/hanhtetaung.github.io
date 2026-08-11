@@ -20,7 +20,7 @@ const styles = /*css*/ `
 `;
 
 const template = /* html */ `
-  <section class="credits">
+  <section>
       <h1>Credits</h1>
       <p>Thanks to the creators behind the icons.</p>
   </section>

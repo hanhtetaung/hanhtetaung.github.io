@@ -1,4 +1,4 @@
-function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t===Boolean)return!1;if(t===Number)return 0;return}if(t===Boolean)return Boolean(i);if(t===Number)return Number(i);return i}function e(i,{props:t={},attrs:o=[],styles:s="",template:r}){let p=["props",...o];class c extends HTMLElement{static observedAttributes=p;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let n={},l=this.getAttribute("props");if(l)try{n=JSON.parse(l)}catch{n={}}let m={};for(let d of Object.keys(t))m[d]=h(n[d],t[d]);return m}_applyForwardedAttrs(){if(o.length===0)return;let n=this.shadowRoot.querySelector("[data-forward]");if(!n)return;for(let l of o)if(this.hasAttribute(l))n.setAttribute(l,this.getAttribute(l));else n.removeAttribute(l)}_render(){let n=this._getProps(),l=typeof r==="function"?r(n):r;this.shadowRoot.innerHTML=`<style>${s}</style>${l}`,this._applyForwardedAttrs()}}customElements.define(i,c)}var f=`
+function h(t,i){if(t===void 0){if(i===Array)return[];if(i===Object)return{};if(i===Boolean)return!1;if(i===Number)return 0;return}if(i===Boolean)return Boolean(t);if(i===Number)return Number(t);return t}function e(t,{props:i={},attrs:o=[],styles:s="",template:r}){let p=["props",...o];class c extends HTMLElement{static observedAttributes=p;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let n={},l=this.getAttribute("props");if(l)try{n=JSON.parse(l)}catch{n={}}let m={};for(let d of Object.keys(i))m[d]=h(n[d],i[d]);return m}_applyForwardedAttrs(){if(o.length===0)return;let n=this.shadowRoot.querySelector("[data-forward]");if(!n)return;for(let l of o)if(this.hasAttribute(l))n.setAttribute(l,this.getAttribute(l));else n.removeAttribute(l)}_render(){let n=this._getProps(),l=typeof r==="function"?r(n):r;this.shadowRoot.innerHTML=`<style>${s}</style>${l}`,this._applyForwardedAttrs()}}customElements.define(t,c)}var f=`
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -124,7 +124,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
           </ul>
         </nav>
 
-        <app-link class="button--primary" variant="primary" href="/hire-me">
+        <app-link variant="primary" href="/hire-me">
           Let's chat &#8629;
         </app-link>
       </div>
@@ -201,7 +201,6 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
                 <img
                     src="/assets/icons/email.svg"
                     alt="Email Icon"
-                    class="icon--sm"
                 />
                 </app-link>
             </li>
@@ -215,7 +214,6 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
                 <img
                     src="/assets/icons/github.svg"
                     alt="Github Icon"
-                    class="icon--sm"
                 />
                 </app-link>
             </li>
@@ -229,7 +227,6 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
                 <img
                     src="/assets/icons/linkedin.svg"
                     alt="Linkedin Icon"
-                    class="icon--sm"
                 />
                 </app-link>
             </li>
@@ -295,7 +292,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
         <footer-nav></footer-nav>
       </article>
 
-      <p class="footer__copy">
+      <p>
         © Han Htet Aung 2026 |
         <app-link href="/credits" variant="underline">Credits</app-link>
       </p>
@@ -443,11 +440,11 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
   
         <span>Toolkit:</span>
         <ul class="toolkits">
-          ${D.map((i)=>`
+          ${D.map((t)=>`
               <li>
                 <app-icon
-                  src=${i.src}
-                  alt=${i.alt}
+                  src=${t.src}
+                  alt=${t.alt}
                 ></app-icon>
               </li>
             `).join("")}
@@ -455,22 +452,22 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
       </article>
 
       <ul class="highlights">
-         ${z.map((i)=>`
+         ${z.map((t)=>`
                 <li>
-                  <span>${i.title}</span>
-                  <h3>${i.header}</h3>
+                  <span>${t.title}</span>
+                  <h3>${t.header}</h3>
                 </li>
               `).join("")}
       </ul>
 
       <ol>
-        ${P.map((i)=>`
+        ${P.map((t)=>`
           <li>
-            <app-link variant="image" href=${i.href}>
-              <span>${i.name}</span>
+            <app-link variant="image" href=${t.href}>
+              <span>${t.name}</span>
               <img
-                src=${i.src}
-                alt=${i.alt}
+                src=${t.src}
+                alt=${t.alt}
               />
             </app-link>
           </li>
@@ -500,7 +497,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     --local-color: var(--color-secondary);
     --local-border: 1px solid var(--color-secondary);
   }
-`,N={name:String},C=({name:i})=>`${i}`;e("app-badge",{props:N,styles:E,template:C});var H=`
+`,N={name:String},C=({name:t})=>`${t}`;e("app-badge",{props:N,styles:E,template:C});var H=`
   :host {
     --local-border: 1px solid currentColor;
     --local-decoration: none;
@@ -561,8 +558,8 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
       display: block;
     }
   }
-`,_={image:String,alt:String,title:String,description:String,href:String,categories:Array},j=({image:i,alt:t,title:o,description:s,href:r,categories:p})=>`
-    <img src="${i}" alt="${t}" />
+`,j={image:String,alt:String,title:String,description:String,href:String,categories:Array},B=({image:t,alt:i,title:o,description:s,href:r,categories:p})=>`
+    <img src="${t}" alt="${i}" />
     <div>
       <h3>${o}</h3>
       <ul>
@@ -575,7 +572,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
         View Case Study &#8599;
       </app-link>
     </div>
-`;e("case-study-item",{props:_,styles:H,template:j});var B=`
+`;e("case-study-item",{props:j,styles:H,template:B});var _=`
   :host {
     display: flex;
     align-items: center;
@@ -605,15 +602,15 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
       display: none;
     }
   }
-`,W={name:String,img:String,alt:String},J=({name:i,img:t="",alt:o=""})=>`
-    <h2>${i}</h2>
+`,W={name:String,img:String,alt:String},J=({name:t,img:i="",alt:o=""})=>`
+    <h2>${t}</h2>
     <img
-        src=${t}
+        src=${i}
         alt=${o}
         height="36"
         width="76"
     />
-`;e("section-title",{props:W,styles:B,template:J});var K=[{image:"/assets/images/case-study/knowledge-tree/thumbnail.avif",alt:"Knowledge Tree Thumbnail",title:"Knowledge Tree",categories:["Product Design","User Experience","Design System"],description:"A tool to visualize the connections between everyday goods and their fundamental sources based on my knowledge.",href:"/work/knowledge-tree",reverse:!1},{image:"assets/images/case-study/mmo/thumbnail.avif",alt:"MMO thumbnail",title:"MMO",categories:["Simplify complex workflows","Build Prototype","Design System"],description:"An internal portal that uses to run daily operations in hospital.",href:"/work/mmo",reverse:!0},{image:"/assets/images/case-study/portfolio/mockup.avif",alt:"Portfolio Mockup",title:"Portfolio",categories:["Research","Web Design","Web Development"],description:"A personal portfolio to showcase my work, process, and approach to web design and development.",href:"/work/portfolio",reverse:!1},{image:"/assets/images/case-study/skssolar/mockup.avif",alt:"SKS Mockup",title:"SKS.Solar",categories:["Research","Web Design","Web Development"],description:"A website for SKS SOLAR (SALES & SERVICES) COMPANY LIMITED to showcase its history, services and completed project.",href:"/work/sks-solar",reverse:!0}],R=`
+`;e("section-title",{props:W,styles:_,template:J});var K=[{image:"/assets/images/case-study/knowledge-tree/thumbnail.avif",alt:"Knowledge Tree Thumbnail",title:"Knowledge Tree",categories:["Product Design","User Experience","Design System"],description:"A tool to visualize the connections between everyday goods and their fundamental sources based on my knowledge.",href:"/work/knowledge-tree",reverse:!1},{image:"assets/images/case-study/mmo/thumbnail.avif",alt:"MMO thumbnail",title:"MMO",categories:["Simplify complex workflows","Build Prototype","Design System"],description:"An internal portal that uses to run daily operations in hospital.",href:"/work/mmo",reverse:!0},{image:"/assets/images/case-study/portfolio/mockup.avif",alt:"Portfolio Mockup",title:"Portfolio",categories:["Research","Web Design","Web Development"],description:"A personal portfolio to showcase my work, process, and approach to web design and development.",href:"/work/portfolio",reverse:!1},{image:"/assets/images/case-study/skssolar/mockup.avif",alt:"SKS Mockup",title:"SKS.Solar",categories:["Research","Web Design","Web Development"],description:"A website for SKS SOLAR (SALES & SERVICES) COMPANY LIMITED to showcase its history, services and completed project.",href:"/work/sks-solar",reverse:!0}],R=`
   :host {
     background: var(--color-bg-secondary)
   }
@@ -637,11 +634,11 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
       ></section-title>
             
       <ul>
-        ${K.map((i)=>`
+        ${K.map((t)=>`
               <li>
                 <case-study-item
-                  props='${JSON.stringify(i)}'
-                  ${i.reverse?"reverse":""}
+                  props='${JSON.stringify(t)}'
+                  ${t.reverse?"reverse":""}
                 ></case-study-item>
               </li>
             `).join("")}
@@ -714,7 +711,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     min-height: 2rem;
   }
 
-  .content {
+  article {
     padding-bottom: 5rem;
     max-width: 100ch;
   }
@@ -738,22 +735,21 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
   }
 `,G=()=>`
   <section>
-    <div class="container">
       <section-title
         props='${JSON.stringify({name:"Experience Overview",img:"/assets/icons/bird-flying.svg",alt:"Bird Flying Logo"})}'
       ></section-title>
 
       <ul>
-        ${X.map(({icon:i,alt:t,range:o,title:s,description:r})=>`
+        ${X.map(({icon:t,alt:i,range:o,title:s,description:r})=>`
               <li>
-                <app-icon src="${i}" alt="${t}"></app-icon>
+                <app-icon src="${t}" alt="${i}"></app-icon>
 
                 <div class="connector">
                   <span class="dot"></span>
                   <span class="line"></span>
                 </div>
 
-                <div class="content">
+                <article>
                   <app-badge
                     props='${JSON.stringify({name:o})}'
                     ${o==="Present"?"":'variant="outline"'}
@@ -761,11 +757,10 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
 
                   <h3>${s}</h3>
                   <p>${r}</p>
-                </div>
+                </article>
               </li>
             `).join("")}
       </ul>
-    </div>
   </section>
 `;e("section-timeline",{styles:F,template:G});var V=`
   :host {
@@ -865,7 +860,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
       gap: 1rem;
     }
   }
-`,ie=()=>`
+`,te=()=>`
   <section>
        <section-title
         variant="vertical"
@@ -873,11 +868,11 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
       ></section-title>
 
       <ul>
-        ${q.map(({title:i,description:t,icon:o,alt:s},r)=>`
+        ${q.map(({title:t,description:i,icon:o,alt:s},r)=>`
               <li>
                 <article>
-                  <h3><span>${r+1}.</span> ${i}</h3>
-                  <p>${t}</p>
+                  <h3><span>${r+1}.</span> ${t}</h3>
+                  <p>${i}</p>
                 </article>
 
                 <app-icon variant="large" src="${o}" alt="${s}"></app-icon>
@@ -885,7 +880,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
             `).join("")}
       </ul>
   </section>
-`;e("section-why-hire-me",{styles:ee,template:ie});var te=`
+`;e("section-why-hire-me",{styles:ee,template:te});var ie=`
   :host {
     display: block;
     position: relative;
@@ -928,7 +923,6 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
   }
 `,oe=`
   <section>
-    <div class="container">
        <section-title
        variant="text"
         props='${JSON.stringify({name:"Call me, Singapore",img:"/assets/icons/owl.svg",alt:"Owl Logo"})}'
@@ -955,13 +949,11 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
       </article>
 
       <img
-        class="image"
         src="/assets/icons/merlion.svg"
         alt="Merlion illustration"
       />
-    </div>
   </section>
-`;e("section-cta",{styles:te,template:oe});var ae=`
+`;e("section-cta",{styles:ie,template:oe});var ae=`
   :host {
     display: block;
     width: 100%;
@@ -973,7 +965,6 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     height: auto;
   }
 `,re=`
-  <div class="cloud-divider">
     <svg
       viewBox="0 0 1200 80"
       xmlns="http://www.w3.org/2000/svg"
@@ -1004,7 +995,6 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
         fill="var(--color-bg-secondary)"
       />
     </svg>
-  </div>
 `;e("line-divider-lower",{styles:ae,template:re});var ne=`
   :host {
     display: block;
@@ -1017,7 +1007,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     height: auto;
   }
 `,le=`
-  <div class="cloud-divider">
+  <div>
     <svg
       viewBox="0 0 1200 80"
       xmlns="http://www.w3.org/2000/svg"

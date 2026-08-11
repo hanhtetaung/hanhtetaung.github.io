@@ -1,4 +1,4 @@
-function h(e,a){if(e===void 0){if(a===Array)return[];if(a===Object)return{};if(a===Boolean)return!1;if(a===Number)return 0;return}if(a===Boolean)return Boolean(e);if(a===Number)return Number(e);return e}function o(e,{props:a={},attrs:n=[],styles:d="",template:l}){let m=["props",...n];class c extends HTMLElement{static observedAttributes=m;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let t={},r=this.getAttribute("props");if(r)try{t=JSON.parse(r)}catch{t={}}let p={};for(let s of Object.keys(a))p[s]=h(t[s],a[s]);return p}_applyForwardedAttrs(){if(n.length===0)return;let t=this.shadowRoot.querySelector("[data-forward]");if(!t)return;for(let r of n)if(this.hasAttribute(r))t.setAttribute(r,this.getAttribute(r));else t.removeAttribute(r)}_render(){let t=this._getProps(),r=typeof l==="function"?l(t):l;this.shadowRoot.innerHTML=`<style>${d}</style>${r}`,this._applyForwardedAttrs()}}customElements.define(e,c)}var g=`
+function h(i,o){if(i===void 0){if(o===Array)return[];if(o===Object)return{};if(o===Boolean)return!1;if(o===Number)return 0;return}if(o===Boolean)return Boolean(i);if(o===Number)return Number(i);return i}function a(i,{props:o={},attrs:n=[],styles:d="",template:l}){let m=["props",...n];class p extends HTMLElement{static observedAttributes=m;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let t={},r=this.getAttribute("props");if(r)try{t=JSON.parse(r)}catch{t={}}let c={};for(let s of Object.keys(o))c[s]=h(t[s],o[s]);return c}_applyForwardedAttrs(){if(n.length===0)return;let t=this.shadowRoot.querySelector("[data-forward]");if(!t)return;for(let r of n)if(this.hasAttribute(r))t.setAttribute(r,this.getAttribute(r));else t.removeAttribute(r)}_render(){let t=this._getProps(),r=typeof l==="function"?l(t):l;this.shadowRoot.innerHTML=`<style>${d}</style>${r}`,this._applyForwardedAttrs()}}customElements.define(i,p)}var g=`
   :host {
     display: block;
   }
@@ -7,7 +7,7 @@ function h(e,a){if(e===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     max-height: 7rem;
     width: auto;
   }
-`,f=["width","height","src","alt"],u=()=>"<img data-forward />";o("app-logo",{attrs:f,styles:g,template:u});var v=`
+`,f=["width","height","src","alt"],u=()=>"<img data-forward />";a("app-logo",{attrs:f,styles:g,template:u});var v=`
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -61,7 +61,7 @@ function h(e,a){if(e===void 0){if(a===Array)return[];if(a===Object)return{};if(a
   }
 `,b=["href","target","rel","download"],y=`
   <a data-forward><slot></slot></a>
-`;o("app-link",{attrs:b,styles:v,template:y});var i="769px",$="992px";var k=`
+`;a("app-link",{attrs:b,styles:v,template:y});var e="769px",$="992px";var k=`
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -70,7 +70,7 @@ function h(e,a){if(e===void 0){if(a===Array)return[];if(a===Object)return{};if(a
    display: flex;
    gap: 5rem;
 
-   @media (max-width: ${i}) {
+   @media (max-width: ${e}) {
         flex-direction: column;
         gap: 3rem;
         margin-block: 2rem;
@@ -133,7 +133,6 @@ function h(e,a){if(e===void 0){if(a===Array)return[];if(a===Object)return{};if(a
                 <img
                     src="/assets/icons/email.svg"
                     alt="Email Icon"
-                    class="icon--sm"
                 />
                 </app-link>
             </li>
@@ -147,7 +146,6 @@ function h(e,a){if(e===void 0){if(a===Array)return[];if(a===Object)return{};if(a
                 <img
                     src="/assets/icons/github.svg"
                     alt="Github Icon"
-                    class="icon--sm"
                 />
                 </app-link>
             </li>
@@ -161,13 +159,12 @@ function h(e,a){if(e===void 0){if(a===Array)return[];if(a===Object)return{};if(a
                 <img
                     src="/assets/icons/linkedin.svg"
                     alt="Linkedin Icon"
-                    class="icon--sm"
                 />
                 </app-link>
             </li>
         </ul>
     </nav>
-`;o("footer-nav",{styles:k,template:w});var x=`
+`;a("footer-nav",{styles:k,template:w});var x=`
   :host {
     --local-bg-color: var(--color-bg-secondary);
 
@@ -197,7 +194,7 @@ function h(e,a){if(e===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     align-items: center;
   }
 
-  @media (max-width: ${i}) {
+  @media (max-width: ${e}) {
     article {
       display: block;
     }
@@ -227,12 +224,12 @@ function h(e,a){if(e===void 0){if(a===Array)return[];if(a===Object)return{};if(a
         <footer-nav></footer-nav>
       </article>
 
-      <p class="footer__copy">
+      <p>
         © Han Htet Aung 2026 |
         <app-link href="/credits" variant="underline">Credits</app-link>
       </p>
   </footer>
-`;o("section-footer",{styles:x,template:A});var H=`
+`;a("section-footer",{styles:x,template:A});var H=`
   :host {
     display: block;
   }
@@ -266,7 +263,7 @@ function h(e,a){if(e===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     box-shadow: none;
   }
 
-  @media (max-width: ${i}) {
+  @media (max-width: ${e}) {
     .header__navigation {
       gap: 4rem;
     }
@@ -295,12 +292,12 @@ function h(e,a){if(e===void 0){if(a===Array)return[];if(a===Object)return{};if(a
           </ul>
         </nav>
 
-        <app-link class="button--primary" variant="primary" href="/hire-me">
+        <app-link variant="primary" href="/hire-me">
           Let's chat &#8629;
         </app-link>
       </div>
   </header>
-`;o("section-header",{template:_,styles:H});var E=`
+`;a("section-header",{template:_,styles:H});var E=`
   :host {
     --local-width: 3rem;
     --local-height: auto;
@@ -331,14 +328,14 @@ function h(e,a){if(e===void 0){if(a===Array)return[];if(a===Object)return{};if(a
   }
 
 
-`,N=["src","alt"],O=()=>'<img data-forward width="200" height="200"/>';o("app-icon",{attrs:N,styles:E,template:O});var P=`
+`,N=["src","alt"],O=()=>'<img data-forward width="200" height="200"/>';a("app-icon",{attrs:N,styles:E,template:O});var P=`
     section {
         margin-inline: auto;
         width: 80%;
         display: flex;
         gap: 3rem;
 
-        @media (max-width: ${i}) {
+        @media (max-width: ${e}) {
           display: block;
         }
     }
@@ -367,4 +364,4 @@ function h(e,a){if(e===void 0){if(a===Array)return[];if(a===Object)return{};if(a
         alt="Coming Soon"
       ></app-icon>
   </section>
-`;o("section-404-intro",{styles:P,template:C});
+`;a("section-404-intro",{styles:P,template:C});

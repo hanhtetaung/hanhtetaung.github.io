@@ -1,4 +1,4 @@
-function f(i,e){if(i===void 0){if(e===Array)return[];if(e===Object)return{};if(e===Boolean)return!1;if(e===Number)return 0;return}if(e===Boolean)return Boolean(i);if(e===Number)return Number(i);return i}function a(i,{props:e={},attrs:n=[],styles:d="",template:l}){let m=["props",...n];class p extends HTMLElement{static observedAttributes=m;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let o={},t=this.getAttribute("props");if(t)try{o=JSON.parse(t)}catch{o={}}let c={};for(let s of Object.keys(e))c[s]=f(o[s],e[s]);return c}_applyForwardedAttrs(){if(n.length===0)return;let o=this.shadowRoot.querySelector("[data-forward]");if(!o)return;for(let t of n)if(this.hasAttribute(t))o.setAttribute(t,this.getAttribute(t));else o.removeAttribute(t)}_render(){let o=this._getProps(),t=typeof l==="function"?l(o):l;this.shadowRoot.innerHTML=`<style>${d}</style>${t}`,this._applyForwardedAttrs()}}customElements.define(i,p)}var h=`
+function f(i,e){if(i===void 0){if(e===Array)return[];if(e===Object)return{};if(e===Boolean)return!1;if(e===Number)return 0;return}if(e===Boolean)return Boolean(i);if(e===Number)return Number(i);return i}function a(i,{props:e={},attrs:n=[],styles:d="",template:l}){let m=["props",...n];class s extends HTMLElement{static observedAttributes=m;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let o={},t=this.getAttribute("props");if(t)try{o=JSON.parse(t)}catch{o={}}let c={};for(let p of Object.keys(e))c[p]=f(o[p],e[p]);return c}_applyForwardedAttrs(){if(n.length===0)return;let o=this.shadowRoot.querySelector("[data-forward]");if(!o)return;for(let t of n)if(this.hasAttribute(t))o.setAttribute(t,this.getAttribute(t));else o.removeAttribute(t)}_render(){let o=this._getProps(),t=typeof l==="function"?l(o):l;this.shadowRoot.innerHTML=`<style>${d}</style>${t}`,this._applyForwardedAttrs()}}customElements.define(i,s)}var h=`
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -124,7 +124,7 @@ function f(i,e){if(i===void 0){if(e===Array)return[];if(e===Object)return{};if(e
           </ul>
         </nav>
 
-        <app-link class="button--primary" variant="primary" href="/hire-me">
+        <app-link variant="primary" href="/hire-me">
           Let's chat &#8629;
         </app-link>
       </div>
@@ -201,7 +201,6 @@ function f(i,e){if(i===void 0){if(e===Array)return[];if(e===Object)return{};if(e
                 <img
                     src="/assets/icons/email.svg"
                     alt="Email Icon"
-                    class="icon--sm"
                 />
                 </app-link>
             </li>
@@ -215,7 +214,6 @@ function f(i,e){if(i===void 0){if(e===Array)return[];if(e===Object)return{};if(e
                 <img
                     src="/assets/icons/github.svg"
                     alt="Github Icon"
-                    class="icon--sm"
                 />
                 </app-link>
             </li>
@@ -229,7 +227,6 @@ function f(i,e){if(i===void 0){if(e===Array)return[];if(e===Object)return{};if(e
                 <img
                     src="/assets/icons/linkedin.svg"
                     alt="Linkedin Icon"
-                    class="icon--sm"
                 />
                 </app-link>
             </li>
@@ -295,7 +292,7 @@ function f(i,e){if(i===void 0){if(e===Array)return[];if(e===Object)return{};if(e
         <footer-nav></footer-nav>
       </article>
 
-      <p class="footer__copy">
+      <p>
         © Han Htet Aung 2026 |
         <app-link href="/credits" variant="underline">Credits</app-link>
       </p>
@@ -354,7 +351,8 @@ function f(i,e){if(i===void 0){if(e===Array)return[];if(e===Object)return{};if(e
     font-family: var(--font-body);
   }
 
-  .grid {
+  ul {
+    padding: 0;
     margin-top: 3rem;
     margin-bottom: 1rem;
     display: grid;
@@ -392,7 +390,7 @@ function f(i,e){if(i===void 0){if(e===Array)return[];if(e===Object)return{};if(e
         />
         <input type="hidden" name="_append" value="false" />
 
-        <div class="grid">
+        <ul>
             <input
               type="text"
               name="name"
@@ -411,7 +409,7 @@ function f(i,e){if(i===void 0){if(e===Array)return[];if(e===Object)return{};if(e
               placeholder="Message*"
               required=""
             ></textarea>
-        </div>
+        </ul>
 
         <div
           class="cf-turnstile"

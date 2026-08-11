@@ -198,9 +198,8 @@ const styles = /* css */ `
 `;
 
 const template = () => /* html */ `
-  <section class="credits">
-    <div class="container">
-      <ul class="credits__list">
+  <section>
+      <ul>
         ${creditsData
           .map(
             (item) => /* html */ `
@@ -218,7 +217,6 @@ const template = () => /* html */ `
           )
           .join("")}
       </ul>
-    </div>
   </section>
 `;
 

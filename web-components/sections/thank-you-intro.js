@@ -6,11 +6,12 @@ const styles = /*css*/ `
         width: 80%;
     }
 
-     h1 {
+  h1 {
     margin: 0;
     font-size: var(--size-display);
     font-weight: var(--font-regular);
     font-family: var(--font-heading);
+    margin-bottom: 1rem;
   }
 
   p {
@@ -22,7 +23,7 @@ const styles = /*css*/ `
 const template = /* html */ `
   <section>
       <h1>Thank you!</h1>
-      <p class="thank-you__description">
+      <p>
         Thank you for sending me email. I will get back to you later today. Have a
         good day!
       </p>

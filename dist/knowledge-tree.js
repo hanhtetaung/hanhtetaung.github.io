@@ -124,7 +124,7 @@ function h(o,t){if(o===void 0){if(t===Array)return[];if(t===Object)return{};if(t
           </ul>
         </nav>
 
-        <app-link class="button--primary" variant="primary" href="/hire-me">
+        <app-link variant="primary" href="/hire-me">
           Let's chat &#8629;
         </app-link>
       </div>
@@ -201,7 +201,6 @@ function h(o,t){if(o===void 0){if(t===Array)return[];if(t===Object)return{};if(t
                 <img
                     src="/assets/icons/email.svg"
                     alt="Email Icon"
-                    class="icon--sm"
                 />
                 </app-link>
             </li>
@@ -215,7 +214,6 @@ function h(o,t){if(o===void 0){if(t===Array)return[];if(t===Object)return{};if(t
                 <img
                     src="/assets/icons/github.svg"
                     alt="Github Icon"
-                    class="icon--sm"
                 />
                 </app-link>
             </li>
@@ -229,7 +227,6 @@ function h(o,t){if(o===void 0){if(t===Array)return[];if(t===Object)return{};if(t
                 <img
                     src="/assets/icons/linkedin.svg"
                     alt="Linkedin Icon"
-                    class="icon--sm"
                 />
                 </app-link>
             </li>
@@ -295,7 +292,7 @@ function h(o,t){if(o===void 0){if(t===Array)return[];if(t===Object)return{};if(t
         <footer-nav></footer-nav>
       </article>
 
-      <p class="footer__copy">
+      <p>
         © Han Htet Aung 2026 |
         <app-link href="/credits" variant="underline">Credits</app-link>
       </p>
@@ -331,7 +328,7 @@ function h(o,t){if(o===void 0){if(t===Array)return[];if(t===Object)return{};if(t
    :host([variant="full"]) {
     --local-width: 100%;
   }
-`,_=["width","height","src","alt"],z=()=>"<img data-forward />";e("app-image",{attrs:_,styles:T,template:z});var C=`
+`,z=["width","height","src","alt"],C=()=>"<img data-forward />";e("app-image",{attrs:z,styles:T,template:C});var _=`
   :host {
     display: block;
   }
@@ -401,7 +398,7 @@ function h(o,t){if(o===void 0){if(t===Array)return[];if(t===Object)return{};if(t
         >View Live Website</app-link>
     </article>
   </section>
-`;e("section-knowledge-tree-intro",{styles:C,template:E});var P=`
+`;e("section-knowledge-tree-intro",{styles:_,template:E});var P=`
   :host {
     display: flex;
     align-items: center;

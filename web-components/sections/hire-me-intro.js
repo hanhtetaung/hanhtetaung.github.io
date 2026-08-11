@@ -28,7 +28,8 @@ const styles = /*css*/ `
     font-family: var(--font-body);
   }
 
-  .grid {
+  ul {
+    padding: 0;
     margin-top: 3rem;
     margin-bottom: 1rem;
     display: grid;
@@ -68,7 +69,7 @@ const template = /* html */ `
         />
         <input type="hidden" name="_append" value="false" />
 
-        <div class="grid">
+        <ul>
             <input
               type="text"
               name="name"
@@ -87,7 +88,7 @@ const template = /* html */ `
               placeholder="Message*"
               required=""
             ></textarea>
-        </div>
+        </ul>
 
         <div
           class="cf-turnstile"

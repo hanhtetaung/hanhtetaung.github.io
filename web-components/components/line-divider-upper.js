@@ -14,7 +14,7 @@ const styles = /* css */ `
 `;
 
 const template = /* html */ `
-  <div class="cloud-divider">
+  <div>
     <svg
       viewBox="0 0 1200 80"
       xmlns="http://www.w3.org/2000/svg"

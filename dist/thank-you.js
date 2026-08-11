@@ -1,4 +1,4 @@
-function g(t,o){if(t===void 0){if(o===Array)return[];if(o===Object)return{};if(o===Boolean)return!1;if(o===Number)return 0;return}if(o===Boolean)return Boolean(t);if(o===Number)return Number(t);return t}function a(t,{props:o={},attrs:n=[],styles:d="",template:l}){let m=["props",...n];class c extends HTMLElement{static observedAttributes=m;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let e={},r=this.getAttribute("props");if(r)try{e=JSON.parse(r)}catch{e={}}let p={};for(let s of Object.keys(o))p[s]=g(e[s],o[s]);return p}_applyForwardedAttrs(){if(n.length===0)return;let e=this.shadowRoot.querySelector("[data-forward]");if(!e)return;for(let r of n)if(this.hasAttribute(r))e.setAttribute(r,this.getAttribute(r));else e.removeAttribute(r)}_render(){let e=this._getProps(),r=typeof l==="function"?l(e):l;this.shadowRoot.innerHTML=`<style>${d}</style>${r}`,this._applyForwardedAttrs()}}customElements.define(t,c)}var h=`
+function g(t,o){if(t===void 0){if(o===Array)return[];if(o===Object)return{};if(o===Boolean)return!1;if(o===Number)return 0;return}if(o===Boolean)return Boolean(t);if(o===Number)return Number(t);return t}function a(t,{props:o={},attrs:n=[],styles:d="",template:l}){let m=["props",...n];class s extends HTMLElement{static observedAttributes=m;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let e={},r=this.getAttribute("props");if(r)try{e=JSON.parse(r)}catch{e={}}let c={};for(let p of Object.keys(o))c[p]=g(e[p],o[p]);return c}_applyForwardedAttrs(){if(n.length===0)return;let e=this.shadowRoot.querySelector("[data-forward]");if(!e)return;for(let r of n)if(this.hasAttribute(r))e.setAttribute(r,this.getAttribute(r));else e.removeAttribute(r)}_render(){let e=this._getProps(),r=typeof l==="function"?l(e):l;this.shadowRoot.innerHTML=`<style>${d}</style>${r}`,this._applyForwardedAttrs()}}customElements.define(t,s)}var h=`
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -124,7 +124,7 @@ function g(t,o){if(t===void 0){if(o===Array)return[];if(o===Object)return{};if(o
           </ul>
         </nav>
 
-        <app-link class="button--primary" variant="primary" href="/hire-me">
+        <app-link variant="primary" href="/hire-me">
           Let's chat &#8629;
         </app-link>
       </div>
@@ -168,7 +168,7 @@ function g(t,o){if(t===void 0){if(o===Array)return[];if(o===Object)return{};if(o
     gap: 2rem;
     margin-top: 1rem;
   }
-`,_=()=>`
+`,A=()=>`
     <nav>
         <span>Sitemap</span>
 
@@ -201,7 +201,6 @@ function g(t,o){if(t===void 0){if(o===Array)return[];if(o===Object)return{};if(o
                 <img
                     src="/assets/icons/email.svg"
                     alt="Email Icon"
-                    class="icon--sm"
                 />
                 </app-link>
             </li>
@@ -215,7 +214,6 @@ function g(t,o){if(t===void 0){if(o===Array)return[];if(o===Object)return{};if(o
                 <img
                     src="/assets/icons/github.svg"
                     alt="Github Icon"
-                    class="icon--sm"
                 />
                 </app-link>
             </li>
@@ -229,13 +227,12 @@ function g(t,o){if(t===void 0){if(o===Array)return[];if(o===Object)return{};if(o
                 <img
                     src="/assets/icons/linkedin.svg"
                     alt="Linkedin Icon"
-                    class="icon--sm"
                 />
                 </app-link>
             </li>
         </ul>
     </nav>
-`;a("footer-nav",{styles:x,template:_});var A=`
+`;a("footer-nav",{styles:x,template:A});var H=`
   :host {
     --local-bg-color: var(--color-bg-secondary);
 
@@ -275,7 +272,7 @@ function g(t,o){if(t===void 0){if(o===Array)return[];if(o===Object)return{};if(o
     display: flex;
     gap: 3rem;
   }
-`,H=`
+`,_=`
   <footer>
       <article>
         <div>
@@ -295,22 +292,23 @@ function g(t,o){if(t===void 0){if(o===Array)return[];if(o===Object)return{};if(o
         <footer-nav></footer-nav>
       </article>
 
-      <p class="footer__copy">
+      <p>
         © Han Htet Aung 2026 |
         <app-link href="/credits" variant="underline">Credits</app-link>
       </p>
   </footer>
-`;a("section-footer",{styles:A,template:H});var E=`
+`;a("section-footer",{styles:H,template:_});var E=`
     section {
         margin-inline: auto;
         width: 80%;
     }
 
-     h1 {
+  h1 {
     margin: 0;
     font-size: var(--size-display);
     font-weight: var(--font-regular);
     font-family: var(--font-heading);
+    margin-bottom: 1rem;
   }
 
   p {
@@ -320,7 +318,7 @@ function g(t,o){if(t===void 0){if(o===Array)return[];if(o===Object)return{};if(o
 `,T=`
   <section>
       <h1>Thank you!</h1>
-      <p class="thank-you__description">
+      <p>
         Thank you for sending me email. I will get back to you later today. Have a
         good day!
       </p>

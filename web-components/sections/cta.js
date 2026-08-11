@@ -45,7 +45,6 @@ const styles = /* css */ `
 
 const template = /* html */ `
   <section>
-    <div class="container">
        <section-title
        variant="text"
         props='${JSON.stringify({
@@ -76,11 +75,9 @@ const template = /* html */ `
       </article>
 
       <img
-        class="image"
         src="/assets/icons/merlion.svg"
         alt="Merlion illustration"
       />
-    </div>
   </section>
 `;
 

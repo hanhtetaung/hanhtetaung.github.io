@@ -124,7 +124,7 @@ function h(a,i){if(a===void 0){if(i===Array)return[];if(i===Object)return{};if(i
           </ul>
         </nav>
 
-        <app-link class="button--primary" variant="primary" href="/hire-me">
+        <app-link variant="primary" href="/hire-me">
           Let's chat &#8629;
         </app-link>
       </div>
@@ -201,7 +201,6 @@ function h(a,i){if(a===void 0){if(i===Array)return[];if(i===Object)return{};if(i
                 <img
                     src="/assets/icons/email.svg"
                     alt="Email Icon"
-                    class="icon--sm"
                 />
                 </app-link>
             </li>
@@ -215,7 +214,6 @@ function h(a,i){if(a===void 0){if(i===Array)return[];if(i===Object)return{};if(i
                 <img
                     src="/assets/icons/github.svg"
                     alt="Github Icon"
-                    class="icon--sm"
                 />
                 </app-link>
             </li>
@@ -229,7 +227,6 @@ function h(a,i){if(a===void 0){if(i===Array)return[];if(i===Object)return{};if(i
                 <img
                     src="/assets/icons/linkedin.svg"
                     alt="Linkedin Icon"
-                    class="icon--sm"
                 />
                 </app-link>
             </li>
@@ -295,7 +292,7 @@ function h(a,i){if(a===void 0){if(i===Array)return[];if(i===Object)return{};if(i
         <footer-nav></footer-nav>
       </article>
 
-      <p class="footer__copy">
+      <p>
         © Han Htet Aung 2026 |
         <app-link href="/credits" variant="underline">Credits</app-link>
       </p>

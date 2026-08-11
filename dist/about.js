@@ -124,7 +124,7 @@ function m(e,o){if(e===void 0){if(o===Array)return[];if(o===Object)return{};if(o
           </ul>
         </nav>
 
-        <app-link class="button--primary" variant="primary" href="/hire-me">
+        <app-link variant="primary" href="/hire-me">
           Let's chat &#8629;
         </app-link>
       </div>
@@ -201,7 +201,6 @@ function m(e,o){if(e===void 0){if(o===Array)return[];if(o===Object)return{};if(o
                 <img
                     src="/assets/icons/email.svg"
                     alt="Email Icon"
-                    class="icon--sm"
                 />
                 </app-link>
             </li>
@@ -215,7 +214,6 @@ function m(e,o){if(e===void 0){if(o===Array)return[];if(o===Object)return{};if(o
                 <img
                     src="/assets/icons/github.svg"
                     alt="Github Icon"
-                    class="icon--sm"
                 />
                 </app-link>
             </li>
@@ -229,7 +227,6 @@ function m(e,o){if(e===void 0){if(o===Array)return[];if(o===Object)return{};if(o
                 <img
                     src="/assets/icons/linkedin.svg"
                     alt="Linkedin Icon"
-                    class="icon--sm"
                 />
                 </app-link>
             </li>
@@ -295,7 +292,7 @@ function m(e,o){if(e===void 0){if(o===Array)return[];if(o===Object)return{};if(o
         <footer-nav></footer-nav>
       </article>
 
-      <p class="footer__copy">
+      <p>
         © Han Htet Aung 2026 |
         <app-link href="/credits" variant="underline">Credits</app-link>
       </p>
@@ -433,7 +430,7 @@ function m(e,o){if(e===void 0){if(o===Array)return[];if(o===Object)return{};if(o
     display: flex;
     flex-wrap: wrap;
   }
-`,_=()=>`
+`,B=()=>`
   <section>
     <section-title
         props='${JSON.stringify({name:"Tech Collection",img:"/assets/icons/penguin.svg",alt:"Penguin Logo"})}'
@@ -454,7 +451,7 @@ function m(e,o){if(e===void 0){if(o===Array)return[];if(o===Object)return{};if(o
             `).join("")}
       </ul>
   </section>
-`;t("section-tech-collection",{styles:L,template:_});var B=`
+`;t("section-tech-collection",{styles:L,template:B});var D=`
   :host {
     --local-width: 3rem;
     --local-height: auto;
@@ -485,7 +482,7 @@ function m(e,o){if(e===void 0){if(o===Array)return[];if(o===Object)return{};if(o
   }
 
 
-`,D=["src","alt"],q=()=>'<img data-forward width="200" height="200"/>';t("app-icon",{attrs:D,styles:B,template:q});var U=[{src:"/assets/icons/bird-watching.svg",alt:"Watching Bird",text:"I love birds"},{src:"/assets/icons/seafood.svg",alt:"Seafood",text:"I’m allergic to seafood"},{src:"/assets/icons/travelling.svg",alt:"Travelling",text:"I enjoy travelling"},{src:"/assets/icons/running.svg",alt:"Running",text:"I like running"}],W=`
+`,_=["src","alt"],q=()=>'<img data-forward width="200" height="200"/>';t("app-icon",{attrs:_,styles:D,template:q});var U=[{src:"/assets/icons/bird-watching.svg",alt:"Watching Bird",text:"I love birds"},{src:"/assets/icons/seafood.svg",alt:"Seafood",text:"I’m allergic to seafood"},{src:"/assets/icons/travelling.svg",alt:"Travelling",text:"I enjoy travelling"},{src:"/assets/icons/running.svg",alt:"Running",text:"I like running"}],W=`
   section {
     width: 80%;
     margin-inline: auto;
@@ -514,7 +511,7 @@ function m(e,o){if(e===void 0){if(o===Array)return[];if(o===Object)return{};if(o
               <li>
                 <figure>
                   <app-icon variant="large" src="${e.src}" alt="${e.alt}"></app-icon>
-                  <figcaption class="body">${e.text}</figcaption>
+                  <figcaption>${e.text}</figcaption>
                 </figure>
               </li>
             `).join("")}
@@ -610,7 +607,7 @@ function m(e,o){if(e===void 0){if(o===Array)return[];if(o===Object)return{};if(o
     min-height: 2rem;
   }
 
-  .content {
+  article {
     padding-bottom: 5rem;
     max-width: 100ch;
   }
@@ -634,7 +631,6 @@ function m(e,o){if(e===void 0){if(o===Array)return[];if(o===Object)return{};if(o
   }
 `,X=()=>`
   <section>
-    <div class="container">
       <section-title
         props='${JSON.stringify({name:"Experience Overview",img:"/assets/icons/bird-flying.svg",alt:"Bird Flying Logo"})}'
       ></section-title>
@@ -649,7 +645,7 @@ function m(e,o){if(e===void 0){if(o===Array)return[];if(o===Object)return{};if(o
                   <span class="line"></span>
                 </div>
 
-                <div class="content">
+                <article>
                   <app-badge
                     props='${JSON.stringify({name:n})}'
                     ${n==="Present"?"":'variant="outline"'}
@@ -657,11 +653,10 @@ function m(e,o){if(e===void 0){if(o===Array)return[];if(o===Object)return{};if(o
 
                   <h3>${s}</h3>
                   <p>${l}</p>
-                </div>
+                </article>
               </li>
             `).join("")}
       </ul>
-    </div>
   </section>
 `;t("section-timeline",{styles:G,template:X});var V=`
   section {

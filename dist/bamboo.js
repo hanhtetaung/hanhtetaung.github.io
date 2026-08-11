@@ -124,7 +124,7 @@ function h(r,a){if(r===void 0){if(a===Array)return[];if(a===Object)return{};if(a
           </ul>
         </nav>
 
-        <app-link class="button--primary" variant="primary" href="/hire-me">
+        <app-link variant="primary" href="/hire-me">
           Let's chat &#8629;
         </app-link>
       </div>
@@ -201,7 +201,6 @@ function h(r,a){if(r===void 0){if(a===Array)return[];if(a===Object)return{};if(a
                 <img
                     src="/assets/icons/email.svg"
                     alt="Email Icon"
-                    class="icon--sm"
                 />
                 </app-link>
             </li>
@@ -215,7 +214,6 @@ function h(r,a){if(r===void 0){if(a===Array)return[];if(a===Object)return{};if(a
                 <img
                     src="/assets/icons/github.svg"
                     alt="Github Icon"
-                    class="icon--sm"
                 />
                 </app-link>
             </li>
@@ -229,7 +227,6 @@ function h(r,a){if(r===void 0){if(a===Array)return[];if(a===Object)return{};if(a
                 <img
                     src="/assets/icons/linkedin.svg"
                     alt="Linkedin Icon"
-                    class="icon--sm"
                 />
                 </app-link>
             </li>
@@ -275,7 +272,7 @@ function h(r,a){if(r===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     display: flex;
     gap: 3rem;
   }
-`,_=`
+`,C=`
   <footer>
       <article>
         <div>
@@ -295,12 +292,12 @@ function h(r,a){if(r===void 0){if(a===Array)return[];if(a===Object)return{};if(a
         <footer-nav></footer-nav>
       </article>
 
-      <p class="footer__copy">
+      <p>
         © Han Htet Aung 2026 |
         <app-link href="/credits" variant="underline">Credits</app-link>
       </p>
   </footer>
-`;o("section-footer",{styles:H,template:_});var C=`
+`;o("section-footer",{styles:H,template:C});var _=`
   :host {
     --local-width: 5rem;
     --local-heigth: auto;
@@ -331,7 +328,7 @@ function h(r,a){if(r===void 0){if(a===Array)return[];if(a===Object)return{};if(a
    :host([variant="full"]) {
     --local-width: 100%;
   }
-`,E=["width","height","src","alt"],N=()=>"<img data-forward />";o("app-image",{attrs:E,styles:C,template:N});var S=`
+`,E=["width","height","src","alt"],N=()=>"<img data-forward />";o("app-image",{attrs:E,styles:_,template:N});var S=`
   :host {
     --local-width: 3rem;
     --local-height: auto;

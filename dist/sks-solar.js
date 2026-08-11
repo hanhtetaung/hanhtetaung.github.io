@@ -1,4 +1,4 @@
-function h(i,a){if(i===void 0){if(a===Array)return[];if(a===Object)return{};if(a===Boolean)return!1;if(a===Number)return 0;return}if(a===Boolean)return Boolean(i);if(a===Number)return Number(i);return i}function e(i,{props:a={},attrs:n=[],styles:d="",template:l}){let m=["props",...n];class c extends HTMLElement{static observedAttributes=m;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let o={},r=this.getAttribute("props");if(r)try{o=JSON.parse(r)}catch{o={}}let p={};for(let s of Object.keys(a))p[s]=h(o[s],a[s]);return p}_applyForwardedAttrs(){if(n.length===0)return;let o=this.shadowRoot.querySelector("[data-forward]");if(!o)return;for(let r of n)if(this.hasAttribute(r))o.setAttribute(r,this.getAttribute(r));else o.removeAttribute(r)}_render(){let o=this._getProps(),r=typeof l==="function"?l(o):l;this.shadowRoot.innerHTML=`<style>${d}</style>${r}`,this._applyForwardedAttrs()}}customElements.define(i,c)}var g=`
+function h(i,a){if(i===void 0){if(a===Array)return[];if(a===Object)return{};if(a===Boolean)return!1;if(a===Number)return 0;return}if(a===Boolean)return Boolean(i);if(a===Number)return Number(i);return i}function e(i,{props:a={},attrs:n=[],styles:d="",template:l}){let m=["props",...n];class p extends HTMLElement{static observedAttributes=m;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let o={},r=this.getAttribute("props");if(r)try{o=JSON.parse(r)}catch{o={}}let c={};for(let s of Object.keys(a))c[s]=h(o[s],a[s]);return c}_applyForwardedAttrs(){if(n.length===0)return;let o=this.shadowRoot.querySelector("[data-forward]");if(!o)return;for(let r of n)if(this.hasAttribute(r))o.setAttribute(r,this.getAttribute(r));else o.removeAttribute(r)}_render(){let o=this._getProps(),r=typeof l==="function"?l(o):l;this.shadowRoot.innerHTML=`<style>${d}</style>${r}`,this._applyForwardedAttrs()}}customElements.define(i,p)}var g=`
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -124,7 +124,7 @@ function h(i,a){if(i===void 0){if(a===Array)return[];if(a===Object)return{};if(a
           </ul>
         </nav>
 
-        <app-link class="button--primary" variant="primary" href="/hire-me">
+        <app-link variant="primary" href="/hire-me">
           Let's chat &#8629;
         </app-link>
       </div>
@@ -201,7 +201,6 @@ function h(i,a){if(i===void 0){if(a===Array)return[];if(a===Object)return{};if(a
                 <img
                     src="/assets/icons/email.svg"
                     alt="Email Icon"
-                    class="icon--sm"
                 />
                 </app-link>
             </li>
@@ -215,7 +214,6 @@ function h(i,a){if(i===void 0){if(a===Array)return[];if(a===Object)return{};if(a
                 <img
                     src="/assets/icons/github.svg"
                     alt="Github Icon"
-                    class="icon--sm"
                 />
                 </app-link>
             </li>
@@ -229,7 +227,6 @@ function h(i,a){if(i===void 0){if(a===Array)return[];if(a===Object)return{};if(a
                 <img
                     src="/assets/icons/linkedin.svg"
                     alt="Linkedin Icon"
-                    class="icon--sm"
                 />
                 </app-link>
             </li>
@@ -275,7 +272,7 @@ function h(i,a){if(i===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     display: flex;
     gap: 3rem;
   }
-`,_=`
+`,A=`
   <footer>
       <article>
         <div>
@@ -295,12 +292,12 @@ function h(i,a){if(i===void 0){if(a===Array)return[];if(a===Object)return{};if(a
         <footer-nav></footer-nav>
       </article>
 
-      <p class="footer__copy">
+      <p>
         © Han Htet Aung 2026 |
         <app-link href="/credits" variant="underline">Credits</app-link>
       </p>
   </footer>
-`;e("section-footer",{styles:H,template:_});var A=`
+`;e("section-footer",{styles:H,template:A});var P=`
   :host {
     --local-width: 5rem;
     --local-heigth: auto;
@@ -331,7 +328,7 @@ function h(i,a){if(i===void 0){if(a===Array)return[];if(a===Object)return{};if(a
    :host([variant="full"]) {
     --local-width: 100%;
   }
-`,P=["width","height","src","alt"],E=()=>"<img data-forward />";e("app-image",{attrs:P,styles:A,template:E});var O=`
+`,_=["width","height","src","alt"],E=()=>"<img data-forward />";e("app-image",{attrs:_,styles:P,template:E});var O=`
   :host {
     display: block;
   }

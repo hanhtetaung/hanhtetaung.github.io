@@ -124,7 +124,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
           </ul>
         </nav>
 
-        <app-link class="button--primary" variant="primary" href="/hire-me">
+        <app-link variant="primary" href="/hire-me">
           Let's chat &#8629;
         </app-link>
       </div>
@@ -201,7 +201,6 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
                 <img
                     src="/assets/icons/email.svg"
                     alt="Email Icon"
-                    class="icon--sm"
                 />
                 </app-link>
             </li>
@@ -215,7 +214,6 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
                 <img
                     src="/assets/icons/github.svg"
                     alt="Github Icon"
-                    class="icon--sm"
                 />
                 </app-link>
             </li>
@@ -229,7 +227,6 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
                 <img
                     src="/assets/icons/linkedin.svg"
                     alt="Linkedin Icon"
-                    class="icon--sm"
                 />
                 </app-link>
             </li>
@@ -295,7 +292,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
         <footer-nav></footer-nav>
       </article>
 
-      <p class="footer__copy">
+      <p>
         © Han Htet Aung 2026 |
         <app-link href="/credits" variant="underline">Credits</app-link>
       </p>
@@ -375,7 +372,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     padding: 0;
     padding-inline: 2rem;
   }
-`,_=`
+`,B=`
   <section>
     <app-image
     variant="large"
@@ -407,7 +404,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
         </ul>
       </article>
   </section>
-`;e("section-mmo-intro",{styles:E,template:_});var B=`
+`;e("section-mmo-intro",{styles:E,template:B});var _=`
   :host {
     display: flex;
     align-items: center;
@@ -445,7 +442,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
         height="36"
         width="76"
     />
-`;e("section-title",{props:$,styles:B,template:C});var N=`
+`;e("section-title",{props:$,styles:_,template:C});var N=`
   :host {
     display: block;
   }

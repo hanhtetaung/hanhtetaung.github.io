@@ -105,7 +105,7 @@ const styles = /* css */ `
     min-height: 2rem;
   }
 
-  .content {
+  article {
     padding-bottom: 5rem;
     max-width: 100ch;
   }
@@ -131,7 +131,6 @@ const styles = /* css */ `
 
 const template = () => /* html */ `
   <section>
-    <div class="container">
       <section-title
         props='${JSON.stringify({
           name: "Experience Overview",
@@ -152,7 +151,7 @@ const template = () => /* html */ `
                   <span class="line"></span>
                 </div>
 
-                <div class="content">
+                <article>
                   <app-badge
                     props='${JSON.stringify({ name: range })}'
                     ${range === "Present" ? "" : 'variant="outline"'}
@@ -160,13 +159,12 @@ const template = () => /* html */ `
 
                   <h3>${title}</h3>
                   <p>${description}</p>
-                </div>
+                </article>
               </li>
             `,
           )
           .join("")}
       </ul>
-    </div>
   </section>
 `;
 

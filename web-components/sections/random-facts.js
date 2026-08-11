@@ -61,7 +61,7 @@ const template = () => /* html */ `
               <li>
                 <figure>
                   <app-icon variant="large" src="${fact.src}" alt="${fact.alt}"></app-icon>
-                  <figcaption class="body">${fact.text}</figcaption>
+                  <figcaption>${fact.text}</figcaption>
                 </figure>
               </li>
             `,

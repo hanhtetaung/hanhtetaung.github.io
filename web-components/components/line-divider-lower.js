@@ -14,7 +14,6 @@ const styles = /* css */ `
 `;
 
 const template = /* html */ `
-  <div class="cloud-divider">
     <svg
       viewBox="0 0 1200 80"
       xmlns="http://www.w3.org/2000/svg"
@@ -45,7 +44,6 @@ const template = /* html */ `
         fill="var(--color-bg-secondary)"
       />
     </svg>
-  </div>
 `;
 
 define("line-divider-lower", { styles, template });
