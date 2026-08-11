@@ -404,6 +404,7 @@ function h(i,a){if(i===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     align-items: center;
     width: fit-content;
     margin-bottom: 3rem;
+    gap: 1rem;
   }
 
   h2 {
@@ -413,14 +414,14 @@ function h(i,a){if(i===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     font-weight: var(--font-regular)
   }
 
+  img {
+    height: 5rem;
+    width: auto;
+  }
+
   :host([variant="vertical"]) {
     flex-direction: column-reverse;
     gap: 0;
-
-    img {
-      height: 5rem;
-      width: auto;
-    }
   }
 
   :host([variant="text"]) {

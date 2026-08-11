@@ -6,6 +6,7 @@ const styles = /* css */ `
     align-items: center;
     width: fit-content;
     margin-bottom: 3rem;
+    gap: 1rem;
   }
 
   h2 {
@@ -15,14 +16,14 @@ const styles = /* css */ `
     font-weight: var(--font-regular)
   }
 
+  img {
+    height: 5rem;
+    width: auto;
+  }
+
   :host([variant="vertical"]) {
     flex-direction: column-reverse;
     gap: 0;
-
-    img {
-      height: 5rem;
-      width: auto;
-    }
   }
 
   :host([variant="text"]) {

@@ -1,4 +1,4 @@
-function h(i,o){if(i===void 0){if(o===Array)return[];if(o===Object)return{};if(o===Boolean)return!1;if(o===Number)return 0;return}if(o===Boolean)return Boolean(i);if(o===Number)return Number(i);return i}function a(i,{props:o={},attrs:n=[],styles:d="",template:l}){let m=["props",...n];class p extends HTMLElement{static observedAttributes=m;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let t={},r=this.getAttribute("props");if(r)try{t=JSON.parse(r)}catch{t={}}let c={};for(let s of Object.keys(o))c[s]=h(t[s],o[s]);return c}_applyForwardedAttrs(){if(n.length===0)return;let t=this.shadowRoot.querySelector("[data-forward]");if(!t)return;for(let r of n)if(this.hasAttribute(r))t.setAttribute(r,this.getAttribute(r));else t.removeAttribute(r)}_render(){let t=this._getProps(),r=typeof l==="function"?l(t):l;this.shadowRoot.innerHTML=`<style>${d}</style>${r}`,this._applyForwardedAttrs()}}customElements.define(i,p)}var g=`
+function h(e,o){if(e===void 0){if(o===Array)return[];if(o===Object)return{};if(o===Boolean)return!1;if(o===Number)return 0;return}if(o===Boolean)return Boolean(e);if(o===Number)return Number(e);return e}function a(e,{props:o={},attrs:n=[],styles:d="",template:l}){let m=["props",...n];class p extends HTMLElement{static observedAttributes=m;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let t={},r=this.getAttribute("props");if(r)try{t=JSON.parse(r)}catch{t={}}let c={};for(let s of Object.keys(o))c[s]=h(t[s],o[s]);return c}_applyForwardedAttrs(){if(n.length===0)return;let t=this.shadowRoot.querySelector("[data-forward]");if(!t)return;for(let r of n)if(this.hasAttribute(r))t.setAttribute(r,this.getAttribute(r));else t.removeAttribute(r)}_render(){let t=this._getProps(),r=typeof l==="function"?l(t):l;this.shadowRoot.innerHTML=`<style>${d}</style>${r}`,this._applyForwardedAttrs()}}customElements.define(e,p)}var g=`
   :host {
     display: block;
   }
@@ -61,7 +61,7 @@ function h(i,o){if(i===void 0){if(o===Array)return[];if(o===Object)return{};if(o
   }
 `,b=["href","target","rel","download"],y=`
   <a data-forward><slot></slot></a>
-`;a("app-link",{attrs:b,styles:v,template:y});var e="769px",$="992px";var k=`
+`;a("app-link",{attrs:b,styles:v,template:y});var i="769px",$="992px";var k=`
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -70,7 +70,7 @@ function h(i,o){if(i===void 0){if(o===Array)return[];if(o===Object)return{};if(o
    display: flex;
    gap: 5rem;
 
-   @media (max-width: ${e}) {
+   @media (max-width: ${i}) {
         flex-direction: column;
         gap: 3rem;
         margin-block: 2rem;
@@ -194,7 +194,7 @@ function h(i,o){if(i===void 0){if(o===Array)return[];if(o===Object)return{};if(o
     align-items: center;
   }
 
-  @media (max-width: ${e}) {
+  @media (max-width: ${i}) {
     article {
       display: block;
     }
@@ -263,7 +263,7 @@ function h(i,o){if(i===void 0){if(o===Array)return[];if(o===Object)return{};if(o
     box-shadow: none;
   }
 
-  @media (max-width: ${e}) {
+  @media (max-width: ${i}) {
     .header__navigation {
       gap: 4rem;
     }
@@ -310,15 +310,17 @@ function h(i,o){if(i===void 0){if(o===Array)return[];if(o===Object)return{};if(o
     height: var(--local-height);
   }
 
+  :host([variant="medium"]) {
+     --local-width: auto;
+    --local-height: 5rem;
+  }
+
   :host([variant="large"]) {
     --local-width: auto;
     --local-height: 10rem;
   }
 
   :host([variant="creator"]) {
-    /* --local-height: auto;
-    --local-width: 4rem; */
-
     img {
       min-width: 5rem;
       max-width: 10rem;
@@ -335,7 +337,7 @@ function h(i,o){if(i===void 0){if(o===Array)return[];if(o===Object)return{};if(o
         display: flex;
         gap: 3rem;
 
-        @media (max-width: ${e}) {
+        @media (max-width: ${i}) {
           display: block;
         }
     }
