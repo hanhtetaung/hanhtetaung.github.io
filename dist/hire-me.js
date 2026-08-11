@@ -1,4 +1,4 @@
-function h(i,e){if(i===void 0){if(e===Array)return[];if(e===Object)return{};if(e===Boolean)return!1;if(e===Number)return 0;return}if(e===Boolean)return Boolean(i);if(e===Number)return Number(i);return i}function a(i,{props:e={},attrs:n=[],styles:d="",template:l}){let m=["props",...n];class s extends HTMLElement{static observedAttributes=m;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let o={},t=this.getAttribute("props");if(t)try{o=JSON.parse(t)}catch{o={}}let c={};for(let p of Object.keys(e))c[p]=h(o[p],e[p]);return c}_applyForwardedAttrs(){if(n.length===0)return;let o=this.shadowRoot.querySelector("[data-forward]");if(!o)return;for(let t of n)if(this.hasAttribute(t))o.setAttribute(t,this.getAttribute(t));else o.removeAttribute(t)}_render(){let o=this._getProps(),t=typeof l==="function"?l(o):l;this.shadowRoot.innerHTML=`<style>${d}</style>${t}`,this._applyForwardedAttrs()}}customElements.define(i,s)}var f=`
+function f(a,r){if(a===void 0){if(r===Array)return[];if(r===Object)return{};if(r===Boolean)return!1;if(r===Number)return 0;return}if(r===Boolean)return Boolean(a);if(r===Number)return Number(a);return a}function e(a,{props:r={},attrs:n=[],styles:m="",template:l}){let d=["props",...n];class p extends HTMLElement{static observedAttributes=d;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let t={},i=this.getAttribute("props");if(i)try{t=JSON.parse(i)}catch{t={}}let c={};for(let s of Object.keys(r))c[s]=f(t[s],r[s]);return c}_applyForwardedAttrs(){if(n.length===0)return;let t=this.shadowRoot.querySelector("[data-forward]");if(!t)return;for(let i of n)if(this.hasAttribute(i))t.setAttribute(i,this.getAttribute(i));else t.removeAttribute(i)}_render(){let t=this._getProps(),i=typeof l==="function"?l(t):l;this.shadowRoot.innerHTML=`<style>${m}</style>${i}`,this._applyForwardedAttrs()}}customElements.define(a,p)}var h=`
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -50,9 +50,18 @@ function h(i,e){if(i===void 0){if(e===Array)return[];if(e===Object)return{};if(e
     --local-border: none;
     --local-direction: column;
   }
+
+  :host([variant="sitemap"]) {
+     --local-padding: 0.2rem 0;
+     --local-border: none;
+
+     a::before {
+       content: "✈";
+     }
+  }
 `,g=["href","target","rel","download"],u=`
   <a data-forward><slot></slot></a>
-`;a("app-link",{attrs:g,styles:f,template:u});var b=`
+`;e("app-link",{attrs:g,styles:h,template:u});var b=`
   :host {
     display: block;
   }
@@ -61,7 +70,7 @@ function h(i,e){if(i===void 0){if(e===Array)return[];if(e===Object)return{};if(e
     max-height: 7rem;
     width: auto;
   }
-`,v=["width","height","src","alt"],y=()=>"<img data-forward />";a("app-logo",{attrs:v,styles:b,template:y});var r="769px",T="992px";var k=`
+`,v=["width","height","src","alt"],y=()=>"<img data-forward />";e("app-logo",{attrs:v,styles:b,template:y});var o="769px",L="992px";var k=`
   :host {
     display: block;
   }
@@ -95,7 +104,7 @@ function h(i,e){if(i===void 0){if(e===Array)return[];if(e===Object)return{};if(e
     box-shadow: none;
   }
 
-  @media (max-width: ${r}) {
+  @media (max-width: ${o}) {
     .header__navigation {
       gap: 4rem;
     }
@@ -129,7 +138,7 @@ function h(i,e){if(i===void 0){if(e===Array)return[];if(e===Object)return{};if(e
         </app-link>
       </div>
   </header>
-`;a("section-header",{template:w,styles:k});var x=`
+`;e("section-header",{template:w,styles:k});var x=[{href:"/",name:"Home"},{href:"/about",name:"About"},{href:"/credits",name:"Credits"},{href:"/hire-me",name:"Hire Me"},{href:"/thank-you",name:"Thank You"},{href:"/work/mmo",name:"MMO"},{href:"/work/bamboo",name:"Bamboo"},{href:"/work/portfolio",name:"Portfolio"},{href:"/work/au-van",name:"AU Van"},{href:"/work/sks-solar",name:"SKS Solar"},{href:"/writings/foundation-building-interfaces-at-scale",name:"Foundation"},{href:"/work/knowledge-tree",name:"Knowledge Tree"}],A=`
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -138,14 +147,14 @@ function h(i,e){if(i===void 0){if(e===Array)return[];if(e===Object)return{};if(e
    display: flex;
    gap: 5rem;
 
-   @media (max-width: ${r}) {
+   @media (max-width: ${o}) {
         flex-direction: column;
         gap: 3rem;
         margin-block: 2rem;
    }
   }
 
-  ul, ol {
+    ol {
     padding: 0;
     list-style-type: none;
     display: flex;
@@ -161,41 +170,62 @@ function h(i,e){if(i===void 0){if(e===Array)return[];if(e===Object)return{};if(e
   }
 
   nav ol {
+    flex-wrap: wrap;
     flex-direction: column;
+    max-height: 12.5ch;
+    overflow: scroll;
+
+    @media (max-width: ${o}) {
+        max-height: 20ch;
+    }
   }
 
-  nav ul {
-    gap: 2rem;
-    margin-top: 1rem;
+  ol li {
+    margin-right: 5rem;
+    margin-bottom: 0.3rem;
   }
-`,A=()=>`
+`,H=()=>`
     <nav>
         <span>Sitemap</span>
 
         <ol>
-            <li>
-                <app-link href="/" variant="plain">Home</app-link>
-            </li>
-            <li>
-                <app-link href="/about" variant="plain">About</app-link>
-            </li>
-
-            <li>
-                <app-link href="/credits" variant="plain">Credits</app-link>
-            </li>
-            <li>
-                <app-link href="/hire-me" variant="plain">Hire me</app-link>
-            </li>
-            <li>
-                <app-link href="/thank-you" variant="plain">Thank you</app-link>
-            </li>
+            ${x.map((a)=>`
+                <li>
+                    <app-link variant="sitemap" href=${a.href} >${a.name}</app-link>
+                </li>
+            `).join("")}
         </ol>
     </nav>
+`;e("footer-nav",{styles:A,template:H});var O=`
+  :host {
+   display: flex;
+    justify-content: space-between;
 
-    <nav>
-        <span>Get in touch:</span>
+   @media (max-width: ${o}) {
+        flex-direction: column;
+        gap: 3rem;
+   }
+  }
 
-        <ul>
+  p {
+    margin: 0;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 2rem;
+  }
+`,S=()=>`
+    
+      <p>
+        © Han Htet Aung 2026 |
+        <app-link href="/credits" variant="underline">Credits</app-link>
+      </p>
+
+       <ul>
             <li>
                 <app-link href="mailto:hanhtetaung.dev@gmail.com" variant="image">
                 <img
@@ -231,8 +261,7 @@ function h(i,e){if(i===void 0){if(e===Array)return[];if(e===Object)return{};if(e
                 </app-link>
             </li>
         </ul>
-    </nav>
-`;a("footer-nav",{styles:x,template:A});var _=`
+`;e("footer-copyright",{styles:O,template:S});var _=`
   :host {
     --local-bg-color: var(--color-bg-secondary);
 
@@ -262,7 +291,7 @@ function h(i,e){if(i===void 0){if(e===Array)return[];if(e===Object)return{};if(e
     align-items: center;
   }
 
-  @media (max-width: ${r}) {
+  @media (max-width: ${o}) {
     article {
       display: block;
     }
@@ -272,7 +301,11 @@ function h(i,e){if(i===void 0){if(e===Array)return[];if(e===Object)return{};if(e
     display: flex;
     gap: 3rem;
   }
-`,H=`
+
+  hr {
+    color: var(--color-secondary);
+  }
+`,E=`
   <footer>
       <article>
         <div>
@@ -292,12 +325,11 @@ function h(i,e){if(i===void 0){if(e===Array)return[];if(e===Object)return{};if(e
         <footer-nav></footer-nav>
       </article>
 
-      <p>
-        © Han Htet Aung 2026 |
-        <app-link href="/credits" variant="underline">Credits</app-link>
-      </p>
+      <hr>
+
+      <footer-copyright></footer-copyright>
   </footer>
-`;a("section-footer",{styles:_,template:H});var E=`
+`;e("section-footer",{styles:_,template:E});var N=`
   :host {
     --local-bg: var(--color-primary);
     --local-color: var(--color-bg-primary);
@@ -322,14 +354,14 @@ function h(i,e){if(i===void 0){if(e===Array)return[];if(e===Object)return{};if(e
     /* border: none; */
     padding: var(--local-padding);
   }
-`,N=["type"],O=`
+`,C=["type"],P=`
   <button
     data-forward
     onclick="const form = this.getRootNode().host.closest('form'); if (this.type === 'submit' && form) { form.requestSubmit ? form.requestSubmit() : form.submit(); }"
   >
     <slot></slot>
   </button>
-`;a("app-button",{attrs:N,styles:E,template:O});var C=`
+`;e("app-button",{attrs:C,styles:N,template:P});var T=`
     section {
         margin-inline: auto;
         width: 80%;
@@ -367,7 +399,7 @@ function h(i,e){if(i===void 0){if(e===Array)return[];if(e===Object)return{};if(e
     "three three"
      "three three";
 
-    @media (max-width: ${r}) {
+    @media (max-width: ${o}) {
      display: flex;
      flex-wrap: wrap;   
     }
@@ -376,7 +408,7 @@ function h(i,e){if(i===void 0){if(e===Array)return[];if(e===Object)return{};if(e
   textarea {
     grid-area: three;
   }
-`,z=`
+`,$=`
   <section>
       <h1>Let's Chat</h1>
       <p>I'd be happy to work with you. I'll get back to you later today.</p>
@@ -434,4 +466,4 @@ function h(i,e){if(i===void 0){if(e===Array)return[];if(e===Object)return{};if(e
         </p>
       </form>
   </section>
-`;a("section-hire-me-intro",{styles:C,template:z});
+`;e("section-hire-me-intro",{styles:T,template:$});

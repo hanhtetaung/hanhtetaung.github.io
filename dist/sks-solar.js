@@ -1,4 +1,4 @@
-function h(i,a){if(i===void 0){if(a===Array)return[];if(a===Object)return{};if(a===Boolean)return!1;if(a===Number)return 0;return}if(a===Boolean)return Boolean(i);if(a===Number)return Number(i);return i}function e(i,{props:a={},attrs:n=[],styles:d="",template:l}){let m=["props",...n];class p extends HTMLElement{static observedAttributes=m;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let o={},r=this.getAttribute("props");if(r)try{o=JSON.parse(r)}catch{o={}}let c={};for(let s of Object.keys(a))c[s]=h(o[s],a[s]);return c}_applyForwardedAttrs(){if(n.length===0)return;let o=this.shadowRoot.querySelector("[data-forward]");if(!o)return;for(let r of n)if(this.hasAttribute(r))o.setAttribute(r,this.getAttribute(r));else o.removeAttribute(r)}_render(){let o=this._getProps(),r=typeof l==="function"?l(o):l;this.shadowRoot.innerHTML=`<style>${d}</style>${r}`,this._applyForwardedAttrs()}}customElements.define(i,p)}var g=`
+function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a===Boolean)return!1;if(a===Number)return 0;return}if(a===Boolean)return Boolean(o);if(a===Number)return Number(o);return o}function e(o,{props:a={},attrs:n=[],styles:m="",template:l}){let d=["props",...n];class c extends HTMLElement{static observedAttributes=d;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let i={},r=this.getAttribute("props");if(r)try{i=JSON.parse(r)}catch{i={}}let p={};for(let s of Object.keys(a))p[s]=h(i[s],a[s]);return p}_applyForwardedAttrs(){if(n.length===0)return;let i=this.shadowRoot.querySelector("[data-forward]");if(!i)return;for(let r of n)if(this.hasAttribute(r))i.setAttribute(r,this.getAttribute(r));else i.removeAttribute(r)}_render(){let i=this._getProps(),r=typeof l==="function"?l(i):l;this.shadowRoot.innerHTML=`<style>${m}</style>${r}`,this._applyForwardedAttrs()}}customElements.define(o,c)}var g=`
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -50,6 +50,15 @@ function h(i,a){if(i===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     --local-border: none;
     --local-direction: column;
   }
+
+  :host([variant="sitemap"]) {
+     --local-padding: 0.2rem 0;
+     --local-border: none;
+
+     a::before {
+       content: "✈";
+     }
+  }
 `,f=["href","target","rel","download"],u=`
   <a data-forward><slot></slot></a>
 `;e("app-link",{attrs:f,styles:g,template:u});var v=`
@@ -61,7 +70,7 @@ function h(i,a){if(i===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     max-height: 7rem;
     width: auto;
   }
-`,y=["width","height","src","alt"],b=()=>"<img data-forward />";e("app-logo",{attrs:y,styles:v,template:b});var t="769px",J="992px";var w=`
+`,y=["width","height","src","alt"],w=()=>"<img data-forward />";e("app-logo",{attrs:y,styles:v,template:w});var t="769px",Q="992px";var b=`
   :host {
     display: block;
   }
@@ -129,7 +138,7 @@ function h(i,a){if(i===void 0){if(a===Array)return[];if(a===Object)return{};if(a
         </app-link>
       </div>
   </header>
-`;e("section-header",{template:k,styles:w});var x=`
+`;e("section-header",{template:k,styles:b});var x=[{href:"/",name:"Home"},{href:"/about",name:"About"},{href:"/credits",name:"Credits"},{href:"/hire-me",name:"Hire Me"},{href:"/thank-you",name:"Thank You"},{href:"/work/mmo",name:"MMO"},{href:"/work/bamboo",name:"Bamboo"},{href:"/work/portfolio",name:"Portfolio"},{href:"/work/au-van",name:"AU Van"},{href:"/work/sks-solar",name:"SKS Solar"},{href:"/writings/foundation-building-interfaces-at-scale",name:"Foundation"},{href:"/work/knowledge-tree",name:"Knowledge Tree"}],S=`
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -145,7 +154,7 @@ function h(i,a){if(i===void 0){if(a===Array)return[];if(a===Object)return{};if(a
    }
   }
 
-  ul, ol {
+    ol {
     padding: 0;
     list-style-type: none;
     display: flex;
@@ -161,41 +170,62 @@ function h(i,a){if(i===void 0){if(a===Array)return[];if(a===Object)return{};if(a
   }
 
   nav ol {
+    flex-wrap: wrap;
     flex-direction: column;
+    max-height: 12.5ch;
+    overflow: scroll;
+
+    @media (max-width: ${t}) {
+        max-height: 20ch;
+    }
   }
 
-  nav ul {
-    gap: 2rem;
-    margin-top: 1rem;
+  ol li {
+    margin-right: 5rem;
+    margin-bottom: 0.3rem;
   }
-`,S=()=>`
+`,H=()=>`
     <nav>
         <span>Sitemap</span>
 
         <ol>
-            <li>
-                <app-link href="/" variant="plain">Home</app-link>
-            </li>
-            <li>
-                <app-link href="/about" variant="plain">About</app-link>
-            </li>
-
-            <li>
-                <app-link href="/credits" variant="plain">Credits</app-link>
-            </li>
-            <li>
-                <app-link href="/hire-me" variant="plain">Hire me</app-link>
-            </li>
-            <li>
-                <app-link href="/thank-you" variant="plain">Thank you</app-link>
-            </li>
+            ${x.map((o)=>`
+                <li>
+                    <app-link variant="sitemap" href=${o.href} >${o.name}</app-link>
+                </li>
+            `).join("")}
         </ol>
     </nav>
+`;e("footer-nav",{styles:S,template:H});var A=`
+  :host {
+   display: flex;
+    justify-content: space-between;
 
-    <nav>
-        <span>Get in touch:</span>
+   @media (max-width: ${t}) {
+        flex-direction: column;
+        gap: 3rem;
+   }
+  }
 
-        <ul>
+  p {
+    margin: 0;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 2rem;
+  }
+`,$=()=>`
+    
+      <p>
+        © Han Htet Aung 2026 |
+        <app-link href="/credits" variant="underline">Credits</app-link>
+      </p>
+
+       <ul>
             <li>
                 <app-link href="mailto:hanhtetaung.dev@gmail.com" variant="image">
                 <img
@@ -231,8 +261,7 @@ function h(i,a){if(i===void 0){if(a===Array)return[];if(a===Object)return{};if(a
                 </app-link>
             </li>
         </ul>
-    </nav>
-`;e("footer-nav",{styles:x,template:S});var H=`
+`;e("footer-copyright",{styles:A,template:$});var P=`
   :host {
     --local-bg-color: var(--color-bg-secondary);
 
@@ -272,7 +301,11 @@ function h(i,a){if(i===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     display: flex;
     gap: 3rem;
   }
-`,A=`
+
+  hr {
+    color: var(--color-secondary);
+  }
+`,O=`
   <footer>
       <article>
         <div>
@@ -292,12 +325,11 @@ function h(i,a){if(i===void 0){if(a===Array)return[];if(a===Object)return{};if(a
         <footer-nav></footer-nav>
       </article>
 
-      <p>
-        © Han Htet Aung 2026 |
-        <app-link href="/credits" variant="underline">Credits</app-link>
-      </p>
+      <hr>
+
+      <footer-copyright></footer-copyright>
   </footer>
-`;e("section-footer",{styles:H,template:A});var P=`
+`;e("section-footer",{styles:P,template:O});var T=`
   :host {
     --local-width: 5rem;
     --local-heigth: auto;
@@ -328,7 +360,7 @@ function h(i,a){if(i===void 0){if(a===Array)return[];if(a===Object)return{};if(a
    :host([variant="full"]) {
     --local-width: 100%;
   }
-`,_=["width","height","src","alt"],E=()=>"<img data-forward />";e("app-image",{attrs:_,styles:P,template:E});var O=`
+`,E=["width","height","src","alt"],_=()=>"<img data-forward />";e("app-image",{attrs:E,styles:T,template:_});var N=`
   :host {
     display: block;
   }
@@ -368,7 +400,7 @@ function h(i,a){if(i===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     font-weight: var(--font-bold);
     text-transform: uppercase;
   }
-`,T=`
+`,j=`
   <section>
     <app-image
       variant="full"
@@ -398,7 +430,7 @@ function h(i,a){if(i===void 0){if(a===Array)return[];if(a===Object)return{};if(a
       </app-link>
     </article>
   </section>
-`;e("section-sks-solar-intro",{styles:O,template:T});var $=`
+`;e("section-sks-solar-intro",{styles:N,template:j});var z=`
   :host {
     display: flex;
     align-items: center;
@@ -429,15 +461,15 @@ function h(i,a){if(i===void 0){if(a===Array)return[];if(a===Object)return{};if(a
       display: none;
     }
   }
-`,z={name:String,img:String,alt:String},L=({name:i,img:a="",alt:n=""})=>`
-    <h2>${i}</h2>
+`,L={name:String,img:String,alt:String},C=({name:o,img:a="",alt:n=""})=>`
+    <h2>${o}</h2>
     <img
         src=${a}
         alt=${n}
         height="36"
         width="76"
     />
-`;e("section-title",{props:z,styles:$,template:L});var N=`
+`;e("section-title",{props:L,styles:z,template:C});var M=`
   :host {
     display: block;
   }
@@ -446,7 +478,7 @@ function h(i,a){if(i===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     width: 80%;
     margin-inline: auto;
   }
-`,j=`
+`,K=`
   <section>
     <section-title variant="text" props='{"name": "Background"}'></section-title>
 
@@ -459,7 +491,7 @@ function h(i,a){if(i===void 0){if(a===Array)return[];if(a===Object)return{};if(a
       clear structure, and minimal visuals.
     </p>
   </section>
-`;e("section-sks-solar-background",{styles:N,template:j});var C=`
+`;e("section-sks-solar-background",{styles:M,template:K});var B=`
   :host {
     display: block;
   }
@@ -468,7 +500,7 @@ function h(i,a){if(i===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     width: 80%;
     margin-inline: auto;
   }
-`,B=`
+`,F=`
   <section>
     <section-title variant="text" props='{"name": "Challenge"}'></section-title>
 
@@ -480,7 +512,7 @@ function h(i,a){if(i===void 0){if(a===Array)return[];if(a===Object)return{};if(a
       to deliver a more polished and trustworthy user experience.
     </p>
   </section>
-`;e("section-sks-solar-challenge",{styles:C,template:B});var K=`
+`;e("section-sks-solar-challenge",{styles:B,template:F});var R=`
   :host {
     display: grid;
     grid-template-columns: 1fr 2.5fr;
@@ -502,13 +534,13 @@ function h(i,a){if(i===void 0){if(a===Array)return[];if(a===Object)return{};if(a
   :host([variant="block"]) {
     display: block;
   }
-`,R={title:String},W=({title:i})=>`
-        <h3>${i}</h3>
+`,V={title:String},W=({title:o})=>`
+        <h3>${o}</h3>
 
         <article>
             <slot></slot>
         </article>
-`;e("app-article-paragraph",{props:R,styles:K,template:W});var M=`
+`;e("app-article-paragraph",{props:V,styles:R,template:W});var D=`
   :host {
     display: block;
   }
@@ -538,7 +570,7 @@ function h(i,a){if(i===void 0){if(a===Array)return[];if(a===Object)return{};if(a
   ol {
     list-style: disc;
   }
-`,D=`
+`,I=`
   <section>
     <section-title variant="text" props='{"name": "Process"}'></section-title>
 
@@ -621,7 +653,7 @@ function h(i,a){if(i===void 0){if(a===Array)return[];if(a===Object)return{};if(a
       </li>
     </ul>
   </section>
-`;e("section-sks-solar-process",{styles:M,template:D});var F=`
+`;e("section-sks-solar-process",{styles:D,template:I});var Y=`
   :host {
     display: block;
   }
@@ -679,4 +711,4 @@ function h(i,a){if(i===void 0){if(a===Array)return[];if(a===Object)return{};if(a
       </li>
     </ul>
   </section>
-`;e("section-sks-solar-result",{styles:F,template:G});
+`;e("section-sks-solar-result",{styles:Y,template:G});

@@ -1,6 +1,24 @@
 import { PHONE } from "../breakpoints";
 import { define } from "../define";
 
+const sitemaps = [
+  { href: "/", name: "Home" },
+  { href: "/about", name: "About" },
+  { href: "/credits", name: "Credits" },
+  { href: "/hire-me", name: "Hire Me" },
+  { href: "/thank-you", name: "Thank You" },
+  { href: "/work/mmo", name: "MMO" },
+  { href: "/work/bamboo", name: "Bamboo" },
+  { href: "/work/portfolio", name: "Portfolio" },
+  { href: "/work/au-van", name: "AU Van" },
+  { href: "/work/sks-solar", name: "SKS Solar" },
+  {
+    href: "/writings/foundation-building-interfaces-at-scale",
+    name: "Foundation",
+  },
+  { href: "/work/knowledge-tree", name: "Knowledge Tree" },
+];
+
 const styles = /* css */ `
   :host {
     --local-bg: var(--color-secondary);
@@ -17,7 +35,7 @@ const styles = /* css */ `
    }
   }
 
-  ul, ol {
+    ol {
     padding: 0;
     list-style-type: none;
     display: flex;
@@ -33,12 +51,19 @@ const styles = /* css */ `
   }
 
   nav ol {
+    flex-wrap: wrap;
     flex-direction: column;
+    max-height: 12.5ch;
+    overflow: scroll;
+
+    @media (max-width: ${PHONE}) {
+        max-height: 20ch;
+    }
   }
 
-  nav ul {
-    gap: 2rem;
-    margin-top: 1rem;
+  ol li {
+    margin-right: 5rem;
+    margin-bottom: 0.3rem;
   }
 `;
 
@@ -47,64 +72,16 @@ const template = () => /* html */ `
         <span>Sitemap</span>
 
         <ol>
-            <li>
-                <app-link href="/" variant="plain">Home</app-link>
-            </li>
-            <li>
-                <app-link href="/about" variant="plain">About</app-link>
-            </li>
-
-            <li>
-                <app-link href="/credits" variant="plain">Credits</app-link>
-            </li>
-            <li>
-                <app-link href="/hire-me" variant="plain">Hire me</app-link>
-            </li>
-            <li>
-                <app-link href="/thank-you" variant="plain">Thank you</app-link>
-            </li>
+            ${sitemaps
+              .map(
+                (s) => /*html*/ `
+                <li>
+                    <app-link variant="sitemap" href=${s.href} >${s.name}</app-link>
+                </li>
+            `,
+              )
+              .join("")}
         </ol>
-    </nav>
-
-    <nav>
-        <span>Get in touch:</span>
-
-        <ul>
-            <li>
-                <app-link href="mailto:hanhtetaung.dev@gmail.com" variant="image">
-                <img
-                    src="/assets/icons/email.svg"
-                    alt="Email Icon"
-                />
-                </app-link>
-            </li>
-            <li>
-                <app-link
-                href="https://github.com/hanhtetaung/"
-                target="_blank"
-                rel="noopener"
-                variant="image"
-                >
-                <img
-                    src="/assets/icons/github.svg"
-                    alt="Github Icon"
-                />
-                </app-link>
-            </li>
-            <li>
-                <app-link
-                href="https://www.linkedin.com/in/han-htet-aung/"
-                target="_blank"
-                rel="noopener"
-                variant="image"
-                >
-                <img
-                    src="/assets/icons/linkedin.svg"
-                    alt="Linkedin Icon"
-                />
-                </app-link>
-            </li>
-        </ul>
     </nav>
 `;
 

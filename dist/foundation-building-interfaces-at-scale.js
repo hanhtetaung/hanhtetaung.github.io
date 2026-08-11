@@ -1,4 +1,4 @@
-function h(a,i){if(a===void 0){if(i===Array)return[];if(i===Object)return{};if(i===Boolean)return!1;if(i===Number)return 0;return}if(i===Boolean)return Boolean(a);if(i===Number)return Number(a);return a}function t(a,{props:i={},attrs:n=[],styles:d="",template:l}){let m=["props",...n];class c extends HTMLElement{static observedAttributes=m;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let e={},o=this.getAttribute("props");if(o)try{e=JSON.parse(o)}catch{e={}}let p={};for(let s of Object.keys(i))p[s]=h(e[s],i[s]);return p}_applyForwardedAttrs(){if(n.length===0)return;let e=this.shadowRoot.querySelector("[data-forward]");if(!e)return;for(let o of n)if(this.hasAttribute(o))e.setAttribute(o,this.getAttribute(o));else e.removeAttribute(o)}_render(){let e=this._getProps(),o=typeof l==="function"?l(e):l;this.shadowRoot.innerHTML=`<style>${d}</style>${o}`,this._applyForwardedAttrs()}}customElements.define(a,c)}var g=`
+function h(t,o){if(t===void 0){if(o===Array)return[];if(o===Object)return{};if(o===Boolean)return!1;if(o===Number)return 0;return}if(o===Boolean)return Boolean(t);if(o===Number)return Number(t);return t}function e(t,{props:o={},attrs:n=[],styles:m="",template:l}){let d=["props",...n];class c extends HTMLElement{static observedAttributes=d;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let i={},r=this.getAttribute("props");if(r)try{i=JSON.parse(r)}catch{i={}}let p={};for(let s of Object.keys(o))p[s]=h(i[s],o[s]);return p}_applyForwardedAttrs(){if(n.length===0)return;let i=this.shadowRoot.querySelector("[data-forward]");if(!i)return;for(let r of n)if(this.hasAttribute(r))i.setAttribute(r,this.getAttribute(r));else i.removeAttribute(r)}_render(){let i=this._getProps(),r=typeof l==="function"?l(i):l;this.shadowRoot.innerHTML=`<style>${m}</style>${r}`,this._applyForwardedAttrs()}}customElements.define(t,c)}var f=`
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -50,9 +50,18 @@ function h(a,i){if(a===void 0){if(i===Array)return[];if(i===Object)return{};if(i
     --local-border: none;
     --local-direction: column;
   }
-`,f=["href","target","rel","download"],u=`
+
+  :host([variant="sitemap"]) {
+     --local-padding: 0.2rem 0;
+     --local-border: none;
+
+     a::before {
+       content: "✈";
+     }
+  }
+`,g=["href","target","rel","download"],u=`
   <a data-forward><slot></slot></a>
-`;t("app-link",{attrs:f,styles:g,template:u});var v=`
+`;e("app-link",{attrs:g,styles:f,template:u});var b=`
   :host {
     display: block;
   }
@@ -61,7 +70,7 @@ function h(a,i){if(a===void 0){if(i===Array)return[];if(i===Object)return{};if(i
     max-height: 7rem;
     width: auto;
   }
-`,b=["width","height","src","alt"],k=()=>"<img data-forward />";t("app-logo",{attrs:b,styles:v,template:k});var r="769px",K="992px";var y=`
+`,v=["width","height","src","alt"],k=()=>"<img data-forward />";e("app-logo",{attrs:v,styles:b,template:k});var a="769px",J="992px";var w=`
   :host {
     display: block;
   }
@@ -95,12 +104,12 @@ function h(a,i){if(a===void 0){if(i===Array)return[];if(i===Object)return{};if(i
     box-shadow: none;
   }
 
-  @media (max-width: ${r}) {
+  @media (max-width: ${a}) {
     .header__navigation {
       gap: 4rem;
     }
   }
-`,w=`
+`,y=`
   <header>
       <app-link variant="plain" href="/">
         <app-logo
@@ -129,7 +138,7 @@ function h(a,i){if(a===void 0){if(i===Array)return[];if(i===Object)return{};if(i
         </app-link>
       </div>
   </header>
-`;t("section-header",{template:w,styles:y});var x=`
+`;e("section-header",{template:y,styles:w});var x=[{href:"/",name:"Home"},{href:"/about",name:"About"},{href:"/credits",name:"Credits"},{href:"/hire-me",name:"Hire Me"},{href:"/thank-you",name:"Thank You"},{href:"/work/mmo",name:"MMO"},{href:"/work/bamboo",name:"Bamboo"},{href:"/work/portfolio",name:"Portfolio"},{href:"/work/au-van",name:"AU Van"},{href:"/work/sks-solar",name:"SKS Solar"},{href:"/writings/foundation-building-interfaces-at-scale",name:"Foundation"},{href:"/work/knowledge-tree",name:"Knowledge Tree"}],A=`
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -138,14 +147,14 @@ function h(a,i){if(a===void 0){if(i===Array)return[];if(i===Object)return{};if(i
    display: flex;
    gap: 5rem;
 
-   @media (max-width: ${r}) {
+   @media (max-width: ${a}) {
         flex-direction: column;
         gap: 3rem;
         margin-block: 2rem;
    }
   }
 
-  ul, ol {
+    ol {
     padding: 0;
     list-style-type: none;
     display: flex;
@@ -161,41 +170,62 @@ function h(a,i){if(a===void 0){if(i===Array)return[];if(i===Object)return{};if(i
   }
 
   nav ol {
+    flex-wrap: wrap;
     flex-direction: column;
+    max-height: 12.5ch;
+    overflow: scroll;
+
+    @media (max-width: ${a}) {
+        max-height: 20ch;
+    }
   }
 
-  nav ul {
-    gap: 2rem;
-    margin-top: 1rem;
+  ol li {
+    margin-right: 5rem;
+    margin-bottom: 0.3rem;
   }
-`,A=()=>`
+`,S=()=>`
     <nav>
         <span>Sitemap</span>
 
         <ol>
-            <li>
-                <app-link href="/" variant="plain">Home</app-link>
-            </li>
-            <li>
-                <app-link href="/about" variant="plain">About</app-link>
-            </li>
-
-            <li>
-                <app-link href="/credits" variant="plain">Credits</app-link>
-            </li>
-            <li>
-                <app-link href="/hire-me" variant="plain">Hire me</app-link>
-            </li>
-            <li>
-                <app-link href="/thank-you" variant="plain">Thank you</app-link>
-            </li>
+            ${x.map((t)=>`
+                <li>
+                    <app-link variant="sitemap" href=${t.href} >${t.name}</app-link>
+                </li>
+            `).join("")}
         </ol>
     </nav>
+`;e("footer-nav",{styles:A,template:S});var H=`
+  :host {
+   display: flex;
+    justify-content: space-between;
 
-    <nav>
-        <span>Get in touch:</span>
+   @media (max-width: ${a}) {
+        flex-direction: column;
+        gap: 3rem;
+   }
+  }
 
-        <ul>
+  p {
+    margin: 0;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 2rem;
+  }
+`,_=()=>`
+    
+      <p>
+        © Han Htet Aung 2026 |
+        <app-link href="/credits" variant="underline">Credits</app-link>
+      </p>
+
+       <ul>
             <li>
                 <app-link href="mailto:hanhtetaung.dev@gmail.com" variant="image">
                 <img
@@ -231,8 +261,7 @@ function h(a,i){if(a===void 0){if(i===Array)return[];if(i===Object)return{};if(i
                 </app-link>
             </li>
         </ul>
-    </nav>
-`;t("footer-nav",{styles:x,template:A});var _=`
+`;e("footer-copyright",{styles:H,template:_});var $=`
   :host {
     --local-bg-color: var(--color-bg-secondary);
 
@@ -262,7 +291,7 @@ function h(a,i){if(a===void 0){if(i===Array)return[];if(i===Object)return{};if(i
     align-items: center;
   }
 
-  @media (max-width: ${r}) {
+  @media (max-width: ${a}) {
     article {
       display: block;
     }
@@ -272,7 +301,11 @@ function h(a,i){if(a===void 0){if(i===Array)return[];if(i===Object)return{};if(i
     display: flex;
     gap: 3rem;
   }
-`,H=`
+
+  hr {
+    color: var(--color-secondary);
+  }
+`,O=`
   <footer>
       <article>
         <div>
@@ -292,12 +325,11 @@ function h(a,i){if(a===void 0){if(i===Array)return[];if(i===Object)return{};if(i
         <footer-nav></footer-nav>
       </article>
 
-      <p>
-        © Han Htet Aung 2026 |
-        <app-link href="/credits" variant="underline">Credits</app-link>
-      </p>
+      <hr>
+
+      <footer-copyright></footer-copyright>
   </footer>
-`;t("section-footer",{styles:_,template:H});var S=`
+`;e("section-footer",{styles:$,template:O});var P=`
   :host {
     display: block;
   }
@@ -350,7 +382,7 @@ function h(a,i){if(a===void 0){if(i===Array)return[];if(i===Object)return{};if(i
       </li>
     </ul>
   </section>
-`;t("section-foundation-building-interfaces-at-scale-intro",{styles:S,template:E});var O=`
+`;e("section-foundation-building-interfaces-at-scale-intro",{styles:P,template:E});var N=`
   :host {
     display: flex;
     align-items: center;
@@ -381,15 +413,15 @@ function h(a,i){if(a===void 0){if(i===Array)return[];if(i===Object)return{};if(i
       display: none;
     }
   }
-`,P={name:String,img:String,alt:String},$=({name:a,img:i="",alt:n=""})=>`
-    <h2>${a}</h2>
+`,T={name:String,img:String,alt:String},z=({name:t,img:o="",alt:n=""})=>`
+    <h2>${t}</h2>
     <img
-        src=${i}
+        src=${o}
         alt=${n}
         height="36"
         width="76"
     />
-`;t("section-title",{props:P,styles:O,template:$});var N=`
+`;e("section-title",{props:T,styles:N,template:z});var B=`
   :host {
     --local-width: 5rem;
     --local-heigth: auto;
@@ -420,13 +452,13 @@ function h(a,i){if(a===void 0){if(i===Array)return[];if(i===Object)return{};if(i
    :host([variant="full"]) {
     --local-width: 100%;
   }
-`,z=["width","height","src","alt"],C=()=>"<img data-forward />";t("app-image",{attrs:z,styles:N,template:C});var L=`
+`,C=["width","height","src","alt"],M=()=>"<img data-forward />";e("app-image",{attrs:C,styles:B,template:M});var L=`
   :host {
     display: grid;
     grid-template-columns: 1fr 2.5fr;
 
 
-    @media (max-width: ${r}) {
+    @media (max-width: ${a}) {
         display: block;
     }
   }
@@ -442,13 +474,13 @@ function h(a,i){if(a===void 0){if(i===Array)return[];if(i===Object)return{};if(i
   :host([variant="block"]) {
     display: block;
   }
-`,T={title:String},B=({title:a})=>`
-        <h3>${a}</h3>
+`,j={title:String},D=({title:t})=>`
+        <h3>${t}</h3>
 
         <article>
             <slot></slot>
         </article>
-`;t("app-article-paragraph",{props:T,styles:L,template:B});var D=`
+`;e("app-article-paragraph",{props:j,styles:L,template:D});var F=`
   :host {
     display: block;
   }
@@ -474,7 +506,7 @@ function h(a,i){if(a===void 0){if(i===Array)return[];if(i===Object)return{};if(i
     border-top: 1px dashed var(--color-text);
     padding-top: 5rem;
   }
-`,j=`
+`,K=`
   <section id="atomic-design-principle">
     <section-title variant="text" props='{"name": "Atomic Design Principle"}'></section-title>
 
@@ -566,7 +598,7 @@ function h(a,i){if(a===void 0){if(i===Array)return[];if(i===Object)return{};if(i
       </li>
     </ul>
   </section>
-`;t("section-atomic-design-principle",{styles:D,template:j});var I=`
+`;e("section-atomic-design-principle",{styles:F,template:K});var I=`
   :host {
     display: block;
   }
@@ -597,7 +629,7 @@ function h(a,i){if(a===void 0){if(i===Array)return[];if(i===Object)return{};if(i
     padding: 0;
     padding-left: 1.5rem;
   }
-`,F=`
+`,R=`
   <section id="design-token-architecture">
     <section-title variant="text" props='{"name": "Design Token Architecture"}'></section-title>
 
@@ -696,7 +728,7 @@ function h(a,i){if(a===void 0){if(i===Array)return[];if(i===Object)return{};if(i
       </li>
 </ul>
   </section>
-`;t("section-design-token-architecture",{styles:I,template:F});var G=`
+`;e("section-design-token-architecture",{styles:I,template:R});var V=`
   :host {
     display: block;
   }
@@ -713,7 +745,7 @@ function h(a,i){if(a===void 0){if(i===Array)return[];if(i===Object)return{};if(i
     flex-direction: column;
     gap: 0.5rem;
   }
-`,R=`
+`,Y=`
   <section>
     <section-title variant="text" props='{"name": "References"}'></section-title>
 
@@ -740,4 +772,4 @@ function h(a,i){if(a===void 0){if(i===Array)return[];if(i===Object)return{};if(i
       </li>
     </ul>
   </section>
-`;t("section-foundation-building-interfaces-at-scale-references",{styles:G,template:R});
+`;e("section-foundation-building-interfaces-at-scale-references",{styles:V,template:Y});
