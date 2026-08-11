@@ -52,6 +52,15 @@ const styles = /* css */ `
     --local-border: none;
     --local-direction: column;
   }
+
+  :host([variant="sitemap"]) {
+     --local-padding: 0.2rem 0;
+     --local-border: none;
+
+     a::before {
+       content: "✈";
+     }
+  }
 `;
 
 const attrs = ["href", "target", "rel", "download"];

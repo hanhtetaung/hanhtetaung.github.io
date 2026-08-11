@@ -1,4 +1,4 @@
-function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t===Boolean)return!1;if(t===Number)return 0;return}if(t===Boolean)return Boolean(i);if(t===Number)return Number(i);return i}function e(i,{props:t={},attrs:r=[],styles:d="",template:l}){let m=["props",...r];class c extends HTMLElement{static observedAttributes=m;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let o={},n=this.getAttribute("props");if(n)try{o=JSON.parse(n)}catch{o={}}let p={};for(let s of Object.keys(t))p[s]=h(o[s],t[s]);return p}_applyForwardedAttrs(){if(r.length===0)return;let o=this.shadowRoot.querySelector("[data-forward]");if(!o)return;for(let n of r)if(this.hasAttribute(n))o.setAttribute(n,this.getAttribute(n));else o.removeAttribute(n)}_render(){let o=this._getProps(),n=typeof l==="function"?l(o):l;this.shadowRoot.innerHTML=`<style>${d}</style>${n}`,this._applyForwardedAttrs()}}customElements.define(i,c)}var f=`
+function h(t,o){if(t===void 0){if(o===Array)return[];if(o===Object)return{};if(o===Boolean)return!1;if(o===Number)return 0;return}if(o===Boolean)return Boolean(t);if(o===Number)return Number(t);return t}function e(t,{props:o={},attrs:r=[],styles:m="",template:l}){let d=["props",...r];class c extends HTMLElement{static observedAttributes=d;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let a={},n=this.getAttribute("props");if(n)try{a=JSON.parse(n)}catch{a={}}let p={};for(let s of Object.keys(o))p[s]=h(a[s],o[s]);return p}_applyForwardedAttrs(){if(r.length===0)return;let a=this.shadowRoot.querySelector("[data-forward]");if(!a)return;for(let n of r)if(this.hasAttribute(n))a.setAttribute(n,this.getAttribute(n));else a.removeAttribute(n)}_render(){let a=this._getProps(),n=typeof l==="function"?l(a):l;this.shadowRoot.innerHTML=`<style>${m}</style>${n}`,this._applyForwardedAttrs()}}customElements.define(t,c)}var f=`
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -50,6 +50,15 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     --local-border: none;
     --local-direction: column;
   }
+
+  :host([variant="sitemap"]) {
+     --local-padding: 0.2rem 0;
+     --local-border: none;
+
+     a::before {
+       content: "✈";
+     }
+  }
 `,g=["href","target","rel","download"],u=`
   <a data-forward><slot></slot></a>
 `;e("app-link",{attrs:g,styles:f,template:u});var v=`
@@ -61,7 +70,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     max-height: 7rem;
     width: auto;
   }
-`,y=["width","height","src","alt"],b=()=>"<img data-forward />";e("app-logo",{attrs:y,styles:v,template:b});var a="769px",ee="992px";var w=`
+`,y=["width","height","src","alt"],w=()=>"<img data-forward />";e("app-logo",{attrs:y,styles:v,template:w});var i="769px",oe="992px";var b=`
   :host {
     display: block;
   }
@@ -95,7 +104,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     box-shadow: none;
   }
 
-  @media (max-width: ${a}) {
+  @media (max-width: ${i}) {
     .header__navigation {
       gap: 4rem;
     }
@@ -129,7 +138,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
         </app-link>
       </div>
   </header>
-`;e("section-header",{template:k,styles:w});var x=`
+`;e("section-header",{template:k,styles:b});var x=[{href:"/",name:"Home"},{href:"/about",name:"About"},{href:"/credits",name:"Credits"},{href:"/hire-me",name:"Hire Me"},{href:"/thank-you",name:"Thank You"},{href:"/work/mmo",name:"MMO"},{href:"/work/bamboo",name:"Bamboo"},{href:"/work/portfolio",name:"Portfolio"},{href:"/work/au-van",name:"AU Van"},{href:"/work/sks-solar",name:"SKS Solar"},{href:"/writings/foundation-building-interfaces-at-scale",name:"Foundation"},{href:"/work/knowledge-tree",name:"Knowledge Tree"}],S=`
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -138,14 +147,14 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
    display: flex;
    gap: 5rem;
 
-   @media (max-width: ${a}) {
+   @media (max-width: ${i}) {
         flex-direction: column;
         gap: 3rem;
         margin-block: 2rem;
    }
   }
 
-  ul, ol {
+    ol {
     padding: 0;
     list-style-type: none;
     display: flex;
@@ -161,41 +170,62 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
   }
 
   nav ol {
+    flex-wrap: wrap;
     flex-direction: column;
+    max-height: 12.5ch;
+    overflow: scroll;
+
+    @media (max-width: ${i}) {
+        max-height: 20ch;
+    }
   }
 
-  nav ul {
-    gap: 2rem;
-    margin-top: 1rem;
+  ol li {
+    margin-right: 5rem;
+    margin-bottom: 0.3rem;
   }
-`,S=()=>`
+`,A=()=>`
     <nav>
         <span>Sitemap</span>
 
         <ol>
-            <li>
-                <app-link href="/" variant="plain">Home</app-link>
-            </li>
-            <li>
-                <app-link href="/about" variant="plain">About</app-link>
-            </li>
-
-            <li>
-                <app-link href="/credits" variant="plain">Credits</app-link>
-            </li>
-            <li>
-                <app-link href="/hire-me" variant="plain">Hire me</app-link>
-            </li>
-            <li>
-                <app-link href="/thank-you" variant="plain">Thank you</app-link>
-            </li>
+            ${x.map((t)=>`
+                <li>
+                    <app-link variant="sitemap" href=${t.href} >${t.name}</app-link>
+                </li>
+            `).join("")}
         </ol>
     </nav>
+`;e("footer-nav",{styles:S,template:A});var H=`
+  :host {
+   display: flex;
+    justify-content: space-between;
 
-    <nav>
-        <span>Get in touch:</span>
+   @media (max-width: ${i}) {
+        flex-direction: column;
+        gap: 3rem;
+   }
+  }
 
-        <ul>
+  p {
+    margin: 0;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 2rem;
+  }
+`,O=()=>`
+    
+      <p>
+        © Han Htet Aung 2026 |
+        <app-link href="/credits" variant="underline">Credits</app-link>
+      </p>
+
+       <ul>
             <li>
                 <app-link href="mailto:hanhtetaung.dev@gmail.com" variant="image">
                 <img
@@ -231,8 +261,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
                 </app-link>
             </li>
         </ul>
-    </nav>
-`;e("footer-nav",{styles:x,template:S});var A=`
+`;e("footer-copyright",{styles:H,template:O});var P=`
   :host {
     --local-bg-color: var(--color-bg-secondary);
 
@@ -262,7 +291,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     align-items: center;
   }
 
-  @media (max-width: ${a}) {
+  @media (max-width: ${i}) {
     article {
       display: block;
     }
@@ -272,7 +301,11 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     display: flex;
     gap: 3rem;
   }
-`,H=`
+
+  hr {
+    color: var(--color-secondary);
+  }
+`,$=`
   <footer>
       <article>
         <div>
@@ -292,12 +325,11 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
         <footer-nav></footer-nav>
       </article>
 
-      <p>
-        © Han Htet Aung 2026 |
-        <app-link href="/credits" variant="underline">Credits</app-link>
-      </p>
+      <hr>
+
+      <footer-copyright></footer-copyright>
   </footer>
-`;e("section-footer",{styles:A,template:H});var z=`
+`;e("section-footer",{styles:P,template:$});var M=`
   :host {
     --local-width: 5rem;
     --local-heigth: auto;
@@ -328,7 +360,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
    :host([variant="full"]) {
     --local-width: 100%;
   }
-`,O=["width","height","src","alt"],P=()=>"<img data-forward />";e("app-image",{attrs:O,styles:z,template:P});var E=`
+`,z=["width","height","src","alt"],E=()=>"<img data-forward />";e("app-image",{attrs:z,styles:M,template:E});var B=`
   :host {
     display: block;
   }
@@ -342,7 +374,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     justify-content: space-between;
     gap: 3rem;
 
-    @media (max-width: ${a}) {
+    @media (max-width: ${i}) {
       flex-direction: column;
     }
   }
@@ -372,7 +404,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     padding: 0;
     padding-inline: 2rem;
   }
-`,B=`
+`,T=`
   <section>
     <app-image
     variant="large"
@@ -404,7 +436,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
         </ul>
       </article>
   </section>
-`;e("section-mmo-intro",{styles:E,template:B});var _=`
+`;e("section-mmo-intro",{styles:B,template:T});var C=`
   :host {
     display: flex;
     align-items: center;
@@ -435,15 +467,15 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
       display: none;
     }
   }
-`,$={name:String,img:String,alt:String},C=({name:i,img:t="",alt:r=""})=>`
-    <h2>${i}</h2>
+`,N={name:String,img:String,alt:String},_=({name:t,img:o="",alt:r=""})=>`
+    <h2>${t}</h2>
     <img
-        src=${t}
+        src=${o}
         alt=${r}
         height="36"
         width="76"
     />
-`;e("section-title",{props:$,styles:_,template:C});var N=`
+`;e("section-title",{props:N,styles:C,template:_});var R=`
   :host {
     display: block;
   }
@@ -452,7 +484,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     width: 80%;
     margin-inline: auto;
   }
-`,R=`
+`,W=`
   <section>
     <section-title
         variant="text"
@@ -468,7 +500,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
           </p>
       </article>
   </section>
-`;e("section-mmo-about",{styles:N,template:R});var W=`
+`;e("section-mmo-about",{styles:R,template:W});var I=`
   :host {
     display: block;
   }
@@ -494,7 +526,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     font-weight: var(--font-bold);
     text-transform: uppercase;
   }
-`,I=`
+`,j=`
   <section>
 
   <section-title
@@ -530,7 +562,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
           </li>
         </ul>
   </section>
-`;e("section-mmo-voices-from-field",{styles:W,template:I});var M=`
+`;e("section-mmo-voices-from-field",{styles:I,template:j});var F=`
   :host {
     display: block;
   }
@@ -567,7 +599,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
   article {
     margin-bottom: 5rem;
   }
-`,T=`
+`,L=`
   <section>
     <section-title
         variant="text"
@@ -625,13 +657,13 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
         </ul>
       </article>
   </section>
-`;e("section-mmo-designing-workflow",{styles:M,template:T});var L=`
+`;e("section-mmo-designing-workflow",{styles:F,template:L});var D=`
   :host {
     display: grid;
     grid-template-columns: 1fr 2.5fr;
 
 
-    @media (max-width: ${a}) {
+    @media (max-width: ${i}) {
         display: block;
     }
   }
@@ -647,13 +679,13 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
   :host([variant="block"]) {
     display: block;
   }
-`,j={title:String},D=({title:i})=>`
-        <h3>${i}</h3>
+`,K={title:String},V=({title:t})=>`
+        <h3>${t}</h3>
 
         <article>
             <slot></slot>
         </article>
-`;e("app-article-paragraph",{props:j,styles:L,template:D});var F=`
+`;e("app-article-paragraph",{props:K,styles:D,template:V});var q=`
   :host {
     display: block;
   }
@@ -757,7 +789,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
       </li>
     </ul>
   </section>
-`;e("section-mmo-building-interfaces",{styles:F,template:G});var q=`
+`;e("section-mmo-building-interfaces",{styles:q,template:G});var U=`
   :host {
     display: block;
   }
@@ -775,7 +807,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     display: flex;
     flex-direction: column;
   }
-`,V=`
+`,Y=`
   <section>
 
   <section-title
@@ -789,7 +821,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
           <li>Request items from warehouse</li>
         </ul>
   </section>
-`;e("section-mmo-multiple-workflows",{styles:q,template:V});var K=`
+`;e("section-mmo-multiple-workflows",{styles:U,template:Y});var J=`
   :host {
     display: block;
   }
@@ -798,7 +830,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     width: 80%;
     margin-inline: auto;
   }
-`,J=`
+`,X=`
   <section>
     <section-title
         variant="text"
@@ -822,7 +854,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
           <app-link variant="underline" href="/foundation-building-interfaces-at-scale">Read the article</app-link>
       </article>
   </section>
-`;e("section-mmo-one-design-system",{styles:K,template:J});var U=`
+`;e("section-mmo-one-design-system",{styles:J,template:X});var Q=`
   :host {
     display: block;
   }
@@ -839,7 +871,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     display: flex;
     flex-direction: column;
   }
-`,X=`
+`,Z=`
   <section>
     <section-title
       variant="text"
@@ -848,4 +880,4 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
 
     <p>The system continues to grow as users' needs change.</p>
   </section>
-`;e("section-mmo-conclusion",{styles:U,template:X});
+`;e("section-mmo-conclusion",{styles:Q,template:Z});

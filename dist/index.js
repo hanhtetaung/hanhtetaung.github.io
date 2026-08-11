@@ -1,4 +1,4 @@
-function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t===Boolean)return!1;if(t===Number)return 0;return}if(t===Boolean)return Boolean(i);if(t===Number)return Number(i);return i}function e(i,{props:t={},attrs:o=[],styles:n="",template:a}){let m=["props",...o];class c extends HTMLElement{static observedAttributes=m;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let l={},s=this.getAttribute("props");if(s)try{l=JSON.parse(s)}catch{l={}}let g={};for(let d of Object.keys(t))g[d]=h(l[d],t[d]);return g}_applyForwardedAttrs(){if(o.length===0)return;let l=this.shadowRoot.querySelector("[data-forward]");if(!l)return;for(let s of o)if(this.hasAttribute(s))l.setAttribute(s,this.getAttribute(s));else l.removeAttribute(s)}_render(){let l=this._getProps(),s=typeof a==="function"?a(l):a;this.shadowRoot.innerHTML=`<style>${n}</style>${s}`,this._applyForwardedAttrs()}}customElements.define(i,c)}var f=`
+function h(o,t){if(o===void 0){if(t===Array)return[];if(t===Object)return{};if(t===Boolean)return!1;if(t===Number)return 0;return}if(t===Boolean)return Boolean(o);if(t===Number)return Number(o);return o}function e(o,{props:t={},attrs:i=[],styles:n="",template:r}){let p=["props",...i];class c extends HTMLElement{static observedAttributes=p;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let l={},s=this.getAttribute("props");if(s)try{l=JSON.parse(s)}catch{l={}}let g={};for(let d of Object.keys(t))g[d]=h(l[d],t[d]);return g}_applyForwardedAttrs(){if(i.length===0)return;let l=this.shadowRoot.querySelector("[data-forward]");if(!l)return;for(let s of i)if(this.hasAttribute(s))l.setAttribute(s,this.getAttribute(s));else l.removeAttribute(s)}_render(){let l=this._getProps(),s=typeof r==="function"?r(l):r;this.shadowRoot.innerHTML=`<style>${n}</style>${s}`,this._applyForwardedAttrs()}}customElements.define(o,c)}var f=`
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -50,9 +50,18 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     --local-border: none;
     --local-direction: column;
   }
+
+  :host([variant="sitemap"]) {
+     --local-padding: 0.2rem 0;
+     --local-border: none;
+
+     a::before {
+       content: "✈";
+     }
+  }
 `,u=["href","target","rel","download"],v=`
   <a data-forward><slot></slot></a>
-`;e("app-link",{attrs:u,styles:f,template:v});var y=`
+`;e("app-link",{attrs:u,styles:f,template:v});var w=`
   :host {
     display: block;
   }
@@ -61,7 +70,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     max-height: 7rem;
     width: auto;
   }
-`,w=["width","height","src","alt"],b=()=>"<img data-forward />";e("app-logo",{attrs:w,styles:y,template:b});var r="769px",p="992px";var k=`
+`,y=["width","height","src","alt"],b=()=>"<img data-forward />";e("app-logo",{attrs:y,styles:w,template:b});var a="769px",m="992px";var k=`
   :host {
     display: block;
   }
@@ -95,7 +104,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     box-shadow: none;
   }
 
-  @media (max-width: ${r}) {
+  @media (max-width: ${a}) {
     .header__navigation {
       gap: 4rem;
     }
@@ -129,7 +138,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
         </app-link>
       </div>
   </header>
-`;e("section-header",{template:x,styles:k});var S=`
+`;e("section-header",{template:x,styles:k});var S=[{href:"/",name:"Home"},{href:"/about",name:"About"},{href:"/credits",name:"Credits"},{href:"/hire-me",name:"Hire Me"},{href:"/thank-you",name:"Thank You"},{href:"/work/mmo",name:"MMO"},{href:"/work/bamboo",name:"Bamboo"},{href:"/work/portfolio",name:"Portfolio"},{href:"/work/au-van",name:"AU Van"},{href:"/work/sks-solar",name:"SKS Solar"},{href:"/writings/foundation-building-interfaces-at-scale",name:"Foundation"},{href:"/work/knowledge-tree",name:"Knowledge Tree"}],$=`
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -138,14 +147,14 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
    display: flex;
    gap: 5rem;
 
-   @media (max-width: ${r}) {
+   @media (max-width: ${a}) {
         flex-direction: column;
         gap: 3rem;
         margin-block: 2rem;
    }
   }
 
-  ul, ol {
+    ol {
     padding: 0;
     list-style-type: none;
     display: flex;
@@ -161,41 +170,62 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
   }
 
   nav ol {
+    flex-wrap: wrap;
     flex-direction: column;
+    max-height: 12.5ch;
+    overflow: scroll;
+
+    @media (max-width: ${a}) {
+        max-height: 20ch;
+    }
   }
 
-  nav ul {
-    gap: 2rem;
-    margin-top: 1rem;
+  ol li {
+    margin-right: 5rem;
+    margin-bottom: 0.3rem;
   }
-`,$=()=>`
+`,I=()=>`
     <nav>
         <span>Sitemap</span>
 
         <ol>
-            <li>
-                <app-link href="/" variant="plain">Home</app-link>
-            </li>
-            <li>
-                <app-link href="/about" variant="plain">About</app-link>
-            </li>
-
-            <li>
-                <app-link href="/credits" variant="plain">Credits</app-link>
-            </li>
-            <li>
-                <app-link href="/hire-me" variant="plain">Hire me</app-link>
-            </li>
-            <li>
-                <app-link href="/thank-you" variant="plain">Thank you</app-link>
-            </li>
+            ${S.map((o)=>`
+                <li>
+                    <app-link variant="sitemap" href=${o.href} >${o.name}</app-link>
+                </li>
+            `).join("")}
         </ol>
     </nav>
+`;e("footer-nav",{styles:$,template:I});var A=`
+  :host {
+   display: flex;
+    justify-content: space-between;
 
-    <nav>
-        <span>Get in touch:</span>
+   @media (max-width: ${a}) {
+        flex-direction: column;
+        gap: 3rem;
+   }
+  }
 
-        <ul>
+  p {
+    margin: 0;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 2rem;
+  }
+`,T=()=>`
+    
+      <p>
+        © Han Htet Aung 2026 |
+        <app-link href="/credits" variant="underline">Credits</app-link>
+      </p>
+
+       <ul>
             <li>
                 <app-link href="mailto:hanhtetaung.dev@gmail.com" variant="image">
                 <img
@@ -231,8 +261,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
                 </app-link>
             </li>
         </ul>
-    </nav>
-`;e("footer-nav",{styles:S,template:$});var I=`
+`;e("footer-copyright",{styles:A,template:T});var O=`
   :host {
     --local-bg-color: var(--color-bg-secondary);
 
@@ -262,7 +291,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     align-items: center;
   }
 
-  @media (max-width: ${r}) {
+  @media (max-width: ${a}) {
     article {
       display: block;
     }
@@ -272,7 +301,11 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     display: flex;
     gap: 3rem;
   }
-`,A=`
+
+  hr {
+    color: var(--color-secondary);
+  }
+`,M=`
   <footer>
       <article>
         <div>
@@ -292,12 +325,11 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
         <footer-nav></footer-nav>
       </article>
 
-      <p>
-        © Han Htet Aung 2026 |
-        <app-link href="/credits" variant="underline">Credits</app-link>
-      </p>
+      <hr>
+
+      <footer-copyright></footer-copyright>
   </footer>
-`;e("section-footer",{styles:I,template:A});var Q=`
+`;e("section-footer",{styles:O,template:M});var Q=`
   :host {
     --local-width: 3rem;
     --local-height: auto;
@@ -330,7 +362,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
   }
 
 
-`,T=["src","alt"],O=()=>'<img data-forward width="200" height="200"/>';e("app-icon",{attrs:T,styles:Q,template:O});var M=[{src:"/assets/icons/figma.svg",alt:"Figma Icon"},{src:"/assets/icons/html.svg",alt:"HTML Icon"},{src:"/assets/icons/css.svg",alt:"CSS Icon"},{src:"/assets/icons/javascript.svg",alt:"JavaScript Icon"}],z=[{name:"Knowledge Tree",href:"/work/knowledge-tree",src:"/assets/images/case-study/knowledge-tree/thumbnail.avif",alt:"Knowledge Tree Thumbnail"},{name:"MMO",href:"/work/mmo",src:"/assets/images/case-study/mmo/thumbnail.avif",alt:"MMO Thumbnail"},{name:"Bamboo",href:"/work/bamboo",src:"/assets/images/case-study/bamboo/thumbnail.avif",alt:"Bamboo Thumbnail"}],E=[{title:"Specialize In",header:"Enterprise UX"},{title:"Simplify",header:"Complex workflows"},{title:"Scale",header:"Design System"}],L=`
+`,P=["src","alt"],E=()=>'<img data-forward width="200" height="200"/>';e("app-icon",{attrs:P,styles:Q,template:E});var z=[{src:"/assets/icons/figma.svg",alt:"Figma Icon"},{src:"/assets/icons/html.svg",alt:"HTML Icon"},{src:"/assets/icons/css.svg",alt:"CSS Icon"},{src:"/assets/icons/javascript.svg",alt:"JavaScript Icon"}],H=[{name:"Knowledge Tree",href:"/work/knowledge-tree",src:"/assets/images/case-study/knowledge-tree/thumbnail.avif",alt:"Knowledge Tree Thumbnail"},{name:"MMO",href:"/work/mmo",src:"/assets/images/case-study/mmo/thumbnail.avif",alt:"MMO Thumbnail"},{name:"Bamboo",href:"/work/bamboo",src:"/assets/images/case-study/bamboo/thumbnail.avif",alt:"Bamboo Thumbnail"}],L=[{title:"Specialize In",header:"Enterprise UX"},{title:"Simplify",header:"Complex workflows"},{title:"Scale",header:"Design System"}],D=`
   section {
     width: 80%;
     margin-inline: auto;
@@ -343,7 +375,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
       "three three";
 
 
-    @media (max-width: ${r}) {
+    @media (max-width: ${a}) {
         display: flex;
         flex-direction: column;
     }
@@ -359,7 +391,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     max-width: 30ch;
     margin-left: auto;
 
-    @media (max-width: ${r}) {
+    @media (max-width: ${a}) {
       margin: auto;
     }
   }
@@ -428,7 +460,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     max-height: 12rem;
     width: auto;
   }
-`,P=`
+`,C=`
   <section>
       <article>
         <hgroup>
@@ -442,11 +474,11 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
   
         <span>Toolkit:</span>
         <ul class="toolkits">
-          ${M.map((i)=>`
+          ${z.map((o)=>`
               <li>
                 <app-icon
-                  src=${i.src}
-                  alt=${i.alt}
+                  src=${o.src}
+                  alt=${o.alt}
                 ></app-icon>
               </li>
             `).join("")}
@@ -454,29 +486,29 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
       </article>
 
       <ul class="highlights">
-         ${E.map((i)=>`
+         ${L.map((o)=>`
                 <li>
-                  <span>${i.title}</span>
-                  <h3>${i.header}</h3>
+                  <span>${o.title}</span>
+                  <h3>${o.header}</h3>
                 </li>
               `).join("")}
       </ul>
 
       <ol>
-        ${z.map((i)=>`
+        ${H.map((o)=>`
           <li>
-            <app-link variant="image" href=${i.href}>
-              <span>${i.name}</span>
+            <app-link variant="image" href=${o.href}>
+              <span>${o.name}</span>
               <img
-                src=${i.src}
-                alt=${i.alt}
+                src=${o.src}
+                alt=${o.alt}
               />
             </app-link>
           </li>
           `).join("")}
       </ol>
   </section>
-`;e("section-hero",{styles:L,template:P});var D=`
+`;e("section-hero",{styles:D,template:C});var N=`
   :host {
     display: flex;
     align-items: center;
@@ -507,15 +539,15 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
       display: none;
     }
   }
-`,H={name:String,img:String,alt:String},C=({name:i,img:t="",alt:o=""})=>`
-    <h2>${i}</h2>
+`,B={name:String,img:String,alt:String},j=({name:o,img:t="",alt:i=""})=>`
+    <h2>${o}</h2>
     <img
         src=${t}
-        alt=${o}
+        alt=${i}
         height="36"
         width="76"
     />
-`;e("section-title",{props:H,styles:D,template:C});var N=`
+`;e("section-title",{props:B,styles:N,template:j});var K=`
   :host {
     --local-width: 5rem;
     --local-heigth: auto;
@@ -546,7 +578,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
    :host([variant="full"]) {
     --local-width: 100%;
   }
-`,B=["width","height","src","alt"],j=()=>"<img data-forward />";e("app-image",{attrs:B,styles:N,template:j});var _=`
+`,_=["width","height","src","alt"],W=()=>"<img data-forward />";e("app-image",{attrs:_,styles:K,template:W});var U=`
   :host {
     display: flex;
     /* width: fit-content; */
@@ -571,19 +603,19 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     margin-top: 1rem;
   }
 
-`,W={title:String,img:String,alt:String,href:String,comingSoon:Boolean},J=({title:i,img:t,alt:o,href:n,comingSoon:a})=>`
+`,J={title:String,img:String,alt:String,href:String,comingSoon:Boolean},R=({title:o,img:t,alt:i,href:n,comingSoon:r})=>`
     <app-icon
         variant="medium"
         src=${t}
-        alt=${o}
+        alt=${i}
     ></app-icon>
 
     <article>
-        <h3>${i}</h3>
-        ${a?"<p>Coming soon</p>":`<app-link variant="underline" href=${n} target="_blank">Read More</app-link>`}
+        <h3>${o}</h3>
+        ${r?"<p>Coming soon</p>":`<app-link variant="underline" href=${n} target="_blank">Read More</app-link>`}
     </article>
 
-`;e("writing-article",{props:W,styles:_,template:J});var K=`
+`;e("writing-article",{props:J,styles:U,template:R});var F=`
   :host {
     display: block;
   }
@@ -599,7 +631,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     gap: 3rem;
     overflow: scroll;
   }
-`,R=()=>`
+`,V=()=>`
   <section>
        <section-title
         props='{"name": "Writings", "img": "/assets/icons/kingfisher.svg", "alt": "Kingfisher Logo"}'
@@ -611,7 +643,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
         <writing-article props='{"title": "Engineering Behind This Portfolio", "description": "Hello world", "img": "/assets/icons/engineering.svg", "alt": "Molecule Icon", "comingSoon": "True"}'></writing-article>       
       </ul>
   </section>
-`;e("section-writings",{styles:K,template:R});var U=`
+`;e("section-writings",{styles:F,template:V});var X=`
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -634,7 +666,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     --local-color: var(--color-secondary);
     --local-border: 1px solid var(--color-secondary);
   }
-`,F={name:String},X=({name:i})=>`${i}`;e("app-badge",{props:F,styles:U,template:X});var G=`
+`,Y={name:String},G=({name:o})=>`${o}`;e("app-badge",{props:Y,styles:X,template:G});var Z=`
   :host {
     --local-border: 1px solid currentColor;
     --local-decoration: none;
@@ -690,26 +722,26 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     border-radius: 4px;
   }
 
-  @media (max-width: ${p}) {
+  @media (max-width: ${m}) {
     :host {
       display: block;
     }
   }
-`,V={image:String,alt:String,title:String,description:String,href:String,categories:Array},Y=({image:i,alt:t,title:o,description:n,href:a,categories:m})=>`
-    <img src="${i}" alt="${t}" />
+`,q={image:String,alt:String,title:String,description:String,href:String,categories:Array},ee=({image:o,alt:t,title:i,description:n,href:r,categories:p})=>`
+    <img src="${o}" alt="${t}" />
     <div>
-      <h3>${o}</h3>
+      <h3>${i}</h3>
       <ul>
-        ${m.map((c)=>`
+        ${p.map((c)=>`
               <li><app-badge props='${JSON.stringify({name:c})}' variant="primary"></app-badge></li>
             `).join("")}
       </ul>
       <p>${n}</p>
-      <app-link variant="secondary" href="${a}">
+      <app-link variant="secondary" href="${r}">
         View Case Study &#8599;
       </app-link>
     </div>
-`;e("case-study-item",{props:V,styles:G,template:Y});var Z=[{image:"/assets/images/case-study/knowledge-tree/thumbnail.avif",alt:"Knowledge Tree Thumbnail",title:"Knowledge Tree",categories:["Product Design","User Experience","Design System"],description:"A tool to visualize the connections between everyday goods and their fundamental sources based on my knowledge.",href:"/work/knowledge-tree",reverse:!1},{image:"assets/images/case-study/mmo/thumbnail.avif",alt:"MMO thumbnail",title:"MMO",categories:["Simplify complex workflows","Build Prototype","Design System"],description:"An internal portal that uses to run daily operations in hospital.",href:"/work/mmo",reverse:!0},{image:"/assets/images/case-study/portfolio/mockup.avif",alt:"Portfolio Mockup",title:"Portfolio",categories:["Research","Web Design","Web Development"],description:"A personal portfolio to showcase my work, process, and approach to web design and development.",href:"/work/portfolio",reverse:!1},{image:"/assets/images/case-study/skssolar/mockup.avif",alt:"SKS Mockup",title:"SKS.Solar",categories:["Research","Web Design","Web Development"],description:"A website for SKS SOLAR (SALES & SERVICES) COMPANY LIMITED to showcase its history, services and completed project.",href:"/work/sks-solar",reverse:!0}],q=`
+`;e("case-study-item",{props:q,styles:Z,template:ee});var oe=[{image:"/assets/images/case-study/knowledge-tree/thumbnail.avif",alt:"Knowledge Tree Thumbnail",title:"Knowledge Tree",categories:["Product Design","User Experience","Design System"],description:"A tool to visualize the connections between everyday goods and their fundamental sources based on my knowledge.",href:"/work/knowledge-tree",reverse:!1},{image:"assets/images/case-study/mmo/thumbnail.avif",alt:"MMO thumbnail",title:"MMO",categories:["Simplify complex workflows","Build Prototype","Design System"],description:"An internal portal that uses to run daily operations in hospital.",href:"/work/mmo",reverse:!0},{image:"/assets/images/case-study/portfolio/mockup.avif",alt:"Portfolio Mockup",title:"Portfolio",categories:["Research","Web Design","Web Development"],description:"A personal portfolio to showcase my work, process, and approach to web design and development.",href:"/work/portfolio",reverse:!1},{image:"/assets/images/case-study/skssolar/mockup.avif",alt:"SKS Mockup",title:"SKS.Solar",categories:["Research","Web Design","Web Development"],description:"A website for SKS SOLAR (SALES & SERVICES) COMPANY LIMITED to showcase its history, services and completed project.",href:"/work/sks-solar",reverse:!0}],te=`
   :host {
     background: var(--color-bg-secondary)
   }
@@ -726,24 +758,24 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     flex-direction: column;
     gap: 10rem;
   }
-`,ee=()=>`
+`,ie=()=>`
   <section>
       <section-title
         props='${JSON.stringify({name:"Case Studies",img:"/assets/icons/sparrow.svg",alt:"Sparrow Logo"})}'
       ></section-title>
             
       <ul>
-        ${Z.map((i)=>`
+        ${oe.map((o)=>`
               <li>
                 <case-study-item
-                  props='${JSON.stringify(i)}'
-                  ${i.reverse?"reverse":""}
+                  props='${JSON.stringify(o)}'
+                  ${o.reverse?"reverse":""}
                 ></case-study-item>
               </li>
             `).join("")}
       </ul>
   </section>
-`;e("section-case-studies",{styles:q,template:ee});var ie=[{icon:"/assets/icons/software-developer.svg",alt:"Software Developer Icon",range:"2021-2022",title:"Software Developer",description:"I landed my first software development role building a hospital management system to manage inventory, POS, and OPD appointments. The system is still running today."},{icon:"/assets/icons/student.svg",alt:"Student Icon",range:"2022-2025",title:"Student",description:"I completed my Bachelor of Science in Computer Science at Assumption University, Thailand. My favorite subject was Computer Architecture."},{icon:"/assets/icons/software-developer.svg",alt:"Software Developer Icon",range:"2025-2026",title:"Software Developer",description:"After graduating, I worked remotely for 6 months as a software developer at an event organizing company in Singapore."},{icon:"/assets/icons/full-time-freelancer.svg",alt:"Web Design & Develop",range:"Present",title:"UX Designer",description:"Today, I've found my passion in UX design. Self-taught through research and hands-on practice, I design intuitive experiences by simplifying complex workflows."}],te=`
+`;e("section-case-studies",{styles:te,template:ie});var ae=[{icon:"/assets/icons/software-developer.svg",alt:"Software Developer Icon",range:"2021-2022",title:"Software Developer",description:"I landed my first software development role building a hospital management system to manage inventory, POS, and OPD appointments. The system is still running today."},{icon:"/assets/icons/student.svg",alt:"Student Icon",range:"2022-2025",title:"Student",description:"I completed my Bachelor of Science in Computer Science at Assumption University, Thailand. My favorite subject was Computer Architecture."},{icon:"/assets/icons/software-developer.svg",alt:"Software Developer Icon",range:"2025-2026",title:"Software Developer",description:"After graduating, I worked remotely for 6 months as a software developer at an event organizing company in Singapore."},{icon:"/assets/icons/full-time-freelancer.svg",alt:"Web Design & Develop",range:"Present",title:"UX Designer",description:"Today, I've found my passion in UX design. Self-taught through research and hands-on practice, I design intuitive experiences by simplifying complex workflows."}],re=`
   :host {
     display: block;
   }
@@ -823,7 +855,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     margin-right: 2rem;
   }
 
-  @media (max-width: ${r}) {
+  @media (max-width: ${a}) {
     app-icon {
       display: none;
     }
@@ -832,16 +864,16 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
   p {
     max-width: 50ch;
   }
-`,oe=()=>`
+`,ne=()=>`
   <section>
       <section-title
         props='${JSON.stringify({name:"Experience Overview",img:"/assets/icons/bird-flying.svg",alt:"Bird Flying Logo"})}'
       ></section-title>
 
       <ul>
-        ${ie.map(({icon:i,alt:t,range:o,title:n,description:a})=>`
+        ${ae.map(({icon:o,alt:t,range:i,title:n,description:r})=>`
               <li>
-                <app-icon src="${i}" alt="${t}"></app-icon>
+                <app-icon src="${o}" alt="${t}"></app-icon>
 
                 <div class="connector">
                   <span class="dot"></span>
@@ -850,18 +882,18 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
 
                 <article>
                   <app-badge
-                    props='${JSON.stringify({name:o})}'
-                    ${o==="Present"?"":'variant="outline"'}
+                    props='${JSON.stringify({name:i})}'
+                    ${i==="Present"?"":'variant="outline"'}
                   ></app-badge>
 
                   <h3>${n}</h3>
-                  <p>${a}</p>
+                  <p>${r}</p>
                 </article>
               </li>
             `).join("")}
       </ul>
   </section>
-`;e("section-timeline",{styles:te,template:oe});var ae=[{title:"Working Man",description:"I'm consistent on one thing: always giving my best. I take pride in doing things properly and take full ownership of everything I do. When I commit to something, I follow through.",icon:"/assets/icons/working-man.svg",alt:"Working Man Icon"},{title:"Detail-oriented Person",description:"I pay close attention to every detail, because the little things matter. I believe the difference between good work and great work lives in the details.",icon:"/assets/icons/man-in-details.svg",alt:"Detail-oriented Person Icon"},{title:"Positive Thinker",description:"A positive mindset helps me create better work and stronger collaborations. I focus on solutions rather than problems. Good energy builds great work.",icon:"/assets/icons/positive-man.svg",alt:"Positive Thinker Icon"}],re=`
+`;e("section-timeline",{styles:re,template:ne});var le=[{title:"Working Man",description:"I'm consistent on one thing: always giving my best. I take pride in doing things properly and take full ownership of everything I do. When I commit to something, I follow through.",icon:"/assets/icons/working-man.svg",alt:"Working Man Icon"},{title:"Detail-oriented Person",description:"I pay close attention to every detail, because the little things matter. I believe the difference between good work and great work lives in the details.",icon:"/assets/icons/man-in-details.svg",alt:"Detail-oriented Person Icon"},{title:"Positive Thinker",description:"A positive mindset helps me create better work and stronger collaborations. I focus on solutions rather than problems. Good energy builds great work.",icon:"/assets/icons/positive-man.svg",alt:"Positive Thinker Icon"}],se=`
   :host {
     display: block;
   }
@@ -928,7 +960,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
       gap: 1rem;
     }
   }
-`,ne=()=>`
+`,ce=()=>`
   <section>
        <section-title
         variant="vertical"
@@ -936,19 +968,19 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
       ></section-title>
 
       <ul>
-        ${ae.map(({title:i,description:t,icon:o,alt:n},a)=>`
+        ${le.map(({title:o,description:t,icon:i,alt:n},r)=>`
               <li>
                 <article>
-                  <h3><span>${a+1}.</span> ${i}</h3>
+                  <h3><span>${r+1}.</span> ${o}</h3>
                   <p>${t}</p>
                 </article>
 
-                <app-icon variant="large" src="${o}" alt="${n}"></app-icon>
+                <app-icon variant="large" src="${i}" alt="${n}"></app-icon>
               </li>
             `).join("")}
       </ul>
   </section>
-`;e("section-why-hire-me",{styles:re,template:ne});var le=`
+`;e("section-why-hire-me",{styles:se,template:ce});var me=`
   :host {
     display: block;
     position: relative;
@@ -984,12 +1016,12 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     margin-top: 2rem;
   }
 
-  @media (max-width: ${p}) {
+  @media (max-width: ${m}) {
     img {
       display: none;
     }
   }
-`,se=`
+`,pe=`
   <section>
        <section-title
        variant="text"
@@ -1021,7 +1053,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
         alt="Merlion illustration"
       />
   </section>
-`;e("section-cta",{styles:le,template:se});var ce=`
+`;e("section-cta",{styles:me,template:pe});var de=`
   :host {
     display: block;
     width: 100%;
@@ -1032,7 +1064,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     width: 100%;
     height: auto;
   }
-`,pe=`
+`,ge=`
     <svg
       viewBox="0 0 1200 80"
       xmlns="http://www.w3.org/2000/svg"
@@ -1063,7 +1095,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
         fill="var(--color-bg-secondary)"
       />
     </svg>
-`;e("line-divider-lower",{styles:ce,template:pe});var me=`
+`;e("line-divider-lower",{styles:de,template:ge});var he=`
   :host {
     display: block;
     width: 100%;
@@ -1074,7 +1106,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     width: 100%;
     height: auto;
   }
-`,de=`
+`,fe=`
   <div>
     <svg
       viewBox="0 0 1200 80"
@@ -1107,4 +1139,4 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
       />
     </svg>
   </div>
-`;e("line-divider-upper",{styles:me,template:de});
+`;e("line-divider-upper",{styles:he,template:fe});

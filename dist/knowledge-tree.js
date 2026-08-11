@@ -1,4 +1,4 @@
-function h(o,t){if(o===void 0){if(t===Array)return[];if(t===Object)return{};if(t===Boolean)return!1;if(t===Number)return 0;return}if(t===Boolean)return Boolean(o);if(t===Number)return Number(o);return o}function e(o,{props:t={},attrs:n=[],styles:d="",template:l}){let m=["props",...n];class c extends HTMLElement{static observedAttributes=m;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let a={},r=this.getAttribute("props");if(r)try{a=JSON.parse(r)}catch{a={}}let p={};for(let s of Object.keys(t))p[s]=h(a[s],t[s]);return p}_applyForwardedAttrs(){if(n.length===0)return;let a=this.shadowRoot.querySelector("[data-forward]");if(!a)return;for(let r of n)if(this.hasAttribute(r))a.setAttribute(r,this.getAttribute(r));else a.removeAttribute(r)}_render(){let a=this._getProps(),r=typeof l==="function"?l(a):l;this.shadowRoot.innerHTML=`<style>${d}</style>${r}`,this._applyForwardedAttrs()}}customElements.define(o,c)}var g=`
+function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a===Boolean)return!1;if(a===Number)return 0;return}if(a===Boolean)return Boolean(o);if(a===Number)return Number(o);return o}function e(o,{props:a={},attrs:n=[],styles:d="",template:l}){let p=["props",...n];class c extends HTMLElement{static observedAttributes=p;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let r={},i=this.getAttribute("props");if(i)try{r=JSON.parse(i)}catch{r={}}let m={};for(let s of Object.keys(a))m[s]=h(r[s],a[s]);return m}_applyForwardedAttrs(){if(n.length===0)return;let r=this.shadowRoot.querySelector("[data-forward]");if(!r)return;for(let i of n)if(this.hasAttribute(i))r.setAttribute(i,this.getAttribute(i));else r.removeAttribute(i)}_render(){let r=this._getProps(),i=typeof l==="function"?l(r):l;this.shadowRoot.innerHTML=`<style>${d}</style>${i}`,this._applyForwardedAttrs()}}customElements.define(o,c)}var g=`
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -50,9 +50,18 @@ function h(o,t){if(o===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     --local-border: none;
     --local-direction: column;
   }
+
+  :host([variant="sitemap"]) {
+     --local-padding: 0.2rem 0;
+     --local-border: none;
+
+     a::before {
+       content: "✈";
+     }
+  }
 `,f=["href","target","rel","download"],u=`
   <a data-forward><slot></slot></a>
-`;e("app-link",{attrs:f,styles:g,template:u});var v=`
+`;e("app-link",{attrs:f,styles:g,template:u});var b=`
   :host {
     display: block;
   }
@@ -61,7 +70,7 @@ function h(o,t){if(o===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     max-height: 7rem;
     width: auto;
   }
-`,b=["width","height","src","alt"],y=()=>"<img data-forward />";e("app-logo",{attrs:b,styles:v,template:y});var i="769px",q="992px";var k=`
+`,v=["width","height","src","alt"],w=()=>"<img data-forward />";e("app-logo",{attrs:v,styles:b,template:w});var t="769px",Q="992px";var y=`
   :host {
     display: block;
   }
@@ -95,12 +104,12 @@ function h(o,t){if(o===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     box-shadow: none;
   }
 
-  @media (max-width: ${i}) {
+  @media (max-width: ${t}) {
     .header__navigation {
       gap: 4rem;
     }
   }
-`,w=`
+`,k=`
   <header>
       <app-link variant="plain" href="/">
         <app-logo
@@ -129,7 +138,7 @@ function h(o,t){if(o===void 0){if(t===Array)return[];if(t===Object)return{};if(t
         </app-link>
       </div>
   </header>
-`;e("section-header",{template:w,styles:k});var x=`
+`;e("section-header",{template:k,styles:y});var x=[{href:"/",name:"Home"},{href:"/about",name:"About"},{href:"/credits",name:"Credits"},{href:"/hire-me",name:"Hire Me"},{href:"/thank-you",name:"Thank You"},{href:"/work/mmo",name:"MMO"},{href:"/work/bamboo",name:"Bamboo"},{href:"/work/portfolio",name:"Portfolio"},{href:"/work/au-van",name:"AU Van"},{href:"/work/sks-solar",name:"SKS Solar"},{href:"/writings/foundation-building-interfaces-at-scale",name:"Foundation"},{href:"/work/knowledge-tree",name:"Knowledge Tree"}],S=`
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -138,14 +147,14 @@ function h(o,t){if(o===void 0){if(t===Array)return[];if(t===Object)return{};if(t
    display: flex;
    gap: 5rem;
 
-   @media (max-width: ${i}) {
+   @media (max-width: ${t}) {
         flex-direction: column;
         gap: 3rem;
         margin-block: 2rem;
    }
   }
 
-  ul, ol {
+    ol {
     padding: 0;
     list-style-type: none;
     display: flex;
@@ -161,41 +170,62 @@ function h(o,t){if(o===void 0){if(t===Array)return[];if(t===Object)return{};if(t
   }
 
   nav ol {
+    flex-wrap: wrap;
     flex-direction: column;
+    max-height: 12.5ch;
+    overflow: scroll;
+
+    @media (max-width: ${t}) {
+        max-height: 20ch;
+    }
   }
 
-  nav ul {
-    gap: 2rem;
-    margin-top: 1rem;
+  ol li {
+    margin-right: 5rem;
+    margin-bottom: 0.3rem;
   }
-`,S=()=>`
+`,A=()=>`
     <nav>
         <span>Sitemap</span>
 
         <ol>
-            <li>
-                <app-link href="/" variant="plain">Home</app-link>
-            </li>
-            <li>
-                <app-link href="/about" variant="plain">About</app-link>
-            </li>
-
-            <li>
-                <app-link href="/credits" variant="plain">Credits</app-link>
-            </li>
-            <li>
-                <app-link href="/hire-me" variant="plain">Hire me</app-link>
-            </li>
-            <li>
-                <app-link href="/thank-you" variant="plain">Thank you</app-link>
-            </li>
+            ${x.map((o)=>`
+                <li>
+                    <app-link variant="sitemap" href=${o.href} >${o.name}</app-link>
+                </li>
+            `).join("")}
         </ol>
     </nav>
+`;e("footer-nav",{styles:S,template:A});var H=`
+  :host {
+   display: flex;
+    justify-content: space-between;
 
-    <nav>
-        <span>Get in touch:</span>
+   @media (max-width: ${t}) {
+        flex-direction: column;
+        gap: 3rem;
+   }
+  }
 
-        <ul>
+  p {
+    margin: 0;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 2rem;
+  }
+`,T=()=>`
+    
+      <p>
+        © Han Htet Aung 2026 |
+        <app-link href="/credits" variant="underline">Credits</app-link>
+      </p>
+
+       <ul>
             <li>
                 <app-link href="mailto:hanhtetaung.dev@gmail.com" variant="image">
                 <img
@@ -231,8 +261,7 @@ function h(o,t){if(o===void 0){if(t===Array)return[];if(t===Object)return{};if(t
                 </app-link>
             </li>
         </ul>
-    </nav>
-`;e("footer-nav",{styles:x,template:S});var A=`
+`;e("footer-copyright",{styles:H,template:T});var $=`
   :host {
     --local-bg-color: var(--color-bg-secondary);
 
@@ -262,7 +291,7 @@ function h(o,t){if(o===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     align-items: center;
   }
 
-  @media (max-width: ${i}) {
+  @media (max-width: ${t}) {
     article {
       display: block;
     }
@@ -272,7 +301,11 @@ function h(o,t){if(o===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     display: flex;
     gap: 3rem;
   }
-`,H=`
+
+  hr {
+    color: var(--color-secondary);
+  }
+`,P=`
   <footer>
       <article>
         <div>
@@ -292,12 +325,11 @@ function h(o,t){if(o===void 0){if(t===Array)return[];if(t===Object)return{};if(t
         <footer-nav></footer-nav>
       </article>
 
-      <p>
-        © Han Htet Aung 2026 |
-        <app-link href="/credits" variant="underline">Credits</app-link>
-      </p>
+      <hr>
+
+      <footer-copyright></footer-copyright>
   </footer>
-`;e("section-footer",{styles:A,template:H});var T=`
+`;e("section-footer",{styles:$,template:P});var C=`
   :host {
     --local-width: 5rem;
     --local-heigth: auto;
@@ -328,7 +360,7 @@ function h(o,t){if(o===void 0){if(t===Array)return[];if(t===Object)return{};if(t
    :host([variant="full"]) {
     --local-width: 100%;
   }
-`,z=["width","height","src","alt"],C=()=>"<img data-forward />";e("app-image",{attrs:z,styles:T,template:C});var _=`
+`,O=["width","height","src","alt"],z=()=>"<img data-forward />";e("app-image",{attrs:O,styles:C,template:z});var E=`
   :host {
     display: block;
   }
@@ -342,7 +374,7 @@ function h(o,t){if(o===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     justify-content: space-between;
     gap: 3rem;
 
-    @media (max-width: ${i}) {
+    @media (max-width: ${t}) {
       flex-direction: column;
     }
   }
@@ -369,7 +401,7 @@ function h(o,t){if(o===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     font-weight: var(--font-bold);
     text-transform: uppercase;
   }
-`,E=`
+`,_=`
   <section>
     <app-image
       variant="large"
@@ -398,7 +430,7 @@ function h(o,t){if(o===void 0){if(t===Array)return[];if(t===Object)return{};if(t
         >View Live Website</app-link>
     </article>
   </section>
-`;e("section-knowledge-tree-intro",{styles:_,template:E});var P=`
+`;e("section-knowledge-tree-intro",{styles:E,template:_});var N=`
   :host {
     display: flex;
     align-items: center;
@@ -429,15 +461,15 @@ function h(o,t){if(o===void 0){if(t===Array)return[];if(t===Object)return{};if(t
       display: none;
     }
   }
-`,O={name:String,img:String,alt:String},$=({name:o,img:t="",alt:n=""})=>`
+`,L={name:String,img:String,alt:String},M=({name:o,img:a="",alt:n=""})=>`
     <h2>${o}</h2>
     <img
-        src=${t}
+        src=${a}
         alt=${n}
         height="36"
         width="76"
     />
-`;e("section-title",{props:O,styles:P,template:$});var N=`
+`;e("section-title",{props:L,styles:N,template:M});var j=`
   :host {
     display: block;
   }
@@ -450,7 +482,7 @@ function h(o,t){if(o===void 0){if(t===Array)return[];if(t===Object)return{};if(t
   p {
     margin-block: 2rem;
   }
-`,L=`
+`,F=`
   <section>
     <section-title
         variant="text"
@@ -477,7 +509,7 @@ function h(o,t){if(o===void 0){if(t===Array)return[];if(t===Object)return{};if(t
         </ul>
       </article>
   </section>
-`;e("section-knowledge-tree-overview",{styles:N,template:L});var j=`
+`;e("section-knowledge-tree-overview",{styles:j,template:F});var K=`
   :host {
     display: block;
   }
@@ -510,7 +542,7 @@ function h(o,t){if(o===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     display: block;
     margin-bottom: 2rem;
   }
-`,G=`
+`,B=`
   <section>
     <section-title
         variant="text"
@@ -562,13 +594,13 @@ function h(o,t){if(o===void 0){if(t===Array)return[];if(t===Object)return{};if(t
             </p>
           </article>
   </section>
-`;e("section-knowledge-tree-building-block",{styles:j,template:G});var F=`
+`;e("section-knowledge-tree-building-block",{styles:K,template:B});var G=`
   :host {
     display: grid;
     grid-template-columns: 1fr 2.5fr;
 
 
-    @media (max-width: ${i}) {
+    @media (max-width: ${t}) {
         display: block;
     }
   }
@@ -584,13 +616,13 @@ function h(o,t){if(o===void 0){if(t===Array)return[];if(t===Object)return{};if(t
   :host([variant="block"]) {
     display: block;
   }
-`,B={title:String},I=({title:o})=>`
+`,I={title:String},V=({title:o})=>`
         <h3>${o}</h3>
 
         <article>
             <slot></slot>
         </article>
-`;e("app-article-paragraph",{props:B,styles:F,template:I});var D=`
+`;e("app-article-paragraph",{props:I,styles:G,template:V});var D=`
   :host {
     display: block;
   }
@@ -614,7 +646,7 @@ function h(o,t){if(o===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     border-top: 1px dashed var(--color-text);
     padding-top: 5rem;
   }
-`,K=`
+`,W=`
   <section>
      <section-title
         variant="text"
@@ -696,7 +728,7 @@ function h(o,t){if(o===void 0){if(t===Array)return[];if(t===Object)return{};if(t
 
      
   </section>
-`;e("section-knowledge-tree-need-one-interface",{styles:D,template:K});var M=`
+`;e("section-knowledge-tree-need-one-interface",{styles:D,template:W});var Y=`
   :host {
     display: block;
   }
@@ -705,7 +737,7 @@ function h(o,t){if(o===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     width: 80%;
     margin-inline: auto;
   }
-`,W=`
+`,J=`
   <section>
     <section-title
         variant="text"
@@ -721,4 +753,4 @@ function h(o,t){if(o===void 0){if(t===Array)return[];if(t===Object)return{};if(t
           </p>
       </article>
   </section>
-`;e("section-knowledge-tree-conclusion",{styles:M,template:W});
+`;e("section-knowledge-tree-conclusion",{styles:Y,template:J});

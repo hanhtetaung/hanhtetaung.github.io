@@ -2,6 +2,7 @@ import { define } from "../define";
 import "../components/app-logo";
 import "../components/app-link";
 import "../components/footer-nav";
+import "../components/footer-copyright";
 import { PHONE } from "../breakpoints";
 
 const styles = /* css */ `
@@ -44,6 +45,10 @@ const styles = /* css */ `
     display: flex;
     gap: 3rem;
   }
+
+  hr {
+    color: var(--color-secondary);
+  }
 `;
 
 const template = /* html */ `
@@ -66,10 +71,9 @@ const template = /* html */ `
         <footer-nav></footer-nav>
       </article>
 
-      <p>
-        © Han Htet Aung 2026 |
-        <app-link href="/credits" variant="underline">Credits</app-link>
-      </p>
+      <hr>
+
+      <footer-copyright></footer-copyright>
   </footer>
 `;
 

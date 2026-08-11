@@ -1,4 +1,4 @@
-function d(e,o){if(e===void 0){if(o===Array)return[];if(o===Object)return{};if(o===Boolean)return!1;if(o===Number)return 0;return}if(o===Boolean)return Boolean(e);if(o===Number)return Number(e);return e}function t(e,{props:o={},attrs:n=[],styles:s="",template:l}){let m=["props",...n];class p extends HTMLElement{static observedAttributes=m;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let i={},r=this.getAttribute("props");if(r)try{i=JSON.parse(r)}catch{i={}}let g={};for(let c of Object.keys(o))g[c]=d(i[c],o[c]);return g}_applyForwardedAttrs(){if(n.length===0)return;let i=this.shadowRoot.querySelector("[data-forward]");if(!i)return;for(let r of n)if(this.hasAttribute(r))i.setAttribute(r,this.getAttribute(r));else i.removeAttribute(r)}_render(){let i=this._getProps(),r=typeof l==="function"?l(i):l;this.shadowRoot.innerHTML=`<style>${s}</style>${r}`,this._applyForwardedAttrs()}}customElements.define(e,p)}var h=`
+function d(t,a){if(t===void 0){if(a===Array)return[];if(a===Object)return{};if(a===Boolean)return!1;if(a===Number)return 0;return}if(a===Boolean)return Boolean(t);if(a===Number)return Number(t);return t}function e(t,{props:a={},attrs:n=[],styles:s="",template:l}){let h=["props",...n];class p extends HTMLElement{static observedAttributes=h;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let i={},r=this.getAttribute("props");if(r)try{i=JSON.parse(r)}catch{i={}}let m={};for(let c of Object.keys(a))m[c]=d(i[c],a[c]);return m}_applyForwardedAttrs(){if(n.length===0)return;let i=this.shadowRoot.querySelector("[data-forward]");if(!i)return;for(let r of n)if(this.hasAttribute(r))i.setAttribute(r,this.getAttribute(r));else i.removeAttribute(r)}_render(){let i=this._getProps(),r=typeof l==="function"?l(i):l;this.shadowRoot.innerHTML=`<style>${s}</style>${r}`,this._applyForwardedAttrs()}}customElements.define(t,p)}var g=`
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -50,9 +50,18 @@ function d(e,o){if(e===void 0){if(o===Array)return[];if(o===Object)return{};if(o
     --local-border: none;
     --local-direction: column;
   }
+
+  :host([variant="sitemap"]) {
+     --local-padding: 0.2rem 0;
+     --local-border: none;
+
+     a::before {
+       content: "✈";
+     }
+  }
 `,f=["href","target","rel","download"],v=`
   <a data-forward><slot></slot></a>
-`;t("app-link",{attrs:f,styles:h,template:v});var u=`
+`;e("app-link",{attrs:f,styles:g,template:v});var u=`
   :host {
     display: block;
   }
@@ -61,7 +70,7 @@ function d(e,o){if(e===void 0){if(o===Array)return[];if(o===Object)return{};if(o
     max-height: 7rem;
     width: auto;
   }
-`,w=["width","height","src","alt"],b=()=>"<img data-forward />";t("app-logo",{attrs:w,styles:u,template:b});var a="769px",tt="992px";var y=`
+`,w=["width","height","src","alt"],b=()=>"<img data-forward />";e("app-logo",{attrs:w,styles:u,template:b});var o="769px",ae="992px";var y=`
   :host {
     display: block;
   }
@@ -95,7 +104,7 @@ function d(e,o){if(e===void 0){if(o===Array)return[];if(o===Object)return{};if(o
     box-shadow: none;
   }
 
-  @media (max-width: ${a}) {
+  @media (max-width: ${o}) {
     .header__navigation {
       gap: 4rem;
     }
@@ -129,7 +138,7 @@ function d(e,o){if(e===void 0){if(o===Array)return[];if(o===Object)return{};if(o
         </app-link>
       </div>
   </header>
-`;t("section-header",{template:k,styles:y});var x=`
+`;e("section-header",{template:k,styles:y});var x=[{href:"/",name:"Home"},{href:"/about",name:"About"},{href:"/credits",name:"Credits"},{href:"/hire-me",name:"Hire Me"},{href:"/thank-you",name:"Thank You"},{href:"/work/mmo",name:"MMO"},{href:"/work/bamboo",name:"Bamboo"},{href:"/work/portfolio",name:"Portfolio"},{href:"/work/au-van",name:"AU Van"},{href:"/work/sks-solar",name:"SKS Solar"},{href:"/writings/foundation-building-interfaces-at-scale",name:"Foundation"},{href:"/work/knowledge-tree",name:"Knowledge Tree"}],S=`
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -138,14 +147,14 @@ function d(e,o){if(e===void 0){if(o===Array)return[];if(o===Object)return{};if(o
    display: flex;
    gap: 5rem;
 
-   @media (max-width: ${a}) {
+   @media (max-width: ${o}) {
         flex-direction: column;
         gap: 3rem;
         margin-block: 2rem;
    }
   }
 
-  ul, ol {
+    ol {
     padding: 0;
     list-style-type: none;
     display: flex;
@@ -161,41 +170,62 @@ function d(e,o){if(e===void 0){if(o===Array)return[];if(o===Object)return{};if(o
   }
 
   nav ol {
+    flex-wrap: wrap;
     flex-direction: column;
+    max-height: 12.5ch;
+    overflow: scroll;
+
+    @media (max-width: ${o}) {
+        max-height: 20ch;
+    }
   }
 
-  nav ul {
-    gap: 2rem;
-    margin-top: 1rem;
+  ol li {
+    margin-right: 5rem;
+    margin-bottom: 0.3rem;
   }
-`,S=()=>`
+`,$=()=>`
     <nav>
         <span>Sitemap</span>
 
         <ol>
-            <li>
-                <app-link href="/" variant="plain">Home</app-link>
-            </li>
-            <li>
-                <app-link href="/about" variant="plain">About</app-link>
-            </li>
-
-            <li>
-                <app-link href="/credits" variant="plain">Credits</app-link>
-            </li>
-            <li>
-                <app-link href="/hire-me" variant="plain">Hire me</app-link>
-            </li>
-            <li>
-                <app-link href="/thank-you" variant="plain">Thank you</app-link>
-            </li>
+            ${x.map((t)=>`
+                <li>
+                    <app-link variant="sitemap" href=${t.href} >${t.name}</app-link>
+                </li>
+            `).join("")}
         </ol>
     </nav>
+`;e("footer-nav",{styles:S,template:$});var I=`
+  :host {
+   display: flex;
+    justify-content: space-between;
 
-    <nav>
-        <span>Get in touch:</span>
+   @media (max-width: ${o}) {
+        flex-direction: column;
+        gap: 3rem;
+   }
+  }
 
-        <ul>
+  p {
+    margin: 0;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 2rem;
+  }
+`,A=()=>`
+    
+      <p>
+        © Han Htet Aung 2026 |
+        <app-link href="/credits" variant="underline">Credits</app-link>
+      </p>
+
+       <ul>
             <li>
                 <app-link href="mailto:hanhtetaung.dev@gmail.com" variant="image">
                 <img
@@ -231,8 +261,7 @@ function d(e,o){if(e===void 0){if(o===Array)return[];if(o===Object)return{};if(o
                 </app-link>
             </li>
         </ul>
-    </nav>
-`;t("footer-nav",{styles:x,template:S});var $=`
+`;e("footer-copyright",{styles:I,template:A});var H=`
   :host {
     --local-bg-color: var(--color-bg-secondary);
 
@@ -262,7 +291,7 @@ function d(e,o){if(e===void 0){if(o===Array)return[];if(o===Object)return{};if(o
     align-items: center;
   }
 
-  @media (max-width: ${a}) {
+  @media (max-width: ${o}) {
     article {
       display: block;
     }
@@ -272,7 +301,11 @@ function d(e,o){if(e===void 0){if(o===Array)return[];if(o===Object)return{};if(o
     display: flex;
     gap: 3rem;
   }
-`,I=`
+
+  hr {
+    color: var(--color-secondary);
+  }
+`,O=`
   <footer>
       <article>
         <div>
@@ -292,12 +325,11 @@ function d(e,o){if(e===void 0){if(o===Array)return[];if(o===Object)return{};if(o
         <footer-nav></footer-nav>
       </article>
 
-      <p>
-        © Han Htet Aung 2026 |
-        <app-link href="/credits" variant="underline">Credits</app-link>
-      </p>
+      <hr>
+
+      <footer-copyright></footer-copyright>
   </footer>
-`;t("section-footer",{styles:$,template:I});var A=`
+`;e("section-footer",{styles:H,template:O});var T=`
   :host {
     --local-width: 5rem;
     --local-heigth: auto;
@@ -328,14 +360,14 @@ function d(e,o){if(e===void 0){if(o===Array)return[];if(o===Object)return{};if(o
    :host([variant="full"]) {
     --local-width: 100%;
   }
-`,z=["width","height","src","alt"],H=()=>"<img data-forward />";t("app-image",{attrs:z,styles:A,template:H});var O=`
+`,z=["width","height","src","alt"],P=()=>"<img data-forward />";e("app-image",{attrs:z,styles:T,template:P});var N=`
   section {
     width: 80%;
     margin-inline: auto;
      display: grid;
     grid-template-columns: 1fr 1fr;
 
-    @media (max-width: ${a}) {
+    @media (max-width: ${o}) {
       display: block; 
         text-align: center;
     }
@@ -353,11 +385,11 @@ function d(e,o){if(e===void 0){if(o===Array)return[];if(o===Object)return{};if(o
     align-items: center;
     gap: 3rem;
 
-     @media (max-width: ${a}) {
+     @media (max-width: ${o}) {
       display: block; 
     }
   }
-`,N=`
+`,C=`
   <section>
       <h1>About</h1>
       <div>
@@ -377,7 +409,7 @@ function d(e,o){if(e===void 0){if(o===Array)return[];if(o===Object)return{};if(o
         </article>
       </div>
   </section>
-`;t("section-about-intro",{styles:O,template:N});var T=`
+`;e("section-about-intro",{styles:N,template:C});var E=`
   :host {
     display: flex;
     align-items: center;
@@ -408,15 +440,15 @@ function d(e,o){if(e===void 0){if(o===Array)return[];if(o===Object)return{};if(o
       display: none;
     }
   }
-`,P={name:String,img:String,alt:String},C=({name:e,img:o="",alt:n=""})=>`
-    <h2>${e}</h2>
+`,B={name:String,img:String,alt:String},L=({name:t,img:a="",alt:n=""})=>`
+    <h2>${t}</h2>
     <img
-        src=${o}
+        src=${a}
         alt=${n}
         height="36"
         width="76"
     />
-`;t("section-title",{props:P,styles:T,template:C});var E=[{href:"https://raindrop.io/",src:"/assets/tech-collection/raindrop-io.svg",alt:"Raindrop-io logo"},{href:"https://www.spendee.com/",src:"/assets/tech-collection/spendee.svg",alt:"Spendee logo"},{href:"https://citymapper.com/",src:"/assets/tech-collection/citymapper.svg",alt:"Citymapper logo"},{href:"https://www.figma.com/",src:"/assets/tech-collection/figma.svg",alt:"Figma logo"},{href:"https://www.strava.com/",src:"/assets/tech-collection/strava.svg",alt:"Strava logo"},{href:"https://www.notion.com/",src:"/assets/tech-collection/notion.svg",alt:"Notion logo"},{href:"https://wise.com/",src:"/assets/tech-collection/wise.svg",alt:"Wise logo"},{href:"https://dayoneapp.com/",src:"/assets/tech-collection/day-one.svg",alt:"Day One logo"},{href:"https://telegram.org/",src:"/assets/tech-collection/telegram.svg",alt:"Telegram logo"},{href:"https://www.redbus.com/",src:"/assets/tech-collection/redbus.svg",alt:"Red Bus logo"},{href:"https://www.iqair.com/",src:"/assets/tech-collection/iqair.svg",alt:"IqAir logo"},{href:"https://www.shazam.com/",src:"/assets/tech-collection/shazam.svg",alt:"Shazam logo"},{href:"https://www.skyscanner.net/",src:"/assets/tech-collection/skyscanner.svg",alt:"Skyscanner logo"},{href:"https://developer.mozilla.org/en-US/docs/Glossary/HTML5",src:"/assets/tech-collection/html5.svg",alt:"HTML5 logo"},{href:"https://developer.mozilla.org/en-US/docs/Web/CSS",src:"/assets/tech-collection/css3.svg",alt:"CSS3 logo"},{href:"https://bun.com/",src:"/assets/tech-collection/bun.svg",alt:"Bun logo"},{href:"https://www.upwork.com/",src:"/assets/tech-collection/upwork.svg",alt:"Upwork logo"},{href:"https://google.com/maps",src:"/assets/tech-collection/google-map.svg",alt:"Google Map logo"},{href:"https://www.airbnb.com/",src:"/assets/tech-collection/airbnb.svg",alt:"Airbnb logo"},{href:"https://ticktick.com/",src:"/assets/tech-collection/ticktick.svg",alt:"Ticktick logo"},{href:"https://unsplash.com/",src:"/assets/tech-collection/unsplash.svg",alt:"Unsplash logo"},{href:"https://oklch.com/",src:"/assets/tech-collection/oklch.svg",alt:"Oklch logo"},{href:"https://vert.sh/",src:"/assets/tech-collection/vert.svg",alt:"Vert logo"},{href:"https://thenounproject.com/",src:"/assets/tech-collection/the-noun-project.svg",alt:"The Noun Project logo"}],L=`
+`;e("section-title",{props:B,styles:E,template:L});var M=[{href:"https://raindrop.io/",src:"/assets/tech-collection/raindrop-io.svg",alt:"Raindrop-io logo"},{href:"https://www.spendee.com/",src:"/assets/tech-collection/spendee.svg",alt:"Spendee logo"},{href:"https://citymapper.com/",src:"/assets/tech-collection/citymapper.svg",alt:"Citymapper logo"},{href:"https://www.figma.com/",src:"/assets/tech-collection/figma.svg",alt:"Figma logo"},{href:"https://www.strava.com/",src:"/assets/tech-collection/strava.svg",alt:"Strava logo"},{href:"https://www.notion.com/",src:"/assets/tech-collection/notion.svg",alt:"Notion logo"},{href:"https://wise.com/",src:"/assets/tech-collection/wise.svg",alt:"Wise logo"},{href:"https://dayoneapp.com/",src:"/assets/tech-collection/day-one.svg",alt:"Day One logo"},{href:"https://telegram.org/",src:"/assets/tech-collection/telegram.svg",alt:"Telegram logo"},{href:"https://www.redbus.com/",src:"/assets/tech-collection/redbus.svg",alt:"Red Bus logo"},{href:"https://www.iqair.com/",src:"/assets/tech-collection/iqair.svg",alt:"IqAir logo"},{href:"https://www.shazam.com/",src:"/assets/tech-collection/shazam.svg",alt:"Shazam logo"},{href:"https://www.skyscanner.net/",src:"/assets/tech-collection/skyscanner.svg",alt:"Skyscanner logo"},{href:"https://developer.mozilla.org/en-US/docs/Glossary/HTML5",src:"/assets/tech-collection/html5.svg",alt:"HTML5 logo"},{href:"https://developer.mozilla.org/en-US/docs/Web/CSS",src:"/assets/tech-collection/css3.svg",alt:"CSS3 logo"},{href:"https://bun.com/",src:"/assets/tech-collection/bun.svg",alt:"Bun logo"},{href:"https://www.upwork.com/",src:"/assets/tech-collection/upwork.svg",alt:"Upwork logo"},{href:"https://google.com/maps",src:"/assets/tech-collection/google-map.svg",alt:"Google Map logo"},{href:"https://www.airbnb.com/",src:"/assets/tech-collection/airbnb.svg",alt:"Airbnb logo"},{href:"https://ticktick.com/",src:"/assets/tech-collection/ticktick.svg",alt:"Ticktick logo"},{href:"https://unsplash.com/",src:"/assets/tech-collection/unsplash.svg",alt:"Unsplash logo"},{href:"https://oklch.com/",src:"/assets/tech-collection/oklch.svg",alt:"Oklch logo"},{href:"https://vert.sh/",src:"/assets/tech-collection/vert.svg",alt:"Vert logo"},{href:"https://thenounproject.com/",src:"/assets/tech-collection/the-noun-project.svg",alt:"The Noun Project logo"}],D=`
   section {
     width: 80%;
     margin-inline: auto;
@@ -431,19 +463,19 @@ function d(e,o){if(e===void 0){if(o===Array)return[];if(o===Object)return{};if(o
     display: flex;
     flex-wrap: wrap;
   }
-`,B=()=>`
+`,U=()=>`
   <section>
     <section-title
         props='${JSON.stringify({name:"Tech Collection",img:"/assets/icons/penguin.svg",alt:"Penguin Logo"})}'
       ></section-title>
 
       <ul>
-        ${E.map((e)=>`
+        ${M.map((t)=>`
               <li>
-                <app-link href="${e.href}" target="_blank" variant="image">
+                <app-link href="${t.href}" target="_blank" variant="image">
                   <img
-                    src="${e.src}"
-                    alt="${e.alt}"
+                    src="${t.src}"
+                    alt="${t.alt}"
                     width="102"
                     height="73"
                   />
@@ -452,7 +484,7 @@ function d(e,o){if(e===void 0){if(o===Array)return[];if(o===Object)return{};if(o
             `).join("")}
       </ul>
   </section>
-`;t("section-tech-collection",{styles:L,template:B});var D=`
+`;e("section-tech-collection",{styles:D,template:U});var _=`
   :host {
     --local-width: 3rem;
     --local-height: auto;
@@ -485,7 +517,7 @@ function d(e,o){if(e===void 0){if(o===Array)return[];if(o===Object)return{};if(o
   }
 
 
-`,_=["src","alt"],q=()=>'<img data-forward width="200" height="200"/>';t("app-icon",{attrs:_,styles:D,template:q});var U=[{src:"/assets/icons/bird-watching.svg",alt:"Watching Bird",text:"I love birds"},{src:"/assets/icons/seafood.svg",alt:"Seafood",text:"I’m allergic to seafood"},{src:"/assets/icons/travelling.svg",alt:"Travelling",text:"I enjoy travelling"},{src:"/assets/icons/running.svg",alt:"Running",text:"I like running"}],W=`
+`,q=["src","alt"],F=()=>'<img data-forward width="200" height="200"/>';e("app-icon",{attrs:q,styles:_,template:F});var j=[{src:"/assets/icons/bird-watching.svg",alt:"Watching Bird",text:"I love birds"},{src:"/assets/icons/seafood.svg",alt:"Seafood",text:"I’m allergic to seafood"},{src:"/assets/icons/travelling.svg",alt:"Travelling",text:"I enjoy travelling"},{src:"/assets/icons/running.svg",alt:"Running",text:"I like running"}],W=`
   section {
     width: 80%;
     margin-inline: auto;
@@ -503,24 +535,24 @@ function d(e,o){if(e===void 0){if(o===Array)return[];if(o===Object)return{};if(o
     margin: 0;
     text-align: center;
   }
-`,F=()=>`
+`,R=()=>`
   <section>
        <section-title
         props='${JSON.stringify({name:"Random Facts",img:"/assets/icons/birds-singing.svg",alt:"Birds-singing Logo"})}'
       ></section-title>
 
       <ul>
-        ${U.map((e)=>`
+        ${j.map((t)=>`
               <li>
                 <figure>
-                  <app-icon variant="large" src="${e.src}" alt="${e.alt}"></app-icon>
-                  <figcaption>${e.text}</figcaption>
+                  <app-icon variant="large" src="${t.src}" alt="${t.alt}"></app-icon>
+                  <figcaption>${t.text}</figcaption>
                 </figure>
               </li>
             `).join("")}
       </ul>
   </section>
-`;t("section-random-facts",{styles:W,template:F});var M=`
+`;e("section-random-facts",{styles:W,template:R});var J=`
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -543,7 +575,7 @@ function d(e,o){if(e===void 0){if(o===Array)return[];if(o===Object)return{};if(o
     --local-color: var(--color-secondary);
     --local-border: 1px solid var(--color-secondary);
   }
-`,R={name:String},j=({name:e})=>`${e}`;t("app-badge",{props:R,styles:M,template:j});var J=[{icon:"/assets/icons/software-developer.svg",alt:"Software Developer Icon",range:"2021-2022",title:"Software Developer",description:"I landed my first software development role building a hospital management system to manage inventory, POS, and OPD appointments. The system is still running today."},{icon:"/assets/icons/student.svg",alt:"Student Icon",range:"2022-2025",title:"Student",description:"I completed my Bachelor of Science in Computer Science at Assumption University, Thailand. My favorite subject was Computer Architecture."},{icon:"/assets/icons/software-developer.svg",alt:"Software Developer Icon",range:"2025-2026",title:"Software Developer",description:"After graduating, I worked remotely for 6 months as a software developer at an event organizing company in Singapore."},{icon:"/assets/icons/full-time-freelancer.svg",alt:"Web Design & Develop",range:"Present",title:"UX Designer",description:"Today, I've found my passion in UX design. Self-taught through research and hands-on practice, I design intuitive experiences by simplifying complex workflows."}],G=`
+`,K={name:String},V=({name:t})=>`${t}`;e("app-badge",{props:K,styles:J,template:V});var G=[{icon:"/assets/icons/software-developer.svg",alt:"Software Developer Icon",range:"2021-2022",title:"Software Developer",description:"I landed my first software development role building a hospital management system to manage inventory, POS, and OPD appointments. The system is still running today."},{icon:"/assets/icons/student.svg",alt:"Student Icon",range:"2022-2025",title:"Student",description:"I completed my Bachelor of Science in Computer Science at Assumption University, Thailand. My favorite subject was Computer Architecture."},{icon:"/assets/icons/software-developer.svg",alt:"Software Developer Icon",range:"2025-2026",title:"Software Developer",description:"After graduating, I worked remotely for 6 months as a software developer at an event organizing company in Singapore."},{icon:"/assets/icons/full-time-freelancer.svg",alt:"Web Design & Develop",range:"Present",title:"UX Designer",description:"Today, I've found my passion in UX design. Self-taught through research and hands-on practice, I design intuitive experiences by simplifying complex workflows."}],X=`
   :host {
     display: block;
   }
@@ -623,7 +655,7 @@ function d(e,o){if(e===void 0){if(o===Array)return[];if(o===Object)return{};if(o
     margin-right: 2rem;
   }
 
-  @media (max-width: ${a}) {
+  @media (max-width: ${o}) {
     app-icon {
       display: none;
     }
@@ -632,16 +664,16 @@ function d(e,o){if(e===void 0){if(o===Array)return[];if(o===Object)return{};if(o
   p {
     max-width: 50ch;
   }
-`,X=()=>`
+`,Y=()=>`
   <section>
       <section-title
         props='${JSON.stringify({name:"Experience Overview",img:"/assets/icons/bird-flying.svg",alt:"Bird Flying Logo"})}'
       ></section-title>
 
       <ul>
-        ${J.map(({icon:e,alt:o,range:n,title:s,description:l})=>`
+        ${G.map(({icon:t,alt:a,range:n,title:s,description:l})=>`
               <li>
-                <app-icon src="${e}" alt="${o}"></app-icon>
+                <app-icon src="${t}" alt="${a}"></app-icon>
 
                 <div class="connector">
                   <span class="dot"></span>
@@ -661,7 +693,7 @@ function d(e,o){if(e===void 0){if(o===Array)return[];if(o===Object)return{};if(o
             `).join("")}
       </ul>
   </section>
-`;t("section-timeline",{styles:G,template:X});var V=`
+`;e("section-timeline",{styles:X,template:Y});var Q=`
   section {
     width: 80%;
     margin-inline: auto;
@@ -673,11 +705,11 @@ function d(e,o){if(e===void 0){if(o===Array)return[];if(o===Object)return{};if(o
     font-weight: var(--font-regular);
     font-family: var(--font-heading);
 
-    @media (max-width: ${a}) {
+    @media (max-width: ${o}) {
       font-size: var(--size-body);
     }
   }
-`,K=`
+`,Z=`
   <section>
       <blockquote>
         " What I hear, I forget.<br />
@@ -686,4 +718,4 @@ function d(e,o){if(e===void 0){if(o===Array)return[];if(o===Object)return{};if(o
         — Confucius
       </blockquote>
   </section>
-`;t("section-quote",{styles:V,template:K});
+`;e("section-quote",{styles:Q,template:Z});

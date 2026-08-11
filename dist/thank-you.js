@@ -1,4 +1,4 @@
-function g(t,o){if(t===void 0){if(o===Array)return[];if(o===Object)return{};if(o===Boolean)return!1;if(o===Number)return 0;return}if(o===Boolean)return Boolean(t);if(o===Number)return Number(t);return t}function a(t,{props:o={},attrs:n=[],styles:d="",template:l}){let m=["props",...n];class s extends HTMLElement{static observedAttributes=m;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let e={},r=this.getAttribute("props");if(r)try{e=JSON.parse(r)}catch{e={}}let c={};for(let p of Object.keys(o))c[p]=g(e[p],o[p]);return c}_applyForwardedAttrs(){if(n.length===0)return;let e=this.shadowRoot.querySelector("[data-forward]");if(!e)return;for(let r of n)if(this.hasAttribute(r))e.setAttribute(r,this.getAttribute(r));else e.removeAttribute(r)}_render(){let e=this._getProps(),r=typeof l==="function"?l(e):l;this.shadowRoot.innerHTML=`<style>${d}</style>${r}`,this._applyForwardedAttrs()}}customElements.define(t,s)}var h=`
+function h(e,a){if(e===void 0){if(a===Array)return[];if(a===Object)return{};if(a===Boolean)return!1;if(a===Number)return 0;return}if(a===Boolean)return Boolean(e);if(a===Number)return Number(e);return e}function o(e,{props:a={},attrs:i=[],styles:p="",template:l}){let d=["props",...i];class c extends HTMLElement{static observedAttributes=d;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let r={},t=this.getAttribute("props");if(t)try{r=JSON.parse(t)}catch{r={}}let m={};for(let s of Object.keys(a))m[s]=h(r[s],a[s]);return m}_applyForwardedAttrs(){if(i.length===0)return;let r=this.shadowRoot.querySelector("[data-forward]");if(!r)return;for(let t of i)if(this.hasAttribute(t))r.setAttribute(t,this.getAttribute(t));else r.removeAttribute(t)}_render(){let r=this._getProps(),t=typeof l==="function"?l(r):l;this.shadowRoot.innerHTML=`<style>${p}</style>${t}`,this._applyForwardedAttrs()}}customElements.define(e,c)}var f=`
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -50,9 +50,18 @@ function g(t,o){if(t===void 0){if(o===Array)return[];if(o===Object)return{};if(o
     --local-border: none;
     --local-direction: column;
   }
-`,f=["href","target","rel","download"],u=`
+
+  :host([variant="sitemap"]) {
+     --local-padding: 0.2rem 0;
+     --local-border: none;
+
+     a::before {
+       content: "✈";
+     }
+  }
+`,g=["href","target","rel","download"],u=`
   <a data-forward><slot></slot></a>
-`;a("app-link",{attrs:f,styles:h,template:u});var v=`
+`;o("app-link",{attrs:g,styles:f,template:u});var b=`
   :host {
     display: block;
   }
@@ -61,7 +70,7 @@ function g(t,o){if(t===void 0){if(o===Array)return[];if(o===Object)return{};if(o
     max-height: 7rem;
     width: auto;
   }
-`,b=["width","height","src","alt"],k=()=>"<img data-forward />";a("app-logo",{attrs:b,styles:v,template:k});var i="769px",L="992px";var y=`
+`,v=["width","height","src","alt"],k=()=>"<img data-forward />";o("app-logo",{attrs:v,styles:b,template:k});var n="769px",M="992px";var y=`
   :host {
     display: block;
   }
@@ -95,7 +104,7 @@ function g(t,o){if(t===void 0){if(o===Array)return[];if(o===Object)return{};if(o
     box-shadow: none;
   }
 
-  @media (max-width: ${i}) {
+  @media (max-width: ${n}) {
     .header__navigation {
       gap: 4rem;
     }
@@ -129,7 +138,7 @@ function g(t,o){if(t===void 0){if(o===Array)return[];if(o===Object)return{};if(o
         </app-link>
       </div>
   </header>
-`;a("section-header",{template:w,styles:y});var x=`
+`;o("section-header",{template:w,styles:y});var x=[{href:"/",name:"Home"},{href:"/about",name:"About"},{href:"/credits",name:"Credits"},{href:"/hire-me",name:"Hire Me"},{href:"/thank-you",name:"Thank You"},{href:"/work/mmo",name:"MMO"},{href:"/work/bamboo",name:"Bamboo"},{href:"/work/portfolio",name:"Portfolio"},{href:"/work/au-van",name:"AU Van"},{href:"/work/sks-solar",name:"SKS Solar"},{href:"/writings/foundation-building-interfaces-at-scale",name:"Foundation"},{href:"/work/knowledge-tree",name:"Knowledge Tree"}],A=`
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -138,14 +147,14 @@ function g(t,o){if(t===void 0){if(o===Array)return[];if(o===Object)return{};if(o
    display: flex;
    gap: 5rem;
 
-   @media (max-width: ${i}) {
+   @media (max-width: ${n}) {
         flex-direction: column;
         gap: 3rem;
         margin-block: 2rem;
    }
   }
 
-  ul, ol {
+    ol {
     padding: 0;
     list-style-type: none;
     display: flex;
@@ -161,41 +170,62 @@ function g(t,o){if(t===void 0){if(o===Array)return[];if(o===Object)return{};if(o
   }
 
   nav ol {
+    flex-wrap: wrap;
     flex-direction: column;
+    max-height: 12.5ch;
+    overflow: scroll;
+
+    @media (max-width: ${n}) {
+        max-height: 20ch;
+    }
   }
 
-  nav ul {
-    gap: 2rem;
-    margin-top: 1rem;
+  ol li {
+    margin-right: 5rem;
+    margin-bottom: 0.3rem;
   }
-`,A=()=>`
+`,H=()=>`
     <nav>
         <span>Sitemap</span>
 
         <ol>
-            <li>
-                <app-link href="/" variant="plain">Home</app-link>
-            </li>
-            <li>
-                <app-link href="/about" variant="plain">About</app-link>
-            </li>
-
-            <li>
-                <app-link href="/credits" variant="plain">Credits</app-link>
-            </li>
-            <li>
-                <app-link href="/hire-me" variant="plain">Hire me</app-link>
-            </li>
-            <li>
-                <app-link href="/thank-you" variant="plain">Thank you</app-link>
-            </li>
+            ${x.map((e)=>`
+                <li>
+                    <app-link variant="sitemap" href=${e.href} >${e.name}</app-link>
+                </li>
+            `).join("")}
         </ol>
     </nav>
+`;o("footer-nav",{styles:A,template:H});var T=`
+  :host {
+   display: flex;
+    justify-content: space-between;
 
-    <nav>
-        <span>Get in touch:</span>
+   @media (max-width: ${n}) {
+        flex-direction: column;
+        gap: 3rem;
+   }
+  }
 
-        <ul>
+  p {
+    margin: 0;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 2rem;
+  }
+`,O=()=>`
+    
+      <p>
+        © Han Htet Aung 2026 |
+        <app-link href="/credits" variant="underline">Credits</app-link>
+      </p>
+
+       <ul>
             <li>
                 <app-link href="mailto:hanhtetaung.dev@gmail.com" variant="image">
                 <img
@@ -231,8 +261,7 @@ function g(t,o){if(t===void 0){if(o===Array)return[];if(o===Object)return{};if(o
                 </app-link>
             </li>
         </ul>
-    </nav>
-`;a("footer-nav",{styles:x,template:A});var H=`
+`;o("footer-copyright",{styles:T,template:O});var S=`
   :host {
     --local-bg-color: var(--color-bg-secondary);
 
@@ -262,7 +291,7 @@ function g(t,o){if(t===void 0){if(o===Array)return[];if(o===Object)return{};if(o
     align-items: center;
   }
 
-  @media (max-width: ${i}) {
+  @media (max-width: ${n}) {
     article {
       display: block;
     }
@@ -271,6 +300,10 @@ function g(t,o){if(t===void 0){if(o===Array)return[];if(o===Object)return{};if(o
   div {
     display: flex;
     gap: 3rem;
+  }
+
+  hr {
+    color: var(--color-secondary);
   }
 `,_=`
   <footer>
@@ -292,12 +325,11 @@ function g(t,o){if(t===void 0){if(o===Array)return[];if(o===Object)return{};if(o
         <footer-nav></footer-nav>
       </article>
 
-      <p>
-        © Han Htet Aung 2026 |
-        <app-link href="/credits" variant="underline">Credits</app-link>
-      </p>
+      <hr>
+
+      <footer-copyright></footer-copyright>
   </footer>
-`;a("section-footer",{styles:H,template:_});var E=`
+`;o("section-footer",{styles:S,template:_});var E=`
     section {
         margin-inline: auto;
         width: 80%;
@@ -315,7 +347,7 @@ function g(t,o){if(t===void 0){if(o===Array)return[];if(o===Object)return{};if(o
     margin: 0;
     margin-bottom: 1.5rem;
   }
-`,T=`
+`,P=`
   <section>
       <h1>Thank you!</h1>
       <p>
@@ -327,4 +359,4 @@ function g(t,o){if(t===void 0){if(o===Array)return[];if(o===Object)return{};if(o
         Back to home
       </app-link>
   </section>
-`;a("section-thank-you-intro",{styles:E,template:T});
+`;o("section-thank-you-intro",{styles:E,template:P});

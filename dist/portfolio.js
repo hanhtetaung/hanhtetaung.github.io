@@ -1,4 +1,4 @@
-function h(a,i){if(a===void 0){if(i===Array)return[];if(i===Object)return{};if(i===Boolean)return!1;if(i===Number)return 0;return}if(i===Boolean)return Boolean(a);if(i===Number)return Number(a);return a}function e(a,{props:i={},attrs:n=[],styles:d="",template:l}){let m=["props",...n];class p extends HTMLElement{static observedAttributes=m;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let o={},r=this.getAttribute("props");if(r)try{o=JSON.parse(r)}catch{o={}}let c={};for(let s of Object.keys(i))c[s]=h(o[s],i[s]);return c}_applyForwardedAttrs(){if(n.length===0)return;let o=this.shadowRoot.querySelector("[data-forward]");if(!o)return;for(let r of n)if(this.hasAttribute(r))o.setAttribute(r,this.getAttribute(r));else o.removeAttribute(r)}_render(){let o=this._getProps(),r=typeof l==="function"?l(o):l;this.shadowRoot.innerHTML=`<style>${d}</style>${r}`,this._applyForwardedAttrs()}}customElements.define(a,p)}var g=`
+function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a===Boolean)return!1;if(a===Number)return 0;return}if(a===Boolean)return Boolean(o);if(a===Number)return Number(o);return o}function e(o,{props:a={},attrs:n=[],styles:m="",template:l}){let d=["props",...n];class c extends HTMLElement{static observedAttributes=d;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let i={},r=this.getAttribute("props");if(r)try{i=JSON.parse(r)}catch{i={}}let p={};for(let s of Object.keys(a))p[s]=h(i[s],a[s]);return p}_applyForwardedAttrs(){if(n.length===0)return;let i=this.shadowRoot.querySelector("[data-forward]");if(!i)return;for(let r of n)if(this.hasAttribute(r))i.setAttribute(r,this.getAttribute(r));else i.removeAttribute(r)}_render(){let i=this._getProps(),r=typeof l==="function"?l(i):l;this.shadowRoot.innerHTML=`<style>${m}</style>${r}`,this._applyForwardedAttrs()}}customElements.define(o,c)}var f=`
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -50,9 +50,18 @@ function h(a,i){if(a===void 0){if(i===Array)return[];if(i===Object)return{};if(i
     --local-border: none;
     --local-direction: column;
   }
-`,f=["href","target","rel","download"],u=`
+
+  :host([variant="sitemap"]) {
+     --local-padding: 0.2rem 0;
+     --local-border: none;
+
+     a::before {
+       content: "✈";
+     }
+  }
+`,g=["href","target","rel","download"],u=`
   <a data-forward><slot></slot></a>
-`;e("app-link",{attrs:f,styles:g,template:u});var v=`
+`;e("app-link",{attrs:g,styles:f,template:u});var v=`
   :host {
     display: block;
   }
@@ -61,7 +70,7 @@ function h(a,i){if(a===void 0){if(i===Array)return[];if(i===Object)return{};if(i
     max-height: 7rem;
     width: auto;
   }
-`,y=["width","height","src","alt"],b=()=>"<img data-forward />";e("app-logo",{attrs:y,styles:v,template:b});var t="769px",K="992px";var w=`
+`,b=["width","height","src","alt"],w=()=>"<img data-forward />";e("app-logo",{attrs:b,styles:v,template:w});var t="769px",Q="992px";var y=`
   :host {
     display: block;
   }
@@ -129,7 +138,7 @@ function h(a,i){if(a===void 0){if(i===Array)return[];if(i===Object)return{};if(i
         </app-link>
       </div>
   </header>
-`;e("section-header",{template:k,styles:w});var x=`
+`;e("section-header",{template:k,styles:y});var x=[{href:"/",name:"Home"},{href:"/about",name:"About"},{href:"/credits",name:"Credits"},{href:"/hire-me",name:"Hire Me"},{href:"/thank-you",name:"Thank You"},{href:"/work/mmo",name:"MMO"},{href:"/work/bamboo",name:"Bamboo"},{href:"/work/portfolio",name:"Portfolio"},{href:"/work/au-van",name:"AU Van"},{href:"/work/sks-solar",name:"SKS Solar"},{href:"/writings/foundation-building-interfaces-at-scale",name:"Foundation"},{href:"/work/knowledge-tree",name:"Knowledge Tree"}],A=`
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -145,7 +154,7 @@ function h(a,i){if(a===void 0){if(i===Array)return[];if(i===Object)return{};if(i
    }
   }
 
-  ul, ol {
+    ol {
     padding: 0;
     list-style-type: none;
     display: flex;
@@ -161,41 +170,62 @@ function h(a,i){if(a===void 0){if(i===Array)return[];if(i===Object)return{};if(i
   }
 
   nav ol {
+    flex-wrap: wrap;
     flex-direction: column;
+    max-height: 12.5ch;
+    overflow: scroll;
+
+    @media (max-width: ${t}) {
+        max-height: 20ch;
+    }
   }
 
-  nav ul {
-    gap: 2rem;
-    margin-top: 1rem;
+  ol li {
+    margin-right: 5rem;
+    margin-bottom: 0.3rem;
   }
-`,A=()=>`
+`,H=()=>`
     <nav>
         <span>Sitemap</span>
 
         <ol>
-            <li>
-                <app-link href="/" variant="plain">Home</app-link>
-            </li>
-            <li>
-                <app-link href="/about" variant="plain">About</app-link>
-            </li>
-
-            <li>
-                <app-link href="/credits" variant="plain">Credits</app-link>
-            </li>
-            <li>
-                <app-link href="/hire-me" variant="plain">Hire me</app-link>
-            </li>
-            <li>
-                <app-link href="/thank-you" variant="plain">Thank you</app-link>
-            </li>
+            ${x.map((o)=>`
+                <li>
+                    <app-link variant="sitemap" href=${o.href} >${o.name}</app-link>
+                </li>
+            `).join("")}
         </ol>
     </nav>
+`;e("footer-nav",{styles:A,template:H});var S=`
+  :host {
+   display: flex;
+    justify-content: space-between;
 
-    <nav>
-        <span>Get in touch:</span>
+   @media (max-width: ${t}) {
+        flex-direction: column;
+        gap: 3rem;
+   }
+  }
 
-        <ul>
+  p {
+    margin: 0;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 2rem;
+  }
+`,P=()=>`
+    
+      <p>
+        © Han Htet Aung 2026 |
+        <app-link href="/credits" variant="underline">Credits</app-link>
+      </p>
+
+       <ul>
             <li>
                 <app-link href="mailto:hanhtetaung.dev@gmail.com" variant="image">
                 <img
@@ -231,8 +261,7 @@ function h(a,i){if(a===void 0){if(i===Array)return[];if(i===Object)return{};if(i
                 </app-link>
             </li>
         </ul>
-    </nav>
-`;e("footer-nav",{styles:x,template:A});var H=`
+`;e("footer-copyright",{styles:S,template:P});var $=`
   :host {
     --local-bg-color: var(--color-bg-secondary);
 
@@ -272,7 +301,11 @@ function h(a,i){if(a===void 0){if(i===Array)return[];if(i===Object)return{};if(i
     display: flex;
     gap: 3rem;
   }
-`,P=`
+
+  hr {
+    color: var(--color-secondary);
+  }
+`,O=`
   <footer>
       <article>
         <div>
@@ -292,12 +325,11 @@ function h(a,i){if(a===void 0){if(i===Array)return[];if(i===Object)return{};if(i
         <footer-nav></footer-nav>
       </article>
 
-      <p>
-        © Han Htet Aung 2026 |
-        <app-link href="/credits" variant="underline">Credits</app-link>
-      </p>
+      <hr>
+
+      <footer-copyright></footer-copyright>
   </footer>
-`;e("section-footer",{styles:H,template:P});var _=`
+`;e("section-footer",{styles:$,template:O});var T=`
   :host {
     --local-width: 5rem;
     --local-heigth: auto;
@@ -328,7 +360,7 @@ function h(a,i){if(a===void 0){if(i===Array)return[];if(i===Object)return{};if(i
    :host([variant="full"]) {
     --local-width: 100%;
   }
-`,E=["width","height","src","alt"],O=()=>"<img data-forward />";e("app-image",{attrs:E,styles:_,template:O});var S=`
+`,E=["width","height","src","alt"],_=()=>"<img data-forward />";e("app-image",{attrs:E,styles:T,template:_});var j=`
   :host {
     display: block;
   }
@@ -369,7 +401,7 @@ function h(a,i){if(a===void 0){if(i===Array)return[];if(i===Object)return{};if(i
     font-weight: var(--font-bold);
     text-transform: uppercase;
   }
-`,T=`
+`,N=`
   <section>
       <app-image
         variant="medium"
@@ -400,7 +432,7 @@ function h(a,i){if(a===void 0){if(i===Array)return[];if(i===Object)return{};if(i
         </app-link>
       </article>
   </section>
-`;e("section-portfolio-intro",{styles:S,template:T});var $=`
+`;e("section-portfolio-intro",{styles:j,template:N});var z=`
   :host {
     display: flex;
     align-items: center;
@@ -431,15 +463,15 @@ function h(a,i){if(a===void 0){if(i===Array)return[];if(i===Object)return{};if(i
       display: none;
     }
   }
-`,z={name:String,img:String,alt:String},L=({name:a,img:i="",alt:n=""})=>`
-    <h2>${a}</h2>
+`,L={name:String,img:String,alt:String},C=({name:o,img:a="",alt:n=""})=>`
+    <h2>${o}</h2>
     <img
-        src=${i}
+        src=${a}
         alt=${n}
         height="36"
         width="76"
     />
-`;e("section-title",{props:z,styles:$,template:L});var N=`
+`;e("section-title",{props:L,styles:z,template:C});var M=`
   :host {
     display: block;
   }
@@ -448,7 +480,7 @@ function h(a,i){if(a===void 0){if(i===Array)return[];if(i===Object)return{};if(i
     width: 80%;
     margin-inline: auto;
   }
-`,j=`
+`,B=`
   <section>
     <section-title variant="text" props='{"name": "Background"}'></section-title>
 
@@ -460,7 +492,7 @@ function h(a,i){if(a===void 0){if(i===Array)return[];if(i===Object)return{};if(i
       strong professional presence.
     </p>
   </section>
-`;e("section-portfolio-background",{styles:N,template:j});var C=`
+`;e("section-portfolio-background",{styles:M,template:B});var F=`
   :host {
     display: block;
   }
@@ -469,7 +501,7 @@ function h(a,i){if(a===void 0){if(i===Array)return[];if(i===Object)return{};if(i
     width: 80%;
     margin-inline: auto;
   }
-`,B=`
+`,K=`
   <section>
     <section-title variant="text" props='{"name": "Challenge"}'></section-title>
 
@@ -482,7 +514,7 @@ function h(a,i){if(a===void 0){if(i===Array)return[];if(i===Object)return{};if(i
       trustworthy user experience.
     </p>
   </section>
-`;e("section-portfolio-challenge",{styles:C,template:B});var W=`
+`;e("section-portfolio-challenge",{styles:F,template:K});var V=`
   :host {
     display: grid;
     grid-template-columns: 1fr 2.5fr;
@@ -504,13 +536,13 @@ function h(a,i){if(a===void 0){if(i===Array)return[];if(i===Object)return{};if(i
   :host([variant="block"]) {
     display: block;
   }
-`,q={title:String},I=({title:a})=>`
-        <h3>${a}</h3>
+`,W={title:String},q=({title:o})=>`
+        <h3>${o}</h3>
 
         <article>
             <slot></slot>
         </article>
-`;e("app-article-paragraph",{props:q,styles:W,template:I});var R=`
+`;e("app-article-paragraph",{props:W,styles:V,template:q});var I=`
   :host {
     display: block;
   }
@@ -540,7 +572,7 @@ function h(a,i){if(a===void 0){if(i===Array)return[];if(i===Object)return{};if(i
   ol {
     list-style: disc;
   }
-`,D=`
+`,R=`
   <section>
     <section-title variant="text" props='{"name": "Process"}'></section-title>
 
@@ -632,7 +664,7 @@ function h(a,i){if(a===void 0){if(i===Array)return[];if(i===Object)return{};if(i
       </li>
     </ul>
   </section>
-`;e("section-portfolio-process",{styles:R,template:D});var F=`
+`;e("section-portfolio-process",{styles:I,template:R});var D=`
   :host {
     display: block;
   }
@@ -652,7 +684,7 @@ function h(a,i){if(a===void 0){if(i===Array)return[];if(i===Object)return{};if(i
       flex-direction: column;
     }
   }
-`,G=`
+`,Y=`
   <section>
     <section-title variant="text" props='{"name": "Result"}'></section-title>
 
@@ -690,4 +722,4 @@ function h(a,i){if(a===void 0){if(i===Array)return[];if(i===Object)return{};if(i
       </li>
     </ul>
   </section>
-`;e("section-portfolio-result",{styles:F,template:G});
+`;e("section-portfolio-result",{styles:D,template:Y});

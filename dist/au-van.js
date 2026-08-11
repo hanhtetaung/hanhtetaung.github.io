@@ -1,4 +1,4 @@
-function h(r,a){if(r===void 0){if(a===Array)return[];if(a===Object)return{};if(a===Boolean)return!1;if(a===Number)return 0;return}if(a===Boolean)return Boolean(r);if(a===Number)return Number(r);return r}function o(r,{props:a={},attrs:n=[],styles:d="",template:l}){let m=["props",...n];class c extends HTMLElement{static observedAttributes=m;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let t={},i=this.getAttribute("props");if(i)try{t=JSON.parse(i)}catch{t={}}let p={};for(let s of Object.keys(a))p[s]=h(t[s],a[s]);return p}_applyForwardedAttrs(){if(n.length===0)return;let t=this.shadowRoot.querySelector("[data-forward]");if(!t)return;for(let i of n)if(this.hasAttribute(i))t.setAttribute(i,this.getAttribute(i));else t.removeAttribute(i)}_render(){let t=this._getProps(),i=typeof l==="function"?l(t):l;this.shadowRoot.innerHTML=`<style>${d}</style>${i}`,this._applyForwardedAttrs()}}customElements.define(r,c)}var g=`
+function h(a,t){if(a===void 0){if(t===Array)return[];if(t===Object)return{};if(t===Boolean)return!1;if(t===Number)return 0;return}if(t===Boolean)return Boolean(a);if(t===Number)return Number(a);return a}function o(a,{props:t={},attrs:n=[],styles:p="",template:l}){let d=["props",...n];class c extends HTMLElement{static observedAttributes=d;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let r={},i=this.getAttribute("props");if(i)try{r=JSON.parse(i)}catch{r={}}let m={};for(let s of Object.keys(t))m[s]=h(r[s],t[s]);return m}_applyForwardedAttrs(){if(n.length===0)return;let r=this.shadowRoot.querySelector("[data-forward]");if(!r)return;for(let i of n)if(this.hasAttribute(i))r.setAttribute(i,this.getAttribute(i));else r.removeAttribute(i)}_render(){let r=this._getProps(),i=typeof l==="function"?l(r):l;this.shadowRoot.innerHTML=`<style>${p}</style>${i}`,this._applyForwardedAttrs()}}customElements.define(a,c)}var g=`
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -50,6 +50,15 @@ function h(r,a){if(r===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     --local-border: none;
     --local-direction: column;
   }
+
+  :host([variant="sitemap"]) {
+     --local-padding: 0.2rem 0;
+     --local-border: none;
+
+     a::before {
+       content: "✈";
+     }
+  }
 `,f=["href","target","rel","download"],u=`
   <a data-forward><slot></slot></a>
 `;o("app-link",{attrs:f,styles:g,template:u});var v=`
@@ -61,7 +70,7 @@ function h(r,a){if(r===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     max-height: 7rem;
     width: auto;
   }
-`,b=["width","height","src","alt"],y=()=>"<img data-forward />";o("app-logo",{attrs:b,styles:v,template:y});var e="769px",G="992px";var k=`
+`,w=["width","height","src","alt"],b=()=>"<img data-forward />";o("app-logo",{attrs:w,styles:v,template:b});var e="769px",U="992px";var k=`
   :host {
     display: block;
   }
@@ -100,7 +109,7 @@ function h(r,a){if(r===void 0){if(a===Array)return[];if(a===Object)return{};if(a
       gap: 4rem;
     }
   }
-`,w=`
+`,y=`
   <header>
       <app-link variant="plain" href="/">
         <app-logo
@@ -129,7 +138,7 @@ function h(r,a){if(r===void 0){if(a===Array)return[];if(a===Object)return{};if(a
         </app-link>
       </div>
   </header>
-`;o("section-header",{template:w,styles:k});var x=`
+`;o("section-header",{template:y,styles:k});var x=[{href:"/",name:"Home"},{href:"/about",name:"About"},{href:"/credits",name:"Credits"},{href:"/hire-me",name:"Hire Me"},{href:"/thank-you",name:"Thank You"},{href:"/work/mmo",name:"MMO"},{href:"/work/bamboo",name:"Bamboo"},{href:"/work/portfolio",name:"Portfolio"},{href:"/work/au-van",name:"AU Van"},{href:"/work/sks-solar",name:"SKS Solar"},{href:"/writings/foundation-building-interfaces-at-scale",name:"Foundation"},{href:"/work/knowledge-tree",name:"Knowledge Tree"}],A=`
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -145,7 +154,7 @@ function h(r,a){if(r===void 0){if(a===Array)return[];if(a===Object)return{};if(a
    }
   }
 
-  ul, ol {
+    ol {
     padding: 0;
     list-style-type: none;
     display: flex;
@@ -161,41 +170,62 @@ function h(r,a){if(r===void 0){if(a===Array)return[];if(a===Object)return{};if(a
   }
 
   nav ol {
+    flex-wrap: wrap;
     flex-direction: column;
+    max-height: 12.5ch;
+    overflow: scroll;
+
+    @media (max-width: ${e}) {
+        max-height: 20ch;
+    }
   }
 
-  nav ul {
-    gap: 2rem;
-    margin-top: 1rem;
+  ol li {
+    margin-right: 5rem;
+    margin-bottom: 0.3rem;
   }
-`,A=()=>`
+`,H=()=>`
     <nav>
         <span>Sitemap</span>
 
         <ol>
-            <li>
-                <app-link href="/" variant="plain">Home</app-link>
-            </li>
-            <li>
-                <app-link href="/about" variant="plain">About</app-link>
-            </li>
-
-            <li>
-                <app-link href="/credits" variant="plain">Credits</app-link>
-            </li>
-            <li>
-                <app-link href="/hire-me" variant="plain">Hire me</app-link>
-            </li>
-            <li>
-                <app-link href="/thank-you" variant="plain">Thank you</app-link>
-            </li>
+            ${x.map((a)=>`
+                <li>
+                    <app-link variant="sitemap" href=${a.href} >${a.name}</app-link>
+                </li>
+            `).join("")}
         </ol>
     </nav>
+`;o("footer-nav",{styles:A,template:H});var S=`
+  :host {
+   display: flex;
+    justify-content: space-between;
 
-    <nav>
-        <span>Get in touch:</span>
+   @media (max-width: ${e}) {
+        flex-direction: column;
+        gap: 3rem;
+   }
+  }
 
-        <ul>
+  p {
+    margin: 0;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 2rem;
+  }
+`,$=()=>`
+    
+      <p>
+        © Han Htet Aung 2026 |
+        <app-link href="/credits" variant="underline">Credits</app-link>
+      </p>
+
+       <ul>
             <li>
                 <app-link href="mailto:hanhtetaung.dev@gmail.com" variant="image">
                 <img
@@ -231,8 +261,7 @@ function h(r,a){if(r===void 0){if(a===Array)return[];if(a===Object)return{};if(a
                 </app-link>
             </li>
         </ul>
-    </nav>
-`;o("footer-nav",{styles:x,template:A});var H=`
+`;o("footer-copyright",{styles:S,template:$});var C=`
   :host {
     --local-bg-color: var(--color-bg-secondary);
 
@@ -272,7 +301,11 @@ function h(r,a){if(r===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     display: flex;
     gap: 3rem;
   }
-`,C=`
+
+  hr {
+    color: var(--color-secondary);
+  }
+`,O=`
   <footer>
       <article>
         <div>
@@ -292,12 +325,11 @@ function h(r,a){if(r===void 0){if(a===Array)return[];if(a===Object)return{};if(a
         <footer-nav></footer-nav>
       </article>
 
-      <p>
-        © Han Htet Aung 2026 |
-        <app-link href="/credits" variant="underline">Credits</app-link>
-      </p>
+      <hr>
+
+      <footer-copyright></footer-copyright>
   </footer>
-`;o("section-footer",{styles:H,template:C});var _=`
+`;o("section-footer",{styles:C,template:O});var E=`
   :host {
     --local-width: 5rem;
     --local-heigth: auto;
@@ -328,7 +360,7 @@ function h(r,a){if(r===void 0){if(a===Array)return[];if(a===Object)return{};if(a
    :host([variant="full"]) {
     --local-width: 100%;
   }
-`,E=["width","height","src","alt"],N=()=>"<img data-forward />";o("app-image",{attrs:E,styles:_,template:N});var S=`
+`,N=["width","height","src","alt"],P=()=>"<img data-forward />";o("app-image",{attrs:N,styles:E,template:P});var _=`
   :host {
     --local-width: 3rem;
     --local-height: auto;
@@ -361,7 +393,7 @@ function h(r,a){if(r===void 0){if(a===Array)return[];if(a===Object)return{};if(a
   }
 
 
-`,$=["src","alt"],O=()=>'<img data-forward width="200" height="200"/>';o("app-icon",{attrs:$,styles:S,template:O});var L=`
+`,T=["src","alt"],j=()=>'<img data-forward width="200" height="200"/>';o("app-icon",{attrs:T,styles:_,template:j});var L=`
    section {
         margin-inline: auto;
         width: 80%;
@@ -394,12 +426,12 @@ function h(r,a){if(r===void 0){if(a===Array)return[];if(a===Object)return{};if(a
             display: none;
           }
         } */
-`,P={name:String,img:String,alt:String},T=({name:r="Name",img:a="/assets/images/coming-soon.jpg",alt:n="Coming Soon"})=>`
+`,M={name:String,img:String,alt:String},B=({name:a="Name",img:t="/assets/images/coming-soon.jpg",alt:n="Coming Soon"})=>`
   <section>
       <div>
         <hgroup>
           <p>Coming Soon</p>
-          <h1>${r}</h1>
+          <h1>${a}</h1>
         </hgroup>
 
         <app-icon
@@ -409,9 +441,9 @@ function h(r,a){if(r===void 0){if(a===Array)return[];if(a===Object)return{};if(a
         ></app-icon>
       </div>
 
-      <app-image variant="large" src=${a} alt=${n}></app-image>
+      <app-image variant="large" src=${t} alt=${n}></app-image>
   </section>
-`;o("section-coming-soon-intro",{props:P,styles:L,template:T});var j=`
+`;o("section-coming-soon-intro",{props:M,styles:L,template:B});var K=`
   :host {
     display: block;
   }
@@ -419,4 +451,4 @@ function h(r,a){if(r===void 0){if(a===Array)return[];if(a===Object)return{};if(a
   <section-coming-soon-intro
     props='{"name":"AU Van"}'
   ></section-coming-soon-intro>
-`;o("section-au-van-intro",{styles:j,template:z});
+`;o("section-au-van-intro",{styles:K,template:z});
