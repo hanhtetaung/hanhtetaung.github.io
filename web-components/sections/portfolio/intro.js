@@ -58,7 +58,7 @@ const template = /* html */ `
       ></app-image>
 
       <article>
-        <p>Case Study</p>
+        <span>Case Study</span>
         <h1>Portfolio</h1>
 
         <p>

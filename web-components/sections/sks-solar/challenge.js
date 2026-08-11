@@ -1,25 +1,30 @@
-export class Section extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = /*html*/ `<section>
-        <div class="container">
-          <div class="section-title">
-            <h2>Challenge</h2>
-          </div>
+import { define } from "../../define";
 
-          <article class="article">
-            <div class="article__body">
-              <p>
-                One of the main challenges of the project was creating a visual
-                direction that felt modern, clean, and professional while
-                maintaining clarity and usability. The redesign focused on
-                improving typography, spacing, layout, and overall presentation
-                to deliver a more polished and trustworthy user experience.
-              </p>
-            </div>
-          </article>
-        </div>
-      </section>`;
+import "../../components/section-title";
+
+const styles = /* css */ `
+  :host {
+    display: block;
   }
-}
 
-customElements.define("section-sks-solar-challenge", Section);
+  section {
+    width: 80%;
+    margin-inline: auto;
+  }
+`;
+
+const template = /* html */ `
+  <section>
+    <section-title variant="text" props='{"name": "Challenge"}'></section-title>
+
+    <p>
+      One of the main challenges of the project was creating a visual
+      direction that felt modern, clean, and professional while
+      maintaining clarity and usability. The redesign focused on
+      improving typography, spacing, layout, and overall presentation
+      to deliver a more polished and trustworthy user experience.
+    </p>
+  </section>
+`;
+
+define("section-sks-solar-challenge", { styles, template });
