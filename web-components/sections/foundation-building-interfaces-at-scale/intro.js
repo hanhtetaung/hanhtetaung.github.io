@@ -1,39 +1,65 @@
-export class Section extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = /*html*/ `<section>
-        <div class="container">
-          <article class="article">
-            <div class="article__header">
-              <h1 class="title">Foundation for Building Interfaces at Scale</h1>
-            </div>
-            <div class="article__body">
-              <p>
-                Build systems, not interfaces. A design system is the single
-                source of truth for consistent, scalable interfaces.
-              </p>
+import { define } from "../../define";
 
-              <p><b>On this page</b></p>
+import "../../components/app-link";
 
-              <ul>
-                <li>
-                  <a href="#atomic-design-principle" class="button--link"
-                    >Atomic design principle
-                  </a>
-                </li>
-                <li>
-                  <a href="#design-token-architecture" class="button--link"
-                    >Design token architecture</a
-                  >
-                </li>
-              </ul>
-            </div>
-          </article>
-        </div>
-      </section>`;
+const styles = /* css */ `
+  :host {
+    display: block;
   }
-}
 
-customElements.define(
-  "section-foundation-building-interfaces-at-scale-intro",
-  Section,
-);
+  section {
+    width: 80%;
+    margin-inline: auto;
+  }
+
+  h1 {
+    margin: 0;
+    font-size: var(--size-title);
+    font-weight: var(--font-regular);
+    font-family: var(--font-heading);
+  }
+
+  p {
+    margin: 0;
+    margin-block: 1.5rem;
+  }
+
+  ul {
+    margin: 0;
+    padding-left: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+`;
+
+const template = /* html */ `
+  <section>
+    <h1>Foundation for Building Interfaces at Scale</h1>
+
+    <p>
+      Build systems, not interfaces. A design system is the single source of
+      truth for consistent, scalable interfaces.
+    </p>
+
+    <p><b>On this page</b></p>
+
+    <ul>
+      <li>
+        <app-link href="#atomic-design-principle" variant="underline">
+          Atomic design principle
+        </app-link>
+      </li>
+      <li>
+        <app-link href="#design-token-architecture" variant="underline">
+          Design token architecture
+        </app-link>
+      </li>
+    </ul>
+  </section>
+`;
+
+define("section-foundation-building-interfaces-at-scale-intro", {
+  styles,
+  template,
+});

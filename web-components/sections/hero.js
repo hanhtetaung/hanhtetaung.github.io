@@ -1,123 +1,202 @@
-export class SectionHero extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = /*html*/ `<section class="hero">
-      <div class="container">
-        <hgroup class="hero__group">
-          <p class="hero__intro">I'm Han Htet Aung</p>
+import { define } from "../define";
+import "../components/app-icon";
+import "../components/app-link";
+import { PHONE } from "../breakpoints";
+
+const tech_icons = [
+  { src: "/assets/icons/figma.svg", alt: "Figma Icon" },
+  { src: "/assets/icons/html.svg", alt: "HTML Icon" },
+  { src: "/assets/icons/css.svg", alt: "CSS Icon" },
+  { src: "/assets/icons/javascript.svg", alt: "JavaScript Icon" },
+];
+
+const showcases = [
+  {
+    name: "Knowledge Tree",
+    href: "/work/knowledge-tree",
+    src: "/assets/images/case-study/knowledge-tree/thumbnail.avif",
+    alt: "Knowledge Tree Thumbnail",
+  },
+  {
+    name: "MMO",
+    href: "/work/mmo",
+    src: "/assets/images/case-study/mmo/thumbnail.avif",
+    alt: "MMO Thumbnail",
+  },
+  {
+    name: "Bamboo",
+    href: "/work/bamboo",
+    src: "/assets/images/case-study/bamboo/thumbnail.avif",
+    alt: "Bamboo Thumbnail",
+  },
+];
+
+const highlights = [
+  { title: "Specialize In", header: "Enterprise UX" },
+  { title: "Simplify", header: "Complex workflows" },
+  { title: "Scale", header: "Design System" },
+];
+
+const styles = /* css */ `
+  section {
+    width: 80%;
+    margin-inline: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 5rem;
+    grid-template-areas:
+      "one two"
+      "three three";
+
+
+    @media (max-width: ${PHONE}) {
+        display: flex;
+        flex-direction: column;
+    }
+  }
+
+
+  ol {
+    grid-area: three;
+  }
+
+  .highlights {
+    grid-area: two;
+    max-width: 30ch;
+    margin-left: auto;
+
+    @media (max-width: ${PHONE}) {
+      margin: auto;
+    }
+  }
+
+  h1, h3, p {
+    margin: 0;
+  }
+
+  h1 {
+    font-size: var(--size-display);
+    font-weight: var(--font-regular);
+    font-family: var(--font-heading);
+  }
+
+  h3 {
+    font-size: var(--size-heading);
+    font-family: var(--font-body);
+  }
+
+  ul, ol {
+    padding: 0;
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+  }
+
+  .toolkits {
+    display: flex;
+    gap: 2rem;
+    margin-top: 0.5rem;
+  }
+
+  hgroup {
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  article  {
+    ul {
+      flex-direction: row;
+    }
+  }
+
+  ul {
+    flex-direction: column;
+    margin: 0;
+  }
+
+  span {
+    color: var(--color-secondary);
+    font-size: var(--size-small);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+  }
+  
+  ol {
+    display: flex;
+    gap: 2rem;
+
+    overflow-y: scroll;
+  }
+
+  img {
+    max-height: 12rem;
+    width: auto;
+  }
+`;
+
+const template = /* html */ `
+  <section>
+      <article>
+        <hgroup>
+          <p>I'm Han Htet Aung</p>
           <h1>UX Engineer</h1>
           <p>
             Designing human-centered interfaces that power daily business
             operations
           </p>
-
-          <div class="hero__tech">
-            <p class="small--emphasis">Toolkit:</p>
-
-            <ul class="hero__tech-list">
-              <li>
-                <img
-                  src="/assets/icons/figma.svg"
-                  alt="Figma icon"
-                  class="icon"
-                />
-              </li>
-              <li>
-                <img
-                  src="/assets/icons/html.svg"
-                  alt="HTML icon"
-                  class="icon"
-                />
-              </li>
-
-              <li>
-                <img src="/assets/icons/css.svg" alt="CSS icon" class="icon" />
-              </li>
-
-              <li>
-                <img
-                  src="/assets/icons/javascript.svg"
-                  alt="JavaScript icon"
-                  class="icon"
-                />
-              </li>
-            </ul>
-          </div>
         </hgroup>
-
-        <ul class="hero__highlight">
-          <li>
-            <p class="small--emphasis">Specialize in</p>
-            <h3>Enterprise UX</h3>
-          </li>
-
-          <li>
-            <p class="small--emphasis">Simplify</p>
-            <h3>Complex workflows</h3>
-          </li>
-
-          <li>
-            <p class="small--emphasis">Scale</p>
-            <h3>Design System</h3>
-          </li>
+  
+        <span>Toolkit:</span>
+        <ul class="toolkits">
+          ${tech_icons
+            .map(
+              (ti) => /* html */ `
+              <li>
+                <app-icon
+                  src=${ti.src}
+                  alt=${ti.alt}
+                ></app-icon>
+              </li>
+            `,
+            )
+            .join("")}
         </ul>
+      </article>
 
-        <!-- <article class="blog">
-            <img
-              class="icon"
-              src="/assets/icons/molecule.svg"
-              alt="Foundation logo"
-            />
+      <ul class="highlights">
+         ${highlights
+           .map(
+             (ti) => /* html */ `
+                <li>
+                  <span>${ti.title}</span>
+                  <h3>${ti.header}</h3>
+                </li>
+              `,
+           )
+           .join("")}
+      </ul>
 
-            <div class="blog__content">
-              <h3>Foundation for Building Interfaces at Scale</h3>
-
-              <p>
-                The principles and foundations I follow to build consistent,
-                scalable user interfaces.
-              </p>
-              <a
-                class="button--outline"
-                href="/foundation-building-interfaces-at-scale"
-                >Read more &#8599;</a
-              >
-            </div>
-          </article> -->
-
-        <ul class="hero__product-lists">
+      <ol>
+        ${showcases
+          .map(
+            (showcase) => /*html*/ `
           <li>
-            <a href="/work/knowledge-tree" class="hero__product-item">
-              <span class="button--link">Knowledge Tree</span>
+            <app-link variant="image" href=${showcase.href}>
+              <span>${showcase.name}</span>
               <img
-                src="/assets/images/case-study/knowledge-tree/thumbnail.avif"
-                alt="Knowledge Tree thumbnail"
-                class="image"
+                src=${showcase.src}
+                alt=${showcase.alt}
               />
-            </a>
+            </app-link>
           </li>
-          <li>
-            <a href="/work/mmo" class="hero__product-item">
-              <span class="button--link">MMO</span>
-              <img
-                src="/assets/images/case-study/mmo/thumbnail.avif"
-                alt="MMO thumbnail"
-                class="image"
-              />
-            </a>
-          </li>
-          <li>
-            <a href="/work/bamboo" class="hero__product-item">
-              <span class="button--link">Bamboo</span>
-              <img
-                src="/assets/images/case-study/bamboo/thumbnail.avif"
-                alt="Bamboo thumbnail"
-                class="image"
-              />
-            </a>
-          </li>
-        </ul>
-      </div>
-    </section>`;
-  }
-}
+          `,
+          )
+          .join("")}
+      </ol>
+  </section>
+`;
 
-customElements.define("section-hero", SectionHero);
+define("section-hero", { styles, template });

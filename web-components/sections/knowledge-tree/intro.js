@@ -1,47 +1,81 @@
-export class Section extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = /*html*/ `<section>
-        <div class="container">
-          <article class="article article--hero">
-            <div class="article__media">
-              <img
-                src="/assets/images/case-study/knowledge-tree/thumbnail.avif"
-                alt="Final Product Screenshot"
-                class="image"
-                width="1692"
-                height="886"
-              />
-            </div>
+import { define } from "../../define";
 
-            <div class="article__content">
-              <div class="article__header">
-                <span class="small--emphasis">Case Study</span>
-                <h1>Knowledge Tree</h1>
-              </div>
+import "../../components/app-image";
+import "../../components/app-link";
+import { PHONE } from "../../breakpoints";
 
-              <div class="article__body">
-                <p>
-                  A tool to visualize the connections between everyday goods and
-                  their fundamental sources based on my knowledge.
-                </p>
-
-                <div>
-                  <span class="small--emphasis">Scope:</span>
-                  <p>Idea → Product</p>
-                </div>
-
-                <a
-                  class="button--outline"
-                  href="https://hanhtetaung.dev/knowledge-tree"
-                  target="_blank"
-                  >View Live Website</a
-                >
-              </div>
-            </div>
-          </article>
-        </div>
-      </section>`;
+const styles = /* css */ `
+  :host {
+    display: block;
   }
-}
 
-customElements.define("section-knowledge-tree-intro", Section);
+  section {
+    width: 80%;
+    margin-inline: auto;
+
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    gap: 3rem;
+
+    @media (max-width: ${PHONE}) {
+      flex-direction: column;
+    }
+  }
+
+  h1 {
+    margin: 0;
+    font-size: var(--size-display);
+    font-weight: var(--font-regular);
+    font-family: var(--font-heading);
+  }
+
+  p {
+    margin: 0;
+    margin-bottom: 2rem;
+  }
+
+  article {
+    max-width: 40ch;
+  }
+
+    span {
+    color: var(--color-secondary);
+    font-size: var(--size-small);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+  }
+`;
+
+const template = /* html */ `
+  <section>
+    <app-image
+      variant="large"
+      src="/assets/images/case-study/knowledge-tree/thumbnail.avif"
+      alt="Final Product Screenshot"
+      width="1692"
+      height="886"
+    ></app-image>
+
+    <article>
+      <span>Case Study</span>
+      <h1>Knowledge Tree</h1>
+
+      <p>
+        A tool to visualize the connections between everyday goods and
+        their fundamental sources based on my knowledge.
+      </p>
+
+      <span>Scope:</span>
+      <p>Idea → Product</p>
+
+      <app-link
+        variant="secondary"
+        href="https://hanhtetaung.dev/knowledge-tree"
+        target="_blank"
+        >View Live Website</app-link>
+    </article>
+  </section>
+`;
+
+define("section-knowledge-tree-intro", { styles, template });

@@ -1,12 +1,29 @@
-export class SectionCreditsIntro extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = /*html*/ `<section class="credits">
-    <div class="container">
+import { define } from "../define";
+
+const styles = /*css*/ `
+    section {
+        margin-inline: auto;
+        width: 80%;
+    }
+
+     h1 {
+    margin: 0;
+    font-size: var(--size-display);
+    font-weight: var(--font-regular);
+    font-family: var(--font-heading);
+  }
+
+  p {
+    margin: 0;
+    margin-bottom: 1.5rem;
+  }
+`;
+
+const template = /* html */ `
+  <section>
       <h1>Credits</h1>
       <p>Thanks to the creators behind the icons.</p>
-    </div>
-  </section>`;
-  }
-}
+  </section>
+`;
 
-customElements.define("section-credits-intro", SectionCreditsIntro);
+define("section-credits-intro", { styles, template });

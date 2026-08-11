@@ -1,324 +1,176 @@
-export class SectionTechCollection extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = /*html*/ `<section class="tech-collection">
-        <div class="container">
-          <div class="section-title">
-            <h2>Tech Collection</h2>
-            <img
-              class="icon"
-              src="/assets/icons/penguin.svg"
-              alt="Random Fact Logo"
-              height="103"
-              width="82"
-            />
-          </div>
+import { define } from "../define";
+import "../components/app-link";
+import "../components/section-title";
 
-          <ul class="tech-collection__list">
-            <li class="tech-collection__item">
-              <a href="https://raindrop.io/" target="_blank">
-                <img
-                  class="tech-collection__icon"
-                  src="/assets/tech-collection/raindrop-io.svg"
-                  alt="Raindrop-io logo"
-                  width="102"
-                  height="73"
-                />
-              </a>
-            </li>
+const techCollection = [
+  {
+    href: "https://raindrop.io/",
+    src: "/assets/tech-collection/raindrop-io.svg",
+    alt: "Raindrop-io logo",
+  },
+  {
+    href: "https://www.spendee.com/",
+    src: "/assets/tech-collection/spendee.svg",
+    alt: "Spendee logo",
+  },
+  {
+    href: "https://citymapper.com/",
+    src: "/assets/tech-collection/citymapper.svg",
+    alt: "Citymapper logo",
+  },
+  {
+    href: "https://www.figma.com/",
+    src: "/assets/tech-collection/figma.svg",
+    alt: "Figma logo",
+  },
+  {
+    href: "https://www.strava.com/",
+    src: "/assets/tech-collection/strava.svg",
+    alt: "Strava logo",
+  },
+  {
+    href: "https://www.notion.com/",
+    src: "/assets/tech-collection/notion.svg",
+    alt: "Notion logo",
+  },
+  {
+    href: "https://wise.com/",
+    src: "/assets/tech-collection/wise.svg",
+    alt: "Wise logo",
+  },
+  {
+    href: "https://dayoneapp.com/",
+    src: "/assets/tech-collection/day-one.svg",
+    alt: "Day One logo",
+  },
+  {
+    href: "https://telegram.org/",
+    src: "/assets/tech-collection/telegram.svg",
+    alt: "Telegram logo",
+  },
+  {
+    href: "https://www.redbus.com/",
+    src: "/assets/tech-collection/redbus.svg",
+    alt: "Red Bus logo",
+  },
+  {
+    href: "https://www.iqair.com/",
+    src: "/assets/tech-collection/iqair.svg",
+    alt: "IqAir logo",
+  },
+  {
+    href: "https://www.shazam.com/",
+    src: "/assets/tech-collection/shazam.svg",
+    alt: "Shazam logo",
+  },
+  {
+    href: "https://www.skyscanner.net/",
+    src: "/assets/tech-collection/skyscanner.svg",
+    alt: "Skyscanner logo",
+  },
+  {
+    href: "https://developer.mozilla.org/en-US/docs/Glossary/HTML5",
+    src: "/assets/tech-collection/html5.svg",
+    alt: "HTML5 logo",
+  },
+  {
+    href: "https://developer.mozilla.org/en-US/docs/Web/CSS",
+    src: "/assets/tech-collection/css3.svg",
+    alt: "CSS3 logo",
+  },
+  {
+    href: "https://bun.com/",
+    src: "/assets/tech-collection/bun.svg",
+    alt: "Bun logo",
+  },
+  {
+    href: "https://www.upwork.com/",
+    src: "/assets/tech-collection/upwork.svg",
+    alt: "Upwork logo",
+  },
+  {
+    href: "https://google.com/maps",
+    src: "/assets/tech-collection/google-map.svg",
+    alt: "Google Map logo",
+  },
+  {
+    href: "https://www.airbnb.com/",
+    src: "/assets/tech-collection/airbnb.svg",
+    alt: "Airbnb logo",
+  },
+  {
+    href: "https://ticktick.com/",
+    src: "/assets/tech-collection/ticktick.svg",
+    alt: "Ticktick logo",
+  },
+  {
+    href: "https://unsplash.com/",
+    src: "/assets/tech-collection/unsplash.svg",
+    alt: "Unsplash logo",
+  },
+  {
+    href: "https://oklch.com/",
+    src: "/assets/tech-collection/oklch.svg",
+    alt: "Oklch logo",
+  },
+  {
+    href: "https://vert.sh/",
+    src: "/assets/tech-collection/vert.svg",
+    alt: "Vert logo",
+  },
+  {
+    href: "https://thenounproject.com/",
+    src: "/assets/tech-collection/the-noun-project.svg",
+    alt: "The Noun Project logo",
+  },
+];
 
-            <li class="tech-collection__item">
-              <a href="https://www.spendee.com/" target="_blank">
-                <img
-                  class="tech-collection__icon"
-                  src="/assets/tech-collection/spendee.svg"
-                  alt="Spendee logo"
-                  width="102"
-                  height="73"
-                />
-              </a>
-            </li>
-            <li class="tech-collection__item">
-              <a href="https://citymapper.com/" target="_blank">
-                <img
-                  class="tech-collection__icon"
-                  src="/assets/tech-collection/citymapper.svg"
-                  alt="Citymapper logo"
-                  width="102"
-                  height="73"
-                />
-              </a>
-            </li>
-
-            <li class="tech-collection__item">
-              <a href="https://www.figma.com/" target="_blank">
-                <img
-                  class="tech-collection__icon--lg"
-                  src="/assets/tech-collection/figma.svg"
-                  alt="Figma logo"
-                  width="102"
-                  height="73"
-                />
-              </a>
-            </li>
-
-            <li class="tech-collection__item">
-              <a href="https://www.strava.com/" target="_blank">
-                <img
-                  class="tech-collection__icon"
-                  src="/assets/tech-collection/strava.svg"
-                  alt="Strava logo"
-                  width="102"
-                  height="73"
-                />
-              </a>
-            </li>
-
-            <li class="tech-collection__item">
-              <a href="https://www.notion.com/" target="_blank">
-                <img
-                  class="tech-collection__icon"
-                  src="/assets/tech-collection/notion.svg"
-                  alt="Notion logo"
-                  width="102"
-                  height="73"
-                />
-              </a>
-            </li>
-
-            <li class="tech-collection__item">
-              <a href="https://wise.com/" target="_blank">
-                <img
-                  class="tech-collection__icon"
-                  src="/assets/tech-collection/wise.svg"
-                  alt="Wise logo"
-                  width="102"
-                  height="73"
-                />
-              </a>
-            </li>
-            <li class="tech-collection__item">
-              <a href="https://dayoneapp.com/" target="_blank">
-                <img
-                  class="tech-collection__icon"
-                  src="/assets/tech-collection/day-one.svg"
-                  alt="Day One logo"
-                  width="102"
-                  height="73"
-                />
-              </a>
-            </li>
-
-            <li class="tech-collection__item">
-              <a href="https://telegram.org/" target="_blank">
-                <img
-                  class="tech-collection__icon"
-                  src="/assets/tech-collection/telegram.svg"
-                  alt="Telegram logo"
-                  width="102"
-                  height="73"
-                />
-              </a>
-            </li>
-
-            <li class="tech-collection__item">
-              <a href="https://www.redbus.com/" target="_blank">
-                <img
-                  class="tech-collection__icon"
-                  src="/assets/tech-collection/redbus.svg"
-                  alt="Red Bus logo"
-                  width="102"
-                  height="73"
-                />
-              </a>
-            </li>
-
-            <li class="tech-collection__item">
-              <a href="https://www.iqair.com/" target="_blank">
-                <img
-                  class="tech-collection__icon"
-                  src="/assets/tech-collection/iqair.svg"
-                  alt="IqAir logo"
-                  width="102"
-                  height="73"
-                />
-              </a>
-            </li>
-
-            <li class="tech-collection__item">
-              <a href="https://www.shazam.com/" target="_blank">
-                <img
-                  class="tech-collection__icon"
-                  src="/assets/tech-collection/shazam.svg"
-                  alt="Shazam logo"
-                  width="102"
-                  height="73"
-                />
-              </a>
-            </li>
-            <li class="tech-collection__item">
-              <a href="https://www.skyscanner.net/" target="_blank">
-                <img
-                  class="tech-collection__icon"
-                  src="/assets/tech-collection/skyscanner.svg"
-                  alt="Skyscanner logo"
-                  width="102"
-                  height="73"
-                />
-              </a>
-            </li>
-
-            <li class="tech-collection__item">
-              <a
-                href="https://developer.mozilla.org/en-US/docs/Glossary/HTML5"
-                target="_blank"
-              >
-                <img
-                  class="tech-collection__icon"
-                  src="/assets/tech-collection/html5.svg"
-                  alt="HTML5 logo"
-                  width="102"
-                  height="73"
-                />
-              </a>
-            </li>
-
-            <li class="tech-collection__item">
-              <a
-                href="https://developer.mozilla.org/en-US/docs/Web/CSS"
-                target="_blank"
-              >
-                <img
-                  class="tech-collection__icon"
-                  src="/assets/tech-collection/css3.svg"
-                  alt="CSS3 logo"
-                  width="102"
-                  height="73"
-                />
-              </a>
-            </li>
-
-            <li class="tech-collection__item">
-              <a href="https://sass-lang.com/" target="_blank">
-                <img
-                  class="tech-collection__icon"
-                  src="/assets/tech-collection/sass.svg"
-                  alt="Sass logo"
-                  width="102"
-                  height="73"
-                />
-              </a>
-            </li>
-
-              <li class="tech-collection__item">
-              <a href="https://bun.com/" target="_blank">
-                <img
-                  class="tech-collection__icon"
-                  src="/assets/tech-collection/bun.svg"
-                  alt="Bun logo"
-                  width="102"
-                  height="73"
-                />
-              </a>
-            </li>
-
-            <li class="tech-collection__item">
-              <a href="https://www.upwork.com/" target="_blank">
-                <img
-                  class="tech-collection__icon"
-                  src="/assets/tech-collection/upwork.svg"
-                  alt="Upwork logo"
-                  width="102"
-                  height="73"
-                />
-              </a>
-            </li>
-
-            <li class="tech-collection__item">
-              <a href="https://google.com/maps" target="_blank">
-                <img
-                  class="tech-collection__icon"
-                  src="/assets/tech-collection/google-map.svg"
-                  alt="Google Map logo"
-                  width="102"
-                  height="73"
-                />
-              </a>
-            </li>
-
-            <li class="tech-collection__item">
-              <a href="https://www.airbnb.com/" target="_blank">
-                <img
-                  class="tech-collection__icon"
-                  src="/assets/tech-collection/airbnb.svg"
-                  alt="Airbnb logo"
-                  width="102"
-                  height="73"
-                />
-              </a>
-            </li>
-
-            <li class="tech-collection__item">
-              <a href="https://ticktick.com/" target="_blank">
-                <img
-                  class="tech-collection__icon"
-                  src="/assets/tech-collection/ticktick.svg"
-                  alt="Ticktick logo"
-                  width="102"
-                  height="73"
-                />
-              </a>
-            </li>
-
-            <li class="tech-collection__item">
-              <a href="https://unsplash.com/" target="_blank">
-                <img
-                  class="tech-collection__icon"
-                  src="/assets/tech-collection/unsplash.svg"
-                  alt="Unsplash logo"
-                  width="102"
-                  height="73"
-                />
-              </a>
-            </li>
-
-            <li class="tech-collection__item">
-              <a href="https://oklch.com/" target="_blank">
-                <img
-                  class="tech-collection__icon"
-                  src="/assets/tech-collection/oklch.svg"
-                  alt="Oklch logo"
-                  width="102"
-                  height="73"
-                />
-              </a>
-            </li>
-
-            <li class="tech-collection__item">
-              <a href="https://vert.sh/" target="_blank">
-                <img
-                  class="tech-collection__icon"
-                  src="/assets/tech-collection/vert.svg"
-                  alt="Vert logo"
-                  width="102"
-                  height="73"
-                />
-              </a>
-            </li>
-            <li class="tech-collection__item">
-              <a href="https://thenounproject.com/" target="_blank">
-                <img
-                  class="tech-collection__icon"
-                  src="/assets/tech-collection/the-noun-project.svg"
-                  alt="The Noun Project logo"
-                  width="102"
-                  height="73"
-                />
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>`;
+const styles = /*css*/ `
+  section {
+    width: 80%;
+    margin-inline: auto;
   }
-}
 
-customElements.define("section-tech-collection", SectionTechCollection);
+  ul {
+    position: relative;
+    list-style-type: none;
+    padding: 0;
+    max-height: 100rem;
+    overflow-x: scroll;
+    display: flex;
+    flex-wrap: wrap;
+  }
+`;
+
+const template = () => /* html */ `
+  <section>
+    <section-title
+        props='${JSON.stringify({
+          name: "Tech Collection",
+          img: "/assets/icons/penguin.svg",
+          alt: "Penguin Logo",
+        })}'
+      ></section-title>
+
+      <ul>
+        ${techCollection
+          .map(
+            (item) => /* html */ `
+              <li>
+                <app-link href="${item.href}" target="_blank" variant="image">
+                  <img
+                    src="${item.src}"
+                    alt="${item.alt}"
+                    width="102"
+                    height="73"
+                  />
+                </app-link>
+              </li>
+            `,
+          )
+          .join("")}
+      </ul>
+  </section>
+`;
+
+define("section-tech-collection", { styles, template });

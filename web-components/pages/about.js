@@ -7,14 +7,14 @@ import "../sections/random-facts.js";
 import "../sections/timeline.js";
 import "../sections/quote.js";
 
-document.addEventListener("DOMContentLoaded", () => {
-  const firstItem = document.querySelector(".tech-collection__item");
-  const columnWidth =
-    Math.round(parseFloat(getComputedStyle(firstItem).width)) / 2;
+// document.addEventListener("DOMContentLoaded", () => {
+//   const firstItem = document.querySelector(".tech-collection__item");
+//   const columnWidth =
+//     Math.round(parseFloat(getComputedStyle(firstItem).width)) / 2;
 
-  new Masonry(".tech-collection__list", {
-    itemSelector: ".tech-collection__item",
-    columnWidth,
-    horizontalOrder: true,
-  });
-});
+//   new Masonry(".tech-collection__list", {
+//     itemSelector: ".tech-collection__item",
+//     columnWidth,
+//     horizontalOrder: true,
+//   });
+// });

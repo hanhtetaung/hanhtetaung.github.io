@@ -1,55 +1,81 @@
-export class Section extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = /*html*/ `  <section>
-        <div class="container">
-          <article class="article article--hero">
-            <div class="article__media">
-              <img
-                src="../assets/images/case-study/skssolar/mockup.avif"
-                alt="Final Product Screenshot"
-                width="1692"
-                height="886"
-              />
-            </div>
-            <div class="article__content">
-              <div class="article__header">
-                <span class="small--emphasis">Case Study</span>
-                <h1>SKS Solar</h1>
-              </div>
+import { define } from "../../define";
 
-              <div class="article__body">
-                <p>
-                  SKS Solar is a solar energy company providing solar products,
-                  services, and solutions for homes and businesses across
-                  Myanmar.
-                </p>
+import "../../components/app-image";
+import "../../components/app-link";
+import { PHONE } from "../../breakpoints";
 
-                <div>
-                  <span class="small--emphasis">Role:</span>
-                  <p>Web Designer & Developer</p>
-                </div>
-
-                <div>
-                  <span class="small--emphasis">Scope: </span>
-                  <ul class="article__list">
-                    <li>
-                      <p>Revamp Website</p>
-                    </li>
-                  </ul>
-                </div>
-
-                <a
-                  class="button--outline"
-                  href="https://skssolarmymyanmar.com/"
-                  target="_blank"
-                  >View Live Website</a
-                >
-              </div>
-            </div>
-          </article>
-        </div>
-      </section>`;
+const styles = /* css */ `
+  :host {
+    display: block;
   }
-}
 
-customElements.define("section-sks-solar-intro", Section);
+  section {
+    width: 80%;
+    margin-inline: auto;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    gap: 3rem;
+
+    @media (max-width: ${PHONE}) {
+      flex-direction: column;
+    }
+  }
+
+  h1 {
+    margin: 0;
+    font-size: var(--size-display);
+    font-weight: var(--font-regular);
+    font-family: var(--font-heading);
+  }
+
+  p {
+    margin: 0;
+    margin-bottom: 2rem;
+  }
+
+  article {
+    max-width: 40ch;
+  }
+
+  span {
+    color: var(--color-secondary);
+    font-size: var(--size-small);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+  }
+`;
+
+const template = /* html */ `
+  <section>
+    <app-image
+      variant="full"
+      src="/assets/images/case-study/skssolar/mockup.avif"
+      alt="Final Product Screenshot"
+      width="1692"
+      height="886"
+    ></app-image>
+
+    <article>
+      <span>Case Study</span>
+      <h1>SKS Solar</h1>
+
+      <p>
+        SKS Solar is a solar energy company providing solar products,
+        services, and solutions for homes and businesses across Myanmar.
+      </p>
+
+      <span>Role: </span>
+      <p>Web Designer & Developer</p>
+
+      <span>Scope:</span>
+      <p>Revamp Website</p>
+
+      <app-link variant="secondary" href="https://skssolarmymyanmar.com/" target="_blank">
+        View Live Website
+      </app-link>
+    </article>
+  </section>
+`;
+
+define("section-sks-solar-intro", { styles, template });

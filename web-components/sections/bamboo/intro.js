@@ -1,28 +1,16 @@
-export class Section extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = /*html*/ `  <section class="coming-soon">
-        <div class="container">
-          <div class="coming-soon__header">
-            <hgroup>
-              <p class="body">Coming Soon</p>
-              <h1>Bamboo</h1>
-            </hgroup>
+import { define } from "../../define";
+import "../coming-soon-intro";
 
-            <img
-              src="/assets/icons/cuckoo-cock.svg"
-              alt="Coming Soon"
-              class="coming-soon__image"
-            />
-          </div>
-
-          <img
-            src="/assets/images/case-study/bamboo/thumbnail.avif"
-            class="image"
-            alt="Coming Soon"
-          />
-        </div>
-      </section>`;
+const styles = /* css */ `
+  :host {
+    display: block;
   }
-}
+`;
 
-customElements.define("section-bamboo-intro", Section);
+const template = /* html */ `
+  <section-coming-soon-intro
+    props='{"name":"Bamboo", "img": "/assets/images/case-study/bamboo/thumbnail.avif", "alt": "Bamboo Interface"}'
+  ></section-coming-soon-intro>
+`;
+
+define("section-bamboo-intro", { styles, template });

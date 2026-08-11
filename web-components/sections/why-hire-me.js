@@ -1,88 +1,129 @@
-export class SectionWhyHireMe extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = /*html*/ `<section class="why-hire-me">
-      <div class="container">
-        <div class="section-title">
-          <img
-            src="/assets/icons/owl.svg"
-            alt=""
-            class="icon"
-            height="125"
-            width="100"
-          />
-          <h2>Why Hire me?</h2>
-        </div>
+import { define } from "../define";
 
-        <ul class="why-hire-me__list">
-          <li class="why-hire-me__item">
-            <article class="why-hire-me__article">
-              <div class="why-hire-me__content">
-                <h3><span class="heading--emphasis">1.</span> Working Man</h3>
-                <p>
-                  I'm consistent on one thing: always giving my best. I take
-                  pride in doing things properly and take full ownership of
-                  everything I do. When I commit to something, I follow through.
-                </p>
-              </div>
+import "../components/section-title";
+import "../components/app-image";
 
-              <img
-                class="icon--lg"
-                src="/assets/icons/working-man.svg"
-                alt="Working Man Icon"
-                width="48"
-                height="48"
-              />
-            </article>
-          </li>
+const points = [
+  {
+    title: "Working Man",
+    description:
+      "I'm consistent on one thing: always giving my best. I take pride in doing things properly and take full ownership of everything I do. When I commit to something, I follow through.",
+    icon: "/assets/icons/working-man.svg",
+    alt: "Working Man Icon",
+  },
+  {
+    title: "Detail-oriented Person",
+    description:
+      "I pay close attention to every detail, because the little things matter. I believe the difference between good work and great work lives in the details.",
+    icon: "/assets/icons/man-in-details.svg",
+    alt: "Detail-oriented Person Icon",
+  },
+  {
+    title: "Positive Thinker",
+    description:
+      "A positive mindset helps me create better work and stronger collaborations. I focus on solutions rather than problems. Good energy builds great work.",
+    icon: "/assets/icons/positive-man.svg",
+    alt: "Positive Thinker Icon",
+  },
+];
 
-          <li class="why-hire-me__item">
-            <article class="why-hire-me__article">
-              <div class="why-hire-me__content">
-                <h3>
-                  <span class="heading--emphasis">2.</span> Detail-oriented
-                  Person
-                </h3>
-                <p>
-                  I pay close attention to every detail, because the little
-                  things matter. I believe the difference between good work and
-                  great work lives in the details.
-                </p>
-              </div>
-              <img
-                class="icon--lg"
-                src="/assets/icons/man-in-details.svg"
-                alt="Detail-oriented Person Icon"
-                width="48"
-                height="48"
-              />
-            </article>
-          </li>
-
-          <li class="why-hire-me__item">
-            <article class="why-hire-me__article">
-              <div class="why-hire-me__content">
-                <h3>
-                  <span class="heading--emphasis">3.</span> Positive Thinker
-                </h3>
-                <p class="why-hire-me__description">
-                  A positive mindset helps me create better work and stronger
-                  collaborations. I focus on solutions rather than problems.
-                  Good energy builds great work.
-                </p>
-              </div>
-              <img
-                class="icon--lg"
-                src="/assets/icons/positive-man.svg"
-                alt="Positive Thinker Icon"
-                width="48"
-                height="48"
-              />
-            </article>
-          </li>
-        </ul>
-      </div>
-    </section>`;
+const styles = /* css */ `
+  :host {
+    display: block;
   }
-}
 
-customElements.define("section-why-hire-me", SectionWhyHireMe);
+  section {
+    width: 80%;
+    margin-inline: auto;
+  }
+
+  h3,
+  p {
+    margin: 0;
+  }
+
+  h3 {
+    font-size: var(--size-heading);
+    font-family: var(--font-body);
+  }
+
+  .header {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    align-items: center;
+    gap: 0;
+  }
+
+  .header img {
+    width: 8rem;
+    max-width: 12rem;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12rem;
+  }
+
+  li {
+    display: flex;
+    gap: 5rem;
+  }
+
+  article {
+    max-width: 50ch;
+  }
+
+   span {
+    color: var(--color-secondary);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+  }
+
+  .icon {
+    width: 4.5rem;
+    height: auto;
+  }
+
+  @media (max-width: 769px) {
+    li {
+      flex-direction: column-reverse;
+      gap: 1rem;
+    }
+  }
+`;
+
+const template = () => /* html */ `
+  <section>
+       <section-title
+        variant="vertical"
+        props='${JSON.stringify({
+          name: "Why hire me?",
+          img: "/assets/icons/owl.svg",
+          alt: "Owl Logo",
+        })}'
+      ></section-title>
+
+      <ul>
+        ${points
+          .map(
+            ({ title, description, icon, alt }, index) => /* html */ `
+              <li>
+                <article>
+                  <h3><span>${index + 1}.</span> ${title}</h3>
+                  <p>${description}</p>
+                </article>
+
+                <app-icon variant="large" src="${icon}" alt="${alt}"></app-icon>
+              </li>
+            `,
+          )
+          .join("")}
+      </ul>
+  </section>
+`;
+
+define("section-why-hire-me", { styles, template });

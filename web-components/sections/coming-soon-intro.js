@@ -1,24 +1,67 @@
-export class Section extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = /*html*/ `<section class="coming-soon">
-    <div class="container">
-      <div class="coming-soon__header">
+import { define } from "../define";
+
+import "../components/app-image";
+import "../components/app-icon";
+import { PHONE } from "../breakpoints";
+
+const styles = /*css*/ `
+   section {
+        margin-inline: auto;
+        width: 80%;
+        display: flex;
+        justify-content: space-between;
+
+        @media (max-width: ${PHONE}) {
+          flex-direction: column;
+          gap: 3rem;
+        }
+    }
+
+      h1 {
+    margin: 0;
+    font-size: var(--size-display);
+    font-weight: var(--font-regular);
+    font-family: var(--font-heading);
+  }
+
+  hgroup {
+    margin-bottom: 2rem;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  /* @media (max-width: ${PHONE}) {
+          app-image {
+            display: none;
+          }
+        } */
+`;
+
+const props = { name: String, img: String, alt: String };
+
+const template = ({
+  name = "Name",
+  img = "/assets/images/coming-soon.jpg",
+  alt = "Coming Soon",
+}) => /* html */ `
+  <section>
+      <div>
         <hgroup>
-          <p class="body">Coming Soon</p>
-          <h1>Name</h1>
+          <p>Coming Soon</p>
+          <h1>${name}</h1>
         </hgroup>
 
-        <img
+        <app-icon
+          variant="large"
           src="/assets/icons/cuckoo-cock.svg"
-          alt="Coming Soon"
-          class="coming-soon__image"
-        />
+          alt="Cuckoo Cock Logo"
+        ></app-icon>
       </div>
 
-      <img src="/assets/images/coming-soon.jpg" class="image" alt="Coming Soon" />
-    </div>
-  </section>`;
-  }
-}
+      <app-image variant="large" src=${img} alt=${alt}></app-image>
+  </section>
+`;
 
-customElements.define("section-coming-soon-intro", Section);
+define("section-coming-soon-intro", { props, styles, template });

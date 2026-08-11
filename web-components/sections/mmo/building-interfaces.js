@@ -1,102 +1,115 @@
-export class Section extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = /*html*/ `<section>
-        <div class="container">
-          <div class="section-title">
-            <h2>Building Interfaces for selling medical items workflow</h2>
-          </div>
+import { define } from "../../define";
 
-          <article class="article">
-            <div class="article__body">
-              <p>
-                To complete the pirmary workflow, four interfaces are needed at
-                first.
-              </p>
-            </div>
-          </article>
+import "../../components/section-title";
+import "../../components/app-image";
+import "../../components/app-article-paragraph";
 
-          <div class="stack">
-            <article class="article article--row">
-              <div class="article__header">
-                <h3>1st interface</h3>
-              </div>
-
-              <div class="article__body">
-                <p>
-                  Start sale, Review current staff. Review printer status,
-                  barcode status. Clicking start sale create new unique id and
-                  redirect to next screen with this id.
-                </p>
-
-                <img
-                  src="/assets/images/case-study/mmo/1st-stage.avif"
-                  alt="Inspiration Collection"
-                  width="1398"
-                  height="1236"
-                />
-              </div>
-            </article>
-
-            <article class="article article--row">
-              <div class="article__header">
-                <h3>2nd interface</h3>
-              </div>
-
-              <div class="article__body">
-                <p>
-                  Scan barcode item, enter manual barcode item, review total,
-                  items scanned, review total, enter cash received, confirm
-                  payment. Confirm payment go to 3rd interface.
-                </p>
-
-                <img
-                  src="/assets/images/case-study/mmo/2nd-stage.avif"
-                  alt="Wireframe Screenshot"
-                  width="1398"
-                  height="1366"
-                />
-              </div>
-            </article>
-
-            <article class="article article--row">
-              <div class="article__header">
-                <h3>3rd interface</h3>
-              </div>
-
-              <div class="article__body">
-                <p>
-                  Review changes, review the receipt printed, Complete sale →
-                  print receipt. it go to final one.
-                </p>
-
-                <img
-                  src="/assets/images/case-study/mmo/3rd-stage.avif"
-                  alt="Design Foundation Screenshot"
-                  width="1474"
-                  height="864"
-                />
-              </div>
-            </article>
-
-            <article class="article article--row">
-              <div class="article__header">
-                <h3>final one</h3>
-              </div>
-
-              <div class="article__body">
-                <p>Show complete sale, Go back to home or Next Sale.</p>
-                <img
-                  src="/assets/images/case-study/mmo/final-stage.avif"
-                  alt="Design Foundation Screenshot"
-                  width="1474"
-                  height="864"
-                />
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>`;
+const styles = /* css */ `
+  :host {
+    display: block;
   }
-}
 
-customElements.define("section-mmo-building-interfaces", Section);
+  section {
+    width: 80%;
+    margin-inline: auto;
+  }
+
+  p {
+    margin: 0;
+    margin-bottom: 1rem;
+  }
+
+  ul {
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+    border-top: 1px dashed var(--color-text);
+    padding-top: 5rem;
+  }
+`;
+
+const template = /* html */ `
+  <section>
+    <section-title
+      variant="text"
+      props='{"name": "Building Interfaces for selling medical items workflow"}'
+    ></section-title>
+
+    <p>
+      To complete the primary workflow, four interfaces are needed at first.
+    </p>
+
+    <ul>
+      <li>
+        <app-article-paragraph props='{ "title": "1st interface" }'>
+          <p>
+            Start sale, review current staff, review printer status, and
+            barcode status. Clicking start sale creates a new unique ID and
+            redirects to the next screen with this ID.
+          </p>
+
+          <app-image
+            variant="medium"
+            src="/assets/images/case-study/mmo/1st-stage.avif"
+            alt="First interface preview"
+            width="1398"
+            height="1236"
+          ></app-image>
+        </app-article-paragraph>
+      </li>
+
+      <li>
+        <app-article-paragraph props='{ "title": "2nd interface" }'>
+          <p>
+            Scan a barcode item, enter a manual barcode item, review total,
+            review items scanned, enter cash received, and confirm payment.
+            Confirming payment leads to the 3rd interface.
+          </p>
+
+          <app-image
+            variant="medium"
+            src="/assets/images/case-study/mmo/2nd-stage.avif"
+            alt="Second interface preview"
+            width="1398"
+            height="1366"
+          ></app-image>
+        </app-article-paragraph>
+      </li>
+
+      <li>
+        <app-article-paragraph props='{ "title": "3rd interface" }'>
+          <p>
+            Review changes, review the receipt printed, and complete the sale
+            by printing the receipt. It then moves to the final step.
+          </p>
+
+          <app-image
+            variant="medium"
+            src="/assets/images/case-study/mmo/3rd-stage.avif"
+            alt="Third interface preview"
+            width="1474"
+            height="864"
+          ></app-image>
+        </app-article-paragraph>
+      </li>
+
+      <li>
+        <app-article-paragraph props='{ "title": "Final one" }'>
+          <p>Show the completed sale and provide options to go back home or start the next sale.</p>
+
+          <app-image
+            variant="medium"
+            src="/assets/images/case-study/mmo/final-stage.avif"
+            alt="Final interface preview"
+            width="1474"
+            height="864"
+          ></app-image>
+        </app-article-paragraph>
+      </li>
+    </ul>
+  </section>
+`;
+
+define("section-mmo-building-interfaces", { styles, template });

@@ -1,163 +1,134 @@
-export class Section extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = /*html*/ ` <section>
-        <div class="container">
-          <div class="section-title">
-            <h2>Process</h2>
-          </div>
-        </div>
+import { define } from "../../define";
 
-        <ul class="process-list">
-          <li class="process-item">
-            <span class="heading--emphasis">1</span>
-            <h3>Research</h3>
-          </li>
+import "../../components/section-title";
+import "../../components/app-image";
+import "../../components/app-link";
+import "../../components/app-article-paragraph";
 
-          <li class="process-item">
-            <span class="heading--emphasis">2</span>
-            <h3>Wireframe</h3>
-          </li>
-
-          <li class="process-item">
-            <span class="heading--emphasis">3</span>
-            <h3>Prototype</h3>
-          </li>
-
-          <li class="process-item">
-            <span class="heading--emphasis">4</span>
-            <h3>Develop</h3>
-          </li>
-
-          <li class="process-item process-item--last-child">
-            <span class="heading--emphasis">5</span>
-            <h3>Deliver</h3>
-          </li>
-        </ul>
-
-        <div class="container">
-          <div class="stack">
-            <article class="article article--row">
-              <div class="article__header">
-                <h3>Research</h3>
-              </div>
-
-              <div class="article__body">
-                <p>
-                  Research ideas and visual references to define the overall
-                  direction of the website. This stage focused on exploring
-                  modern portfolio layouts, typography, spacing, and
-                  boutique-style aesthetics to establish a clear visual
-                  foundation.
-                </p>
-
-                <img
-                  src="../assets/images/case-study/portfolio/inspiration.avif"
-                  alt="Inspiration Collection"
-                  width="1398"
-                  height="1236"
-                />
-              </div>
-            </article>
-
-            <article class="article article--row">
-              <div class="article__header">
-                <h3>Wireframe</h3>
-              </div>
-
-              <div class="article__body">
-                <p>
-                  Plan the structure and layout of the website through
-                  low-fidelity wireframes. This stage focused on content
-                  hierarchy, storytelling flow, and user navigation before
-                  moving into visual design.
-                </p>
-
-                <img
-                  src="../assets/images/case-study/portfolio/wireframe.avif"
-                  alt="Wireframe Screenshot"
-                  width="1398"
-                  height="1366"
-                />
-              </div>
-            </article>
-
-            <article class="article article--row">
-              <div class="article__header">
-                <h3>Prototype</h3>
-              </div>
-
-              <div class="article__body">
-                <p>
-                  Build the design system and craft the polished visual
-                  interface. This stage focused on transforming the wireframes
-                  into final responsive designs with complete visual styling,
-                  reusable components, refined layouts, and overall user
-                  experience.
-                </p>
-
-                <figure>
-                  <figcaption class="small--emphasis">
-                    Design Foundation
-                  </figcaption>
-                  <img
-                    src="../assets/images/case-study/portfolio/design-foundation.avif"
-                    alt="Design Foundation Screenshot"
-                    width="1474"
-                    height="864"
-                  />
-                </figure>
-
-                <figure>
-                  <figcaption class="small--emphasis">Final Design</figcaption>
-                  <img
-                    src="../assets/images/case-study/portfolio/final-design.avif"
-                    alt="Final Design"
-                    width="1402"
-                    height="1378"
-                  />
-                </figure>
-              </div>
-            </article>
-
-            <article class="article article--row">
-              <div class="article__header">
-                <h3>Develop & Deliver</h3>
-              </div>
-
-              <div class="article__body">
-                <p>
-                  Translate the approved design into a responsive website while
-                  maintaining visual consistency across all screen sizes. The
-                  project was managed with GitHub and deployed automatically
-                  through GitHub Pages and GitHub Actions.
-                </p>
-
-                <div>
-                  <p>Hosted on:</p>
-                  <a
-                    href="https://github.com/hanhtetaung/hanhtetaung.github.io"
-                    target="_blank"
-                    class="button--link"
-                    >hanhtetaung.github.io</a
-                  >
-                </div>
-
-                <div>
-                  <p>Tech Stack</p>
-                  <ul class="article__list">
-                    <li>
-                      <p>HTML5</p>
-                    </li>
-                    <li><p>CSS3</p></li>
-                    <li><p>SCSS</p></li>
-                  </ul>
-                </div>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>`;
+const styles = /* css */ `
+  :host {
+    display: block;
   }
-}
 
-customElements.define("section-portfolio-process", Section);
+  section {
+    width: 80%;
+    margin-inline: auto;
+  }
+
+  p {
+    margin: 0;
+    margin-bottom: 1rem;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    border-top: 1px dashed var(--color-text);
+    padding-top: 5rem;
+  }
+
+  ol {
+    list-style: disc;
+  }
+`;
+
+const template = /* html */ `
+  <section>
+    <section-title variant="text" props='{"name": "Process"}'></section-title>
+
+    <ul>
+      <li>
+        <app-article-paragraph props='{ "title": "Research"}'>
+          <p>
+            Research ideas and visual references to define the overall direction
+            of the website. This stage focused on exploring modern portfolio
+            layouts, typography, spacing, and boutique-style aesthetics to
+            establish a clear visual foundation.
+          </p>
+          
+          <app-image
+            variant="medium"
+            src="/assets/images/case-study/portfolio/inspiration.avif"
+            alt="Inspiration Collection"
+            width="1398"
+            height="1236"
+          ></app-image>
+      </app-article-paragraph>
+      </li>
+
+
+      <li>
+        <app-article-paragraph props='{ "title": "Wireframe"}'>
+          <p>
+            Plan the structure and layout of the website through low-fidelity
+            wireframes. This stage focused on content hierarchy, storytelling
+            flow, and user navigation before moving into visual design.
+          </p>
+          <app-image
+            variant="medium"
+            src="/assets/images/case-study/portfolio/wireframe.avif"
+            alt="Wireframe Screenshot"
+            width="1398"
+            height="1366"
+          ></app-image>
+        </app-article-paragraph>
+      </li>
+
+      <li>
+        <app-article-paragraph props='{ "title": "Prototype"}'>
+          <p>
+            Build the design system and craft the polished visual interface.
+            This stage focused on transforming the wireframes into final
+            responsive designs with complete visual styling, reusable
+            components, refined layouts, and overall user experience.
+          </p>
+          <app-image
+            variant="medium"
+            src="/assets/images/case-study/portfolio/design-foundation.avif"
+            alt="Design Foundation Screenshot"
+            width="1474"
+            height="864"
+          ></app-image>
+          <app-image
+            variant="medium"
+            src="/assets/images/case-study/portfolio/final-design.avif"
+            alt="Final Design"
+            width="1402"
+            height="1378"
+          ></app-image>
+        </app-article-paragraph>
+      </li>
+
+      <li>
+        <app-article-paragraph props='{ "title": "Develop & Deliver"}'>
+          <p>
+            Translate the approved design into a responsive website while
+            maintaining visual consistency across all screen sizes. The project
+            was managed with GitHub and deployed automatically through GitHub
+            Pages and GitHub Actions.
+          </p>
+
+          <p><b>Hosted on:</b>
+            <app-link variant="underline" href="https://github.com/hanhtetaung/hanhtetaung.github.io" target="_blank" variant="button">
+              hanhtetaung.github.io
+            </app-link>
+          </p>
+
+          <p><b>Tech Stack</b></p>
+          <ol>
+            <li>HTML5</li>
+            <li>CSS3</li>
+            <li>SCSS</li>
+          </ol>
+        </app-article-paragraph>
+      </li>
+    </ul>
+  </section>
+`;
+
+define("section-portfolio-process", { styles, template });

@@ -1,84 +1,95 @@
-export class Section extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = /*html*/ ` <section>
-        <div class="container">
-          <article class="article">
-            <div class="article__header">
-              <h2>Building Blocks</h2>
-            </div>
+import { define } from "../../define";
 
-            <div class="article__body">
-              <article class="article">
-                <div class="article__header">
-                  <h3>Design Foundation</h3>
-                </div>
-                <div class="article__body">
-                  <img
-                    src="/assets/images/case-study/knowledge-tree/foundation.avif"
-                    alt="Wireframe Screenshot"
-                    width="1398"
-                    height="1366"
-                  />
-                </div>
-              </article>
+import "../../components/app-image";
+import "../../components/app-link";
 
-              <article class="article">
-                <div class="article__header">
-                  <h3>Data Structure</h3>
-                </div>
-                <div class="article__body">
-                  <div>
-                    <p><b>Source</b></p>
-                    <p>
-                      <code> { "id": "name", "type": "source" } </code>
-                    </p>
-                  </div>
-
-                  <div>
-                    <p>
-                      <b>Good :</b> The components field references either
-                      source nodes or other goods
-                    </p>
-                    <p>
-                      <code>
-                        { "id": "name", "type": "good", "components": ["id",
-                        "id", "id"] }
-                      </code>
-                    </p>
-                  </div>
-                </div>
-              </article>
-
-              <article class="article">
-                <div class="article__header">
-                  <h3>Tech Stacks</h3>
-                </div>
-                <div class="article__body">
-                  <ul>
-                    <li><p>Figma</p></li>
-                    <li><p>HTML5</p></li>
-                    <li><p>CSS3</p></li>
-                    <li><p>SCSS</p></li>
-                    <li><p>JavaScript</p></li>
-                    <li><p>Sonnet 5, Quwen3.7-Plus</p></li>
-                  </ul>
-
-                  <p>
-                    <b>Hosted on:</b>
-                    <a
-                      href="https://github.com/hanhtetaung/hanhtetaung.github.io/tree/main/knowledge-tree"
-                      target="_blank"
-                      class="button--link"
-                      >Github</a
-                    >
-                  </p>
-                </div>
-              </article>
-            </div>
-          </article>
-        </div>
-      </section>`;
+const styles = /* css */ `
+  :host {
+    display: block;
   }
-}
 
-customElements.define("section-knowledge-tree-building-block", Section);
+  section {
+    width: 80%;
+    margin-inline: auto;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  ul {
+    margin: 0;
+    margin-bottom: 2rem;
+  }
+
+  h3 {
+    font-size: var(--size-heading);
+    margin: 0;
+    margin-bottom: 1rem;
+  }
+
+  article {
+    margin-bottom: 3rem;
+  }
+
+  code {
+    display: block;
+    margin-bottom: 2rem;
+  }
+`;
+
+const template = /* html */ `
+  <section>
+    <section-title
+        variant="text"
+        props='{"name": "Design Foundation"}'
+      ></section-title>
+
+          <app-image
+            variant="large"
+            src="/assets/images/case-study/knowledge-tree/foundation.avif"
+            alt="Wireframe Screenshot"
+          ></app-image>
+
+
+          <article>
+            <h3>Data Structure</h3>
+
+            <p><b>Source</b></p>
+            <code> { "id": "name", "type": "source" } </code>
+
+            <p>
+              <b>Good :</b> The components field references either
+              source nodes or other goods
+            </p>
+
+            <code>
+              { "id": "name", "type": "good", "components": ["id",
+              "id", "id"] }
+            </code>
+          </article>
+
+          <article>
+            <h3>Tech Stacks</h3>
+            <ul>
+              <li>Figma</li>
+              <li>HTML5</li>
+              <li>CSS3</li>
+              <li>SCSS</li>
+              <li>JavaScript</li>
+              <li>Sonnet 5, Quwen3.7-Plus</li>
+            </ul>
+
+            <p>
+              <b>Hosted on:</b>
+              <app-link
+                variant="underline"
+                href="https://github.com/hanhtetaung/hanhtetaung.github.io/tree/main/knowledge-tree"
+                target="_blank"
+                >Github</app-link>
+            </p>
+          </article>
+  </section>
+`;
+
+define("section-knowledge-tree-building-block", { styles, template });

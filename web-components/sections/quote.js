@@ -1,16 +1,33 @@
-export class SectionQuote extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = /*html*/ `<section class="quote">
-        <div class="container">
-          <blockquote class="title">
-            " What I hear, I forget.<br />
-            What I see, I remember.<br />
-            What I do I understand" <br />
-            — Confucius
-          </blockquote>
-        </div>
-      </section>`;
-  }
-}
+import { PHONE } from "../breakpoints";
+import { define } from "../define";
 
-customElements.define("section-quote", SectionQuote);
+const styles = /*css*/ `
+  section {
+    width: 80%;
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  blockquote {
+    font-size: var(--size-title);
+    font-weight: var(--font-regular);
+    font-family: var(--font-heading);
+
+    @media (max-width: ${PHONE}) {
+      font-size: var(--size-body);
+    }
+  }
+`;
+
+const template = /* html */ `
+  <section>
+      <blockquote>
+        " What I hear, I forget.<br />
+        What I see, I remember.<br />
+        What I do I understand" <br />
+        — Confucius
+      </blockquote>
+  </section>
+`;
+
+define("section-quote", { styles, template });

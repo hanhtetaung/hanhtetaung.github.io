@@ -1,37 +1,49 @@
-export class Section extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = /*html*/ `<section>
-        <div class="container">
-          <article class="article">
-            <div class="article__header">
-              <h2>Overview</h2>
-            </div>
+import { define } from "../../define";
 
-            <div class="article__body">
-              <p>
-                The knowledge tree is built around two primary node types:
-                <b>Sources</b> and <b>Goods</b>.
-              </p>
+import "../../components/section-title";
 
-              <p>
-                Sources are the fundamental sources that all goods come from.
-                The current version includes <b> seven foundational sources</b>.
-              </p>
-
-              <div>
-                <p>Goods are daily products.</p>
-                <ul>
-                  <li>
-                    <p>Can contain sources or other goods.</p>
-                  </li>
-                  <li><p>Can be used to make other goods.</p></li>
-                </ul>
-              </div>
-            </div>
-          </article>
-        </div>
-      </section>`;
+const styles = /* css */ `
+  :host {
+    display: block;
   }
-}
 
-customElements.define("section-knowledge-tree-overview", Section);
+  section {
+    width: 80%;
+    margin-inline: auto;
+  }
+
+  p {
+    margin-block: 2rem;
+  }
+`;
+
+const template = /* html */ `
+  <section>
+    <section-title
+        variant="text"
+        props='{"name": "Overview"}'
+      ></section-title>
+
+      <article>
+        <p>
+          The knowledge tree is built around two primary node types:
+          <b>Sources</b> and <b>Goods</b>.
+        </p>
+
+        <p>
+          Sources are the fundamental sources that all goods come from.
+          The current version includes <b> seven foundational sources</b>.
+        </p>
+
+        <p>Goods are daily products.</p>
+        
+        <ul>
+          <li>Can contain sources or other goods.
+          </li>
+          <li>Can be used to make other goods.</li>
+        </ul>
+      </article>
+  </section>
+`;
+
+define("section-knowledge-tree-overview", { styles, template });
