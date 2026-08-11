@@ -34,7 +34,7 @@ const styles = /* css */ `
 
 const props = { name: String, img: String, alt: String };
 
-const template = ({ name, img, alt }) => /* html */ `
+const template = ({ name, img = "", alt = "" }) => /* html */ `
     <h2>${name}</h2>
     <img
         src=${img}

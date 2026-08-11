@@ -5,7 +5,8 @@ const styles = /* css */ `
     --local-width: 5rem;
     --local-heigth: auto;
 
-    display: block;
+    display: inline-block;
+    width: fit-content;
   }
 
   img {
@@ -17,6 +18,10 @@ const styles = /* css */ `
   :host([variant="normal"]) {
     --local-width: 12rem;
     --local-heigth: auto;
+  }
+
+  :host([variant="medium"]) {
+    --local-width: 40rem;
   }
 
   :host([variant="large"]) {
