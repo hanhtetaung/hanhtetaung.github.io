@@ -1,4 +1,4 @@
-function b(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a===Boolean)return!1;if(a===Number)return 0;return}if(a===Boolean)return Boolean(o);if(a===Number)return Number(o);return o}function e(o,{props:a={},attrs:l=[],styles:u="",template:n}){let f=["props",...l];class c extends HTMLElement{static observedAttributes=f;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let i={},t=this.getAttribute("props");if(t)try{i=JSON.parse(t)}catch{i={}}let d={};for(let s of Object.keys(a))d[s]=b(i[s],a[s]);return d}_applyForwardedAttrs(){if(l.length===0)return;let i=this.shadowRoot.querySelector("[data-forward]");if(!i)return;for(let t of l)if(this.hasAttribute(t))i.setAttribute(t,this.getAttribute(t));else i.removeAttribute(t)}_render(){let i=this._getProps(),t=typeof n==="function"?n(i):n;this.shadowRoot.innerHTML=`<style>${u}</style>${t}`,this._applyForwardedAttrs()}}customElements.define(o,c)}var y=`
+function h(o,t){if(o===void 0){if(t===Array)return[];if(t===Object)return{};if(t===Boolean)return!1;if(t===Number)return 0;return}if(t===Boolean)return Boolean(o);if(t===Number)return Number(o);return o}function e(o,{props:t={},attrs:n=[],styles:d="",template:l}){let m=["props",...n];class c extends HTMLElement{static observedAttributes=m;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let a={},r=this.getAttribute("props");if(r)try{a=JSON.parse(r)}catch{a={}}let p={};for(let s of Object.keys(t))p[s]=h(a[s],t[s]);return p}_applyForwardedAttrs(){if(n.length===0)return;let a=this.shadowRoot.querySelector("[data-forward]");if(!a)return;for(let r of n)if(this.hasAttribute(r))a.setAttribute(r,this.getAttribute(r));else a.removeAttribute(r)}_render(){let a=this._getProps(),r=typeof l==="function"?l(a):l;this.shadowRoot.innerHTML=`<style>${d}</style>${r}`,this._applyForwardedAttrs()}}customElements.define(o,c)}var g=`
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -50,9 +50,9 @@ function b(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     --local-border: none;
     --local-direction: column;
   }
-`,k=["href","target","rel","download"],w=`
+`,f=["href","target","rel","download"],u=`
   <a data-forward><slot></slot></a>
-`;e("app-link",{attrs:k,styles:y,template:w});var _=`
+`;e("app-link",{attrs:f,styles:g,template:u});var v=`
   :host {
     display: block;
   }
@@ -61,7 +61,7 @@ function b(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     max-height: 7rem;
     width: auto;
   }
-`,x=["width","height","src","alt"],S=()=>"<img data-forward />";e("app-logo",{attrs:x,styles:_,template:S});var r="769px",O="992px";var T=`
+`,b=["width","height","src","alt"],y=()=>"<img data-forward />";e("app-logo",{attrs:b,styles:v,template:y});var i="769px",q="992px";var k=`
   :host {
     display: block;
   }
@@ -95,12 +95,12 @@ function b(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     box-shadow: none;
   }
 
-  @media (max-width: ${r}) {
+  @media (max-width: ${i}) {
     .header__navigation {
       gap: 4rem;
     }
   }
-`,H=`
+`,w=`
   <header>
       <app-link variant="plain" href="/">
         <app-logo
@@ -129,7 +129,7 @@ function b(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
         </app-link>
       </div>
   </header>
-`;e("section-header",{template:H,styles:T});var E=`
+`;e("section-header",{template:w,styles:k});var x=`
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -138,7 +138,7 @@ function b(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
    display: flex;
    gap: 5rem;
 
-   @media (max-width: ${r}) {
+   @media (max-width: ${i}) {
         flex-direction: column;
         gap: 3rem;
         margin-block: 2rem;
@@ -168,7 +168,7 @@ function b(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     gap: 2rem;
     margin-top: 1rem;
   }
-`,C=()=>`
+`,S=()=>`
     <nav>
         <span>Sitemap</span>
 
@@ -235,7 +235,7 @@ function b(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
             </li>
         </ul>
     </nav>
-`;e("footer-nav",{styles:E,template:C});var L=`
+`;e("footer-nav",{styles:x,template:S});var A=`
   :host {
     --local-bg-color: var(--color-bg-secondary);
 
@@ -265,7 +265,7 @@ function b(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     align-items: center;
   }
 
-  @media (max-width: ${r}) {
+  @media (max-width: ${i}) {
     article {
       display: block;
     }
@@ -275,7 +275,7 @@ function b(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     display: flex;
     gap: 3rem;
   }
-`,A=`
+`,H=`
   <footer>
       <article>
         <div>
@@ -300,257 +300,427 @@ function b(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
         <app-link href="/credits" variant="underline">Credits</app-link>
       </p>
   </footer>
-`;e("section-footer",{styles:L,template:A});class p extends HTMLElement{connectedCallback(){this.innerHTML=`<section>
-        <div class="container">
-          <article class="article article--hero">
-            <div class="article__media">
-              <img
-                src="/assets/images/case-study/knowledge-tree/thumbnail.avif"
-                alt="Final Product Screenshot"
-                class="image"
-                width="1692"
-                height="886"
-              />
-            </div>
+`;e("section-footer",{styles:A,template:H});var T=`
+  :host {
+    --local-width: 5rem;
+    --local-heigth: auto;
 
-            <div class="article__content">
-              <div class="article__header">
-                <span class="small--emphasis">Case Study</span>
-                <h1>Knowledge Tree</h1>
-              </div>
+    display: inline-block;
+    width: fit-content;
+  }
 
-              <div class="article__body">
-                <p>
-                  A tool to visualize the connections between everyday goods and
-                  their fundamental sources based on my knowledge.
-                </p>
+  img {
+    max-width: var(--local-width);
+    height: var(--local-heigth);
+    width: 100%;
+  }
 
-                <div>
-                  <span class="small--emphasis">Scope:</span>
-                  <p>Idea → Product</p>
-                </div>
+  :host([variant="normal"]) {
+    --local-width: 12rem;
+    --local-heigth: auto;
+  }
 
-                <a
-                  class="button--outline"
-                  href="https://hanhtetaung.dev/knowledge-tree"
-                  target="_blank"
-                  >View Live Website</a
-                >
-              </div>
-            </div>
+  :host([variant="medium"]) {
+    --local-width: 40rem;
+  }
+
+  :host([variant="large"]) {
+    --local-width: 50rem;
+  }
+
+   :host([variant="full"]) {
+    --local-width: 100%;
+  }
+`,_=["width","height","src","alt"],z=()=>"<img data-forward />";e("app-image",{attrs:_,styles:T,template:z});var C=`
+  :host {
+    display: block;
+  }
+
+  section {
+    width: 80%;
+    margin-inline: auto;
+
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    gap: 3rem;
+
+    @media (max-width: ${i}) {
+      flex-direction: column;
+    }
+  }
+
+  h1 {
+    margin: 0;
+    font-size: var(--size-display);
+    font-weight: var(--font-regular);
+    font-family: var(--font-heading);
+  }
+
+  p {
+    margin: 0;
+    margin-bottom: 2rem;
+  }
+
+  article {
+    max-width: 40ch;
+  }
+
+    span {
+    color: var(--color-secondary);
+    font-size: var(--size-small);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+  }
+`,E=`
+  <section>
+    <app-image
+      variant="large"
+      src="/assets/images/case-study/knowledge-tree/thumbnail.avif"
+      alt="Final Product Screenshot"
+      width="1692"
+      height="886"
+    ></app-image>
+
+    <article>
+      <span>Case Study</span>
+      <h1>Knowledge Tree</h1>
+
+      <p>
+        A tool to visualize the connections between everyday goods and
+        their fundamental sources based on my knowledge.
+      </p>
+
+      <span>Scope:</span>
+      <p>Idea → Product</p>
+
+      <app-link
+        variant="secondary"
+        href="https://hanhtetaung.dev/knowledge-tree"
+        target="_blank"
+        >View Live Website</app-link>
+    </article>
+  </section>
+`;e("section-knowledge-tree-intro",{styles:C,template:E});var P=`
+  :host {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    margin-bottom: 3rem;
+  }
+
+  h2 {
+    margin: 0;
+    font-size: var(--size-title);
+    font-family: var(--font-heading);
+    font-weight: var(--font-regular)
+  }
+
+  :host([variant="vertical"]) {
+    flex-direction: column-reverse;
+    gap: 0;
+
+    img {
+      height: 5rem;
+      width: auto;
+    }
+  }
+
+  :host([variant="text"]) {
+    img {
+      display: none;
+    }
+  }
+`,O={name:String,img:String,alt:String},$=({name:o,img:t="",alt:n=""})=>`
+    <h2>${o}</h2>
+    <img
+        src=${t}
+        alt=${n}
+        height="36"
+        width="76"
+    />
+`;e("section-title",{props:O,styles:P,template:$});var N=`
+  :host {
+    display: block;
+  }
+
+  section {
+    width: 80%;
+    margin-inline: auto;
+  }
+
+  p {
+    margin-block: 2rem;
+  }
+`,L=`
+  <section>
+    <section-title
+        variant="text"
+        props='{"name": "Overview"}'
+      ></section-title>
+
+      <article>
+        <p>
+          The knowledge tree is built around two primary node types:
+          <b>Sources</b> and <b>Goods</b>.
+        </p>
+
+        <p>
+          Sources are the fundamental sources that all goods come from.
+          The current version includes <b> seven foundational sources</b>.
+        </p>
+
+        <p>Goods are daily products.</p>
+        
+        <ul>
+          <li>Can contain sources or other goods.
+          </li>
+          <li>Can be used to make other goods.</li>
+        </ul>
+      </article>
+  </section>
+`;e("section-knowledge-tree-overview",{styles:N,template:L});var j=`
+  :host {
+    display: block;
+  }
+
+  section {
+    width: 80%;
+    margin-inline: auto;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  ul {
+    margin: 0;
+    margin-bottom: 2rem;
+  }
+
+  h3 {
+    font-size: var(--size-heading);
+    margin: 0;
+    margin-bottom: 1rem;
+  }
+
+  article {
+    margin-bottom: 3rem;
+  }
+
+  code {
+    display: block;
+    margin-bottom: 2rem;
+  }
+`,G=`
+  <section>
+    <section-title
+        variant="text"
+        props='{"name": "Design Foundation"}'
+      ></section-title>
+
+          <app-image
+            variant="large"
+            src="/assets/images/case-study/knowledge-tree/foundation.avif"
+            alt="Wireframe Screenshot"
+          ></app-image>
+
+
+          <article>
+            <h3>Data Structure</h3>
+
+            <p><b>Source</b></p>
+            <code> { "id": "name", "type": "source" } </code>
+
+            <p>
+              <b>Good :</b> The components field references either
+              source nodes or other goods
+            </p>
+
+            <code>
+              { "id": "name", "type": "good", "components": ["id",
+              "id", "id"] }
+            </code>
           </article>
-        </div>
-      </section>`}}customElements.define("section-knowledge-tree-intro",p);class h extends HTMLElement{connectedCallback(){this.innerHTML=`<section>
-        <div class="container">
-          <article class="article">
-            <div class="article__header">
-              <h2>Overview</h2>
-            </div>
 
-            <div class="article__body">
-              <p>
-                The knowledge tree is built around two primary node types:
-                <b>Sources</b> and <b>Goods</b>.
-              </p>
+          <article>
+            <h3>Tech Stacks</h3>
+            <ul>
+              <li>Figma</li>
+              <li>HTML5</li>
+              <li>CSS3</li>
+              <li>SCSS</li>
+              <li>JavaScript</li>
+              <li>Sonnet 5, Quwen3.7-Plus</li>
+            </ul>
 
-              <p>
-                Sources are the fundamental sources that all goods come from.
-                The current version includes <b> seven foundational sources</b>.
-              </p>
-
-              <div>
-                <p>Goods are daily products.</p>
-                <ul>
-                  <li>
-                    <p>Can contain sources or other goods.</p>
-                  </li>
-                  <li><p>Can be used to make other goods.</p></li>
-                </ul>
-              </div>
-            </div>
+            <p>
+              <b>Hosted on:</b>
+              <app-link
+                variant="underline"
+                href="https://github.com/hanhtetaung/hanhtetaung.github.io/tree/main/knowledge-tree"
+                target="_blank"
+                >Github</app-link>
+            </p>
           </article>
-        </div>
-      </section>`}}customElements.define("section-knowledge-tree-overview",h);class m extends HTMLElement{connectedCallback(){this.innerHTML=` <section>
-        <div class="container">
-          <article class="article">
-            <div class="article__header">
-              <h2>Building Blocks</h2>
-            </div>
+  </section>
+`;e("section-knowledge-tree-building-block",{styles:j,template:G});var F=`
+  :host {
+    display: grid;
+    grid-template-columns: 1fr 2.5fr;
 
-            <div class="article__body">
-              <article class="article">
-                <div class="article__header">
-                  <h3>Design Foundation</h3>
-                </div>
-                <div class="article__body">
-                  <img
-                    src="/assets/images/case-study/knowledge-tree/foundation.avif"
-                    alt="Wireframe Screenshot"
-                    width="1398"
-                    height="1366"
-                  />
-                </div>
-              </article>
 
-              <article class="article">
-                <div class="article__header">
-                  <h3>Data Structure</h3>
-                </div>
-                <div class="article__body">
-                  <div>
-                    <p><b>Source</b></p>
-                    <p>
-                      <code> { "id": "name", "type": "source" } </code>
-                    </p>
-                  </div>
+    @media (max-width: ${i}) {
+        display: block;
+    }
+  }
 
-                  <div>
-                    <p>
-                      <b>Good :</b> The components field references either
-                      source nodes or other goods
-                    </p>
-                    <p>
-                      <code>
-                        { "id": "name", "type": "good", "components": ["id",
-                        "id", "id"] }
-                      </code>
-                    </p>
-                  </div>
-                </div>
-              </article>
+  h3 {
+    margin: 0;
+    margin-bottom: 1rem;
+    font-size: var(--size-heading);
+    width: fit-content;
+    height: fit-content;
+  }
 
-              <article class="article">
-                <div class="article__header">
-                  <h3>Tech Stacks</h3>
-                </div>
-                <div class="article__body">
-                  <ul>
-                    <li><p>Figma</p></li>
-                    <li><p>HTML5</p></li>
-                    <li><p>CSS3</p></li>
-                    <li><p>SCSS</p></li>
-                    <li><p>JavaScript</p></li>
-                    <li><p>Sonnet 5, Quwen3.7-Plus</p></li>
-                  </ul>
+  :host([variant="block"]) {
+    display: block;
+  }
+`,B={title:String},I=({title:o})=>`
+        <h3>${o}</h3>
 
-                  <p>
-                    <b>Hosted on:</b>
-                    <a
-                      href="https://github.com/hanhtetaung/hanhtetaung.github.io/tree/main/knowledge-tree"
-                      target="_blank"
-                      class="button--link"
-                      >Github</a
-                    >
-                  </p>
-                </div>
-              </article>
-            </div>
-          </article>
-        </div>
-      </section>`}}customElements.define("section-knowledge-tree-building-block",m);class g extends HTMLElement{connectedCallback(){this.innerHTML=`<section>
-        <div class="container">
-          <div class="section-title">
-            <h2>Need One Interface</h2>
-          </div>
+        <article>
+            <slot></slot>
+        </article>
+`;e("app-article-paragraph",{props:B,styles:F,template:I});var D=`
+  :host {
+    display: block;
+  }
 
-          <article class="article">
-            <div class="article__body">
-              <p>
-                The interface has two main areas: a <b>Center Panel</b> to
-                visualize the knowledge tree and a <b> Right Panel</b> to
-                display information about the selected node.
-              </p>
-            </div>
-          </article>
+  section {
+    width: 80%;
+    margin-inline: auto;
+  }
 
-          <div class="stack">
-            <article class="article article--row">
-              <div class="article__header">
-                <h3>Default State</h3>
-              </div>
+  p {
+    margin: 0;
+    margin-bottom: 1rem;
+  }
 
-              <div class="article__body">
-                <p>
-                  The center panel displays the entire knowledge tree. Sources
-                  are shown as blue nodes, while Goods are shown as green nodes.
-                  Every node is clickable, and the right panel remains empty
-                  until a node is selected.
-                </p>
+  ul {
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+    border-top: 1px dashed var(--color-text);
+    padding-top: 5rem;
+  }
+`,K=`
+  <section>
+     <section-title
+        variant="text"
+        props='{"name": "Need One Interface"}'
+      ></section-title>
+      <p>
+        The interface has two main areas: a <b>Center Panel</b> to
+        visualize the knowledge tree and a <b> Right Panel</b> to
+        display information about the selected node.
+      </p>
 
-                <img
-                  src="/assets/images/case-study/knowledge-tree/default-state.avif"
-                  alt="Inspiration Collection"
-                  width="1398"
-                  height="1236"
-                />
-              </div>
-            </article>
+      <ul>
+        <li>
+          <app-article-paragraph props='{ "title": "Default State"}'>
+            <p>
+              The center panel displays the entire knowledge tree. Sources
+              are shown as blue nodes, while Goods are shown as green nodes.
+              Every node is clickable, and the right panel remains empty
+              until a node is selected.
+            </p>
 
-            <article class="article article--row">
-              <div class="article__header">
-                <h3>Selecting a Source Node</h3>
-              </div>
+            <app-image
+              variant="medium"
+              src="/assets/images/case-study/knowledge-tree/default-state.avif"
+              alt="Inspiration Collection"
+              width="1398"
+              height="1236"
+            ></app-image>
+          </app-article-paragraph>
+        </li>
 
-              <div class="article__body">
-                <p>
-                  When a source is selected, the center panel highlights its
-                  connected goods. The right panel displays the source name, and
-                  a list of goods made from that source.
-                </p>
+        <li>
+            <app-article-paragraph props='{ "title": "Selecting a Source Node"}'>
+         <p>
+              When a source is selected, the center panel highlights its
+              connected goods. The right panel displays the source name, and
+              a list of goods made from that source.
+            </p>
 
-                <img
-                  src="/assets/images/case-study/knowledge-tree/selecting-a-source-node.avif"
-                  alt="Wireframe Screenshot"
-                  width="1398"
-                  height="1366"
-                />
-              </div>
-            </article>
+            <app-image
+            variant="medium"
+              src="/assets/images/case-study/knowledge-tree/selecting-a-source-node.avif"
+              alt="Wireframe Screenshot"
+              width="1398"
+              height="1366"
+            ></app-image>
 
-            <article class="article article--row">
-              <div class="article__header">
-                <h3>Selecting a Good Node</h3>
-              </div>
+      </app-article-paragraph>
+        </li>
+        <li>
+           <app-article-paragraph props='{ "title": "Selecting a Good Node"}'>
+         <p>
+              A good can be made directly from sources or from other goods.
+              When a good is selected, the right panel displays its sources,
+              ingredients (if any), and the goods that use it (if any).
+            </p>
 
-              <div class="article__body">
-                <p>
-                  A good can be made directly from sources or from other goods.
-                  When a good is selected, the right panel displays its sources,
-                  ingredients (if any), and the goods that use it (if any).
-                </p>
+            <app-image
+              variant="medium"
+              src="/assets/images/case-study/knowledge-tree/selecting-a-good-node-1.avif"
+              alt="Design Foundation Screenshot"
+              width="1474"
+              height="864"
+            ></app-image>
 
-                <img
-                  src="/assets/images/case-study/knowledge-tree/selecting-a-good-node-1.avif"
-                  alt="Design Foundation Screenshot"
-                  width="1474"
-                  height="864"
-                />
+            <app-image
+              variant="medium"
+              src="/assets/images/case-study/knowledge-tree/selecting-a-good-node-2.avif"
+              alt="Design Foundation Screenshot"
+              width="1474"
+              height="864"
+            ></app-image>
+      </app-article-paragraph>
+        </li>
+      </ul>
 
-                <img
-                  src="/assets/images/case-study/knowledge-tree/selecting-a-good-node-2.avif"
-                  alt="Design Foundation Screenshot"
-                  width="1474"
-                  height="864"
-                />
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>`}}customElements.define("section-knowledge-tree-need-one-interface",g);class v extends HTMLElement{connectedCallback(){this.innerHTML=` <section>
-        <div class="container">
-          <article class="article">
-            <div class="article__header">
-              <h2>Continue to Expand the Knowledge Tree</h2>
-            </div>
+    
+     
 
-            <div class="article__body">
-              <p>
-                This project is designed to grow over time by adding more
-                sources, goods, and their relationships. As the knowledge tree
-                expands, it will provide a more complete view of how everyday
-                products are connected.
-              </p>
-            </div>
-          </article>
-        </div>
-      </section>`}}customElements.define("section-knowledge-tree-conclusion",v);
+     
+  </section>
+`;e("section-knowledge-tree-need-one-interface",{styles:D,template:K});var M=`
+  :host {
+    display: block;
+  }
+
+  section {
+    width: 80%;
+    margin-inline: auto;
+  }
+`,W=`
+  <section>
+    <section-title
+        variant="text"
+        props='{"name": "Continue to Expand the Knowledge Tree"}'
+      ></section-title>
+
+      <article>
+          <p>
+            This project is designed to grow over time by adding more
+            sources, goods, and their relationships. As the knowledge tree
+            expands, it will provide a more complete view of how everyday
+            products are connected.
+          </p>
+      </article>
+  </section>
+`;e("section-knowledge-tree-conclusion",{styles:M,template:W});

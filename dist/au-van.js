@@ -305,7 +305,8 @@ function h(r,a){if(r===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     --local-width: 5rem;
     --local-heigth: auto;
 
-    display: block;
+    display: inline-block;
+    width: fit-content;
   }
 
   img {
@@ -319,8 +320,16 @@ function h(r,a){if(r===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     --local-heigth: auto;
   }
 
+  :host([variant="medium"]) {
+    --local-width: 40rem;
+  }
+
   :host([variant="large"]) {
     --local-width: 50rem;
+  }
+
+   :host([variant="full"]) {
+    --local-width: 100%;
   }
 `,E=["width","height","src","alt"],N=()=>"<img data-forward />";o("app-image",{attrs:E,styles:C,template:N});var S=`
   :host {

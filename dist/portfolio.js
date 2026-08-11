@@ -1,4 +1,4 @@
-function b(s,i){if(s===void 0){if(i===Array)return[];if(i===Object)return{};if(i===Boolean)return!1;if(i===Number)return 0;return}if(i===Boolean)return Boolean(s);if(i===Number)return Number(s);return s}function e(s,{props:i={},attrs:l=[],styles:u="",template:n}){let f=["props",...l];class c extends HTMLElement{static observedAttributes=f;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let a={},t=this.getAttribute("props");if(t)try{a=JSON.parse(t)}catch{a={}}let d={};for(let r of Object.keys(i))d[r]=b(a[r],i[r]);return d}_applyForwardedAttrs(){if(l.length===0)return;let a=this.shadowRoot.querySelector("[data-forward]");if(!a)return;for(let t of l)if(this.hasAttribute(t))a.setAttribute(t,this.getAttribute(t));else a.removeAttribute(t)}_render(){let a=this._getProps(),t=typeof n==="function"?n(a):n;this.shadowRoot.innerHTML=`<style>${u}</style>${t}`,this._applyForwardedAttrs()}}customElements.define(s,c)}var y=`
+function h(a,i){if(a===void 0){if(i===Array)return[];if(i===Object)return{};if(i===Boolean)return!1;if(i===Number)return 0;return}if(i===Boolean)return Boolean(a);if(i===Number)return Number(a);return a}function t(a,{props:i={},attrs:n=[],styles:d="",template:l}){let m=["props",...n];class p extends HTMLElement{static observedAttributes=m;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let o={},r=this.getAttribute("props");if(r)try{o=JSON.parse(r)}catch{o={}}let c={};for(let s of Object.keys(i))c[s]=h(o[s],i[s]);return c}_applyForwardedAttrs(){if(n.length===0)return;let o=this.shadowRoot.querySelector("[data-forward]");if(!o)return;for(let r of n)if(this.hasAttribute(r))o.setAttribute(r,this.getAttribute(r));else o.removeAttribute(r)}_render(){let o=this._getProps(),r=typeof l==="function"?l(o):l;this.shadowRoot.innerHTML=`<style>${d}</style>${r}`,this._applyForwardedAttrs()}}customElements.define(a,p)}var g=`
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -50,9 +50,9 @@ function b(s,i){if(s===void 0){if(i===Array)return[];if(i===Object)return{};if(i
     --local-border: none;
     --local-direction: column;
   }
-`,w=["href","target","rel","download"],k=`
+`,f=["href","target","rel","download"],u=`
   <a data-forward><slot></slot></a>
-`;e("app-link",{attrs:w,styles:y,template:k});var _=`
+`;t("app-link",{attrs:f,styles:g,template:u});var v=`
   :host {
     display: block;
   }
@@ -61,7 +61,7 @@ function b(s,i){if(s===void 0){if(i===Array)return[];if(i===Object)return{};if(i
     max-height: 7rem;
     width: auto;
   }
-`,x=["width","height","src","alt"],T=()=>"<img data-forward />";e("app-logo",{attrs:x,styles:_,template:T});var o="769px",j="992px";var H=`
+`,y=["width","height","src","alt"],b=()=>"<img data-forward />";t("app-logo",{attrs:y,styles:v,template:b});var e="769px",K="992px";var w=`
   :host {
     display: block;
   }
@@ -95,12 +95,12 @@ function b(s,i){if(s===void 0){if(i===Array)return[];if(i===Object)return{};if(i
     box-shadow: none;
   }
 
-  @media (max-width: ${o}) {
+  @media (max-width: ${e}) {
     .header__navigation {
       gap: 4rem;
     }
   }
-`,L=`
+`,k=`
   <header>
       <app-link variant="plain" href="/">
         <app-logo
@@ -129,7 +129,7 @@ function b(s,i){if(s===void 0){if(i===Array)return[];if(i===Object)return{};if(i
         </app-link>
       </div>
   </header>
-`;e("section-header",{template:L,styles:H});var E=`
+`;t("section-header",{template:k,styles:w});var x=`
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -138,7 +138,7 @@ function b(s,i){if(s===void 0){if(i===Array)return[];if(i===Object)return{};if(i
    display: flex;
    gap: 5rem;
 
-   @media (max-width: ${o}) {
+   @media (max-width: ${e}) {
         flex-direction: column;
         gap: 3rem;
         margin-block: 2rem;
@@ -168,7 +168,7 @@ function b(s,i){if(s===void 0){if(i===Array)return[];if(i===Object)return{};if(i
     gap: 2rem;
     margin-top: 1rem;
   }
-`,C=()=>`
+`,A=()=>`
     <nav>
         <span>Sitemap</span>
 
@@ -235,7 +235,7 @@ function b(s,i){if(s===void 0){if(i===Array)return[];if(i===Object)return{};if(i
             </li>
         </ul>
     </nav>
-`;e("footer-nav",{styles:E,template:C});var A=`
+`;t("footer-nav",{styles:x,template:A});var H=`
   :host {
     --local-bg-color: var(--color-bg-secondary);
 
@@ -265,7 +265,7 @@ function b(s,i){if(s===void 0){if(i===Array)return[];if(i===Object)return{};if(i
     align-items: center;
   }
 
-  @media (max-width: ${o}) {
+  @media (max-width: ${e}) {
     article {
       display: block;
     }
@@ -275,7 +275,7 @@ function b(s,i){if(s===void 0){if(i===Array)return[];if(i===Object)return{};if(i
     display: flex;
     gap: 3rem;
   }
-`,P=`
+`,_=`
   <footer>
       <article>
         <div>
@@ -300,287 +300,396 @@ function b(s,i){if(s===void 0){if(i===Array)return[];if(i===Object)return{};if(i
         <app-link href="/credits" variant="underline">Credits</app-link>
       </p>
   </footer>
-`;e("section-footer",{styles:A,template:P});class p extends HTMLElement{connectedCallback(){this.innerHTML=`<section>
-        <div class="container">
-          <article class="article article--hero">
-            <div class="article__media">
-              <img
-                src="../assets/images/case-study/portfolio/mockup.avif"
-                alt="Final Product Screenshot"
-                width="1692"
-                height="886"
-              />
-            </div>
-            <div class="article__content">
-              <div class="article__header">
-                <span class="small--emphasis">Case Study</span>
-                <h1>Portfolio</h1>
-              </div>
+`;t("section-footer",{styles:H,template:_});var P=`
+  :host {
+    --local-width: 5rem;
+    --local-heigth: auto;
 
-              <div class="article__body">
-                <p>
-                  A personal portfolio website focused on creating a modern,
-                  responsive, and minimal experience that showcases projects,
-                  skills, and professional identity with clarity and simplicity.
-                </p>
+    display: inline-block;
+    width: fit-content;
+  }
 
-                <div>
-                  <span class="small--emphasis">Role:</span>
-                  <p>Web Designer & Developer</p>
-                </div>
+  img {
+    max-width: var(--local-width);
+    height: var(--local-heigth);
+    width: 100%;
+  }
 
-                <div>
-                  <span class="small--emphasis">Scope: </span>
-                  <ul class="article__list">
-                    <li>
-                      <p>Revamp Website</p>
-                    </li>
-                    <li>
-                      <p>User Reserach</p>
-                    </li>
-                  </ul>
-                </div>
+  :host([variant="normal"]) {
+    --local-width: 12rem;
+    --local-heigth: auto;
+  }
 
-                <a
-                  class="button--outline"
-                  href="https://hanhtetaung.dev/"
-                  target="_blank"
-                  >View Live Website</a
-                >
-              </div>
-            </div>
-          </article>
-        </div>
-      </section>`}}customElements.define("section-portfolio-intro",p);class h extends HTMLElement{connectedCallback(){this.innerHTML=`<section>
-        <div class="container">
-          <div class="section-title">
-            <h2>Background</h2>
-          </div>
+  :host([variant="medium"]) {
+    --local-width: 40rem;
+  }
 
-          <article class="article">
-            <div class="article__body">
-              <p>
-                This project was created as a personal portfolio website to
-                showcase selected projects and experience in a modern,
-                responsive, and boutique-style presentation. The goal was to
-                create a clean and polished experience with clear structure,
-                minimal visuals, and a strong professional presence.
-              </p>
-            </div>
-          </article>
-        </div>
-      </section>`}}customElements.define("section-portfolio-background",h);class m extends HTMLElement{connectedCallback(){this.innerHTML=`<section>
-        <div class="container">
-          <div class="section-title">
-            <h2>Challenge</h2>
-          </div>
+  :host([variant="large"]) {
+    --local-width: 50rem;
+  }
 
-          <article class="article">
-            <div class="article__body">
-              <p>
-                One of the main challenges of the project was designing a visual
-                direction that felt modern, minimal, and boutique while still
-                maintaining clarity and professionalism. The redesign focused on
-                creating a strong visual identity through typography, spacing,
-                layout, and overall presentation to build a more polished and
-                trustworthy user experience.
-              </p>
-            </div>
-          </article>
-        </div>
-      </section>`}}customElements.define("section-portfolio-challenge",m);class g extends HTMLElement{connectedCallback(){this.innerHTML=` <section>
-        <div class="container">
-          <div class="section-title">
-            <h2>Process</h2>
-          </div>
-        </div>
+   :host([variant="full"]) {
+    --local-width: 100%;
+  }
+`,E=["width","height","src","alt"],O=()=>"<img data-forward />";t("app-image",{attrs:E,styles:P,template:O});var S=`
+  :host {
+    display: block;
+  }
 
-        <ul class="process-list">
-          <li class="process-item">
-            <span class="heading--emphasis">1</span>
-            <h3>Research</h3>
-          </li>
+  section {
+    width: 80%;
+    margin-inline: auto;
 
-          <li class="process-item">
-            <span class="heading--emphasis">2</span>
-            <h3>Wireframe</h3>
-          </li>
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    gap: 3rem;
 
-          <li class="process-item">
-            <span class="heading--emphasis">3</span>
-            <h3>Prototype</h3>
-          </li>
+    @media (max-width: ${e}) {
+      flex-direction: column;
+    }
+  }
 
-          <li class="process-item">
-            <span class="heading--emphasis">4</span>
-            <h3>Develop</h3>
-          </li>
+  h1 {
+    margin: 0;
+    font-size: var(--size-display);
+    font-weight: var(--font-regular);
+    font-family: var(--font-heading);
+  }
 
-          <li class="process-item process-item--last-child">
-            <span class="heading--emphasis">5</span>
-            <h3>Deliver</h3>
-          </li>
-        </ul>
+  p {
+    margin: 0;
+    margin-bottom: 2rem;
+  }
 
-        <div class="container">
-          <div class="stack">
-            <article class="article article--row">
-              <div class="article__header">
-                <h3>Research</h3>
-              </div>
+  article {
+    max-width: 40ch;
+  }
 
-              <div class="article__body">
-                <p>
-                  Research ideas and visual references to define the overall
-                  direction of the website. This stage focused on exploring
-                  modern portfolio layouts, typography, spacing, and
-                  boutique-style aesthetics to establish a clear visual
-                  foundation.
-                </p>
+    span {
+    color: var(--color-secondary);
+    font-size: var(--size-small);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+  }
+`,T=`
+  <section>
+      <app-image
+        variant="medium"
+        src="/assets/images/case-study/portfolio/mockup.avif"
+        alt="Final Product Screenshot"
+        width="1692"
+        height="886"
+      ></app-image>
 
-                <img
-                  src="../assets/images/case-study/portfolio/inspiration.avif"
-                  alt="Inspiration Collection"
-                  width="1398"
-                  height="1236"
-                />
-              </div>
-            </article>
+      <article>
+        <span>Case Study</span>
+        <h1>Portfolio</h1>
 
-            <article class="article article--row">
-              <div class="article__header">
-                <h3>Wireframe</h3>
-              </div>
+        <p>
+          A personal portfolio website focused on creating a modern,
+          responsive, and minimal experience that showcases projects,
+          skills, and professional identity with clarity and simplicity.
+        </p>
 
-              <div class="article__body">
-                <p>
-                  Plan the structure and layout of the website through
-                  low-fidelity wireframes. This stage focused on content
-                  hierarchy, storytelling flow, and user navigation before
-                  moving into visual design.
-                </p>
+        <span>Role: </span>
+        <p>Web Designer & Developer</p>
 
-                <img
-                  src="../assets/images/case-study/portfolio/wireframe.avif"
-                  alt="Wireframe Screenshot"
-                  width="1398"
-                  height="1366"
-                />
-              </div>
-            </article>
+          <span>Scope:</span>
+          <p>Idea → Website</p>
 
-            <article class="article article--row">
-              <div class="article__header">
-                <h3>Prototype</h3>
-              </div>
+        <app-link variant="secondary" href="https://hanhtetaung.dev/" target="_blank">
+          View Live Website
+        </app-link>
+      </article>
+  </section>
+`;t("section-portfolio-intro",{styles:S,template:T});var $=`
+  :host {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    margin-bottom: 3rem;
+  }
 
-              <div class="article__body">
-                <p>
-                  Build the design system and craft the polished visual
-                  interface. This stage focused on transforming the wireframes
-                  into final responsive designs with complete visual styling,
-                  reusable components, refined layouts, and overall user
-                  experience.
-                </p>
+  h2 {
+    margin: 0;
+    font-size: var(--size-title);
+    font-family: var(--font-heading);
+    font-weight: var(--font-regular)
+  }
 
-                <figure>
-                  <figcaption class="small--emphasis">
-                    Design Foundation
-                  </figcaption>
-                  <img
-                    src="../assets/images/case-study/portfolio/design-foundation.avif"
-                    alt="Design Foundation Screenshot"
-                    width="1474"
-                    height="864"
-                  />
-                </figure>
+  :host([variant="vertical"]) {
+    flex-direction: column-reverse;
+    gap: 0;
 
-                <figure>
-                  <figcaption class="small--emphasis">Final Design</figcaption>
-                  <img
-                    src="../assets/images/case-study/portfolio/final-design.avif"
-                    alt="Final Design"
-                    width="1402"
-                    height="1378"
-                  />
-                </figure>
-              </div>
-            </article>
+    img {
+      height: 5rem;
+      width: auto;
+    }
+  }
 
-            <article class="article article--row">
-              <div class="article__header">
-                <h3>Develop & Deliver</h3>
-              </div>
+  :host([variant="text"]) {
+    img {
+      display: none;
+    }
+  }
+`,z={name:String,img:String,alt:String},L=({name:a,img:i="",alt:n=""})=>`
+    <h2>${a}</h2>
+    <img
+        src=${i}
+        alt=${n}
+        height="36"
+        width="76"
+    />
+`;t("section-title",{props:z,styles:$,template:L});var N=`
+  :host {
+    display: block;
+  }
 
-              <div class="article__body">
-                <p>
-                  Translate the approved design into a responsive website while
-                  maintaining visual consistency across all screen sizes. The
-                  project was managed with GitHub and deployed automatically
-                  through GitHub Pages and GitHub Actions.
-                </p>
+  section {
+    width: 80%;
+    margin-inline: auto;
+  }
+`,j=`
+  <section>
+    <section-title variant="text" props='{"name": "Background"}'></section-title>
 
-                <div>
-                  <p>Hosted on:</p>
-                  <a
-                    href="https://github.com/hanhtetaung/hanhtetaung.github.io"
-                    target="_blank"
-                    class="button--link"
-                    >hanhtetaung.github.io</a
-                  >
-                </div>
+    <p>
+      This project was created as a personal portfolio website to showcase
+      selected projects and experience in a modern, responsive, and
+      boutique-style presentation. The goal was to create a clean and
+      polished experience with clear structure, minimal visuals, and a
+      strong professional presence.
+    </p>
+  </section>
+`;t("section-portfolio-background",{styles:N,template:j});var C=`
+  :host {
+    display: block;
+  }
 
-                <div>
-                  <p>Tech Stack</p>
-                  <ul class="article__list">
-                    <li>
-                      <p>HTML5</p>
-                    </li>
-                    <li><p>CSS3</p></li>
-                    <li><p>SCSS</p></li>
-                  </ul>
-                </div>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>`}}customElements.define("section-portfolio-process",g);class v extends HTMLElement{connectedCallback(){this.innerHTML=` <section>
-        <div class="container">
-          <div class="section-title">
-            <h2>Result</h2>
-          </div>
+  section {
+    width: 80%;
+    margin-inline: auto;
+  }
+`,B=`
+  <section>
+    <section-title variant="text" props='{"name": "Challenge"}'></section-title>
 
-          <article class="article">
-            <div class="article__body">
-              <p>
-                The project resulted in a modern, responsive, and boutique-style
-                portfolio website with a stronger visual identity and improved
-                user experience. The final website also achieved outstanding
-                Google Lighthouse performance with optimized accessibility,
-                responsiveness, and loading performance.
-              </p>
-              <a
-                href="https://hanhtetaung.dev/"
-                target="_blank"
-                class="button--outline"
-                >View Live Website &#8599;</a
-              >
+    <p>
+      One of the main challenges of the project was designing a visual
+      direction that felt modern, minimal, and boutique while still
+      maintaining clarity and professionalism. The redesign focused on
+      creating a strong visual identity through typography, spacing,
+      layout, and overall presentation to build a more polished and
+      trustworthy user experience.
+    </p>
+  </section>
+`;t("section-portfolio-challenge",{styles:C,template:B});var W=`
+  :host {
+    display: grid;
+    grid-template-columns: 1fr 2.5fr;
 
-              <div class="grid-2-col">
-                <img
-                  src="../assets/images/case-study/portfolio/mockup.avif"
-                  alt="Mockup Photo"
-                  width="1692"
-                  height="886"
-                />
-                <img
-                  src="../assets/images/case-study/portfolio/lighthouse.avif"
-                  alt="Lighthouse Photo"
-                  width="960"
-                  height="1028"
-                />
-              </div>
-            </div>
-          </article>
-        </div>
-      </section>`}}customElements.define("section-portfolio-result",v);
+
+    @media (max-width: ${e}) {
+        display: block;
+    }
+  }
+
+  h3 {
+    margin: 0;
+    margin-bottom: 1rem;
+    font-size: var(--size-heading);
+    width: fit-content;
+    height: fit-content;
+  }
+
+  :host([variant="block"]) {
+    display: block;
+  }
+`,q={title:String},I=({title:a})=>`
+        <h3>${a}</h3>
+
+        <article>
+            <slot></slot>
+        </article>
+`;t("app-article-paragraph",{props:q,styles:W,template:I});var R=`
+  :host {
+    display: block;
+  }
+
+  section {
+    width: 80%;
+    margin-inline: auto;
+  }
+
+  p {
+    margin: 0;
+    margin-bottom: 1rem;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    border-top: 1px dashed var(--color-text);
+    padding-top: 5rem;
+  }
+
+  ol {
+    list-style: disc;
+  }
+`,D=`
+  <section>
+    <section-title variant="text" props='{"name": "Process"}'></section-title>
+
+    <ul>
+      <li>
+        <app-article-paragraph props='{ "title": "Research"}'>
+          <p>
+            Research ideas and visual references to define the overall direction
+            of the website. This stage focused on exploring modern portfolio
+            layouts, typography, spacing, and boutique-style aesthetics to
+            establish a clear visual foundation.
+          </p>
+          
+          <app-image
+            variant="medium"
+            src="/assets/images/case-study/portfolio/inspiration.avif"
+            alt="Inspiration Collection"
+            width="1398"
+            height="1236"
+          ></app-image>
+      </app-article-paragraph>
+      </li>
+
+
+      <li>
+        <app-article-paragraph props='{ "title": "Wireframe"}'>
+          <p>
+            Plan the structure and layout of the website through low-fidelity
+            wireframes. This stage focused on content hierarchy, storytelling
+            flow, and user navigation before moving into visual design.
+          </p>
+          <app-image
+            variant="medium"
+            src="/assets/images/case-study/portfolio/wireframe.avif"
+            alt="Wireframe Screenshot"
+            width="1398"
+            height="1366"
+          ></app-image>
+        </app-article-paragraph>
+      </li>
+
+      <li>
+        <app-article-paragraph props='{ "title": "Prototype"}'>
+          <p>
+            Build the design system and craft the polished visual interface.
+            This stage focused on transforming the wireframes into final
+            responsive designs with complete visual styling, reusable
+            components, refined layouts, and overall user experience.
+          </p>
+          <app-image
+            variant="medium"
+            src="/assets/images/case-study/portfolio/design-foundation.avif"
+            alt="Design Foundation Screenshot"
+            width="1474"
+            height="864"
+          ></app-image>
+          <app-image
+            variant="medium"
+            src="/assets/images/case-study/portfolio/final-design.avif"
+            alt="Final Design"
+            width="1402"
+            height="1378"
+          ></app-image>
+        </app-article-paragraph>
+      </li>
+
+      <li>
+        <app-article-paragraph props='{ "title": "Develop & Deliver"}'>
+          <p>
+            Translate the approved design into a responsive website while
+            maintaining visual consistency across all screen sizes. The project
+            was managed with GitHub and deployed automatically through GitHub
+            Pages and GitHub Actions.
+          </p>
+
+          <p><b>Hosted on:</b>
+            <app-link variant="underline" href="https://github.com/hanhtetaung/hanhtetaung.github.io" target="_blank" variant="button">
+              hanhtetaung.github.io
+            </app-link>
+          </p>
+
+          <p><b>Tech Stack</b></p>
+          <ol>
+            <li>HTML5</li>
+            <li>CSS3</li>
+            <li>SCSS</li>
+          </ol>
+        </app-article-paragraph>
+      </li>
+    </ul>
+  </section>
+`;t("section-portfolio-process",{styles:R,template:D});var F=`
+  :host {
+    display: block;
+  }
+
+  section {
+    width: 80%;
+    margin-inline: auto;
+  }
+
+  ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    gap: 3rem;
+
+    @media (max-width: ${e}) {
+      flex-direction: column;
+    }
+  }
+`,G=`
+  <section>
+    <section-title variant="text" props='{"name": "Result"}'></section-title>
+
+    <p>
+      The project resulted in a modern, responsive, and boutique-style
+      portfolio website with a stronger visual identity and improved user
+      experience. The final website also achieved outstanding Google
+      Lighthouse performance with optimized accessibility, responsiveness,
+      and loading performance.
+    </p>
+
+    <app-link variant="secondary" href="https://hanhtetaung.dev/" target="_blank">
+      View Live Website
+    </app-link>
+
+    <ul>
+      <li>
+        <app-image
+          variant="medium"
+          src="/assets/images/case-study/portfolio/lighthouse.avif"
+          alt="Lighthouse Photo"
+          width="960"
+          height="1028"
+        ></app-image>
+      </li>
+
+       <li>
+        <app-image
+          variant="medium"
+          src="/assets/images/case-study/portfolio/mockup.avif"
+          alt="Mockup Photo"
+          width="1692"
+          height="886"
+        ></app-image>
+      </li>
+    </ul>
+  </section>
+`;t("section-portfolio-result",{styles:F,template:G});

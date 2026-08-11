@@ -1,4 +1,4 @@
-function v(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a===Boolean)return!1;if(a===Number)return 0;return}if(a===Boolean)return Boolean(o);if(a===Number)return Number(o);return o}function e(o,{props:a={},attrs:r=[],styles:f="",template:s}){let u=["props",...r];class c extends HTMLElement{static observedAttributes=u;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let i={},t=this.getAttribute("props");if(t)try{i=JSON.parse(t)}catch{i={}}let d={};for(let n of Object.keys(a))d[n]=v(i[n],a[n]);return d}_applyForwardedAttrs(){if(r.length===0)return;let i=this.shadowRoot.querySelector("[data-forward]");if(!i)return;for(let t of r)if(this.hasAttribute(t))i.setAttribute(t,this.getAttribute(t));else i.removeAttribute(t)}_render(){let i=this._getProps(),t=typeof s==="function"?s(i):s;this.shadowRoot.innerHTML=`<style>${f}</style>${t}`,this._applyForwardedAttrs()}}customElements.define(o,c)}var b=`
+function h(a,i){if(a===void 0){if(i===Array)return[];if(i===Object)return{};if(i===Boolean)return!1;if(i===Number)return 0;return}if(i===Boolean)return Boolean(a);if(i===Number)return Number(a);return a}function t(a,{props:i={},attrs:n=[],styles:d="",template:l}){let m=["props",...n];class c extends HTMLElement{static observedAttributes=m;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let e={},o=this.getAttribute("props");if(o)try{e=JSON.parse(o)}catch{e={}}let p={};for(let s of Object.keys(i))p[s]=h(e[s],i[s]);return p}_applyForwardedAttrs(){if(n.length===0)return;let e=this.shadowRoot.querySelector("[data-forward]");if(!e)return;for(let o of n)if(this.hasAttribute(o))e.setAttribute(o,this.getAttribute(o));else e.removeAttribute(o)}_render(){let e=this._getProps(),o=typeof l==="function"?l(e):l;this.shadowRoot.innerHTML=`<style>${d}</style>${o}`,this._applyForwardedAttrs()}}customElements.define(a,c)}var g=`
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -50,9 +50,9 @@ function v(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     --local-border: none;
     --local-direction: column;
   }
-`,k=["href","target","rel","download"],w=`
+`,f=["href","target","rel","download"],u=`
   <a data-forward><slot></slot></a>
-`;e("app-link",{attrs:k,styles:b,template:w});var y=`
+`;t("app-link",{attrs:f,styles:g,template:u});var v=`
   :host {
     display: block;
   }
@@ -61,7 +61,7 @@ function v(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     max-height: 7rem;
     width: auto;
   }
-`,_=["width","height","src","alt"],x=()=>"<img data-forward />";e("app-logo",{attrs:_,styles:y,template:x});var l="769px",D="992px";var A=`
+`,b=["width","height","src","alt"],k=()=>"<img data-forward />";t("app-logo",{attrs:b,styles:v,template:k});var r="769px",K="992px";var y=`
   :host {
     display: block;
   }
@@ -95,12 +95,12 @@ function v(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     box-shadow: none;
   }
 
-  @media (max-width: ${l}) {
+  @media (max-width: ${r}) {
     .header__navigation {
       gap: 4rem;
     }
   }
-`,T=`
+`,w=`
   <header>
       <app-link variant="plain" href="/">
         <app-logo
@@ -129,7 +129,7 @@ function v(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
         </app-link>
       </div>
   </header>
-`;e("section-header",{template:T,styles:A});var H=`
+`;t("section-header",{template:w,styles:y});var x=`
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -138,7 +138,7 @@ function v(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
    display: flex;
    gap: 5rem;
 
-   @media (max-width: ${l}) {
+   @media (max-width: ${r}) {
         flex-direction: column;
         gap: 3rem;
         margin-block: 2rem;
@@ -168,7 +168,7 @@ function v(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     gap: 2rem;
     margin-top: 1rem;
   }
-`,C=()=>`
+`,A=()=>`
     <nav>
         <span>Sitemap</span>
 
@@ -235,7 +235,7 @@ function v(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
             </li>
         </ul>
     </nav>
-`;e("footer-nav",{styles:H,template:C});var E=`
+`;t("footer-nav",{styles:x,template:A});var _=`
   :host {
     --local-bg-color: var(--color-bg-secondary);
 
@@ -265,7 +265,7 @@ function v(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     align-items: center;
   }
 
-  @media (max-width: ${l}) {
+  @media (max-width: ${r}) {
     article {
       display: block;
     }
@@ -275,7 +275,7 @@ function v(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     display: flex;
     gap: 3rem;
   }
-`,S=`
+`,H=`
   <footer>
       <article>
         <div>
@@ -300,294 +300,446 @@ function v(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
         <app-link href="/credits" variant="underline">Credits</app-link>
       </p>
   </footer>
-`;e("section-footer",{styles:E,template:S});class p extends HTMLElement{connectedCallback(){this.innerHTML=`<section>
-        <div class="container">
-          <article class="article">
-            <div class="article__header">
-              <h1 class="title">Foundation for Building Interfaces at Scale</h1>
-            </div>
-            <div class="article__body">
-              <p>
-                Build systems, not interfaces. A design system is the single
-                source of truth for consistent, scalable interfaces.
-              </p>
+`;t("section-footer",{styles:_,template:H});var S=`
+  :host {
+    display: block;
+  }
 
-              <p><b>On this page</b></p>
+  section {
+    width: 80%;
+    margin-inline: auto;
+  }
 
-              <ul>
-                <li>
-                  <a href="#atomic-design-principle" class="button--link"
-                    >Atomic design principle
-                  </a>
-                </li>
-                <li>
-                  <a href="#design-token-architecture" class="button--link"
-                    >Design token architecture</a
-                  >
-                </li>
-              </ul>
-            </div>
-          </article>
-        </div>
-      </section>`}}customElements.define("section-foundation-building-interfaces-at-scale-intro",p);class m extends HTMLElement{connectedCallback(){this.innerHTML=`<section id="atomic-design-principle">
-        <div class="container">
-          <article class="article">
-            <h2>Atomic Design Principle</h2>
+  h1 {
+    margin: 0;
+    font-size: var(--size-title);
+    font-weight: var(--font-regular);
+    font-family: var(--font-heading);
+  }
 
-            <div class="article__body">
-              <p>
-                Follow Atomic Design principles to create scalable, reusable,
-                and maintainable interface building blocks.
-              </p>
+  p {
+    margin: 0;
+    margin-block: 1.5rem;
+  }
 
-              <img
-                src="/assets/images/foundation-building-software/atomic-design.avif"
-                alt=""
-              />
-            </div>
-          </article>
+  ul {
+    margin: 0;
+    padding-left: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+`,E=`
+  <section>
+    <h1>Foundation for Building Interfaces at Scale</h1>
 
-          <div class="stack">
-            <article class="article article--row">
-              <div class="article__header">
-                <h3>Page</h3>
-              </div>
-              <div class="article__body">
-                <p>
-                  A complete interface that composed of multiple organisms.
-                  Let’s break down the Strava Activities interface into
-                  organisms → molecules → atoms → subatomic particles. <br />For
-                  example, the Strava Activities page contains four organisms.
-                </p>
+    <p>
+      Build systems, not interfaces. A design system is the single source of
+      truth for consistent, scalable interfaces.
+    </p>
 
-                <img
-                  src="/assets/images/foundation-building-software/page.avif"
-                  alt="Inspiration Collection"
-                  width="1398"
-                  height="1236"
-                />
-              </div>
-            </article>
+    <p><b>On this page</b></p>
 
-            <article class="article article--row">
-              <div class="article__header">
-                <h3>Organism</h3>
-              </div>
-              <div class="article__body">
-                <p>
-                  A distinct section of an interface composed of molecules,
-                  atoms, subatomic particles or even other organisms. The
-                  following diagram shows an organism made up of three
-                  molecules, one atom and one other organism.
-                </p>
+    <ul>
+      <li>
+        <app-link href="#atomic-design-principle" variant="underline">
+          Atomic design principle
+        </app-link>
+      </li>
+      <li>
+        <app-link href="#design-token-architecture" variant="underline">
+          Design token architecture
+        </app-link>
+      </li>
+    </ul>
+  </section>
+`;t("section-foundation-building-interfaces-at-scale-intro",{styles:S,template:E});var O=`
+  :host {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    margin-bottom: 3rem;
+  }
 
-                <img
-                  src="/assets/images/foundation-building-software/organisms.avif"
-                  alt="Inspiration Collection"
-                  width="1398"
-                  height="1236"
-                />
-              </div>
-            </article>
-            <article class="article article--row">
-              <div class="article__header">
-                <h3>Molecule</h3>
-              </div>
-              <div class="article__body">
-                <p>
-                  A simple interface element composed of atoms or subatomic
-                  particles as well as other molecules. The example below shows
-                  how six atoms combine to form a molecule.
-                </p>
+  h2 {
+    margin: 0;
+    font-size: var(--size-title);
+    font-family: var(--font-heading);
+    font-weight: var(--font-regular)
+  }
 
-                <img
-                  src="/assets/images/foundation-building-software/molecule.avif"
-                  alt="Inspiration Collection"
-                  width="1398"
-                  height="1236"
-                />
-              </div>
-            </article>
-            <article class="article article--row">
-              <div class="article__header">
-                <h3>Atom</h3>
-              </div>
-              <div class="article__body">
-                <p>
-                  A foundational building block of an interface composed of
-                  subatomic particles.The illustration below shows an atom
-                  composed of three subatomic particles.
-                </p>
+  :host([variant="vertical"]) {
+    flex-direction: column-reverse;
+    gap: 0;
 
-                <img
-                  src="/assets/images/foundation-building-software/atom.avif"
-                  alt="Inspiration Collection"
-                  width="1398"
-                  height="1236"
-                />
-              </div>
-            </article>
-            <article class="article article--row">
-              <div class="article__header">
-                <h3>Subatomic particle</h3>
-              </div>
-              <div class="article__body">
-                <p>Smallest unit of the system, represents design token.</p>
+    img {
+      height: 5rem;
+      width: auto;
+    }
+  }
 
-                <img
-                  src="/assets/images/foundation-building-software/subatomic-particles.avif"
-                  alt="Inspiration Collection"
-                  width="1398"
-                  height="1236"
-                />
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>`}}customElements.define("section-atomic-design-principle",m);class h extends HTMLElement{connectedCallback(){this.innerHTML=`<section id="design-token-architecture">
-        <div class="container">
-          <article class="article">
-            <div class="article__header">
-              <h2>Design Token Architecture</h2>
-            </div>
+  :host([variant="text"]) {
+    img {
+      display: none;
+    }
+  }
+`,P={name:String,img:String,alt:String},$=({name:a,img:i="",alt:n=""})=>`
+    <h2>${a}</h2>
+    <img
+        src=${i}
+        alt=${n}
+        height="36"
+        width="76"
+    />
+`;t("section-title",{props:P,styles:O,template:$});var N=`
+  :host {
+    --local-width: 5rem;
+    --local-heigth: auto;
 
-            <div class="article__body">
-              <p>A two-tier architecture is enough: Primitive and Semantic.</p>
+    display: inline-block;
+    width: fit-content;
+  }
 
-              <img
-                src="/assets/images/foundation-building-software/token-architecture.avif"
-                alt=""
-              />
-            </div>
-          </article>
+  img {
+    max-width: var(--local-width);
+    height: var(--local-heigth);
+    width: 100%;
+  }
 
-          <article class="article">
-            <div class="article__header">
-              <h3>Single Source of Truth</h3>
-            </div>
-            <div class="article__body">
-              <p>
-                Use semantic tokens to define all interface building blocks. The
-                figma uses slash as separators with all letters lowercase, but
-                can be converted to a preferred platform convention like dashes
-                or camelCase.
-              </p>
+  :host([variant="normal"]) {
+    --local-width: 12rem;
+    --local-heigth: auto;
+  }
 
-              <img
-                src="/assets/images/foundation-building-software/single-source-of-truth.avif"
-                alt=""
-              />
-            </div>
-          </article>
+  :host([variant="medium"]) {
+    --local-width: 40rem;
+  }
 
-          <article class="article">
-            <div class="article__header">
-              <h3>Theming</h3>
-            </div>
-            <div class="article__body">
-              <p>
-                A token can point to different value related to mode and when
-                the mode changes, the reference values are updated
-                automatically.
-              </p>
+  :host([variant="large"]) {
+    --local-width: 50rem;
+  }
 
-              <img
-                src="/assets/images/foundation-building-software/theming.avif"
-                alt=""
-              />
-            </div>
-          </article>
+   :host([variant="full"]) {
+    --local-width: 100%;
+  }
+`,z=["width","height","src","alt"],C=()=>"<img data-forward />";t("app-image",{attrs:z,styles:N,template:C});var L=`
+  :host {
+    display: grid;
+    grid-template-columns: 1fr 2.5fr;
 
-          <article class="article">
-            <div class="article__header">
-              <h3>Token Structure</h3>
-            </div>
-            <div class="article__body">
-              <p>Tokens are named in two parts:</p>
 
-              <ol>
-                <li>Base</li>
-                <li>Modifier (optional)</li>
-              </ol>
-              <img
-                src="/assets/images/foundation-building-software/token-structure.avif"
-                alt=""
-              />
-            </div>
-          </article>
+    @media (max-width: ${r}) {
+        display: block;
+    }
+  }
 
-          <article class="article">
-            <div class="article__header">
-              <h3>Design Token Anatomy</h3>
-            </div>
-            <div class="article__body">
-              <p>
-                The diagram below shows how primitive, and semantic tokens
-                combine base, and modifier.
-              </p>
+  h3 {
+    margin: 0;
+    margin-bottom: 1rem;
+    font-size: var(--size-heading);
+    width: fit-content;
+    height: fit-content;
+  }
 
-              <img
-                src="/assets/images/foundation-building-software/design-token-anatomy.avif"
-                alt="Design Token Anatomy"
-              />
-            </div>
-          </article>
+  :host([variant="block"]) {
+    display: block;
+  }
+`,T={title:String},B=({title:a})=>`
+        <h3>${a}</h3>
 
-          <article class="article">
-            <div class="article__header">
-              <h3>Applying Design Tokens</h3>
-            </div>
-            <div class="article__body">
-              <p>
-                Here's an example of how semantic tokens are used throughout a
-                strava activities page.
-              </p>
+        <article>
+            <slot></slot>
+        </article>
+`;t("app-article-paragraph",{props:T,styles:L,template:B});var D=`
+  :host {
+    display: block;
+  }
 
-              <img
-                src="/assets/images/foundation-building-software/applying-token.avif"
-                alt="Applying Token photo"
-              />
-            </div>
-          </article>
-        </div>
-      </section>`}}customElements.define("section-design-token-architecture",h);class g extends HTMLElement{connectedCallback(){this.innerHTML=`<section class="reference">
-        <div class="container">
-          <h2>References</h2>
-          <ul>
-            <li>
-              <a
-                href="https://atomicdesign.bradfrost.com/chapter-2/"
-                target="_blank"
-                class="button--link"
-                >Atomic Design Principle
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://playbook.ebay.com/foundations"
-                target="_blank"
-                class="button--link"
-                >ebay Playbook</a
-              >
-            </li>
-            <li>
-              <a
-                href="https://www.designsystem.tech.gov.sg/foundations/"
-                class="button--link"
-                target="_blank"
-              >
-                SGDS Design
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://www.strava.com/"
-                target="_blank"
-                class="button--link"
-              >
-                Strava
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>`}}customElements.define("section-foundation-building-interfaces-at-scale-references",g);
+  section {
+    width: 80%;
+    margin-inline: auto;
+  }
+
+  p {
+    margin: 0;
+    margin-bottom: 1rem;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    border-top: 1px dashed var(--color-text);
+    padding-top: 5rem;
+  }
+`,j=`
+  <section id="atomic-design-principle">
+    <section-title variant="text" props='{"name": "Atomic Design Principle"}'></section-title>
+
+    <p>
+      Follow Atomic Design principles to create scalable, reusable, and
+      maintainable interface building blocks.
+    </p>
+
+    <app-image
+      variant="full"
+      src="/assets/images/foundation-building-software/atomic-design.avif"
+      alt="Atomic design overview"
+      width="1398"
+      height="1236"
+    ></app-image>
+
+    <ul>
+      <li>
+        <app-article-paragraph props='{ "title": "Page" }'>
+          <p>
+            A complete interface that is composed of multiple organisms. Let’s break down the Strava Activities interface into organisms → molecules → atoms → subatomic particles. For example, the Strava Activities page contains four organisms.
+          </p>
+          <app-image
+            variant="full"
+            src="/assets/images/foundation-building-software/page.avif"
+            alt="Page overview"
+            width="1398"
+            height="1236"
+          ></app-image>
+        </app-article-paragraph>
+      </li>
+
+      <li>
+        <app-article-paragraph props='{ "title": "Organism" }'>
+          <p>
+            A distinct section of an interface composed of molecules, atoms, subatomic particles, or even other organisms. The following diagram shows an organism made up of three molecules, one atom, and one other organism.
+          </p>
+          <app-image
+            variant="full"
+            src="/assets/images/foundation-building-software/organisms.avif"
+            alt="Organism overview"
+            width="1398"
+            height="1236"
+          ></app-image>
+        </app-article-paragraph>
+      </li>
+
+      <li>
+        <app-article-paragraph props='{ "title": "Molecule" }'>
+          <p>
+            A simple interface element composed of atoms or subatomic particles as well as other molecules. The example below shows how six atoms combine to form a molecule.
+          </p>
+          <app-image
+            variant="full"
+            src="/assets/images/foundation-building-software/molecule.avif"
+            alt="Molecule overview"
+            width="1398"
+            height="1236"
+          ></app-image>
+        </app-article-paragraph>
+      </li>
+
+      <li>
+        <app-article-paragraph props='{ "title": "Atom" }'>
+          <p>
+            A foundational building block of an interface composed of subatomic particles. The illustration below shows an atom composed of three subatomic particles.
+          </p>
+          <app-image
+            variant="full"
+            src="/assets/images/foundation-building-software/atom.avif"
+            alt="Atom overview"
+            width="1398"
+            height="1236"
+          ></app-image>
+        </app-article-paragraph>
+      </li>
+
+      <li>
+        <app-article-paragraph props='{ "title": "Subatomic particle" }'>
+          <p>Smallest unit of the system, represents a design token.</p>
+          <app-image
+            variant="full"
+            src="/assets/images/foundation-building-software/subatomic-particles.avif"
+            alt="Subatomic particles overview"
+            width="1398"
+            height="1236"
+          ></app-image>
+        </app-article-paragraph>
+      </li>
+    </ul>
+  </section>
+`;t("section-atomic-design-principle",{styles:D,template:j});var I=`
+  :host {
+    display: block;
+  }
+
+  section {
+    width: 80%;
+    margin-inline: auto;
+  }
+
+  p {
+    margin: 0;
+    margin-bottom: 1rem;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+
+    padding-top: 5rem;
+  }
+
+  ol {
+    list-style: disc;
+    padding: 0;
+    padding-left: 1.5rem;
+  }
+`,F=`
+  <section id="design-token-architecture">
+    <section-title variant="text" props='{"name": "Design Token Architecture"}'></section-title>
+
+    <p>A two-tier architecture is enough: Primitive and Semantic.</p>
+
+    <app-image
+      variant="full"
+      src="/assets/images/foundation-building-software/token-architecture.avif"
+      alt="Token architecture overview"
+      width="1398"
+      height="1236"
+    ></app-image>
+
+    <ul>
+      <li>
+        <app-article-paragraph variant="block" props='{ "title": "Single Source of Truth" }'>
+          <p>
+            Use semantic tokens to define all interface building blocks. The
+            Figma file uses slashes as separators with all letters lowercase,
+            but it can be converted to a preferred platform convention like
+            dashes or camelCase.
+          </p>
+          <app-image
+            variant="full"
+            src="/assets/images/foundation-building-software/single-source-of-truth.avif"
+            alt="Single source of truth overview"
+            width="1398"
+            height="1236"
+          ></app-image>
+        </app-article-paragraph>
+      </li>
+
+      <li>
+        <app-article-paragraph variant="block" props='{ "title": "Theming" }'>
+          <p>
+            A token can point to different values related to a mode, and when
+            the mode changes, the reference values are updated automatically.
+          </p>
+          <app-image
+            variant="full"
+            src="/assets/images/foundation-building-software/theming.avif"
+            alt="Theming overview"
+            width="1398"
+            height="1236"
+          ></app-image>
+        </app-article-paragraph>
+      </li>
+
+      <li>
+        <app-article-paragraph variant="block" props='{ "title": "Token Structure" }'>
+          <p>Tokens are named in two parts:</p>
+          <ol>
+            <li>Base</li>
+            <li>Modifier (optional)</li>
+          </ol>
+          <app-image
+            variant="full"
+            src="/assets/images/foundation-building-software/token-structure.avif"
+            alt="Token structure overview"
+            width="1398"
+            height="1236"
+          ></app-image>
+        </app-article-paragraph>
+      </li>
+
+      <li>
+        <app-article-paragraph variant="block" props='{ "title": "Design Token Anatomy" }'>
+          <p>
+            The diagram below shows how primitive and semantic tokens combine
+            base and modifier.
+          </p>
+          <app-image
+            variant="full"
+            src="/assets/images/foundation-building-software/design-token-anatomy.avif"
+            alt="Design token anatomy overview"
+            width="1398"
+            height="1236"
+          ></app-image>
+        </app-article-paragraph>
+      </li>
+
+      <li>
+        <app-article-paragraph variant="block" props='{ "title": "Applying Design Tokens" }'>
+          <p>
+            Here is an example of how semantic tokens are used throughout a
+            Strava activities page.
+          </p>
+          <app-image
+            variant="full"
+            src="/assets/images/foundation-building-software/applying-token.avif"
+            alt="Applying token overview"
+            width="1398"
+            height="1236"
+          ></app-image>
+        </app-article-paragraph>
+      </li>
+</ul>
+  </section>
+`;t("section-design-token-architecture",{styles:I,template:F});var G=`
+  :host {
+    display: block;
+  }
+
+  section {
+    width: 80%;
+    margin-inline: auto;
+  }
+
+  ul {
+    margin: 0;
+    padding-left: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+`,R=`
+  <section>
+    <section-title variant="text" props='{"name": "References"}'></section-title>
+
+    <ul>
+      <li>
+        <app-link href="https://atomicdesign.bradfrost.com/chapter-2/" target="_blank" variant="underline">
+          Atomic Design Principle
+        </app-link>
+      </li>
+      <li>
+        <app-link href="https://playbook.ebay.com/foundations" target="_blank" variant="underline">
+          ebay Playbook
+        </app-link>
+      </li>
+      <li>
+        <app-link href="https://www.designsystem.tech.gov.sg/foundations/" target="_blank" variant="underline">
+          SGDS Design
+        </app-link>
+      </li>
+      <li>
+        <app-link href="https://www.strava.com/" target="_blank" variant="underline">
+          Strava
+        </app-link>
+      </li>
+    </ul>
+  </section>
+`;t("section-foundation-building-interfaces-at-scale-references",{styles:G,template:R});

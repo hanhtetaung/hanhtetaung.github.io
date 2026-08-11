@@ -1,4 +1,4 @@
-function w(s,a){if(s===void 0){if(a===Array)return[];if(a===Object)return{};if(a===Boolean)return!1;if(a===Number)return 0;return}if(a===Boolean)return Boolean(s);if(a===Number)return Number(s);return s}function e(s,{props:a={},attrs:r=[],styles:y="",template:n}){let k=["props",...r];class c extends HTMLElement{static observedAttributes=k;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let i={},t=this.getAttribute("props");if(t)try{i=JSON.parse(t)}catch{i={}}let d={};for(let o of Object.keys(a))d[o]=w(i[o],a[o]);return d}_applyForwardedAttrs(){if(r.length===0)return;let i=this.shadowRoot.querySelector("[data-forward]");if(!i)return;for(let t of r)if(this.hasAttribute(t))i.setAttribute(t,this.getAttribute(t));else i.removeAttribute(t)}_render(){let i=this._getProps(),t=typeof n==="function"?n(i):n;this.shadowRoot.innerHTML=`<style>${y}</style>${t}`,this._applyForwardedAttrs()}}customElements.define(s,c)}var _=`
+function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t===Boolean)return!1;if(t===Number)return 0;return}if(t===Boolean)return Boolean(i);if(t===Number)return Number(i);return i}function e(i,{props:t={},attrs:r=[],styles:d="",template:l}){let m=["props",...r];class c extends HTMLElement{static observedAttributes=m;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let o={},n=this.getAttribute("props");if(n)try{o=JSON.parse(n)}catch{o={}}let p={};for(let s of Object.keys(t))p[s]=h(o[s],t[s]);return p}_applyForwardedAttrs(){if(r.length===0)return;let o=this.shadowRoot.querySelector("[data-forward]");if(!o)return;for(let n of r)if(this.hasAttribute(n))o.setAttribute(n,this.getAttribute(n));else o.removeAttribute(n)}_render(){let o=this._getProps(),n=typeof l==="function"?l(o):l;this.shadowRoot.innerHTML=`<style>${d}</style>${n}`,this._applyForwardedAttrs()}}customElements.define(i,c)}var f=`
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -50,9 +50,9 @@ function w(s,a){if(s===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     --local-border: none;
     --local-direction: column;
   }
-`,x=["href","target","rel","download"],H=`
+`,g=["href","target","rel","download"],u=`
   <a data-forward><slot></slot></a>
-`;e("app-link",{attrs:x,styles:_,template:H});var E=`
+`;e("app-link",{attrs:g,styles:f,template:u});var v=`
   :host {
     display: block;
   }
@@ -61,7 +61,7 @@ function w(s,a){if(s===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     max-height: 7rem;
     width: auto;
   }
-`,T=["width","height","src","alt"],M=()=>"<img data-forward />";e("app-logo",{attrs:T,styles:E,template:M});var l="769px",W="992px";var L=`
+`,y=["width","height","src","alt"],b=()=>"<img data-forward />";e("app-logo",{attrs:y,styles:v,template:b});var a="769px",ee="992px";var w=`
   :host {
     display: block;
   }
@@ -95,12 +95,12 @@ function w(s,a){if(s===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     box-shadow: none;
   }
 
-  @media (max-width: ${l}) {
+  @media (max-width: ${a}) {
     .header__navigation {
       gap: 4rem;
     }
   }
-`,S=`
+`,k=`
   <header>
       <app-link variant="plain" href="/">
         <app-logo
@@ -129,7 +129,7 @@ function w(s,a){if(s===void 0){if(a===Array)return[];if(a===Object)return{};if(a
         </app-link>
       </div>
   </header>
-`;e("section-header",{template:S,styles:L});var C=`
+`;e("section-header",{template:k,styles:w});var x=`
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -138,7 +138,7 @@ function w(s,a){if(s===void 0){if(a===Array)return[];if(a===Object)return{};if(a
    display: flex;
    gap: 5rem;
 
-   @media (max-width: ${l}) {
+   @media (max-width: ${a}) {
         flex-direction: column;
         gap: 3rem;
         margin-block: 2rem;
@@ -168,7 +168,7 @@ function w(s,a){if(s===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     gap: 2rem;
     margin-top: 1rem;
   }
-`,A=()=>`
+`,S=()=>`
     <nav>
         <span>Sitemap</span>
 
@@ -235,7 +235,7 @@ function w(s,a){if(s===void 0){if(a===Array)return[];if(a===Object)return{};if(a
             </li>
         </ul>
     </nav>
-`;e("footer-nav",{styles:C,template:A});var R=`
+`;e("footer-nav",{styles:x,template:S});var A=`
   :host {
     --local-bg-color: var(--color-bg-secondary);
 
@@ -265,7 +265,7 @@ function w(s,a){if(s===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     align-items: center;
   }
 
-  @media (max-width: ${l}) {
+  @media (max-width: ${a}) {
     article {
       display: block;
     }
@@ -275,7 +275,7 @@ function w(s,a){if(s===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     display: flex;
     gap: 3rem;
   }
-`,B=`
+`,H=`
   <footer>
       <article>
         <div>
@@ -300,357 +300,554 @@ function w(s,a){if(s===void 0){if(a===Array)return[];if(a===Object)return{};if(a
         <app-link href="/credits" variant="underline">Credits</app-link>
       </p>
   </footer>
-`;e("section-footer",{styles:R,template:B});class p extends HTMLElement{connectedCallback(){this.innerHTML=`<section>
-        <div class="container">
-          <article class="article article--hero">
-            <div class="article__media">
-              <img
-                src="/assets/images/case-study/mmo/thumbnail.avif"
-                alt="MMO thumbnail"
-                class="image"
-                width="1692"
-                height="886"
-              />
-            </div>
+`;e("section-footer",{styles:A,template:H});var z=`
+  :host {
+    --local-width: 5rem;
+    --local-heigth: auto;
 
-            <div class="article__content">
-              <div class="article__header">
-                <span class="small--emphasis">Case Study</span>
-                <h1>MMO</h1>
-              </div>
+    display: inline-block;
+    width: fit-content;
+  }
 
-              <div class="article__body">
-                <p>
-                  An internal portal that uses to run daily operations in
-                  hospital.
-                </p>
+  img {
+    max-width: var(--local-width);
+    height: var(--local-heigth);
+    width: 100%;
+  }
 
-                <div>
-                  <span class="small--emphasis">Role:</span>
-                  <p>UX Designer</p>
-                </div>
+  :host([variant="normal"]) {
+    --local-width: 12rem;
+    --local-heigth: auto;
+  }
 
-                <div>
-                  <span class="small--emphasis">Scope: </span>
-                  <ul class="article__list">
-                    <li>
-                      <p>Gather requirements</p>
-                    </li>
-                    <li>
-                      <p>Simplify complex workflows</p>
-                    </li>
-                    <li>
-                      <p>Build Prototype</p>
-                    </li>
-                    <li>
-                      <p>Design System</p>
-                    </li>
-                    <li>
-                      <p>Developer Handoff</p>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </article>
+  :host([variant="medium"]) {
+    --local-width: 40rem;
+  }
+
+  :host([variant="large"]) {
+    --local-width: 50rem;
+  }
+
+   :host([variant="full"]) {
+    --local-width: 100%;
+  }
+`,O=["width","height","src","alt"],P=()=>"<img data-forward />";e("app-image",{attrs:O,styles:z,template:P});var E=`
+  :host {
+    display: block;
+  }
+
+  section {
+    width: 80%;
+    margin-inline: auto;
+
+    display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        gap: 3rem;
+    
+        @media (max-width: ${a}) {
+          flex-direction: column;
+        }
+  }
+
+
+    span {
+    color: var(--color-secondary);
+    font-size: var(--size-small);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+  }
+
+  h1 {
+    margin: 0;
+    font-size: var(--size-display);
+    font-weight: var(--font-regular);
+    font-family: var(--font-heading);
+  }
+
+  p {
+    margin: 0;
+    margin-bottom: 2rem;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    padding-inline: 2rem;
+  }
+`,_=`
+  <section>
+    <app-image
+    variant="large"
+    src="/assets/images/case-study/mmo/thumbnail.avif"
+    alt="MMO thumbnail"
+    width="1692"
+    height="886"
+    ></app-image>
+    
+    <article>
+      <span>Case Study</span>
+      <h1>MMO</h1>
+
+      <p>
+        An internal portal that uses to run daily operations in
+        hospital.
+      </p>
+
+        <span>Role:</span>
+        <p>UX Designer</p>
+
+        <span>Scope: </span>
+        <ul>
+          <li>Gather requirements</li>
+          <li>Simplify complex workflows</li>
+          <li>Build Prototype</li>
+          <li>Design System</li>
+          <li>Developer Handoff</li>
+        </ul>
+      </article>
+  </section>
+`;e("section-mmo-intro",{styles:E,template:_});var B=`
+  :host {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    margin-bottom: 3rem;
+  }
+
+  h2 {
+    margin: 0;
+    font-size: var(--size-title);
+    font-family: var(--font-heading);
+    font-weight: var(--font-regular)
+  }
+
+  :host([variant="vertical"]) {
+    flex-direction: column-reverse;
+    gap: 0;
+
+    img {
+      height: 5rem;
+      width: auto;
+    }
+  }
+
+  :host([variant="text"]) {
+    img {
+      display: none;
+    }
+  }
+`,$={name:String,img:String,alt:String},C=({name:i,img:t="",alt:r=""})=>`
+    <h2>${i}</h2>
+    <img
+        src=${t}
+        alt=${r}
+        height="36"
+        width="76"
+    />
+`;e("section-title",{props:$,styles:B,template:C});var N=`
+  :host {
+    display: block;
+  }
+
+  section {
+    width: 80%;
+    margin-inline: auto;
+  }
+`,R=`
+  <section>
+    <section-title
+        variant="text"
+        props='{"name": "About the Business"}'
+      ></section-title>
+
+      <article>
+          <p>
+            MMO hospital is a private hospital. With over 50 staff including
+            doctors, nurse, pharmacist, it provides outpatient and inpatient
+            care, emergency services, pharmacy services, and medicine
+            inventory management.
+          </p>
+      </article>
+  </section>
+`;e("section-mmo-about",{styles:N,template:R});var W=`
+  :host {
+    display: block;
+  }
+
+  section {
+    width: 80%;
+    margin-inline: auto;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    padding-inline: 2rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  span {
+    color: var(--color-secondary);
+    font-size: var(--size-small);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+  }
+`,I=`
+  <section>
+
+  <section-title
+        variant="text"
+        props='{"name": "Voices from the field"}'
+      ></section-title>
+
+        <ul>
+          <li>
+            “It takes days to prepare monthly sales and inventory
+            reports.” -
+            <span> Business owner </span>
+          </li>
+          <li>
+            “Patient registration takes too many steps.” -
+            <span> Front desk staff </span>
+          </li>
+          <li>
+            "I need an activity history for every transaction." -
+            <span> Business owner </span>
+          </li>
+          <li>
+            “I hate searching for medicines every time.” -
+            <span> Pharmacist </span>
+          </li>
+          <li>
+            “It's difficult to trace who adjusted stock.” -
+            <span> Warehouse staff </span>
+          </li>
+          <li>
+            “I want different permissions for different roles.” -
+            <span> Business owner </span>
+          </li>
+        </ul>
+  </section>
+`;e("section-mmo-voices-from-field",{styles:W,template:I});var M=`
+  :host {
+    display: block;
+  }
+
+  section {
+    width: 80%;
+    margin-inline: auto;
+  }
+
+  h3, p {
+    margin: 0;
+  }
+
+  h3 {
+    margin-bottom: 1rem;
+  }
+
+  span {
+    color: var(--color-secondary);
+    font-size: var(--size-small);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+  }
+
+   ul {
+    margin: 0;
+    padding: 0;
+    padding-inline: 2rem;
+     display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  article {
+    margin-bottom: 5rem;
+  }
+`,T=`
+  <section>
+    <section-title
+        variant="text"
+        props='{"name": "Designing Workflow"}'
+      ></section-title>
+
+
+
+      <article>
+          <h3>Select similar key insights</h3>
+          <ul>
+            <li>
+              “We sell medicines and medical supplies to patients every
+              day.” -
+              <span> Business owner </span>
+            </li>
+            <li>
+              "Staff need to check stock before completing a sale." -
+              <span> Pharmacist </span>
+            </li>
+            <li>
+              "Patients expect a fast checkout with minimal waiting." -
+              <span> Front desk Staff </span>
+            </li>
+            <li>
+              "Every transaction must be recorded for billing and
+              auditing." -
+              <span> Finance manager </span>
+            </li>
+            <li>
+              "We need to track who sold each item and when." -
+              <span> Business owner </span>
+            </li>
+          </ul>
+      </article>
+
+      <article>
+          <h3>Sell Medical items</h3>
+
+          <p>
+            Start → Scan item barcode → Review total → Receive payment →
+            Return Changes → Complete
+          </p>
+      </article>
+
+      <article>
+        <div>
+          <h3>Edge case</h3>
         </div>
-      </section>`}}customElements.define("section-mmo-intro",p);class m extends HTMLElement{connectedCallback(){this.innerHTML=`<section>
-        <div class="container">
-          <article class="article">
-            <div class="article__header">
-              <h2>About the Business</h2>
-            </div>
 
-            <div class="article__body">
-              <p>
-                MMO hospital is a private hospital. With over 50 staff including
-                doctors, nurse, pharmacist, it provides outpatient and inpatient
-                care, emergency services, pharmacy services, and medicine
-                inventory management.
-              </p>
-            </div>
-          </article>
-        </div>
-      </section>`}}customElements.define("section-mmo-about",m);class h extends HTMLElement{connectedCallback(){this.innerHTML=` <section class="section">
-        <div class="container">
-          <article class="article">
-            <div class="article__header">
-              <h2>Voices from the field</h2>
-            </div>
+        <ul>
+          <li>What if the cashier doesn’t have inficient cash?</li>
+          <li>What if the printer is not working?</li>
+          <li>What if the barcode scanner is not working?</li>
+        </ul>
+      </article>
+  </section>
+`;e("section-mmo-designing-workflow",{styles:M,template:T});var L=`
+  :host {
+    display: grid;
+    grid-template-columns: 1fr 2.5fr;
 
-            <ul class="article__list">
-              <li>
-                <p>
-                  “It takes days to prepare monthly sales and inventory
-                  reports.” -
-                  <span class="small--emphasis"> Business owner </span>
-                </p>
-              </li>
-              <li>
-                <p>
-                  “Patient registration takes too many steps.” -
-                  <span class="small--emphasis"> Front desk staff </span>
-                </p>
-              </li>
-              <li>
-                <p>
-                  "I need an activity history for every transaction." -
-                  <span class="small--emphasis"> Business owner </span>
-                </p>
-              </li>
-              <li>
-                <p>
-                  “I hate searching for medicines every time.” -
-                  <span class="small--emphasis"> Pharmacist </span>
-                </p>
-              </li>
-              <li>
-                <p>
-                  “It's difficult to trace who adjusted stock.” -
-                  <span class="small--emphasis"> Warehouse staff </span>
-                </p>
-              </li>
-              <li>
-                <p>
-                  “I want different permissions for different roles.” -
-                  <span class="small--emphasis"> Business owner </span>
-                </p>
-              </li>
-            </ul>
-          </article>
-        </div>
-      </section>`}}customElements.define("section-mmo-voices-from-field",h);class v extends HTMLElement{connectedCallback(){this.innerHTML=` <section class="section">
-        <div class="container">
-          <h2>Designing workflow</h2>
 
-          <article class="article">
-            <div class="article__header">
-              <h3>Select similar key insights</h3>
-            </div>
+    @media (max-width: ${a}) {
+        display: block;
+    }
+  }
 
-            <div class="article__body">
-              <ul class="article__list">
-                <li>
-                  <p>
-                    “We sell medicines and medical supplies to patients every
-                    day.” -
-                    <span class="small--emphasis"> Business owner </span>
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    "Staff need to check stock before completing a sale." -
-                    <span class="small--emphasis"> Pharmacist </span>
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    "Patients expect a fast checkout with minimal waiting." -
-                    <span class="small--emphasis"> Front desk Staff </span>
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    "Every transaction must be recorded for billing and
-                    auditing." -
-                    <span class="small--emphasis"> Finance manager </span>
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    "We need to track who sold each item and when." -
-                    <span class="small--emphasis"> Business owner </span>
-                  </p>
-                </li>
-              </ul>
-            </div>
-          </article>
+  h3 {
+    margin: 0;
+    margin-bottom: 1rem;
+    font-size: var(--size-heading);
+    width: fit-content;
+    height: fit-content;
+  }
 
-          <article class="article">
-            <div class="article__header">
-              <h3>Sell Medical items</h3>
-            </div>
+  :host([variant="block"]) {
+    display: block;
+  }
+`,j={title:String},D=({title:i})=>`
+        <h3>${i}</h3>
 
-            <div class="article__body">
-              <p>
-                Start → Scan item barcode → Review total → Receive payment →
-                Return Changes → Complete
-              </p>
-            </div>
-          </article>
+        <article>
+            <slot></slot>
+        </article>
+`;e("app-article-paragraph",{props:j,styles:L,template:D});var F=`
+  :host {
+    display: block;
+  }
 
-          <article class="article">
-            <div class="article__header">
-              <h3>Edge case</h3>
-            </div>
+  section {
+    width: 80%;
+    margin-inline: auto;
+  }
 
-            <ul class="article__list">
-              <li>
-                <p>What if the cashier doesn’t have inficient cash?</p>
-              </li>
-              <li>
-                <p>What if the printer is not working?</p>
-              </li>
-              <li>
-                <p>What if the barcode scanner is not working?</p>
-              </li>
-            </ul>
-          </article>
-        </div>
-      </section>`}}customElements.define("section-mmo-designing-workflow",v);class f extends HTMLElement{connectedCallback(){this.innerHTML=`<section>
-        <div class="container">
-          <div class="section-title">
-            <h2>Building Interfaces for selling medical items workflow</h2>
-          </div>
+  p {
+    margin: 0;
+    margin-bottom: 1rem;
+  }
 
-          <article class="article">
-            <div class="article__body">
-              <p>
-                To complete the pirmary workflow, four interfaces are needed at
-                first.
-              </p>
-            </div>
-          </article>
+  ul {
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+    border-top: 1px dashed var(--color-text);
+    padding-top: 5rem;
+  }
+`,G=`
+  <section>
+    <section-title
+      variant="text"
+      props='{"name": "Building Interfaces for selling medical items workflow"}'
+    ></section-title>
 
-          <div class="stack">
-            <article class="article article--row">
-              <div class="article__header">
-                <h3>1st interface</h3>
-              </div>
+    <p>
+      To complete the primary workflow, four interfaces are needed at first.
+    </p>
 
-              <div class="article__body">
-                <p>
-                  Start sale, Review current staff. Review printer status,
-                  barcode status. Clicking start sale create new unique id and
-                  redirect to next screen with this id.
-                </p>
+    <ul>
+      <li>
+        <app-article-paragraph props='{ "title": "1st interface" }'>
+          <p>
+            Start sale, review current staff, review printer status, and
+            barcode status. Clicking start sale creates a new unique ID and
+            redirects to the next screen with this ID.
+          </p>
 
-                <img
-                  src="/assets/images/case-study/mmo/1st-stage.avif"
-                  alt="Inspiration Collection"
-                  width="1398"
-                  height="1236"
-                />
-              </div>
-            </article>
+          <app-image
+            variant="medium"
+            src="/assets/images/case-study/mmo/1st-stage.avif"
+            alt="First interface preview"
+            width="1398"
+            height="1236"
+          ></app-image>
+        </app-article-paragraph>
+      </li>
 
-            <article class="article article--row">
-              <div class="article__header">
-                <h3>2nd interface</h3>
-              </div>
+      <li>
+        <app-article-paragraph props='{ "title": "2nd interface" }'>
+          <p>
+            Scan a barcode item, enter a manual barcode item, review total,
+            review items scanned, enter cash received, and confirm payment.
+            Confirming payment leads to the 3rd interface.
+          </p>
 
-              <div class="article__body">
-                <p>
-                  Scan barcode item, enter manual barcode item, review total,
-                  items scanned, review total, enter cash received, confirm
-                  payment. Confirm payment go to 3rd interface.
-                </p>
+          <app-image
+            variant="medium"
+            src="/assets/images/case-study/mmo/2nd-stage.avif"
+            alt="Second interface preview"
+            width="1398"
+            height="1366"
+          ></app-image>
+        </app-article-paragraph>
+      </li>
 
-                <img
-                  src="/assets/images/case-study/mmo/2nd-stage.avif"
-                  alt="Wireframe Screenshot"
-                  width="1398"
-                  height="1366"
-                />
-              </div>
-            </article>
+      <li>
+        <app-article-paragraph props='{ "title": "3rd interface" }'>
+          <p>
+            Review changes, review the receipt printed, and complete the sale
+            by printing the receipt. It then moves to the final step.
+          </p>
 
-            <article class="article article--row">
-              <div class="article__header">
-                <h3>3rd interface</h3>
-              </div>
+          <app-image
+            variant="medium"
+            src="/assets/images/case-study/mmo/3rd-stage.avif"
+            alt="Third interface preview"
+            width="1474"
+            height="864"
+          ></app-image>
+        </app-article-paragraph>
+      </li>
 
-              <div class="article__body">
-                <p>
-                  Review changes, review the receipt printed, Complete sale →
-                  print receipt. it go to final one.
-                </p>
+      <li>
+        <app-article-paragraph props='{ "title": "Final one" }'>
+          <p>Show the completed sale and provide options to go back home or start the next sale.</p>
 
-                <img
-                  src="/assets/images/case-study/mmo/3rd-stage.avif"
-                  alt="Design Foundation Screenshot"
-                  width="1474"
-                  height="864"
-                />
-              </div>
-            </article>
+          <app-image
+            variant="medium"
+            src="/assets/images/case-study/mmo/final-stage.avif"
+            alt="Final interface preview"
+            width="1474"
+            height="864"
+          ></app-image>
+        </app-article-paragraph>
+      </li>
+    </ul>
+  </section>
+`;e("section-mmo-building-interfaces",{styles:F,template:G});var q=`
+  :host {
+    display: block;
+  }
 
-            <article class="article article--row">
-              <div class="article__header">
-                <h3>final one</h3>
-              </div>
+  section {
+    width: 80%;
+    margin-inline: auto;
+  }
 
-              <div class="article__body">
-                <p>Show complete sale, Go back to home or Next Sale.</p>
-                <img
-                  src="/assets/images/case-study/mmo/final-stage.avif"
-                  alt="Design Foundation Screenshot"
-                  width="1474"
-                  height="864"
-                />
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>`}}customElements.define("section-mmo-building-interfaces",f);class g extends HTMLElement{connectedCallback(){this.innerHTML=`<section>
-        <div class="container">
-          <article class="article">
-            <div class="article__header">
-              <h2>100+ workflows in the system</h2>
-            </div>
+  ul {
+    margin: 0;
+    padding: 0;
+    padding-inline: 2rem;
 
-            <ul class="article__list">
-              <li>
-                <p>Register new employee</p>
-              </li>
-              <li>
-                <p>Generate Inventory Report</p>
-              </li>
-              <li>
-                <p>Request items from warehouse</p>
-              </li>
-            </ul>
-          </article>
-        </div>
-      </section>`}}customElements.define("section-mmo-multiple-workflows",g);class u extends HTMLElement{connectedCallback(){this.innerHTML=`<section>
-        <div class="container">
-          <article class="article">
-            <div class="article__header">
-              <h2>One Design System, 100+ Workflows</h2>
-            </div>
+    display: flex;
+    flex-direction: column;
+  }
+`,V=`
+  <section>
 
-            <div class="article__body">
-              <p>
-                A design system keeps interfaces consistent, reusable, and
-                easier to scale as the product grows to 100+ workflows. For
-                example, the same button, input, table, and form patterns are
-                reused across patient registration, inventory, and reporting
-                instead of being redesigned for each workflow.
-              </p>
+  <section-title
+        variant="text"
+        props='{"name": "100+ workflows in the system"}'
+      ></section-title>
 
-              <p>
-                The foundations behind my design approach for scalable
-                interfaces.
-              </p>
+        <ul>
+          <li>Register new employee</li>
+          <li>Generate Inventory Report</li>
+          <li>Request items from warehouse</li>
+        </ul>
+  </section>
+`;e("section-mmo-multiple-workflows",{styles:q,template:V});var K=`
+  :host {
+    display: block;
+  }
 
-              <a
-                href="/foundation-building-interfaces-at-scale"
-                class="button--link"
-                >Read the article</a
-              >
-            </div>
-          </article>
-        </div>
-      </section>`}}customElements.define("section-mmo-one-design-system",u);class b extends HTMLElement{connectedCallback(){this.innerHTML=` <section>
-        <div class="container">
-          <article class="article">
-            <div class="article__header">
-              <h2>Keep Listening the voices</h2>
-            </div>
+  section {
+    width: 80%;
+    margin-inline: auto;
+  }
+`,J=`
+  <section>
+    <section-title
+        variant="text"
+        props='{"name": "One Design System, 100+ Workflows"}'
+      ></section-title>
 
-            <div class="article__body">
-              <p>The system continues to grow as users' needs change.</p>
-            </div>
-          </article>
-        </div>
-      </section>`}}customElements.define("section-mmo-conclusion",b);
+      <article>
+          <p>
+            A design system keeps interfaces consistent, reusable, and
+            easier to scale as the product grows to 100+ workflows. For
+            example, the same button, input, table, and form patterns are
+            reused across patient registration, inventory, and reporting
+            instead of being redesigned for each workflow.
+          </p>
+
+          <p>
+            The foundations behind my design approach for scalable
+            interfaces.
+          </p>
+
+          <app-link variant="underline" href="/foundation-building-interfaces-at-scale">Read the article</app-link>
+      </article>
+  </section>
+`;e("section-mmo-one-design-system",{styles:K,template:J});var U=`
+  :host {
+    display: block;
+  }
+
+  section {
+    width: 80%;
+    margin-inline: auto;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    padding-inline: 2rem;
+    display: flex;
+    flex-direction: column;
+  }
+`,X=`
+  <section>
+    <section-title
+      variant="text"
+      props='{"name": "Keep Listening to the Voices"}'
+    ></section-title>
+
+    <p>The system continues to grow as users' needs change.</p>
+  </section>
+`;e("section-mmo-conclusion",{styles:U,template:X});

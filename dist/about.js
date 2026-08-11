@@ -305,7 +305,8 @@ function m(e,o){if(e===void 0){if(o===Array)return[];if(o===Object)return{};if(o
     --local-width: 5rem;
     --local-heigth: auto;
 
-    display: block;
+    display: inline-block;
+    width: fit-content;
   }
 
   img {
@@ -319,8 +320,16 @@ function m(e,o){if(e===void 0){if(o===Array)return[];if(o===Object)return{};if(o
     --local-heigth: auto;
   }
 
+  :host([variant="medium"]) {
+    --local-width: 40rem;
+  }
+
   :host([variant="large"]) {
     --local-width: 50rem;
+  }
+
+   :host([variant="full"]) {
+    --local-width: 100%;
   }
 `,z=["width","height","src","alt"],H=()=>"<img data-forward />";t("app-image",{attrs:z,styles:A,template:H});var O=`
   section {
@@ -401,7 +410,7 @@ function m(e,o){if(e===void 0){if(o===Array)return[];if(o===Object)return{};if(o
       display: none;
     }
   }
-`,P={name:String,img:String,alt:String},C=({name:e,img:o,alt:n})=>`
+`,P={name:String,img:String,alt:String},C=({name:e,img:o="",alt:n=""})=>`
     <h2>${e}</h2>
     <img
         src=${o}

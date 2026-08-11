@@ -598,7 +598,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
       display: none;
     }
   }
-`,W={name:String,img:String,alt:String},J=({name:i,img:t,alt:o})=>`
+`,W={name:String,img:String,alt:String},J=({name:i,img:t="",alt:o=""})=>`
     <h2>${i}</h2>
     <img
         src=${t}
@@ -765,7 +765,8 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     --local-width: 5rem;
     --local-heigth: auto;
 
-    display: block;
+    display: inline-block;
+    width: fit-content;
   }
 
   img {
@@ -779,8 +780,16 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     --local-heigth: auto;
   }
 
+  :host([variant="medium"]) {
+    --local-width: 40rem;
+  }
+
   :host([variant="large"]) {
     --local-width: 50rem;
+  }
+
+   :host([variant="full"]) {
+    --local-width: 100%;
   }
 `,Y=["width","height","src","alt"],Z=()=>"<img data-forward />";e("app-image",{attrs:Y,styles:V,template:Z});var q=[{title:"Working Man",description:"I'm consistent on one thing: always giving my best. I take pride in doing things properly and take full ownership of everything I do. When I commit to something, I follow through.",icon:"/assets/icons/working-man.svg",alt:"Working Man Icon"},{title:"Detail-oriented Person",description:"I pay close attention to every detail, because the little things matter. I believe the difference between good work and great work lives in the details.",icon:"/assets/icons/man-in-details.svg",alt:"Detail-oriented Person Icon"},{title:"Positive Thinker",description:"A positive mindset helps me create better work and stronger collaborations. I focus on solutions rather than problems. Good energy builds great work.",icon:"/assets/icons/positive-man.svg",alt:"Positive Thinker Icon"}],ee=`
   :host {

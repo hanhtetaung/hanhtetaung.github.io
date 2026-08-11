@@ -1,4 +1,4 @@
-function y(t,a){if(t===void 0){if(a===Array)return[];if(a===Object)return{};if(a===Boolean)return!1;if(a===Number)return 0;return}if(a===Boolean)return Boolean(t);if(a===Number)return Number(t);return t}function e(t,{props:a={},attrs:l=[],styles:u="",template:r}){let f=["props",...l];class c extends HTMLElement{static observedAttributes=f;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let i={},s=this.getAttribute("props");if(s)try{i=JSON.parse(s)}catch{i={}}let d={};for(let n of Object.keys(a))d[n]=y(i[n],a[n]);return d}_applyForwardedAttrs(){if(l.length===0)return;let i=this.shadowRoot.querySelector("[data-forward]");if(!i)return;for(let s of l)if(this.hasAttribute(s))i.setAttribute(s,this.getAttribute(s));else i.removeAttribute(s)}_render(){let i=this._getProps(),s=typeof r==="function"?r(i):r;this.shadowRoot.innerHTML=`<style>${u}</style>${s}`,this._applyForwardedAttrs()}}customElements.define(t,c)}var b=`
+function h(a,t){if(a===void 0){if(t===Array)return[];if(t===Object)return{};if(t===Boolean)return!1;if(t===Number)return 0;return}if(t===Boolean)return Boolean(a);if(t===Number)return Number(a);return a}function e(a,{props:t={},attrs:n=[],styles:d="",template:l}){let m=["props",...n];class p extends HTMLElement{static observedAttributes=m;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let o={},r=this.getAttribute("props");if(r)try{o=JSON.parse(r)}catch{o={}}let c={};for(let s of Object.keys(t))c[s]=h(o[s],t[s]);return c}_applyForwardedAttrs(){if(n.length===0)return;let o=this.shadowRoot.querySelector("[data-forward]");if(!o)return;for(let r of n)if(this.hasAttribute(r))o.setAttribute(r,this.getAttribute(r));else o.removeAttribute(r)}_render(){let o=this._getProps(),r=typeof l==="function"?l(o):l;this.shadowRoot.innerHTML=`<style>${d}</style>${r}`,this._applyForwardedAttrs()}}customElements.define(a,p)}var g=`
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -50,9 +50,9 @@ function y(t,a){if(t===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     --local-border: none;
     --local-direction: column;
   }
-`,k=["href","target","rel","download"],w=`
+`,f=["href","target","rel","download"],u=`
   <a data-forward><slot></slot></a>
-`;e("app-link",{attrs:k,styles:b,template:w});var _=`
+`;e("app-link",{attrs:f,styles:g,template:u});var v=`
   :host {
     display: block;
   }
@@ -61,7 +61,7 @@ function y(t,a){if(t===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     max-height: 7rem;
     width: auto;
   }
-`,x=["width","height","src","alt"],T=()=>"<img data-forward />";e("app-logo",{attrs:x,styles:_,template:T});var o="769px",j="992px";var H=`
+`,y=["width","height","src","alt"],b=()=>"<img data-forward />";e("app-logo",{attrs:y,styles:v,template:b});var i="769px",J="992px";var w=`
   :host {
     display: block;
   }
@@ -95,12 +95,12 @@ function y(t,a){if(t===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     box-shadow: none;
   }
 
-  @media (max-width: ${o}) {
+  @media (max-width: ${i}) {
     .header__navigation {
       gap: 4rem;
     }
   }
-`,S=`
+`,k=`
   <header>
       <app-link variant="plain" href="/">
         <app-logo
@@ -129,7 +129,7 @@ function y(t,a){if(t===void 0){if(a===Array)return[];if(a===Object)return{};if(a
         </app-link>
       </div>
   </header>
-`;e("section-header",{template:S,styles:H});var L=`
+`;e("section-header",{template:k,styles:w});var x=`
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -138,7 +138,7 @@ function y(t,a){if(t===void 0){if(a===Array)return[];if(a===Object)return{};if(a
    display: flex;
    gap: 5rem;
 
-   @media (max-width: ${o}) {
+   @media (max-width: ${i}) {
         flex-direction: column;
         gap: 3rem;
         margin-block: 2rem;
@@ -168,7 +168,7 @@ function y(t,a){if(t===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     gap: 2rem;
     margin-top: 1rem;
   }
-`,E=()=>`
+`,S=()=>`
     <nav>
         <span>Sitemap</span>
 
@@ -235,7 +235,7 @@ function y(t,a){if(t===void 0){if(a===Array)return[];if(a===Object)return{};if(a
             </li>
         </ul>
     </nav>
-`;e("footer-nav",{styles:L,template:E});var C=`
+`;e("footer-nav",{styles:x,template:S});var _=`
   :host {
     --local-bg-color: var(--color-bg-secondary);
 
@@ -265,7 +265,7 @@ function y(t,a){if(t===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     align-items: center;
   }
 
-  @media (max-width: ${o}) {
+  @media (max-width: ${i}) {
     article {
       display: block;
     }
@@ -275,7 +275,7 @@ function y(t,a){if(t===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     display: flex;
     gap: 3rem;
   }
-`,M=`
+`,A=`
   <footer>
       <article>
         <div>
@@ -300,269 +300,381 @@ function y(t,a){if(t===void 0){if(a===Array)return[];if(a===Object)return{};if(a
         <app-link href="/credits" variant="underline">Credits</app-link>
       </p>
   </footer>
-`;e("section-footer",{styles:C,template:M});class p extends HTMLElement{connectedCallback(){this.innerHTML=`  <section>
-        <div class="container">
-          <article class="article article--hero">
-            <div class="article__media">
-              <img
-                src="../assets/images/case-study/skssolar/mockup.avif"
-                alt="Final Product Screenshot"
-                width="1692"
-                height="886"
-              />
-            </div>
-            <div class="article__content">
-              <div class="article__header">
-                <span class="small--emphasis">Case Study</span>
-                <h1>SKS Solar</h1>
-              </div>
+`;e("section-footer",{styles:_,template:A});var H=`
+  :host {
+    --local-width: 5rem;
+    --local-heigth: auto;
 
-              <div class="article__body">
-                <p>
-                  SKS Solar is a solar energy company providing solar products,
-                  services, and solutions for homes and businesses across
-                  Myanmar.
-                </p>
+    display: inline-block;
+    width: fit-content;
+  }
 
-                <div>
-                  <span class="small--emphasis">Role:</span>
-                  <p>Web Designer & Developer</p>
-                </div>
+  img {
+    max-width: var(--local-width);
+    height: var(--local-heigth);
+    width: 100%;
+  }
 
-                <div>
-                  <span class="small--emphasis">Scope: </span>
-                  <ul class="article__list">
-                    <li>
-                      <p>Revamp Website</p>
-                    </li>
-                  </ul>
-                </div>
+  :host([variant="normal"]) {
+    --local-width: 12rem;
+    --local-heigth: auto;
+  }
 
-                <a
-                  class="button--outline"
-                  href="https://skssolarmymyanmar.com/"
-                  target="_blank"
-                  >View Live Website</a
-                >
-              </div>
-            </div>
-          </article>
-        </div>
-      </section>`}}customElements.define("section-sks-solar-intro",p);class h extends HTMLElement{connectedCallback(){this.innerHTML=`<section class="case-study__background">
-        <div class="container">
-          <div class="section-title">
-            <h2>Background</h2>
-          </div>
+  :host([variant="medium"]) {
+    --local-width: 40rem;
+  }
 
+  :host([variant="large"]) {
+    --local-width: 50rem;
+  }
+
+   :host([variant="full"]) {
+    --local-width: 100%;
+  }
+`,P=["width","height","src","alt"],T=()=>"<img data-forward />";e("app-image",{attrs:P,styles:H,template:T});var z=`
+  :host {
+    display: block;
+  }
+
+  section {
+    width: 80%;
+    margin-inline: auto;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    gap: 3rem;
+  }
+
+  h1 {
+    margin: 0;
+    font-size: var(--size-display);
+    font-weight: var(--font-regular);
+    font-family: var(--font-heading);
+  }
+
+  p {
+    margin: 0;
+    margin-bottom: 2rem;
+  }
+
+  article {
+    max-width: 40ch;
+  }
+
+  span {
+    color: var(--color-secondary);
+    font-size: var(--size-small);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+  }
+`,E=`
+  <section>
+    <app-image
+      variant="medium"
+      src="/assets/images/case-study/skssolar/mockup.avif"
+      alt="Final Product Screenshot"
+      width="1692"
+      height="886"
+    ></app-image>
+
+    <article>
+      <span>Case Study</span>
+      <h1>SKS Solar</h1>
+
+      <p>
+        SKS Solar is a solar energy company providing solar products,
+        services, and solutions for homes and businesses across Myanmar.
+      </p>
+
+      <span>Role: </span>
+      <p>Web Designer & Developer</p>
+
+      <span>Scope:</span>
+      <p>Revamp Website</p>
+
+      <app-link variant="secondary" href="https://skssolarmymyanmar.com/" target="_blank">
+        View Live Website
+      </app-link>
+    </article>
+  </section>
+`;e("section-sks-solar-intro",{styles:z,template:E});var L=`
+  :host {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    margin-bottom: 3rem;
+  }
+
+  h2 {
+    margin: 0;
+    font-size: var(--size-title);
+    font-family: var(--font-heading);
+    font-weight: var(--font-regular)
+  }
+
+  :host([variant="vertical"]) {
+    flex-direction: column-reverse;
+    gap: 0;
+
+    img {
+      height: 5rem;
+      width: auto;
+    }
+  }
+
+  :host([variant="text"]) {
+    img {
+      display: none;
+    }
+  }
+`,O={name:String,img:String,alt:String},$=({name:a,img:t="",alt:n=""})=>`
+    <h2>${a}</h2>
+    <img
+        src=${t}
+        alt=${n}
+        height="36"
+        width="76"
+    />
+`;e("section-title",{props:O,styles:L,template:$});var N=`
+  :host {
+    display: block;
+  }
+
+  section {
+    width: 80%;
+    margin-inline: auto;
+  }
+`,j=`
+  <section>
+    <section-title variant="text" props='{"name": "Background"}'></section-title>
+
+    <p>
+      This project was created for SKS Solar to redesign and redevelop the
+      company’s outdated website into a more professional and modern
+      experience. The goal was to create a clean, responsive, and
+      trustworthy presentation that showcases the company’s solar
+      products, services, and completed projects with simple navigation,
+      clear structure, and minimal visuals.
+    </p>
+  </section>
+`;e("section-sks-solar-background",{styles:N,template:j});var C=`
+  :host {
+    display: block;
+  }
+
+  section {
+    width: 80%;
+    margin-inline: auto;
+  }
+`,B=`
+  <section>
+    <section-title variant="text" props='{"name": "Challenge"}'></section-title>
+
+    <p>
+      One of the main challenges of the project was creating a visual
+      direction that felt modern, clean, and professional while
+      maintaining clarity and usability. The redesign focused on
+      improving typography, spacing, layout, and overall presentation
+      to deliver a more polished and trustworthy user experience.
+    </p>
+  </section>
+`;e("section-sks-solar-challenge",{styles:C,template:B});var K=`
+  :host {
+    display: grid;
+    grid-template-columns: 1fr 2.5fr;
+
+
+    @media (max-width: ${i}) {
+        display: block;
+    }
+  }
+
+  h3 {
+    margin: 0;
+    margin-bottom: 1rem;
+    font-size: var(--size-heading);
+    width: fit-content;
+    height: fit-content;
+  }
+
+  :host([variant="block"]) {
+    display: block;
+  }
+`,R={title:String},W=({title:a})=>`
+        <h3>${a}</h3>
+
+        <article>
+            <slot></slot>
+        </article>
+`;e("app-article-paragraph",{props:R,styles:K,template:W});var M=`
+  :host {
+    display: block;
+  }
+
+  section {
+    width: 80%;
+    margin-inline: auto;
+  }
+
+  p {
+    margin: 0;
+    margin-bottom: 1rem;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    border-top: 1px dashed var(--color-text);
+    padding-top: 5rem;
+  }
+
+  ol {
+    list-style: disc;
+  }
+`,D=`
+  <section>
+    <section-title variant="text" props='{"name": "Process"}'></section-title>
+
+    <ul>
+      <li>
+        <app-article-paragraph props='{ "title": "Research" }'>
           <p>
-            This project was created for SKS Solar to redesign and redevelop the
-            company’s outdated website into a more professional and modern
-            experience. The goal was to create a clean, responsive, and
-            trustworthy presentation that showcases the company’s solar
-            products, services, and completed projects with simple navigation,
-            clear structure, and minimal visuals.
+            Research ideas and visual references to define the overall
+            direction of the website. This stage focused on exploring modern
+            layouts, typography, spacing, and clean visual aesthetics to
+            establish a clear and professional visual foundation.
           </p>
-        </div>
-      </section>`}}customElements.define("section-sks-solar-background",h);class m extends HTMLElement{connectedCallback(){this.innerHTML=`<section>
-        <div class="container">
-          <div class="section-title">
-            <h2>Challenge</h2>
-          </div>
+          <app-image
+            variant="medium"
+            src="/assets/images/case-study/skssolar/inspiration.avif"
+            alt="Inspiration Collection"
+            width="1398"
+            height="1236"
+          ></app-image>
+        </app-article-paragraph>
+      </li>
 
-          <article class="article">
-            <div class="article__body">
-              <p>
-                One of the main challenges of the project was creating a visual
-                direction that felt modern, clean, and professional while
-                maintaining clarity and usability. The redesign focused on
-                improving typography, spacing, layout, and overall presentation
-                to deliver a more polished and trustworthy user experience.
-              </p>
-            </div>
-          </article>
-        </div>
-      </section>`}}customElements.define("section-sks-solar-challenge",m);class g extends HTMLElement{connectedCallback(){this.innerHTML=`<section class="case-study__process">
-        <div class="container">
-          <div class="section-title">
-            <h2>Process</h2>
-          </div>
-        </div>
+      <li>
+        <app-article-paragraph props='{ "title": "Wireframe" }'>
+          <p>
+            Plan the structure and layout of the website through low-fidelity
+            wireframes. This stage focused on content hierarchy, storytelling
+            flow, and user navigation before moving into visual design.
+          </p>
+          <app-image
+            variant="medium"
+            src="/assets/images/case-study/skssolar/wireframe.avif"
+            alt="Wireframe Screenshot"
+            width="1398"
+            height="1366"
+          ></app-image>
+        </app-article-paragraph>
+      </li>
 
-        <ul class="process-list">
-          <li class="process-item">
-            <span class="heading--emphasis">1</span>
-            <h3>Research</h3>
-          </li>
+      <li>
+        <app-article-paragraph props='{ "title": "Prototype" }'>
+          <p>
+            Build the design system and craft the polished visual interface.
+            This stage focused on transforming the wireframes into final
+            responsive designs with complete visual styling, reusable
+            components, refined layouts, and overall user experience.
+          </p>
+          <app-image
+            variant="medium"
+            src="/assets/images/case-study/skssolar/design-foundation.avif"
+            alt="Design Foundation Screenshot"
+            width="1474"
+            height="864"
+          ></app-image>
+          <app-image
+            variant="medium"
+            src="/assets/images/case-study/skssolar/final-design.avif"
+            alt="Final Design"
+            width="1402"
+            height="1378"
+          ></app-image>
+        </app-article-paragraph>
+      </li>
 
-          <li class="process-item">
-            <span class="heading--emphasis">2</span>
-            <h3>Wireframe</h3>
-          </li>
+      <li>
+        <app-article-paragraph props='{ "title": "Develop & Deliver" }'>
+          <p>
+            Translate the approved design into a responsive website while
+            maintaining visual consistency across all screen sizes. The
+            project was managed with GitHub and deployed automatically through
+            GitHub Pages and GitHub Actions.
+          </p>
 
-          <li class="process-item">
-            <span class="heading--emphasis">3</span>
-            <h3>Prototype</h3>
-          </li>
+          <p><b>Tech Stack</b></p>
+          <ol>
+            <li>HTML</li>
+            <li>CSS</li>
+          </ol>
+        </app-article-paragraph>
+      </li>
+    </ul>
+  </section>
+`;e("section-sks-solar-process",{styles:M,template:D});var F=`
+  :host {
+    display: block;
+  }
 
-          <li class="process-item">
-            <span class="heading--emphasis">4</span>
-            <h3>Develop</h3>
-          </li>
+  section {
+    width: 80%;
+    margin-inline: auto;
+  }
 
-          <li class="process-item process-item--last-child">
-            <span class="heading--emphasis">5</span>
-            <h3>Deliver</h3>
-          </li>
-        </ul>
+  ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    gap: 3rem;
 
-        <div class="container">
-          <div class="stack">
-            <article class="article article--row">
-              <div class="article__header">
-                <h3>Research</h3>
-              </div>
+    @media (max-width: ${i}) {
+      flex-direction: column;
+    }
+  }
+`,G=`
+  <section>
+    <section-title variant="text" props='{"name": "Result"}'></section-title>
 
-              <div class="article__body">
-                <p>
-                  Research ideas and visual references to define the overall
-                  direction of the website. This stage focused on exploring
-                  modern layouts, typography, spacing, and clean visual
-                  aesthetics to establish a clear and professional visual
-                  foundation.
-                </p>
+    <p>
+      The project resulted in a modern, responsive, and professional SKS
+      Solar website with a stronger visual identity and improved user
+      experience. The final website also achieved outstanding Google
+      Lighthouse performance with optimized accessibility, responsiveness,
+      and loading performance.
+    </p>
 
-                <img
-                  src="../assets/images/case-study/skssolar/inspiration.avif"
-                  alt="Inspiration Collection"
-                  width="1398"
-                  height="1236"
-                />
-              </div>
-            </article>
+    <app-link variant="secondary" href="https://skssolarmymyanmar.com/" target="_blank">
+      View Live Website
+    </app-link>
 
-            <article class="article article--row">
-              <div class="article__header">
-                <h3>Wireframe</h3>
-              </div>
+    <ul>
+      <li>
+        <app-image
+          variant="medium"
+          src="/assets/images/case-study/skssolar/lighthouse.avif"
+          alt="Lighthouse Photo"
+          width="960"
+          height="1028"
+        ></app-image>
+      </li>
 
-              <div class="article__body">
-                <p>
-                  Plan the structure and layout of the website through
-                  low-fidelity wireframes. This stage focused on content
-                  hierarchy, storytelling flow, and user navigation before
-                  moving into visual design.
-                </p>
-
-                <img
-                  src="../assets/images/case-study/skssolar/wireframe.avif"
-                  alt="Wireframe Screenshot"
-                  width="1398"
-                  height="1366"
-                />
-              </div>
-            </article>
-
-            <article class="article article--row">
-              <div class="article__header">
-                <h3>Prototype</h3>
-              </div>
-
-              <div class="article__body">
-                <p>
-                  Build the design system and craft the polished visual
-                  interface. This stage focused on transforming the wireframes
-                  into final responsive designs with complete visual styling,
-                  reusable components, refined layouts, and overall user
-                  experience.
-                </p>
-
-                <figure>
-                  <figcaption class="small--emphasis">
-                    Design Foundation
-                  </figcaption>
-                  <img
-                    src="../assets/images/case-study/skssolar/design-foundation.avif"
-                    alt="Design Foundation Screenshot"
-                    width="1474"
-                    height="864"
-                  />
-                </figure>
-
-                <figure>
-                  <figcaption class="small--emphasis">Final Design</figcaption>
-                  <img
-                    src="../assets/images/case-study/skssolar/final-design.avif"
-                    alt="Final Design"
-                    width="1402"
-                    height="1378"
-                  />
-                </figure>
-              </div>
-            </article>
-
-            <article class="article article--row">
-              <div class="article__header">
-                <h3>Develop & Deliver</h3>
-              </div>
-
-              <div class="article__body">
-                <p>
-                  Translate the approved design into a responsive website while
-                  maintaining visual consistency across all screen sizes. The
-                  project was managed with GitHub and deployed automatically
-                  through GitHub Pages and GitHub Actions.
-                </p>
-
-                <div>
-                  <p>Tech Stack</p>
-                  <ul class="article__list">
-                    <li>
-                      <p>HTML</p>
-                    </li>
-                    <li><p>CSS</p></li>
-                  </ul>
-                </div>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>`}}customElements.define("section-sks-solar-process",g);class v extends HTMLElement{connectedCallback(){this.innerHTML=` <section>
-        <div class="container">
-          <div class="section-title">
-            <h2>Result</h2>
-          </div>
-
-          <article class="article">
-            <div class="article__body">
-              <p>
-                The project resulted in a modern, responsive, and professional
-                SKS Solar website with a stronger visual identity and improved
-                user experience. The final website also achieved outstanding
-                Google Lighthouse performance with optimized accessibility,
-                responsiveness, and loading performance.
-              </p>
-              <a
-                href="https://skssolarmyMyanmar.com/"
-                target="_blank"
-                class="button--outline"
-                >View Live Website &#8599;</a
-              >
-
-              <div class="grid-2-col">
-                <img
-                  src="../assets/images/case-study/skssolar/mockup.avif"
-                  alt="Mockup Photo"
-                  width="1692"
-                  height="886"
-                />
-                <img
-                  src="../assets/images/case-study/skssolar/lighthouse.avif"
-                  alt="Lighthouse Photo"
-                  width="960"
-                  height="1028"
-                />
-              </div>
-            </div>
-          </article>
-        </div>
-      </section>`}}customElements.define("section-sks-solar-result",v);
+       <li>
+        <app-image
+          variant="medium"
+          src="/assets/images/case-study/skssolar/mockup.avif"
+          alt="Mockup Photo"
+          width="1692"
+          height="886"
+        ></app-image>
+      </li>
+    </ul>
+  </section>
+`;e("section-sks-solar-result",{styles:F,template:G});
