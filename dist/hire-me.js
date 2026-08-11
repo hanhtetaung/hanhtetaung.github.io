@@ -1,4 +1,4 @@
-function f(i,e){if(i===void 0){if(e===Array)return[];if(e===Object)return{};if(e===Boolean)return!1;if(e===Number)return 0;return}if(e===Boolean)return Boolean(i);if(e===Number)return Number(i);return i}function a(i,{props:e={},attrs:n=[],styles:d="",template:l}){let m=["props",...n];class s extends HTMLElement{static observedAttributes=m;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let o={},t=this.getAttribute("props");if(t)try{o=JSON.parse(t)}catch{o={}}let c={};for(let p of Object.keys(e))c[p]=f(o[p],e[p]);return c}_applyForwardedAttrs(){if(n.length===0)return;let o=this.shadowRoot.querySelector("[data-forward]");if(!o)return;for(let t of n)if(this.hasAttribute(t))o.setAttribute(t,this.getAttribute(t));else o.removeAttribute(t)}_render(){let o=this._getProps(),t=typeof l==="function"?l(o):l;this.shadowRoot.innerHTML=`<style>${d}</style>${t}`,this._applyForwardedAttrs()}}customElements.define(i,s)}var h=`
+function h(i,e){if(i===void 0){if(e===Array)return[];if(e===Object)return{};if(e===Boolean)return!1;if(e===Number)return 0;return}if(e===Boolean)return Boolean(i);if(e===Number)return Number(i);return i}function a(i,{props:e={},attrs:n=[],styles:d="",template:l}){let m=["props",...n];class s extends HTMLElement{static observedAttributes=m;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let o={},t=this.getAttribute("props");if(t)try{o=JSON.parse(t)}catch{o={}}let c={};for(let p of Object.keys(e))c[p]=h(o[p],e[p]);return c}_applyForwardedAttrs(){if(n.length===0)return;let o=this.shadowRoot.querySelector("[data-forward]");if(!o)return;for(let t of n)if(this.hasAttribute(t))o.setAttribute(t,this.getAttribute(t));else o.removeAttribute(t)}_render(){let o=this._getProps(),t=typeof l==="function"?l(o):l;this.shadowRoot.innerHTML=`<style>${d}</style>${t}`,this._applyForwardedAttrs()}}customElements.define(i,s)}var f=`
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -52,7 +52,7 @@ function f(i,e){if(i===void 0){if(e===Array)return[];if(e===Object)return{};if(e
   }
 `,g=["href","target","rel","download"],u=`
   <a data-forward><slot></slot></a>
-`;a("app-link",{attrs:g,styles:h,template:u});var b=`
+`;a("app-link",{attrs:g,styles:f,template:u});var b=`
   :host {
     display: block;
   }
@@ -100,7 +100,7 @@ function f(i,e){if(i===void 0){if(e===Array)return[];if(e===Object)return{};if(e
       gap: 4rem;
     }
   }
-`,x=`
+`,w=`
   <header>
       <app-link variant="plain" href="/">
         <app-logo
@@ -129,7 +129,7 @@ function f(i,e){if(i===void 0){if(e===Array)return[];if(e===Object)return{};if(e
         </app-link>
       </div>
   </header>
-`;a("section-header",{template:x,styles:k});var w=`
+`;a("section-header",{template:w,styles:k});var x=`
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -232,7 +232,7 @@ function f(i,e){if(i===void 0){if(e===Array)return[];if(e===Object)return{};if(e
             </li>
         </ul>
     </nav>
-`;a("footer-nav",{styles:w,template:A});var _=`
+`;a("footer-nav",{styles:x,template:A});var _=`
   :host {
     --local-bg-color: var(--color-bg-secondary);
 
@@ -301,16 +301,17 @@ function f(i,e){if(i===void 0){if(e===Array)return[];if(e===Object)return{};if(e
   :host {
     --local-bg: var(--color-primary);
     --local-color: var(--color-bg-primary);
-    --local-border: 1px solid var(--color-secondary);
+    --local-border: 1px solid var(--color-text);
     --local-padding: 1rem 2rem;
 
     display: block;
     padding: 0;
+    width: fit-content;
     
   }
 
   button {
-    display: inline-flex;
+    display: block;
     gap: 0.5rem;
     font-size: var(--size-body);
     font-family: var(--font-body);
@@ -318,6 +319,7 @@ function f(i,e){if(i===void 0){if(e===Array)return[];if(e===Object)return{};if(e
     background: var(--local-bg);
     color: var(--local-color);
     border: var(--local-border);
+    /* border: none; */
     padding: var(--local-padding);
   }
 `,N=["type"],O=`
