@@ -71,7 +71,7 @@ const template = /* html */ `
 
       <app-link
         variant="secondary"
-        href="https://hanhtetaung.dev/knowledge-tree"
+        href="/knowledge-tree"
         target="_blank"
         >View Live Website</app-link>
     </article>

@@ -393,7 +393,7 @@ function h(o,t){if(o===void 0){if(t===Array)return[];if(t===Object)return{};if(t
 
       <app-link
         variant="secondary"
-        href="https://hanhtetaung.dev/knowledge-tree"
+        href="/knowledge-tree"
         target="_blank"
         >View Live Website</app-link>
     </article>
