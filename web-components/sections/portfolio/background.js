@@ -1,25 +1,30 @@
-export class Section extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = /*html*/ `<section>
-        <div class="container">
-          <div class="section-title">
-            <h2>Background</h2>
-          </div>
+import { define } from "../../define";
 
-          <article class="article">
-            <div class="article__body">
-              <p>
-                This project was created as a personal portfolio website to
-                showcase selected projects and experience in a modern,
-                responsive, and boutique-style presentation. The goal was to
-                create a clean and polished experience with clear structure,
-                minimal visuals, and a strong professional presence.
-              </p>
-            </div>
-          </article>
-        </div>
-      </section>`;
+import "../../components/section-title";
+
+const styles = /* css */ `
+  :host {
+    display: block;
   }
-}
 
-customElements.define("section-portfolio-background", Section);
+  section {
+    width: 80%;
+    margin-inline: auto;
+  }
+`;
+
+const template = /* html */ `
+  <section>
+    <section-title variant="text" props='{"name": "Background"}'></section-title>
+
+    <p>
+      This project was created as a personal portfolio website to showcase
+      selected projects and experience in a modern, responsive, and
+      boutique-style presentation. The goal was to create a clean and
+      polished experience with clear structure, minimal visuals, and a
+      strong professional presence.
+    </p>
+  </section>
+`;
+
+define("section-portfolio-background", { styles, template });

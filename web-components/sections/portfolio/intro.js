@@ -1,58 +1,83 @@
-export class Section extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = /*html*/ `<section>
-        <div class="container">
-          <article class="article article--hero">
-            <div class="article__media">
-              <img
-                src="../assets/images/case-study/portfolio/mockup.avif"
-                alt="Final Product Screenshot"
-                width="1692"
-                height="886"
-              />
-            </div>
-            <div class="article__content">
-              <div class="article__header">
-                <span class="small--emphasis">Case Study</span>
-                <h1>Portfolio</h1>
-              </div>
+import { define } from "../../define";
 
-              <div class="article__body">
-                <p>
-                  A personal portfolio website focused on creating a modern,
-                  responsive, and minimal experience that showcases projects,
-                  skills, and professional identity with clarity and simplicity.
-                </p>
+import "../../components/app-image";
+import "../../components/app-link";
+import { PHONE } from "../../breakpoints";
 
-                <div>
-                  <span class="small--emphasis">Role:</span>
-                  <p>Web Designer & Developer</p>
-                </div>
-
-                <div>
-                  <span class="small--emphasis">Scope: </span>
-                  <ul class="article__list">
-                    <li>
-                      <p>Revamp Website</p>
-                    </li>
-                    <li>
-                      <p>User Reserach</p>
-                    </li>
-                  </ul>
-                </div>
-
-                <a
-                  class="button--outline"
-                  href="https://hanhtetaung.dev/"
-                  target="_blank"
-                  >View Live Website</a
-                >
-              </div>
-            </div>
-          </article>
-        </div>
-      </section>`;
+const styles = /* css */ `
+  :host {
+    display: block;
   }
-}
 
-customElements.define("section-portfolio-intro", Section);
+  section {
+    width: 80%;
+    margin-inline: auto;
+
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    gap: 3rem;
+
+    @media (max-width: ${PHONE}) {
+      flex-direction: column;
+    }
+  }
+
+  h1 {
+    margin: 0;
+    font-size: var(--size-display);
+    font-weight: var(--font-regular);
+    font-family: var(--font-heading);
+  }
+
+  p {
+    margin: 0;
+    margin-bottom: 2rem;
+  }
+
+  article {
+    max-width: 40ch;
+  }
+
+    span {
+    color: var(--color-secondary);
+    font-size: var(--size-small);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+  }
+`;
+
+const template = /* html */ `
+  <section>
+      <app-image
+        variant="medium"
+        src="/assets/images/case-study/portfolio/mockup.avif"
+        alt="Final Product Screenshot"
+        width="1692"
+        height="886"
+      ></app-image>
+
+      <article>
+        <p>Case Study</p>
+        <h1>Portfolio</h1>
+
+        <p>
+          A personal portfolio website focused on creating a modern,
+          responsive, and minimal experience that showcases projects,
+          skills, and professional identity with clarity and simplicity.
+        </p>
+
+        <span>Role: </span>
+        <p>Web Designer & Developer</p>
+
+          <span>Scope:</span>
+          <p>Idea → Website</p>
+
+        <app-link variant="secondary" href="https://hanhtetaung.dev/" target="_blank">
+          View Live Website
+        </app-link>
+      </article>
+  </section>
+`;
+
+define("section-portfolio-intro", { styles, template });

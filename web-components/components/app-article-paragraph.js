@@ -15,6 +15,9 @@ const styles = /* css */ `
   h3 {
     margin: 0;
     margin-bottom: 1rem;
+    font-size: var(--size-heading);
+    width: fit-content;
+    height: fit-content;
   }
 `;
 
