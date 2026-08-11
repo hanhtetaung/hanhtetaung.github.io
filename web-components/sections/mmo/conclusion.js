@@ -1,19 +1,33 @@
-export class Section extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = /*html*/ ` <section>
-        <div class="container">
-          <article class="article">
-            <div class="article__header">
-              <h2>Keep Listening the voices</h2>
-            </div>
+import { define } from "../../define";
 
-            <div class="article__body">
-              <p>The system continues to grow as users' needs change.</p>
-            </div>
-          </article>
-        </div>
-      </section>`;
+const styles = /* css */ `
+  :host {
+    display: block;
   }
-}
 
-customElements.define("section-mmo-conclusion", Section);
+  section {
+    width: 80%;
+    margin-inline: auto;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    padding-inline: 2rem;
+    display: flex;
+    flex-direction: column;
+  }
+`;
+
+const template = /* html */ `
+  <section>
+    <section-title
+      variant="text"
+      props='{"name": "Keep Listening to the Voices"}'
+    ></section-title>
+
+    <p>The system continues to grow as users' needs change.</p>
+  </section>
+`;
+
+define("section-mmo-conclusion", { styles, template });

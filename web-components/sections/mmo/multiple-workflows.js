@@ -1,27 +1,39 @@
-export class Section extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = /*html*/ `<section>
-        <div class="container">
-          <article class="article">
-            <div class="article__header">
-              <h2>100+ workflows in the system</h2>
-            </div>
+import { define } from "../../define";
 
-            <ul class="article__list">
-              <li>
-                <p>Register new employee</p>
-              </li>
-              <li>
-                <p>Generate Inventory Report</p>
-              </li>
-              <li>
-                <p>Request items from warehouse</p>
-              </li>
-            </ul>
-          </article>
-        </div>
-      </section>`;
+const styles = /* css */ `
+  :host {
+    display: block;
   }
-}
 
-customElements.define("section-mmo-multiple-workflows", Section);
+  section {
+    width: 80%;
+    margin-inline: auto;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    padding-inline: 2rem;
+
+    display: flex;
+    flex-direction: column;
+  }
+`;
+
+const template = /* html */ `
+  <section>
+
+  <section-title
+        variant="text"
+        props='{"name": "100+ workflows in the system"}'
+      ></section-title>
+
+        <ul>
+          <li>Register new employee</li>
+          <li>Generate Inventory Report</li>
+          <li>Request items from warehouse</li>
+        </ul>
+  </section>
+`;
+
+define("section-mmo-multiple-workflows", { styles, template });

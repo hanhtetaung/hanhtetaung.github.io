@@ -1,85 +1,104 @@
-export class Section extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = /*html*/ ` <section class="section">
-        <div class="container">
-          <h2>Designing workflow</h2>
+import { define } from "../../define";
 
-          <article class="article">
-            <div class="article__header">
-              <h3>Select similar key insights</h3>
-            </div>
+import "../../components/section-title";
 
-            <div class="article__body">
-              <ul class="article__list">
-                <li>
-                  <p>
-                    “We sell medicines and medical supplies to patients every
-                    day.” -
-                    <span class="small--emphasis"> Business owner </span>
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    "Staff need to check stock before completing a sale." -
-                    <span class="small--emphasis"> Pharmacist </span>
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    "Patients expect a fast checkout with minimal waiting." -
-                    <span class="small--emphasis"> Front desk Staff </span>
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    "Every transaction must be recorded for billing and
-                    auditing." -
-                    <span class="small--emphasis"> Finance manager </span>
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    "We need to track who sold each item and when." -
-                    <span class="small--emphasis"> Business owner </span>
-                  </p>
-                </li>
-              </ul>
-            </div>
-          </article>
-
-          <article class="article">
-            <div class="article__header">
-              <h3>Sell Medical items</h3>
-            </div>
-
-            <div class="article__body">
-              <p>
-                Start → Scan item barcode → Review total → Receive payment →
-                Return Changes → Complete
-              </p>
-            </div>
-          </article>
-
-          <article class="article">
-            <div class="article__header">
-              <h3>Edge case</h3>
-            </div>
-
-            <ul class="article__list">
-              <li>
-                <p>What if the cashier doesn’t have inficient cash?</p>
-              </li>
-              <li>
-                <p>What if the printer is not working?</p>
-              </li>
-              <li>
-                <p>What if the barcode scanner is not working?</p>
-              </li>
-            </ul>
-          </article>
-        </div>
-      </section>`;
+const styles = /* css */ `
+  :host {
+    display: block;
   }
-}
 
-customElements.define("section-mmo-designing-workflow", Section);
+  section {
+    width: 80%;
+    margin-inline: auto;
+  }
+
+  h3, p {
+    margin: 0;
+  }
+
+  h3 {
+    margin-bottom: 1rem;
+  }
+
+  span {
+    color: var(--color-secondary);
+    font-size: var(--size-small);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+  }
+
+   ul {
+    margin: 0;
+    padding: 0;
+    padding-inline: 2rem;
+     display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  article {
+    margin-bottom: 5rem;
+  }
+`;
+
+const template = /* html */ `
+  <section>
+    <section-title
+        variant="text"
+        props='{"name": "Designing Workflow"}'
+      ></section-title>
+
+
+
+      <article>
+          <h3>Select similar key insights</h3>
+          <ul>
+            <li>
+              “We sell medicines and medical supplies to patients every
+              day.” -
+              <span> Business owner </span>
+            </li>
+            <li>
+              "Staff need to check stock before completing a sale." -
+              <span> Pharmacist </span>
+            </li>
+            <li>
+              "Patients expect a fast checkout with minimal waiting." -
+              <span> Front desk Staff </span>
+            </li>
+            <li>
+              "Every transaction must be recorded for billing and
+              auditing." -
+              <span> Finance manager </span>
+            </li>
+            <li>
+              "We need to track who sold each item and when." -
+              <span> Business owner </span>
+            </li>
+          </ul>
+      </article>
+
+      <article>
+          <h3>Sell Medical items</h3>
+
+          <p>
+            Start → Scan item barcode → Review total → Receive payment →
+            Return Changes → Complete
+          </p>
+      </article>
+
+      <article>
+        <div>
+          <h3>Edge case</h3>
+        </div>
+
+        <ul>
+          <li>What if the cashier doesn’t have inficient cash?</li>
+          <li>What if the printer is not working?</li>
+          <li>What if the barcode scanner is not working?</li>
+        </ul>
+      </article>
+  </section>
+`;
+
+define("section-mmo-designing-workflow", { styles, template });

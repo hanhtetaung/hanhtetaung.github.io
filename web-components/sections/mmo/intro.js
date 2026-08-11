@@ -1,61 +1,85 @@
-export class Section extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = /*html*/ `<section>
-        <div class="container">
-          <article class="article article--hero">
-            <div class="article__media">
-              <img
-                src="/assets/images/case-study/mmo/thumbnail.avif"
-                alt="MMO thumbnail"
-                class="image"
-                width="1692"
-                height="886"
-              />
-            </div>
+import { define } from "../../define";
+import "../../components/app-image";
+import { PHONE } from "../../breakpoints";
 
-            <div class="article__content">
-              <div class="article__header">
-                <span class="small--emphasis">Case Study</span>
-                <h1>MMO</h1>
-              </div>
-
-              <div class="article__body">
-                <p>
-                  An internal portal that uses to run daily operations in
-                  hospital.
-                </p>
-
-                <div>
-                  <span class="small--emphasis">Role:</span>
-                  <p>UX Designer</p>
-                </div>
-
-                <div>
-                  <span class="small--emphasis">Scope: </span>
-                  <ul class="article__list">
-                    <li>
-                      <p>Gather requirements</p>
-                    </li>
-                    <li>
-                      <p>Simplify complex workflows</p>
-                    </li>
-                    <li>
-                      <p>Build Prototype</p>
-                    </li>
-                    <li>
-                      <p>Design System</p>
-                    </li>
-                    <li>
-                      <p>Developer Handoff</p>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </article>
-        </div>
-      </section>`;
+const styles = /* css */ `
+  :host {
+    display: block;
   }
-}
 
-customElements.define("section-mmo-intro", Section);
+  section {
+    width: 80%;
+    margin-inline: auto;
+
+    display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        gap: 3rem;
+    
+        @media (max-width: ${PHONE}) {
+          flex-direction: column;
+        }
+  }
+
+
+    span {
+    color: var(--color-secondary);
+    font-size: var(--size-small);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+  }
+
+  h1 {
+    margin: 0;
+    font-size: var(--size-display);
+    font-weight: var(--font-regular);
+    font-family: var(--font-heading);
+  }
+
+  p {
+    margin: 0;
+    margin-bottom: 2rem;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    padding-inline: 2rem;
+  }
+`;
+
+const template = /* html */ `
+  <section>
+    <app-image
+    variant="large"
+    src="/assets/images/case-study/mmo/thumbnail.avif"
+    alt="MMO thumbnail"
+    width="1692"
+    height="886"
+    ></app-image>
+    
+    <article>
+      <span>Case Study</span>
+      <h1>MMO</h1>
+
+      <p>
+        An internal portal that uses to run daily operations in
+        hospital.
+      </p>
+
+        <span>Role:</span>
+        <p>UX Designer</p>
+
+        <span>Scope: </span>
+        <ul>
+          <li>Gather requirements</li>
+          <li>Simplify complex workflows</li>
+          <li>Build Prototype</li>
+          <li>Design System</li>
+          <li>Developer Handoff</li>
+        </ul>
+      </article>
+  </section>
+`;
+
+define("section-mmo-intro", { styles, template });

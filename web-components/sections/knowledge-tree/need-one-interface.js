@@ -44,24 +44,24 @@ const template = /* html */ `
 
       <ul>
         <li>
-            <app-article-paragraph props='{ "title": "Default State"}'>
-        <p>
-          The center panel displays the entire knowledge tree. Sources
-          are shown as blue nodes, while Goods are shown as green nodes.
-          Every node is clickable, and the right panel remains empty
-          until a node is selected.
-        </p>
+          <app-article-paragraph props='{ "title": "Default State"}'>
+            <p>
+              The center panel displays the entire knowledge tree. Sources
+              are shown as blue nodes, while Goods are shown as green nodes.
+              Every node is clickable, and the right panel remains empty
+              until a node is selected.
+            </p>
 
-        <app-image
-        variant="medium"
-          src="/assets/images/case-study/knowledge-tree/default-state.avif"
-          alt="Inspiration Collection"
-          width="1398"
-          height="1236"
-        ></app-image>
-      </app-article-paragraph>
-
+            <app-image
+              variant="medium"
+              src="/assets/images/case-study/knowledge-tree/default-state.avif"
+              alt="Inspiration Collection"
+              width="1398"
+              height="1236"
+            ></app-image>
+          </app-article-paragraph>
         </li>
+
         <li>
             <app-article-paragraph props='{ "title": "Selecting a Source Node"}'>
          <p>
@@ -77,7 +77,7 @@ const template = /* html */ `
               width="1398"
               height="1366"
             ></app-image>
-            
+
       </app-article-paragraph>
         </li>
         <li>
