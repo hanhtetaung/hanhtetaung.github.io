@@ -1,50 +1,57 @@
-export class Section extends HTMLElement {
-  connectedCallback() {
-    this.innerHTML = /*html*/ `<section class="reference">
-        <div class="container">
-          <h2>References</h2>
-          <ul>
-            <li>
-              <a
-                href="https://atomicdesign.bradfrost.com/chapter-2/"
-                target="_blank"
-                class="button--link"
-                >Atomic Design Principle
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://playbook.ebay.com/foundations"
-                target="_blank"
-                class="button--link"
-                >ebay Playbook</a
-              >
-            </li>
-            <li>
-              <a
-                href="https://www.designsystem.tech.gov.sg/foundations/"
-                class="button--link"
-                target="_blank"
-              >
-                SGDS Design
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://www.strava.com/"
-                target="_blank"
-                class="button--link"
-              >
-                Strava
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>`;
-  }
-}
+import { define } from "../../define";
 
-customElements.define(
-  "section-foundation-building-interfaces-at-scale-references",
-  Section,
-);
+import "../../components/app-link";
+import "../../components/section-title";
+
+const styles = /* css */ `
+  :host {
+    display: block;
+  }
+
+  section {
+    width: 80%;
+    margin-inline: auto;
+  }
+
+  ul {
+    margin: 0;
+    padding-left: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+`;
+
+const template = /* html */ `
+  <section>
+    <section-title variant="text" props='{"name": "References"}'></section-title>
+
+    <ul>
+      <li>
+        <app-link href="https://atomicdesign.bradfrost.com/chapter-2/" target="_blank" variant="underline">
+          Atomic Design Principle
+        </app-link>
+      </li>
+      <li>
+        <app-link href="https://playbook.ebay.com/foundations" target="_blank" variant="underline">
+          ebay Playbook
+        </app-link>
+      </li>
+      <li>
+        <app-link href="https://www.designsystem.tech.gov.sg/foundations/" target="_blank" variant="underline">
+          SGDS Design
+        </app-link>
+      </li>
+      <li>
+        <app-link href="https://www.strava.com/" target="_blank" variant="underline">
+          Strava
+        </app-link>
+      </li>
+    </ul>
+  </section>
+`;
+
+define("section-foundation-building-interfaces-at-scale-references", {
+  styles,
+  template,
+});

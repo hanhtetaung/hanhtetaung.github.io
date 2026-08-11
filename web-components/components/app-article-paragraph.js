@@ -19,6 +19,10 @@ const styles = /* css */ `
     width: fit-content;
     height: fit-content;
   }
+
+  :host([variant="block"]) {
+    display: block;
+  }
 `;
 
 const props = { title: String };

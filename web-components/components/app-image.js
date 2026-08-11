@@ -27,6 +27,10 @@ const styles = /* css */ `
   :host([variant="large"]) {
     --local-width: 50rem;
   }
+
+   :host([variant="full"]) {
+    --local-width: 100%;
+  }
 `;
 
 const attrs = ["width", "height", "src", "alt"];
