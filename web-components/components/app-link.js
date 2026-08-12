@@ -58,7 +58,7 @@ const styles = /* css */ `
      --local-border: none;
 
      a::before {
-       content: "✈";
+       content: "➶";
      }
   }
 `;

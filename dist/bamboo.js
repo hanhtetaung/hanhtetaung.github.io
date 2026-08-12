@@ -56,7 +56,7 @@ function h(a,t){if(a===void 0){if(t===Array)return[];if(t===Object)return{};if(t
      --local-border: none;
 
      a::before {
-       content: "✈";
+       content: "➶";
      }
   }
 `,f=["href","target","rel","download"],u=`
