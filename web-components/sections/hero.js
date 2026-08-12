@@ -67,7 +67,7 @@ const styles = /* css */ `
     margin-left: auto;
 
     @media (max-width: ${PHONE}) {
-      margin: auto;
+      margin: 0;
     }
   }
 
@@ -132,8 +132,8 @@ const styles = /* css */ `
   }
 
   img {
-    max-height: 12rem;
-    width: auto;
+    width: 25rem;
+    height: auto;
   }
 `;
 
@@ -184,8 +184,8 @@ const template = /* html */ `
           .map(
             (showcase) => /*html*/ `
           <li>
-            <app-link variant="image" href=${showcase.href}>
-              <span>${showcase.name}</span>
+            <app-link variant="image" href=${showcase.href} >
+              ➶ ${showcase.name}
               <img
                 src=${showcase.src}
                 alt=${showcase.alt}

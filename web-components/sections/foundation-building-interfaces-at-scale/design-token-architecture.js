@@ -38,7 +38,7 @@ const styles = /* css */ `
 `;
 
 const template = /* html */ `
-  <section id="design-token-architecture">
+  <section>
     <section-title variant="text" props='{"name": "Design Token Architecture"}'></section-title>
 
     <p>A two-tier architecture is enough: Primitive and Semantic.</p>

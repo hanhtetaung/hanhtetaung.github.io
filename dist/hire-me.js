@@ -1,4 +1,4 @@
-function f(a,r){if(a===void 0){if(r===Array)return[];if(r===Object)return{};if(r===Boolean)return!1;if(r===Number)return 0;return}if(r===Boolean)return Boolean(a);if(r===Number)return Number(a);return a}function e(a,{props:r={},attrs:n=[],styles:c="",template:l}){let d=["props",...n];class p extends HTMLElement{static observedAttributes=d;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let t={},i=this.getAttribute("props");if(i)try{t=JSON.parse(i)}catch{t={}}let m={};for(let s of Object.keys(r))m[s]=f(t[s],r[s]);return m}_applyForwardedAttrs(){if(n.length===0)return;let t=this.shadowRoot.querySelector("[data-forward]");if(!t)return;for(let i of n)if(this.hasAttribute(i))t.setAttribute(i,this.getAttribute(i));else t.removeAttribute(i)}_render(){let t=this._getProps(),i=typeof l==="function"?l(t):l;this.shadowRoot.innerHTML=`<style>${c}</style>${i}`,this._applyForwardedAttrs()}}customElements.define(a,p)}var h=`
+function f(r,a){if(r===void 0){if(a===Array)return[];if(a===Object)return{};if(a===Boolean)return!1;if(a===Number)return 0;return}if(a===Boolean)return Boolean(r);if(a===Number)return Number(r);return r}function e(r,{props:a={},attrs:n=[],styles:c="",template:l}){let d=["props",...n];class p extends HTMLElement{static observedAttributes=d;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let t={},i=this.getAttribute("props");if(i)try{t=JSON.parse(i)}catch{t={}}let m={};for(let s of Object.keys(a))m[s]=f(t[s],a[s]);return m}_applyForwardedAttrs(){if(n.length===0)return;let t=this.shadowRoot.querySelector("[data-forward]");if(!t)return;for(let i of n)if(this.hasAttribute(i))t.setAttribute(i,this.getAttribute(i));else t.removeAttribute(i)}_render(){let t=this._getProps(),i=typeof l==="function"?l(t):l;this.shadowRoot.innerHTML=`<style>${c}</style>${i}`,this._applyForwardedAttrs()}}customElements.define(r,p)}var h=`
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -31,7 +31,7 @@ function f(a,r){if(a===void 0){if(r===Array)return[];if(r===Object)return{};if(r
   }
 
   :host([variant="underline"]) {
-    --local-color: var(--color-secondary);
+    --local-color: var(--color-tertiary);
     --local-border: none;
     --local-decoration: underline;
     --local-padding: 0;
@@ -44,9 +44,9 @@ function f(a,r){if(a===void 0){if(r===Array)return[];if(r===Object)return{};if(r
 
   :host([variant="image"]) {
     --local-border: none;
-    --local-decoration: underline;
+    /* --local-decoration: underline; */
     --local-padding: 0.2rem 0;
-    --local-color: var(--color-secondary);
+    --local-color: var(--color-tertiary);
     --local-border: none;
     --local-direction: column;
   }
@@ -190,9 +190,9 @@ function f(a,r){if(a===void 0){if(r===Array)return[];if(r===Object)return{};if(r
         <span>Sitemap</span>
 
         <ol>
-            ${x.map((a)=>`
+            ${x.map((r)=>`
                 <li>
-                    <app-link variant="sitemap" href=${a.href} >${a.name}</app-link>
+                    <app-link variant="sitemap" href=${r.href} >${r.name}</app-link>
                 </li>
             `).join("")}
         </ol>

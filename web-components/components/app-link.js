@@ -33,7 +33,7 @@ const styles = /* css */ `
   }
 
   :host([variant="underline"]) {
-    --local-color: var(--color-secondary);
+    --local-color: var(--color-tertiary);
     --local-border: none;
     --local-decoration: underline;
     --local-padding: 0;
@@ -46,9 +46,9 @@ const styles = /* css */ `
 
   :host([variant="image"]) {
     --local-border: none;
-    --local-decoration: underline;
+    /* --local-decoration: underline; */
     --local-padding: 0.2rem 0;
-    --local-color: var(--color-secondary);
+    --local-color: var(--color-tertiary);
     --local-border: none;
     --local-direction: column;
   }

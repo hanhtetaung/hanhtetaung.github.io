@@ -40,7 +40,7 @@ function h(a,r){if(a===void 0){if(r===Array)return[];if(r===Object)return{};if(r
   }
 
   :host([variant="underline"]) {
-    --local-color: var(--color-secondary);
+    --local-color: var(--color-tertiary);
     --local-border: none;
     --local-decoration: underline;
     --local-padding: 0;
@@ -53,9 +53,9 @@ function h(a,r){if(a===void 0){if(r===Array)return[];if(r===Object)return{};if(r
 
   :host([variant="image"]) {
     --local-border: none;
-    --local-decoration: underline;
+    /* --local-decoration: underline; */
     --local-padding: 0.2rem 0;
-    --local-color: var(--color-secondary);
+    --local-color: var(--color-tertiary);
     --local-border: none;
     --local-direction: column;
   }

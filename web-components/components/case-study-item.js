@@ -1,4 +1,4 @@
-import { TABLE } from "../breakpoints";
+import { PHONE, TABLE } from "../breakpoints";
 import { define } from "../define";
 import "../components/app-link";
 import "../components/app-badge";
@@ -14,6 +14,12 @@ const styles = /* css */ `
     padding-block: 5rem;
     padding-inline: 5rem; 
     box-shadow: 0 4px 12px -4px rgba(0, 0, 0, 0.35);
+    
+    @media (max-width: ${PHONE}) {
+      padding: 0;
+      padding-bottom: 5rem;
+      box-shadow: 0 1px 0px 0px rgba(0, 0, 0, 0.35);
+    }
 
   }
 
@@ -26,6 +32,10 @@ const styles = /* css */ `
     max-width: 50rem;
     width: 100%;
     height: auto;
+
+    @media (max-width: ${PHONE}) {
+      margin-bottom: 1.5rem;
+    }
   }
 
   div {
