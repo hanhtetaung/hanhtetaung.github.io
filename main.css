@@ -39,6 +39,10 @@
   --size-heading: calc(var(--size-body) * var(--ratio));
   --size-title: calc(var(--size-heading) * var(--ratio));
   --size-display: calc(var(--size-title) * var(--ratio));
+
+  @media (max-width: 769px) {
+    --size-body: 1.6rem;
+  }
 }
 
 body {
