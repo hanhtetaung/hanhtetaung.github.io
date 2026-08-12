@@ -67,7 +67,7 @@ const styles = /* css */ `
     margin-left: auto;
 
     @media (max-width: ${PHONE}) {
-      margin: auto;
+      margin: 0;
     }
   }
 

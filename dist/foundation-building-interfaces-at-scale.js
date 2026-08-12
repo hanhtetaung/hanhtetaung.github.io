@@ -508,7 +508,7 @@ function h(t,o){if(t===void 0){if(o===Array)return[];if(o===Object)return{};if(o
     padding-top: 5rem;
   }
 `,K=`
-  <section id="atomic-design-principle">
+  <section >
     <section-title variant="text" props='{"name": "Atomic Design Principle"}'></section-title>
 
     <p>
@@ -631,7 +631,7 @@ function h(t,o){if(t===void 0){if(o===Array)return[];if(o===Object)return{};if(o
     padding-left: 1.5rem;
   }
 `,R=`
-  <section id="design-token-architecture">
+  <section>
     <section-title variant="text" props='{"name": "Design Token Architecture"}'></section-title>
 
     <p>A two-tier architecture is enough: Primitive and Semantic.</p>

@@ -33,7 +33,7 @@ const styles = /* css */ `
 `;
 
 const template = /* html */ `
-  <section id="atomic-design-principle">
+  <section >
     <section-title variant="text" props='{"name": "Atomic Design Principle"}'></section-title>
 
     <p>

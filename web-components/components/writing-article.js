@@ -15,7 +15,7 @@ const styles = /* css */ `
 
   p {
     margin: 0;
-    color: var(--color-primary);
+    color: var(--color-secondary);
   }
 
   h3 {

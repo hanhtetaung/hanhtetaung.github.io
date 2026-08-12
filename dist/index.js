@@ -393,7 +393,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     margin-left: auto;
 
     @media (max-width: ${a}) {
-      margin: auto;
+      margin: 0;
     }
   }
 
@@ -714,7 +714,7 @@ ol {
 
   p {
     margin: 0;
-    color: var(--color-primary);
+    color: var(--color-secondary);
   }
 
   h3 {
