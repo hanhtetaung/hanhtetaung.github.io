@@ -1,4 +1,4 @@
-function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t===Boolean)return!1;if(t===Number)return 0;return}if(t===Boolean)return Boolean(i);if(t===Number)return Number(i);return i}function e(i,{props:t={},attrs:o=[],styles:n="",template:r}){let m=["props",...o];class c extends HTMLElement{static observedAttributes=m;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let l={},s=this.getAttribute("props");if(s)try{l=JSON.parse(s)}catch{l={}}let g={};for(let d of Object.keys(t))g[d]=h(l[d],t[d]);return g}_applyForwardedAttrs(){if(o.length===0)return;let l=this.shadowRoot.querySelector("[data-forward]");if(!l)return;for(let s of o)if(this.hasAttribute(s))l.setAttribute(s,this.getAttribute(s));else l.removeAttribute(s)}_render(){let l=this._getProps(),s=typeof r==="function"?r(l):r;this.shadowRoot.innerHTML=`<style>${n}</style>${s}`,this._applyForwardedAttrs()}}customElements.define(i,c)}var f=`
+function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t===Boolean)return!1;if(t===Number)return 0;return}if(t===Boolean)return Boolean(i);if(t===Number)return Number(i);return i}function e(i,{props:t={},attrs:a=[],styles:n="",template:r}){let m=["props",...a];class c extends HTMLElement{static observedAttributes=m;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let l={},s=this.getAttribute("props");if(s)try{l=JSON.parse(s)}catch{l={}}let g={};for(let d of Object.keys(t))g[d]=h(l[d],t[d]);return g}_applyForwardedAttrs(){if(a.length===0)return;let l=this.shadowRoot.querySelector("[data-forward]");if(!l)return;for(let s of a)if(this.hasAttribute(s))l.setAttribute(s,this.getAttribute(s));else l.removeAttribute(s)}_render(){let l=this._getProps(),s=typeof r==="function"?r(l):r;this.shadowRoot.innerHTML=`<style>${n}</style>${s}`,this._applyForwardedAttrs()}}customElements.define(i,c)}var f=`
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -70,7 +70,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     max-height: 7rem;
     width: auto;
   }
-`,y=["width","height","src","alt"],b=()=>"<img data-forward />";e("app-logo",{attrs:y,styles:w,template:b});var a="769px",p="992px";var k=`
+`,y=["width","height","src","alt"],b=()=>"<img data-forward />";e("app-logo",{attrs:y,styles:w,template:b});var o="769px",p="992px";var k=`
   :host {
     display: block;
   }
@@ -105,7 +105,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     box-shadow: none;
   }
 
-  @media (max-width: ${a}) {
+  @media (max-width: ${o}) {
     .header__navigation {
       gap: 4rem;
     }
@@ -148,7 +148,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
    display: flex;
    gap: 5rem;
 
-   @media (max-width: ${a}) {
+   @media (max-width: ${o}) {
         flex-direction: column;
         gap: 3rem;
         margin-block: 2rem;
@@ -176,7 +176,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     max-height: 12.5ch;
     overflow: scroll;
 
-    @media (max-width: ${a}) {
+    @media (max-width: ${o}) {
         max-height: 20ch;
     }
   }
@@ -202,7 +202,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
    display: flex;
     justify-content: space-between;
 
-   @media (max-width: ${a}) {
+   @media (max-width: ${o}) {
         flex-direction: column;
         gap: 3rem;
    }
@@ -219,7 +219,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     display: flex;
     gap: 2rem;
   }
-`,A=()=>`
+`,O=()=>`
     
       <p>
         © Han Htet Aung 2026 |
@@ -262,7 +262,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
                 </app-link>
             </li>
         </ul>
-`;e("footer-copyright",{styles:T,template:A});var O=`
+`;e("footer-copyright",{styles:T,template:O});var A=`
   :host {
     --local-bg-color: var(--color-bg-secondary);
 
@@ -292,7 +292,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     align-items: center;
   }
 
-  @media (max-width: ${a}) {
+  @media (max-width: ${o}) {
     article {
       display: block;
     }
@@ -330,7 +330,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
 
       <footer-copyright></footer-copyright>
   </footer>
-`;e("section-footer",{styles:O,template:M});var D=`
+`;e("section-footer",{styles:A,template:M});var D=`
   :host {
     --local-width: 3rem;
     --local-height: auto;
@@ -376,7 +376,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
       "three three";
 
 
-    @media (max-width: ${a}) {
+    @media (max-width: ${o}) {
         display: flex;
         flex-direction: column;
     }
@@ -392,7 +392,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     max-width: 30ch;
     margin-left: auto;
 
-    @media (max-width: ${a}) {
+    @media (max-width: ${o}) {
       margin: 0;
     }
   }
@@ -458,10 +458,10 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
   }
 
   img {
-    max-height: 12rem;
-    width: auto;
+    width: 25rem;
+    height: auto;
   }
-`,B=`
+`,N=`
   <section>
       <article>
         <hgroup>
@@ -509,7 +509,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
           `).join("")}
       </ol>
   </section>
-`;e("section-hero",{styles:H,template:B});var N=`
+`;e("section-hero",{styles:H,template:N});var B=`
   :host {
     display: flex;
     align-items: center;
@@ -540,15 +540,15 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
       display: none;
     }
   }
-`,C={name:String,img:String,alt:String},j=({name:i,img:t="",alt:o=""})=>`
+`,C={name:String,img:String,alt:String},j=({name:i,img:t="",alt:a=""})=>`
     <h2>${i}</h2>
     <img
         src=${t}
-        alt=${o}
+        alt=${a}
         height="36"
         width="76"
     />
-`;e("section-title",{props:C,styles:N,template:j});var K=`
+`;e("section-title",{props:C,styles:B,template:j});var K=`
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -596,8 +596,8 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     font-size: var(--size-heading);
     margin-bottom: 0.5rem;
   }
-`,J={title:String,description:String,href:String,alt:String,subTitle:String},R=({title:i,description:t,href:o,alt:n,subTitle:r})=>`
-    <app-icon variant="large" src=${o} alt=${n}></app-icon>
+`,J={title:String,description:String,href:String,alt:String,subTitle:String},R=({title:i,description:t,href:a,alt:n,subTitle:r})=>`
+    <app-icon variant="large" src=${a} alt=${n}></app-icon>
     <span>${r}</span>
     <h4>${i}</h4>
     <p>${t}</p>
@@ -625,7 +625,7 @@ ol {
     gap: 6rem;
     margin-block: 5rem;
 
-    @media (max-width: ${a}) {
+    @media (max-width: ${o}) {
         flex-direction: column;
     }
   }
@@ -727,11 +727,11 @@ ol {
     margin-top: 1rem;
   }
 
-`,q={title:String,img:String,alt:String,href:String,comingSoon:Boolean},ee=({title:i,img:t,alt:o,href:n,comingSoon:r})=>`
+`,q={title:String,img:String,alt:String,href:String,comingSoon:Boolean},ee=({title:i,img:t,alt:a,href:n,comingSoon:r})=>`
     <app-icon
         variant="medium"
         src=${t}
-        alt=${o}
+        alt=${a}
     ></app-icon>
 
     <article>
@@ -778,6 +778,12 @@ ol {
     padding-block: 5rem;
     padding-inline: 5rem; 
     box-shadow: 0 4px 12px -4px rgba(0, 0, 0, 0.35);
+    
+    @media (max-width: ${o}) {
+      padding: 0;
+      padding-bottom: 5rem;
+      box-shadow: 0 1px 0px 0px rgba(0, 0, 0, 0.35);
+    }
 
   }
 
@@ -828,10 +834,10 @@ ol {
       display: block;
     }
   }
-`,ae={image:String,alt:String,title:String,description:String,href:String,categories:Array},re=({image:i,alt:t,title:o,description:n,href:r,categories:m})=>`
+`,ae={image:String,alt:String,title:String,description:String,href:String,categories:Array},re=({image:i,alt:t,title:a,description:n,href:r,categories:m})=>`
     <img src="${i}" alt="${t}" />
     <div>
-      <h3>${o}</h3>
+      <h3>${a}</h3>
       <ul>
         ${m.map((c)=>`
               <li><app-badge variant="primary" props='${JSON.stringify({name:c})}'></app-badge></li>
@@ -956,7 +962,7 @@ ol {
     margin-right: 2rem;
   }
 
-  @media (max-width: ${a}) {
+  @media (max-width: ${o}) {
     app-icon {
       display: none;
     }
@@ -972,7 +978,7 @@ ol {
       ></section-title>
 
       <ul>
-        ${ce.map(({icon:i,alt:t,range:o,title:n,description:r})=>`
+        ${ce.map(({icon:i,alt:t,range:a,title:n,description:r})=>`
               <li>
                 <app-icon src="${i}" alt="${t}"></app-icon>
 
@@ -983,8 +989,8 @@ ol {
 
                 <article>
                   <app-badge
-                    props='${JSON.stringify({name:o})}'
-                    ${o==="Present"?"":'variant="outline"'}
+                    props='${JSON.stringify({name:a})}'
+                    ${a==="Present"?"":'variant="outline"'}
                   ></app-badge>
 
                   <h3>${n}</h3>
@@ -1069,14 +1075,14 @@ ol {
       ></section-title>
 
       <ul>
-        ${de.map(({title:i,description:t,icon:o,alt:n},r)=>`
+        ${de.map(({title:i,description:t,icon:a,alt:n},r)=>`
               <li>
                 <article>
                   <h3><span>${r+1}.</span> ${i}</h3>
                   <p>${t}</p>
                 </article>
 
-                <app-icon variant="large" src="${o}" alt="${n}"></app-icon>
+                <app-icon variant="large" src="${a}" alt="${n}"></app-icon>
               </li>
             `).join("")}
       </ul>

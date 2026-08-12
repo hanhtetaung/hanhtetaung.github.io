@@ -132,8 +132,8 @@ const styles = /* css */ `
   }
 
   img {
-    max-height: 12rem;
-    width: auto;
+    width: 25rem;
+    height: auto;
   }
 `;
 
