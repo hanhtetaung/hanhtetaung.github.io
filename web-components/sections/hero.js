@@ -184,8 +184,8 @@ const template = /* html */ `
           .map(
             (showcase) => /*html*/ `
           <li>
-            <app-link variant="image" href=${showcase.href}>
-              <span>${showcase.name}</span>
+            <app-link variant="image" href=${showcase.href} >
+              ➶ ${showcase.name}
               <img
                 src=${showcase.src}
                 alt=${showcase.alt}

@@ -1,4 +1,4 @@
-function g(e,t){if(e===void 0){if(t===Array)return[];if(t===Object)return{};if(t===Boolean)return!1;if(t===Number)return 0;return}if(t===Boolean)return Boolean(e);if(t===Number)return Number(e);return e}function o(e,{props:t={},attrs:i=[],styles:s="",template:c}){let h=["props",...i];class p extends HTMLElement{static observedAttributes=h;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let a={},r=this.getAttribute("props");if(r)try{a=JSON.parse(r)}catch{a={}}let m={};for(let l of Object.keys(t))m[l]=g(a[l],t[l]);return m}_applyForwardedAttrs(){if(i.length===0)return;let a=this.shadowRoot.querySelector("[data-forward]");if(!a)return;for(let r of i)if(this.hasAttribute(r))a.setAttribute(r,this.getAttribute(r));else a.removeAttribute(r)}_render(){let a=this._getProps(),r=typeof c==="function"?c(a):c;this.shadowRoot.innerHTML=`<style>${s}</style>${r}`,this._applyForwardedAttrs()}}customElements.define(e,p)}var d=`
+function g(e,t){if(e===void 0){if(t===Array)return[];if(t===Object)return{};if(t===Boolean)return!1;if(t===Number)return 0;return}if(t===Boolean)return Boolean(e);if(t===Number)return Number(e);return e}function o(e,{props:t={},attrs:i=[],styles:s="",template:l}){let h=["props",...i];class p extends HTMLElement{static observedAttributes=h;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let a={},r=this.getAttribute("props");if(r)try{a=JSON.parse(r)}catch{a={}}let m={};for(let c of Object.keys(t))m[c]=g(a[c],t[c]);return m}_applyForwardedAttrs(){if(i.length===0)return;let a=this.shadowRoot.querySelector("[data-forward]");if(!a)return;for(let r of i)if(this.hasAttribute(r))a.setAttribute(r,this.getAttribute(r));else a.removeAttribute(r)}_render(){let a=this._getProps(),r=typeof l==="function"?l(a):l;this.shadowRoot.innerHTML=`<style>${s}</style>${r}`,this._applyForwardedAttrs()}}customElements.define(e,p)}var d=`
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -31,7 +31,7 @@ function g(e,t){if(e===void 0){if(t===Array)return[];if(t===Object)return{};if(t
   }
 
   :host([variant="underline"]) {
-    --local-color: var(--color-secondary);
+    --local-color: var(--color-tertiary);
     --local-border: none;
     --local-decoration: underline;
     --local-padding: 0;
@@ -44,9 +44,9 @@ function g(e,t){if(e===void 0){if(t===Array)return[];if(t===Object)return{};if(t
 
   :host([variant="image"]) {
     --local-border: none;
-    --local-decoration: underline;
+    /* --local-decoration: underline; */
     --local-padding: 0.2rem 0;
-    --local-color: var(--color-secondary);
+    --local-color: var(--color-tertiary);
     --local-border: none;
     --local-direction: column;
   }

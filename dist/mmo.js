@@ -31,7 +31,7 @@ function h(t,o){if(t===void 0){if(o===Array)return[];if(o===Object)return{};if(o
   }
 
   :host([variant="underline"]) {
-    --local-color: var(--color-secondary);
+    --local-color: var(--color-tertiary);
     --local-border: none;
     --local-decoration: underline;
     --local-padding: 0;
@@ -44,9 +44,9 @@ function h(t,o){if(t===void 0){if(o===Array)return[];if(o===Object)return{};if(o
 
   :host([variant="image"]) {
     --local-border: none;
-    --local-decoration: underline;
+    /* --local-decoration: underline; */
     --local-padding: 0.2rem 0;
-    --local-color: var(--color-secondary);
+    --local-color: var(--color-tertiary);
     --local-border: none;
     --local-direction: column;
   }

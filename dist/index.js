@@ -31,7 +31,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
   }
 
   :host([variant="underline"]) {
-    --local-color: var(--color-secondary);
+    --local-color: var(--color-tertiary);
     --local-border: none;
     --local-decoration: underline;
     --local-padding: 0;
@@ -44,9 +44,9 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
 
   :host([variant="image"]) {
     --local-border: none;
-    --local-decoration: underline;
+    /* --local-decoration: underline; */
     --local-padding: 0.2rem 0;
-    --local-color: var(--color-secondary);
+    --local-color: var(--color-tertiary);
     --local-border: none;
     --local-direction: column;
   }
@@ -498,8 +498,8 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
       <ol>
         ${L.map((i)=>`
           <li>
-            <app-link variant="image" href=${i.href}>
-              <span>${i.name}</span>
+            <app-link variant="image" href=${i.href} >
+              ➶ ${i.name}
               <img
                 src=${i.src}
                 alt=${i.alt}

@@ -31,7 +31,7 @@ function g(t,a){if(t===void 0){if(a===Array)return[];if(a===Object)return{};if(a
   }
 
   :host([variant="underline"]) {
-    --local-color: var(--color-secondary);
+    --local-color: var(--color-tertiary);
     --local-border: none;
     --local-decoration: underline;
     --local-padding: 0;
@@ -44,9 +44,9 @@ function g(t,a){if(t===void 0){if(a===Array)return[];if(a===Object)return{};if(a
 
   :host([variant="image"]) {
     --local-border: none;
-    --local-decoration: underline;
+    /* --local-decoration: underline; */
     --local-padding: 0.2rem 0;
-    --local-color: var(--color-secondary);
+    --local-color: var(--color-tertiary);
     --local-border: none;
     --local-direction: column;
   }
