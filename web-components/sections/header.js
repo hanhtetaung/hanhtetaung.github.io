@@ -15,6 +15,7 @@ const styles = /* css */ `
     justify-content: space-between;
     align-items: center;
     padding-block: 1.6rem;
+    gap: 5rem;
   }
 
   div {

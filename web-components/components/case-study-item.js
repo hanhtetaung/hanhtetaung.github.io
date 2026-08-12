@@ -90,7 +90,7 @@ const template = ({
         ${categories
           .map(
             (name) => /* html */ `
-              <li><app-badge props='${JSON.stringify({ name })}' variant="primary"></app-badge></li>
+              <li><app-badge variant="primary" props='${JSON.stringify({ name })}'></app-badge></li>
             `,
           )
           .join("")}

@@ -65,7 +65,7 @@ function h(a,r){if(a===void 0){if(r===Array)return[];if(r===Object)return{};if(r
      --local-border: none;
 
      a::before {
-       content: "✈";
+       content: "➶";
      }
   }
 `,v=["href","target","rel","download"],w=`
@@ -273,6 +273,7 @@ function h(a,r){if(a===void 0){if(r===Array)return[];if(r===Object)return{};if(r
     justify-content: space-between;
     align-items: center;
     padding-block: 1.6rem;
+    gap: 5rem;
   }
 
   div {

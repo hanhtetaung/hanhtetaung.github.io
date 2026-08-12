@@ -2,6 +2,7 @@ import "../sections/header.js";
 import "../sections/footer.js";
 
 import "../sections/hero.js";
+import "../sections/capabilities.js";
 import "../sections/writings.js";
 import "../sections/case-studies.js";
 import "../sections/timeline.js";

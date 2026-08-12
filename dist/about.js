@@ -1,4 +1,4 @@
-function d(t,a){if(t===void 0){if(a===Array)return[];if(a===Object)return{};if(a===Boolean)return!1;if(a===Number)return 0;return}if(a===Boolean)return Boolean(t);if(a===Number)return Number(t);return t}function e(t,{props:a={},attrs:n=[],styles:s="",template:l}){let h=["props",...n];class p extends HTMLElement{static observedAttributes=h;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let i={},r=this.getAttribute("props");if(r)try{i=JSON.parse(r)}catch{i={}}let m={};for(let c of Object.keys(a))m[c]=d(i[c],a[c]);return m}_applyForwardedAttrs(){if(n.length===0)return;let i=this.shadowRoot.querySelector("[data-forward]");if(!i)return;for(let r of n)if(this.hasAttribute(r))i.setAttribute(r,this.getAttribute(r));else i.removeAttribute(r)}_render(){let i=this._getProps(),r=typeof l==="function"?l(i):l;this.shadowRoot.innerHTML=`<style>${s}</style>${r}`,this._applyForwardedAttrs()}}customElements.define(t,p)}var g=`
+function g(t,a){if(t===void 0){if(a===Array)return[];if(a===Object)return{};if(a===Boolean)return!1;if(a===Number)return 0;return}if(a===Boolean)return Boolean(t);if(a===Number)return Number(t);return t}function e(t,{props:a={},attrs:n=[],styles:s="",template:l}){let h=["props",...n];class p extends HTMLElement{static observedAttributes=h;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let r={},i=this.getAttribute("props");if(i)try{r=JSON.parse(i)}catch{r={}}let m={};for(let c of Object.keys(a))m[c]=g(r[c],a[c]);return m}_applyForwardedAttrs(){if(n.length===0)return;let r=this.shadowRoot.querySelector("[data-forward]");if(!r)return;for(let i of n)if(this.hasAttribute(i))r.setAttribute(i,this.getAttribute(i));else r.removeAttribute(i)}_render(){let r=this._getProps(),i=typeof l==="function"?l(r):l;this.shadowRoot.innerHTML=`<style>${s}</style>${i}`,this._applyForwardedAttrs()}}customElements.define(t,p)}var d=`
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -56,12 +56,12 @@ function d(t,a){if(t===void 0){if(a===Array)return[];if(a===Object)return{};if(a
      --local-border: none;
 
      a::before {
-       content: "✈";
+       content: "➶";
      }
   }
 `,f=["href","target","rel","download"],v=`
   <a data-forward><slot></slot></a>
-`;e("app-link",{attrs:f,styles:g,template:v});var u=`
+`;e("app-link",{attrs:f,styles:d,template:v});var u=`
   :host {
     display: block;
   }
@@ -82,6 +82,7 @@ function d(t,a){if(t===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     justify-content: space-between;
     align-items: center;
     padding-block: 1.6rem;
+    gap: 5rem;
   }
 
   div {
