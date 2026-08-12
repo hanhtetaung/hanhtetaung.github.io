@@ -82,6 +82,7 @@ function h(a,t){if(a===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     justify-content: space-between;
     align-items: center;
     padding-block: 1.6rem;
+    gap: 5rem;
   }
 
   div {

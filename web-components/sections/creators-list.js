@@ -188,6 +188,30 @@ const creditsData = [
     url: "https://thenounproject.com/icon/kingfisher-bird-6274353/",
     name: "Delwar Hossain",
   },
+  {
+    icon: "/assets/icons/design-system.svg",
+    alt: "Design System Logo",
+    url: "https://thenounproject.com/icon/sourcing-6125071/",
+    name: "icon 5",
+  },
+  {
+    icon: "/assets/icons/user-interface.svg",
+    alt: "User Interface Logo",
+    url: "https://thenounproject.com/icon/website-149263/",
+    name: "Dawid Sobolewski",
+  },
+  {
+    icon: "/assets/icons/web-interface.svg",
+    alt: "Web Interface Logo",
+    url: "https://thenounproject.com/icon/web-5653117/",
+    name: "Danang endar",
+  },
+  {
+    icon: "/assets/icons/peacock.svg",
+    alt: "Peacock Logo",
+    url: "https://thenounproject.com/icon/bird-6684144/",
+    name: "Carlos von Dessauer",
+  },
 ];
 
 const styles = /* css */ `
