@@ -32,6 +32,10 @@ const styles = /* css */ `
     max-width: 50rem;
     width: 100%;
     height: auto;
+
+    @media (max-width: ${PHONE}) {
+      margin-bottom: 1.5rem;
+    }
   }
 
   div {
