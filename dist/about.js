@@ -1,4 +1,4 @@
-function g(t,a){if(t===void 0){if(a===Array)return[];if(a===Object)return{};if(a===Boolean)return!1;if(a===Number)return 0;return}if(a===Boolean)return Boolean(t);if(a===Number)return Number(t);return t}function e(t,{props:a={},attrs:n=[],styles:s="",template:l}){let d=["props",...n];class p extends HTMLElement{static observedAttributes=d;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let i={},r=this.getAttribute("props");if(r)try{i=JSON.parse(r)}catch{i={}}let m={};for(let c of Object.keys(a))m[c]=g(i[c],a[c]);return m}_applyForwardedAttrs(){if(n.length===0)return;let i=this.shadowRoot.querySelector("[data-forward]");if(!i)return;for(let r of n)if(this.hasAttribute(r))i.setAttribute(r,this.getAttribute(r));else i.removeAttribute(r)}_render(){let i=this._getProps(),r=typeof l==="function"?l(i):l;this.shadowRoot.innerHTML=`<style>${s}</style>${r}`,this._applyForwardedAttrs()}}customElements.define(t,p)}var h=`
+function d(e,a){if(e===void 0){if(a===Array)return[];if(a===Object)return{};if(a===Boolean)return!1;if(a===Number)return 0;return}if(a===Boolean)return Boolean(e);if(a===Number)return Number(e);return e}function t(e,{props:a={},attrs:l=[],styles:m="",template:n}){let c=["props",...l];class s extends HTMLElement{static observedAttributes=c;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let r={},i=this.getAttribute("props");if(i)try{r=JSON.parse(i)}catch{r={}}let g={};for(let p of Object.keys(a))g[p]=d(r[p],a[p]);return g}_applyForwardedAttrs(){if(l.length===0)return;let r=this.shadowRoot.querySelector("[data-forward]");if(!r)return;for(let i of l)if(this.hasAttribute(i))r.setAttribute(i,this.getAttribute(i));else r.removeAttribute(i)}_render(){let r=this._getProps(),i=typeof n==="function"?n(r):n;this.shadowRoot.innerHTML=`<style>${m}</style>${i}`,this._applyForwardedAttrs()}}customElements.define(e,s)}var h=`
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -61,7 +61,7 @@ function g(t,a){if(t===void 0){if(a===Array)return[];if(a===Object)return{};if(a
   }
 `,f=["href","target","rel","download"],v=`
   <a data-forward><slot></slot></a>
-`;e("app-link",{attrs:f,styles:h,template:v});var u=`
+`;t("app-link",{attrs:f,styles:h,template:v});var u=`
   :host {
     display: block;
   }
@@ -70,7 +70,7 @@ function g(t,a){if(t===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     max-height: 7rem;
     width: auto;
   }
-`,w=["width","height","src","alt"],b=()=>"<img data-forward />";e("app-logo",{attrs:w,styles:u,template:b});var o="769px",ae="992px";var y=`
+`,w=["width","height","src","alt"],b=()=>"<img data-forward />";t("app-logo",{attrs:w,styles:u,template:b});var o="769px",ot="992px";var y=`
   :host {
     display: block;
   }
@@ -139,7 +139,7 @@ function g(t,a){if(t===void 0){if(a===Array)return[];if(a===Object)return{};if(a
         </app-link>
       </div>
   </header>
-`;e("section-header",{template:k,styles:y});var x=[{href:"/",name:"Home"},{href:"/about",name:"About"},{href:"/credits",name:"Credits"},{href:"/hire-me",name:"Hire Me"},{href:"/thank-you",name:"Thank You"},{href:"/work/mmo",name:"MMO"},{href:"/work/bamboo",name:"Bamboo"},{href:"/work/portfolio",name:"Portfolio"},{href:"/work/au-van",name:"AU Van"},{href:"/work/sks-solar",name:"SKS Solar"},{href:"/writings/foundation-building-interfaces-at-scale",name:"Foundation"},{href:"/work/knowledge-tree",name:"Knowledge Tree"}],$=`
+`;t("section-header",{template:k,styles:y});var x=[{href:"/",name:"Home"},{href:"/about",name:"About"},{href:"/credits",name:"Credits"},{href:"/hire-me",name:"Hire Me"},{href:"/thank-you",name:"Thank You"},{href:"/work/mmo",name:"MMO"},{href:"/work/bamboo",name:"Bamboo"},{href:"/work/portfolio",name:"Portfolio"},{href:"/work/au-van",name:"AU Van"},{href:"/work/sks-solar",name:"SKS Solar"},{href:"/writings/foundation-building-interfaces-at-scale",name:"Foundation"},{href:"/work/knowledge-tree",name:"Knowledge Tree"}],$=`
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -191,14 +191,14 @@ function g(t,a){if(t===void 0){if(a===Array)return[];if(a===Object)return{};if(a
         <span>Sitemap</span>
 
         <ol>
-            ${x.map((t)=>`
+            ${x.map((e)=>`
                 <li>
-                    <app-link variant="sitemap" href=${t.href} >${t.name}</app-link>
+                    <app-link variant="sitemap" href=${e.href} >${e.name}</app-link>
                 </li>
             `).join("")}
         </ol>
     </nav>
-`;e("footer-nav",{styles:$,template:S});var I=`
+`;t("footer-nav",{styles:$,template:S});var A=`
   :host {
    display: flex;
     justify-content: space-between;
@@ -243,7 +243,7 @@ function g(t,a){if(t===void 0){if(a===Array)return[];if(a===Object)return{};if(a
       margin-bottom: 0.5rem;
     }
   }
-`,A=()=>`
+`,H=()=>`
       <p>
         © Han Htet Aung 2026 |
         <app-link href="/credits" variant="underline">Credits</app-link>
@@ -288,7 +288,7 @@ function g(t,a){if(t===void 0){if(a===Array)return[];if(a===Object)return{};if(a
               </li>
           </ul>
 </nav>
-`;e("footer-copyright",{styles:I,template:A});var z=`
+`;t("footer-copyright",{styles:A,template:H});var O=`
   :host {
     --local-bg-color: var(--color-bg-secondary);
 
@@ -336,7 +336,7 @@ function g(t,a){if(t===void 0){if(a===Array)return[];if(a===Object)return{};if(a
   hr {
     color: var(--color-secondary);
   }
-`,O=`
+`,z=`
   <footer>
       <article>
         <div>
@@ -358,7 +358,7 @@ function g(t,a){if(t===void 0){if(a===Array)return[];if(a===Object)return{};if(a
 
       <footer-copyright></footer-copyright>
   </footer>
-`;e("section-footer",{styles:z,template:O});var H=`
+`;t("section-footer",{styles:O,template:z});var I=`
   :host {
     --local-width: 5rem;
     --local-heigth: auto;
@@ -389,7 +389,7 @@ function g(t,a){if(t===void 0){if(a===Array)return[];if(a===Object)return{};if(a
    :host([variant="full"]) {
     --local-width: 100%;
   }
-`,N=["width","height","src","alt"],P=()=>"<img data-forward />";e("app-image",{attrs:N,styles:H,template:P});var T=`
+`,L=["width","height","src","alt"],N=()=>"<img data-forward />";t("app-image",{attrs:L,styles:I,template:N});var P=`
   section {
     width: 80%;
     margin-inline: auto;
@@ -418,7 +418,7 @@ function g(t,a){if(t===void 0){if(a===Array)return[];if(a===Object)return{};if(a
       display: block; 
     }
   }
-`,C=`
+`,T=`
   <section>
       <h1>About</h1>
       <div>
@@ -438,7 +438,7 @@ function g(t,a){if(t===void 0){if(a===Array)return[];if(a===Object)return{};if(a
         </article>
       </div>
   </section>
-`;e("section-about-intro",{styles:T,template:C});var E=`
+`;t("section-about-intro",{styles:P,template:T});var E=`
   :host {
     display: flex;
     align-items: center;
@@ -469,15 +469,15 @@ function g(t,a){if(t===void 0){if(a===Array)return[];if(a===Object)return{};if(a
       display: none;
     }
   }
-`,L={name:String,img:String,alt:String},B=({name:t,img:a="",alt:n=""})=>`
-    <h2>${t}</h2>
+`,W={name:String,img:String,alt:String},C=({name:e,img:a="",alt:l=""})=>`
+    <h2>${e}</h2>
     <img
         src=${a}
-        alt=${n}
+        alt=${l}
         height="36"
         width="76"
     />
-`;e("section-title",{props:L,styles:E,template:B});var D=[{href:"https://raindrop.io/",src:"/assets/tech-collection/raindrop-io.svg",alt:"Raindrop-io logo"},{href:"https://www.spendee.com/",src:"/assets/tech-collection/spendee.svg",alt:"Spendee logo"},{href:"https://citymapper.com/",src:"/assets/tech-collection/citymapper.svg",alt:"Citymapper logo"},{href:"https://www.figma.com/",src:"/assets/tech-collection/figma.svg",alt:"Figma logo"},{href:"https://www.strava.com/",src:"/assets/tech-collection/strava.svg",alt:"Strava logo"},{href:"https://www.notion.com/",src:"/assets/tech-collection/notion.svg",alt:"Notion logo"},{href:"https://wise.com/",src:"/assets/tech-collection/wise.svg",alt:"Wise logo"},{href:"https://dayoneapp.com/",src:"/assets/tech-collection/day-one.svg",alt:"Day One logo"},{href:"https://telegram.org/",src:"/assets/tech-collection/telegram.svg",alt:"Telegram logo"},{href:"https://www.redbus.com/",src:"/assets/tech-collection/redbus.svg",alt:"Red Bus logo"},{href:"https://www.iqair.com/",src:"/assets/tech-collection/iqair.svg",alt:"IqAir logo"},{href:"https://www.shazam.com/",src:"/assets/tech-collection/shazam.svg",alt:"Shazam logo"},{href:"https://www.skyscanner.net/",src:"/assets/tech-collection/skyscanner.svg",alt:"Skyscanner logo"},{href:"https://developer.mozilla.org/en-US/docs/Glossary/HTML5",src:"/assets/tech-collection/html5.svg",alt:"HTML5 logo"},{href:"https://developer.mozilla.org/en-US/docs/Web/CSS",src:"/assets/tech-collection/css3.svg",alt:"CSS3 logo"},{href:"https://bun.com/",src:"/assets/tech-collection/bun.svg",alt:"Bun logo"},{href:"https://www.upwork.com/",src:"/assets/tech-collection/upwork.svg",alt:"Upwork logo"},{href:"https://google.com/maps",src:"/assets/tech-collection/google-map.svg",alt:"Google Map logo"},{href:"https://www.airbnb.com/",src:"/assets/tech-collection/airbnb.svg",alt:"Airbnb logo"},{href:"https://ticktick.com/",src:"/assets/tech-collection/ticktick.svg",alt:"Ticktick logo"},{href:"https://unsplash.com/",src:"/assets/tech-collection/unsplash.svg",alt:"Unsplash logo"},{href:"https://oklch.com/",src:"/assets/tech-collection/oklch.svg",alt:"Oklch logo"},{href:"https://vert.sh/",src:"/assets/tech-collection/vert.svg",alt:"Vert logo"},{href:"https://thenounproject.com/",src:"/assets/tech-collection/the-noun-project.svg",alt:"The Noun Project logo"}],_=`
+`;t("section-title",{props:W,styles:E,template:C});var B=[{href:"https://raindrop.io/",src:"/assets/tech-collection/raindrop-io.svg",alt:"Raindrop-io logo"},{href:"https://www.spendee.com/",src:"/assets/tech-collection/spendee.svg",alt:"Spendee logo"},{href:"https://citymapper.com/",src:"/assets/tech-collection/citymapper.svg",alt:"Citymapper logo"},{href:"https://www.figma.com/",src:"/assets/tech-collection/figma.svg",alt:"Figma logo"},{href:"https://www.strava.com/",src:"/assets/tech-collection/strava.svg",alt:"Strava logo"},{href:"https://www.notion.com/",src:"/assets/tech-collection/notion.svg",alt:"Notion logo"},{href:"https://wise.com/",src:"/assets/tech-collection/wise.svg",alt:"Wise logo"},{href:"https://dayoneapp.com/",src:"/assets/tech-collection/day-one.svg",alt:"Day One logo"},{href:"https://telegram.org/",src:"/assets/tech-collection/telegram.svg",alt:"Telegram logo"},{href:"https://www.redbus.com/",src:"/assets/tech-collection/redbus.svg",alt:"Red Bus logo"},{href:"https://www.iqair.com/",src:"/assets/tech-collection/iqair.svg",alt:"IqAir logo"},{href:"https://www.shazam.com/",src:"/assets/tech-collection/shazam.svg",alt:"Shazam logo"},{href:"https://www.skyscanner.net/",src:"/assets/tech-collection/skyscanner.svg",alt:"Skyscanner logo"},{href:"https://developer.mozilla.org/en-US/docs/Glossary/HTML5",src:"/assets/tech-collection/html5.svg",alt:"HTML5 logo"},{href:"https://developer.mozilla.org/en-US/docs/Web/CSS",src:"/assets/tech-collection/css3.svg",alt:"CSS3 logo"},{href:"https://bun.com/",src:"/assets/tech-collection/bun.svg",alt:"Bun logo"},{href:"https://www.upwork.com/",src:"/assets/tech-collection/upwork.svg",alt:"Upwork logo"},{href:"https://google.com/maps",src:"/assets/tech-collection/google-map.svg",alt:"Google Map logo"},{href:"https://www.airbnb.com/",src:"/assets/tech-collection/airbnb.svg",alt:"Airbnb logo"},{href:"https://ticktick.com/",src:"/assets/tech-collection/ticktick.svg",alt:"Ticktick logo"},{href:"https://unsplash.com/",src:"/assets/tech-collection/unsplash.svg",alt:"Unsplash logo"},{href:"https://oklch.com/",src:"/assets/tech-collection/oklch.svg",alt:"Oklch logo"},{href:"https://vert.sh/",src:"/assets/tech-collection/vert.svg",alt:"Vert logo"},{href:"https://thenounproject.com/",src:"/assets/tech-collection/the-noun-project.svg",alt:"The Noun Project logo"}],M=`
   section {
     width: 80%;
     margin-inline: auto;
@@ -492,19 +492,19 @@ function g(t,a){if(t===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     display: flex;
     flex-wrap: wrap;
   }
-`,M=()=>`
+`,_=()=>`
   <section>
     <section-title
         props='${JSON.stringify({name:"Tech Collection",img:"/assets/icons/penguin.svg",alt:"Penguin Logo"})}'
       ></section-title>
 
       <ul>
-        ${D.map((t)=>`
+        ${B.map((e)=>`
               <li>
-                <app-link href="${t.href}" target="_blank" variant="image">
+                <app-link href="${e.href}" target="_blank" variant="image">
                   <img
-                    src="${t.src}"
-                    alt="${t.alt}"
+                    src="${e.src}"
+                    alt="${e.alt}"
                     width="102"
                     height="73"
                   />
@@ -513,7 +513,7 @@ function g(t,a){if(t===void 0){if(a===Array)return[];if(a===Object)return{};if(a
             `).join("")}
       </ul>
   </section>
-`;e("section-tech-collection",{styles:_,template:M});var U=`
+`;t("section-tech-collection",{styles:M,template:_});var q=`
   :host {
     --local-width: 3rem;
     --local-height: auto;
@@ -546,7 +546,7 @@ function g(t,a){if(t===void 0){if(a===Array)return[];if(a===Object)return{};if(a
   }
 
 
-`,q=["src","alt"],F=()=>'<img data-forward width="200" height="200"/>';e("app-icon",{attrs:q,styles:U,template:F});var j=[{src:"/assets/icons/bird-watching.svg",alt:"Watching Bird",text:"I love birds"},{src:"/assets/icons/seafood.svg",alt:"Seafood",text:"I’m allergic to seafood"},{src:"/assets/icons/travelling.svg",alt:"Travelling",text:"I enjoy travelling"},{src:"/assets/icons/running.svg",alt:"Running",text:"I like running"}],W=`
+`,F=["src","alt"],R=()=>'<img data-forward width="200" height="200"/>';t("app-icon",{attrs:F,styles:q,template:R});var U=[{src:"/assets/icons/bird-watching.svg",alt:"Watching Bird",text:"I love birds"},{src:"/assets/icons/seafood.svg",alt:"Seafood",text:"I’m allergic to seafood"},{src:"/assets/icons/travelling.svg",alt:"Travelling",text:"I enjoy travelling"},{src:"/assets/icons/running.svg",alt:"Running",text:"I like running"}],j=`
   section {
     width: 80%;
     margin-inline: auto;
@@ -564,171 +564,94 @@ function g(t,a){if(t===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     margin: 0;
     text-align: center;
   }
-`,R=()=>`
+`,D=()=>`
   <section>
        <section-title
         props='${JSON.stringify({name:"Random Facts",img:"/assets/icons/birds-singing.svg",alt:"Birds-singing Logo"})}'
       ></section-title>
 
       <ul>
-        ${j.map((t)=>`
+        ${U.map((e)=>`
               <li>
                 <figure>
-                  <app-icon variant="large" src="${t.src}" alt="${t.alt}"></app-icon>
-                  <figcaption>${t.text}</figcaption>
+                  <app-icon variant="large" src="${e.src}" alt="${e.alt}"></app-icon>
+                  <figcaption>${e.text}</figcaption>
                 </figure>
               </li>
             `).join("")}
       </ul>
   </section>
-`;e("section-random-facts",{styles:W,template:R});var J=`
-  :host {
-    --local-bg: var(--color-secondary);
-    --local-color: var(--color-bg-primary);
-    --local-border: none;
-
-    display: inline-block;
-    padding-block: 0.5rem;
-    padding-inline: 1.5rem;
-    width: fit-content;
-    white-space: nowrap;
-    border-radius: 3rem;
-    border: var(--local-border);
-    font-size: var(--size-small);
-    background: var(--local-bg);
-    color: var(--local-color);
-  }
-
-  :host([variant="outline"]) {
-    --local-bg: var(--color-transparent);
-    --local-color: var(--color-secondary);
-    --local-border: 1px solid var(--color-secondary);
-  }
-
-  :host([variant="success"]) {
-    /* --local-bg: #157d6c; */
-    --local-bg: #a36aa5;
-     --local-border: 1px solid var( --local-color);
-  }
-`,G={name:String},K=({name:t})=>`${t}`;e("app-badge",{props:G,styles:J,template:K});var V=[{icon:"/assets/icons/software-developer.svg",alt:"Software Developer Icon",range:"2021-2022",title:"Software Developer",description:"I landed my first software development role building a hospital management system to manage inventory, POS, and OPD appointments. The system is still running today."},{icon:"/assets/icons/student.svg",alt:"Student Icon",range:"2022-2025",title:"Student",description:"I completed my Bachelor of Science in Computer Science at Assumption University, Thailand. My favorite subject was Computer Architecture."},{icon:"/assets/icons/software-developer.svg",alt:"Software Developer Icon",range:"2025-2026",title:"Software Developer",description:"After graduating, I worked remotely for 6 months as a software developer at an event organizing company in Singapore."},{icon:"/assets/icons/full-time-freelancer.svg",alt:"Web Design & Develop",range:"Present",title:"UX Designer",description:"Today, I've found my passion in UX design. Self-taught through research and hands-on practice, I design intuitive experiences by simplifying complex workflows."}],X=`
-  :host {
-    display: block;
-  }
-
+`;t("section-random-facts",{styles:j,template:D});var J="2000-11-03",Y=70,G=`
   section {
     width: 80%;
     margin-inline: auto;
   }
 
-  h3, p {
-    margin: 0;
-  }
-
-  h3 {
-     font-size: var(--size-heading);
-    font-weight: var(--font-bold);
-    font-family: var(--font-body);
-    margin-block: 1rem;
+  article {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+      "corner ages"
+      "weeks  grid";
+    gap: 0.5rem;
+    margin-bottom: 2rem;
   }
 
   ul {
-    list-style: none;
+    grid-area: grid;
     padding: 0;
-    margin-bottom: 5rem;
-    display: flex;
-    flex-direction: column-reverse;
+    margin: 0;
+    list-style-type: none;
+    display: grid;
+    grid-template-rows: repeat(52, 1rem);
+    grid-auto-columns: 1rem;
+    grid-auto-flow: column;
+    gap: 0.25rem;
+    overflow: scroll;
+  }
+
+  span {
+    display: block;
+  }
+
+  span.ages {
+    grid-area: ages;
+  }
+
+  span.weeks-axis {
+    grid-area: weeks;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    text-align: right;
   }
 
   li {
-    display: grid;
-    grid-template-columns: auto auto 1fr;
-    gap: 0 1rem;
-    align-items: center;
-    align-self: stretch;
+    width: 0.6rem;
+    height: 0.6rem;
+    border: 1px solid var(--color-text);
+    border-radius: 0.2rem;
   }
 
-  .connector {
-    display: flex;
-    position: relative;
-    flex-direction: column;
-    align-items: center;
-    align-self: stretch;
-  }
-
-  .icon {
-    width: 10rem;
-    max-height: 5rem;
-    height: auto;
-  }
-
-  .dot {
-    width: 0.75rem;
-    position: absolute;
-    top: 1rem;
-    height: 0.75rem;
-    border-radius: 50%;
-    background: var(--color-secondary);
-  }
-
-  .line {
-    width: 2px;
-    flex: 1;
-    background: var(--color-secondary);
-    min-height: 2rem;
-  }
-
-  article {
-    padding-bottom: 5rem;
-    max-width: 100ch;
-  }
-
-  .badge {
-    margin-bottom: 0.5rem;
-  }
-
-  app-icon {
-    margin-right: 2rem;
-  }
-
-  @media (max-width: ${o}) {
-    app-icon {
-      display: none;
+    li.lived {
+        background: var(--color-secondary);
+        border-color: var(--color-secondary);
     }
-  }
-
-  p {
-    max-width: 50ch;
-  }
-`,Y=()=>`
+`;function K(e,a){let l=new Date(e),m=604800000,n=Math.floor(a*365.25*24*60*60*1000/604800000),c=Math.floor((Date.now()-l)/604800000),s="";for(let r=0;r<n;r++)s+=r<c?'<li class="lived"></li>':"<li></li>";return s}var V=()=>`
   <section>
-      <section-title
-        props='${JSON.stringify({name:"Experience Overview",img:"/assets/icons/bird-flying.svg",alt:"Bird Flying Logo"})}'
-      ></section-title>
+    <section-title
+      props='${JSON.stringify({name:"Life in Weeks",img:"/assets/icons/parrot.svg",alt:"Birds-singing Logo"})}'
+    ></section-title>
 
-      <ul>
-        ${V.map(({icon:t,alt:a,range:n,title:s,description:l})=>`
-              <li>
-                <app-icon src="${t}" alt="${a}"></app-icon>
+    <article>
+      <span class="ages">Ages ⇨</span>
+      <span class="weeks-axis">⇦ Weeks of the year</span>
+      <ul>${K(J,Y)}</ul>
+    </article>
 
-                <div class="connector">
-                  <span class="dot"></span>
-                  <span class="line"></span>
-                </div>
-
-                <article>
-                  <app-badge
-                    props='${JSON.stringify({name:n})}'
-                    ${n==="Present"?"":'variant="outline"'}
-                  ></app-badge>
-
-                  <h3>${s}</h3>
-                  <p>${l}</p>
-                </article>
-              </li>
-            `).join("")}
-      </ul>
+    <p>Based on this post: <app-link variant="underline" href="https://waitbutwhy.com/2014/05/life-weeks.html" target="_blank">Your Life in Weeks</app-link></p>
   </section>
-`;e("section-timeline",{styles:X,template:Y});var Q=`
+`;t("section-life-in-weeks",{styles:G,template:V});var X=`
   section {
     width: 80%;
     margin-inline: auto;
@@ -744,7 +667,7 @@ function g(t,a){if(t===void 0){if(a===Array)return[];if(a===Object)return{};if(a
       font-size: var(--size-body);
     }
   }
-`,Z=`
+`,Q=`
   <section>
       <blockquote>
         " What I hear, I forget.<br />
@@ -753,4 +676,4 @@ function g(t,a){if(t===void 0){if(a===Array)return[];if(a===Object)return{};if(a
         — Confucius
       </blockquote>
   </section>
-`;e("section-quote",{styles:Q,template:Z});
+`;t("section-quote",{styles:X,template:Q});

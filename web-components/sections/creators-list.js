@@ -212,6 +212,12 @@ const creditsData = [
     url: "https://thenounproject.com/icon/bird-6684144/",
     name: "Carlos von Dessauer",
   },
+  {
+    icon: "/assets/icons/parrot.svg",
+    alt: "Parrot Logo",
+    url: "https://thenounproject.com/icon/parrot-8272477/",
+    name: "Eskak",
+  },
 ];
 
 const styles = /* css */ `
