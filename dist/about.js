@@ -743,7 +743,7 @@ function g(t,a){if(t===void 0){if(a===Array)return[];if(a===Object)return{};if(a
       <blockquote>
         " What I hear, I forget.<br />
         What I see, I remember.<br />
-        What I do I understand" <br />
+        What I do, I understand." <br />
         — Confucius
       </blockquote>
   </section>

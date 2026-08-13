@@ -59,9 +59,9 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
        content: "➶";
      }
   }
-`,u=["href","target","rel","download"],v=`
+`,v=["href","target","rel","download"],u=`
   <a data-forward><slot></slot></a>
-`;e("app-link",{attrs:u,styles:f,template:v});var w=`
+`;e("app-link",{attrs:v,styles:f,template:u});var b=`
   :host {
     display: block;
   }
@@ -70,7 +70,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     max-height: 7rem;
     width: auto;
   }
-`,y=["width","height","src","alt"],b=()=>"<img data-forward />";e("app-logo",{attrs:y,styles:w,template:b});var o="769px",p="992px";var x=`
+`,w=["width","height","src","alt"],y=()=>"<img data-forward />";e("app-logo",{attrs:w,styles:b,template:y});var o="769px",p="992px";var x=`
   :host {
     display: block;
   }
@@ -139,7 +139,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
         </app-link>
       </div>
   </header>
-`;e("section-header",{template:k,styles:x});var S=[{href:"/",name:"Home"},{href:"/about",name:"About"},{href:"/credits",name:"Credits"},{href:"/hire-me",name:"Hire Me"},{href:"/thank-you",name:"Thank You"},{href:"/work/mmo",name:"MMO"},{href:"/work/bamboo",name:"Bamboo"},{href:"/work/portfolio",name:"Portfolio"},{href:"/work/au-van",name:"AU Van"},{href:"/work/sks-solar",name:"SKS Solar"},{href:"/writings/foundation-building-interfaces-at-scale",name:"Foundation"},{href:"/work/knowledge-tree",name:"Knowledge Tree"}],$=`
+`;e("section-header",{template:k,styles:x});var $=[{href:"/",name:"Home"},{href:"/about",name:"About"},{href:"/credits",name:"Credits"},{href:"/hire-me",name:"Hire Me"},{href:"/thank-you",name:"Thank You"},{href:"/work/mmo",name:"MMO"},{href:"/work/bamboo",name:"Bamboo"},{href:"/work/portfolio",name:"Portfolio"},{href:"/work/au-van",name:"AU Van"},{href:"/work/sks-solar",name:"SKS Solar"},{href:"/writings/foundation-building-interfaces-at-scale",name:"Foundation"},{href:"/work/knowledge-tree",name:"Knowledge Tree"}],S=`
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -191,14 +191,14 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
         <span>Sitemap</span>
 
         <ol>
-            ${S.map((i)=>`
+            ${$.map((i)=>`
                 <li>
                     <app-link variant="sitemap" href=${i.href} >${i.name}</app-link>
                 </li>
             `).join("")}
         </ol>
     </nav>
-`;e("footer-nav",{styles:$,template:I});var T=`
+`;e("footer-nav",{styles:S,template:I});var T=`
   :host {
    display: flex;
     justify-content: space-between;
@@ -243,7 +243,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
       margin-bottom: 0.5rem;
     }
   }
-`,O=()=>`
+`,Q=()=>`
       <p>
         © Han Htet Aung 2026 |
         <app-link href="/credits" variant="underline">Credits</app-link>
@@ -288,7 +288,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
               </li>
           </ul>
 </nav>
-`;e("footer-copyright",{styles:T,template:O});var A=`
+`;e("footer-copyright",{styles:T,template:Q});var z=`
   :host {
     --local-bg-color: var(--color-bg-secondary);
 
@@ -336,7 +336,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
   hr {
     color: var(--color-secondary);
   }
-`,D=`
+`,O=`
   <footer>
       <article>
         <div>
@@ -358,7 +358,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
 
       <footer-copyright></footer-copyright>
   </footer>
-`;e("section-footer",{styles:A,template:D});var M=`
+`;e("section-footer",{styles:z,template:O});var A=`
   :host {
     --local-width: 3rem;
     --local-height: auto;
@@ -391,7 +391,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
   }
 
 
-`,Q=["src","alt"],z=()=>'<img data-forward width="200" height="200"/>';e("app-icon",{attrs:Q,styles:M,template:z});var P=[{src:"/assets/icons/figma.svg",alt:"Figma Icon"},{src:"/assets/icons/html.svg",alt:"HTML Icon"},{src:"/assets/icons/css.svg",alt:"CSS Icon"},{src:"/assets/icons/javascript.svg",alt:"JavaScript Icon"}],L=[{name:"Knowledge Tree",href:"/work/knowledge-tree",src:"/assets/images/case-study/knowledge-tree/thumbnail.avif",alt:"Knowledge Tree Thumbnail"},{name:"MMO",href:"/work/mmo",src:"/assets/images/case-study/mmo/thumbnail.avif",alt:"MMO Thumbnail"},{name:"Bamboo",href:"/work/bamboo",src:"/assets/images/case-study/bamboo/thumbnail.avif",alt:"Bamboo Thumbnail"}],E=[{title:"Specialize In",header:"Enterprise UX"},{title:"Simplify",header:"Complex workflows"},{title:"Scale",header:"Design System"}],H=`
+`,H=["src","alt"],L=()=>'<img data-forward width="200" height="200"/>';e("app-icon",{attrs:H,styles:A,template:L});var P=[{src:"/assets/icons/figma.svg",alt:"Figma Icon"},{src:"/assets/icons/html.svg",alt:"HTML Icon"},{src:"/assets/icons/css.svg",alt:"CSS Icon"},{src:"/assets/icons/javascript.svg",alt:"JavaScript Icon"}],D=[{name:"Knowledge Tree",href:"/work/knowledge-tree",src:"/assets/images/case-study/knowledge-tree/thumbnail.avif",alt:"Knowledge Tree Thumbnail"},{name:"MMO",href:"/work/mmo",src:"/assets/images/case-study/mmo/thumbnail.avif",alt:"MMO Thumbnail"},{name:"Bamboo",href:"/work/bamboo",src:"/assets/images/case-study/bamboo/thumbnail.avif",alt:"Bamboo Thumbnail"}],M=[{title:"Specialize In",header:"Enterprise UX"},{title:"Simplify",header:"Complex workflows"},{title:"Scale",header:"Design System"}],E=`
   section {
     width: 80%;
     margin-inline: auto;
@@ -489,7 +489,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     width: 25rem;
     height: auto;
   }
-`,N=`
+`,B=`
   <section>
       <article>
         <hgroup>
@@ -515,7 +515,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
       </article>
 
       <ul class="highlights">
-         ${E.map((i)=>`
+         ${M.map((i)=>`
                 <li>
                   <span>${i.title}</span>
                   <h3>${i.header}</h3>
@@ -524,7 +524,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
       </ul>
 
       <ol>
-        ${L.map((i)=>`
+        ${D.map((i)=>`
           <li>
             <app-link variant="image" href=${i.href} >
               ➶ ${i.name}
@@ -537,7 +537,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
           `).join("")}
       </ol>
   </section>
-`;e("section-hero",{styles:H,template:N});var B=`
+`;e("section-hero",{styles:E,template:B});var N=`
   :host {
     display: flex;
     align-items: center;
@@ -576,7 +576,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
         height="36"
         width="76"
     />
-`;e("section-title",{props:C,styles:B,template:j});var W=`
+`;e("section-title",{props:C,styles:N,template:j});var _=`
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -599,7 +599,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     --local-color: var(--color-secondary);
     --local-border: 1px solid var(--color-secondary);
   }
-`,_={name:String},K=({name:i})=>`${i}`;e("app-badge",{props:_,styles:W,template:K});var U=`
+`,U={name:String},W=({name:i})=>`${i}`;e("app-badge",{props:U,styles:_,template:W});var J=`
   :host {
     display: block;
     /* padding-block: 5rem; */
@@ -624,13 +624,13 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     font-size: var(--size-heading);
     margin-bottom: 0.5rem;
   }
-`,J={title:String,description:String,href:String,alt:String,subTitle:String},R=({title:i,description:t,href:a,alt:n,subTitle:r})=>`
+`,F={title:String,description:String,href:String,alt:String,subTitle:String},K=({title:i,description:t,href:a,alt:n,subTitle:r})=>`
     <app-icon variant="large" src=${a} alt=${n}></app-icon>
     <span>${r}</span>
     <h4>${i}</h4>
     <p>${t}</p>
     <slot></slot>
-`;e("capabilities-item",{props:J,styles:U,template:R});var F=`
+`;e("capabilities-item",{props:F,styles:J,template:K});var R=`
   section {
     width: 80%;
     margin-inline: auto;
@@ -699,7 +699,7 @@ ol {
         <li>Server Maintenance</li>
       </ul> -->
   </section>
-`;e("section-capabilities",{styles:F,template:X});var V=`
+`;e("section-capabilities",{styles:R,template:X});var V=`
   :host {
     --local-width: 5rem;
     --local-heigth: auto;
@@ -730,7 +730,7 @@ ol {
    :host([variant="full"]) {
     --local-width: 100%;
   }
-`,Y=["width","height","src","alt"],G=()=>"<img data-forward />";e("app-image",{attrs:Y,styles:V,template:G});var Z=`
+`,G=["width","height","src","alt"],Y=()=>"<img data-forward />";e("app-image",{attrs:G,styles:V,template:Y});var Z=`
   :host {
     display: flex;
     /* width: fit-content; */
@@ -880,7 +880,7 @@ ol {
         View Case Study &#8599;
       </app-link>
     </div>
-`;e("case-study-item",{props:ae,styles:oe,template:re});var ne=[{image:"/assets/images/case-study/knowledge-tree/thumbnail.avif",alt:"Knowledge Tree Thumbnail",title:"Knowledge Tree",categories:["Product Design","User Experience","Design System"],description:"A tool to visualize the connections between everyday goods and their fundamental sources based on my knowledge.",href:"/work/knowledge-tree",reverse:!1},{image:"assets/images/case-study/mmo/thumbnail.avif",alt:"MMO thumbnail",title:"MMO",categories:["Simplify complex workflows","Build Prototype","Design System"],description:"An internal portal that uses to run daily operations in hospital.",href:"/work/mmo",reverse:!0},{image:"/assets/images/case-study/portfolio/mockup.avif",alt:"Portfolio Mockup",title:"Portfolio",categories:["Research","Web Design","Web Development"],description:"A personal portfolio to showcase my work, process, and approach to web design and development.",href:"/work/portfolio",reverse:!1},{image:"/assets/images/case-study/skssolar/mockup.avif",alt:"SKS Mockup",title:"SKS.Solar",categories:["Research","Web Design","Web Development"],description:"A website for SKS SOLAR (SALES & SERVICES) COMPANY LIMITED to showcase its history, services and completed project.",href:"/work/sks-solar",reverse:!0}],le=`
+`;e("case-study-item",{props:ae,styles:oe,template:re});var ne=[{image:"/assets/images/case-study/knowledge-tree/thumbnail.avif",alt:"Knowledge Tree Thumbnail",title:"Knowledge Tree",categories:["Product Design","User Experience","Design System"],description:"A tool to visualize the connections between everyday goods and their fundamental sources based on my knowledge.",href:"/work/knowledge-tree",reverse:!1},{image:"assets/images/case-study/mmo/thumbnail.avif",alt:"MMO thumbnail",title:"MMO",categories:["Simplify complex workflows","Build Prototype","Design System"],description:"An internal portal that uses to run daily operations in hospital.",href:"/work/mmo",reverse:!0},{image:"/assets/images/case-study/skssolar/mockup.avif",alt:"SKS Mockup",title:"SKS.Solar",categories:["Research","Web Design","Web Development"],description:"A website for SKS SOLAR (SALES & SERVICES) COMPANY LIMITED to showcase its history, services and completed project.",href:"/work/sks-solar",reverse:!1}],le=`
   :host {
     background: var(--color-bg-secondary)
   }
@@ -1160,7 +1160,7 @@ ol {
       display: none;
     }
   }
-`,ue=`
+`,ve=`
   <section>
        <section-title
        variant="text"
@@ -1192,7 +1192,7 @@ ol {
         alt="Merlion illustration"
       />
   </section>
-`;e("section-cta",{styles:fe,template:ue});var ve=`
+`;e("section-cta",{styles:fe,template:ve});var ue=`
   :host {
     display: block;
     width: 100%;
@@ -1203,7 +1203,7 @@ ol {
     width: 100%;
     height: auto;
   }
-`,we=`
+`,be=`
     <svg
       viewBox="0 0 1200 80"
       xmlns="http://www.w3.org/2000/svg"
@@ -1234,7 +1234,7 @@ ol {
         fill="var(--color-bg-secondary)"
       />
     </svg>
-`;e("line-divider-lower",{styles:ve,template:we});var ye=`
+`;e("line-divider-lower",{styles:ue,template:be});var we=`
   :host {
     display: block;
     width: 100%;
@@ -1245,7 +1245,7 @@ ol {
     width: 100%;
     height: auto;
   }
-`,be=`
+`,ye=`
   <div>
     <svg
       viewBox="0 0 1200 80"
@@ -1278,4 +1278,4 @@ ol {
       />
     </svg>
   </div>
-`;e("line-divider-upper",{styles:ye,template:be});
+`;e("line-divider-upper",{styles:we,template:ye});
