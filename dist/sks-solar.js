@@ -70,7 +70,7 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     max-height: 7rem;
     width: auto;
   }
-`,y=["width","height","src","alt"],w=()=>"<img data-forward />";e("app-logo",{attrs:y,styles:v,template:w});var t="769px",Q="992px";var b=`
+`,y=["width","height","src","alt"],b=()=>"<img data-forward />";e("app-logo",{attrs:y,styles:v,template:b});var t="769px",Q="992px";var w=`
   :host {
     display: block;
   }
@@ -139,7 +139,7 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
         </app-link>
       </div>
   </header>
-`;e("section-header",{template:k,styles:b});var x=[{href:"/",name:"Home"},{href:"/about",name:"About"},{href:"/credits",name:"Credits"},{href:"/hire-me",name:"Hire Me"},{href:"/thank-you",name:"Thank You"},{href:"/work/mmo",name:"MMO"},{href:"/work/bamboo",name:"Bamboo"},{href:"/work/portfolio",name:"Portfolio"},{href:"/work/au-van",name:"AU Van"},{href:"/work/sks-solar",name:"SKS Solar"},{href:"/writings/foundation-building-interfaces-at-scale",name:"Foundation"},{href:"/work/knowledge-tree",name:"Knowledge Tree"}],S=`
+`;e("section-header",{template:k,styles:w});var x=[{href:"/",name:"Home"},{href:"/about",name:"About"},{href:"/credits",name:"Credits"},{href:"/hire-me",name:"Hire Me"},{href:"/thank-you",name:"Thank You"},{href:"/work/mmo",name:"MMO"},{href:"/work/bamboo",name:"Bamboo"},{href:"/work/portfolio",name:"Portfolio"},{href:"/work/au-van",name:"AU Van"},{href:"/work/sks-solar",name:"SKS Solar"},{href:"/writings/foundation-building-interfaces-at-scale",name:"Foundation"},{href:"/work/knowledge-tree",name:"Knowledge Tree"}],S=`
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -160,7 +160,6 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     list-style-type: none;
     display: flex;
     margin: 0;
-    margin-top: 0.5rem
   }
 
   span {
@@ -168,6 +167,8 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     font-size: var(--size-small);
     font-weight: var(--font-bold);
     text-transform: uppercase;
+    display: inline-block;
+    margin-bottom: 0.5rem;
   }
 
   nav ol {
@@ -185,7 +186,7 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     margin-right: 5rem;
     margin-bottom: 0.3rem;
   }
-`,H=()=>`
+`,$=()=>`
     <nav>
         <span>Sitemap</span>
 
@@ -197,19 +198,28 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
             `).join("")}
         </ol>
     </nav>
-`;e("footer-nav",{styles:S,template:H});var A=`
+`;e("footer-nav",{styles:S,template:$});var H=`
   :host {
    display: flex;
     justify-content: space-between;
+    border-top: 1px solid var(--color-text);
+    padding-top: 1rem;
 
    @media (max-width: ${t}) {
-        flex-direction: column;
-        gap: 3rem;
+        flex-direction: column-reverse;
+        gap: 2rem;
+        border: none;
+        padding-top: 0;
    }
   }
 
   p {
     margin: 0;
+
+    @media (max-width: ${t}) {
+      border-top: 1px solid var(--color-text);
+    padding-top: 1rem;
+    }
   }
 
   ul {
@@ -219,50 +229,66 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     display: flex;
     gap: 2rem;
   }
-`,$=()=>`
+
+  span {
+    display: none;
+    color: var(--color-secondary);
+    font-size: var(--size-small);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
     
+
+    @media (max-width: ${t}) {
+      display: inline-block;
+      margin-bottom: 0.5rem;
+    }
+  }
+`,A=()=>`
       <p>
         © Han Htet Aung 2026 |
         <app-link href="/credits" variant="underline">Credits</app-link>
       </p>
 
-       <ul>
-            <li>
-                <app-link href="mailto:hanhtetaung.dev@gmail.com" variant="image">
-                <img
-                    src="/assets/icons/email.svg"
-                    alt="Email Icon"
-                />
-                </app-link>
-            </li>
-            <li>
-                <app-link
-                href="https://github.com/hanhtetaung/"
-                target="_blank"
-                rel="noopener"
-                variant="image"
-                >
-                <img
-                    src="/assets/icons/github.svg"
-                    alt="Github Icon"
-                />
-                </app-link>
-            </li>
-            <li>
-                <app-link
-                href="https://www.linkedin.com/in/han-htet-aung/"
-                target="_blank"
-                rel="noopener"
-                variant="image"
-                >
-                <img
-                    src="/assets/icons/linkedin.svg"
-                    alt="Linkedin Icon"
-                />
-                </app-link>
-            </li>
-        </ul>
-`;e("footer-copyright",{styles:A,template:$});var P=`
+      <nav>
+        <span>Find me on:</span>
+        <ul>
+              <li>
+                  <app-link href="mailto:hanhtetaung.dev@gmail.com" variant="image">
+                  <img
+                      src="/assets/icons/email.svg"
+                      alt="Email Icon"
+                  />
+                  </app-link>
+              </li>
+              <li>
+                  <app-link
+                  href="https://github.com/hanhtetaung/"
+                  target="_blank"
+                  rel="noopener"
+                  variant="image"
+                  >
+                  <img
+                      src="/assets/icons/github.svg"
+                      alt="Github Icon"
+                  />
+                  </app-link>
+              </li>
+              <li>
+                  <app-link
+                  href="https://www.linkedin.com/in/han-htet-aung/"
+                  target="_blank"
+                  rel="noopener"
+                  variant="image"
+                  >
+                  <img
+                      src="/assets/icons/linkedin.svg"
+                      alt="Linkedin Icon"
+                  />
+                  </app-link>
+              </li>
+          </ul>
+</nav>
+`;e("footer-copyright",{styles:H,template:A});var P=`
   :host {
     --local-bg-color: var(--color-bg-secondary);
 
@@ -290,6 +316,8 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 2rem;
+    gap: 5rem;
   }
 
   @media (max-width: ${t}) {
@@ -301,6 +329,8 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
   div {
     display: flex;
     gap: 3rem;
+    align-items: center;
+    min-width: 21rem;
   }
 
   hr {
@@ -326,11 +356,9 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
         <footer-nav></footer-nav>
       </article>
 
-      <hr>
-
       <footer-copyright></footer-copyright>
   </footer>
-`;e("section-footer",{styles:P,template:O});var T=`
+`;e("section-footer",{styles:P,template:O});var z=`
   :host {
     --local-width: 5rem;
     --local-heigth: auto;
@@ -361,7 +389,7 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
    :host([variant="full"]) {
     --local-width: 100%;
   }
-`,E=["width","height","src","alt"],_=()=>"<img data-forward />";e("app-image",{attrs:E,styles:T,template:_});var N=`
+`,E=["width","height","src","alt"],T=()=>"<img data-forward />";e("app-image",{attrs:E,styles:z,template:T});var _=`
   :host {
     display: block;
   }
@@ -401,7 +429,7 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     font-weight: var(--font-bold);
     text-transform: uppercase;
   }
-`,j=`
+`,N=`
   <section>
     <app-image
       variant="full"
@@ -431,7 +459,7 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
       </app-link>
     </article>
   </section>
-`;e("section-sks-solar-intro",{styles:N,template:j});var z=`
+`;e("section-sks-solar-intro",{styles:_,template:N});var j=`
   :host {
     display: flex;
     align-items: center;
@@ -470,7 +498,7 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
         height="36"
         width="76"
     />
-`;e("section-title",{props:L,styles:z,template:C});var M=`
+`;e("section-title",{props:L,styles:j,template:C});var K=`
   :host {
     display: block;
   }
@@ -479,7 +507,7 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     width: 80%;
     margin-inline: auto;
   }
-`,K=`
+`,M=`
   <section>
     <section-title variant="text" props='{"name": "Background"}'></section-title>
 
@@ -492,7 +520,7 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
       clear structure, and minimal visuals.
     </p>
   </section>
-`;e("section-sks-solar-background",{styles:M,template:K});var B=`
+`;e("section-sks-solar-background",{styles:K,template:M});var B=`
   :host {
     display: block;
   }
@@ -535,13 +563,13 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
   :host([variant="block"]) {
     display: block;
   }
-`,V={title:String},W=({title:o})=>`
+`,W={title:String},V=({title:o})=>`
         <h3>${o}</h3>
 
         <article>
             <slot></slot>
         </article>
-`;e("app-article-paragraph",{props:V,styles:R,template:W});var D=`
+`;e("app-article-paragraph",{props:W,styles:R,template:V});var D=`
   :host {
     display: block;
   }
@@ -654,7 +682,7 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
       </li>
     </ul>
   </section>
-`;e("section-sks-solar-process",{styles:D,template:I});var Y=`
+`;e("section-sks-solar-process",{styles:D,template:I});var G=`
   :host {
     display: block;
   }
@@ -674,7 +702,7 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
       flex-direction: column;
     }
   }
-`,G=`
+`,Y=`
   <section>
     <section-title variant="text" props='{"name": "Result"}'></section-title>
 
@@ -712,4 +740,4 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
       </li>
     </ul>
   </section>
-`;e("section-sks-solar-result",{styles:Y,template:G});
+`;e("section-sks-solar-result",{styles:G,template:Y});

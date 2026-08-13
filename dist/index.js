@@ -1,4 +1,4 @@
-function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t===Boolean)return!1;if(t===Number)return 0;return}if(t===Boolean)return Boolean(i);if(t===Number)return Number(i);return i}function e(i,{props:t={},attrs:a=[],styles:n="",template:r}){let p=["props",...a];class c extends HTMLElement{static observedAttributes=p;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let l={},s=this.getAttribute("props");if(s)try{l=JSON.parse(s)}catch{l={}}let g={};for(let d of Object.keys(t))g[d]=h(l[d],t[d]);return g}_applyForwardedAttrs(){if(a.length===0)return;let l=this.shadowRoot.querySelector("[data-forward]");if(!l)return;for(let s of a)if(this.hasAttribute(s))l.setAttribute(s,this.getAttribute(s));else l.removeAttribute(s)}_render(){let l=this._getProps(),s=typeof r==="function"?r(l):r;this.shadowRoot.innerHTML=`<style>${n}</style>${s}`,this._applyForwardedAttrs()}}customElements.define(i,c)}var f=`
+function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t===Boolean)return!1;if(t===Number)return 0;return}if(t===Boolean)return Boolean(i);if(t===Number)return Number(i);return i}function e(i,{props:t={},attrs:a=[],styles:n="",template:r}){let m=["props",...a];class c extends HTMLElement{static observedAttributes=m;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let l={},s=this.getAttribute("props");if(s)try{l=JSON.parse(s)}catch{l={}}let g={};for(let d of Object.keys(t))g[d]=h(l[d],t[d]);return g}_applyForwardedAttrs(){if(a.length===0)return;let l=this.shadowRoot.querySelector("[data-forward]");if(!l)return;for(let s of a)if(this.hasAttribute(s))l.setAttribute(s,this.getAttribute(s));else l.removeAttribute(s)}_render(){let l=this._getProps(),s=typeof r==="function"?r(l):r;this.shadowRoot.innerHTML=`<style>${n}</style>${s}`,this._applyForwardedAttrs()}}customElements.define(i,c)}var f=`
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -59,9 +59,9 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
        content: "➶";
      }
   }
-`,u=["href","target","rel","download"],v=`
+`,v=["href","target","rel","download"],u=`
   <a data-forward><slot></slot></a>
-`;e("app-link",{attrs:u,styles:f,template:v});var w=`
+`;e("app-link",{attrs:v,styles:f,template:u});var b=`
   :host {
     display: block;
   }
@@ -70,7 +70,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     max-height: 7rem;
     width: auto;
   }
-`,y=["width","height","src","alt"],b=()=>"<img data-forward />";e("app-logo",{attrs:y,styles:w,template:b});var o="769px",m="992px";var k=`
+`,w=["width","height","src","alt"],y=()=>"<img data-forward />";e("app-logo",{attrs:w,styles:b,template:y});var o="769px",p="992px";var x=`
   :host {
     display: block;
   }
@@ -110,7 +110,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
       gap: 4rem;
     }
   }
-`,x=`
+`,k=`
   <header>
       <app-link variant="plain" href="/">
         <app-logo
@@ -139,7 +139,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
         </app-link>
       </div>
   </header>
-`;e("section-header",{template:x,styles:k});var S=[{href:"/",name:"Home"},{href:"/about",name:"About"},{href:"/credits",name:"Credits"},{href:"/hire-me",name:"Hire Me"},{href:"/thank-you",name:"Thank You"},{href:"/work/mmo",name:"MMO"},{href:"/work/bamboo",name:"Bamboo"},{href:"/work/portfolio",name:"Portfolio"},{href:"/work/au-van",name:"AU Van"},{href:"/work/sks-solar",name:"SKS Solar"},{href:"/writings/foundation-building-interfaces-at-scale",name:"Foundation"},{href:"/work/knowledge-tree",name:"Knowledge Tree"}],$=`
+`;e("section-header",{template:k,styles:x});var $=[{href:"/",name:"Home"},{href:"/about",name:"About"},{href:"/credits",name:"Credits"},{href:"/hire-me",name:"Hire Me"},{href:"/thank-you",name:"Thank You"},{href:"/work/mmo",name:"MMO"},{href:"/work/bamboo",name:"Bamboo"},{href:"/work/portfolio",name:"Portfolio"},{href:"/work/au-van",name:"AU Van"},{href:"/work/sks-solar",name:"SKS Solar"},{href:"/writings/foundation-building-interfaces-at-scale",name:"Foundation"},{href:"/work/knowledge-tree",name:"Knowledge Tree"}],S=`
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -160,7 +160,6 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     list-style-type: none;
     display: flex;
     margin: 0;
-    margin-top: 0.5rem
   }
 
   span {
@@ -168,6 +167,8 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     font-size: var(--size-small);
     font-weight: var(--font-bold);
     text-transform: uppercase;
+    display: inline-block;
+    margin-bottom: 0.5rem;
   }
 
   nav ol {
@@ -190,26 +191,35 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
         <span>Sitemap</span>
 
         <ol>
-            ${S.map((i)=>`
+            ${$.map((i)=>`
                 <li>
                     <app-link variant="sitemap" href=${i.href} >${i.name}</app-link>
                 </li>
             `).join("")}
         </ol>
     </nav>
-`;e("footer-nav",{styles:$,template:I});var T=`
+`;e("footer-nav",{styles:S,template:I});var T=`
   :host {
    display: flex;
     justify-content: space-between;
+    border-top: 1px solid var(--color-text);
+    padding-top: 1rem;
 
    @media (max-width: ${o}) {
-        flex-direction: column;
-        gap: 3rem;
+        flex-direction: column-reverse;
+        gap: 2rem;
+        border: none;
+        padding-top: 0;
    }
   }
 
   p {
     margin: 0;
+
+    @media (max-width: ${o}) {
+      border-top: 1px solid var(--color-text);
+    padding-top: 1rem;
+    }
   }
 
   ul {
@@ -219,50 +229,66 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     display: flex;
     gap: 2rem;
   }
-`,O=()=>`
+
+  span {
+    display: none;
+    color: var(--color-secondary);
+    font-size: var(--size-small);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
     
+
+    @media (max-width: ${o}) {
+      display: inline-block;
+      margin-bottom: 0.5rem;
+    }
+  }
+`,Q=()=>`
       <p>
         © Han Htet Aung 2026 |
         <app-link href="/credits" variant="underline">Credits</app-link>
       </p>
 
-       <ul>
-            <li>
-                <app-link href="mailto:hanhtetaung.dev@gmail.com" variant="image">
-                <img
-                    src="/assets/icons/email.svg"
-                    alt="Email Icon"
-                />
-                </app-link>
-            </li>
-            <li>
-                <app-link
-                href="https://github.com/hanhtetaung/"
-                target="_blank"
-                rel="noopener"
-                variant="image"
-                >
-                <img
-                    src="/assets/icons/github.svg"
-                    alt="Github Icon"
-                />
-                </app-link>
-            </li>
-            <li>
-                <app-link
-                href="https://www.linkedin.com/in/han-htet-aung/"
-                target="_blank"
-                rel="noopener"
-                variant="image"
-                >
-                <img
-                    src="/assets/icons/linkedin.svg"
-                    alt="Linkedin Icon"
-                />
-                </app-link>
-            </li>
-        </ul>
-`;e("footer-copyright",{styles:T,template:O});var A=`
+      <nav>
+        <span>Find me on:</span>
+        <ul>
+              <li>
+                  <app-link href="mailto:hanhtetaung.dev@gmail.com" variant="image">
+                  <img
+                      src="/assets/icons/email.svg"
+                      alt="Email Icon"
+                  />
+                  </app-link>
+              </li>
+              <li>
+                  <app-link
+                  href="https://github.com/hanhtetaung/"
+                  target="_blank"
+                  rel="noopener"
+                  variant="image"
+                  >
+                  <img
+                      src="/assets/icons/github.svg"
+                      alt="Github Icon"
+                  />
+                  </app-link>
+              </li>
+              <li>
+                  <app-link
+                  href="https://www.linkedin.com/in/han-htet-aung/"
+                  target="_blank"
+                  rel="noopener"
+                  variant="image"
+                  >
+                  <img
+                      src="/assets/icons/linkedin.svg"
+                      alt="Linkedin Icon"
+                  />
+                  </app-link>
+              </li>
+          </ul>
+</nav>
+`;e("footer-copyright",{styles:T,template:Q});var O=`
   :host {
     --local-bg-color: var(--color-bg-secondary);
 
@@ -290,6 +316,8 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 2rem;
+    gap: 5rem;
   }
 
   @media (max-width: ${o}) {
@@ -301,12 +329,14 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
   div {
     display: flex;
     gap: 3rem;
+    align-items: center;
+    min-width: 21rem;
   }
 
   hr {
     color: var(--color-secondary);
   }
-`,M=`
+`,z=`
   <footer>
       <article>
         <div>
@@ -326,11 +356,9 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
         <footer-nav></footer-nav>
       </article>
 
-      <hr>
-
       <footer-copyright></footer-copyright>
   </footer>
-`;e("section-footer",{styles:A,template:M});var D=`
+`;e("section-footer",{styles:O,template:z});var A=`
   :host {
     --local-width: 3rem;
     --local-height: auto;
@@ -363,7 +391,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
   }
 
 
-`,Q=["src","alt"],P=()=>'<img data-forward width="200" height="200"/>';e("app-icon",{attrs:Q,styles:D,template:P});var z=[{src:"/assets/icons/figma.svg",alt:"Figma Icon"},{src:"/assets/icons/html.svg",alt:"HTML Icon"},{src:"/assets/icons/css.svg",alt:"CSS Icon"},{src:"/assets/icons/javascript.svg",alt:"JavaScript Icon"}],L=[{name:"Knowledge Tree",href:"/work/knowledge-tree",src:"/assets/images/case-study/knowledge-tree/thumbnail.avif",alt:"Knowledge Tree Thumbnail"},{name:"MMO",href:"/work/mmo",src:"/assets/images/case-study/mmo/thumbnail.avif",alt:"MMO Thumbnail"},{name:"Bamboo",href:"/work/bamboo",src:"/assets/images/case-study/bamboo/thumbnail.avif",alt:"Bamboo Thumbnail"}],E=[{title:"Specialize In",header:"Enterprise UX"},{title:"Simplify",header:"Complex workflows"},{title:"Scale",header:"Design System"}],H=`
+`,H=["src","alt"],L=()=>'<img data-forward width="200" height="200"/>';e("app-icon",{attrs:H,styles:A,template:L});var P=[{src:"/assets/icons/figma.svg",alt:"Figma Icon"},{src:"/assets/icons/html.svg",alt:"HTML Icon"},{src:"/assets/icons/css.svg",alt:"CSS Icon"},{src:"/assets/icons/javascript.svg",alt:"JavaScript Icon"}],D=[{name:"Knowledge Tree",href:"/work/knowledge-tree",src:"/assets/images/case-study/knowledge-tree/thumbnail.avif",alt:"Knowledge Tree Thumbnail"},{name:"MMO",href:"/work/mmo",src:"/assets/images/case-study/mmo/thumbnail.avif",alt:"MMO Thumbnail"},{name:"Bamboo",href:"/work/bamboo",src:"/assets/images/case-study/bamboo/thumbnail.avif",alt:"Bamboo Thumbnail"}],M=[{title:"Specialize In",header:"Enterprise UX"},{title:"Simplify",header:"Complex workflows"},{title:"Scale",header:"Design System"}],E=`
   section {
     width: 80%;
     margin-inline: auto;
@@ -461,11 +489,11 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     width: 25rem;
     height: auto;
   }
-`,N=`
+`,B=`
   <section>
       <article>
         <hgroup>
-          <p>I'm Han Htet Aung</p>
+          <p>I'm Han Htet Aung ⇾ <app-badge variant="success" props='{"name": "Open to Work"}'></app-badge></p>
           <h1>UX Engineer</h1>
           <p>
             Designing human-centered interfaces that power daily business
@@ -475,7 +503,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
   
         <span>Toolkit:</span>
         <ul class="toolkits">
-          ${z.map((i)=>`
+          ${P.map((i)=>`
               <li>
                 <app-icon
                   src=${i.src}
@@ -487,7 +515,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
       </article>
 
       <ul class="highlights">
-         ${E.map((i)=>`
+         ${M.map((i)=>`
                 <li>
                   <span>${i.title}</span>
                   <h3>${i.header}</h3>
@@ -496,7 +524,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
       </ul>
 
       <ol>
-        ${L.map((i)=>`
+        ${D.map((i)=>`
           <li>
             <app-link variant="image" href=${i.href} >
               ➶ ${i.name}
@@ -509,7 +537,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
           `).join("")}
       </ol>
   </section>
-`;e("section-hero",{styles:H,template:N});var B=`
+`;e("section-hero",{styles:E,template:B});var N=`
   :host {
     display: flex;
     align-items: center;
@@ -548,7 +576,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
         height="36"
         width="76"
     />
-`;e("section-title",{props:C,styles:B,template:j});var K=`
+`;e("section-title",{props:C,styles:N,template:j});var _=`
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -571,7 +599,13 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     --local-color: var(--color-secondary);
     --local-border: 1px solid var(--color-secondary);
   }
-`,W={name:String},_=({name:i})=>`${i}`;e("app-badge",{props:W,styles:K,template:_});var U=`
+
+  :host([variant="success"]) {
+    /* --local-bg: #157d6c; */
+    --local-bg: #a36aa5;
+     --local-border: 1px solid var( --local-color);
+  }
+`,U={name:String},W=({name:i})=>`${i}`;e("app-badge",{props:U,styles:_,template:W});var J=`
   :host {
     display: block;
     /* padding-block: 5rem; */
@@ -596,13 +630,13 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     font-size: var(--size-heading);
     margin-bottom: 0.5rem;
   }
-`,J={title:String,description:String,href:String,alt:String,subTitle:String},R=({title:i,description:t,href:a,alt:n,subTitle:r})=>`
+`,F={title:String,description:String,href:String,alt:String,subTitle:String},K=({title:i,description:t,href:a,alt:n,subTitle:r})=>`
     <app-icon variant="large" src=${a} alt=${n}></app-icon>
     <span>${r}</span>
     <h4>${i}</h4>
     <p>${t}</p>
     <slot></slot>
-`;e("capabilities-item",{props:J,styles:U,template:R});var F=`
+`;e("capabilities-item",{props:F,styles:J,template:K});var R=`
   section {
     width: 80%;
     margin-inline: auto;
@@ -638,7 +672,7 @@ ol {
     ul {
         margin-top: 1rem;
     }
-`,V=()=>`
+`,X=()=>`
   <section>
       <section-title
         props='${JSON.stringify({name:"Capabilities",img:"/assets/icons/peacock.svg",alt:"Peacock Logo"})}'
@@ -671,7 +705,7 @@ ol {
         <li>Server Maintenance</li>
       </ul> -->
   </section>
-`;e("section-capabilities",{styles:F,template:V});var X=`
+`;e("section-capabilities",{styles:R,template:X});var V=`
   :host {
     --local-width: 5rem;
     --local-heigth: auto;
@@ -702,7 +736,7 @@ ol {
    :host([variant="full"]) {
     --local-width: 100%;
   }
-`,Y=["width","height","src","alt"],G=()=>"<img data-forward />";e("app-image",{attrs:Y,styles:X,template:G});var Z=`
+`,G=["width","height","src","alt"],Y=()=>"<img data-forward />";e("app-image",{attrs:G,styles:V,template:Y});var Z=`
   :host {
     display: flex;
     /* width: fit-content; */
@@ -833,17 +867,17 @@ ol {
     border-radius: 4px;
   }
 
-  @media (max-width: ${m}) {
+  @media (max-width: ${p}) {
     :host {
       display: block;
     }
   }
-`,ae={image:String,alt:String,title:String,description:String,href:String,categories:Array},re=({image:i,alt:t,title:a,description:n,href:r,categories:p})=>`
+`,ae={image:String,alt:String,title:String,description:String,href:String,categories:Array},re=({image:i,alt:t,title:a,description:n,href:r,categories:m})=>`
     <img src="${i}" alt="${t}" />
     <div>
       <h3>${a}</h3>
       <ul>
-        ${p.map((c)=>`
+        ${m.map((c)=>`
               <li><app-badge variant="primary" props='${JSON.stringify({name:c})}'></app-badge></li>
             `).join("")}
       </ul>
@@ -852,7 +886,7 @@ ol {
         View Case Study &#8599;
       </app-link>
     </div>
-`;e("case-study-item",{props:ae,styles:oe,template:re});var ne=[{image:"/assets/images/case-study/knowledge-tree/thumbnail.avif",alt:"Knowledge Tree Thumbnail",title:"Knowledge Tree",categories:["Product Design","User Experience","Design System"],description:"A tool to visualize the connections between everyday goods and their fundamental sources based on my knowledge.",href:"/work/knowledge-tree",reverse:!1},{image:"assets/images/case-study/mmo/thumbnail.avif",alt:"MMO thumbnail",title:"MMO",categories:["Simplify complex workflows","Build Prototype","Design System"],description:"An internal portal that uses to run daily operations in hospital.",href:"/work/mmo",reverse:!0},{image:"/assets/images/case-study/portfolio/mockup.avif",alt:"Portfolio Mockup",title:"Portfolio",categories:["Research","Web Design","Web Development"],description:"A personal portfolio to showcase my work, process, and approach to web design and development.",href:"/work/portfolio",reverse:!1},{image:"/assets/images/case-study/skssolar/mockup.avif",alt:"SKS Mockup",title:"SKS.Solar",categories:["Research","Web Design","Web Development"],description:"A website for SKS SOLAR (SALES & SERVICES) COMPANY LIMITED to showcase its history, services and completed project.",href:"/work/sks-solar",reverse:!0}],le=`
+`;e("case-study-item",{props:ae,styles:oe,template:re});var ne=[{image:"/assets/images/case-study/knowledge-tree/thumbnail.avif",alt:"Knowledge Tree Thumbnail",title:"Knowledge Tree",categories:["Product Design","User Experience","Design System"],description:"A tool to visualize the connections between everyday goods and their fundamental sources based on my knowledge.",href:"/work/knowledge-tree",reverse:!1},{image:"assets/images/case-study/mmo/thumbnail.avif",alt:"MMO thumbnail",title:"MMO",categories:["Simplify complex workflows","Build Prototype","Design System"],description:"An internal portal that uses to run daily operations in hospital.",href:"/work/mmo",reverse:!0},{image:"/assets/images/case-study/skssolar/mockup.avif",alt:"SKS Mockup",title:"SKS.Solar",categories:["Research","Web Design","Web Development"],description:"A website for SKS SOLAR (SALES & SERVICES) COMPANY LIMITED to showcase its history, services and completed project.",href:"/work/sks-solar",reverse:!1}],le=`
   :host {
     background: var(--color-bg-secondary)
   }
@@ -886,7 +920,7 @@ ol {
             `).join("")}
       </ul>
   </section>
-`;e("section-case-studies",{styles:le,template:se});var ce=[{icon:"/assets/icons/software-developer.svg",alt:"Software Developer Icon",range:"2021-2022",title:"Software Developer",description:"I landed my first software development role building a hospital management system to manage inventory, POS, and OPD appointments. The system is still running today."},{icon:"/assets/icons/student.svg",alt:"Student Icon",range:"2022-2025",title:"Student",description:"I completed my Bachelor of Science in Computer Science at Assumption University, Thailand. My favorite subject was Computer Architecture."},{icon:"/assets/icons/software-developer.svg",alt:"Software Developer Icon",range:"2025-2026",title:"Software Developer",description:"After graduating, I worked remotely for 6 months as a software developer at an event organizing company in Singapore."},{icon:"/assets/icons/full-time-freelancer.svg",alt:"Web Design & Develop",range:"Present",title:"UX Designer",description:"Today, I've found my passion in UX design. Self-taught through research and hands-on practice, I design intuitive experiences by simplifying complex workflows."}],me=`
+`;e("section-case-studies",{styles:le,template:se});var ce=[{icon:"/assets/icons/software-developer.svg",alt:"Software Developer Icon",range:"2021-2022",title:"Software Developer",description:"I landed my first software development role building a hospital management system to manage inventory, POS, and OPD appointments. The system is still running today."},{icon:"/assets/icons/student.svg",alt:"Student Icon",range:"2022-2025",title:"Student",description:"I completed my Bachelor of Science in Computer Science at Assumption University, Thailand. My favorite subject was Computer Architecture."},{icon:"/assets/icons/software-developer.svg",alt:"Software Developer Icon",range:"2025-2026",title:"Software Developer",description:"After graduating, I worked remotely for 6 months as a software developer at an event organizing company in Singapore."},{icon:"/assets/icons/full-time-freelancer.svg",alt:"Web Design & Develop",range:"Present",title:"UX Designer",description:"Today, I've found my passion in UX design. Self-taught through research and hands-on practice, I design intuitive experiences by simplifying complex workflows."}],pe=`
   :host {
     display: block;
   }
@@ -975,7 +1009,7 @@ ol {
   p {
     max-width: 50ch;
   }
-`,pe=()=>`
+`,me=()=>`
   <section>
       <section-title
         props='${JSON.stringify({name:"Experience Overview",img:"/assets/icons/bird-flying.svg",alt:"Bird Flying Logo"})}'
@@ -1004,7 +1038,7 @@ ol {
             `).join("")}
       </ul>
   </section>
-`;e("section-timeline",{styles:me,template:pe});var de=[{title:"Working Man",description:"I'm consistent on one thing: always giving my best. I take pride in doing things properly and take full ownership of everything I do. When I commit to something, I follow through.",icon:"/assets/icons/working-man.svg",alt:"Working Man Icon"},{title:"Detail-oriented Person",description:"I pay close attention to every detail, because the little things matter. I believe the difference between good work and great work lives in the details.",icon:"/assets/icons/man-in-details.svg",alt:"Detail-oriented Person Icon"},{title:"Positive Thinker",description:"A positive mindset helps me create better work and stronger collaborations. I focus on solutions rather than problems. Good energy builds great work.",icon:"/assets/icons/positive-man.svg",alt:"Positive Thinker Icon"}],ge=`
+`;e("section-timeline",{styles:pe,template:me});var de=[{title:"Working Man",description:"I'm consistent on one thing: always giving my best. I take pride in doing things properly and take full ownership of everything I do. When I commit to something, I follow through.",icon:"/assets/icons/working-man.svg",alt:"Working Man Icon"},{title:"Detail-oriented Person",description:"I pay close attention to every detail, because the little things matter. I believe the difference between good work and great work lives in the details.",icon:"/assets/icons/man-in-details.svg",alt:"Detail-oriented Person Icon"},{title:"Positive Thinker",description:"A positive mindset helps me create better work and stronger collaborations. I focus on solutions rather than problems. Good energy builds great work.",icon:"/assets/icons/positive-man.svg",alt:"Positive Thinker Icon"}],ge=`
   :host {
     display: block;
   }
@@ -1127,12 +1161,12 @@ ol {
     margin-top: 2rem;
   }
 
-  @media (max-width: ${m}) {
+  @media (max-width: ${p}) {
     img {
       display: none;
     }
   }
-`,ue=`
+`,ve=`
   <section>
        <section-title
        variant="text"
@@ -1164,7 +1198,7 @@ ol {
         alt="Merlion illustration"
       />
   </section>
-`;e("section-cta",{styles:fe,template:ue});var ve=`
+`;e("section-cta",{styles:fe,template:ve});var ue=`
   :host {
     display: block;
     width: 100%;
@@ -1175,7 +1209,7 @@ ol {
     width: 100%;
     height: auto;
   }
-`,we=`
+`,be=`
     <svg
       viewBox="0 0 1200 80"
       xmlns="http://www.w3.org/2000/svg"
@@ -1206,7 +1240,7 @@ ol {
         fill="var(--color-bg-secondary)"
       />
     </svg>
-`;e("line-divider-lower",{styles:ve,template:we});var ye=`
+`;e("line-divider-lower",{styles:ue,template:be});var we=`
   :host {
     display: block;
     width: 100%;
@@ -1217,7 +1251,7 @@ ol {
     width: 100%;
     height: auto;
   }
-`,be=`
+`,ye=`
   <div>
     <svg
       viewBox="0 0 1200 80"
@@ -1250,4 +1284,4 @@ ol {
       />
     </svg>
   </div>
-`;e("line-divider-upper",{styles:ye,template:be});
+`;e("line-divider-upper",{styles:we,template:ye});

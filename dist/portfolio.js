@@ -1,4 +1,4 @@
-function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a===Boolean)return!1;if(a===Number)return 0;return}if(a===Boolean)return Boolean(o);if(a===Number)return Number(o);return o}function e(o,{props:a={},attrs:n=[],styles:m="",template:l}){let d=["props",...n];class c extends HTMLElement{static observedAttributes=d;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let i={},r=this.getAttribute("props");if(r)try{i=JSON.parse(r)}catch{i={}}let p={};for(let s of Object.keys(a))p[s]=h(i[s],a[s]);return p}_applyForwardedAttrs(){if(n.length===0)return;let i=this.shadowRoot.querySelector("[data-forward]");if(!i)return;for(let r of n)if(this.hasAttribute(r))i.setAttribute(r,this.getAttribute(r));else i.removeAttribute(r)}_render(){let i=this._getProps(),r=typeof l==="function"?l(i):l;this.shadowRoot.innerHTML=`<style>${m}</style>${r}`,this._applyForwardedAttrs()}}customElements.define(o,c)}var f=`
+function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a===Boolean)return!1;if(a===Number)return 0;return}if(a===Boolean)return Boolean(o);if(a===Number)return Number(o);return o}function e(o,{props:a={},attrs:n=[],styles:m="",template:l}){let d=["props",...n];class p extends HTMLElement{static observedAttributes=d;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let i={},r=this.getAttribute("props");if(r)try{i=JSON.parse(r)}catch{i={}}let c={};for(let s of Object.keys(a))c[s]=h(i[s],a[s]);return c}_applyForwardedAttrs(){if(n.length===0)return;let i=this.shadowRoot.querySelector("[data-forward]");if(!i)return;for(let r of n)if(this.hasAttribute(r))i.setAttribute(r,this.getAttribute(r));else i.removeAttribute(r)}_render(){let i=this._getProps(),r=typeof l==="function"?l(i):l;this.shadowRoot.innerHTML=`<style>${m}</style>${r}`,this._applyForwardedAttrs()}}customElements.define(o,p)}var g=`
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -59,9 +59,9 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
        content: "➶";
      }
   }
-`,g=["href","target","rel","download"],u=`
+`,f=["href","target","rel","download"],u=`
   <a data-forward><slot></slot></a>
-`;e("app-link",{attrs:g,styles:f,template:u});var v=`
+`;e("app-link",{attrs:f,styles:g,template:u});var v=`
   :host {
     display: block;
   }
@@ -70,7 +70,7 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     max-height: 7rem;
     width: auto;
   }
-`,b=["width","height","src","alt"],w=()=>"<img data-forward />";e("app-logo",{attrs:b,styles:v,template:w});var t="769px",Q="992px";var y=`
+`,b=["width","height","src","alt"],y=()=>"<img data-forward />";e("app-logo",{attrs:b,styles:v,template:y});var t="769px",Q="992px";var w=`
   :host {
     display: block;
   }
@@ -139,7 +139,7 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
         </app-link>
       </div>
   </header>
-`;e("section-header",{template:k,styles:y});var x=[{href:"/",name:"Home"},{href:"/about",name:"About"},{href:"/credits",name:"Credits"},{href:"/hire-me",name:"Hire Me"},{href:"/thank-you",name:"Thank You"},{href:"/work/mmo",name:"MMO"},{href:"/work/bamboo",name:"Bamboo"},{href:"/work/portfolio",name:"Portfolio"},{href:"/work/au-van",name:"AU Van"},{href:"/work/sks-solar",name:"SKS Solar"},{href:"/writings/foundation-building-interfaces-at-scale",name:"Foundation"},{href:"/work/knowledge-tree",name:"Knowledge Tree"}],A=`
+`;e("section-header",{template:k,styles:w});var x=[{href:"/",name:"Home"},{href:"/about",name:"About"},{href:"/credits",name:"Credits"},{href:"/hire-me",name:"Hire Me"},{href:"/thank-you",name:"Thank You"},{href:"/work/mmo",name:"MMO"},{href:"/work/bamboo",name:"Bamboo"},{href:"/work/portfolio",name:"Portfolio"},{href:"/work/au-van",name:"AU Van"},{href:"/work/sks-solar",name:"SKS Solar"},{href:"/writings/foundation-building-interfaces-at-scale",name:"Foundation"},{href:"/work/knowledge-tree",name:"Knowledge Tree"}],$=`
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -160,7 +160,6 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     list-style-type: none;
     display: flex;
     margin: 0;
-    margin-top: 0.5rem
   }
 
   span {
@@ -168,6 +167,8 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     font-size: var(--size-small);
     font-weight: var(--font-bold);
     text-transform: uppercase;
+    display: inline-block;
+    margin-bottom: 0.5rem;
   }
 
   nav ol {
@@ -185,7 +186,7 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     margin-right: 5rem;
     margin-bottom: 0.3rem;
   }
-`,H=()=>`
+`,A=()=>`
     <nav>
         <span>Sitemap</span>
 
@@ -197,19 +198,28 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
             `).join("")}
         </ol>
     </nav>
-`;e("footer-nav",{styles:A,template:H});var S=`
+`;e("footer-nav",{styles:$,template:A});var H=`
   :host {
    display: flex;
     justify-content: space-between;
+    border-top: 1px solid var(--color-text);
+    padding-top: 1rem;
 
    @media (max-width: ${t}) {
-        flex-direction: column;
-        gap: 3rem;
+        flex-direction: column-reverse;
+        gap: 2rem;
+        border: none;
+        padding-top: 0;
    }
   }
 
   p {
     margin: 0;
+
+    @media (max-width: ${t}) {
+      border-top: 1px solid var(--color-text);
+    padding-top: 1rem;
+    }
   }
 
   ul {
@@ -219,50 +229,66 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     display: flex;
     gap: 2rem;
   }
-`,P=()=>`
+
+  span {
+    display: none;
+    color: var(--color-secondary);
+    font-size: var(--size-small);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
     
+
+    @media (max-width: ${t}) {
+      display: inline-block;
+      margin-bottom: 0.5rem;
+    }
+  }
+`,P=()=>`
       <p>
         © Han Htet Aung 2026 |
         <app-link href="/credits" variant="underline">Credits</app-link>
       </p>
 
-       <ul>
-            <li>
-                <app-link href="mailto:hanhtetaung.dev@gmail.com" variant="image">
-                <img
-                    src="/assets/icons/email.svg"
-                    alt="Email Icon"
-                />
-                </app-link>
-            </li>
-            <li>
-                <app-link
-                href="https://github.com/hanhtetaung/"
-                target="_blank"
-                rel="noopener"
-                variant="image"
-                >
-                <img
-                    src="/assets/icons/github.svg"
-                    alt="Github Icon"
-                />
-                </app-link>
-            </li>
-            <li>
-                <app-link
-                href="https://www.linkedin.com/in/han-htet-aung/"
-                target="_blank"
-                rel="noopener"
-                variant="image"
-                >
-                <img
-                    src="/assets/icons/linkedin.svg"
-                    alt="Linkedin Icon"
-                />
-                </app-link>
-            </li>
-        </ul>
-`;e("footer-copyright",{styles:S,template:P});var $=`
+      <nav>
+        <span>Find me on:</span>
+        <ul>
+              <li>
+                  <app-link href="mailto:hanhtetaung.dev@gmail.com" variant="image">
+                  <img
+                      src="/assets/icons/email.svg"
+                      alt="Email Icon"
+                  />
+                  </app-link>
+              </li>
+              <li>
+                  <app-link
+                  href="https://github.com/hanhtetaung/"
+                  target="_blank"
+                  rel="noopener"
+                  variant="image"
+                  >
+                  <img
+                      src="/assets/icons/github.svg"
+                      alt="Github Icon"
+                  />
+                  </app-link>
+              </li>
+              <li>
+                  <app-link
+                  href="https://www.linkedin.com/in/han-htet-aung/"
+                  target="_blank"
+                  rel="noopener"
+                  variant="image"
+                  >
+                  <img
+                      src="/assets/icons/linkedin.svg"
+                      alt="Linkedin Icon"
+                  />
+                  </app-link>
+              </li>
+          </ul>
+</nav>
+`;e("footer-copyright",{styles:H,template:P});var S=`
   :host {
     --local-bg-color: var(--color-bg-secondary);
 
@@ -290,6 +316,8 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 2rem;
+    gap: 5rem;
   }
 
   @media (max-width: ${t}) {
@@ -301,6 +329,8 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
   div {
     display: flex;
     gap: 3rem;
+    align-items: center;
+    min-width: 21rem;
   }
 
   hr {
@@ -326,11 +356,9 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
         <footer-nav></footer-nav>
       </article>
 
-      <hr>
-
       <footer-copyright></footer-copyright>
   </footer>
-`;e("section-footer",{styles:$,template:O});var T=`
+`;e("section-footer",{styles:S,template:O});var z=`
   :host {
     --local-width: 5rem;
     --local-heigth: auto;
@@ -361,7 +389,7 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
    :host([variant="full"]) {
     --local-width: 100%;
   }
-`,E=["width","height","src","alt"],_=()=>"<img data-forward />";e("app-image",{attrs:E,styles:T,template:_});var j=`
+`,E=["width","height","src","alt"],T=()=>"<img data-forward />";e("app-image",{attrs:E,styles:z,template:T});var _=`
   :host {
     display: block;
   }
@@ -402,7 +430,7 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     font-weight: var(--font-bold);
     text-transform: uppercase;
   }
-`,N=`
+`,j=`
   <section>
       <app-image
         variant="medium"
@@ -433,7 +461,7 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
         </app-link>
       </article>
   </section>
-`;e("section-portfolio-intro",{styles:j,template:N});var z=`
+`;e("section-portfolio-intro",{styles:_,template:j});var N=`
   :host {
     display: flex;
     align-items: center;
@@ -472,7 +500,7 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
         height="36"
         width="76"
     />
-`;e("section-title",{props:L,styles:z,template:C});var M=`
+`;e("section-title",{props:L,styles:N,template:C});var B=`
   :host {
     display: block;
   }
@@ -481,7 +509,7 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     width: 80%;
     margin-inline: auto;
   }
-`,B=`
+`,M=`
   <section>
     <section-title variant="text" props='{"name": "Background"}'></section-title>
 
@@ -493,7 +521,7 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
       strong professional presence.
     </p>
   </section>
-`;e("section-portfolio-background",{styles:M,template:B});var F=`
+`;e("section-portfolio-background",{styles:B,template:M});var F=`
   :host {
     display: block;
   }
@@ -502,7 +530,7 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     width: 80%;
     margin-inline: auto;
   }
-`,K=`
+`,W=`
   <section>
     <section-title variant="text" props='{"name": "Challenge"}'></section-title>
 
@@ -515,7 +543,7 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
       trustworthy user experience.
     </p>
   </section>
-`;e("section-portfolio-challenge",{styles:F,template:K});var V=`
+`;e("section-portfolio-challenge",{styles:F,template:W});var q=`
   :host {
     display: grid;
     grid-template-columns: 1fr 2.5fr;
@@ -537,13 +565,13 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
   :host([variant="block"]) {
     display: block;
   }
-`,W={title:String},q=({title:o})=>`
+`,I={title:String},R=({title:o})=>`
         <h3>${o}</h3>
 
         <article>
             <slot></slot>
         </article>
-`;e("app-article-paragraph",{props:W,styles:V,template:q});var I=`
+`;e("app-article-paragraph",{props:I,styles:q,template:R});var V=`
   :host {
     display: block;
   }
@@ -573,7 +601,7 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
   ol {
     list-style: disc;
   }
-`,R=`
+`,D=`
   <section>
     <section-title variant="text" props='{"name": "Process"}'></section-title>
 
@@ -665,7 +693,7 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
       </li>
     </ul>
   </section>
-`;e("section-portfolio-process",{styles:I,template:R});var D=`
+`;e("section-portfolio-process",{styles:V,template:D});var K=`
   :host {
     display: block;
   }
@@ -685,7 +713,7 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
       flex-direction: column;
     }
   }
-`,Y=`
+`,G=`
   <section>
     <section-title variant="text" props='{"name": "Result"}'></section-title>
 
@@ -723,4 +751,4 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
       </li>
     </ul>
   </section>
-`;e("section-portfolio-result",{styles:D,template:Y});
+`;e("section-portfolio-result",{styles:K,template:G});

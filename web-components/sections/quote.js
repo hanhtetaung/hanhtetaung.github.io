@@ -24,7 +24,7 @@ const template = /* html */ `
       <blockquote>
         " What I hear, I forget.<br />
         What I see, I remember.<br />
-        What I do I understand" <br />
+        What I do, I understand." <br />
         — Confucius
       </blockquote>
   </section>

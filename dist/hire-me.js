@@ -1,4 +1,4 @@
-function f(r,a){if(r===void 0){if(a===Array)return[];if(a===Object)return{};if(a===Boolean)return!1;if(a===Number)return 0;return}if(a===Boolean)return Boolean(r);if(a===Number)return Number(r);return r}function e(r,{props:a={},attrs:n=[],styles:c="",template:l}){let d=["props",...n];class p extends HTMLElement{static observedAttributes=d;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let t={},i=this.getAttribute("props");if(i)try{t=JSON.parse(i)}catch{t={}}let m={};for(let s of Object.keys(a))m[s]=f(t[s],a[s]);return m}_applyForwardedAttrs(){if(n.length===0)return;let t=this.shadowRoot.querySelector("[data-forward]");if(!t)return;for(let i of n)if(this.hasAttribute(i))t.setAttribute(i,this.getAttribute(i));else t.removeAttribute(i)}_render(){let t=this._getProps(),i=typeof l==="function"?l(t):l;this.shadowRoot.innerHTML=`<style>${c}</style>${i}`,this._applyForwardedAttrs()}}customElements.define(r,p)}var h=`
+function f(a,r){if(a===void 0){if(r===Array)return[];if(r===Object)return{};if(r===Boolean)return!1;if(r===Number)return 0;return}if(r===Boolean)return Boolean(a);if(r===Number)return Number(a);return a}function e(a,{props:r={},attrs:n=[],styles:d="",template:l}){let m=["props",...n];class p extends HTMLElement{static observedAttributes=m;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let t={},i=this.getAttribute("props");if(i)try{t=JSON.parse(i)}catch{t={}}let c={};for(let s of Object.keys(r))c[s]=f(t[s],r[s]);return c}_applyForwardedAttrs(){if(n.length===0)return;let t=this.shadowRoot.querySelector("[data-forward]");if(!t)return;for(let i of n)if(this.hasAttribute(i))t.setAttribute(i,this.getAttribute(i));else t.removeAttribute(i)}_render(){let t=this._getProps(),i=typeof l==="function"?l(t):l;this.shadowRoot.innerHTML=`<style>${d}</style>${i}`,this._applyForwardedAttrs()}}customElements.define(a,p)}var h=`
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -70,7 +70,7 @@ function f(r,a){if(r===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     max-height: 7rem;
     width: auto;
   }
-`,v=["width","height","src","alt"],y=()=>"<img data-forward />";e("app-logo",{attrs:v,styles:b,template:y});var o="769px",L="992px";var k=`
+`,v=["width","height","src","alt"],y=()=>"<img data-forward />";e("app-logo",{attrs:v,styles:b,template:y});var o="769px",q="992px";var k=`
   :host {
     display: block;
   }
@@ -160,7 +160,6 @@ function f(r,a){if(r===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     list-style-type: none;
     display: flex;
     margin: 0;
-    margin-top: 0.5rem
   }
 
   span {
@@ -168,6 +167,8 @@ function f(r,a){if(r===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     font-size: var(--size-small);
     font-weight: var(--font-bold);
     text-transform: uppercase;
+    display: inline-block;
+    margin-bottom: 0.5rem;
   }
 
   nav ol {
@@ -190,26 +191,35 @@ function f(r,a){if(r===void 0){if(a===Array)return[];if(a===Object)return{};if(a
         <span>Sitemap</span>
 
         <ol>
-            ${x.map((r)=>`
+            ${x.map((a)=>`
                 <li>
-                    <app-link variant="sitemap" href=${r.href} >${r.name}</app-link>
+                    <app-link variant="sitemap" href=${a.href} >${a.name}</app-link>
                 </li>
             `).join("")}
         </ol>
     </nav>
-`;e("footer-nav",{styles:A,template:H});var O=`
+`;e("footer-nav",{styles:A,template:H});var _=`
   :host {
    display: flex;
     justify-content: space-between;
+    border-top: 1px solid var(--color-text);
+    padding-top: 1rem;
 
    @media (max-width: ${o}) {
-        flex-direction: column;
-        gap: 3rem;
+        flex-direction: column-reverse;
+        gap: 2rem;
+        border: none;
+        padding-top: 0;
    }
   }
 
   p {
     margin: 0;
+
+    @media (max-width: ${o}) {
+      border-top: 1px solid var(--color-text);
+    padding-top: 1rem;
+    }
   }
 
   ul {
@@ -219,50 +229,66 @@ function f(r,a){if(r===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     display: flex;
     gap: 2rem;
   }
-`,S=()=>`
+
+  span {
+    display: none;
+    color: var(--color-secondary);
+    font-size: var(--size-small);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
     
+
+    @media (max-width: ${o}) {
+      display: inline-block;
+      margin-bottom: 0.5rem;
+    }
+  }
+`,O=()=>`
       <p>
         © Han Htet Aung 2026 |
         <app-link href="/credits" variant="underline">Credits</app-link>
       </p>
 
-       <ul>
-            <li>
-                <app-link href="mailto:hanhtetaung.dev@gmail.com" variant="image">
-                <img
-                    src="/assets/icons/email.svg"
-                    alt="Email Icon"
-                />
-                </app-link>
-            </li>
-            <li>
-                <app-link
-                href="https://github.com/hanhtetaung/"
-                target="_blank"
-                rel="noopener"
-                variant="image"
-                >
-                <img
-                    src="/assets/icons/github.svg"
-                    alt="Github Icon"
-                />
-                </app-link>
-            </li>
-            <li>
-                <app-link
-                href="https://www.linkedin.com/in/han-htet-aung/"
-                target="_blank"
-                rel="noopener"
-                variant="image"
-                >
-                <img
-                    src="/assets/icons/linkedin.svg"
-                    alt="Linkedin Icon"
-                />
-                </app-link>
-            </li>
-        </ul>
-`;e("footer-copyright",{styles:O,template:S});var _=`
+      <nav>
+        <span>Find me on:</span>
+        <ul>
+              <li>
+                  <app-link href="mailto:hanhtetaung.dev@gmail.com" variant="image">
+                  <img
+                      src="/assets/icons/email.svg"
+                      alt="Email Icon"
+                  />
+                  </app-link>
+              </li>
+              <li>
+                  <app-link
+                  href="https://github.com/hanhtetaung/"
+                  target="_blank"
+                  rel="noopener"
+                  variant="image"
+                  >
+                  <img
+                      src="/assets/icons/github.svg"
+                      alt="Github Icon"
+                  />
+                  </app-link>
+              </li>
+              <li>
+                  <app-link
+                  href="https://www.linkedin.com/in/han-htet-aung/"
+                  target="_blank"
+                  rel="noopener"
+                  variant="image"
+                  >
+                  <img
+                      src="/assets/icons/linkedin.svg"
+                      alt="Linkedin Icon"
+                  />
+                  </app-link>
+              </li>
+          </ul>
+</nav>
+`;e("footer-copyright",{styles:_,template:O});var $=`
   :host {
     --local-bg-color: var(--color-bg-secondary);
 
@@ -290,6 +316,8 @@ function f(r,a){if(r===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 2rem;
+    gap: 5rem;
   }
 
   @media (max-width: ${o}) {
@@ -301,6 +329,8 @@ function f(r,a){if(r===void 0){if(a===Array)return[];if(a===Object)return{};if(a
   div {
     display: flex;
     gap: 3rem;
+    align-items: center;
+    min-width: 21rem;
   }
 
   hr {
@@ -326,11 +356,9 @@ function f(r,a){if(r===void 0){if(a===Array)return[];if(a===Object)return{};if(a
         <footer-nav></footer-nav>
       </article>
 
-      <hr>
-
       <footer-copyright></footer-copyright>
   </footer>
-`;e("section-footer",{styles:_,template:E});var N=`
+`;e("section-footer",{styles:$,template:E});var N=`
   :host {
     --local-bg: var(--color-primary);
     --local-color: var(--color-bg-primary);
@@ -355,14 +383,14 @@ function f(r,a){if(r===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     /* border: none; */
     padding: var(--local-padding);
   }
-`,C=["type"],P=`
+`,z=["type"],S=`
   <button
     data-forward
     onclick="const form = this.getRootNode().host.closest('form'); if (this.type === 'submit' && form) { form.requestSubmit ? form.requestSubmit() : form.submit(); }"
   >
     <slot></slot>
   </button>
-`;e("app-button",{attrs:C,styles:N,template:P});var T=`
+`;e("app-button",{attrs:z,styles:N,template:S});var C=`
     section {
         margin-inline: auto;
         width: 80%;
@@ -409,7 +437,7 @@ function f(r,a){if(r===void 0){if(a===Array)return[];if(a===Object)return{};if(a
   textarea {
     grid-area: three;
   }
-`,$=`
+`,P=`
   <section>
       <h1>Let's Chat</h1>
       <p>I'd be happy to work with you. I'll get back to you later today.</p>
@@ -467,4 +495,4 @@ function f(r,a){if(r===void 0){if(a===Array)return[];if(a===Object)return{};if(a
         </p>
       </form>
   </section>
-`;e("section-hire-me-intro",{styles:T,template:$});
+`;e("section-hire-me-intro",{styles:C,template:P});

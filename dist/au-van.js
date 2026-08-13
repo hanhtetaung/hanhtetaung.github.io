@@ -1,4 +1,4 @@
-function h(a,t){if(a===void 0){if(t===Array)return[];if(t===Object)return{};if(t===Boolean)return!1;if(t===Number)return 0;return}if(t===Boolean)return Boolean(a);if(t===Number)return Number(a);return a}function o(a,{props:t={},attrs:n=[],styles:p="",template:l}){let d=["props",...n];class c extends HTMLElement{static observedAttributes=d;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let r={},i=this.getAttribute("props");if(i)try{r=JSON.parse(i)}catch{r={}}let m={};for(let s of Object.keys(t))m[s]=h(r[s],t[s]);return m}_applyForwardedAttrs(){if(n.length===0)return;let r=this.shadowRoot.querySelector("[data-forward]");if(!r)return;for(let i of n)if(this.hasAttribute(i))r.setAttribute(i,this.getAttribute(i));else r.removeAttribute(i)}_render(){let r=this._getProps(),i=typeof l==="function"?l(r):l;this.shadowRoot.innerHTML=`<style>${p}</style>${i}`,this._applyForwardedAttrs()}}customElements.define(a,c)}var g=`
+function h(t,e){if(t===void 0){if(e===Array)return[];if(e===Object)return{};if(e===Boolean)return!1;if(e===Number)return 0;return}if(e===Boolean)return Boolean(t);if(e===Number)return Number(t);return t}function o(t,{props:e={},attrs:n=[],styles:p="",template:l}){let d=["props",...n];class c extends HTMLElement{static observedAttributes=d;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let r={},i=this.getAttribute("props");if(i)try{r=JSON.parse(i)}catch{r={}}let m={};for(let s of Object.keys(e))m[s]=h(r[s],e[s]);return m}_applyForwardedAttrs(){if(n.length===0)return;let r=this.shadowRoot.querySelector("[data-forward]");if(!r)return;for(let i of n)if(this.hasAttribute(i))r.setAttribute(i,this.getAttribute(i));else r.removeAttribute(i)}_render(){let r=this._getProps(),i=typeof l==="function"?l(r):l;this.shadowRoot.innerHTML=`<style>${p}</style>${i}`,this._applyForwardedAttrs()}}customElements.define(t,c)}var g=`
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -70,7 +70,7 @@ function h(a,t){if(a===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     max-height: 7rem;
     width: auto;
   }
-`,w=["width","height","src","alt"],b=()=>"<img data-forward />";o("app-logo",{attrs:w,styles:v,template:b});var e="769px",U="992px";var k=`
+`,b=["width","height","src","alt"],w=()=>"<img data-forward />";o("app-logo",{attrs:b,styles:v,template:w});var a="769px",R="992px";var y=`
   :host {
     display: block;
   }
@@ -105,12 +105,12 @@ function h(a,t){if(a===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     box-shadow: none;
   }
 
-  @media (max-width: ${e}) {
+  @media (max-width: ${a}) {
     .header__navigation {
       gap: 4rem;
     }
   }
-`,y=`
+`,k=`
   <header>
       <app-link variant="plain" href="/">
         <app-logo
@@ -139,7 +139,7 @@ function h(a,t){if(a===void 0){if(t===Array)return[];if(t===Object)return{};if(t
         </app-link>
       </div>
   </header>
-`;o("section-header",{template:y,styles:k});var x=[{href:"/",name:"Home"},{href:"/about",name:"About"},{href:"/credits",name:"Credits"},{href:"/hire-me",name:"Hire Me"},{href:"/thank-you",name:"Thank You"},{href:"/work/mmo",name:"MMO"},{href:"/work/bamboo",name:"Bamboo"},{href:"/work/portfolio",name:"Portfolio"},{href:"/work/au-van",name:"AU Van"},{href:"/work/sks-solar",name:"SKS Solar"},{href:"/writings/foundation-building-interfaces-at-scale",name:"Foundation"},{href:"/work/knowledge-tree",name:"Knowledge Tree"}],A=`
+`;o("section-header",{template:k,styles:y});var x=[{href:"/",name:"Home"},{href:"/about",name:"About"},{href:"/credits",name:"Credits"},{href:"/hire-me",name:"Hire Me"},{href:"/thank-you",name:"Thank You"},{href:"/work/mmo",name:"MMO"},{href:"/work/bamboo",name:"Bamboo"},{href:"/work/portfolio",name:"Portfolio"},{href:"/work/au-van",name:"AU Van"},{href:"/work/sks-solar",name:"SKS Solar"},{href:"/writings/foundation-building-interfaces-at-scale",name:"Foundation"},{href:"/work/knowledge-tree",name:"Knowledge Tree"}],$=`
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -148,7 +148,7 @@ function h(a,t){if(a===void 0){if(t===Array)return[];if(t===Object)return{};if(t
    display: flex;
    gap: 5rem;
 
-   @media (max-width: ${e}) {
+   @media (max-width: ${a}) {
         flex-direction: column;
         gap: 3rem;
         margin-block: 2rem;
@@ -160,7 +160,6 @@ function h(a,t){if(a===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     list-style-type: none;
     display: flex;
     margin: 0;
-    margin-top: 0.5rem
   }
 
   span {
@@ -168,6 +167,8 @@ function h(a,t){if(a===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     font-size: var(--size-small);
     font-weight: var(--font-bold);
     text-transform: uppercase;
+    display: inline-block;
+    margin-bottom: 0.5rem;
   }
 
   nav ol {
@@ -176,7 +177,7 @@ function h(a,t){if(a===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     max-height: 12.5ch;
     overflow: scroll;
 
-    @media (max-width: ${e}) {
+    @media (max-width: ${a}) {
         max-height: 20ch;
     }
   }
@@ -185,31 +186,40 @@ function h(a,t){if(a===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     margin-right: 5rem;
     margin-bottom: 0.3rem;
   }
-`,H=()=>`
+`,A=()=>`
     <nav>
         <span>Sitemap</span>
 
         <ol>
-            ${x.map((a)=>`
+            ${x.map((t)=>`
                 <li>
-                    <app-link variant="sitemap" href=${a.href} >${a.name}</app-link>
+                    <app-link variant="sitemap" href=${t.href} >${t.name}</app-link>
                 </li>
             `).join("")}
         </ol>
     </nav>
-`;o("footer-nav",{styles:A,template:H});var S=`
+`;o("footer-nav",{styles:$,template:A});var H=`
   :host {
    display: flex;
     justify-content: space-between;
+    border-top: 1px solid var(--color-text);
+    padding-top: 1rem;
 
-   @media (max-width: ${e}) {
-        flex-direction: column;
-        gap: 3rem;
+   @media (max-width: ${a}) {
+        flex-direction: column-reverse;
+        gap: 2rem;
+        border: none;
+        padding-top: 0;
    }
   }
 
   p {
     margin: 0;
+
+    @media (max-width: ${a}) {
+      border-top: 1px solid var(--color-text);
+    padding-top: 1rem;
+    }
   }
 
   ul {
@@ -219,50 +229,66 @@ function h(a,t){if(a===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     display: flex;
     gap: 2rem;
   }
-`,$=()=>`
+
+  span {
+    display: none;
+    color: var(--color-secondary);
+    font-size: var(--size-small);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
     
+
+    @media (max-width: ${a}) {
+      display: inline-block;
+      margin-bottom: 0.5rem;
+    }
+  }
+`,S=()=>`
       <p>
         © Han Htet Aung 2026 |
         <app-link href="/credits" variant="underline">Credits</app-link>
       </p>
 
-       <ul>
-            <li>
-                <app-link href="mailto:hanhtetaung.dev@gmail.com" variant="image">
-                <img
-                    src="/assets/icons/email.svg"
-                    alt="Email Icon"
-                />
-                </app-link>
-            </li>
-            <li>
-                <app-link
-                href="https://github.com/hanhtetaung/"
-                target="_blank"
-                rel="noopener"
-                variant="image"
-                >
-                <img
-                    src="/assets/icons/github.svg"
-                    alt="Github Icon"
-                />
-                </app-link>
-            </li>
-            <li>
-                <app-link
-                href="https://www.linkedin.com/in/han-htet-aung/"
-                target="_blank"
-                rel="noopener"
-                variant="image"
-                >
-                <img
-                    src="/assets/icons/linkedin.svg"
-                    alt="Linkedin Icon"
-                />
-                </app-link>
-            </li>
-        </ul>
-`;o("footer-copyright",{styles:S,template:$});var C=`
+      <nav>
+        <span>Find me on:</span>
+        <ul>
+              <li>
+                  <app-link href="mailto:hanhtetaung.dev@gmail.com" variant="image">
+                  <img
+                      src="/assets/icons/email.svg"
+                      alt="Email Icon"
+                  />
+                  </app-link>
+              </li>
+              <li>
+                  <app-link
+                  href="https://github.com/hanhtetaung/"
+                  target="_blank"
+                  rel="noopener"
+                  variant="image"
+                  >
+                  <img
+                      src="/assets/icons/github.svg"
+                      alt="Github Icon"
+                  />
+                  </app-link>
+              </li>
+              <li>
+                  <app-link
+                  href="https://www.linkedin.com/in/han-htet-aung/"
+                  target="_blank"
+                  rel="noopener"
+                  variant="image"
+                  >
+                  <img
+                      src="/assets/icons/linkedin.svg"
+                      alt="Linkedin Icon"
+                  />
+                  </app-link>
+              </li>
+          </ul>
+</nav>
+`;o("footer-copyright",{styles:H,template:S});var C=`
   :host {
     --local-bg-color: var(--color-bg-secondary);
 
@@ -290,9 +316,11 @@ function h(a,t){if(a===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 2rem;
+    gap: 5rem;
   }
 
-  @media (max-width: ${e}) {
+  @media (max-width: ${a}) {
     article {
       display: block;
     }
@@ -301,12 +329,14 @@ function h(a,t){if(a===void 0){if(t===Array)return[];if(t===Object)return{};if(t
   div {
     display: flex;
     gap: 3rem;
+    align-items: center;
+    min-width: 21rem;
   }
 
   hr {
     color: var(--color-secondary);
   }
-`,O=`
+`,E=`
   <footer>
       <article>
         <div>
@@ -326,11 +356,9 @@ function h(a,t){if(a===void 0){if(t===Array)return[];if(t===Object)return{};if(t
         <footer-nav></footer-nav>
       </article>
 
-      <hr>
-
       <footer-copyright></footer-copyright>
   </footer>
-`;o("section-footer",{styles:C,template:O});var E=`
+`;o("section-footer",{styles:C,template:E});var N=`
   :host {
     --local-width: 5rem;
     --local-heigth: auto;
@@ -361,7 +389,7 @@ function h(a,t){if(a===void 0){if(t===Array)return[];if(t===Object)return{};if(t
    :host([variant="full"]) {
     --local-width: 100%;
   }
-`,N=["width","height","src","alt"],P=()=>"<img data-forward />";o("app-image",{attrs:N,styles:E,template:P});var _=`
+`,O=["width","height","src","alt"],_=()=>"<img data-forward />";o("app-image",{attrs:O,styles:N,template:_});var P=`
   :host {
     --local-width: 3rem;
     --local-height: auto;
@@ -394,14 +422,14 @@ function h(a,t){if(a===void 0){if(t===Array)return[];if(t===Object)return{};if(t
   }
 
 
-`,T=["src","alt"],j=()=>'<img data-forward width="200" height="200"/>';o("app-icon",{attrs:T,styles:_,template:j});var L=`
+`,j=["src","alt"],L=()=>'<img data-forward width="200" height="200"/>';o("app-icon",{attrs:j,styles:P,template:L});var T=`
    section {
         margin-inline: auto;
         width: 80%;
         display: flex;
         justify-content: space-between;
 
-        @media (max-width: ${e}) {
+        @media (max-width: ${a}) {
           flex-direction: column;
           gap: 3rem;
         }
@@ -422,17 +450,17 @@ function h(a,t){if(a===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     margin: 0;
   }
 
-  /* @media (max-width: ${e}) {
+  /* @media (max-width: ${a}) {
           app-image {
             display: none;
           }
         } */
-`,M={name:String,img:String,alt:String},B=({name:a="Name",img:t="/assets/images/coming-soon.jpg",alt:n="Coming Soon"})=>`
+`,z={name:String,img:String,alt:String},B=({name:t="Name",img:e="/assets/images/coming-soon.jpg",alt:n="Coming Soon"})=>`
   <section>
       <div>
         <hgroup>
           <p>Coming Soon</p>
-          <h1>${a}</h1>
+          <h1>${t}</h1>
         </hgroup>
 
         <app-icon
@@ -442,14 +470,14 @@ function h(a,t){if(a===void 0){if(t===Array)return[];if(t===Object)return{};if(t
         ></app-icon>
       </div>
 
-      <app-image variant="large" src=${t} alt=${n}></app-image>
+      <app-image variant="large" src=${e} alt=${n}></app-image>
   </section>
-`;o("section-coming-soon-intro",{props:M,styles:L,template:B});var K=`
+`;o("section-coming-soon-intro",{props:z,styles:T,template:B});var M=`
   :host {
     display: block;
   }
-`,z=`
+`,F=`
   <section-coming-soon-intro
     props='{"name":"AU Van"}'
   ></section-coming-soon-intro>
-`;o("section-au-van-intro",{styles:K,template:z});
+`;o("section-au-van-intro",{styles:M,template:F});

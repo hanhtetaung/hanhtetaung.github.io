@@ -4,7 +4,7 @@ import "../sections/footer.js";
 import "../sections/about-intro.js";
 import "../sections/tech-collection.js";
 import "../sections/random-facts.js";
-import "../sections/timeline.js";
+import "../sections/life-in-weeks.js";
 import "../sections/quote.js";
 
 // document.addEventListener("DOMContentLoaded", () => {

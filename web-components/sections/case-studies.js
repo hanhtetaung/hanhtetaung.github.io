@@ -27,16 +27,16 @@ const caseStudies = [
     href: "/work/mmo",
     reverse: true,
   },
-  {
-    image: "/assets/images/case-study/portfolio/mockup.avif",
-    alt: "Portfolio Mockup",
-    title: "Portfolio",
-    categories: ["Research", "Web Design", "Web Development"],
-    description:
-      "A personal portfolio to showcase my work, process, and approach to web design and development.",
-    href: "/work/portfolio",
-    reverse: false,
-  },
+  // {
+  //   image: "/assets/images/case-study/portfolio/mockup.avif",
+  //   alt: "Portfolio Mockup",
+  //   title: "Portfolio",
+  //   categories: ["Research", "Web Design", "Web Development"],
+  //   description:
+  //     "A personal portfolio to showcase my work, process, and approach to web design and development.",
+  //   href: "/work/portfolio",
+  //   reverse: false,
+  // },
   {
     image: "/assets/images/case-study/skssolar/mockup.avif",
     alt: "SKS Mockup",
@@ -45,7 +45,7 @@ const caseStudies = [
     description:
       "A website for SKS SOLAR (SALES & SERVICES) COMPANY LIMITED to showcase its history, services and completed project.",
     href: "/work/sks-solar",
-    reverse: true,
+    reverse: false,
   },
 ];
 
