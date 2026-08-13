@@ -487,7 +487,7 @@ function g(t,a){if(t===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     position: relative;
     list-style-type: none;
     padding: 0;
-    max-height: 100rem;
+    max-height: 35rem;
     overflow-x: scroll;
     display: flex;
     flex-wrap: wrap;
