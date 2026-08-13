@@ -785,7 +785,8 @@ ol {
 
   ul {
     padding: 0;
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 3rem;
     overflow: scroll;
   }

@@ -1,4 +1,4 @@
-function d(e,a){if(e===void 0){if(a===Array)return[];if(a===Object)return{};if(a===Boolean)return!1;if(a===Number)return 0;return}if(a===Boolean)return Boolean(e);if(a===Number)return Number(e);return e}function t(e,{props:a={},attrs:l=[],styles:m="",template:n}){let c=["props",...l];class s extends HTMLElement{static observedAttributes=c;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let r={},i=this.getAttribute("props");if(i)try{r=JSON.parse(i)}catch{r={}}let g={};for(let p of Object.keys(a))g[p]=d(r[p],a[p]);return g}_applyForwardedAttrs(){if(l.length===0)return;let r=this.shadowRoot.querySelector("[data-forward]");if(!r)return;for(let i of l)if(this.hasAttribute(i))r.setAttribute(i,this.getAttribute(i));else r.removeAttribute(i)}_render(){let r=this._getProps(),i=typeof n==="function"?n(r):n;this.shadowRoot.innerHTML=`<style>${m}</style>${i}`,this._applyForwardedAttrs()}}customElements.define(e,s)}var h=`
+function h(e,a){if(e===void 0){if(a===Array)return[];if(a===Object)return{};if(a===Boolean)return!1;if(a===Number)return 0;return}if(a===Boolean)return Boolean(e);if(a===Number)return Number(e);return e}function t(e,{props:a={},attrs:r=[],styles:n="",template:s}){let c=["props",...r];class p extends HTMLElement{static observedAttributes=c;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let i={},l=this.getAttribute("props");if(l)try{i=JSON.parse(l)}catch{i={}}let g={};for(let m of Object.keys(a))g[m]=h(i[m],a[m]);return g}_applyForwardedAttrs(){if(r.length===0)return;let i=this.shadowRoot.querySelector("[data-forward]");if(!i)return;for(let l of r)if(this.hasAttribute(l))i.setAttribute(l,this.getAttribute(l));else i.removeAttribute(l)}_render(){let i=this._getProps(),l=typeof s==="function"?s(i):s;this.shadowRoot.innerHTML=`<style>${n}</style>${l}`,this._applyForwardedAttrs()}}customElements.define(e,p)}var d=`
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -61,7 +61,7 @@ function d(e,a){if(e===void 0){if(a===Array)return[];if(a===Object)return{};if(a
   }
 `,f=["href","target","rel","download"],v=`
   <a data-forward><slot></slot></a>
-`;t("app-link",{attrs:f,styles:h,template:v});var u=`
+`;t("app-link",{attrs:f,styles:d,template:v});var u=`
   :host {
     display: block;
   }
@@ -288,7 +288,7 @@ function d(e,a){if(e===void 0){if(a===Array)return[];if(a===Object)return{};if(a
               </li>
           </ul>
 </nav>
-`;t("footer-copyright",{styles:A,template:H});var O=`
+`;t("footer-copyright",{styles:A,template:H});var N=`
   :host {
     --local-bg-color: var(--color-bg-secondary);
 
@@ -336,7 +336,7 @@ function d(e,a){if(e===void 0){if(a===Array)return[];if(a===Object)return{};if(a
   hr {
     color: var(--color-secondary);
   }
-`,z=`
+`,O=`
   <footer>
       <article>
         <div>
@@ -358,7 +358,7 @@ function d(e,a){if(e===void 0){if(a===Array)return[];if(a===Object)return{};if(a
 
       <footer-copyright></footer-copyright>
   </footer>
-`;t("section-footer",{styles:O,template:z});var I=`
+`;t("section-footer",{styles:N,template:O});var z=`
   :host {
     --local-width: 5rem;
     --local-heigth: auto;
@@ -389,7 +389,7 @@ function d(e,a){if(e===void 0){if(a===Array)return[];if(a===Object)return{};if(a
    :host([variant="full"]) {
     --local-width: 100%;
   }
-`,L=["width","height","src","alt"],N=()=>"<img data-forward />";t("app-image",{attrs:L,styles:I,template:N});var P=`
+`,I=["width","height","src","alt"],M=()=>"<img data-forward />";t("app-image",{attrs:I,styles:z,template:M});var T=`
   section {
     width: 80%;
     margin-inline: auto;
@@ -418,7 +418,7 @@ function d(e,a){if(e===void 0){if(a===Array)return[];if(a===Object)return{};if(a
       display: block; 
     }
   }
-`,T=`
+`,L=`
   <section>
       <h1>About</h1>
       <div>
@@ -438,7 +438,7 @@ function d(e,a){if(e===void 0){if(a===Array)return[];if(a===Object)return{};if(a
         </article>
       </div>
   </section>
-`;t("section-about-intro",{styles:P,template:T});var E=`
+`;t("section-about-intro",{styles:T,template:L});var E=`
   :host {
     display: flex;
     align-items: center;
@@ -469,15 +469,15 @@ function d(e,a){if(e===void 0){if(a===Array)return[];if(a===Object)return{};if(a
       display: none;
     }
   }
-`,W={name:String,img:String,alt:String},C=({name:e,img:a="",alt:l=""})=>`
+`,C={name:String,img:String,alt:String},P=({name:e,img:a="",alt:r=""})=>`
     <h2>${e}</h2>
     <img
         src=${a}
-        alt=${l}
+        alt=${r}
         height="36"
         width="76"
     />
-`;t("section-title",{props:W,styles:E,template:C});var B=[{href:"https://raindrop.io/",src:"/assets/tech-collection/raindrop-io.svg",alt:"Raindrop-io logo"},{href:"https://www.spendee.com/",src:"/assets/tech-collection/spendee.svg",alt:"Spendee logo"},{href:"https://citymapper.com/",src:"/assets/tech-collection/citymapper.svg",alt:"Citymapper logo"},{href:"https://www.figma.com/",src:"/assets/tech-collection/figma.svg",alt:"Figma logo"},{href:"https://www.strava.com/",src:"/assets/tech-collection/strava.svg",alt:"Strava logo"},{href:"https://www.notion.com/",src:"/assets/tech-collection/notion.svg",alt:"Notion logo"},{href:"https://wise.com/",src:"/assets/tech-collection/wise.svg",alt:"Wise logo"},{href:"https://dayoneapp.com/",src:"/assets/tech-collection/day-one.svg",alt:"Day One logo"},{href:"https://telegram.org/",src:"/assets/tech-collection/telegram.svg",alt:"Telegram logo"},{href:"https://www.redbus.com/",src:"/assets/tech-collection/redbus.svg",alt:"Red Bus logo"},{href:"https://www.iqair.com/",src:"/assets/tech-collection/iqair.svg",alt:"IqAir logo"},{href:"https://www.shazam.com/",src:"/assets/tech-collection/shazam.svg",alt:"Shazam logo"},{href:"https://www.skyscanner.net/",src:"/assets/tech-collection/skyscanner.svg",alt:"Skyscanner logo"},{href:"https://developer.mozilla.org/en-US/docs/Glossary/HTML5",src:"/assets/tech-collection/html5.svg",alt:"HTML5 logo"},{href:"https://developer.mozilla.org/en-US/docs/Web/CSS",src:"/assets/tech-collection/css3.svg",alt:"CSS3 logo"},{href:"https://bun.com/",src:"/assets/tech-collection/bun.svg",alt:"Bun logo"},{href:"https://www.upwork.com/",src:"/assets/tech-collection/upwork.svg",alt:"Upwork logo"},{href:"https://google.com/maps",src:"/assets/tech-collection/google-map.svg",alt:"Google Map logo"},{href:"https://www.airbnb.com/",src:"/assets/tech-collection/airbnb.svg",alt:"Airbnb logo"},{href:"https://ticktick.com/",src:"/assets/tech-collection/ticktick.svg",alt:"Ticktick logo"},{href:"https://unsplash.com/",src:"/assets/tech-collection/unsplash.svg",alt:"Unsplash logo"},{href:"https://oklch.com/",src:"/assets/tech-collection/oklch.svg",alt:"Oklch logo"},{href:"https://vert.sh/",src:"/assets/tech-collection/vert.svg",alt:"Vert logo"},{href:"https://thenounproject.com/",src:"/assets/tech-collection/the-noun-project.svg",alt:"The Noun Project logo"}],M=`
+`;t("section-title",{props:C,styles:E,template:P});var B=[{href:"https://raindrop.io/",src:"/assets/tech-collection/raindrop-io.svg",alt:"Raindrop-io logo"},{href:"https://www.spendee.com/",src:"/assets/tech-collection/spendee.svg",alt:"Spendee logo"},{href:"https://citymapper.com/",src:"/assets/tech-collection/citymapper.svg",alt:"Citymapper logo"},{href:"https://www.figma.com/",src:"/assets/tech-collection/figma.svg",alt:"Figma logo"},{href:"https://www.strava.com/",src:"/assets/tech-collection/strava.svg",alt:"Strava logo"},{href:"https://www.notion.com/",src:"/assets/tech-collection/notion.svg",alt:"Notion logo"},{href:"https://wise.com/",src:"/assets/tech-collection/wise.svg",alt:"Wise logo"},{href:"https://dayoneapp.com/",src:"/assets/tech-collection/day-one.svg",alt:"Day One logo"},{href:"https://telegram.org/",src:"/assets/tech-collection/telegram.svg",alt:"Telegram logo"},{href:"https://www.redbus.com/",src:"/assets/tech-collection/redbus.svg",alt:"Red Bus logo"},{href:"https://www.iqair.com/",src:"/assets/tech-collection/iqair.svg",alt:"IqAir logo"},{href:"https://www.shazam.com/",src:"/assets/tech-collection/shazam.svg",alt:"Shazam logo"},{href:"https://www.skyscanner.net/",src:"/assets/tech-collection/skyscanner.svg",alt:"Skyscanner logo"},{href:"https://developer.mozilla.org/en-US/docs/Glossary/HTML5",src:"/assets/tech-collection/html5.svg",alt:"HTML5 logo"},{href:"https://developer.mozilla.org/en-US/docs/Web/CSS",src:"/assets/tech-collection/css3.svg",alt:"CSS3 logo"},{href:"https://bun.com/",src:"/assets/tech-collection/bun.svg",alt:"Bun logo"},{href:"https://www.upwork.com/",src:"/assets/tech-collection/upwork.svg",alt:"Upwork logo"},{href:"https://google.com/maps",src:"/assets/tech-collection/google-map.svg",alt:"Google Map logo"},{href:"https://www.airbnb.com/",src:"/assets/tech-collection/airbnb.svg",alt:"Airbnb logo"},{href:"https://ticktick.com/",src:"/assets/tech-collection/ticktick.svg",alt:"Ticktick logo"},{href:"https://unsplash.com/",src:"/assets/tech-collection/unsplash.svg",alt:"Unsplash logo"},{href:"https://oklch.com/",src:"/assets/tech-collection/oklch.svg",alt:"Oklch logo"},{href:"https://vert.sh/",src:"/assets/tech-collection/vert.svg",alt:"Vert logo"},{href:"https://thenounproject.com/",src:"/assets/tech-collection/the-noun-project.svg",alt:"The Noun Project logo"}],_=`
   section {
     width: 80%;
     margin-inline: auto;
@@ -492,7 +492,7 @@ function d(e,a){if(e===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     display: flex;
     flex-wrap: wrap;
   }
-`,_=()=>`
+`,F=()=>`
   <section>
     <section-title
         props='${JSON.stringify({name:"Tech Collection",img:"/assets/icons/penguin.svg",alt:"Penguin Logo"})}'
@@ -513,7 +513,7 @@ function d(e,a){if(e===void 0){if(a===Array)return[];if(a===Object)return{};if(a
             `).join("")}
       </ul>
   </section>
-`;t("section-tech-collection",{styles:M,template:_});var q=`
+`;t("section-tech-collection",{styles:_,template:F});var W=`
   :host {
     --local-width: 3rem;
     --local-height: auto;
@@ -546,7 +546,7 @@ function d(e,a){if(e===void 0){if(a===Array)return[];if(a===Object)return{};if(a
   }
 
 
-`,F=["src","alt"],R=()=>'<img data-forward width="200" height="200"/>';t("app-icon",{attrs:F,styles:q,template:R});var U=[{src:"/assets/icons/bird-watching.svg",alt:"Watching Bird",text:"I love birds"},{src:"/assets/icons/seafood.svg",alt:"Seafood",text:"I’m allergic to seafood"},{src:"/assets/icons/travelling.svg",alt:"Travelling",text:"I enjoy travelling"},{src:"/assets/icons/running.svg",alt:"Running",text:"I like running"}],j=`
+`,D=["src","alt"],q=()=>'<img data-forward width="200" height="200"/>';t("app-icon",{attrs:D,styles:W,template:q});var R=[{src:"/assets/icons/bird-watching.svg",alt:"Watching Bird",text:"I love birds"},{src:"/assets/icons/seafood.svg",alt:"Seafood",text:"I’m allergic to seafood"},{src:"/assets/icons/travelling.svg",alt:"Travelling",text:"I enjoy travelling"},{src:"/assets/icons/running.svg",alt:"Running",text:"I like running"}],Y=`
   section {
     width: 80%;
     margin-inline: auto;
@@ -564,14 +564,14 @@ function d(e,a){if(e===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     margin: 0;
     text-align: center;
   }
-`,D=()=>`
+`,j=()=>`
   <section>
        <section-title
         props='${JSON.stringify({name:"Random Facts",img:"/assets/icons/birds-singing.svg",alt:"Birds-singing Logo"})}'
       ></section-title>
 
       <ul>
-        ${U.map((e)=>`
+        ${R.map((e)=>`
               <li>
                 <figure>
                   <app-icon variant="large" src="${e.src}" alt="${e.alt}"></app-icon>
@@ -581,7 +581,7 @@ function d(e,a){if(e===void 0){if(a===Array)return[];if(a===Object)return{};if(a
             `).join("")}
       </ul>
   </section>
-`;t("section-random-facts",{styles:j,template:D});var J="2000-11-03",Y=70,G=`
+`;t("section-random-facts",{styles:Y,template:j});var U="3 Nov 2000",J=70,G=`
   section {
     width: 80%;
     margin-inline: auto;
@@ -637,16 +637,16 @@ function d(e,a){if(e===void 0){if(a===Array)return[];if(a===Object)return{};if(a
         background: var(--color-secondary);
         border-color: var(--color-secondary);
     }
-`;function K(e,a){let l=new Date(e),m=604800000,n=Math.floor(a*365.25*24*60*60*1000/604800000),c=Math.floor((Date.now()-l)/604800000),s="";for(let r=0;r<n;r++)s+=r<c?'<li class="lived"></li>':"<li></li>";return s}var V=()=>`
+`,K=(e,a)=>{let r=new Date(e),n=new Date,s=n.getFullYear()-r.getFullYear()-(n.getMonth()<r.getMonth()||n.getMonth()===r.getMonth()&&n.getDate()<r.getDate()?1:0),c=s*52+Math.min(51,Math.floor((n-new Date(r.getFullYear()+s,r.getMonth(),r.getDate()))/604800000));return Array.from({length:a*52},(p,i)=>`<li class="${i<c?"lived":""}"></li>`).join("")},V=()=>`
   <section>
     <section-title
       props='${JSON.stringify({name:"Life in Weeks",img:"/assets/icons/parrot.svg",alt:"Birds-singing Logo"})}'
     ></section-title>
 
     <article>
-      <span class="ages">Ages ⇨</span>
+      <span class="ages">Ages (70 yrs) ⇨</span>
       <span class="weeks-axis">⇦ Weeks of the year</span>
-      <ul>${K(J,Y)}</ul>
+      <ul>${K(U,J)}</ul>
     </article>
 
     <p>Based on this post: <app-link variant="underline" href="https://waitbutwhy.com/2014/05/life-weeks.html" target="_blank">Your Life in Weeks</app-link></p>
