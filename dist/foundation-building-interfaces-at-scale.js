@@ -1,4 +1,4 @@
-function h(t,o){if(t===void 0){if(o===Array)return[];if(o===Object)return{};if(o===Boolean)return!1;if(o===Number)return 0;return}if(o===Boolean)return Boolean(t);if(o===Number)return Number(t);return t}function e(t,{props:o={},attrs:n=[],styles:m="",template:l}){let d=["props",...n];class c extends HTMLElement{static observedAttributes=d;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let i={},r=this.getAttribute("props");if(r)try{i=JSON.parse(r)}catch{i={}}let p={};for(let s of Object.keys(o))p[s]=h(i[s],o[s]);return p}_applyForwardedAttrs(){if(n.length===0)return;let i=this.shadowRoot.querySelector("[data-forward]");if(!i)return;for(let r of n)if(this.hasAttribute(r))i.setAttribute(r,this.getAttribute(r));else i.removeAttribute(r)}_render(){let i=this._getProps(),r=typeof l==="function"?l(i):l;this.shadowRoot.innerHTML=`<style>${m}</style>${r}`,this._applyForwardedAttrs()}}customElements.define(t,c)}var f=`
+function h(t,a){if(t===void 0){if(a===Array)return[];if(a===Object)return{};if(a===Boolean)return!1;if(a===Number)return 0;return}if(a===Boolean)return Boolean(t);if(a===Number)return Number(t);return t}function e(t,{props:a={},attrs:n=[],styles:m="",template:l}){let d=["props",...n];class c extends HTMLElement{static observedAttributes=d;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let i={},r=this.getAttribute("props");if(r)try{i=JSON.parse(r)}catch{i={}}let p={};for(let s of Object.keys(a))p[s]=h(i[s],a[s]);return p}_applyForwardedAttrs(){if(n.length===0)return;let i=this.shadowRoot.querySelector("[data-forward]");if(!i)return;for(let r of n)if(this.hasAttribute(r))i.setAttribute(r,this.getAttribute(r));else i.removeAttribute(r)}_render(){let i=this._getProps(),r=typeof l==="function"?l(i):l;this.shadowRoot.innerHTML=`<style>${m}</style>${r}`,this._applyForwardedAttrs()}}customElements.define(t,c)}var g=`
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -59,9 +59,9 @@ function h(t,o){if(t===void 0){if(o===Array)return[];if(o===Object)return{};if(o
        content: "➶";
      }
   }
-`,g=["href","target","rel","download"],u=`
+`,f=["href","target","rel","download"],u=`
   <a data-forward><slot></slot></a>
-`;e("app-link",{attrs:g,styles:f,template:u});var b=`
+`;e("app-link",{attrs:f,styles:g,template:u});var v=`
   :host {
     display: block;
   }
@@ -70,7 +70,7 @@ function h(t,o){if(t===void 0){if(o===Array)return[];if(o===Object)return{};if(o
     max-height: 7rem;
     width: auto;
   }
-`,v=["width","height","src","alt"],k=()=>"<img data-forward />";e("app-logo",{attrs:v,styles:b,template:k});var a="769px",J="992px";var w=`
+`,b=["width","height","src","alt"],y=()=>"<img data-forward />";e("app-logo",{attrs:b,styles:v,template:y});var o="769px",U="992px";var k=`
   :host {
     display: block;
   }
@@ -105,12 +105,12 @@ function h(t,o){if(t===void 0){if(o===Array)return[];if(o===Object)return{};if(o
     box-shadow: none;
   }
 
-  @media (max-width: ${a}) {
+  @media (max-width: ${o}) {
     .header__navigation {
       gap: 4rem;
     }
   }
-`,y=`
+`,w=`
   <header>
       <app-link variant="plain" href="/">
         <app-logo
@@ -139,7 +139,7 @@ function h(t,o){if(t===void 0){if(o===Array)return[];if(o===Object)return{};if(o
         </app-link>
       </div>
   </header>
-`;e("section-header",{template:y,styles:w});var x=[{href:"/",name:"Home"},{href:"/about",name:"About"},{href:"/credits",name:"Credits"},{href:"/hire-me",name:"Hire Me"},{href:"/thank-you",name:"Thank You"},{href:"/work/mmo",name:"MMO"},{href:"/work/bamboo",name:"Bamboo"},{href:"/work/portfolio",name:"Portfolio"},{href:"/work/au-van",name:"AU Van"},{href:"/work/sks-solar",name:"SKS Solar"},{href:"/writings/foundation-building-interfaces-at-scale",name:"Foundation"},{href:"/work/knowledge-tree",name:"Knowledge Tree"}],A=`
+`;e("section-header",{template:w,styles:k});var x=[{href:"/",name:"Home"},{href:"/about",name:"About"},{href:"/credits",name:"Credits"},{href:"/hire-me",name:"Hire Me"},{href:"/thank-you",name:"Thank You"},{href:"/work/mmo",name:"MMO"},{href:"/work/bamboo",name:"Bamboo"},{href:"/work/portfolio",name:"Portfolio"},{href:"/work/au-van",name:"AU Van"},{href:"/work/sks-solar",name:"SKS Solar"},{href:"/writings/foundation-building-interfaces-at-scale",name:"Foundation"},{href:"/work/knowledge-tree",name:"Knowledge Tree"}],A=`
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -148,7 +148,7 @@ function h(t,o){if(t===void 0){if(o===Array)return[];if(o===Object)return{};if(o
    display: flex;
    gap: 5rem;
 
-   @media (max-width: ${a}) {
+   @media (max-width: ${o}) {
         flex-direction: column;
         gap: 3rem;
         margin-block: 2rem;
@@ -160,7 +160,6 @@ function h(t,o){if(t===void 0){if(o===Array)return[];if(o===Object)return{};if(o
     list-style-type: none;
     display: flex;
     margin: 0;
-    margin-top: 0.5rem
   }
 
   span {
@@ -168,6 +167,8 @@ function h(t,o){if(t===void 0){if(o===Array)return[];if(o===Object)return{};if(o
     font-size: var(--size-small);
     font-weight: var(--font-bold);
     text-transform: uppercase;
+    display: inline-block;
+    margin-bottom: 0.5rem;
   }
 
   nav ol {
@@ -176,7 +177,7 @@ function h(t,o){if(t===void 0){if(o===Array)return[];if(o===Object)return{};if(o
     max-height: 12.5ch;
     overflow: scroll;
 
-    @media (max-width: ${a}) {
+    @media (max-width: ${o}) {
         max-height: 20ch;
     }
   }
@@ -185,7 +186,7 @@ function h(t,o){if(t===void 0){if(o===Array)return[];if(o===Object)return{};if(o
     margin-right: 5rem;
     margin-bottom: 0.3rem;
   }
-`,S=()=>`
+`,$=()=>`
     <nav>
         <span>Sitemap</span>
 
@@ -197,19 +198,28 @@ function h(t,o){if(t===void 0){if(o===Array)return[];if(o===Object)return{};if(o
             `).join("")}
         </ol>
     </nav>
-`;e("footer-nav",{styles:A,template:S});var H=`
+`;e("footer-nav",{styles:A,template:$});var S=`
   :host {
    display: flex;
     justify-content: space-between;
+    border-top: 1px solid var(--color-text);
+    padding-top: 1rem;
 
-   @media (max-width: ${a}) {
-        flex-direction: column;
-        gap: 3rem;
+   @media (max-width: ${o}) {
+        flex-direction: column-reverse;
+        gap: 2rem;
+        border: none;
+        padding-top: 0;
    }
   }
 
   p {
     margin: 0;
+
+    @media (max-width: ${o}) {
+      border-top: 1px solid var(--color-text);
+    padding-top: 1rem;
+    }
   }
 
   ul {
@@ -219,50 +229,66 @@ function h(t,o){if(t===void 0){if(o===Array)return[];if(o===Object)return{};if(o
     display: flex;
     gap: 2rem;
   }
-`,_=()=>`
+
+  span {
+    display: none;
+    color: var(--color-secondary);
+    font-size: var(--size-small);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
     
+
+    @media (max-width: ${o}) {
+      display: inline-block;
+      margin-bottom: 0.5rem;
+    }
+  }
+`,_=()=>`
       <p>
         © Han Htet Aung 2026 |
         <app-link href="/credits" variant="underline">Credits</app-link>
       </p>
 
-       <ul>
-            <li>
-                <app-link href="mailto:hanhtetaung.dev@gmail.com" variant="image">
-                <img
-                    src="/assets/icons/email.svg"
-                    alt="Email Icon"
-                />
-                </app-link>
-            </li>
-            <li>
-                <app-link
-                href="https://github.com/hanhtetaung/"
-                target="_blank"
-                rel="noopener"
-                variant="image"
-                >
-                <img
-                    src="/assets/icons/github.svg"
-                    alt="Github Icon"
-                />
-                </app-link>
-            </li>
-            <li>
-                <app-link
-                href="https://www.linkedin.com/in/han-htet-aung/"
-                target="_blank"
-                rel="noopener"
-                variant="image"
-                >
-                <img
-                    src="/assets/icons/linkedin.svg"
-                    alt="Linkedin Icon"
-                />
-                </app-link>
-            </li>
-        </ul>
-`;e("footer-copyright",{styles:H,template:_});var $=`
+      <nav>
+        <span>Find me on:</span>
+        <ul>
+              <li>
+                  <app-link href="mailto:hanhtetaung.dev@gmail.com" variant="image">
+                  <img
+                      src="/assets/icons/email.svg"
+                      alt="Email Icon"
+                  />
+                  </app-link>
+              </li>
+              <li>
+                  <app-link
+                  href="https://github.com/hanhtetaung/"
+                  target="_blank"
+                  rel="noopener"
+                  variant="image"
+                  >
+                  <img
+                      src="/assets/icons/github.svg"
+                      alt="Github Icon"
+                  />
+                  </app-link>
+              </li>
+              <li>
+                  <app-link
+                  href="https://www.linkedin.com/in/han-htet-aung/"
+                  target="_blank"
+                  rel="noopener"
+                  variant="image"
+                  >
+                  <img
+                      src="/assets/icons/linkedin.svg"
+                      alt="Linkedin Icon"
+                  />
+                  </app-link>
+              </li>
+          </ul>
+</nav>
+`;e("footer-copyright",{styles:S,template:_});var H=`
   :host {
     --local-bg-color: var(--color-bg-secondary);
 
@@ -290,9 +316,11 @@ function h(t,o){if(t===void 0){if(o===Array)return[];if(o===Object)return{};if(o
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 2rem;
+    gap: 5rem;
   }
 
-  @media (max-width: ${a}) {
+  @media (max-width: ${o}) {
     article {
       display: block;
     }
@@ -301,6 +329,8 @@ function h(t,o){if(t===void 0){if(o===Array)return[];if(o===Object)return{};if(o
   div {
     display: flex;
     gap: 3rem;
+    align-items: center;
+    min-width: 21rem;
   }
 
   hr {
@@ -326,11 +356,9 @@ function h(t,o){if(t===void 0){if(o===Array)return[];if(o===Object)return{};if(o
         <footer-nav></footer-nav>
       </article>
 
-      <hr>
-
       <footer-copyright></footer-copyright>
   </footer>
-`;e("section-footer",{styles:$,template:O});var P=`
+`;e("section-footer",{styles:H,template:O});var P=`
   :host {
     display: block;
   }
@@ -383,7 +411,7 @@ function h(t,o){if(t===void 0){if(o===Array)return[];if(o===Object)return{};if(o
       </li>
     </ul>
   </section>
-`;e("section-foundation-building-interfaces-at-scale-intro",{styles:P,template:E});var N=`
+`;e("section-foundation-building-interfaces-at-scale-intro",{styles:P,template:E});var z=`
   :host {
     display: flex;
     align-items: center;
@@ -414,15 +442,15 @@ function h(t,o){if(t===void 0){if(o===Array)return[];if(o===Object)return{};if(o
       display: none;
     }
   }
-`,T={name:String,img:String,alt:String},z=({name:t,img:o="",alt:n=""})=>`
+`,N={name:String,img:String,alt:String},T=({name:t,img:a="",alt:n=""})=>`
     <h2>${t}</h2>
     <img
-        src=${o}
+        src=${a}
         alt=${n}
         height="36"
         width="76"
     />
-`;e("section-title",{props:T,styles:N,template:z});var B=`
+`;e("section-title",{props:N,styles:z,template:T});var B=`
   :host {
     --local-width: 5rem;
     --local-heigth: auto;
@@ -453,13 +481,13 @@ function h(t,o){if(t===void 0){if(o===Array)return[];if(o===Object)return{};if(o
    :host([variant="full"]) {
     --local-width: 100%;
   }
-`,C=["width","height","src","alt"],M=()=>"<img data-forward />";e("app-image",{attrs:C,styles:B,template:M});var L=`
+`,C=["width","height","src","alt"],L=()=>"<img data-forward />";e("app-image",{attrs:C,styles:B,template:L});var j=`
   :host {
     display: grid;
     grid-template-columns: 1fr 2.5fr;
 
 
-    @media (max-width: ${a}) {
+    @media (max-width: ${o}) {
         display: block;
     }
   }
@@ -475,13 +503,13 @@ function h(t,o){if(t===void 0){if(o===Array)return[];if(o===Object)return{};if(o
   :host([variant="block"]) {
     display: block;
   }
-`,j={title:String},D=({title:t})=>`
+`,D={title:String},F=({title:t})=>`
         <h3>${t}</h3>
 
         <article>
             <slot></slot>
         </article>
-`;e("app-article-paragraph",{props:j,styles:L,template:D});var F=`
+`;e("app-article-paragraph",{props:D,styles:j,template:F});var M=`
   :host {
     display: block;
   }
@@ -507,7 +535,7 @@ function h(t,o){if(t===void 0){if(o===Array)return[];if(o===Object)return{};if(o
     border-top: 1px dashed var(--color-text);
     padding-top: 5rem;
   }
-`,K=`
+`,I=`
   <section >
     <section-title variant="text" props='{"name": "Atomic Design Principle"}'></section-title>
 
@@ -599,7 +627,7 @@ function h(t,o){if(t===void 0){if(o===Array)return[];if(o===Object)return{};if(o
       </li>
     </ul>
   </section>
-`;e("section-atomic-design-principle",{styles:F,template:K});var I=`
+`;e("section-atomic-design-principle",{styles:M,template:I});var K=`
   :host {
     display: block;
   }
@@ -729,7 +757,7 @@ function h(t,o){if(t===void 0){if(o===Array)return[];if(o===Object)return{};if(o
       </li>
 </ul>
   </section>
-`;e("section-design-token-architecture",{styles:I,template:R});var V=`
+`;e("section-design-token-architecture",{styles:K,template:R});var G=`
   :host {
     display: block;
   }
@@ -746,7 +774,7 @@ function h(t,o){if(t===void 0){if(o===Array)return[];if(o===Object)return{};if(o
     flex-direction: column;
     gap: 0.5rem;
   }
-`,Y=`
+`,V=`
   <section>
     <section-title variant="text" props='{"name": "References"}'></section-title>
 
@@ -773,4 +801,4 @@ function h(t,o){if(t===void 0){if(o===Array)return[];if(o===Object)return{};if(o
       </li>
     </ul>
   </section>
-`;e("section-foundation-building-interfaces-at-scale-references",{styles:V,template:Y});
+`;e("section-foundation-building-interfaces-at-scale-references",{styles:G,template:V});

@@ -1,4 +1,4 @@
-function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a===Boolean)return!1;if(a===Number)return 0;return}if(a===Boolean)return Boolean(o);if(a===Number)return Number(o);return o}function e(o,{props:a={},attrs:n=[],styles:d="",template:l}){let p=["props",...n];class c extends HTMLElement{static observedAttributes=p;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let r={},i=this.getAttribute("props");if(i)try{r=JSON.parse(i)}catch{r={}}let m={};for(let s of Object.keys(a))m[s]=h(r[s],a[s]);return m}_applyForwardedAttrs(){if(n.length===0)return;let r=this.shadowRoot.querySelector("[data-forward]");if(!r)return;for(let i of n)if(this.hasAttribute(i))r.setAttribute(i,this.getAttribute(i));else r.removeAttribute(i)}_render(){let r=this._getProps(),i=typeof l==="function"?l(r):l;this.shadowRoot.innerHTML=`<style>${d}</style>${i}`,this._applyForwardedAttrs()}}customElements.define(o,c)}var g=`
+function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a===Boolean)return!1;if(a===Number)return 0;return}if(a===Boolean)return Boolean(o);if(a===Number)return Number(o);return o}function e(o,{props:a={},attrs:n=[],styles:p="",template:l}){let m=["props",...n];class c extends HTMLElement{static observedAttributes=m;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let i={},r=this.getAttribute("props");if(r)try{i=JSON.parse(r)}catch{i={}}let d={};for(let s of Object.keys(a))d[s]=h(i[s],a[s]);return d}_applyForwardedAttrs(){if(n.length===0)return;let i=this.shadowRoot.querySelector("[data-forward]");if(!i)return;for(let r of n)if(this.hasAttribute(r))i.setAttribute(r,this.getAttribute(r));else i.removeAttribute(r)}_render(){let i=this._getProps(),r=typeof l==="function"?l(i):l;this.shadowRoot.innerHTML=`<style>${p}</style>${r}`,this._applyForwardedAttrs()}}customElements.define(o,c)}var g=`
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -70,7 +70,7 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     max-height: 7rem;
     width: auto;
   }
-`,v=["width","height","src","alt"],w=()=>"<img data-forward />";e("app-logo",{attrs:v,styles:b,template:w});var t="769px",Q="992px";var y=`
+`,v=["width","height","src","alt"],w=()=>"<img data-forward />";e("app-logo",{attrs:v,styles:b,template:w});var t="769px",U="992px";var y=`
   :host {
     display: block;
   }
@@ -160,7 +160,6 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     list-style-type: none;
     display: flex;
     margin: 0;
-    margin-top: 0.5rem
   }
 
   span {
@@ -168,6 +167,8 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     font-size: var(--size-small);
     font-weight: var(--font-bold);
     text-transform: uppercase;
+    display: inline-block;
+    margin-bottom: 0.5rem;
   }
 
   nav ol {
@@ -185,7 +186,7 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     margin-right: 5rem;
     margin-bottom: 0.3rem;
   }
-`,A=()=>`
+`,$=()=>`
     <nav>
         <span>Sitemap</span>
 
@@ -197,19 +198,28 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
             `).join("")}
         </ol>
     </nav>
-`;e("footer-nav",{styles:S,template:A});var H=`
+`;e("footer-nav",{styles:S,template:$});var A=`
   :host {
    display: flex;
     justify-content: space-between;
+    border-top: 1px solid var(--color-text);
+    padding-top: 1rem;
 
    @media (max-width: ${t}) {
-        flex-direction: column;
-        gap: 3rem;
+        flex-direction: column-reverse;
+        gap: 2rem;
+        border: none;
+        padding-top: 0;
    }
   }
 
   p {
     margin: 0;
+
+    @media (max-width: ${t}) {
+      border-top: 1px solid var(--color-text);
+    padding-top: 1rem;
+    }
   }
 
   ul {
@@ -219,50 +229,66 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     display: flex;
     gap: 2rem;
   }
-`,T=()=>`
+
+  span {
+    display: none;
+    color: var(--color-secondary);
+    font-size: var(--size-small);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
     
+
+    @media (max-width: ${t}) {
+      display: inline-block;
+      margin-bottom: 0.5rem;
+    }
+  }
+`,H=()=>`
       <p>
         © Han Htet Aung 2026 |
         <app-link href="/credits" variant="underline">Credits</app-link>
       </p>
 
-       <ul>
-            <li>
-                <app-link href="mailto:hanhtetaung.dev@gmail.com" variant="image">
-                <img
-                    src="/assets/icons/email.svg"
-                    alt="Email Icon"
-                />
-                </app-link>
-            </li>
-            <li>
-                <app-link
-                href="https://github.com/hanhtetaung/"
-                target="_blank"
-                rel="noopener"
-                variant="image"
-                >
-                <img
-                    src="/assets/icons/github.svg"
-                    alt="Github Icon"
-                />
-                </app-link>
-            </li>
-            <li>
-                <app-link
-                href="https://www.linkedin.com/in/han-htet-aung/"
-                target="_blank"
-                rel="noopener"
-                variant="image"
-                >
-                <img
-                    src="/assets/icons/linkedin.svg"
-                    alt="Linkedin Icon"
-                />
-                </app-link>
-            </li>
-        </ul>
-`;e("footer-copyright",{styles:H,template:T});var $=`
+      <nav>
+        <span>Find me on:</span>
+        <ul>
+              <li>
+                  <app-link href="mailto:hanhtetaung.dev@gmail.com" variant="image">
+                  <img
+                      src="/assets/icons/email.svg"
+                      alt="Email Icon"
+                  />
+                  </app-link>
+              </li>
+              <li>
+                  <app-link
+                  href="https://github.com/hanhtetaung/"
+                  target="_blank"
+                  rel="noopener"
+                  variant="image"
+                  >
+                  <img
+                      src="/assets/icons/github.svg"
+                      alt="Github Icon"
+                  />
+                  </app-link>
+              </li>
+              <li>
+                  <app-link
+                  href="https://www.linkedin.com/in/han-htet-aung/"
+                  target="_blank"
+                  rel="noopener"
+                  variant="image"
+                  >
+                  <img
+                      src="/assets/icons/linkedin.svg"
+                      alt="Linkedin Icon"
+                  />
+                  </app-link>
+              </li>
+          </ul>
+</nav>
+`;e("footer-copyright",{styles:A,template:H});var T=`
   :host {
     --local-bg-color: var(--color-bg-secondary);
 
@@ -290,6 +316,8 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 2rem;
+    gap: 5rem;
   }
 
   @media (max-width: ${t}) {
@@ -301,12 +329,14 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
   div {
     display: flex;
     gap: 3rem;
+    align-items: center;
+    min-width: 21rem;
   }
 
   hr {
     color: var(--color-secondary);
   }
-`,P=`
+`,z=`
   <footer>
       <article>
         <div>
@@ -326,11 +356,9 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
         <footer-nav></footer-nav>
       </article>
 
-      <hr>
-
       <footer-copyright></footer-copyright>
   </footer>
-`;e("section-footer",{styles:$,template:P});var C=`
+`;e("section-footer",{styles:T,template:z});var P=`
   :host {
     --local-width: 5rem;
     --local-heigth: auto;
@@ -361,7 +389,7 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
    :host([variant="full"]) {
     --local-width: 100%;
   }
-`,O=["width","height","src","alt"],z=()=>"<img data-forward />";e("app-image",{attrs:O,styles:C,template:z});var E=`
+`,C=["width","height","src","alt"],E=()=>"<img data-forward />";e("app-image",{attrs:C,styles:P,template:E});var O=`
   :host {
     display: block;
   }
@@ -431,7 +459,7 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
         >View Live Website</app-link>
     </article>
   </section>
-`;e("section-knowledge-tree-intro",{styles:E,template:_});var N=`
+`;e("section-knowledge-tree-intro",{styles:O,template:_});var N=`
   :host {
     display: flex;
     align-items: center;
@@ -462,7 +490,7 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
       display: none;
     }
   }
-`,L={name:String,img:String,alt:String},M=({name:o,img:a="",alt:n=""})=>`
+`,L={name:String,img:String,alt:String},j=({name:o,img:a="",alt:n=""})=>`
     <h2>${o}</h2>
     <img
         src=${a}
@@ -470,7 +498,7 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
         height="36"
         width="76"
     />
-`;e("section-title",{props:L,styles:N,template:M});var j=`
+`;e("section-title",{props:L,styles:N,template:j});var F=`
   :host {
     display: block;
   }
@@ -483,7 +511,7 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
   p {
     margin-block: 2rem;
   }
-`,F=`
+`,M=`
   <section>
     <section-title
         variant="text"
@@ -510,7 +538,7 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
         </ul>
       </article>
   </section>
-`;e("section-knowledge-tree-overview",{styles:j,template:F});var K=`
+`;e("section-knowledge-tree-overview",{styles:F,template:M});var B=`
   :host {
     display: block;
   }
@@ -543,7 +571,7 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     display: block;
     margin-bottom: 2rem;
   }
-`,B=`
+`,G=`
   <section>
     <section-title
         variant="text"
@@ -595,7 +623,7 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
             </p>
           </article>
   </section>
-`;e("section-knowledge-tree-building-block",{styles:K,template:B});var G=`
+`;e("section-knowledge-tree-building-block",{styles:B,template:G});var K=`
   :host {
     display: grid;
     grid-template-columns: 1fr 2.5fr;
@@ -617,13 +645,13 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
   :host([variant="block"]) {
     display: block;
   }
-`,I={title:String},V=({title:o})=>`
+`,I={title:String},D=({title:o})=>`
         <h3>${o}</h3>
 
         <article>
             <slot></slot>
         </article>
-`;e("app-article-paragraph",{props:I,styles:G,template:V});var D=`
+`;e("app-article-paragraph",{props:I,styles:K,template:D});var V=`
   :host {
     display: block;
   }
@@ -729,7 +757,7 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
 
      
   </section>
-`;e("section-knowledge-tree-need-one-interface",{styles:D,template:W});var Y=`
+`;e("section-knowledge-tree-need-one-interface",{styles:V,template:W});var J=`
   :host {
     display: block;
   }
@@ -738,7 +766,7 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     width: 80%;
     margin-inline: auto;
   }
-`,J=`
+`,R=`
   <section>
     <section-title
         variant="text"
@@ -754,4 +782,4 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
           </p>
       </article>
   </section>
-`;e("section-knowledge-tree-conclusion",{styles:Y,template:J});
+`;e("section-knowledge-tree-conclusion",{styles:J,template:R});

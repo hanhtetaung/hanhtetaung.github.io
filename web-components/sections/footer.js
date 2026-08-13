@@ -33,6 +33,8 @@ const styles = /* css */ `
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 2rem;
+    gap: 5rem;
   }
 
   @media (max-width: ${PHONE}) {
@@ -44,6 +46,8 @@ const styles = /* css */ `
   div {
     display: flex;
     gap: 3rem;
+    align-items: center;
+    min-width: 21rem;
   }
 
   hr {
@@ -70,8 +74,6 @@ const template = /* html */ `
 
         <footer-nav></footer-nav>
       </article>
-
-      <hr>
 
       <footer-copyright></footer-copyright>
   </footer>
