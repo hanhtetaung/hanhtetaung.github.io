@@ -23,6 +23,12 @@ const styles = /* css */ `
     --local-color: var(--color-secondary);
     --local-border: 1px solid var(--color-secondary);
   }
+
+  :host([variant="success"]) {
+    /* --local-bg: #157d6c; */
+    --local-bg: #a36aa5;
+     --local-border: 1px solid var( --local-color);
+  }
 `;
 
 const props = { name: String };

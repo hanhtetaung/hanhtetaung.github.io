@@ -288,7 +288,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
               </li>
           </ul>
 </nav>
-`;e("footer-copyright",{styles:T,template:Q});var z=`
+`;e("footer-copyright",{styles:T,template:Q});var O=`
   :host {
     --local-bg-color: var(--color-bg-secondary);
 
@@ -336,7 +336,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
   hr {
     color: var(--color-secondary);
   }
-`,O=`
+`,z=`
   <footer>
       <article>
         <div>
@@ -358,7 +358,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
 
       <footer-copyright></footer-copyright>
   </footer>
-`;e("section-footer",{styles:z,template:O});var A=`
+`;e("section-footer",{styles:O,template:z});var A=`
   :host {
     --local-width: 3rem;
     --local-height: auto;
@@ -493,7 +493,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
   <section>
       <article>
         <hgroup>
-          <p>I'm Han Htet Aung</p>
+          <p>I'm Han Htet Aung ⇾ <app-badge variant="success" props='{"name": "Open to Work"}'></app-badge></p>
           <h1>UX Engineer</h1>
           <p>
             Designing human-centered interfaces that power daily business
@@ -598,6 +598,12 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     --local-bg: var(--color-transparent);
     --local-color: var(--color-secondary);
     --local-border: 1px solid var(--color-secondary);
+  }
+
+  :host([variant="success"]) {
+    /* --local-bg: #157d6c; */
+    --local-bg: #a36aa5;
+     --local-border: 1px solid var( --local-color);
   }
 `,U={name:String},W=({name:i})=>`${i}`;e("app-badge",{props:U,styles:_,template:W});var J=`
   :host {

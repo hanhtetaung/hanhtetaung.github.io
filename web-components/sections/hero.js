@@ -141,7 +141,7 @@ const template = /* html */ `
   <section>
       <article>
         <hgroup>
-          <p>I'm Han Htet Aung</p>
+          <p>I'm Han Htet Aung ⇾ <app-badge variant="success" props='{"name": "Open to Work"}'></app-badge></p>
           <h1>UX Engineer</h1>
           <p>
             Designing human-centered interfaces that power daily business

@@ -604,6 +604,12 @@ function g(t,a){if(t===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     --local-color: var(--color-secondary);
     --local-border: 1px solid var(--color-secondary);
   }
+
+  :host([variant="success"]) {
+    /* --local-bg: #157d6c; */
+    --local-bg: #a36aa5;
+     --local-border: 1px solid var( --local-color);
+  }
 `,G={name:String},K=({name:t})=>`${t}`;e("app-badge",{props:G,styles:J,template:K});var V=[{icon:"/assets/icons/software-developer.svg",alt:"Software Developer Icon",range:"2021-2022",title:"Software Developer",description:"I landed my first software development role building a hospital management system to manage inventory, POS, and OPD appointments. The system is still running today."},{icon:"/assets/icons/student.svg",alt:"Student Icon",range:"2022-2025",title:"Student",description:"I completed my Bachelor of Science in Computer Science at Assumption University, Thailand. My favorite subject was Computer Architecture."},{icon:"/assets/icons/software-developer.svg",alt:"Software Developer Icon",range:"2025-2026",title:"Software Developer",description:"After graduating, I worked remotely for 6 months as a software developer at an event organizing company in Singapore."},{icon:"/assets/icons/full-time-freelancer.svg",alt:"Web Design & Develop",range:"Present",title:"UX Designer",description:"Today, I've found my passion in UX design. Self-taught through research and hands-on practice, I design intuitive experiences by simplifying complex workflows."}],X=`
   :host {
     display: block;
