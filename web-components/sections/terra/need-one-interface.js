@@ -38,7 +38,7 @@ const template = /* html */ `
       ></section-title>
       <p>
         The interface has two main areas: a <b>Center Panel</b> to
-        visualize the knowledge tree and a <b> Right Panel</b> to
+        visualize the Terra and a <b> Right Panel</b> to
         display information about the selected node.
       </p>
 
@@ -46,7 +46,7 @@ const template = /* html */ `
         <li>
           <app-article-paragraph props='{ "title": "Default State"}'>
             <p>
-              The center panel displays the entire knowledge tree. Sources
+              The center panel displays the entire Terra. Sources
               are shown as blue nodes, while Goods are shown as green nodes.
               Every node is clickable, and the right panel remains empty
               until a node is selected.
@@ -54,7 +54,7 @@ const template = /* html */ `
 
             <app-image
               variant="medium"
-              src="/assets/images/case-study/knowledge-tree/default-state.avif"
+              src="/assets/images/case-study/terra/default-state.avif"
               alt="Inspiration Collection"
               width="1398"
               height="1236"
@@ -72,7 +72,7 @@ const template = /* html */ `
 
             <app-image
             variant="medium"
-              src="/assets/images/case-study/knowledge-tree/selecting-a-source-node.avif"
+              src="/assets/images/case-study/terra/selecting-a-source-node.avif"
               alt="Wireframe Screenshot"
               width="1398"
               height="1366"
@@ -90,7 +90,7 @@ const template = /* html */ `
 
             <app-image
               variant="medium"
-              src="/assets/images/case-study/knowledge-tree/selecting-a-good-node-1.avif"
+              src="/assets/images/case-study/terra/selecting-a-good-node-1.avif"
               alt="Design Foundation Screenshot"
               width="1474"
               height="864"
@@ -98,7 +98,7 @@ const template = /* html */ `
 
             <app-image
               variant="medium"
-              src="/assets/images/case-study/knowledge-tree/selecting-a-good-node-2.avif"
+              src="/assets/images/case-study/terra/selecting-a-good-node-2.avif"
               alt="Design Foundation Screenshot"
               width="1474"
               height="864"
@@ -114,4 +114,4 @@ const template = /* html */ `
   </section>
 `;
 
-define("section-knowledge-tree-need-one-interface", { styles, template });
+define("section-terra-need-one-interface", { styles, template });

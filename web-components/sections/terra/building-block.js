@@ -47,7 +47,7 @@ const template = /* html */ `
 
           <app-image
             variant="large"
-            src="/assets/images/case-study/knowledge-tree/foundation.avif"
+            src="/assets/images/case-study/terra/foundation.avif"
             alt="Wireframe Screenshot"
           ></app-image>
 
@@ -84,7 +84,7 @@ const template = /* html */ `
               <b>Hosted on:</b>
               <app-link
                 variant="underline"
-                href="https://github.com/hanhtetaung/hanhtetaung.github.io/tree/main/knowledge-tree"
+                href="https://github.com/hanhtetaung/hanhtetaung.github.io/tree/main/terra"
                 target="_blank"
                 >Github</app-link>
             </p>
@@ -92,4 +92,4 @@ const template = /* html */ `
   </section>
 `;
 
-define("section-knowledge-tree-building-block", { styles, template });
+define("section-terra-building-block", { styles, template });

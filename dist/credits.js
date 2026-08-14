@@ -70,7 +70,7 @@ function g(e,n){if(e===void 0){if(n===Array)return[];if(n===Object)return{};if(n
     max-height: 7rem;
     width: auto;
   }
-`,b=["width","height","src","alt"],w=()=>"<img data-forward />";o("app-logo",{attrs:b,styles:v,template:w});var t="769px",K="992px";var y=`
+`,b=["width","height","src","alt"],y=()=>"<img data-forward />";o("app-logo",{attrs:b,styles:v,template:y});var t="769px",K="992px";var w=`
   :host {
     display: block;
   }
@@ -139,7 +139,7 @@ function g(e,n){if(e===void 0){if(n===Array)return[];if(n===Object)return{};if(n
         </app-link>
       </div>
   </header>
-`;o("section-header",{template:k,styles:y});var x=[{href:"/",name:"Home"},{href:"/about",name:"About"},{href:"/credits",name:"Credits"},{href:"/hire-me",name:"Hire Me"},{href:"/thank-you",name:"Thank You"},{href:"/work/mmo",name:"MMO"},{href:"/work/bamboo",name:"Bamboo"},{href:"/work/portfolio",name:"Portfolio"},{href:"/work/au-van",name:"AU Van"},{href:"/work/sks-solar",name:"SKS Solar"},{href:"/writings/foundation-building-interfaces-at-scale",name:"Foundation"},{href:"/work/knowledge-tree",name:"Knowledge Tree"}],j=`
+`;o("section-header",{template:k,styles:w});var x=[{href:"/",name:"Home"},{href:"/about",name:"About"},{href:"/credits",name:"Credits"},{href:"/hire-me",name:"Hire Me"},{href:"/thank-you",name:"Thank You"},{href:"/work/mmo",name:"MMO"},{href:"/work/bamboo",name:"Bamboo"},{href:"/work/terra",name:"Terra"},{href:"/work/au-van",name:"AU Van"},{href:"/work/portfolio",name:"Portfolio"},{href:"/work/sks-solar",name:"SKS Solar"},{href:"/writings/foundation-building-interfaces-at-scale",name:"Foundation"}],j=`
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);

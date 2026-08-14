@@ -12,10 +12,10 @@ const tech_icons = [
 
 const showcases = [
   {
-    name: "Knowledge Tree",
-    href: "/work/knowledge-tree",
-    src: "/assets/images/case-study/knowledge-tree/thumbnail.avif",
-    alt: "Knowledge Tree Thumbnail",
+    name: "Terra",
+    href: "/work/terra",
+    src: "/assets/images/case-study/terra/thumbnail.avif",
+    alt: "Terra Thumbnail",
   },
   {
     name: "MMO",

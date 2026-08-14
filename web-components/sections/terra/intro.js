@@ -51,7 +51,7 @@ const template = /* html */ `
   <section>
     <app-image
       variant="large"
-      src="/assets/images/case-study/knowledge-tree/thumbnail.avif"
+      src="/assets/images/case-study/terra/thumbnail.avif"
       alt="Final Product Screenshot"
       width="1692"
       height="886"
@@ -59,7 +59,7 @@ const template = /* html */ `
 
     <article>
       <span>Case Study</span>
-      <h1>Knowledge Tree</h1>
+      <h1>Terra</h1>
 
       <p>
         A tool to visualize the connections between everyday goods and
@@ -71,11 +71,11 @@ const template = /* html */ `
 
       <app-link
         variant="secondary"
-        href="/knowledge-tree"
+        href="/terra"
         target="_blank"
         >View Live Website</app-link>
     </article>
   </section>
 `;
 
-define("section-knowledge-tree-intro", { styles, template });
+define("section-terra-intro", { styles, template });

@@ -139,7 +139,7 @@ function h(e,a){if(e===void 0){if(a===Array)return[];if(a===Object)return{};if(a
         </app-link>
       </div>
   </header>
-`;t("section-header",{template:k,styles:y});var x=[{href:"/",name:"Home"},{href:"/about",name:"About"},{href:"/credits",name:"Credits"},{href:"/hire-me",name:"Hire Me"},{href:"/thank-you",name:"Thank You"},{href:"/work/mmo",name:"MMO"},{href:"/work/bamboo",name:"Bamboo"},{href:"/work/portfolio",name:"Portfolio"},{href:"/work/au-van",name:"AU Van"},{href:"/work/sks-solar",name:"SKS Solar"},{href:"/writings/foundation-building-interfaces-at-scale",name:"Foundation"},{href:"/work/knowledge-tree",name:"Knowledge Tree"}],$=`
+`;t("section-header",{template:k,styles:y});var x=[{href:"/",name:"Home"},{href:"/about",name:"About"},{href:"/credits",name:"Credits"},{href:"/hire-me",name:"Hire Me"},{href:"/thank-you",name:"Thank You"},{href:"/work/mmo",name:"MMO"},{href:"/work/bamboo",name:"Bamboo"},{href:"/work/terra",name:"Terra"},{href:"/work/au-van",name:"AU Van"},{href:"/work/portfolio",name:"Portfolio"},{href:"/work/sks-solar",name:"SKS Solar"},{href:"/writings/foundation-building-interfaces-at-scale",name:"Foundation"}],$=`
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -637,7 +637,7 @@ function h(e,a){if(e===void 0){if(a===Array)return[];if(a===Object)return{};if(a
         background: var(--color-secondary);
         border-color: var(--color-secondary);
     }
-`,K=(e,a)=>{let r=new Date(e),n=new Date,s=n.getFullYear()-r.getFullYear()-(n.getMonth()<r.getMonth()||n.getMonth()===r.getMonth()&&n.getDate()<r.getDate()?1:0),c=s*52+Math.min(51,Math.floor((n-new Date(r.getFullYear()+s,r.getMonth(),r.getDate()))/604800000));return Array.from({length:a*52},(p,i)=>`<li class="${i<c?"lived":""}"></li>`).join("")},V=()=>`
+`,V=(e,a)=>{let r=new Date(e),n=new Date,s=n.getFullYear()-r.getFullYear()-(n.getMonth()<r.getMonth()||n.getMonth()===r.getMonth()&&n.getDate()<r.getDate()?1:0),c=s*52+Math.min(51,Math.floor((n-new Date(r.getFullYear()+s,r.getMonth(),r.getDate()))/604800000));return Array.from({length:a*52},(p,i)=>`<li class="${i<c?"lived":""}"></li>`).join("")},K=()=>`
   <section>
     <section-title
       props='${JSON.stringify({name:"Life in Weeks",img:"/assets/icons/parrot.svg",alt:"Birds-singing Logo"})}'
@@ -646,12 +646,12 @@ function h(e,a){if(e===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     <article>
       <span class="ages">Ages (70 yrs) ⇨</span>
       <span class="weeks-axis">⇦ Weeks of the year</span>
-      <ul>${K(U,J)}</ul>
+      <ul>${V(U,J)}</ul>
     </article>
 
     <p>Based on this post: <app-link variant="underline" href="https://waitbutwhy.com/2014/05/life-weeks.html" target="_blank">Your Life in Weeks</app-link></p>
   </section>
-`;t("section-life-in-weeks",{styles:G,template:V});var X=`
+`;t("section-life-in-weeks",{styles:G,template:K});var X=`
   section {
     width: 80%;
     margin-inline: auto;

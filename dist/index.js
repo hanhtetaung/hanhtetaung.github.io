@@ -70,7 +70,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     max-height: 7rem;
     width: auto;
   }
-`,w=["width","height","src","alt"],y=()=>"<img data-forward />";e("app-logo",{attrs:w,styles:b,template:y});var o="769px",p="992px";var x=`
+`,y=["width","height","src","alt"],w=()=>"<img data-forward />";e("app-logo",{attrs:y,styles:b,template:w});var o="769px",p="992px";var x=`
   :host {
     display: block;
   }
@@ -139,7 +139,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
         </app-link>
       </div>
   </header>
-`;e("section-header",{template:k,styles:x});var $=[{href:"/",name:"Home"},{href:"/about",name:"About"},{href:"/credits",name:"Credits"},{href:"/hire-me",name:"Hire Me"},{href:"/thank-you",name:"Thank You"},{href:"/work/mmo",name:"MMO"},{href:"/work/bamboo",name:"Bamboo"},{href:"/work/portfolio",name:"Portfolio"},{href:"/work/au-van",name:"AU Van"},{href:"/work/sks-solar",name:"SKS Solar"},{href:"/writings/foundation-building-interfaces-at-scale",name:"Foundation"},{href:"/work/knowledge-tree",name:"Knowledge Tree"}],S=`
+`;e("section-header",{template:k,styles:x});var $=[{href:"/",name:"Home"},{href:"/about",name:"About"},{href:"/credits",name:"Credits"},{href:"/hire-me",name:"Hire Me"},{href:"/thank-you",name:"Thank You"},{href:"/work/mmo",name:"MMO"},{href:"/work/bamboo",name:"Bamboo"},{href:"/work/terra",name:"Terra"},{href:"/work/au-van",name:"AU Van"},{href:"/work/portfolio",name:"Portfolio"},{href:"/work/sks-solar",name:"SKS Solar"},{href:"/writings/foundation-building-interfaces-at-scale",name:"Foundation"}],S=`
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -391,7 +391,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
   }
 
 
-`,H=["src","alt"],L=()=>'<img data-forward width="200" height="200"/>';e("app-icon",{attrs:H,styles:A,template:L});var P=[{src:"/assets/icons/figma.svg",alt:"Figma Icon"},{src:"/assets/icons/html.svg",alt:"HTML Icon"},{src:"/assets/icons/css.svg",alt:"CSS Icon"},{src:"/assets/icons/javascript.svg",alt:"JavaScript Icon"}],D=[{name:"Knowledge Tree",href:"/work/knowledge-tree",src:"/assets/images/case-study/knowledge-tree/thumbnail.avif",alt:"Knowledge Tree Thumbnail"},{name:"MMO",href:"/work/mmo",src:"/assets/images/case-study/mmo/thumbnail.avif",alt:"MMO Thumbnail"},{name:"Bamboo",href:"/work/bamboo",src:"/assets/images/case-study/bamboo/thumbnail.avif",alt:"Bamboo Thumbnail"}],M=[{title:"Specialize In",header:"Enterprise UX"},{title:"Simplify",header:"Complex workflows"},{title:"Scale",header:"Design System"}],E=`
+`,H=["src","alt"],L=()=>'<img data-forward width="200" height="200"/>';e("app-icon",{attrs:H,styles:A,template:L});var P=[{src:"/assets/icons/figma.svg",alt:"Figma Icon"},{src:"/assets/icons/html.svg",alt:"HTML Icon"},{src:"/assets/icons/css.svg",alt:"CSS Icon"},{src:"/assets/icons/javascript.svg",alt:"JavaScript Icon"}],D=[{name:"Terra",href:"/work/terra",src:"/assets/images/case-study/terra/thumbnail.avif",alt:"Terra Thumbnail"},{name:"MMO",href:"/work/mmo",src:"/assets/images/case-study/mmo/thumbnail.avif",alt:"MMO Thumbnail"},{name:"Bamboo",href:"/work/bamboo",src:"/assets/images/case-study/bamboo/thumbnail.avif",alt:"Bamboo Thumbnail"}],M=[{title:"Specialize In",header:"Enterprise UX"},{title:"Simplify",header:"Complex workflows"},{title:"Scale",header:"Design System"}],E=`
   section {
     width: 80%;
     margin-inline: auto;
@@ -630,13 +630,13 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     font-size: var(--size-heading);
     margin-bottom: 0.5rem;
   }
-`,F={title:String,description:String,href:String,alt:String,subTitle:String},K=({title:i,description:t,href:a,alt:n,subTitle:r})=>`
+`,F={title:String,description:String,href:String,alt:String,subTitle:String},R=({title:i,description:t,href:a,alt:n,subTitle:r})=>`
     <app-icon variant="large" src=${a} alt=${n}></app-icon>
     <span>${r}</span>
     <h4>${i}</h4>
     <p>${t}</p>
     <slot></slot>
-`;e("capabilities-item",{props:F,styles:J,template:K});var R=`
+`;e("capabilities-item",{props:F,styles:J,template:R});var X=`
   section {
     width: 80%;
     margin-inline: auto;
@@ -672,7 +672,7 @@ ol {
     ul {
         margin-top: 1rem;
     }
-`,X=()=>`
+`,K=()=>`
   <section>
       <section-title
         props='${JSON.stringify({name:"Capabilities",img:"/assets/icons/peacock.svg",alt:"Peacock Logo"})}'
@@ -705,7 +705,7 @@ ol {
         <li>Server Maintenance</li>
       </ul> -->
   </section>
-`;e("section-capabilities",{styles:R,template:X});var V=`
+`;e("section-capabilities",{styles:X,template:K});var V=`
   :host {
     --local-width: 5rem;
     --local-heigth: auto;
@@ -887,7 +887,7 @@ ol {
         View Case Study &#8599;
       </app-link>
     </div>
-`;e("case-study-item",{props:ae,styles:oe,template:re});var ne=[{image:"/assets/images/case-study/knowledge-tree/thumbnail.avif",alt:"Knowledge Tree Thumbnail",title:"Knowledge Tree",categories:["Product Design","User Experience","Design System"],description:"A tool to visualize the connections between everyday goods and their fundamental sources based on my knowledge.",href:"/work/knowledge-tree",reverse:!1},{image:"assets/images/case-study/mmo/thumbnail.avif",alt:"MMO thumbnail",title:"MMO",categories:["Simplify complex workflows","Build Prototype","Design System"],description:"An internal portal that uses to run daily operations in hospital.",href:"/work/mmo",reverse:!0},{image:"/assets/images/case-study/skssolar/mockup.avif",alt:"SKS Mockup",title:"SKS.Solar",categories:["Research","Web Design","Web Development"],description:"A website for SKS SOLAR (SALES & SERVICES) COMPANY LIMITED to showcase its history, services and completed project.",href:"/work/sks-solar",reverse:!1}],le=`
+`;e("case-study-item",{props:ae,styles:oe,template:re});var ne=[{image:"/assets/images/case-study/terra/thumbnail.avif",alt:"Terra Thumbnail",title:"Terra",categories:["Product Design","User Experience","Design System"],description:"A tool to visualize the connections between everyday goods and their fundamental sources based on my knowledge.",href:"/work/terra",reverse:!1},{image:"assets/images/case-study/mmo/thumbnail.avif",alt:"MMO thumbnail",title:"MMO",categories:["Simplify complex workflows","Build Prototype","Design System"],description:"An internal portal that uses to run daily operations in hospital.",href:"/work/mmo",reverse:!0},{image:"/assets/images/case-study/skssolar/mockup.avif",alt:"SKS Mockup",title:"SKS.Solar",categories:["Research","Web Design","Web Development"],description:"A website for SKS SOLAR (SALES & SERVICES) COMPANY LIMITED to showcase its history, services and completed project.",href:"/work/sks-solar",reverse:!1}],le=`
   :host {
     background: var(--color-bg-secondary)
   }
@@ -1241,7 +1241,7 @@ ol {
         fill="var(--color-bg-secondary)"
       />
     </svg>
-`;e("line-divider-lower",{styles:ue,template:be});var we=`
+`;e("line-divider-lower",{styles:ue,template:be});var ye=`
   :host {
     display: block;
     width: 100%;
@@ -1252,7 +1252,7 @@ ol {
     width: 100%;
     height: auto;
   }
-`,ye=`
+`,we=`
   <div>
     <svg
       viewBox="0 0 1200 80"
@@ -1285,4 +1285,4 @@ ol {
       />
     </svg>
   </div>
-`;e("line-divider-upper",{styles:we,template:ye});
+`;e("line-divider-upper",{styles:ye,template:we});

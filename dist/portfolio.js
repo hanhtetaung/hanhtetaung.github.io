@@ -139,7 +139,7 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
         </app-link>
       </div>
   </header>
-`;e("section-header",{template:k,styles:w});var x=[{href:"/",name:"Home"},{href:"/about",name:"About"},{href:"/credits",name:"Credits"},{href:"/hire-me",name:"Hire Me"},{href:"/thank-you",name:"Thank You"},{href:"/work/mmo",name:"MMO"},{href:"/work/bamboo",name:"Bamboo"},{href:"/work/portfolio",name:"Portfolio"},{href:"/work/au-van",name:"AU Van"},{href:"/work/sks-solar",name:"SKS Solar"},{href:"/writings/foundation-building-interfaces-at-scale",name:"Foundation"},{href:"/work/knowledge-tree",name:"Knowledge Tree"}],$=`
+`;e("section-header",{template:k,styles:w});var x=[{href:"/",name:"Home"},{href:"/about",name:"About"},{href:"/credits",name:"Credits"},{href:"/hire-me",name:"Hire Me"},{href:"/thank-you",name:"Thank You"},{href:"/work/mmo",name:"MMO"},{href:"/work/bamboo",name:"Bamboo"},{href:"/work/terra",name:"Terra"},{href:"/work/au-van",name:"AU Van"},{href:"/work/portfolio",name:"Portfolio"},{href:"/work/sks-solar",name:"SKS Solar"},{href:"/writings/foundation-building-interfaces-at-scale",name:"Foundation"}],$=`
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -693,7 +693,7 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
       </li>
     </ul>
   </section>
-`;e("section-portfolio-process",{styles:V,template:D});var K=`
+`;e("section-portfolio-process",{styles:V,template:D});var G=`
   :host {
     display: block;
   }
@@ -713,7 +713,7 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
       flex-direction: column;
     }
   }
-`,G=`
+`,K=`
   <section>
     <section-title variant="text" props='{"name": "Result"}'></section-title>
 
@@ -751,4 +751,4 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
       </li>
     </ul>
   </section>
-`;e("section-portfolio-result",{styles:K,template:G});
+`;e("section-portfolio-result",{styles:G,template:K});

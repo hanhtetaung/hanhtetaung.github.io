@@ -26,7 +26,7 @@ const template = /* html */ `
 
       <article>
         <p>
-          The knowledge tree is built around two primary node types:
+          The Terra is built around two primary node types:
           <b>Sources</b> and <b>Goods</b>.
         </p>
 
@@ -36,7 +36,7 @@ const template = /* html */ `
         </p>
 
         <p>Goods are daily products.</p>
-        
+
         <ul>
           <li>Can contain sources or other goods.
           </li>
@@ -46,4 +46,4 @@ const template = /* html */ `
   </section>
 `;
 
-define("section-knowledge-tree-overview", { styles, template });
+define("section-terra-overview", { styles, template });
