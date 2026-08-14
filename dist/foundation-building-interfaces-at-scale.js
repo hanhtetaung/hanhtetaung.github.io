@@ -1,4 +1,4 @@
-function h(t,a){if(t===void 0){if(a===Array)return[];if(a===Object)return{};if(a===Boolean)return!1;if(a===Number)return 0;return}if(a===Boolean)return Boolean(t);if(a===Number)return Number(t);return t}function e(t,{props:a={},attrs:n=[],styles:m="",template:l}){let d=["props",...n];class c extends HTMLElement{static observedAttributes=d;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let i={},r=this.getAttribute("props");if(r)try{i=JSON.parse(r)}catch{i={}}let p={};for(let s of Object.keys(a))p[s]=h(i[s],a[s]);return p}_applyForwardedAttrs(){if(n.length===0)return;let i=this.shadowRoot.querySelector("[data-forward]");if(!i)return;for(let r of n)if(this.hasAttribute(r))i.setAttribute(r,this.getAttribute(r));else i.removeAttribute(r)}_render(){let i=this._getProps(),r=typeof l==="function"?l(i):l;this.shadowRoot.innerHTML=`<style>${m}</style>${r}`,this._applyForwardedAttrs()}}customElements.define(t,c)}var g=`
+function h(e,a){if(e===void 0){if(a===Array)return[];if(a===Object)return{};if(a===Boolean)return!1;if(a===Number)return 0;return}if(a===Boolean)return Boolean(e);if(a===Number)return Number(e);return e}function t(e,{props:a={},attrs:n=[],styles:m="",template:l}){let d=["props",...n];class c extends HTMLElement{static observedAttributes=d;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let i={},r=this.getAttribute("props");if(r)try{i=JSON.parse(r)}catch{i={}}let p={};for(let s of Object.keys(a))p[s]=h(i[s],a[s]);return p}_applyForwardedAttrs(){if(n.length===0)return;let i=this.shadowRoot.querySelector("[data-forward]");if(!i)return;for(let r of n)if(this.hasAttribute(r))i.setAttribute(r,this.getAttribute(r));else i.removeAttribute(r)}_render(){let i=this._getProps(),r=typeof l==="function"?l(i):l;this.shadowRoot.innerHTML=`<style>${m}</style>${r}`,this._applyForwardedAttrs()}}customElements.define(e,c)}var g=`
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -61,7 +61,7 @@ function h(t,a){if(t===void 0){if(a===Array)return[];if(a===Object)return{};if(a
   }
 `,f=["href","target","rel","download"],u=`
   <a data-forward><slot></slot></a>
-`;e("app-link",{attrs:f,styles:g,template:u});var v=`
+`;t("app-link",{attrs:f,styles:g,template:u});var v=`
   :host {
     display: block;
   }
@@ -70,7 +70,7 @@ function h(t,a){if(t===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     max-height: 7rem;
     width: auto;
   }
-`,b=["width","height","src","alt"],y=()=>"<img data-forward />";e("app-logo",{attrs:b,styles:v,template:y});var o="769px",U="992px";var k=`
+`,b=["width","height","src","alt"],y=()=>"<img data-forward />";t("app-logo",{attrs:b,styles:v,template:y});var o="769px",U="992px";var k=`
   :host {
     display: block;
   }
@@ -139,7 +139,7 @@ function h(t,a){if(t===void 0){if(a===Array)return[];if(a===Object)return{};if(a
         </app-link>
       </div>
   </header>
-`;e("section-header",{template:w,styles:k});var x=[{href:"/",name:"Home"},{href:"/about",name:"About"},{href:"/credits",name:"Credits"},{href:"/hire-me",name:"Hire Me"},{href:"/thank-you",name:"Thank You"},{href:"/work/mmo",name:"MMO"},{href:"/work/bamboo",name:"Bamboo"},{href:"/work/portfolio",name:"Portfolio"},{href:"/work/au-van",name:"AU Van"},{href:"/work/sks-solar",name:"SKS Solar"},{href:"/writings/foundation-building-interfaces-at-scale",name:"Foundation"},{href:"/work/knowledge-tree",name:"Knowledge Tree"}],A=`
+`;t("section-header",{template:w,styles:k});var x=[{href:"/",name:"Home"},{href:"/about",name:"About"},{href:"/credits",name:"Credits"},{href:"/hire-me",name:"Hire Me"},{href:"/thank-you",name:"Thank You"},{href:"/work/mmo",name:"MMO"},{href:"/work/bamboo",name:"Bamboo"},{href:"/work/terra",name:"Terra"},{href:"/work/au-van",name:"AU Van"},{href:"/work/portfolio",name:"Portfolio"},{href:"/work/sks-solar",name:"SKS Solar"},{href:"/writings/foundation-building-interfaces-at-scale",name:"Foundation"}],A=`
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -191,14 +191,14 @@ function h(t,a){if(t===void 0){if(a===Array)return[];if(a===Object)return{};if(a
         <span>Sitemap</span>
 
         <ol>
-            ${x.map((t)=>`
+            ${x.map((e)=>`
                 <li>
-                    <app-link variant="sitemap" href=${t.href} >${t.name}</app-link>
+                    <app-link variant="sitemap" href=${e.href} >${e.name}</app-link>
                 </li>
             `).join("")}
         </ol>
     </nav>
-`;e("footer-nav",{styles:A,template:$});var S=`
+`;t("footer-nav",{styles:A,template:$});var S=`
   :host {
    display: flex;
     justify-content: space-between;
@@ -288,7 +288,7 @@ function h(t,a){if(t===void 0){if(a===Array)return[];if(a===Object)return{};if(a
               </li>
           </ul>
 </nav>
-`;e("footer-copyright",{styles:S,template:_});var H=`
+`;t("footer-copyright",{styles:S,template:_});var H=`
   :host {
     --local-bg-color: var(--color-bg-secondary);
 
@@ -358,7 +358,7 @@ function h(t,a){if(t===void 0){if(a===Array)return[];if(a===Object)return{};if(a
 
       <footer-copyright></footer-copyright>
   </footer>
-`;e("section-footer",{styles:H,template:O});var P=`
+`;t("section-footer",{styles:H,template:O});var P=`
   :host {
     display: block;
   }
@@ -411,7 +411,7 @@ function h(t,a){if(t===void 0){if(a===Array)return[];if(a===Object)return{};if(a
       </li>
     </ul>
   </section>
-`;e("section-foundation-building-interfaces-at-scale-intro",{styles:P,template:E});var z=`
+`;t("section-foundation-building-interfaces-at-scale-intro",{styles:P,template:E});var z=`
   :host {
     display: flex;
     align-items: center;
@@ -442,15 +442,15 @@ function h(t,a){if(t===void 0){if(a===Array)return[];if(a===Object)return{};if(a
       display: none;
     }
   }
-`,N={name:String,img:String,alt:String},T=({name:t,img:a="",alt:n=""})=>`
-    <h2>${t}</h2>
+`,N={name:String,img:String,alt:String},T=({name:e,img:a="",alt:n=""})=>`
+    <h2>${e}</h2>
     <img
         src=${a}
         alt=${n}
         height="36"
         width="76"
     />
-`;e("section-title",{props:N,styles:z,template:T});var B=`
+`;t("section-title",{props:N,styles:z,template:T});var B=`
   :host {
     --local-width: 5rem;
     --local-heigth: auto;
@@ -481,7 +481,7 @@ function h(t,a){if(t===void 0){if(a===Array)return[];if(a===Object)return{};if(a
    :host([variant="full"]) {
     --local-width: 100%;
   }
-`,C=["width","height","src","alt"],L=()=>"<img data-forward />";e("app-image",{attrs:C,styles:B,template:L});var j=`
+`,C=["width","height","src","alt"],L=()=>"<img data-forward />";t("app-image",{attrs:C,styles:B,template:L});var j=`
   :host {
     display: grid;
     grid-template-columns: 1fr 2.5fr;
@@ -503,13 +503,13 @@ function h(t,a){if(t===void 0){if(a===Array)return[];if(a===Object)return{};if(a
   :host([variant="block"]) {
     display: block;
   }
-`,D={title:String},F=({title:t})=>`
-        <h3>${t}</h3>
+`,D={title:String},F=({title:e})=>`
+        <h3>${e}</h3>
 
         <article>
             <slot></slot>
         </article>
-`;e("app-article-paragraph",{props:D,styles:j,template:F});var M=`
+`;t("app-article-paragraph",{props:D,styles:j,template:F});var M=`
   :host {
     display: block;
   }
@@ -627,7 +627,7 @@ function h(t,a){if(t===void 0){if(a===Array)return[];if(a===Object)return{};if(a
       </li>
     </ul>
   </section>
-`;e("section-atomic-design-principle",{styles:M,template:I});var K=`
+`;t("section-atomic-design-principle",{styles:M,template:I});var R=`
   :host {
     display: block;
   }
@@ -658,7 +658,7 @@ function h(t,a){if(t===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     padding: 0;
     padding-left: 1.5rem;
   }
-`,R=`
+`,G=`
   <section>
     <section-title variant="text" props='{"name": "Design Token Architecture"}'></section-title>
 
@@ -757,7 +757,7 @@ function h(t,a){if(t===void 0){if(a===Array)return[];if(a===Object)return{};if(a
       </li>
 </ul>
   </section>
-`;e("section-design-token-architecture",{styles:K,template:R});var G=`
+`;t("section-design-token-architecture",{styles:R,template:G});var K=`
   :host {
     display: block;
   }
@@ -801,4 +801,4 @@ function h(t,a){if(t===void 0){if(a===Array)return[];if(a===Object)return{};if(a
       </li>
     </ul>
   </section>
-`;e("section-foundation-building-interfaces-at-scale-references",{styles:G,template:V});
+`;t("section-foundation-building-interfaces-at-scale-references",{styles:K,template:V});

@@ -2,7 +2,7 @@ import { define } from "../define";
 import "../components/app-icon";
 import "../components/app-link";
 
-const DOB = "2000-11-03";
+const DOB = "3 Nov 2000";
 const YEARS = 70;
 
 const styles = /*css*/ `
@@ -63,20 +63,30 @@ const styles = /*css*/ `
     }
 `;
 
-function generateWeeksHTML(dobString, years) {
-  const dob = new Date(dobString);
-  const msPerWeek = 7 * 24 * 60 * 60 * 1000;
-  const totalWeeks = Math.floor(
-    (years * 365.25 * 24 * 60 * 60 * 1000) / msPerWeek,
-  );
-  const weeksLived = Math.floor((Date.now() - dob) / msPerWeek);
-
-  let html = "";
-  for (let i = 0; i < totalWeeks; i++) {
-    html += i < weeksLived ? `<li class="lived"></li>` : `<li></li>`;
-  }
-  return html;
-}
+const generateWeeksHTML = (dobString, years) => {
+  const d = new Date(dobString),
+    t = new Date(),
+    fy =
+      t.getFullYear() -
+      d.getFullYear() -
+      (t.getMonth() < d.getMonth() ||
+      (t.getMonth() === d.getMonth() && t.getDate() < d.getDate())
+        ? 1
+        : 0),
+    wl =
+      fy * 52 +
+      Math.min(
+        51,
+        Math.floor(
+          (t - new Date(d.getFullYear() + fy, d.getMonth(), d.getDate())) /
+            6048e5,
+        ),
+      );
+  return Array.from(
+    { length: years * 52 },
+    (_, i) => `<li class="${i < wl ? "lived" : ""}"></li>`,
+  ).join("");
+};
 
 const template = () => /* html */ `
   <section>
@@ -89,7 +99,7 @@ const template = () => /* html */ `
     ></section-title>
 
     <article>
-      <span class="ages">Ages ⇨</span>
+      <span class="ages">Ages (70 yrs) ⇨</span>
       <span class="weeks-axis">⇦ Weeks of the year</span>
       <ul>${generateWeeksHTML(DOB, YEARS)}</ul>
     </article>

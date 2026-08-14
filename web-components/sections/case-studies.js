@@ -4,13 +4,13 @@ import "../components/section-title";
 
 const caseStudies = [
   {
-    image: "/assets/images/case-study/knowledge-tree/thumbnail.avif",
-    alt: "Knowledge Tree Thumbnail",
-    title: "Knowledge Tree",
+    image: "/assets/images/case-study/terra/thumbnail.avif",
+    alt: "Terra Thumbnail",
+    title: "Terra",
     categories: ["Product Design", "User Experience", "Design System"],
     description:
       "A tool to visualize the connections between everyday goods and their fundamental sources based on my knowledge.",
-    href: "/work/knowledge-tree",
+    href: "/work/terra",
     reverse: false,
   },
   {

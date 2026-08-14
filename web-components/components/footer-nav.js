@@ -9,14 +9,14 @@ const sitemaps = [
   { href: "/thank-you", name: "Thank You" },
   { href: "/work/mmo", name: "MMO" },
   { href: "/work/bamboo", name: "Bamboo" },
-  { href: "/work/portfolio", name: "Portfolio" },
+  { href: "/work/terra", name: "Terra" },
   { href: "/work/au-van", name: "AU Van" },
+  { href: "/work/portfolio", name: "Portfolio" },
   { href: "/work/sks-solar", name: "SKS Solar" },
   {
     href: "/writings/foundation-building-interfaces-at-scale",
     name: "Foundation",
   },
-  { href: "/work/knowledge-tree", name: "Knowledge Tree" },
 ];
 
 const styles = /* css */ `

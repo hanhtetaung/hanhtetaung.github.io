@@ -1,4 +1,4 @@
-function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a===Boolean)return!1;if(a===Number)return 0;return}if(a===Boolean)return Boolean(o);if(a===Number)return Number(o);return o}function e(o,{props:a={},attrs:n=[],styles:p="",template:l}){let m=["props",...n];class c extends HTMLElement{static observedAttributes=m;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let i={},r=this.getAttribute("props");if(r)try{i=JSON.parse(r)}catch{i={}}let d={};for(let s of Object.keys(a))d[s]=h(i[s],a[s]);return d}_applyForwardedAttrs(){if(n.length===0)return;let i=this.shadowRoot.querySelector("[data-forward]");if(!i)return;for(let r of n)if(this.hasAttribute(r))i.setAttribute(r,this.getAttribute(r));else i.removeAttribute(r)}_render(){let i=this._getProps(),r=typeof l==="function"?l(i):l;this.shadowRoot.innerHTML=`<style>${p}</style>${r}`,this._applyForwardedAttrs()}}customElements.define(o,c)}var g=`
+function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a===Boolean)return!1;if(a===Number)return 0;return}if(a===Boolean)return Boolean(o);if(a===Number)return Number(o);return o}function e(o,{props:a={},attrs:n=[],styles:m="",template:l}){let d=["props",...n];class c extends HTMLElement{static observedAttributes=d;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let r={},i=this.getAttribute("props");if(i)try{r=JSON.parse(i)}catch{r={}}let p={};for(let s of Object.keys(a))p[s]=h(r[s],a[s]);return p}_applyForwardedAttrs(){if(n.length===0)return;let r=this.shadowRoot.querySelector("[data-forward]");if(!r)return;for(let i of n)if(this.hasAttribute(i))r.setAttribute(i,this.getAttribute(i));else r.removeAttribute(i)}_render(){let r=this._getProps(),i=typeof l==="function"?l(r):l;this.shadowRoot.innerHTML=`<style>${m}</style>${i}`,this._applyForwardedAttrs()}}customElements.define(o,c)}var g=`
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -70,7 +70,7 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     max-height: 7rem;
     width: auto;
   }
-`,v=["width","height","src","alt"],w=()=>"<img data-forward />";e("app-logo",{attrs:v,styles:b,template:w});var t="769px",U="992px";var y=`
+`,v=["width","height","src","alt"],y=()=>"<img data-forward />";e("app-logo",{attrs:v,styles:b,template:y});var t="769px",U="992px";var w=`
   :host {
     display: block;
   }
@@ -139,7 +139,7 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
         </app-link>
       </div>
   </header>
-`;e("section-header",{template:k,styles:y});var x=[{href:"/",name:"Home"},{href:"/about",name:"About"},{href:"/credits",name:"Credits"},{href:"/hire-me",name:"Hire Me"},{href:"/thank-you",name:"Thank You"},{href:"/work/mmo",name:"MMO"},{href:"/work/bamboo",name:"Bamboo"},{href:"/work/portfolio",name:"Portfolio"},{href:"/work/au-van",name:"AU Van"},{href:"/work/sks-solar",name:"SKS Solar"},{href:"/writings/foundation-building-interfaces-at-scale",name:"Foundation"},{href:"/work/knowledge-tree",name:"Knowledge Tree"}],S=`
+`;e("section-header",{template:k,styles:w});var x=[{href:"/",name:"Home"},{href:"/about",name:"About"},{href:"/credits",name:"Credits"},{href:"/hire-me",name:"Hire Me"},{href:"/thank-you",name:"Thank You"},{href:"/work/mmo",name:"MMO"},{href:"/work/bamboo",name:"Bamboo"},{href:"/work/terra",name:"Terra"},{href:"/work/au-van",name:"AU Van"},{href:"/work/portfolio",name:"Portfolio"},{href:"/work/sks-solar",name:"SKS Solar"},{href:"/writings/foundation-building-interfaces-at-scale",name:"Foundation"}],S=`
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -186,7 +186,7 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     margin-right: 5rem;
     margin-bottom: 0.3rem;
   }
-`,$=()=>`
+`,T=()=>`
     <nav>
         <span>Sitemap</span>
 
@@ -198,7 +198,7 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
             `).join("")}
         </ol>
     </nav>
-`;e("footer-nav",{styles:S,template:$});var A=`
+`;e("footer-nav",{styles:S,template:T});var $=`
   :host {
    display: flex;
     justify-content: space-between;
@@ -243,7 +243,7 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
       margin-bottom: 0.5rem;
     }
   }
-`,H=()=>`
+`,A=()=>`
       <p>
         © Han Htet Aung 2026 |
         <app-link href="/credits" variant="underline">Credits</app-link>
@@ -288,7 +288,7 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
               </li>
           </ul>
 </nav>
-`;e("footer-copyright",{styles:A,template:H});var T=`
+`;e("footer-copyright",{styles:$,template:A});var H=`
   :host {
     --local-bg-color: var(--color-bg-secondary);
 
@@ -358,7 +358,7 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
 
       <footer-copyright></footer-copyright>
   </footer>
-`;e("section-footer",{styles:T,template:z});var P=`
+`;e("section-footer",{styles:H,template:z});var P=`
   :host {
     --local-width: 5rem;
     --local-heigth: auto;
@@ -434,7 +434,7 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
   <section>
     <app-image
       variant="large"
-      src="/assets/images/case-study/knowledge-tree/thumbnail.avif"
+      src="/assets/images/case-study/terra/thumbnail.avif"
       alt="Final Product Screenshot"
       width="1692"
       height="886"
@@ -442,7 +442,7 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
 
     <article>
       <span>Case Study</span>
-      <h1>Knowledge Tree</h1>
+      <h1>Terra</h1>
 
       <p>
         A tool to visualize the connections between everyday goods and
@@ -454,12 +454,12 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
 
       <app-link
         variant="secondary"
-        href="/knowledge-tree"
+        href="/terra"
         target="_blank"
         >View Live Website</app-link>
     </article>
   </section>
-`;e("section-knowledge-tree-intro",{styles:O,template:_});var N=`
+`;e("section-terra-intro",{styles:O,template:_});var N=`
   :host {
     display: flex;
     align-items: center;
@@ -520,7 +520,7 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
 
       <article>
         <p>
-          The knowledge tree is built around two primary node types:
+          The Terra is built around two primary node types:
           <b>Sources</b> and <b>Goods</b>.
         </p>
 
@@ -530,7 +530,7 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
         </p>
 
         <p>Goods are daily products.</p>
-        
+
         <ul>
           <li>Can contain sources or other goods.
           </li>
@@ -538,7 +538,7 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
         </ul>
       </article>
   </section>
-`;e("section-knowledge-tree-overview",{styles:F,template:M});var B=`
+`;e("section-terra-overview",{styles:F,template:M});var B=`
   :host {
     display: block;
   }
@@ -580,7 +580,7 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
 
           <app-image
             variant="large"
-            src="/assets/images/case-study/knowledge-tree/foundation.avif"
+            src="/assets/images/case-study/terra/foundation.avif"
             alt="Wireframe Screenshot"
           ></app-image>
 
@@ -617,13 +617,13 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
               <b>Hosted on:</b>
               <app-link
                 variant="underline"
-                href="https://github.com/hanhtetaung/hanhtetaung.github.io/tree/main/knowledge-tree"
+                href="https://github.com/hanhtetaung/hanhtetaung.github.io/tree/main/terra"
                 target="_blank"
                 >Github</app-link>
             </p>
           </article>
   </section>
-`;e("section-knowledge-tree-building-block",{styles:B,template:G});var K=`
+`;e("section-terra-building-block",{styles:B,template:G});var I=`
   :host {
     display: grid;
     grid-template-columns: 1fr 2.5fr;
@@ -645,13 +645,13 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
   :host([variant="block"]) {
     display: block;
   }
-`,I={title:String},D=({title:o})=>`
+`,D={title:String},V=({title:o})=>`
         <h3>${o}</h3>
 
         <article>
             <slot></slot>
         </article>
-`;e("app-article-paragraph",{props:I,styles:K,template:D});var V=`
+`;e("app-article-paragraph",{props:D,styles:I,template:V});var W=`
   :host {
     display: block;
   }
@@ -675,7 +675,7 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     border-top: 1px dashed var(--color-text);
     padding-top: 5rem;
   }
-`,W=`
+`,J=`
   <section>
      <section-title
         variant="text"
@@ -683,7 +683,7 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
       ></section-title>
       <p>
         The interface has two main areas: a <b>Center Panel</b> to
-        visualize the knowledge tree and a <b> Right Panel</b> to
+        visualize the Terra and a <b> Right Panel</b> to
         display information about the selected node.
       </p>
 
@@ -691,7 +691,7 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
         <li>
           <app-article-paragraph props='{ "title": "Default State"}'>
             <p>
-              The center panel displays the entire knowledge tree. Sources
+              The center panel displays the entire Terra. Sources
               are shown as blue nodes, while Goods are shown as green nodes.
               Every node is clickable, and the right panel remains empty
               until a node is selected.
@@ -699,7 +699,7 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
 
             <app-image
               variant="medium"
-              src="/assets/images/case-study/knowledge-tree/default-state.avif"
+              src="/assets/images/case-study/terra/default-state.avif"
               alt="Inspiration Collection"
               width="1398"
               height="1236"
@@ -717,7 +717,7 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
 
             <app-image
             variant="medium"
-              src="/assets/images/case-study/knowledge-tree/selecting-a-source-node.avif"
+              src="/assets/images/case-study/terra/selecting-a-source-node.avif"
               alt="Wireframe Screenshot"
               width="1398"
               height="1366"
@@ -735,7 +735,7 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
 
             <app-image
               variant="medium"
-              src="/assets/images/case-study/knowledge-tree/selecting-a-good-node-1.avif"
+              src="/assets/images/case-study/terra/selecting-a-good-node-1.avif"
               alt="Design Foundation Screenshot"
               width="1474"
               height="864"
@@ -743,7 +743,7 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
 
             <app-image
               variant="medium"
-              src="/assets/images/case-study/knowledge-tree/selecting-a-good-node-2.avif"
+              src="/assets/images/case-study/terra/selecting-a-good-node-2.avif"
               alt="Design Foundation Screenshot"
               width="1474"
               height="864"
@@ -757,7 +757,7 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
 
      
   </section>
-`;e("section-knowledge-tree-need-one-interface",{styles:V,template:W});var J=`
+`;e("section-terra-need-one-interface",{styles:W,template:J});var K=`
   :host {
     display: block;
   }
@@ -770,16 +770,16 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
   <section>
     <section-title
         variant="text"
-        props='{"name": "Continue to Expand the Knowledge Tree"}'
+        props='{"name": "Continue to Expand Terra"}'
       ></section-title>
 
       <article>
           <p>
             This project is designed to grow over time by adding more
-            sources, goods, and their relationships. As the knowledge tree
+            sources, goods, and their relationships. As the Terra
             expands, it will provide a more complete view of how everyday
             products are connected.
           </p>
       </article>
   </section>
-`;e("section-knowledge-tree-conclusion",{styles:J,template:R});
+`;e("section-terra-conclusion",{styles:K,template:R});

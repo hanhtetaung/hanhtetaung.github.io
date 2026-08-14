@@ -378,6 +378,7 @@ const ELEMENTS = [
   { id: "gasoline", type: "goods", components: ["crude_oil"] },
 
   { id: "brick", type: "goods", components: ["clay"] },
+  { id: "grapes", type: "goods", components: ["plant"] },
   { id: "glue", type: "goods", components: ["synthetic_polymer"] },
   {
     id: "synthetic_polymer",

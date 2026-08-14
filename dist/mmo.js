@@ -139,7 +139,7 @@ function h(i,o){if(i===void 0){if(o===Array)return[];if(o===Object)return{};if(o
         </app-link>
       </div>
   </header>
-`;e("section-header",{template:k,styles:w});var x=[{href:"/",name:"Home"},{href:"/about",name:"About"},{href:"/credits",name:"Credits"},{href:"/hire-me",name:"Hire Me"},{href:"/thank-you",name:"Thank You"},{href:"/work/mmo",name:"MMO"},{href:"/work/bamboo",name:"Bamboo"},{href:"/work/portfolio",name:"Portfolio"},{href:"/work/au-van",name:"AU Van"},{href:"/work/sks-solar",name:"SKS Solar"},{href:"/writings/foundation-building-interfaces-at-scale",name:"Foundation"},{href:"/work/knowledge-tree",name:"Knowledge Tree"}],S=`
+`;e("section-header",{template:k,styles:w});var x=[{href:"/",name:"Home"},{href:"/about",name:"About"},{href:"/credits",name:"Credits"},{href:"/hire-me",name:"Hire Me"},{href:"/thank-you",name:"Thank You"},{href:"/work/mmo",name:"MMO"},{href:"/work/bamboo",name:"Bamboo"},{href:"/work/terra",name:"Terra"},{href:"/work/au-van",name:"AU Van"},{href:"/work/portfolio",name:"Portfolio"},{href:"/work/sks-solar",name:"SKS Solar"},{href:"/writings/foundation-building-interfaces-at-scale",name:"Foundation"}],S=`
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -708,13 +708,13 @@ function h(i,o){if(i===void 0){if(o===Array)return[];if(o===Object)return{};if(o
   :host([variant="block"]) {
     display: block;
   }
-`,K={title:String},V=({title:i})=>`
+`,V={title:String},q=({title:i})=>`
         <h3>${i}</h3>
 
         <article>
             <slot></slot>
         </article>
-`;e("app-article-paragraph",{props:K,styles:D,template:V});var q=`
+`;e("app-article-paragraph",{props:V,styles:D,template:q});var G=`
   :host {
     display: block;
   }
@@ -738,7 +738,7 @@ function h(i,o){if(i===void 0){if(o===Array)return[];if(o===Object)return{};if(o
     border-top: 1px dashed var(--color-text);
     padding-top: 5rem;
   }
-`,G=`
+`,K=`
   <section>
     <section-title
       variant="text"
@@ -818,7 +818,7 @@ function h(i,o){if(i===void 0){if(o===Array)return[];if(o===Object)return{};if(o
       </li>
     </ul>
   </section>
-`;e("section-mmo-building-interfaces",{styles:q,template:G});var U=`
+`;e("section-mmo-building-interfaces",{styles:G,template:K});var U=`
   :host {
     display: block;
   }

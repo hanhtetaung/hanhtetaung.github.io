@@ -139,7 +139,7 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
         </app-link>
       </div>
   </header>
-`;e("section-header",{template:k,styles:w});var x=[{href:"/",name:"Home"},{href:"/about",name:"About"},{href:"/credits",name:"Credits"},{href:"/hire-me",name:"Hire Me"},{href:"/thank-you",name:"Thank You"},{href:"/work/mmo",name:"MMO"},{href:"/work/bamboo",name:"Bamboo"},{href:"/work/portfolio",name:"Portfolio"},{href:"/work/au-van",name:"AU Van"},{href:"/work/sks-solar",name:"SKS Solar"},{href:"/writings/foundation-building-interfaces-at-scale",name:"Foundation"},{href:"/work/knowledge-tree",name:"Knowledge Tree"}],S=`
+`;e("section-header",{template:k,styles:w});var x=[{href:"/",name:"Home"},{href:"/about",name:"About"},{href:"/credits",name:"Credits"},{href:"/hire-me",name:"Hire Me"},{href:"/thank-you",name:"Thank You"},{href:"/work/mmo",name:"MMO"},{href:"/work/bamboo",name:"Bamboo"},{href:"/work/terra",name:"Terra"},{href:"/work/au-van",name:"AU Van"},{href:"/work/portfolio",name:"Portfolio"},{href:"/work/sks-solar",name:"SKS Solar"},{href:"/writings/foundation-building-interfaces-at-scale",name:"Foundation"}],S=`
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -498,7 +498,7 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
         height="36"
         width="76"
     />
-`;e("section-title",{props:L,styles:j,template:C});var K=`
+`;e("section-title",{props:L,styles:j,template:C});var M=`
   :host {
     display: block;
   }
@@ -507,7 +507,7 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     width: 80%;
     margin-inline: auto;
   }
-`,M=`
+`,B=`
   <section>
     <section-title variant="text" props='{"name": "Background"}'></section-title>
 
@@ -520,7 +520,7 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
       clear structure, and minimal visuals.
     </p>
   </section>
-`;e("section-sks-solar-background",{styles:K,template:M});var B=`
+`;e("section-sks-solar-background",{styles:M,template:B});var K=`
   :host {
     display: block;
   }
@@ -541,7 +541,7 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
       to deliver a more polished and trustworthy user experience.
     </p>
   </section>
-`;e("section-sks-solar-challenge",{styles:B,template:F});var R=`
+`;e("section-sks-solar-challenge",{styles:K,template:F});var R=`
   :host {
     display: grid;
     grid-template-columns: 1fr 2.5fr;
