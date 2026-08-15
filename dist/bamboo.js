@@ -465,7 +465,7 @@ function h(t,e){if(t===void 0){if(e===Array)return[];if(e===Object)return{};if(e
 
         <app-icon
           variant="large"
-          src="/assets/icons/cuckoo-cock.svg"
+          src="/assets/icons/cuckoo-clock.svg"
           alt="Cuckoo Cock Logo"
         ></app-icon>
       </div>

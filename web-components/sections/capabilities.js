@@ -56,12 +56,6 @@ const template = () => /* html */ `
     <ol>
         <li>
             <capabilities-item props='{"title": "Design System", "subTitle": "Build", "description": "Build scalable and consistent design systems.", "href": "/assets/icons/design-system.svg", "alt": "Design System Logo"}'>
-                 <!-- <ul>
-                    <li>
-                        <app-icon variant="medium" src="/assets/tech-collection/figma.svg"
-                        ></app-icon>
-                    </li>
-                </ul> -->
             </capabilities-item>
         </li>
         <li>

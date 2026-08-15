@@ -55,7 +55,7 @@ const template = ({
 
         <app-icon
           variant="large"
-          src="/assets/icons/cuckoo-cock.svg"
+          src="/assets/icons/cuckoo-clock.svg"
           alt="Cuckoo Cock Logo"
         ></app-icon>
       </div>
