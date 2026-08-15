@@ -648,7 +648,7 @@ function h(i,o){if(i===void 0){if(o===Array)return[];if(o===Object)return{};if(o
      <article>
       <span>${o}</span>
       <h3>${i}</h3>
-      <app-link variant="plain" href="#">→</app-link>
+      <!-- <app-link variant="plain" href="#">→</app-link> -->
      </article>
 `;e("capabilities-item",{props:J,styles:F,template:R});var X=`
   section {

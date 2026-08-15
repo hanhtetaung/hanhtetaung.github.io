@@ -48,7 +48,7 @@ const template = ({ title, subTitle }) => /* html */ `
      <article>
       <span>${subTitle}</span>
       <h3>${title}</h3>
-      <app-link variant="plain" href="#">→</app-link>
+      <!-- <app-link variant="plain" href="#">→</app-link> -->
      </article>
 `;
 
