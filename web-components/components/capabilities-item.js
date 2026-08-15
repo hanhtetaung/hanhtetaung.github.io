@@ -1,30 +1,37 @@
 import { define } from "../define";
 
 import "../components/app-icon";
+import "../components/app-link";
+import { TABLE } from "../breakpoints";
 
 const styles = /* css */ `
   :host {
-    display: block;
-    /* padding-block: 5rem; */
-    /* border: 1px solid var(--color-text); */
-    width: fit-content;
+    display: flex;
+    gap: 2rem;
+    padding-block: 3rem;
+    padding-inline: 5rem;
+    justify-content: center;
+    border: 1px solid var(--color-text);
+
+    @media (max-width: ${TABLE}) {
+      justify-content: start;
+    }
   }
 
-  h4, p {
+  h3, p {
     margin: 0;
   }
 
   span {
-    display: block;
     color: var(--color-secondary);
     font-weight: var(--font-bold);
     font-size: var(--size-small);
     text-transform: uppercase;
-    margin-top: 2rem;
   }
 
-  h4 {
+  h3 {
     font-size: var(--size-heading);
+    font-weight: var(--font-regular);
     margin-bottom: 0.5rem;
   }
 `;
@@ -37,12 +44,12 @@ const props = {
   subTitle: String,
 };
 
-const template = ({ title, description, href, alt, subTitle }) => /* html */ `
-    <app-icon variant="large" src=${href} alt=${alt}></app-icon>
-    <span>${subTitle}</span>
-    <h4>${title}</h4>
-    <p>${description}</p>
-    <slot></slot>
+const template = ({ title, subTitle }) => /* html */ `
+     <article>
+      <span>${subTitle}</span>
+      <h3>${title}</h3>
+      <!-- <app-link variant="plain" href="#">→</app-link> -->
+     </article>
 `;
 
 define("capabilities-item", { props, styles, template });

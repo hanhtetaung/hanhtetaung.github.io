@@ -18,6 +18,11 @@ const styles = /* css */ `
     --local-height: 5rem;
   }
 
+  :host([variant="bigger"]) {
+    --local-width: auto;
+    --local-height: 6rem;
+  }
+
   :host([variant="large"]) {
     --local-width: auto;
     --local-height: 10rem;
