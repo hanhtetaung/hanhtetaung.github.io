@@ -69,6 +69,10 @@ const styles = /* css */ `
     @media (max-width: ${PHONE}) {
       margin: 0;
     }
+
+    li {
+      margin-bottom: 1rem;
+    }
   }
 
   h1, h3, p {

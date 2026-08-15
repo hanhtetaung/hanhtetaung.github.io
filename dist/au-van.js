@@ -407,6 +407,11 @@ function h(t,e){if(t===void 0){if(e===Array)return[];if(e===Object)return{};if(e
     --local-height: 5rem;
   }
 
+  :host([variant="bigger"]) {
+    --local-width: auto;
+    --local-height: 6rem;
+  }
+
   :host([variant="large"]) {
     --local-width: auto;
     --local-height: 10rem;

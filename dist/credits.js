@@ -398,6 +398,11 @@ function d(e,n){if(e===void 0){if(n===Array)return[];if(n===Object)return{};if(n
     --local-height: 5rem;
   }
 
+  :host([variant="bigger"]) {
+    --local-width: auto;
+    --local-height: 6rem;
+  }
+
   :host([variant="large"]) {
     --local-width: auto;
     --local-height: 10rem;
