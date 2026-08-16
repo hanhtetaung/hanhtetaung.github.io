@@ -11,7 +11,7 @@ const styles = /* css */ `
     padding-block: 3rem;
     padding-inline: 5rem;
     justify-content: center;
-    border: 1px solid var(--color-text);
+    border: 1px dashed var(--color-text);
 
     @media (max-width: ${TABLE}) {
       justify-content: start;
@@ -48,7 +48,7 @@ const template = ({ title, subTitle }) => /* html */ `
      <article>
       <span>${subTitle}</span>
       <h3>${title}</h3>
-      <!-- <app-link variant="plain" href="#">→</app-link> -->
+      <app-link variant="plain" href="#">→</app-link>
      </article>
 `;
 
