@@ -22,6 +22,9 @@
     ["/work/terra", "./work/terra.html"],
     ["/work/au-van", "./work/au-van.html"],
     ["/work/bamboo", "./work/bamboo.html"],
+    ["/capabilities/design-system", "./capabilities/design-system.html"],
+    ["/capabilities/user-interfaces", "./capabilities/user-interfaces.html"],
+    ["/capabilities/web-interfaces", "./capabilities/web-interfaces.html"],
     ["/404", "./404.html"]
   ]
 }

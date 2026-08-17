@@ -18,6 +18,15 @@ const styles = /* css */ `
     }
   }
 
+  :host([variant="borderless"]) {
+    border: none;
+    padding: 0;
+
+    h3 {
+      font-size: var(--size-body);
+    }
+  }
+
   h3, p {
     margin: 0;
   }
@@ -38,17 +47,15 @@ const styles = /* css */ `
 
 const props = {
   title: String,
-  description: String,
-  href: String,
-  alt: String,
   subTitle: String,
+  href: String,
 };
 
-const template = ({ title, subTitle }) => /* html */ `
+const template = ({ title, subTitle, href }) => /* html */ `
      <article>
       <span>${subTitle}</span>
       <h3>${title}</h3>
-      <app-link variant="plain" href="#">→</app-link>
+      <app-link variant="plain" href=${href}>→</app-link>
      </article>
 `;
 

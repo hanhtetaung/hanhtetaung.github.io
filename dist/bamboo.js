@@ -454,12 +454,6 @@ function h(t,e){if(t===void 0){if(e===Array)return[];if(e===Object)return{};if(e
   p {
     margin: 0;
   }
-
-  /* @media (max-width: ${a}) {
-          app-image {
-            display: none;
-          }
-        } */
 `,B={name:String,img:String,alt:String},z=({name:t="Name",img:e="/assets/images/coming-soon.jpg",alt:n="Coming Soon"})=>`
   <section>
       <div>

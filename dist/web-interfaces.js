@@ -1,4 +1,4 @@
-function h(t,e){if(t===void 0){if(e===Array)return[];if(e===Object)return{};if(e===Boolean)return!1;if(e===Number)return 0;return}if(e===Boolean)return Boolean(t);if(e===Number)return Number(t);return t}function o(t,{props:e={},attrs:n=[],styles:p="",template:l}){let d=["props",...n];class c extends HTMLElement{static observedAttributes=d;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let r={},i=this.getAttribute("props");if(i)try{r=JSON.parse(i)}catch{r={}}let m={};for(let s of Object.keys(e))m[s]=h(r[s],e[s]);return m}_applyForwardedAttrs(){if(n.length===0)return;let r=this.shadowRoot.querySelector("[data-forward]");if(!r)return;for(let i of n)if(this.hasAttribute(i))r.setAttribute(i,this.getAttribute(i));else r.removeAttribute(i)}_render(){let r=this._getProps(),i=typeof l==="function"?l(r):l;this.shadowRoot.innerHTML=`<style>${p}</style>${i}`,this._applyForwardedAttrs()}}customElements.define(t,c)}var g=`
+function h(t,e){if(t===void 0){if(e===Array)return[];if(e===Object)return{};if(e===Boolean)return!1;if(e===Number)return 0;return}if(e===Boolean)return Boolean(t);if(e===Number)return Number(t);return t}function o(t,{props:e={},attrs:i=[],styles:d="",template:s}){let g=["props",...i];class p extends HTMLElement{static observedAttributes=g;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let r={},n=this.getAttribute("props");if(n)try{r=JSON.parse(n)}catch{r={}}let m={};for(let c of Object.keys(e))m[c]=h(r[c],e[c]);return m}_applyForwardedAttrs(){if(i.length===0)return;let r=this.shadowRoot.querySelector("[data-forward]");if(!r)return;for(let n of i)if(this.hasAttribute(n))r.setAttribute(n,this.getAttribute(n));else r.removeAttribute(n)}_render(){let r=this._getProps(),n=typeof s==="function"?s(r):s;this.shadowRoot.innerHTML=`<style>${d}</style>${n}`,this._applyForwardedAttrs()}}customElements.define(t,p)}var f=`
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -59,9 +59,9 @@ function h(t,e){if(t===void 0){if(e===Array)return[];if(e===Object)return{};if(e
        content: "➶";
      }
   }
-`,f=["href","target","rel","download"],u=`
+`,b=["href","target","rel","download"],v=`
   <a data-forward><slot></slot></a>
-`;o("app-link",{attrs:f,styles:g,template:u});var v=`
+`;o("app-link",{attrs:b,styles:f,template:v});var u=`
   :host {
     display: block;
   }
@@ -70,7 +70,7 @@ function h(t,e){if(t===void 0){if(e===Array)return[];if(e===Object)return{};if(e
     max-height: 7rem;
     width: auto;
   }
-`,b=["width","height","src","alt"],w=()=>"<img data-forward />";o("app-logo",{attrs:b,styles:v,template:w});var a="769px",R="992px";var y=`
+`,y=["width","height","src","alt"],w=()=>"<img data-forward />";o("app-logo",{attrs:y,styles:u,template:w});var a="769px",l="992px";var k=`
   :host {
     display: block;
   }
@@ -110,7 +110,7 @@ function h(t,e){if(t===void 0){if(e===Array)return[];if(e===Object)return{};if(e
       gap: 4rem;
     }
   }
-`,k=`
+`,x=`
   <header>
       <app-link variant="plain" href="/">
         <app-logo
@@ -139,7 +139,7 @@ function h(t,e){if(t===void 0){if(e===Array)return[];if(e===Object)return{};if(e
         </app-link>
       </div>
   </header>
-`;o("section-header",{template:k,styles:y});var x=[{href:"/",name:"Home"},{href:"/about",name:"About"},{href:"/credits",name:"Credits"},{href:"/hire-me",name:"Hire Me"},{href:"/thank-you",name:"Thank You"},{href:"/work/mmo",name:"MMO"},{href:"/work/bamboo",name:"Bamboo"},{href:"/work/terra",name:"Terra"},{href:"/work/au-van",name:"AU Van"},{href:"/work/portfolio",name:"Portfolio"},{href:"/work/sks-solar",name:"SKS Solar"},{href:"/writings/foundation-building-interfaces-at-scale",name:"Foundation"}],A=`
+`;o("section-header",{template:x,styles:k});var $=[{href:"/",name:"Home"},{href:"/about",name:"About"},{href:"/credits",name:"Credits"},{href:"/hire-me",name:"Hire Me"},{href:"/thank-you",name:"Thank You"},{href:"/work/mmo",name:"MMO"},{href:"/work/bamboo",name:"Bamboo"},{href:"/work/terra",name:"Terra"},{href:"/work/au-van",name:"AU Van"},{href:"/work/portfolio",name:"Portfolio"},{href:"/work/sks-solar",name:"SKS Solar"},{href:"/writings/foundation-building-interfaces-at-scale",name:"Foundation"}],S=`
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -186,19 +186,19 @@ function h(t,e){if(t===void 0){if(e===Array)return[];if(e===Object)return{};if(e
     margin-right: 5rem;
     margin-bottom: 0.3rem;
   }
-`,$=()=>`
+`,A=()=>`
     <nav>
         <span>Sitemap</span>
 
         <ol>
-            ${x.map((t)=>`
+            ${$.map((t)=>`
                 <li>
                     <app-link variant="sitemap" href=${t.href} >${t.name}</app-link>
                 </li>
             `).join("")}
         </ol>
     </nav>
-`;o("footer-nav",{styles:A,template:$});var H=`
+`;o("footer-nav",{styles:S,template:A});var z=`
   :host {
    display: flex;
     justify-content: space-between;
@@ -243,7 +243,7 @@ function h(t,e){if(t===void 0){if(e===Array)return[];if(e===Object)return{};if(e
       margin-bottom: 0.5rem;
     }
   }
-`,S=()=>`
+`,T=()=>`
       <p>
         © Han Htet Aung 2026 |
         <app-link href="/credits" variant="underline">Credits</app-link>
@@ -288,7 +288,7 @@ function h(t,e){if(t===void 0){if(e===Array)return[];if(e===Object)return{};if(e
               </li>
           </ul>
 </nav>
-`;o("footer-copyright",{styles:H,template:S});var C=`
+`;o("footer-copyright",{styles:z,template:T});var C=`
   :host {
     --local-bg-color: var(--color-bg-secondary);
 
@@ -336,7 +336,7 @@ function h(t,e){if(t===void 0){if(e===Array)return[];if(e===Object)return{};if(e
   hr {
     color: var(--color-secondary);
   }
-`,E=`
+`,H=`
   <footer>
       <article>
         <div>
@@ -358,7 +358,7 @@ function h(t,e){if(t===void 0){if(e===Array)return[];if(e===Object)return{};if(e
 
       <footer-copyright></footer-copyright>
   </footer>
-`;o("section-footer",{styles:C,template:E});var N=`
+`;o("section-footer",{styles:C,template:H});var O=`
   :host {
     --local-width: 5rem;
     --local-heigth: auto;
@@ -389,7 +389,7 @@ function h(t,e){if(t===void 0){if(e===Array)return[];if(e===Object)return{};if(e
    :host([variant="full"]) {
     --local-width: 100%;
   }
-`,O=["width","height","src","alt"],_=()=>"<img data-forward />";o("app-image",{attrs:O,styles:N,template:_});var P=`
+`,E=["width","height","src","alt"],L=()=>"<img data-forward />";o("app-image",{attrs:E,styles:O,template:L});var N=`
   :host {
     --local-width: 3rem;
     --local-height: auto;
@@ -427,7 +427,7 @@ function h(t,e){if(t===void 0){if(e===Array)return[];if(e===Object)return{};if(e
   }
 
 
-`,j=["src","alt"],L=()=>'<img data-forward width="200" height="200"/>';o("app-icon",{attrs:j,styles:P,template:L});var T=`
+`,_=["src","alt"],P=()=>'<img data-forward width="200" height="200"/>';o("app-icon",{attrs:_,styles:N,template:P});var j=`
    section {
         margin-inline: auto;
         width: 80%;
@@ -454,7 +454,7 @@ function h(t,e){if(t===void 0){if(e===Array)return[];if(e===Object)return{};if(e
   p {
     margin: 0;
   }
-`,z={name:String,img:String,alt:String},B=({name:t="Name",img:e="/assets/images/coming-soon.jpg",alt:n="Coming Soon"})=>`
+`,B={name:String,img:String,alt:String},I=({name:t="Name",img:e="/assets/images/coming-soon.jpg",alt:i="Coming Soon"})=>`
   <section>
       <div>
         <hgroup>
@@ -469,14 +469,273 @@ function h(t,e){if(t===void 0){if(e===Array)return[];if(e===Object)return{};if(e
         ></app-icon>
       </div>
 
-      <app-image variant="large" src=${e} alt=${n}></app-image>
+      <app-image variant="large" src=${e} alt=${i}></app-image>
   </section>
-`;o("section-coming-soon-intro",{props:z,styles:T,template:B});var M=`
+`;o("section-coming-soon-intro",{props:B,styles:j,template:I});var M=`
+  :host {
+    display: flex;
+    gap: 2rem;
+    padding-block: 3rem;
+    padding-inline: 5rem;
+    justify-content: center;
+    border: 1px dashed var(--color-text);
+
+    @media (max-width: ${l}) {
+      justify-content: start;
+    }
+  }
+
+  :host([variant="borderless"]) {
+    border: none;
+    padding: 0;
+
+    h3 {
+      font-size: var(--size-body);
+    }
+  }
+
+  h3, p {
+    margin: 0;
+  }
+
+  span {
+    color: var(--color-secondary);
+    font-weight: var(--font-bold);
+    font-size: var(--size-small);
+    text-transform: uppercase;
+  }
+
+  h3 {
+    font-size: var(--size-heading);
+    font-weight: var(--font-regular);
+    margin-bottom: 0.5rem;
+  }
+`,D={title:String,subTitle:String,href:String},F=({title:t,subTitle:e,href:i})=>`
+     <article>
+      <span>${e}</span>
+      <h3>${t}</h3>
+      <app-link variant="plain" href=${i}>→</app-link>
+     </article>
+`;o("capabilities-item",{props:D,styles:M,template:F});var J=`
   :host {
     display: block;
   }
-`,F=`
-  <section-coming-soon-intro
-    props='{"name":"AU Van"}'
-  ></section-coming-soon-intro>
-`;o("section-au-van-intro",{styles:M,template:F});
+
+  section {
+    width: 80%;
+    margin-inline: auto;
+  }
+
+   h1 {
+    margin: 0;
+    font-size: var(--size-display);
+    font-weight: var(--font-regular);
+    font-family: var(--font-heading);
+    margin-bottom: 1rem;
+  }
+
+   span {
+    color: var(--color-secondary);
+    font-size: var(--size-small);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+  }
+
+  p {
+    margin: 0;
+    margin-bottom: 5rem;
+  }
+
+  h3 {
+    margin: 0;
+    margin-bottom: 1rem;
+  }
+
+  ol {
+    margin: 0;
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 5rem;
+    border: 1px dashed var(--color-text);
+    width: fit-content;
+    padding: 2rem;
+
+    @media (max-width: ${a}) {
+        flex-direction: column;
+    }
+  }
+
+  ol li {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    p {
+        margin: 0;
+        margin-top: 0.5rem;
+    }
+  }
+`,W=`
+    <section>
+        <hgroup>
+            <span>Capabilities</span>
+            <h1>Develop Web Interfaces</h1>
+            <p>Turn hi-fi designs into pixel-perfect web interfaces.</p>
+        </hgroup>
+
+        <article>
+            <h3>What I provide</h3>
+             <ol>
+                <li>
+                    <app-icon variant="medium" src="/assets/icons/web-interface.svg" alt=""></app-icon>
+                    <p>HTML, CSS</p>
+                </li>
+                <li>
+                     <app-icon variant="medium" src="/assets/icons/web-interface.svg" alt=""></app-icon>
+                    <p>Web Components</p>
+                    
+                </li>
+                <!-- <li>
+                     <app-icon variant="medium" src="/assets/icons/design-system.svg" alt=""></app-icon>
+                    <p>Assets</p>
+                    
+                </li> -->
+            </ol>
+        </article>
+    </section>
+`;o("section-web-interfaces-intro",{styles:J,template:W});var K=`
+  :host {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    margin-bottom: 3rem;
+    gap: 1rem;
+  }
+
+  h2 {
+    margin: 0;
+    font-size: var(--size-title);
+    font-family: var(--font-heading);
+    font-weight: var(--font-regular)
+  }
+
+  img {
+    height: 5rem;
+    width: auto;
+  }
+
+  :host([variant="vertical"]) {
+    flex-direction: column-reverse;
+    gap: 0;
+  }
+
+  :host([variant="text"]) {
+    img {
+      display: none;
+    }
+  }
+`,R={name:String,img:String,alt:String},U=({name:t,img:e="",alt:i=""})=>`
+    <h2>${t}</h2>
+    <img
+        src=${e}
+        alt=${i}
+        height="36"
+        width="76"
+    />
+`;o("section-title",{props:R,styles:K,template:U});var V=`
+  :host {
+    display: block;
+  }
+
+  section {
+    width: 80%;
+    margin-inline: auto;
+  }
+
+
+`,Y=`
+  <section>
+    <section-title
+        props='${JSON.stringify({name:"Workflow",img:"/assets/icons/ostrich.svg",alt:"Ostrich Logo"})}'
+      ></section-title>
+
+     <p>Coming Soon</p>
+</section>
+`;o("section-web-interfaces-workflow",{styles:V,template:Y});var q=`
+  :host {
+    --local-bg: var(--color-secondary);
+    --local-color: var(--color-bg-primary);
+    --local-border: none;
+
+    display: inline-block;
+    padding-block: 0.5rem;
+    padding-inline: 1.5rem;
+    width: fit-content;
+    white-space: nowrap;
+    border-radius: 3rem;
+    border: var(--local-border);
+    font-size: var(--size-small);
+    background: var(--local-bg);
+    color: var(--local-color);
+  }
+
+  :host([variant="outline"]) {
+    --local-bg: var(--color-transparent);
+    --local-color: var(--color-secondary);
+    --local-border: 1px solid var(--color-secondary);
+  }
+
+  :host([variant="success"]) {
+    /* --local-bg: #157d6c; */
+    --local-bg: #a36aa5;
+     --local-border: 1px solid var( --local-color);
+  }
+`,G={name:String},Q=({name:t})=>`${t}`;o("app-badge",{props:G,styles:q,template:Q});var X=`
+  section {
+    width: 80%;
+    margin-inline: auto;
+  }
+
+   h3 {
+    margin: 0;
+  }
+
+  ol {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+ol {
+    padding: 0;
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: 1fr 1fr 1fr;
+
+    @media (max-width: ${l}) {
+      grid-template-columns: 1fr;
+      border: none;
+    }
+  }
+`,Z=()=>`
+  <section>
+      <section-title
+        props='${JSON.stringify({name:"Capabilities",img:"/assets/icons/peacock.svg",alt:"Peacock Logo"})}'
+      ></section-title>
+            
+    <ol>
+        <li>
+            <capabilities-item props='{"title": "Design System", "subTitle": "Build", "href": "/capabilities/design-system"}'>
+            </capabilities-item>
+        </li>
+        <li>
+            <capabilities-item props='{"title": "User Interfaces", "subTitle": "Design", "href": "/capabilities/user-interfaces"}'></capabilities-item>
+        </li>
+        <li>
+            <capabilities-item props='{"title": "Web Interfaces", "subTitle": "Develop", "href": "/capabilities/web-interfaces"}'></capabilities-item>
+        </li>
+    </ol>
+  </section>
+`;o("section-capabilities",{styles:X,template:Z});
