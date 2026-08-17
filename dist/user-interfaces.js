@@ -1,4 +1,4 @@
-function h(t,e){if(t===void 0){if(e===Array)return[];if(e===Object)return{};if(e===Boolean)return!1;if(e===Number)return 0;return}if(e===Boolean)return Boolean(t);if(e===Number)return Number(t);return t}function o(t,{props:e={},attrs:a=[],styles:d="",template:s}){let g=["props",...a];class p extends HTMLElement{static observedAttributes=g;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let r={},n=this.getAttribute("props");if(n)try{r=JSON.parse(n)}catch{r={}}let m={};for(let c of Object.keys(e))m[c]=h(r[c],e[c]);return m}_applyForwardedAttrs(){if(a.length===0)return;let r=this.shadowRoot.querySelector("[data-forward]");if(!r)return;for(let n of a)if(this.hasAttribute(n))r.setAttribute(n,this.getAttribute(n));else r.removeAttribute(n)}_render(){let r=this._getProps(),n=typeof s==="function"?s(r):s;this.shadowRoot.innerHTML=`<style>${d}</style>${n}`,this._applyForwardedAttrs()}}customElements.define(t,p)}var f=`
+function h(t,o){if(t===void 0){if(o===Array)return[];if(o===Object)return{};if(o===Boolean)return!1;if(o===Number)return 0;return}if(o===Boolean)return Boolean(t);if(o===Number)return Number(t);return t}function e(t,{props:o={},attrs:a=[],styles:d="",template:s}){let g=["props",...a];class p extends HTMLElement{static observedAttributes=g;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let r={},n=this.getAttribute("props");if(n)try{r=JSON.parse(n)}catch{r={}}let m={};for(let c of Object.keys(o))m[c]=h(r[c],o[c]);return m}_applyForwardedAttrs(){if(a.length===0)return;let r=this.shadowRoot.querySelector("[data-forward]");if(!r)return;for(let n of a)if(this.hasAttribute(n))r.setAttribute(n,this.getAttribute(n));else r.removeAttribute(n)}_render(){let r=this._getProps(),n=typeof s==="function"?s(r):s;this.shadowRoot.innerHTML=`<style>${d}</style>${n}`,this._applyForwardedAttrs()}}customElements.define(t,p)}var f=`
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -61,7 +61,7 @@ function h(t,e){if(t===void 0){if(e===Array)return[];if(e===Object)return{};if(e
   }
 `,v=["href","target","rel","download"],b=`
   <a data-forward><slot></slot></a>
-`;o("app-link",{attrs:v,styles:f,template:b});var u=`
+`;e("app-link",{attrs:v,styles:f,template:b});var u=`
   :host {
     display: block;
   }
@@ -70,7 +70,7 @@ function h(t,e){if(t===void 0){if(e===Array)return[];if(e===Object)return{};if(e
     max-height: 7rem;
     width: auto;
   }
-`,y=["width","height","src","alt"],w=()=>"<img data-forward />";o("app-logo",{attrs:y,styles:u,template:w});var i="769px",l="992px";var x=`
+`,y=["width","height","src","alt"],w=()=>"<img data-forward />";e("app-logo",{attrs:y,styles:u,template:w});var i="769px",l="992px";var x=`
   :host {
     display: block;
   }
@@ -139,7 +139,7 @@ function h(t,e){if(t===void 0){if(e===Array)return[];if(e===Object)return{};if(e
         </app-link>
       </div>
   </header>
-`;o("section-header",{template:k,styles:x});var $=[{href:"/",name:"Home"},{href:"/about",name:"About"},{href:"/credits",name:"Credits"},{href:"/hire-me",name:"Hire Me"},{href:"/thank-you",name:"Thank You"},{href:"/work/mmo",name:"MMO"},{href:"/work/bamboo",name:"Bamboo"},{href:"/work/terra",name:"Terra"},{href:"/work/au-van",name:"AU Van"},{href:"/work/portfolio",name:"Portfolio"},{href:"/work/sks-solar",name:"SKS Solar"},{href:"/writings/foundation-building-interfaces-at-scale",name:"Foundation"}],S=`
+`;e("section-header",{template:k,styles:x});var $=[{href:"/",name:"Home"},{href:"/about",name:"About"},{href:"/credits",name:"Credits"},{href:"/hire-me",name:"Hire Me"},{href:"/thank-you",name:"Thank You"},{href:"/capabilities/design-system",name:"Design System"},{href:"/capabilities/user-interfaces",name:"User Interfaces"},{href:"/capabilities/web-interfaces",name:"Web Interfaces"},{href:"/work/terra",name:"Terra"},{href:"/work/bamboo",name:"Bamboo"},{href:"/work/mmo",name:"MMO"},{href:"/work/au-van",name:"AU Van"},{href:"/work/portfolio",name:"Portfolio"},{href:"/work/sks-solar",name:"SKS Solar"},{href:"/writings/foundation-building-interfaces-at-scale",name:"Foundation"}],S=`
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -198,7 +198,7 @@ function h(t,e){if(t===void 0){if(e===Array)return[];if(e===Object)return{};if(e
             `).join("")}
         </ol>
     </nav>
-`;o("footer-nav",{styles:S,template:z});var A=`
+`;e("footer-nav",{styles:S,template:z});var A=`
   :host {
    display: flex;
     justify-content: space-between;
@@ -288,7 +288,7 @@ function h(t,e){if(t===void 0){if(e===Array)return[];if(e===Object)return{};if(e
               </li>
           </ul>
 </nav>
-`;o("footer-copyright",{styles:A,template:H});var O=`
+`;e("footer-copyright",{styles:A,template:H});var O=`
   :host {
     --local-bg-color: var(--color-bg-secondary);
 
@@ -358,7 +358,7 @@ function h(t,e){if(t===void 0){if(e===Array)return[];if(e===Object)return{};if(e
 
       <footer-copyright></footer-copyright>
   </footer>
-`;o("section-footer",{styles:O,template:C});var E=`
+`;e("section-footer",{styles:O,template:C});var E=`
   :host {
     --local-width: 5rem;
     --local-heigth: auto;
@@ -389,7 +389,7 @@ function h(t,e){if(t===void 0){if(e===Array)return[];if(e===Object)return{};if(e
    :host([variant="full"]) {
     --local-width: 100%;
   }
-`,N=["width","height","src","alt"],T=()=>"<img data-forward />";o("app-image",{attrs:N,styles:E,template:T});var P=`
+`,N=["width","height","src","alt"],T=()=>"<img data-forward />";e("app-image",{attrs:N,styles:E,template:T});var P=`
   :host {
     --local-width: 3rem;
     --local-height: auto;
@@ -427,7 +427,7 @@ function h(t,e){if(t===void 0){if(e===Array)return[];if(e===Object)return{};if(e
   }
 
 
-`,L=["src","alt"],_=()=>'<img data-forward width="200" height="200"/>';o("app-icon",{attrs:L,styles:P,template:_});var j=`
+`,L=["src","alt"],_=()=>'<img data-forward width="200" height="200"/>';e("app-icon",{attrs:L,styles:P,template:_});var I=`
    section {
         margin-inline: auto;
         width: 80%;
@@ -454,7 +454,7 @@ function h(t,e){if(t===void 0){if(e===Array)return[];if(e===Object)return{};if(e
   p {
     margin: 0;
   }
-`,B={name:String,img:String,alt:String},I=({name:t="Name",img:e="/assets/images/coming-soon.jpg",alt:a="Coming Soon"})=>`
+`,j={name:String,img:String,alt:String},B=({name:t="Name",img:o="/assets/images/coming-soon.jpg",alt:a="Coming Soon"})=>`
   <section>
       <div>
         <hgroup>
@@ -469,9 +469,9 @@ function h(t,e){if(t===void 0){if(e===Array)return[];if(e===Object)return{};if(e
         ></app-icon>
       </div>
 
-      <app-image variant="large" src=${e} alt=${a}></app-image>
+      <app-image variant="large" src=${o} alt=${a}></app-image>
   </section>
-`;o("section-coming-soon-intro",{props:B,styles:j,template:I});var D=`
+`;e("section-coming-soon-intro",{props:j,styles:I,template:B});var D=`
   :host {
     display: block;
   }
@@ -560,7 +560,7 @@ function h(t,e){if(t===void 0){if(e===Array)return[];if(e===Object)return{};if(e
             </ol>
         </article>
     </section>
-`;o("section-user-interfaces-intro",{styles:D,template:F});var M=`
+`;e("section-user-interfaces-intro",{styles:D,template:F});var M=`
   :host {
     display: flex;
     align-items: center;
@@ -591,15 +591,15 @@ function h(t,e){if(t===void 0){if(e===Array)return[];if(e===Object)return{};if(e
       display: none;
     }
   }
-`,U={name:String,img:String,alt:String},W=({name:t,img:e="",alt:a=""})=>`
+`,U={name:String,img:String,alt:String},W=({name:t,img:o="",alt:a=""})=>`
     <h2>${t}</h2>
     <img
-        src=${e}
+        src=${o}
         alt=${a}
         height="36"
         width="76"
     />
-`;o("section-title",{props:U,styles:M,template:W});var J=`
+`;e("section-title",{props:U,styles:M,template:W});var J=`
   :host {
     display: block;
   }
@@ -618,7 +618,7 @@ function h(t,e){if(t===void 0){if(e===Array)return[];if(e===Object)return{};if(e
 
      <p>Coming Soon</p>
 </section>
-`;o("section-user-interfaces-workflow",{styles:J,template:K});var R=`
+`;e("section-user-interfaces-workflow",{styles:J,template:K});var R=`
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -647,7 +647,7 @@ function h(t,e){if(t===void 0){if(e===Array)return[];if(e===Object)return{};if(e
     --local-bg: #a36aa5;
      --local-border: 1px solid var( --local-color);
   }
-`,V={name:String},Y=({name:t})=>`${t}`;o("app-badge",{props:V,styles:R,template:Y});var q=`
+`,V={name:String},Y=({name:t})=>`${t}`;e("app-badge",{props:V,styles:R,template:Y});var q=`
   :host {
     display: flex;
     gap: 2rem;
@@ -686,13 +686,13 @@ function h(t,e){if(t===void 0){if(e===Array)return[];if(e===Object)return{};if(e
     font-weight: var(--font-regular);
     margin-bottom: 0.5rem;
   }
-`,G={title:String,subTitle:String,href:String},Q=({title:t,subTitle:e,href:a})=>`
+`,G={title:String,subTitle:String,href:String},Q=({title:t,subTitle:o,href:a})=>`
      <article>
-      <span>${e}</span>
+      <span>${o}</span>
       <h3>${t}</h3>
       <app-link variant="plain" href=${a}>→</app-link>
      </article>
-`;o("capabilities-item",{props:G,styles:q,template:Q});var X=`
+`;e("capabilities-item",{props:G,styles:q,template:Q});var X=`
   section {
     width: 80%;
     margin-inline: auto;
@@ -738,4 +738,4 @@ ol {
         </li>
     </ol>
   </section>
-`;o("section-capabilities",{styles:X,template:Z});
+`;e("section-capabilities",{styles:X,template:Z});

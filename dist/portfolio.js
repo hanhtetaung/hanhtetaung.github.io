@@ -1,4 +1,4 @@
-function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a===Boolean)return!1;if(a===Number)return 0;return}if(a===Boolean)return Boolean(o);if(a===Number)return Number(o);return o}function e(o,{props:a={},attrs:n=[],styles:m="",template:l}){let d=["props",...n];class p extends HTMLElement{static observedAttributes=d;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let i={},r=this.getAttribute("props");if(r)try{i=JSON.parse(r)}catch{i={}}let c={};for(let s of Object.keys(a))c[s]=h(i[s],a[s]);return c}_applyForwardedAttrs(){if(n.length===0)return;let i=this.shadowRoot.querySelector("[data-forward]");if(!i)return;for(let r of n)if(this.hasAttribute(r))i.setAttribute(r,this.getAttribute(r));else i.removeAttribute(r)}_render(){let i=this._getProps(),r=typeof l==="function"?l(i):l;this.shadowRoot.innerHTML=`<style>${m}</style>${r}`,this._applyForwardedAttrs()}}customElements.define(o,p)}var g=`
+function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a===Boolean)return!1;if(a===Number)return 0;return}if(a===Boolean)return Boolean(o);if(a===Number)return Number(o);return o}function e(o,{props:a={},attrs:n=[],styles:m="",template:l}){let d=["props",...n];class c extends HTMLElement{static observedAttributes=d;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let i={},r=this.getAttribute("props");if(r)try{i=JSON.parse(r)}catch{i={}}let p={};for(let s of Object.keys(a))p[s]=h(i[s],a[s]);return p}_applyForwardedAttrs(){if(n.length===0)return;let i=this.shadowRoot.querySelector("[data-forward]");if(!i)return;for(let r of n)if(this.hasAttribute(r))i.setAttribute(r,this.getAttribute(r));else i.removeAttribute(r)}_render(){let i=this._getProps(),r=typeof l==="function"?l(i):l;this.shadowRoot.innerHTML=`<style>${m}</style>${r}`,this._applyForwardedAttrs()}}customElements.define(o,c)}var g=`
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -139,7 +139,7 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
         </app-link>
       </div>
   </header>
-`;e("section-header",{template:k,styles:w});var x=[{href:"/",name:"Home"},{href:"/about",name:"About"},{href:"/credits",name:"Credits"},{href:"/hire-me",name:"Hire Me"},{href:"/thank-you",name:"Thank You"},{href:"/work/mmo",name:"MMO"},{href:"/work/bamboo",name:"Bamboo"},{href:"/work/terra",name:"Terra"},{href:"/work/au-van",name:"AU Van"},{href:"/work/portfolio",name:"Portfolio"},{href:"/work/sks-solar",name:"SKS Solar"},{href:"/writings/foundation-building-interfaces-at-scale",name:"Foundation"}],$=`
+`;e("section-header",{template:k,styles:w});var x=[{href:"/",name:"Home"},{href:"/about",name:"About"},{href:"/credits",name:"Credits"},{href:"/hire-me",name:"Hire Me"},{href:"/thank-you",name:"Thank You"},{href:"/capabilities/design-system",name:"Design System"},{href:"/capabilities/user-interfaces",name:"User Interfaces"},{href:"/capabilities/web-interfaces",name:"Web Interfaces"},{href:"/work/terra",name:"Terra"},{href:"/work/bamboo",name:"Bamboo"},{href:"/work/mmo",name:"MMO"},{href:"/work/au-van",name:"AU Van"},{href:"/work/portfolio",name:"Portfolio"},{href:"/work/sks-solar",name:"SKS Solar"},{href:"/writings/foundation-building-interfaces-at-scale",name:"Foundation"}],$=`
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -509,7 +509,7 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     width: 80%;
     margin-inline: auto;
   }
-`,M=`
+`,I=`
   <section>
     <section-title variant="text" props='{"name": "Background"}'></section-title>
 
@@ -521,7 +521,7 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
       strong professional presence.
     </p>
   </section>
-`;e("section-portfolio-background",{styles:B,template:M});var F=`
+`;e("section-portfolio-background",{styles:B,template:I});var M=`
   :host {
     display: block;
   }
@@ -543,7 +543,7 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
       trustworthy user experience.
     </p>
   </section>
-`;e("section-portfolio-challenge",{styles:F,template:W});var q=`
+`;e("section-portfolio-challenge",{styles:M,template:W});var F=`
   :host {
     display: grid;
     grid-template-columns: 1fr 2.5fr;
@@ -565,13 +565,13 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
   :host([variant="block"]) {
     display: block;
   }
-`,I={title:String},R=({title:o})=>`
+`,q={title:String},D=({title:o})=>`
         <h3>${o}</h3>
 
         <article>
             <slot></slot>
         </article>
-`;e("app-article-paragraph",{props:I,styles:q,template:R});var V=`
+`;e("app-article-paragraph",{props:q,styles:F,template:D});var R=`
   :host {
     display: block;
   }
@@ -601,7 +601,7 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
   ol {
     list-style: disc;
   }
-`,D=`
+`,V=`
   <section>
     <section-title variant="text" props='{"name": "Process"}'></section-title>
 
@@ -693,7 +693,7 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
       </li>
     </ul>
   </section>
-`;e("section-portfolio-process",{styles:V,template:D});var G=`
+`;e("section-portfolio-process",{styles:R,template:V});var G=`
   :host {
     display: block;
   }

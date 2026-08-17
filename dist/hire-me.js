@@ -70,7 +70,7 @@ function f(a,r){if(a===void 0){if(r===Array)return[];if(r===Object)return{};if(r
     max-height: 7rem;
     width: auto;
   }
-`,v=["width","height","src","alt"],y=()=>"<img data-forward />";e("app-logo",{attrs:v,styles:b,template:y});var o="769px",q="992px";var k=`
+`,v=["width","height","src","alt"],y=()=>"<img data-forward />";e("app-logo",{attrs:v,styles:b,template:y});var o="769px",I="992px";var k=`
   :host {
     display: block;
   }
@@ -139,7 +139,7 @@ function f(a,r){if(a===void 0){if(r===Array)return[];if(r===Object)return{};if(r
         </app-link>
       </div>
   </header>
-`;e("section-header",{template:w,styles:k});var x=[{href:"/",name:"Home"},{href:"/about",name:"About"},{href:"/credits",name:"Credits"},{href:"/hire-me",name:"Hire Me"},{href:"/thank-you",name:"Thank You"},{href:"/work/mmo",name:"MMO"},{href:"/work/bamboo",name:"Bamboo"},{href:"/work/terra",name:"Terra"},{href:"/work/au-van",name:"AU Van"},{href:"/work/portfolio",name:"Portfolio"},{href:"/work/sks-solar",name:"SKS Solar"},{href:"/writings/foundation-building-interfaces-at-scale",name:"Foundation"}],A=`
+`;e("section-header",{template:w,styles:k});var x=[{href:"/",name:"Home"},{href:"/about",name:"About"},{href:"/credits",name:"Credits"},{href:"/hire-me",name:"Hire Me"},{href:"/thank-you",name:"Thank You"},{href:"/capabilities/design-system",name:"Design System"},{href:"/capabilities/user-interfaces",name:"User Interfaces"},{href:"/capabilities/web-interfaces",name:"Web Interfaces"},{href:"/work/terra",name:"Terra"},{href:"/work/bamboo",name:"Bamboo"},{href:"/work/mmo",name:"MMO"},{href:"/work/au-van",name:"AU Van"},{href:"/work/portfolio",name:"Portfolio"},{href:"/work/sks-solar",name:"SKS Solar"},{href:"/writings/foundation-building-interfaces-at-scale",name:"Foundation"}],A=`
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -383,14 +383,14 @@ function f(a,r){if(a===void 0){if(r===Array)return[];if(r===Object)return{};if(r
     /* border: none; */
     padding: var(--local-padding);
   }
-`,z=["type"],S=`
+`,S=["type"],z=`
   <button
     data-forward
     onclick="const form = this.getRootNode().host.closest('form'); if (this.type === 'submit' && form) { form.requestSubmit ? form.requestSubmit() : form.submit(); }"
   >
     <slot></slot>
   </button>
-`;e("app-button",{attrs:z,styles:N,template:S});var C=`
+`;e("app-button",{attrs:S,styles:N,template:z});var C=`
     section {
         margin-inline: auto;
         width: 80%;

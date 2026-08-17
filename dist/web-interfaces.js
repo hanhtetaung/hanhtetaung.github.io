@@ -139,7 +139,7 @@ function h(t,e){if(t===void 0){if(e===Array)return[];if(e===Object)return{};if(e
         </app-link>
       </div>
   </header>
-`;o("section-header",{template:x,styles:k});var $=[{href:"/",name:"Home"},{href:"/about",name:"About"},{href:"/credits",name:"Credits"},{href:"/hire-me",name:"Hire Me"},{href:"/thank-you",name:"Thank You"},{href:"/work/mmo",name:"MMO"},{href:"/work/bamboo",name:"Bamboo"},{href:"/work/terra",name:"Terra"},{href:"/work/au-van",name:"AU Van"},{href:"/work/portfolio",name:"Portfolio"},{href:"/work/sks-solar",name:"SKS Solar"},{href:"/writings/foundation-building-interfaces-at-scale",name:"Foundation"}],S=`
+`;o("section-header",{template:x,styles:k});var $=[{href:"/",name:"Home"},{href:"/about",name:"About"},{href:"/credits",name:"Credits"},{href:"/hire-me",name:"Hire Me"},{href:"/thank-you",name:"Thank You"},{href:"/capabilities/design-system",name:"Design System"},{href:"/capabilities/user-interfaces",name:"User Interfaces"},{href:"/capabilities/web-interfaces",name:"Web Interfaces"},{href:"/work/terra",name:"Terra"},{href:"/work/bamboo",name:"Bamboo"},{href:"/work/mmo",name:"MMO"},{href:"/work/au-van",name:"AU Van"},{href:"/work/portfolio",name:"Portfolio"},{href:"/work/sks-solar",name:"SKS Solar"},{href:"/writings/foundation-building-interfaces-at-scale",name:"Foundation"}],S=`
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -471,7 +471,7 @@ function h(t,e){if(t===void 0){if(e===Array)return[];if(e===Object)return{};if(e
 
       <app-image variant="large" src=${e} alt=${i}></app-image>
   </section>
-`;o("section-coming-soon-intro",{props:B,styles:j,template:I});var M=`
+`;o("section-coming-soon-intro",{props:B,styles:j,template:I});var D=`
   :host {
     display: flex;
     gap: 2rem;
@@ -510,13 +510,13 @@ function h(t,e){if(t===void 0){if(e===Array)return[];if(e===Object)return{};if(e
     font-weight: var(--font-regular);
     margin-bottom: 0.5rem;
   }
-`,D={title:String,subTitle:String,href:String},F=({title:t,subTitle:e,href:i})=>`
+`,M={title:String,subTitle:String,href:String},F=({title:t,subTitle:e,href:i})=>`
      <article>
       <span>${e}</span>
       <h3>${t}</h3>
       <app-link variant="plain" href=${i}>→</app-link>
      </article>
-`;o("capabilities-item",{props:D,styles:M,template:F});var J=`
+`;o("capabilities-item",{props:M,styles:D,template:F});var W=`
   :host {
     display: block;
   }
@@ -577,7 +577,7 @@ function h(t,e){if(t===void 0){if(e===Array)return[];if(e===Object)return{};if(e
         margin-top: 0.5rem;
     }
   }
-`,W=`
+`,J=`
     <section>
         <hgroup>
             <span>Capabilities</span>
@@ -605,7 +605,7 @@ function h(t,e){if(t===void 0){if(e===Array)return[];if(e===Object)return{};if(e
             </ol>
         </article>
     </section>
-`;o("section-web-interfaces-intro",{styles:J,template:W});var K=`
+`;o("section-web-interfaces-intro",{styles:W,template:J});var U=`
   :host {
     display: flex;
     align-items: center;
@@ -636,7 +636,7 @@ function h(t,e){if(t===void 0){if(e===Array)return[];if(e===Object)return{};if(e
       display: none;
     }
   }
-`,R={name:String,img:String,alt:String},U=({name:t,img:e="",alt:i=""})=>`
+`,K={name:String,img:String,alt:String},R=({name:t,img:e="",alt:i=""})=>`
     <h2>${t}</h2>
     <img
         src=${e}
@@ -644,7 +644,7 @@ function h(t,e){if(t===void 0){if(e===Array)return[];if(e===Object)return{};if(e
         height="36"
         width="76"
     />
-`;o("section-title",{props:R,styles:K,template:U});var V=`
+`;o("section-title",{props:K,styles:U,template:R});var V=`
   :host {
     display: block;
   }

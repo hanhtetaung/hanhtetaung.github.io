@@ -1,4 +1,4 @@
-function h(e,r){if(e===void 0){if(r===Array)return[];if(r===Object)return{};if(r===Boolean)return!1;if(r===Number)return 0;return}if(r===Boolean)return Boolean(e);if(r===Number)return Number(e);return e}function o(e,{props:r={},attrs:n=[],styles:m="",template:l}){let d=["props",...n];class c extends HTMLElement{static observedAttributes=d;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let t={},i=this.getAttribute("props");if(i)try{t=JSON.parse(i)}catch{t={}}let p={};for(let s of Object.keys(r))p[s]=h(t[s],r[s]);return p}_applyForwardedAttrs(){if(n.length===0)return;let t=this.shadowRoot.querySelector("[data-forward]");if(!t)return;for(let i of n)if(this.hasAttribute(i))t.setAttribute(i,this.getAttribute(i));else t.removeAttribute(i)}_render(){let t=this._getProps(),i=typeof l==="function"?l(t):l;this.shadowRoot.innerHTML=`<style>${m}</style>${i}`,this._applyForwardedAttrs()}}customElements.define(e,c)}var g=`
+function h(a,r){if(a===void 0){if(r===Array)return[];if(r===Object)return{};if(r===Boolean)return!1;if(r===Number)return 0;return}if(r===Boolean)return Boolean(a);if(r===Number)return Number(a);return a}function o(a,{props:r={},attrs:n=[],styles:m="",template:l}){let d=["props",...n];class c extends HTMLElement{static observedAttributes=d;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let t={},i=this.getAttribute("props");if(i)try{t=JSON.parse(i)}catch{t={}}let p={};for(let s of Object.keys(r))p[s]=h(t[s],r[s]);return p}_applyForwardedAttrs(){if(n.length===0)return;let t=this.shadowRoot.querySelector("[data-forward]");if(!t)return;for(let i of n)if(this.hasAttribute(i))t.setAttribute(i,this.getAttribute(i));else t.removeAttribute(i)}_render(){let t=this._getProps(),i=typeof l==="function"?l(t):l;this.shadowRoot.innerHTML=`<style>${m}</style>${i}`,this._applyForwardedAttrs()}}customElements.define(a,c)}var g=`
   :host {
     display: block;
   }
@@ -7,7 +7,7 @@ function h(e,r){if(e===void 0){if(r===Array)return[];if(r===Object)return{};if(r
     max-height: 7rem;
     width: auto;
   }
-`,f=["width","height","src","alt"],u=()=>"<img data-forward />";o("app-logo",{attrs:f,styles:g,template:u});var v=`
+`,f=["width","height","src","alt"],b=()=>"<img data-forward />";o("app-logo",{attrs:f,styles:g,template:b});var u=`
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -68,9 +68,9 @@ function h(e,r){if(e===void 0){if(r===Array)return[];if(r===Object)return{};if(r
        content: "➶";
      }
   }
-`,b=["href","target","rel","download"],y=`
+`,v=["href","target","rel","download"],y=`
   <a data-forward><slot></slot></a>
-`;o("app-link",{attrs:b,styles:v,template:y});var a="769px",B="992px";var w=[{href:"/",name:"Home"},{href:"/about",name:"About"},{href:"/credits",name:"Credits"},{href:"/hire-me",name:"Hire Me"},{href:"/thank-you",name:"Thank You"},{href:"/work/mmo",name:"MMO"},{href:"/work/bamboo",name:"Bamboo"},{href:"/work/terra",name:"Terra"},{href:"/work/au-van",name:"AU Van"},{href:"/work/portfolio",name:"Portfolio"},{href:"/work/sks-solar",name:"SKS Solar"},{href:"/writings/foundation-building-interfaces-at-scale",name:"Foundation"}],k=`
+`;o("app-link",{attrs:v,styles:u,template:y});var e="769px",B="992px";var w=[{href:"/",name:"Home"},{href:"/about",name:"About"},{href:"/credits",name:"Credits"},{href:"/hire-me",name:"Hire Me"},{href:"/thank-you",name:"Thank You"},{href:"/capabilities/design-system",name:"Design System"},{href:"/capabilities/user-interfaces",name:"User Interfaces"},{href:"/capabilities/web-interfaces",name:"Web Interfaces"},{href:"/work/terra",name:"Terra"},{href:"/work/bamboo",name:"Bamboo"},{href:"/work/mmo",name:"MMO"},{href:"/work/au-van",name:"AU Van"},{href:"/work/portfolio",name:"Portfolio"},{href:"/work/sks-solar",name:"SKS Solar"},{href:"/writings/foundation-building-interfaces-at-scale",name:"Foundation"}],k=`
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -79,7 +79,7 @@ function h(e,r){if(e===void 0){if(r===Array)return[];if(r===Object)return{};if(r
    display: flex;
    gap: 5rem;
 
-   @media (max-width: ${a}) {
+   @media (max-width: ${e}) {
         flex-direction: column;
         gap: 3rem;
         margin-block: 2rem;
@@ -108,7 +108,7 @@ function h(e,r){if(e===void 0){if(r===Array)return[];if(r===Object)return{};if(r
     max-height: 12.5ch;
     overflow: scroll;
 
-    @media (max-width: ${a}) {
+    @media (max-width: ${e}) {
         max-height: 20ch;
     }
   }
@@ -122,9 +122,9 @@ function h(e,r){if(e===void 0){if(r===Array)return[];if(r===Object)return{};if(r
         <span>Sitemap</span>
 
         <ol>
-            ${w.map((e)=>`
+            ${w.map((a)=>`
                 <li>
-                    <app-link variant="sitemap" href=${e.href} >${e.name}</app-link>
+                    <app-link variant="sitemap" href=${a.href} >${a.name}</app-link>
                 </li>
             `).join("")}
         </ol>
@@ -136,7 +136,7 @@ function h(e,r){if(e===void 0){if(r===Array)return[];if(r===Object)return{};if(r
     border-top: 1px solid var(--color-text);
     padding-top: 1rem;
 
-   @media (max-width: ${a}) {
+   @media (max-width: ${e}) {
         flex-direction: column-reverse;
         gap: 2rem;
         border: none;
@@ -147,7 +147,7 @@ function h(e,r){if(e===void 0){if(r===Array)return[];if(r===Object)return{};if(r
   p {
     margin: 0;
 
-    @media (max-width: ${a}) {
+    @media (max-width: ${e}) {
       border-top: 1px solid var(--color-text);
     padding-top: 1rem;
     }
@@ -169,7 +169,7 @@ function h(e,r){if(e===void 0){if(r===Array)return[];if(r===Object)return{};if(r
     text-transform: uppercase;
     
 
-    @media (max-width: ${a}) {
+    @media (max-width: ${e}) {
       display: inline-block;
       margin-bottom: 0.5rem;
     }
@@ -251,7 +251,7 @@ function h(e,r){if(e===void 0){if(r===Array)return[];if(r===Object)return{};if(r
     gap: 5rem;
   }
 
-  @media (max-width: ${a}) {
+  @media (max-width: ${e}) {
     article {
       display: block;
     }
@@ -324,7 +324,7 @@ function h(e,r){if(e===void 0){if(r===Array)return[];if(r===Object)return{};if(r
     box-shadow: none;
   }
 
-  @media (max-width: ${a}) {
+  @media (max-width: ${e}) {
     .header__navigation {
       gap: 4rem;
     }
@@ -358,7 +358,7 @@ function h(e,r){if(e===void 0){if(r===Array)return[];if(r===Object)return{};if(r
         </app-link>
       </div>
   </header>
-`;o("section-header",{template:P,styles:O});var _=`
+`;o("section-header",{template:P,styles:O});var S=`
   :host {
     --local-width: 3rem;
     --local-height: auto;
@@ -396,14 +396,14 @@ function h(e,r){if(e===void 0){if(r===Array)return[];if(r===Object)return{};if(r
   }
 
 
-`,N=["src","alt"],S=()=>'<img data-forward width="200" height="200"/>';o("app-icon",{attrs:N,styles:_,template:S});var C=`
+`,_=["src","alt"],N=()=>'<img data-forward width="200" height="200"/>';o("app-icon",{attrs:_,styles:S,template:N});var C=`
     section {
         margin-inline: auto;
         width: 80%;
         display: flex;
         gap: 3rem;
 
-        @media (max-width: ${a}) {
+        @media (max-width: ${e}) {
           display: block;
         }
     }

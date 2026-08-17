@@ -1,4 +1,4 @@
-function h(i,o){if(i===void 0){if(o===Array)return[];if(o===Object)return{};if(o===Boolean)return!1;if(o===Number)return 0;return}if(o===Boolean)return Boolean(i);if(o===Number)return Number(i);return i}function e(i,{props:o={},attrs:r=[],styles:m="",template:l}){let d=["props",...r];class c extends HTMLElement{static observedAttributes=d;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let a={},n=this.getAttribute("props");if(n)try{a=JSON.parse(n)}catch{a={}}let p={};for(let s of Object.keys(o))p[s]=h(a[s],o[s]);return p}_applyForwardedAttrs(){if(r.length===0)return;let a=this.shadowRoot.querySelector("[data-forward]");if(!a)return;for(let n of r)if(this.hasAttribute(n))a.setAttribute(n,this.getAttribute(n));else a.removeAttribute(n)}_render(){let a=this._getProps(),n=typeof l==="function"?l(a):l;this.shadowRoot.innerHTML=`<style>${m}</style>${n}`,this._applyForwardedAttrs()}}customElements.define(i,c)}var f=`
+function h(i,a){if(i===void 0){if(a===Array)return[];if(a===Object)return{};if(a===Boolean)return!1;if(a===Number)return 0;return}if(a===Boolean)return Boolean(i);if(a===Number)return Number(i);return i}function e(i,{props:a={},attrs:r=[],styles:m="",template:l}){let d=["props",...r];class c extends HTMLElement{static observedAttributes=d;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let o={},n=this.getAttribute("props");if(n)try{o=JSON.parse(n)}catch{o={}}let p={};for(let s of Object.keys(a))p[s]=h(o[s],a[s]);return p}_applyForwardedAttrs(){if(r.length===0)return;let o=this.shadowRoot.querySelector("[data-forward]");if(!o)return;for(let n of r)if(this.hasAttribute(n))o.setAttribute(n,this.getAttribute(n));else o.removeAttribute(n)}_render(){let o=this._getProps(),n=typeof l==="function"?l(o):l;this.shadowRoot.innerHTML=`<style>${m}</style>${n}`,this._applyForwardedAttrs()}}customElements.define(i,c)}var f=`
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -70,7 +70,7 @@ function h(i,o){if(i===void 0){if(o===Array)return[];if(o===Object)return{};if(o
     max-height: 7rem;
     width: auto;
   }
-`,y=["width","height","src","alt"],b=()=>"<img data-forward />";e("app-logo",{attrs:y,styles:v,template:b});var t="769px",oe="992px";var w=`
+`,y=["width","height","src","alt"],b=()=>"<img data-forward />";e("app-logo",{attrs:y,styles:v,template:b});var t="769px",ae="992px";var w=`
   :host {
     display: block;
   }
@@ -139,7 +139,7 @@ function h(i,o){if(i===void 0){if(o===Array)return[];if(o===Object)return{};if(o
         </app-link>
       </div>
   </header>
-`;e("section-header",{template:k,styles:w});var x=[{href:"/",name:"Home"},{href:"/about",name:"About"},{href:"/credits",name:"Credits"},{href:"/hire-me",name:"Hire Me"},{href:"/thank-you",name:"Thank You"},{href:"/work/mmo",name:"MMO"},{href:"/work/bamboo",name:"Bamboo"},{href:"/work/terra",name:"Terra"},{href:"/work/au-van",name:"AU Van"},{href:"/work/portfolio",name:"Portfolio"},{href:"/work/sks-solar",name:"SKS Solar"},{href:"/writings/foundation-building-interfaces-at-scale",name:"Foundation"}],S=`
+`;e("section-header",{template:k,styles:w});var x=[{href:"/",name:"Home"},{href:"/about",name:"About"},{href:"/credits",name:"Credits"},{href:"/hire-me",name:"Hire Me"},{href:"/thank-you",name:"Thank You"},{href:"/capabilities/design-system",name:"Design System"},{href:"/capabilities/user-interfaces",name:"User Interfaces"},{href:"/capabilities/web-interfaces",name:"Web Interfaces"},{href:"/work/terra",name:"Terra"},{href:"/work/bamboo",name:"Bamboo"},{href:"/work/mmo",name:"MMO"},{href:"/work/au-van",name:"AU Van"},{href:"/work/portfolio",name:"Portfolio"},{href:"/work/sks-solar",name:"SKS Solar"},{href:"/writings/foundation-building-interfaces-at-scale",name:"Foundation"}],S=`
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -433,7 +433,7 @@ function h(i,o){if(i===void 0){if(o===Array)return[];if(o===Object)return{};if(o
     padding: 0;
     padding-inline: 2rem;
   }
-`,N=`
+`,I=`
   <section>
     <app-image
     variant="large"
@@ -465,7 +465,7 @@ function h(i,o){if(i===void 0){if(o===Array)return[];if(o===Object)return{};if(o
         </ul>
       </article>
   </section>
-`;e("section-mmo-intro",{styles:M,template:N});var _=`
+`;e("section-mmo-intro",{styles:M,template:I});var N=`
   :host {
     display: flex;
     align-items: center;
@@ -496,15 +496,15 @@ function h(i,o){if(i===void 0){if(o===Array)return[];if(o===Object)return{};if(o
       display: none;
     }
   }
-`,C={name:String,img:String,alt:String},R=({name:i,img:o="",alt:r=""})=>`
+`,W={name:String,img:String,alt:String},_=({name:i,img:a="",alt:r=""})=>`
     <h2>${i}</h2>
     <img
-        src=${o}
+        src=${a}
         alt=${r}
         height="36"
         width="76"
     />
-`;e("section-title",{props:C,styles:_,template:R});var T=`
+`;e("section-title",{props:W,styles:N,template:_});var C=`
   :host {
     display: block;
   }
@@ -513,7 +513,7 @@ function h(i,o){if(i===void 0){if(o===Array)return[];if(o===Object)return{};if(o
     width: 80%;
     margin-inline: auto;
   }
-`,W=`
+`,R=`
   <section>
     <section-title
         variant="text"
@@ -529,7 +529,7 @@ function h(i,o){if(i===void 0){if(o===Array)return[];if(o===Object)return{};if(o
           </p>
       </article>
   </section>
-`;e("section-mmo-about",{styles:T,template:W});var I=`
+`;e("section-mmo-about",{styles:C,template:R});var T=`
   :host {
     display: block;
   }
@@ -591,7 +591,7 @@ function h(i,o){if(i===void 0){if(o===Array)return[];if(o===Object)return{};if(o
           </li>
         </ul>
   </section>
-`;e("section-mmo-voices-from-field",{styles:I,template:j});var F=`
+`;e("section-mmo-voices-from-field",{styles:T,template:j});var F=`
   :host {
     display: block;
   }

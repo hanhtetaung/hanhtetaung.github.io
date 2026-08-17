@@ -1,4 +1,4 @@
-function h(e,a){if(e===void 0){if(a===Array)return[];if(a===Object)return{};if(a===Boolean)return!1;if(a===Number)return 0;return}if(a===Boolean)return Boolean(e);if(a===Number)return Number(e);return e}function t(e,{props:a={},attrs:n=[],styles:m="",template:l}){let d=["props",...n];class c extends HTMLElement{static observedAttributes=d;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let i={},r=this.getAttribute("props");if(r)try{i=JSON.parse(r)}catch{i={}}let p={};for(let s of Object.keys(a))p[s]=h(i[s],a[s]);return p}_applyForwardedAttrs(){if(n.length===0)return;let i=this.shadowRoot.querySelector("[data-forward]");if(!i)return;for(let r of n)if(this.hasAttribute(r))i.setAttribute(r,this.getAttribute(r));else i.removeAttribute(r)}_render(){let i=this._getProps(),r=typeof l==="function"?l(i):l;this.shadowRoot.innerHTML=`<style>${m}</style>${r}`,this._applyForwardedAttrs()}}customElements.define(e,c)}var g=`
+function h(t,o){if(t===void 0){if(o===Array)return[];if(o===Object)return{};if(o===Boolean)return!1;if(o===Number)return 0;return}if(o===Boolean)return Boolean(t);if(o===Number)return Number(t);return t}function e(t,{props:o={},attrs:n=[],styles:m="",template:l}){let d=["props",...n];class c extends HTMLElement{static observedAttributes=d;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let i={},r=this.getAttribute("props");if(r)try{i=JSON.parse(r)}catch{i={}}let p={};for(let s of Object.keys(o))p[s]=h(i[s],o[s]);return p}_applyForwardedAttrs(){if(n.length===0)return;let i=this.shadowRoot.querySelector("[data-forward]");if(!i)return;for(let r of n)if(this.hasAttribute(r))i.setAttribute(r,this.getAttribute(r));else i.removeAttribute(r)}_render(){let i=this._getProps(),r=typeof l==="function"?l(i):l;this.shadowRoot.innerHTML=`<style>${m}</style>${r}`,this._applyForwardedAttrs()}}customElements.define(t,c)}var g=`
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -61,7 +61,7 @@ function h(e,a){if(e===void 0){if(a===Array)return[];if(a===Object)return{};if(a
   }
 `,f=["href","target","rel","download"],u=`
   <a data-forward><slot></slot></a>
-`;t("app-link",{attrs:f,styles:g,template:u});var v=`
+`;e("app-link",{attrs:f,styles:g,template:u});var b=`
   :host {
     display: block;
   }
@@ -70,7 +70,7 @@ function h(e,a){if(e===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     max-height: 7rem;
     width: auto;
   }
-`,b=["width","height","src","alt"],y=()=>"<img data-forward />";t("app-logo",{attrs:b,styles:v,template:y});var o="769px",U="992px";var k=`
+`,v=["width","height","src","alt"],y=()=>"<img data-forward />";e("app-logo",{attrs:v,styles:b,template:y});var a="769px",q="992px";var k=`
   :host {
     display: block;
   }
@@ -105,7 +105,7 @@ function h(e,a){if(e===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     box-shadow: none;
   }
 
-  @media (max-width: ${o}) {
+  @media (max-width: ${a}) {
     .header__navigation {
       gap: 4rem;
     }
@@ -139,7 +139,7 @@ function h(e,a){if(e===void 0){if(a===Array)return[];if(a===Object)return{};if(a
         </app-link>
       </div>
   </header>
-`;t("section-header",{template:w,styles:k});var x=[{href:"/",name:"Home"},{href:"/about",name:"About"},{href:"/credits",name:"Credits"},{href:"/hire-me",name:"Hire Me"},{href:"/thank-you",name:"Thank You"},{href:"/work/mmo",name:"MMO"},{href:"/work/bamboo",name:"Bamboo"},{href:"/work/terra",name:"Terra"},{href:"/work/au-van",name:"AU Van"},{href:"/work/portfolio",name:"Portfolio"},{href:"/work/sks-solar",name:"SKS Solar"},{href:"/writings/foundation-building-interfaces-at-scale",name:"Foundation"}],A=`
+`;e("section-header",{template:w,styles:k});var x=[{href:"/",name:"Home"},{href:"/about",name:"About"},{href:"/credits",name:"Credits"},{href:"/hire-me",name:"Hire Me"},{href:"/thank-you",name:"Thank You"},{href:"/capabilities/design-system",name:"Design System"},{href:"/capabilities/user-interfaces",name:"User Interfaces"},{href:"/capabilities/web-interfaces",name:"Web Interfaces"},{href:"/work/terra",name:"Terra"},{href:"/work/bamboo",name:"Bamboo"},{href:"/work/mmo",name:"MMO"},{href:"/work/au-van",name:"AU Van"},{href:"/work/portfolio",name:"Portfolio"},{href:"/work/sks-solar",name:"SKS Solar"},{href:"/writings/foundation-building-interfaces-at-scale",name:"Foundation"}],A=`
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -148,7 +148,7 @@ function h(e,a){if(e===void 0){if(a===Array)return[];if(a===Object)return{};if(a
    display: flex;
    gap: 5rem;
 
-   @media (max-width: ${o}) {
+   @media (max-width: ${a}) {
         flex-direction: column;
         gap: 3rem;
         margin-block: 2rem;
@@ -177,7 +177,7 @@ function h(e,a){if(e===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     max-height: 12.5ch;
     overflow: scroll;
 
-    @media (max-width: ${o}) {
+    @media (max-width: ${a}) {
         max-height: 20ch;
     }
   }
@@ -186,26 +186,26 @@ function h(e,a){if(e===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     margin-right: 5rem;
     margin-bottom: 0.3rem;
   }
-`,$=()=>`
+`,S=()=>`
     <nav>
         <span>Sitemap</span>
 
         <ol>
-            ${x.map((e)=>`
+            ${x.map((t)=>`
                 <li>
-                    <app-link variant="sitemap" href=${e.href} >${e.name}</app-link>
+                    <app-link variant="sitemap" href=${t.href} >${t.name}</app-link>
                 </li>
             `).join("")}
         </ol>
     </nav>
-`;t("footer-nav",{styles:A,template:$});var S=`
+`;e("footer-nav",{styles:A,template:S});var $=`
   :host {
    display: flex;
     justify-content: space-between;
     border-top: 1px solid var(--color-text);
     padding-top: 1rem;
 
-   @media (max-width: ${o}) {
+   @media (max-width: ${a}) {
         flex-direction: column-reverse;
         gap: 2rem;
         border: none;
@@ -216,7 +216,7 @@ function h(e,a){if(e===void 0){if(a===Array)return[];if(a===Object)return{};if(a
   p {
     margin: 0;
 
-    @media (max-width: ${o}) {
+    @media (max-width: ${a}) {
       border-top: 1px solid var(--color-text);
     padding-top: 1rem;
     }
@@ -238,7 +238,7 @@ function h(e,a){if(e===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     text-transform: uppercase;
     
 
-    @media (max-width: ${o}) {
+    @media (max-width: ${a}) {
       display: inline-block;
       margin-bottom: 0.5rem;
     }
@@ -288,7 +288,7 @@ function h(e,a){if(e===void 0){if(a===Array)return[];if(a===Object)return{};if(a
               </li>
           </ul>
 </nav>
-`;t("footer-copyright",{styles:S,template:_});var H=`
+`;e("footer-copyright",{styles:$,template:_});var H=`
   :host {
     --local-bg-color: var(--color-bg-secondary);
 
@@ -320,7 +320,7 @@ function h(e,a){if(e===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     gap: 5rem;
   }
 
-  @media (max-width: ${o}) {
+  @media (max-width: ${a}) {
     article {
       display: block;
     }
@@ -358,7 +358,7 @@ function h(e,a){if(e===void 0){if(a===Array)return[];if(a===Object)return{};if(a
 
       <footer-copyright></footer-copyright>
   </footer>
-`;t("section-footer",{styles:H,template:O});var P=`
+`;e("section-footer",{styles:H,template:O});var P=`
   :host {
     display: block;
   }
@@ -411,7 +411,7 @@ function h(e,a){if(e===void 0){if(a===Array)return[];if(a===Object)return{};if(a
       </li>
     </ul>
   </section>
-`;t("section-foundation-building-interfaces-at-scale-intro",{styles:P,template:E});var z=`
+`;e("section-foundation-building-interfaces-at-scale-intro",{styles:P,template:E});var z=`
   :host {
     display: flex;
     align-items: center;
@@ -442,15 +442,15 @@ function h(e,a){if(e===void 0){if(a===Array)return[];if(a===Object)return{};if(a
       display: none;
     }
   }
-`,N={name:String,img:String,alt:String},T=({name:e,img:a="",alt:n=""})=>`
-    <h2>${e}</h2>
+`,N={name:String,img:String,alt:String},T=({name:t,img:o="",alt:n=""})=>`
+    <h2>${t}</h2>
     <img
-        src=${a}
+        src=${o}
         alt=${n}
         height="36"
         width="76"
     />
-`;t("section-title",{props:N,styles:z,template:T});var B=`
+`;e("section-title",{props:N,styles:z,template:T});var B=`
   :host {
     --local-width: 5rem;
     --local-heigth: auto;
@@ -481,13 +481,13 @@ function h(e,a){if(e===void 0){if(a===Array)return[];if(a===Object)return{};if(a
    :host([variant="full"]) {
     --local-width: 100%;
   }
-`,C=["width","height","src","alt"],L=()=>"<img data-forward />";t("app-image",{attrs:C,styles:B,template:L});var j=`
+`,C=["width","height","src","alt"],L=()=>"<img data-forward />";e("app-image",{attrs:C,styles:B,template:L});var j=`
   :host {
     display: grid;
     grid-template-columns: 1fr 2.5fr;
 
 
-    @media (max-width: ${o}) {
+    @media (max-width: ${a}) {
         display: block;
     }
   }
@@ -503,13 +503,13 @@ function h(e,a){if(e===void 0){if(a===Array)return[];if(a===Object)return{};if(a
   :host([variant="block"]) {
     display: block;
   }
-`,D={title:String},F=({title:e})=>`
-        <h3>${e}</h3>
+`,D={title:String},I=({title:t})=>`
+        <h3>${t}</h3>
 
         <article>
             <slot></slot>
         </article>
-`;t("app-article-paragraph",{props:D,styles:j,template:F});var M=`
+`;e("app-article-paragraph",{props:D,styles:j,template:I});var F=`
   :host {
     display: block;
   }
@@ -535,7 +535,7 @@ function h(e,a){if(e===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     border-top: 1px dashed var(--color-text);
     padding-top: 5rem;
   }
-`,I=`
+`,M=`
   <section >
     <section-title variant="text" props='{"name": "Atomic Design Principle"}'></section-title>
 
@@ -627,7 +627,7 @@ function h(e,a){if(e===void 0){if(a===Array)return[];if(a===Object)return{};if(a
       </li>
     </ul>
   </section>
-`;t("section-atomic-design-principle",{styles:M,template:I});var R=`
+`;e("section-atomic-design-principle",{styles:F,template:M});var R=`
   :host {
     display: block;
   }
@@ -757,7 +757,7 @@ function h(e,a){if(e===void 0){if(a===Array)return[];if(a===Object)return{};if(a
       </li>
 </ul>
   </section>
-`;t("section-design-token-architecture",{styles:R,template:G});var K=`
+`;e("section-design-token-architecture",{styles:R,template:G});var K=`
   :host {
     display: block;
   }
@@ -774,7 +774,7 @@ function h(e,a){if(e===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     flex-direction: column;
     gap: 0.5rem;
   }
-`,V=`
+`,U=`
   <section>
     <section-title variant="text" props='{"name": "References"}'></section-title>
 
@@ -801,4 +801,4 @@ function h(e,a){if(e===void 0){if(a===Array)return[];if(a===Object)return{};if(a
       </li>
     </ul>
   </section>
-`;t("section-foundation-building-interfaces-at-scale-references",{styles:K,template:V});
+`;e("section-foundation-building-interfaces-at-scale-references",{styles:K,template:U});
