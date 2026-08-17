@@ -1,4 +1,4 @@
-function h(t,e){if(t===void 0){if(e===Array)return[];if(e===Object)return{};if(e===Boolean)return!1;if(e===Number)return 0;return}if(e===Boolean)return Boolean(t);if(e===Number)return Number(t);return t}function o(t,{props:e={},attrs:n=[],styles:p="",template:l}){let d=["props",...n];class c extends HTMLElement{static observedAttributes=d;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let r={},i=this.getAttribute("props");if(i)try{r=JSON.parse(i)}catch{r={}}let m={};for(let s of Object.keys(e))m[s]=h(r[s],e[s]);return m}_applyForwardedAttrs(){if(n.length===0)return;let r=this.shadowRoot.querySelector("[data-forward]");if(!r)return;for(let i of n)if(this.hasAttribute(i))r.setAttribute(i,this.getAttribute(i));else r.removeAttribute(i)}_render(){let r=this._getProps(),i=typeof l==="function"?l(r):l;this.shadowRoot.innerHTML=`<style>${p}</style>${i}`,this._applyForwardedAttrs()}}customElements.define(t,c)}var g=`
+function h(e,t){if(e===void 0){if(t===Array)return[];if(t===Object)return{};if(t===Boolean)return!1;if(t===Number)return 0;return}if(t===Boolean)return Boolean(e);if(t===Number)return Number(e);return e}function o(e,{props:t={},attrs:n=[],styles:p="",template:l}){let d=["props",...n];class c extends HTMLElement{static observedAttributes=d;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let r={},i=this.getAttribute("props");if(i)try{r=JSON.parse(i)}catch{r={}}let m={};for(let s of Object.keys(t))m[s]=h(r[s],t[s]);return m}_applyForwardedAttrs(){if(n.length===0)return;let r=this.shadowRoot.querySelector("[data-forward]");if(!r)return;for(let i of n)if(this.hasAttribute(i))r.setAttribute(i,this.getAttribute(i));else r.removeAttribute(i)}_render(){let r=this._getProps(),i=typeof l==="function"?l(r):l;this.shadowRoot.innerHTML=`<style>${p}</style>${i}`,this._applyForwardedAttrs()}}customElements.define(e,c)}var g=`
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -61,7 +61,7 @@ function h(t,e){if(t===void 0){if(e===Array)return[];if(e===Object)return{};if(e
   }
 `,f=["href","target","rel","download"],u=`
   <a data-forward><slot></slot></a>
-`;o("app-link",{attrs:f,styles:g,template:u});var v=`
+`;o("app-link",{attrs:f,styles:g,template:u});var b=`
   :host {
     display: block;
   }
@@ -70,7 +70,7 @@ function h(t,e){if(t===void 0){if(e===Array)return[];if(e===Object)return{};if(e
     max-height: 7rem;
     width: auto;
   }
-`,b=["width","height","src","alt"],w=()=>"<img data-forward />";o("app-logo",{attrs:b,styles:v,template:w});var a="769px",V="992px";var y=`
+`,v=["width","height","src","alt"],w=()=>"<img data-forward />";o("app-logo",{attrs:v,styles:b,template:w});var a="769px",R="992px";var y=`
   :host {
     display: block;
   }
@@ -139,7 +139,7 @@ function h(t,e){if(t===void 0){if(e===Array)return[];if(e===Object)return{};if(e
         </app-link>
       </div>
   </header>
-`;o("section-header",{template:k,styles:y});var x=[{href:"/",name:"Home"},{href:"/about",name:"About"},{href:"/credits",name:"Credits"},{href:"/hire-me",name:"Hire Me"},{href:"/thank-you",name:"Thank You"},{href:"/work/mmo",name:"MMO"},{href:"/work/bamboo",name:"Bamboo"},{href:"/work/terra",name:"Terra"},{href:"/work/au-van",name:"AU Van"},{href:"/work/portfolio",name:"Portfolio"},{href:"/work/sks-solar",name:"SKS Solar"},{href:"/writings/foundation-building-interfaces-at-scale",name:"Foundation"}],$=`
+`;o("section-header",{template:k,styles:y});var x=[{href:"/",name:"Home"},{href:"/about",name:"About"},{href:"/credits",name:"Credits"},{href:"/hire-me",name:"Hire Me"},{href:"/thank-you",name:"Thank You"},{href:"/capabilities/design-system",name:"Design System"},{href:"/capabilities/user-interfaces",name:"User Interfaces"},{href:"/capabilities/web-interfaces",name:"Web Interfaces"},{href:"/work/terra",name:"Terra"},{href:"/work/bamboo",name:"Bamboo"},{href:"/work/mmo",name:"MMO"},{href:"/work/au-van",name:"AU Van"},{href:"/work/portfolio",name:"Portfolio"},{href:"/work/sks-solar",name:"SKS Solar"},{href:"/writings/foundation-building-interfaces-at-scale",name:"Foundation"}],$=`
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -191,9 +191,9 @@ function h(t,e){if(t===void 0){if(e===Array)return[];if(e===Object)return{};if(e
         <span>Sitemap</span>
 
         <ol>
-            ${x.map((t)=>`
+            ${x.map((e)=>`
                 <li>
-                    <app-link variant="sitemap" href=${t.href} >${t.name}</app-link>
+                    <app-link variant="sitemap" href=${e.href} >${e.name}</app-link>
                 </li>
             `).join("")}
         </ol>
@@ -454,18 +454,12 @@ function h(t,e){if(t===void 0){if(e===Array)return[];if(e===Object)return{};if(e
   p {
     margin: 0;
   }
-
-  /* @media (max-width: ${a}) {
-          app-image {
-            display: none;
-          }
-        } */
-`,B={name:String,img:String,alt:String},z=({name:t="Name",img:e="/assets/images/coming-soon.jpg",alt:n="Coming Soon"})=>`
+`,B={name:String,img:String,alt:String},z=({name:e="Name",img:t="/assets/images/coming-soon.jpg",alt:n="Coming Soon"})=>`
   <section>
       <div>
         <hgroup>
           <p>Coming Soon</p>
-          <h1>${t}</h1>
+          <h1>${e}</h1>
         </hgroup>
 
         <app-icon
@@ -475,14 +469,14 @@ function h(t,e){if(t===void 0){if(e===Array)return[];if(e===Object)return{};if(e
         ></app-icon>
       </div>
 
-      <app-image variant="large" src=${e} alt=${n}></app-image>
+      <app-image variant="large" src=${t} alt=${n}></app-image>
   </section>
-`;o("section-coming-soon-intro",{props:B,styles:T,template:z});var M=`
+`;o("section-coming-soon-intro",{props:B,styles:T,template:z});var I=`
   :host {
     display: block;
   }
-`,F=`
+`,M=`
   <section-coming-soon-intro
     props='{"name":"Bamboo", "img": "/assets/images/case-study/bamboo/thumbnail.avif", "alt": "Bamboo Interface"}'
   ></section-coming-soon-intro>
-`;o("section-bamboo-intro",{styles:M,template:F});
+`;o("section-bamboo-intro",{styles:I,template:M});

@@ -1,4 +1,4 @@
-function h(e,a){if(e===void 0){if(a===Array)return[];if(a===Object)return{};if(a===Boolean)return!1;if(a===Number)return 0;return}if(a===Boolean)return Boolean(e);if(a===Number)return Number(e);return e}function t(e,{props:a={},attrs:r=[],styles:n="",template:s}){let c=["props",...r];class p extends HTMLElement{static observedAttributes=c;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let i={},l=this.getAttribute("props");if(l)try{i=JSON.parse(l)}catch{i={}}let g={};for(let m of Object.keys(a))g[m]=h(i[m],a[m]);return g}_applyForwardedAttrs(){if(r.length===0)return;let i=this.shadowRoot.querySelector("[data-forward]");if(!i)return;for(let l of r)if(this.hasAttribute(l))i.setAttribute(l,this.getAttribute(l));else i.removeAttribute(l)}_render(){let i=this._getProps(),l=typeof s==="function"?s(i):s;this.shadowRoot.innerHTML=`<style>${n}</style>${l}`,this._applyForwardedAttrs()}}customElements.define(e,p)}var d=`
+function h(e,a){if(e===void 0){if(a===Array)return[];if(a===Object)return{};if(a===Boolean)return!1;if(a===Number)return 0;return}if(a===Boolean)return Boolean(e);if(a===Number)return Number(e);return e}function t(e,{props:a={},attrs:r=[],styles:l="",template:s}){let c=["props",...r];class p extends HTMLElement{static observedAttributes=c;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let i={},n=this.getAttribute("props");if(n)try{i=JSON.parse(n)}catch{i={}}let g={};for(let m of Object.keys(a))g[m]=h(i[m],a[m]);return g}_applyForwardedAttrs(){if(r.length===0)return;let i=this.shadowRoot.querySelector("[data-forward]");if(!i)return;for(let n of r)if(this.hasAttribute(n))i.setAttribute(n,this.getAttribute(n));else i.removeAttribute(n)}_render(){let i=this._getProps(),n=typeof s==="function"?s(i):s;this.shadowRoot.innerHTML=`<style>${l}</style>${n}`,this._applyForwardedAttrs()}}customElements.define(e,p)}var d=`
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -139,7 +139,7 @@ function h(e,a){if(e===void 0){if(a===Array)return[];if(a===Object)return{};if(a
         </app-link>
       </div>
   </header>
-`;t("section-header",{template:k,styles:y});var x=[{href:"/",name:"Home"},{href:"/about",name:"About"},{href:"/credits",name:"Credits"},{href:"/hire-me",name:"Hire Me"},{href:"/thank-you",name:"Thank You"},{href:"/work/mmo",name:"MMO"},{href:"/work/bamboo",name:"Bamboo"},{href:"/work/terra",name:"Terra"},{href:"/work/au-van",name:"AU Van"},{href:"/work/portfolio",name:"Portfolio"},{href:"/work/sks-solar",name:"SKS Solar"},{href:"/writings/foundation-building-interfaces-at-scale",name:"Foundation"}],$=`
+`;t("section-header",{template:k,styles:y});var x=[{href:"/",name:"Home"},{href:"/about",name:"About"},{href:"/credits",name:"Credits"},{href:"/hire-me",name:"Hire Me"},{href:"/thank-you",name:"Thank You"},{href:"/capabilities/design-system",name:"Design System"},{href:"/capabilities/user-interfaces",name:"User Interfaces"},{href:"/capabilities/web-interfaces",name:"Web Interfaces"},{href:"/work/terra",name:"Terra"},{href:"/work/bamboo",name:"Bamboo"},{href:"/work/mmo",name:"MMO"},{href:"/work/au-van",name:"AU Van"},{href:"/work/portfolio",name:"Portfolio"},{href:"/work/sks-solar",name:"SKS Solar"},{href:"/writings/foundation-building-interfaces-at-scale",name:"Foundation"}],$=`
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -288,7 +288,7 @@ function h(e,a){if(e===void 0){if(a===Array)return[];if(a===Object)return{};if(a
               </li>
           </ul>
 </nav>
-`;t("footer-copyright",{styles:A,template:H});var N=`
+`;t("footer-copyright",{styles:A,template:H});var I=`
   :host {
     --local-bg-color: var(--color-bg-secondary);
 
@@ -336,7 +336,7 @@ function h(e,a){if(e===void 0){if(a===Array)return[];if(a===Object)return{};if(a
   hr {
     color: var(--color-secondary);
   }
-`,O=`
+`,N=`
   <footer>
       <article>
         <div>
@@ -358,7 +358,7 @@ function h(e,a){if(e===void 0){if(a===Array)return[];if(a===Object)return{};if(a
 
       <footer-copyright></footer-copyright>
   </footer>
-`;t("section-footer",{styles:N,template:O});var z=`
+`;t("section-footer",{styles:I,template:N});var O=`
   :host {
     --local-width: 5rem;
     --local-heigth: auto;
@@ -389,7 +389,7 @@ function h(e,a){if(e===void 0){if(a===Array)return[];if(a===Object)return{};if(a
    :host([variant="full"]) {
     --local-width: 100%;
   }
-`,I=["width","height","src","alt"],M=()=>"<img data-forward />";t("app-image",{attrs:I,styles:z,template:M});var T=`
+`,z=["width","height","src","alt"],M=()=>"<img data-forward />";t("app-image",{attrs:z,styles:O,template:M});var T=`
   section {
     width: 80%;
     margin-inline: auto;
@@ -492,7 +492,7 @@ function h(e,a){if(e===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     display: flex;
     flex-wrap: wrap;
   }
-`,F=()=>`
+`,W=()=>`
   <section>
     <section-title
         props='${JSON.stringify({name:"Tech Collection",img:"/assets/icons/penguin.svg",alt:"Penguin Logo"})}'
@@ -513,7 +513,7 @@ function h(e,a){if(e===void 0){if(a===Array)return[];if(a===Object)return{};if(a
             `).join("")}
       </ul>
   </section>
-`;t("section-tech-collection",{styles:_,template:F});var W=`
+`;t("section-tech-collection",{styles:_,template:W});var D=`
   :host {
     --local-width: 3rem;
     --local-height: auto;
@@ -551,7 +551,7 @@ function h(e,a){if(e===void 0){if(a===Array)return[];if(a===Object)return{};if(a
   }
 
 
-`,D=["src","alt"],q=()=>'<img data-forward width="200" height="200"/>';t("app-icon",{attrs:D,styles:W,template:q});var R=[{src:"/assets/icons/bird-watching.svg",alt:"Watching Bird",text:"I love birds"},{src:"/assets/icons/seafood.svg",alt:"Seafood",text:"I’m allergic to seafood"},{src:"/assets/icons/travelling.svg",alt:"Travelling",text:"I enjoy travelling"},{src:"/assets/icons/running.svg",alt:"Running",text:"I like running"}],Y=`
+`,F=["src","alt"],q=()=>'<img data-forward width="200" height="200"/>';t("app-icon",{attrs:F,styles:D,template:q});var R=[{src:"/assets/icons/bird-watching.svg",alt:"Watching Bird",text:"I love birds"},{src:"/assets/icons/seafood.svg",alt:"Seafood",text:"I’m allergic to seafood"},{src:"/assets/icons/travelling.svg",alt:"Travelling",text:"I enjoy travelling"},{src:"/assets/icons/running.svg",alt:"Running",text:"I like running"}],U=`
   section {
     width: 80%;
     margin-inline: auto;
@@ -569,7 +569,7 @@ function h(e,a){if(e===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     margin: 0;
     text-align: center;
   }
-`,j=()=>`
+`,Y=()=>`
   <section>
        <section-title
         props='${JSON.stringify({name:"Random Facts",img:"/assets/icons/birds-singing.svg",alt:"Birds-singing Logo"})}'
@@ -586,7 +586,7 @@ function h(e,a){if(e===void 0){if(a===Array)return[];if(a===Object)return{};if(a
             `).join("")}
       </ul>
   </section>
-`;t("section-random-facts",{styles:Y,template:j});var U="3 Nov 2000",J=70,G=`
+`;t("section-random-facts",{styles:U,template:Y});var j="3 Nov 2000",J=70,G=`
   section {
     width: 80%;
     margin-inline: auto;
@@ -642,7 +642,7 @@ function h(e,a){if(e===void 0){if(a===Array)return[];if(a===Object)return{};if(a
         background: var(--color-secondary);
         border-color: var(--color-secondary);
     }
-`,V=(e,a)=>{let r=new Date(e),n=new Date,s=n.getFullYear()-r.getFullYear()-(n.getMonth()<r.getMonth()||n.getMonth()===r.getMonth()&&n.getDate()<r.getDate()?1:0),c=s*52+Math.min(51,Math.floor((n-new Date(r.getFullYear()+s,r.getMonth(),r.getDate()))/604800000));return Array.from({length:a*52},(p,i)=>`<li class="${i<c?"lived":""}"></li>`).join("")},K=()=>`
+`,V=(e,a)=>{let r=new Date(e),l=new Date,s=l.getFullYear()-r.getFullYear()-(l.getMonth()<r.getMonth()||l.getMonth()===r.getMonth()&&l.getDate()<r.getDate()?1:0),c=s*52+Math.min(51,Math.floor((l-new Date(r.getFullYear()+s,r.getMonth(),r.getDate()))/604800000));return Array.from({length:a*52},(p,i)=>`<li class="${i<c?"lived":""}"></li>`).join("")},K=()=>`
   <section>
     <section-title
       props='${JSON.stringify({name:"Life in Weeks",img:"/assets/icons/parrot.svg",alt:"Birds-singing Logo"})}'
@@ -651,7 +651,7 @@ function h(e,a){if(e===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     <article>
       <span class="ages">Ages (70 yrs) ⇨</span>
       <span class="weeks-axis">⇦ Weeks of the year</span>
-      <ul>${V(U,J)}</ul>
+      <ul>${V(j,J)}</ul>
     </article>
 
     <p>Based on this post: <app-link variant="underline" href="https://waitbutwhy.com/2014/05/life-weeks.html" target="_blank">Your Life in Weeks</app-link></p>

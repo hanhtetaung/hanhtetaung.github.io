@@ -1,4 +1,4 @@
-function d(e,n){if(e===void 0){if(n===Array)return[];if(n===Object)return{};if(n===Boolean)return!1;if(n===Number)return 0;return}if(n===Boolean)return Boolean(e);if(n===Number)return Number(e);return e}function o(e,{props:n={},attrs:i=[],styles:s="",template:c}){let h=["props",...i];class m extends HTMLElement{static observedAttributes=h;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let a={},r=this.getAttribute("props");if(r)try{a=JSON.parse(r)}catch{a={}}let p={};for(let l of Object.keys(n))p[l]=d(a[l],n[l]);return p}_applyForwardedAttrs(){if(i.length===0)return;let a=this.shadowRoot.querySelector("[data-forward]");if(!a)return;for(let r of i)if(this.hasAttribute(r))a.setAttribute(r,this.getAttribute(r));else a.removeAttribute(r)}_render(){let a=this._getProps(),r=typeof c==="function"?c(a):c;this.shadowRoot.innerHTML=`<style>${s}</style>${r}`,this._applyForwardedAttrs()}}customElements.define(e,m)}var g=`
+function h(e,a){if(e===void 0){if(a===Array)return[];if(a===Object)return{};if(a===Boolean)return!1;if(a===Number)return 0;return}if(a===Boolean)return Boolean(e);if(a===Number)return Number(e);return e}function o(e,{props:a={},attrs:n=[],styles:l="",template:s}){let m=["props",...n];class p extends HTMLElement{static observedAttributes=m;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let t={},i=this.getAttribute("props");if(i)try{t=JSON.parse(i)}catch{t={}}let d={};for(let c of Object.keys(a))d[c]=h(t[c],a[c]);return d}_applyForwardedAttrs(){if(n.length===0)return;let t=this.shadowRoot.querySelector("[data-forward]");if(!t)return;for(let i of n)if(this.hasAttribute(i))t.setAttribute(i,this.getAttribute(i));else t.removeAttribute(i)}_render(){let t=this._getProps(),i=typeof s==="function"?s(t):s;this.shadowRoot.innerHTML=`<style>${l}</style>${i}`,this._applyForwardedAttrs()}}customElements.define(e,p)}var g=`
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -59,9 +59,9 @@ function d(e,n){if(e===void 0){if(n===Array)return[];if(n===Object)return{};if(n
        content: "➶";
      }
   }
-`,u=["href","target","rel","download"],f=`
+`,f=["href","target","rel","download"],b=`
   <a data-forward><slot></slot></a>
-`;o("app-link",{attrs:u,styles:g,template:f});var v=`
+`;o("app-link",{attrs:f,styles:g,template:b});var v=`
   :host {
     display: block;
   }
@@ -70,7 +70,7 @@ function d(e,n){if(e===void 0){if(n===Array)return[];if(n===Object)return{};if(n
     max-height: 7rem;
     width: auto;
   }
-`,b=["width","height","src","alt"],w=()=>"<img data-forward />";o("app-logo",{attrs:b,styles:v,template:w});var t="769px",V="992px";var y=`
+`,u=["width","height","src","alt"],y=()=>"<img data-forward />";o("app-logo",{attrs:u,styles:v,template:y});var r="769px",U="992px";var w=`
   :host {
     display: block;
   }
@@ -105,7 +105,7 @@ function d(e,n){if(e===void 0){if(n===Array)return[];if(n===Object)return{};if(n
     box-shadow: none;
   }
 
-  @media (max-width: ${t}) {
+  @media (max-width: ${r}) {
     .header__navigation {
       gap: 4rem;
     }
@@ -139,7 +139,7 @@ function d(e,n){if(e===void 0){if(n===Array)return[];if(n===Object)return{};if(n
         </app-link>
       </div>
   </header>
-`;o("section-header",{template:k,styles:y});var x=[{href:"/",name:"Home"},{href:"/about",name:"About"},{href:"/credits",name:"Credits"},{href:"/hire-me",name:"Hire Me"},{href:"/thank-you",name:"Thank You"},{href:"/work/mmo",name:"MMO"},{href:"/work/bamboo",name:"Bamboo"},{href:"/work/terra",name:"Terra"},{href:"/work/au-van",name:"AU Van"},{href:"/work/portfolio",name:"Portfolio"},{href:"/work/sks-solar",name:"SKS Solar"},{href:"/writings/foundation-building-interfaces-at-scale",name:"Foundation"}],I=`
+`;o("section-header",{template:k,styles:w});var x=[{href:"/",name:"Home"},{href:"/about",name:"About"},{href:"/credits",name:"Credits"},{href:"/hire-me",name:"Hire Me"},{href:"/thank-you",name:"Thank You"},{href:"/capabilities/design-system",name:"Design System"},{href:"/capabilities/user-interfaces",name:"User Interfaces"},{href:"/capabilities/web-interfaces",name:"Web Interfaces"},{href:"/work/terra",name:"Terra"},{href:"/work/bamboo",name:"Bamboo"},{href:"/work/mmo",name:"MMO"},{href:"/work/au-van",name:"AU Van"},{href:"/work/portfolio",name:"Portfolio"},{href:"/work/sks-solar",name:"SKS Solar"},{href:"/writings/foundation-building-interfaces-at-scale",name:"Foundation"}],$=`
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -148,7 +148,7 @@ function d(e,n){if(e===void 0){if(n===Array)return[];if(n===Object)return{};if(n
    display: flex;
    gap: 5rem;
 
-   @media (max-width: ${t}) {
+   @media (max-width: ${r}) {
         flex-direction: column;
         gap: 3rem;
         margin-block: 2rem;
@@ -177,7 +177,7 @@ function d(e,n){if(e===void 0){if(n===Array)return[];if(n===Object)return{};if(n
     max-height: 12.5ch;
     overflow: scroll;
 
-    @media (max-width: ${t}) {
+    @media (max-width: ${r}) {
         max-height: 20ch;
     }
   }
@@ -186,7 +186,7 @@ function d(e,n){if(e===void 0){if(n===Array)return[];if(n===Object)return{};if(n
     margin-right: 5rem;
     margin-bottom: 0.3rem;
   }
-`,j=()=>`
+`,A=()=>`
     <nav>
         <span>Sitemap</span>
 
@@ -198,14 +198,14 @@ function d(e,n){if(e===void 0){if(n===Array)return[];if(n===Object)return{};if(n
             `).join("")}
         </ol>
     </nav>
-`;o("footer-nav",{styles:I,template:j});var S=`
+`;o("footer-nav",{styles:$,template:A});var S=`
   :host {
    display: flex;
     justify-content: space-between;
     border-top: 1px solid var(--color-text);
     padding-top: 1rem;
 
-   @media (max-width: ${t}) {
+   @media (max-width: ${r}) {
         flex-direction: column-reverse;
         gap: 2rem;
         border: none;
@@ -216,7 +216,7 @@ function d(e,n){if(e===void 0){if(n===Array)return[];if(n===Object)return{};if(n
   p {
     margin: 0;
 
-    @media (max-width: ${t}) {
+    @media (max-width: ${r}) {
       border-top: 1px solid var(--color-text);
     padding-top: 1rem;
     }
@@ -238,12 +238,12 @@ function d(e,n){if(e===void 0){if(n===Array)return[];if(n===Object)return{};if(n
     text-transform: uppercase;
     
 
-    @media (max-width: ${t}) {
+    @media (max-width: ${r}) {
       display: inline-block;
       margin-bottom: 0.5rem;
     }
   }
-`,P=()=>`
+`,H=()=>`
       <p>
         © Han Htet Aung 2026 |
         <app-link href="/credits" variant="underline">Credits</app-link>
@@ -288,7 +288,7 @@ function d(e,n){if(e===void 0){if(n===Array)return[];if(n===Object)return{};if(n
               </li>
           </ul>
 </nav>
-`;o("footer-copyright",{styles:S,template:P});var $=`
+`;o("footer-copyright",{styles:S,template:H});var _=`
   :host {
     --local-bg-color: var(--color-bg-secondary);
 
@@ -320,7 +320,7 @@ function d(e,n){if(e===void 0){if(n===Array)return[];if(n===Object)return{};if(n
     gap: 5rem;
   }
 
-  @media (max-width: ${t}) {
+  @media (max-width: ${r}) {
     article {
       display: block;
     }
@@ -336,7 +336,7 @@ function d(e,n){if(e===void 0){if(n===Array)return[];if(n===Object)return{};if(n
   hr {
     color: var(--color-secondary);
   }
-`,A=`
+`,E=`
   <footer>
       <article>
         <div>
@@ -358,7 +358,7 @@ function d(e,n){if(e===void 0){if(n===Array)return[];if(n===Object)return{};if(n
 
       <footer-copyright></footer-copyright>
   </footer>
-`;o("section-footer",{styles:$,template:A});var O=`
+`;o("section-footer",{styles:_,template:E});var O=`
     section {
         margin-inline: auto;
         width: 80%;
@@ -380,7 +380,7 @@ function d(e,n){if(e===void 0){if(n===Array)return[];if(n===Object)return{};if(n
       <h1>Credits</h1>
       <p>Thanks to the creators behind the icons.</p>
   </section>
-`;o("section-credits-intro",{styles:O,template:T});var H=`
+`;o("section-credits-intro",{styles:O,template:T});var C=`
   :host {
     --local-width: 3rem;
     --local-height: auto;
@@ -418,7 +418,7 @@ function d(e,n){if(e===void 0){if(n===Array)return[];if(n===Object)return{};if(n
   }
 
 
-`,M=["src","alt"],C=()=>'<img data-forward width="200" height="200"/>';o("app-icon",{attrs:M,styles:H,template:C});var E=`
+`,N=["src","alt"],P=()=>'<img data-forward width="200" height="200"/>';o("app-icon",{attrs:N,styles:C,template:P});var B=`
   :host {
     display: flex;
     align-items: center;
@@ -433,10 +433,10 @@ function d(e,n){if(e===void 0){if(n===Array)return[];if(n===Object)return{};if(n
     margin: 0;
     text-decoration: none;
   }
-`,B={icon:String,alt:String,url:String,name:String},L=({icon:e,alt:n,url:i,name:s})=>`
-    <app-icon variant="creator" src="${e}" alt="${n}" ></app-icon>
-    ${i?`<app-link variant="underline" href="${i}" target="_blank" rel="noreferrer">By ${s}</app-link>`:`<p>By ${s}</p>`}
-`;o("creator-item",{props:B,styles:E,template:L});var _=[{icon:"/assets/images/logo.avif",alt:"Logo",name:"Pimsupa Rukchonlatee"},{icon:"/assets/icons/man-in-details.svg",alt:"Programmer Icon",url:"https://thenounproject.com/icon/programmer-5124229/",name:"VectorsLab"},{icon:"/assets/icons/merlion.svg",alt:"Merlion Icon",url:"https://thenounproject.com/icon/merlion-6990371/",name:"Isaac haq"},{icon:"/assets/icons/positive-man.svg",alt:"Face Icon",url:"https://thenounproject.com/icon/face-5688226/",name:"moaon"},{icon:"/assets/icons/full-time-freelancer.svg",alt:"Computer Icon",url:"https://thenounproject.com/icon/computer-4111354/",name:"Stepan Belyakov"},{icon:"/assets/icons/birds-singing.svg",alt:"Birds Icon",url:"https://thenounproject.com/icon/birds-170955/",name:"Lee Mette"},{icon:"/assets/icons/running.svg",alt:"Running Icon",url:"https://thenounproject.com/icon/running-7164037/",name:"Princess In The Spotlight"},{icon:"/assets/icons/seafood.svg",alt:"Seafood Icon",url:"https://thenounproject.com/icon/seafood-6474814/",name:"Darwin Mulya"},{icon:"/assets/icons/penguin.svg",alt:"Penguin Icon",url:"https://thenounproject.com/icon/penguin-6418789/",name:"Lucas Rathgeb"},{icon:"/assets/icons/molecule.svg",alt:"Molecule Icon",url:"https://thenounproject.com/icon/molecule-1003938/",name:"Vectors Market"},{icon:"/assets/icons/student.svg",alt:"Student Icon",url:"https://thenounproject.com/icon/graduate-6714013/",name:"Chaiconator"},{icon:"/assets/icons/bird-flying.svg",alt:"Bird Icon",url:"https://thenounproject.com/icon/bird-7842090/",name:"Princess In The Spotlight"},{icon:"/assets/icons/travelling.svg",alt:"Travel Icon",url:"https://thenounproject.com/icon/travel-5976779/",name:"Iconsden@gmail.com"},{icon:"/assets/icons/bird-watching.svg",alt:"Bird Singing Icon",url:"https://thenounproject.com/icon/bird-8218551/",name:"Piyapong Khemawattana"},{icon:"/assets/icons/owl.svg",alt:"Owl Icon",url:"https://thenounproject.com/icon/owl-4212053/",name:"CAMB"},{icon:"/assets/icons/working-man.svg",alt:"Man Icon",url:"https://thenounproject.com/icon/man-working-4099412/",name:"Ameya SK"},{icon:"/assets/icons/sparrow.svg",alt:"Sparrow Icon",url:"https://thenounproject.com/icon/straight-copper-7408245/",name:"Sumin Lee"},{icon:"/assets/icons/bird-with-flower.svg",alt:"Bird Icon",url:"https://thenounproject.com/icon/bird-1705096/",name:"Olga"},{icon:"/assets/icons/water.svg",alt:"Water Icon",url:"https://thenounproject.com/icon/water-1371137/",name:"SBTS"},{icon:"/assets/icons/sand.svg",alt:"Sand Icon",url:"https://thenounproject.com/icon/sand-6425352/",name:"Creative Mahira"},{icon:"/assets/icons/crude_oil.svg",alt:"Crude Oil Icon",url:"https://thenounproject.com/icon/crude-oil-8424464/",name:"Suwarjo"},{icon:"/assets/icons/plant.svg",alt:"Plant Icon",url:"https://thenounproject.com/icon/plant-5514346/",name:"Przemyslawk"},{icon:"/assets/icons/clay.svg",alt:"Mud Icon",url:"https://thenounproject.com/icon/mud-2349786/",name:"Deuxamis_moon"},{icon:"/assets/icons/stone.svg",alt:"Stone Icon",url:"https://thenounproject.com/icon/stone-8242048/",name:"Ivar Jenner"},{icon:"/assets/icons/animal.svg",alt:"Animal Icon",url:"https://thenounproject.com/icon/animal-5115337/",name:"Visual Glow"},{icon:"/assets/icons/empty-state.svg",alt:"Empty State Icon",url:"https://thenounproject.com/icon/select-4375928/",name:"The Icon Z"},{icon:"/assets/icons/software-developer.svg",alt:"Software Developer Icon",url:"https://thenounproject.com/icon/programmer-3916075/",name:"Phạm Thanh Lộc"},{icon:"/assets/icons/cuckoo-clock.svg",alt:"Clock Icon",url:"https://thenounproject.com/icon/cuckoo-clock-1470212/",name:"Free Fair & Healthy"},{icon:"/assets/icons/technology.svg",alt:"Technology Icon",url:"https://thenounproject.com/icon/technology-7864424/",name:"Ferdian Mauladi Riziq"},{icon:"/assets/icons/engineering.svg",alt:"Engineering Icon",url:"https://thenounproject.com/icon/engineering-8024039/",name:"Omah Icon"},{icon:"/assets/icons/kingfisher.svg",alt:"Kingfisher Icon",url:"https://thenounproject.com/icon/kingfisher-bird-6274353/",name:"Delwar Hossain"},{icon:"/assets/icons/design-system.svg",alt:"Design System Icon",url:"https://thenounproject.com/icon/sourcing-6125071/",name:"icon 5"},{icon:"/assets/icons/user-interface.svg",alt:"User Interface Icon",url:"https://thenounproject.com/icon/website-149263/",name:"Dawid Sobolewski"},{icon:"/assets/icons/web-interface.svg",alt:"Web Interface Icon",url:"https://thenounproject.com/icon/web-5653117/",name:"Danang endar"},{icon:"/assets/icons/peacock.svg",alt:"Peacock Icon",url:"https://thenounproject.com/icon/bird-6684144/",name:"Carlos von Dessauer"},{icon:"/assets/icons/parrot.svg",alt:"Parrot Icon",url:"https://thenounproject.com/icon/parrot-8272477/",name:"Eskak"},{icon:"/assets/icons/one-finger.svg",alt:"Finger One Icon",url:"https://thenounproject.com/icon/only-one-hand-gesture-8076267/",name:"iconfield"},{icon:"/assets/icons/two-finger.svg",alt:"Finger Two Icon",url:"https://thenounproject.com/icon/two-hand-gesture-8076273/",name:"iconfield"},{icon:"/assets/icons/three-finger.svg",alt:"Finger Three Icon",url:"https://thenounproject.com/icon/three-hand-gesture-8076250/",name:"iconfield"},{icon:"/assets/icons/loop.svg",alt:"Loop Icon",url:"https://thenounproject.com/icon/loop-6016994/",name:"Ehtisham Abid"},{icon:"/assets/icons/ostrich.svg",alt:"Ostrich Icon",url:"https://thenounproject.com/icon/ostrich-8304474/",name:"Vectors Market"}],F=`
+`,L={icon:String,alt:String,url:String,name:String},j=({icon:e,alt:a,url:n,name:l})=>`
+    <app-icon variant="creator" src="${e}" alt="${a}" ></app-icon>
+    ${n?`<app-link variant="underline" href="${n}" target="_blank" rel="noreferrer">By ${l}</app-link>`:`<p>By ${l}</p>`}
+`;o("creator-item",{props:L,styles:B,template:j});var z=[{icon:"/assets/images/logo.avif",alt:"Logo",name:"Pimsupa Rukchonlatee"},{icon:"/assets/icons/man-in-details.svg",alt:"Programmer Icon",url:"https://thenounproject.com/icon/programmer-5124229/",name:"VectorsLab"},{icon:"/assets/icons/merlion.svg",alt:"Merlion Icon",url:"https://thenounproject.com/icon/merlion-6990371/",name:"Isaac haq"},{icon:"/assets/icons/positive-man.svg",alt:"Face Icon",url:"https://thenounproject.com/icon/face-5688226/",name:"moaon"},{icon:"/assets/icons/full-time-freelancer.svg",alt:"Computer Icon",url:"https://thenounproject.com/icon/computer-4111354/",name:"Stepan Belyakov"},{icon:"/assets/icons/birds-singing.svg",alt:"Birds Icon",url:"https://thenounproject.com/icon/birds-170955/",name:"Lee Mette"},{icon:"/assets/icons/running.svg",alt:"Running Icon",url:"https://thenounproject.com/icon/running-7164037/",name:"Princess In The Spotlight"},{icon:"/assets/icons/seafood.svg",alt:"Seafood Icon",url:"https://thenounproject.com/icon/seafood-6474814/",name:"Darwin Mulya"},{icon:"/assets/icons/penguin.svg",alt:"Penguin Icon",url:"https://thenounproject.com/icon/penguin-6418789/",name:"Lucas Rathgeb"},{icon:"/assets/icons/molecule.svg",alt:"Molecule Icon",url:"https://thenounproject.com/icon/molecule-1003938/",name:"Vectors Market"},{icon:"/assets/icons/student.svg",alt:"Student Icon",url:"https://thenounproject.com/icon/graduate-6714013/",name:"Chaiconator"},{icon:"/assets/icons/bird-flying.svg",alt:"Bird Icon",url:"https://thenounproject.com/icon/bird-7842090/",name:"Princess In The Spotlight"},{icon:"/assets/icons/travelling.svg",alt:"Travel Icon",url:"https://thenounproject.com/icon/travel-5976779/",name:"Iconsden@gmail.com"},{icon:"/assets/icons/bird-watching.svg",alt:"Bird Singing Icon",url:"https://thenounproject.com/icon/bird-8218551/",name:"Piyapong Khemawattana"},{icon:"/assets/icons/owl.svg",alt:"Owl Icon",url:"https://thenounproject.com/icon/owl-4212053/",name:"CAMB"},{icon:"/assets/icons/working-man.svg",alt:"Man Icon",url:"https://thenounproject.com/icon/man-working-4099412/",name:"Ameya SK"},{icon:"/assets/icons/sparrow.svg",alt:"Sparrow Icon",url:"https://thenounproject.com/icon/straight-copper-7408245/",name:"Sumin Lee"},{icon:"/assets/icons/bird-with-flower.svg",alt:"Bird Icon",url:"https://thenounproject.com/icon/bird-1705096/",name:"Olga"},{icon:"/assets/icons/water.svg",alt:"Water Icon",url:"https://thenounproject.com/icon/water-1371137/",name:"SBTS"},{icon:"/assets/icons/sand.svg",alt:"Sand Icon",url:"https://thenounproject.com/icon/sand-6425352/",name:"Creative Mahira"},{icon:"/assets/icons/crude_oil.svg",alt:"Crude Oil Icon",url:"https://thenounproject.com/icon/crude-oil-8424464/",name:"Suwarjo"},{icon:"/assets/icons/plant.svg",alt:"Plant Icon",url:"https://thenounproject.com/icon/plant-5514346/",name:"Przemyslawk"},{icon:"/assets/icons/clay.svg",alt:"Mud Icon",url:"https://thenounproject.com/icon/mud-2349786/",name:"Deuxamis_moon"},{icon:"/assets/icons/stone.svg",alt:"Stone Icon",url:"https://thenounproject.com/icon/stone-8242048/",name:"Ivar Jenner"},{icon:"/assets/icons/animal.svg",alt:"Animal Icon",url:"https://thenounproject.com/icon/animal-5115337/",name:"Visual Glow"},{icon:"/assets/icons/empty-state.svg",alt:"Empty State Icon",url:"https://thenounproject.com/icon/select-4375928/",name:"The Icon Z"},{icon:"/assets/icons/software-developer.svg",alt:"Software Developer Icon",url:"https://thenounproject.com/icon/programmer-3916075/",name:"Phạm Thanh Lộc"},{icon:"/assets/icons/cuckoo-clock.svg",alt:"Clock Icon",url:"https://thenounproject.com/icon/cuckoo-clock-1470212/",name:"Free Fair & Healthy"},{icon:"/assets/icons/technology.svg",alt:"Technology Icon",url:"https://thenounproject.com/icon/technology-7864424/",name:"Ferdian Mauladi Riziq"},{icon:"/assets/icons/engineering.svg",alt:"Engineering Icon",url:"https://thenounproject.com/icon/engineering-8024039/",name:"Omah Icon"},{icon:"/assets/icons/kingfisher.svg",alt:"Kingfisher Icon",url:"https://thenounproject.com/icon/kingfisher-bird-6274353/",name:"Delwar Hossain"},{icon:"/assets/icons/peacock.svg",alt:"Peacock Icon",url:"https://thenounproject.com/icon/bird-6684144/",name:"Carlos von Dessauer"},{icon:"/assets/icons/parrot.svg",alt:"Parrot Icon",url:"https://thenounproject.com/icon/parrot-8272477/",name:"Eskak"},{icon:"/assets/icons/one-finger.svg",alt:"Finger One Icon",url:"https://thenounproject.com/icon/only-one-hand-gesture-8076267/",name:"iconfield"},{icon:"/assets/icons/two-finger.svg",alt:"Finger Two Icon",url:"https://thenounproject.com/icon/two-hand-gesture-8076273/",name:"iconfield"},{icon:"/assets/icons/three-finger.svg",alt:"Finger Three Icon",url:"https://thenounproject.com/icon/three-hand-gesture-8076250/",name:"iconfield"},{icon:"/assets/icons/loop.svg",alt:"Loop Icon",url:"https://thenounproject.com/icon/loop-6016994/",name:"Ehtisham Abid"},{icon:"/assets/icons/ostrich.svg",alt:"Ostrich Icon",url:"https://thenounproject.com/icon/ostrich-8304474/",name:"Vectors Market"}],I=`
   :host {
     display: block;
   }
@@ -454,15 +454,15 @@ function d(e,n){if(e===void 0){if(n===Array)return[];if(n===Object)return{};if(n
     gap: 2rem;
     overflow: scroll;
 
-    @media (max-width: ${t}) {
+    @media (max-width: ${r}) {
       display: flex;
       flex-direction: column;
     }
   }
-`,N=()=>`
+`,M=()=>`
   <section>
       <ul>
-        ${_.map((e)=>`
+        ${z.map((e)=>`
               <li>
                 <creator-item
                   props='${JSON.stringify({icon:e.icon,alt:e.alt,name:e.name,url:e.url??""})}'
@@ -471,4 +471,4 @@ function d(e,n){if(e===void 0){if(n===Array)return[];if(n===Object)return{};if(n
             `).join("")}
       </ul>
   </section>
-`;o("section-creators-list",{styles:F,template:N});
+`;o("section-creators-list",{styles:I,template:M});

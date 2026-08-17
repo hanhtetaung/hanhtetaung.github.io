@@ -16,10 +16,8 @@ const roadInstructions = [
 ];
 
 function drawObjects() {
-  ctx.drawImage(asset("bangkok"), 0, 0);
-  ctx.drawImage(asset("dmk"), 500, -550);
-  ctx.drawImage(asset("plane"), 900, -550);
-  ctx.drawImage(asset("car"), 800, 600);
-  ctx.drawImage(asset("pumpkin_soup"), 2000, 700);
-  ctx.drawImage(asset("kaffa_bistro"), 3000, 700);
+  // ctx.drawImage(asset("bangkok_sign"), 0, 0);
+  // ctx.drawImage(asset("dmk"), 500, -550);
+  // ctx.drawImage(asset("airasia_plane"), 900, -550);
+  // ctx.drawImage(asset("bkk_taxi"), 800, 600);
 }

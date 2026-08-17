@@ -11,10 +11,19 @@ const styles = /* css */ `
     padding-block: 3rem;
     padding-inline: 5rem;
     justify-content: center;
-    border: 1px solid var(--color-text);
+    border: 1px dashed var(--color-text);
 
     @media (max-width: ${TABLE}) {
       justify-content: start;
+    }
+  }
+
+  :host([variant="borderless"]) {
+    border: none;
+    padding: 0;
+
+    h3 {
+      font-size: var(--size-body);
     }
   }
 
@@ -38,17 +47,15 @@ const styles = /* css */ `
 
 const props = {
   title: String,
-  description: String,
-  href: String,
-  alt: String,
   subTitle: String,
+  href: String,
 };
 
-const template = ({ title, subTitle }) => /* html */ `
+const template = ({ title, subTitle, href }) => /* html */ `
      <article>
       <span>${subTitle}</span>
       <h3>${title}</h3>
-      <!-- <app-link variant="plain" href="#">→</app-link> -->
+      <app-link variant="plain" href=${href}>→</app-link>
      </article>
 `;
 

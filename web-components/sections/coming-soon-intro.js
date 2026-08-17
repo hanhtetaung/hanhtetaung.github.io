@@ -31,12 +31,6 @@ const styles = /*css*/ `
   p {
     margin: 0;
   }
-
-  /* @media (max-width: ${PHONE}) {
-          app-image {
-            display: none;
-          }
-        } */
 `;
 
 const props = { name: String, img: String, alt: String };

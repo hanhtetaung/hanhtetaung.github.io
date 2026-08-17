@@ -70,7 +70,7 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     max-height: 7rem;
     width: auto;
   }
-`,v=["width","height","src","alt"],y=()=>"<img data-forward />";e("app-logo",{attrs:v,styles:b,template:y});var t="769px",U="992px";var w=`
+`,v=["width","height","src","alt"],y=()=>"<img data-forward />";e("app-logo",{attrs:v,styles:b,template:y});var t="769px",Q="992px";var w=`
   :host {
     display: block;
   }
@@ -139,7 +139,7 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
         </app-link>
       </div>
   </header>
-`;e("section-header",{template:k,styles:w});var x=[{href:"/",name:"Home"},{href:"/about",name:"About"},{href:"/credits",name:"Credits"},{href:"/hire-me",name:"Hire Me"},{href:"/thank-you",name:"Thank You"},{href:"/work/mmo",name:"MMO"},{href:"/work/bamboo",name:"Bamboo"},{href:"/work/terra",name:"Terra"},{href:"/work/au-van",name:"AU Van"},{href:"/work/portfolio",name:"Portfolio"},{href:"/work/sks-solar",name:"SKS Solar"},{href:"/writings/foundation-building-interfaces-at-scale",name:"Foundation"}],S=`
+`;e("section-header",{template:k,styles:w});var x=[{href:"/",name:"Home"},{href:"/about",name:"About"},{href:"/credits",name:"Credits"},{href:"/hire-me",name:"Hire Me"},{href:"/thank-you",name:"Thank You"},{href:"/capabilities/design-system",name:"Design System"},{href:"/capabilities/user-interfaces",name:"User Interfaces"},{href:"/capabilities/web-interfaces",name:"Web Interfaces"},{href:"/work/terra",name:"Terra"},{href:"/work/bamboo",name:"Bamboo"},{href:"/work/mmo",name:"MMO"},{href:"/work/au-van",name:"AU Van"},{href:"/work/portfolio",name:"Portfolio"},{href:"/work/sks-solar",name:"SKS Solar"},{href:"/writings/foundation-building-interfaces-at-scale",name:"Foundation"}],S=`
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -511,7 +511,7 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
   p {
     margin-block: 2rem;
   }
-`,M=`
+`,I=`
   <section>
     <section-title
         variant="text"
@@ -538,7 +538,7 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
         </ul>
       </article>
   </section>
-`;e("section-terra-overview",{styles:F,template:M});var B=`
+`;e("section-terra-overview",{styles:F,template:I});var M=`
   :host {
     display: block;
   }
@@ -571,7 +571,7 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
     display: block;
     margin-bottom: 2rem;
   }
-`,G=`
+`,B=`
   <section>
     <section-title
         variant="text"
@@ -623,7 +623,7 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
             </p>
           </article>
   </section>
-`;e("section-terra-building-block",{styles:B,template:G});var I=`
+`;e("section-terra-building-block",{styles:M,template:B});var G=`
   :host {
     display: grid;
     grid-template-columns: 1fr 2.5fr;
@@ -645,13 +645,13 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
   :host([variant="block"]) {
     display: block;
   }
-`,D={title:String},V=({title:o})=>`
+`,D={title:String},W=({title:o})=>`
         <h3>${o}</h3>
 
         <article>
             <slot></slot>
         </article>
-`;e("app-article-paragraph",{props:D,styles:I,template:V});var W=`
+`;e("app-article-paragraph",{props:D,styles:G,template:W});var V=`
   :host {
     display: block;
   }
@@ -757,7 +757,7 @@ function h(o,a){if(o===void 0){if(a===Array)return[];if(a===Object)return{};if(a
 
      
   </section>
-`;e("section-terra-need-one-interface",{styles:W,template:J});var K=`
+`;e("section-terra-need-one-interface",{styles:V,template:J});var K=`
   :host {
     display: block;
   }

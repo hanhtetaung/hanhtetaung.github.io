@@ -1,4 +1,4 @@
-function h(a,r){if(a===void 0){if(r===Array)return[];if(r===Object)return{};if(r===Boolean)return!1;if(r===Number)return 0;return}if(r===Boolean)return Boolean(a);if(r===Number)return Number(a);return a}function o(a,{props:r={},attrs:n=[],styles:m="",template:l}){let d=["props",...n];class c extends HTMLElement{static observedAttributes=d;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let t={},i=this.getAttribute("props");if(i)try{t=JSON.parse(i)}catch{t={}}let p={};for(let s of Object.keys(r))p[s]=h(t[s],r[s]);return p}_applyForwardedAttrs(){if(n.length===0)return;let t=this.shadowRoot.querySelector("[data-forward]");if(!t)return;for(let i of n)if(this.hasAttribute(i))t.setAttribute(i,this.getAttribute(i));else t.removeAttribute(i)}_render(){let t=this._getProps(),i=typeof l==="function"?l(t):l;this.shadowRoot.innerHTML=`<style>${m}</style>${i}`,this._applyForwardedAttrs()}}customElements.define(a,c)}var g=`
+function f(a,r){if(a===void 0){if(r===Array)return[];if(r===Object)return{};if(r===Boolean)return!1;if(r===Number)return 0;return}if(r===Boolean)return Boolean(a);if(r===Number)return Number(a);return a}function e(a,{props:r={},attrs:n=[],styles:m="",template:l}){let d=["props",...n];class c extends HTMLElement{static observedAttributes=d;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let t={},i=this.getAttribute("props");if(i)try{t=JSON.parse(i)}catch{t={}}let p={};for(let s of Object.keys(r))p[s]=f(t[s],r[s]);return p}_applyForwardedAttrs(){if(n.length===0)return;let t=this.shadowRoot.querySelector("[data-forward]");if(!t)return;for(let i of n)if(this.hasAttribute(i))t.setAttribute(i,this.getAttribute(i));else t.removeAttribute(i)}_render(){let t=this._getProps(),i=typeof l==="function"?l(t):l;this.shadowRoot.innerHTML=`<style>${m}</style>${i}`,this._applyForwardedAttrs()}}customElements.define(a,c)}var h=`
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -59,9 +59,9 @@ function h(a,r){if(a===void 0){if(r===Array)return[];if(r===Object)return{};if(r
        content: "➶";
      }
   }
-`,f=["href","target","rel","download"],u=`
+`,g=["href","target","rel","download"],b=`
   <a data-forward><slot></slot></a>
-`;o("app-link",{attrs:f,styles:g,template:u});var b=`
+`;e("app-link",{attrs:g,styles:h,template:b});var u=`
   :host {
     display: block;
   }
@@ -70,7 +70,7 @@ function h(a,r){if(a===void 0){if(r===Array)return[];if(r===Object)return{};if(r
     max-height: 7rem;
     width: auto;
   }
-`,v=["width","height","src","alt"],y=()=>"<img data-forward />";o("app-logo",{attrs:v,styles:b,template:y});var e="769px",L="992px";var k=`
+`,v=["width","height","src","alt"],y=()=>"<img data-forward />";e("app-logo",{attrs:v,styles:u,template:y});var o="769px",L="992px";var k=`
   :host {
     display: block;
   }
@@ -105,7 +105,7 @@ function h(a,r){if(a===void 0){if(r===Array)return[];if(r===Object)return{};if(r
     box-shadow: none;
   }
 
-  @media (max-width: ${e}) {
+  @media (max-width: ${o}) {
     .header__navigation {
       gap: 4rem;
     }
@@ -139,7 +139,7 @@ function h(a,r){if(a===void 0){if(r===Array)return[];if(r===Object)return{};if(r
         </app-link>
       </div>
   </header>
-`;o("section-header",{template:w,styles:k});var x=[{href:"/",name:"Home"},{href:"/about",name:"About"},{href:"/credits",name:"Credits"},{href:"/hire-me",name:"Hire Me"},{href:"/thank-you",name:"Thank You"},{href:"/work/mmo",name:"MMO"},{href:"/work/bamboo",name:"Bamboo"},{href:"/work/terra",name:"Terra"},{href:"/work/au-van",name:"AU Van"},{href:"/work/portfolio",name:"Portfolio"},{href:"/work/sks-solar",name:"SKS Solar"},{href:"/writings/foundation-building-interfaces-at-scale",name:"Foundation"}],A=`
+`;e("section-header",{template:w,styles:k});var x=[{href:"/",name:"Home"},{href:"/about",name:"About"},{href:"/credits",name:"Credits"},{href:"/hire-me",name:"Hire Me"},{href:"/thank-you",name:"Thank You"},{href:"/capabilities/design-system",name:"Design System"},{href:"/capabilities/user-interfaces",name:"User Interfaces"},{href:"/capabilities/web-interfaces",name:"Web Interfaces"},{href:"/work/terra",name:"Terra"},{href:"/work/bamboo",name:"Bamboo"},{href:"/work/mmo",name:"MMO"},{href:"/work/au-van",name:"AU Van"},{href:"/work/portfolio",name:"Portfolio"},{href:"/work/sks-solar",name:"SKS Solar"},{href:"/writings/foundation-building-interfaces-at-scale",name:"Foundation"}],A=`
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -148,7 +148,7 @@ function h(a,r){if(a===void 0){if(r===Array)return[];if(r===Object)return{};if(r
    display: flex;
    gap: 5rem;
 
-   @media (max-width: ${e}) {
+   @media (max-width: ${o}) {
         flex-direction: column;
         gap: 3rem;
         margin-block: 2rem;
@@ -177,7 +177,7 @@ function h(a,r){if(a===void 0){if(r===Array)return[];if(r===Object)return{};if(r
     max-height: 12.5ch;
     overflow: scroll;
 
-    @media (max-width: ${e}) {
+    @media (max-width: ${o}) {
         max-height: 20ch;
     }
   }
@@ -198,14 +198,14 @@ function h(a,r){if(a===void 0){if(r===Array)return[];if(r===Object)return{};if(r
             `).join("")}
         </ol>
     </nav>
-`;o("footer-nav",{styles:A,template:H});var $=`
+`;e("footer-nav",{styles:A,template:H});var $=`
   :host {
    display: flex;
     justify-content: space-between;
     border-top: 1px solid var(--color-text);
     padding-top: 1rem;
 
-   @media (max-width: ${e}) {
+   @media (max-width: ${o}) {
         flex-direction: column-reverse;
         gap: 2rem;
         border: none;
@@ -216,7 +216,7 @@ function h(a,r){if(a===void 0){if(r===Array)return[];if(r===Object)return{};if(r
   p {
     margin: 0;
 
-    @media (max-width: ${e}) {
+    @media (max-width: ${o}) {
       border-top: 1px solid var(--color-text);
     padding-top: 1rem;
     }
@@ -238,7 +238,7 @@ function h(a,r){if(a===void 0){if(r===Array)return[];if(r===Object)return{};if(r
     text-transform: uppercase;
     
 
-    @media (max-width: ${e}) {
+    @media (max-width: ${o}) {
       display: inline-block;
       margin-bottom: 0.5rem;
     }
@@ -288,7 +288,7 @@ function h(a,r){if(a===void 0){if(r===Array)return[];if(r===Object)return{};if(r
               </li>
           </ul>
 </nav>
-`;o("footer-copyright",{styles:$,template:_});var E=`
+`;e("footer-copyright",{styles:$,template:_});var E=`
   :host {
     --local-bg-color: var(--color-bg-secondary);
 
@@ -320,7 +320,7 @@ function h(a,r){if(a===void 0){if(r===Array)return[];if(r===Object)return{};if(r
     gap: 5rem;
   }
 
-  @media (max-width: ${e}) {
+  @media (max-width: ${o}) {
     article {
       display: block;
     }
@@ -358,7 +358,7 @@ function h(a,r){if(a===void 0){if(r===Array)return[];if(r===Object)return{};if(r
 
       <footer-copyright></footer-copyright>
   </footer>
-`;o("section-footer",{styles:E,template:O});var T=`
+`;e("section-footer",{styles:E,template:O});var T=`
     section {
         margin-inline: auto;
         width: 80%;
@@ -388,4 +388,4 @@ function h(a,r){if(a===void 0){if(r===Array)return[];if(r===Object)return{};if(r
         Back to home
       </app-link>
   </section>
-`;o("section-thank-you-intro",{styles:T,template:N});
+`;e("section-thank-you-intro",{styles:T,template:N});

@@ -46,14 +46,14 @@ const template = () => /* html */ `
             
     <ol>
         <li>
-            <capabilities-item props='{"title": "Design System", "subTitle": "Build", "href": "/assets/icons/design-system.svg", "alt": "Design System Logo"}'>
+            <capabilities-item props='{"title": "Design System", "subTitle": "Build", "href": "/capabilities/design-system"}'>
             </capabilities-item>
         </li>
         <li>
-            <capabilities-item props='{"title": "User Interfaces", "subTitle": "Design", "href": "/assets/icons/user-interface.svg", "alt": "User Interface Logo"}'></capabilities-item>
+            <capabilities-item props='{"title": "User Interfaces", "subTitle": "Design", "href": "/capabilities/user-interfaces"}'></capabilities-item>
         </li>
         <li>
-            <capabilities-item props='{"title": "Web Interfaces", "subTitle": "Develop", "href": "/assets/icons/web-interface.svg", "alt": "Web Interface Logo"}'></capabilities-item>
+            <capabilities-item props='{"title": "Web Interfaces", "subTitle": "Develop", "href": "/capabilities/web-interfaces"}'></capabilities-item>
         </li>
     </ol>
   </section>
