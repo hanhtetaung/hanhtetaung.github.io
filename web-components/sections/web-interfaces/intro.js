@@ -75,7 +75,7 @@ const template = /* html */ `
         </hgroup>
 
         <article>
-            <h3>What I provide</h3>
+            <h3>What I deliver</h3>
              <ol>
                 <li>
                     <app-icon variant="medium" src="/assets/icons/web-interface.svg" alt=""></app-icon>

@@ -1,4 +1,4 @@
-function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t===Boolean)return!1;if(t===Number)return 0;return}if(t===Boolean)return Boolean(i);if(t===Number)return Number(i);return i}function e(i,{props:t={},attrs:a=[],styles:n="",template:r}){let m=["props",...a];class p extends HTMLElement{static observedAttributes=m;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let l={},s=this.getAttribute("props");if(s)try{l=JSON.parse(s)}catch{l={}}let g={};for(let d of Object.keys(t))g[d]=h(l[d],t[d]);return g}_applyForwardedAttrs(){if(a.length===0)return;let l=this.shadowRoot.querySelector("[data-forward]");if(!l)return;for(let s of a)if(this.hasAttribute(s))l.setAttribute(s,this.getAttribute(s));else l.removeAttribute(s)}_render(){let l=this._getProps(),s=typeof r==="function"?r(l):r;this.shadowRoot.innerHTML=`<style>${n}</style>${s}`,this._applyForwardedAttrs()}}customElements.define(i,p)}var f=`
+function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t===Boolean)return!1;if(t===Number)return 0;return}if(t===Boolean)return Boolean(i);if(t===Number)return Number(i);return i}function e(i,{props:t={},attrs:a=[],styles:n="",template:r}){let m=["props",...a];class p extends HTMLElement{static observedAttributes=m;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let s={},c=this.getAttribute("props");if(c)try{s=JSON.parse(c)}catch{s={}}let g={};for(let d of Object.keys(t))g[d]=h(s[d],t[d]);return g}_applyForwardedAttrs(){if(a.length===0)return;let s=this.shadowRoot.querySelector("[data-forward]");if(!s)return;for(let c of a)if(this.hasAttribute(c))s.setAttribute(c,this.getAttribute(c));else s.removeAttribute(c)}_render(){let s=this._getProps(),c=typeof r==="function"?r(s):r;this.shadowRoot.innerHTML=`<style>${n}</style>${c}`,this._applyForwardedAttrs()}}customElements.define(i,p)}var f=`
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -70,7 +70,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     max-height: 7rem;
     width: auto;
   }
-`,y=["width","height","src","alt"],w=()=>"<img data-forward />";e("app-logo",{attrs:y,styles:b,template:w});var o="769px",c="992px";var x=`
+`,y=["width","height","src","alt"],w=()=>"<img data-forward />";e("app-logo",{attrs:y,styles:b,template:w});var o="769px",l="992px";var x=`
   :host {
     display: block;
   }
@@ -336,7 +336,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
   hr {
     color: var(--color-secondary);
   }
-`,O=`
+`,A=`
   <footer>
       <article>
         <div>
@@ -358,7 +358,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
 
       <footer-copyright></footer-copyright>
   </footer>
-`;e("section-footer",{styles:Q,template:O});var A=`
+`;e("section-footer",{styles:Q,template:A});var O=`
   :host {
     --local-width: 3rem;
     --local-height: auto;
@@ -396,7 +396,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
   }
 
 
-`,E=["src","alt"],H=()=>'<img data-forward width="200" height="200"/>';e("app-icon",{attrs:E,styles:A,template:H});var L=[{src:"/assets/icons/figma.svg",alt:"Figma Icon"},{src:"/assets/icons/html.svg",alt:"HTML Icon"},{src:"/assets/icons/css.svg",alt:"CSS Icon"},{src:"/assets/icons/javascript.svg",alt:"JavaScript Icon"}],P=[{name:"Terra",href:"/work/terra",src:"/assets/images/case-study/terra/thumbnail.avif",alt:"Terra Thumbnail"},{name:"MMO",href:"/work/mmo",src:"/assets/images/case-study/mmo/thumbnail.avif",alt:"MMO Thumbnail"},{name:"Bamboo",href:"/work/bamboo",src:"/assets/images/case-study/bamboo/thumbnail.avif",alt:"Bamboo Thumbnail"}],B=[{title:"Specialize In",header:"Enterprise UX"},{title:"Simplify",header:"Complex workflows"},{title:"Scale",header:"Design System"}],M=`
+`,H=["src","alt"],L=()=>'<img data-forward width="200" height="200"/>';e("app-icon",{attrs:H,styles:O,template:L});var P=[{src:"/assets/icons/figma.svg",alt:"Figma Icon"},{src:"/assets/icons/html.svg",alt:"HTML Icon"},{src:"/assets/icons/css.svg",alt:"CSS Icon"},{src:"/assets/icons/javascript.svg",alt:"JavaScript Icon"}],E=[{name:"Terra",href:"/work/terra",src:"/assets/images/case-study/terra/thumbnail.avif",alt:"Terra Thumbnail"},{name:"MMO",href:"/work/mmo",src:"/assets/images/case-study/mmo/thumbnail.avif",alt:"MMO Thumbnail"},{name:"Bamboo",href:"/work/bamboo",src:"/assets/images/case-study/bamboo/thumbnail.avif",alt:"Bamboo Thumbnail"}],D=[{title:"Specialize In",header:"Enterprise UX"},{title:"Simplify",header:"Complex workflows"},{title:"Scale",header:"Design System"}],M=`
   section {
     width: 80%;
     margin-inline: auto;
@@ -498,7 +498,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     width: 25rem;
     height: auto;
   }
-`,D=`
+`,B=`
   <section>
       <article>
         <hgroup>
@@ -512,7 +512,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
   
         <span>Toolkit:</span>
         <ul class="toolkits">
-          ${L.map((i)=>`
+          ${P.map((i)=>`
               <li>
                 <app-icon
                   src=${i.src}
@@ -524,7 +524,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
       </article>
 
       <ul class="highlights">
-         ${B.map((i)=>`
+         ${D.map((i)=>`
                 <li>
                   <span>${i.title}</span>
                   <h3>${i.header}</h3>
@@ -533,7 +533,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
       </ul>
 
       <ol>
-        ${P.map((i)=>`
+        ${E.map((i)=>`
           <li>
             <app-link variant="image" href=${i.href} >
               ➶ ${i.name}
@@ -546,7 +546,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
           `).join("")}
       </ol>
   </section>
-`;e("section-hero",{styles:M,template:D});var N=`
+`;e("section-hero",{styles:M,template:B});var C=`
   :host {
     display: flex;
     align-items: center;
@@ -577,7 +577,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
       display: none;
     }
   }
-`,C={name:String,img:String,alt:String},j=({name:i,img:t="",alt:a=""})=>`
+`,j={name:String,img:String,alt:String},N=({name:i,img:t="",alt:a=""})=>`
     <h2>${i}</h2>
     <img
         src=${t}
@@ -585,7 +585,7 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
         height="36"
         width="76"
     />
-`;e("section-title",{props:C,styles:N,template:j});var _=`
+`;e("section-title",{props:j,styles:C,template:N});var _=`
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -614,17 +614,23 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     --local-bg: #a36aa5;
      --local-border: 1px solid var( --local-color);
   }
-`,U={name:String},W=({name:i})=>`${i}`;e("app-badge",{props:U,styles:_,template:W});var J=`
+`,U={name:String},W=({name:i})=>`${i}`;e("app-badge",{props:U,styles:_,template:W});var F=`
   :host {
     display: flex;
     gap: 2rem;
     padding-block: 3rem;
     padding-inline: 5rem;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
     border: 1px dashed var(--color-text);
 
-    @media (max-width: ${c}) {
+    @media (max-width: ${l}) {
       justify-content: start;
+      flex-direction: column;
+      padding: 0;
+      padding-inline: 2rem;
+      padding-block: 2rem;
+      align-items: start;
     }
   }
 
@@ -653,13 +659,59 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
     font-weight: var(--font-regular);
     margin-bottom: 0.5rem;
   }
-`,F={title:String,subTitle:String,href:String},R=({title:i,subTitle:t,href:a})=>`
-     <article>
+
+  ol {
+     padding: 0;
+      margin: 0;
+      list-style: none;
+      padding: 0;
+      display: flex;
+      gap: 4rem;
+      width: fit-content;
+      overflow: scroll;
+
+      @media (max-width: ${l}) {
+        width: 100%;
+      }
+    }
+
+    li {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    p {
+        margin: 0;
+        font-size: var(--size-small);
+    }
+  }
+
+    article {
+      @media (max-width: ${l}) {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+`,J={title:String,subTitle:String,href:String,icon:String,alt:String,delivers:Array},R=({title:i,subTitle:t,href:a,delivers:n,icon:r,alt:m})=>`
+  <article>
+    <hgroup>
       <span>${t}</span>
       <h3>${i}</h3>
-      <app-link variant="plain" href=${a}>→</app-link>
-     </article>
-`;e("capabilities-item",{props:F,styles:J,template:R});var X=`
+    </hgroup>
+    <app-link variant="plain" href=${a}>→</app-link>
+  </article>
+
+  <ol>
+    ${n.map((p)=>`
+        <li>
+          <app-icon variant="medium" src=${r} alt=${m}></app-icon>
+          <p>${p}</p>
+        </li>
+      `).join("")}
+  </ol>
+`;e("capabilities-item",{props:J,styles:F,template:R});var X=`
   section {
     width: 80%;
     margin-inline: auto;
@@ -677,16 +729,16 @@ function h(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t
 
 ol {
     padding: 0;
-    display: grid;
-    gap: 2rem;
-    grid-template-columns: 1fr 1fr 1fr;
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
 
-    @media (max-width: ${c}) {
+    @media (max-width: ${l}) {
       grid-template-columns: 1fr;
       border: none;
     }
   }
-`,K=()=>`
+`,G=()=>`
   <section>
       <section-title
         props='${JSON.stringify({name:"Capabilities",img:"/assets/icons/peacock.svg",alt:"Peacock Logo"})}'
@@ -694,18 +746,20 @@ ol {
             
     <ol>
         <li>
-            <capabilities-item props='{"title": "Design System", "subTitle": "Build", "href": "/capabilities/design-system"}'>
+            <capabilities-item props='{"title": "Design System", "subTitle": "Build", "href": "/capabilities/design-system", "icon": "/assets/icons/design-system.svg", "alt": "Design System Icon", "delivers": ["Design Tokens", "Component Library", "Guidelines"]}'>
             </capabilities-item>
         </li>
         <li>
-            <capabilities-item props='{"title": "User Interfaces", "subTitle": "Design", "href": "/capabilities/user-interfaces"}'></capabilities-item>
+              <capabilities-item props='{"title": "User Interfaces", "subTitle": "Design", "href": "/capabilities/user-interfaces", "icon": "/assets/icons/user-interface.svg", "alt": "User Interface Icon", "delivers": ["User Flows", "Hi-Fi Interfaces", "Prototypes"]}'>
+            </capabilities-item>
         </li>
         <li>
-            <capabilities-item props='{"title": "Web Interfaces", "subTitle": "Develop", "href": "/capabilities/web-interfaces"}'></capabilities-item>
+             <capabilities-item props='{"title": "Web Interfaces", "subTitle": "Develop", "href": "/capabilities/web-interfaces", "icon": "/assets/icons/web-interface.svg", "alt": "Web Interface Icon", "delivers": ["HTML, CSS", "Web Components"]}'>
+            </capabilities-item>
         </li>
     </ol>
   </section>
-`;e("section-capabilities",{styles:X,template:K});var V=`
+`;e("section-capabilities",{styles:X,template:G});var K=`
   :host {
     --local-width: 5rem;
     --local-heigth: auto;
@@ -736,7 +790,7 @@ ol {
    :host([variant="full"]) {
     --local-width: 100%;
   }
-`,G=["width","height","src","alt"],Y=()=>"<img data-forward />";e("app-image",{attrs:G,styles:V,template:Y});var Z=`
+`,V=["width","height","src","alt"],Y=()=>"<img data-forward />";e("app-image",{attrs:V,styles:K,template:Y});var Z=`
   :host {
     display: flex;
     /* width: fit-content; */
@@ -868,7 +922,7 @@ ol {
     border-radius: 4px;
   }
 
-  @media (max-width: ${c}) {
+  @media (max-width: ${l}) {
     :host {
       display: block;
     }
@@ -1162,7 +1216,7 @@ ol {
     margin-top: 2rem;
   }
 
-  @media (max-width: ${c}) {
+  @media (max-width: ${l}) {
     img {
       display: none;
     }

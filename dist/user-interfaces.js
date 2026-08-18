@@ -1,4 +1,4 @@
-function h(t,o){if(t===void 0){if(o===Array)return[];if(o===Object)return{};if(o===Boolean)return!1;if(o===Number)return 0;return}if(o===Boolean)return Boolean(t);if(o===Number)return Number(t);return t}function e(t,{props:o={},attrs:a=[],styles:d="",template:s}){let g=["props",...a];class p extends HTMLElement{static observedAttributes=g;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let r={},n=this.getAttribute("props");if(n)try{r=JSON.parse(n)}catch{r={}}let m={};for(let c of Object.keys(o))m[c]=h(r[c],o[c]);return m}_applyForwardedAttrs(){if(a.length===0)return;let r=this.shadowRoot.querySelector("[data-forward]");if(!r)return;for(let n of a)if(this.hasAttribute(n))r.setAttribute(n,this.getAttribute(n));else r.removeAttribute(n)}_render(){let r=this._getProps(),n=typeof s==="function"?s(r):s;this.shadowRoot.innerHTML=`<style>${d}</style>${n}`,this._applyForwardedAttrs()}}customElements.define(t,p)}var f=`
+function h(t,i){if(t===void 0){if(i===Array)return[];if(i===Object)return{};if(i===Boolean)return!1;if(i===Number)return 0;return}if(i===Boolean)return Boolean(t);if(i===Number)return Number(t);return t}function e(t,{props:i={},attrs:a=[],styles:p="",template:s}){let m=["props",...a];class c extends HTMLElement{static observedAttributes=m;constructor(){super();this.attachShadow({mode:"open"})}connectedCallback(){this._render()}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let r={},n=this.getAttribute("props");if(n)try{r=JSON.parse(n)}catch{r={}}let g={};for(let d of Object.keys(i))g[d]=h(r[d],i[d]);return g}_applyForwardedAttrs(){if(a.length===0)return;let r=this.shadowRoot.querySelector("[data-forward]");if(!r)return;for(let n of a)if(this.hasAttribute(n))r.setAttribute(n,this.getAttribute(n));else r.removeAttribute(n)}_render(){let r=this._getProps(),n=typeof s==="function"?s(r):s;this.shadowRoot.innerHTML=`<style>${p}</style>${n}`,this._applyForwardedAttrs()}}customElements.define(t,c)}var f=`
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -70,7 +70,7 @@ function h(t,o){if(t===void 0){if(o===Array)return[];if(o===Object)return{};if(o
     max-height: 7rem;
     width: auto;
   }
-`,y=["width","height","src","alt"],w=()=>"<img data-forward />";e("app-logo",{attrs:y,styles:u,template:w});var i="769px",l="992px";var x=`
+`,y=["width","height","src","alt"],w=()=>"<img data-forward />";e("app-logo",{attrs:y,styles:u,template:w});var o="769px",l="992px";var x=`
   :host {
     display: block;
   }
@@ -105,7 +105,7 @@ function h(t,o){if(t===void 0){if(o===Array)return[];if(o===Object)return{};if(o
     box-shadow: none;
   }
 
-  @media (max-width: ${i}) {
+  @media (max-width: ${o}) {
     .header__navigation {
       gap: 4rem;
     }
@@ -148,7 +148,7 @@ function h(t,o){if(t===void 0){if(o===Array)return[];if(o===Object)return{};if(o
    display: flex;
    gap: 5rem;
 
-   @media (max-width: ${i}) {
+   @media (max-width: ${o}) {
         flex-direction: column;
         gap: 3rem;
         margin-block: 2rem;
@@ -177,7 +177,7 @@ function h(t,o){if(t===void 0){if(o===Array)return[];if(o===Object)return{};if(o
     max-height: 12.5ch;
     overflow: scroll;
 
-    @media (max-width: ${i}) {
+    @media (max-width: ${o}) {
         max-height: 20ch;
     }
   }
@@ -205,7 +205,7 @@ function h(t,o){if(t===void 0){if(o===Array)return[];if(o===Object)return{};if(o
     border-top: 1px solid var(--color-text);
     padding-top: 1rem;
 
-   @media (max-width: ${i}) {
+   @media (max-width: ${o}) {
         flex-direction: column-reverse;
         gap: 2rem;
         border: none;
@@ -216,7 +216,7 @@ function h(t,o){if(t===void 0){if(o===Array)return[];if(o===Object)return{};if(o
   p {
     margin: 0;
 
-    @media (max-width: ${i}) {
+    @media (max-width: ${o}) {
       border-top: 1px solid var(--color-text);
     padding-top: 1rem;
     }
@@ -238,7 +238,7 @@ function h(t,o){if(t===void 0){if(o===Array)return[];if(o===Object)return{};if(o
     text-transform: uppercase;
     
 
-    @media (max-width: ${i}) {
+    @media (max-width: ${o}) {
       display: inline-block;
       margin-bottom: 0.5rem;
     }
@@ -288,7 +288,7 @@ function h(t,o){if(t===void 0){if(o===Array)return[];if(o===Object)return{};if(o
               </li>
           </ul>
 </nav>
-`;e("footer-copyright",{styles:A,template:H});var O=`
+`;e("footer-copyright",{styles:A,template:H});var C=`
   :host {
     --local-bg-color: var(--color-bg-secondary);
 
@@ -320,7 +320,7 @@ function h(t,o){if(t===void 0){if(o===Array)return[];if(o===Object)return{};if(o
     gap: 5rem;
   }
 
-  @media (max-width: ${i}) {
+  @media (max-width: ${o}) {
     article {
       display: block;
     }
@@ -336,7 +336,7 @@ function h(t,o){if(t===void 0){if(o===Array)return[];if(o===Object)return{};if(o
   hr {
     color: var(--color-secondary);
   }
-`,C=`
+`,I=`
   <footer>
       <article>
         <div>
@@ -358,7 +358,7 @@ function h(t,o){if(t===void 0){if(o===Array)return[];if(o===Object)return{};if(o
 
       <footer-copyright></footer-copyright>
   </footer>
-`;e("section-footer",{styles:O,template:C});var E=`
+`;e("section-footer",{styles:C,template:I});var T=`
   :host {
     --local-width: 5rem;
     --local-heigth: auto;
@@ -389,7 +389,7 @@ function h(t,o){if(t===void 0){if(o===Array)return[];if(o===Object)return{};if(o
    :host([variant="full"]) {
     --local-width: 100%;
   }
-`,N=["width","height","src","alt"],T=()=>"<img data-forward />";e("app-image",{attrs:N,styles:E,template:T});var P=`
+`,O=["width","height","src","alt"],E=()=>"<img data-forward />";e("app-image",{attrs:O,styles:T,template:E});var L=`
   :host {
     --local-width: 3rem;
     --local-height: auto;
@@ -427,14 +427,14 @@ function h(t,o){if(t===void 0){if(o===Array)return[];if(o===Object)return{};if(o
   }
 
 
-`,L=["src","alt"],_=()=>'<img data-forward width="200" height="200"/>';e("app-icon",{attrs:L,styles:P,template:_});var I=`
+`,N=["src","alt"],P=()=>'<img data-forward width="200" height="200"/>';e("app-icon",{attrs:N,styles:L,template:P});var j=`
    section {
         margin-inline: auto;
         width: 80%;
         display: flex;
         justify-content: space-between;
 
-        @media (max-width: ${i}) {
+        @media (max-width: ${o}) {
           flex-direction: column;
           gap: 3rem;
         }
@@ -454,7 +454,7 @@ function h(t,o){if(t===void 0){if(o===Array)return[];if(o===Object)return{};if(o
   p {
     margin: 0;
   }
-`,j={name:String,img:String,alt:String},B=({name:t="Name",img:o="/assets/images/coming-soon.jpg",alt:a="Coming Soon"})=>`
+`,_={name:String,img:String,alt:String},D=({name:t="Name",img:i="/assets/images/coming-soon.jpg",alt:a="Coming Soon"})=>`
   <section>
       <div>
         <hgroup>
@@ -469,9 +469,9 @@ function h(t,o){if(t===void 0){if(o===Array)return[];if(o===Object)return{};if(o
         ></app-icon>
       </div>
 
-      <app-image variant="large" src=${o} alt=${a}></app-image>
+      <app-image variant="large" src=${i} alt=${a}></app-image>
   </section>
-`;e("section-coming-soon-intro",{props:j,styles:I,template:B});var D=`
+`;e("section-coming-soon-intro",{props:_,styles:j,template:D});var B=`
   :host {
     display: block;
   }
@@ -516,7 +516,7 @@ function h(t,o){if(t===void 0){if(o===Array)return[];if(o===Object)return{};if(o
     width: fit-content;
     padding: 2rem;
 
-    @media (max-width: ${i}) {
+    @media (max-width: ${o}) {
         flex-direction: column;
     }
   }
@@ -541,7 +541,7 @@ function h(t,o){if(t===void 0){if(o===Array)return[];if(o===Object)return{};if(o
         </hgroup>
 
         <article>
-            <h3>What I provide</h3>
+            <h3>What I deliver</h3>
              <ol>
                 <li>
                     <app-icon variant="medium" src="/assets/icons/user-interface.svg" alt=""></app-icon>
@@ -560,7 +560,7 @@ function h(t,o){if(t===void 0){if(o===Array)return[];if(o===Object)return{};if(o
             </ol>
         </article>
     </section>
-`;e("section-user-interfaces-intro",{styles:D,template:F});var M=`
+`;e("section-user-interfaces-intro",{styles:B,template:F});var U=`
   :host {
     display: flex;
     align-items: center;
@@ -591,15 +591,15 @@ function h(t,o){if(t===void 0){if(o===Array)return[];if(o===Object)return{};if(o
       display: none;
     }
   }
-`,U={name:String,img:String,alt:String},W=({name:t,img:o="",alt:a=""})=>`
+`,W={name:String,img:String,alt:String},M=({name:t,img:i="",alt:a=""})=>`
     <h2>${t}</h2>
     <img
-        src=${o}
+        src=${i}
         alt=${a}
         height="36"
         width="76"
     />
-`;e("section-title",{props:U,styles:M,template:W});var J=`
+`;e("section-title",{props:W,styles:U,template:M});var J=`
   :host {
     display: block;
   }
@@ -610,7 +610,7 @@ function h(t,o){if(t===void 0){if(o===Array)return[];if(o===Object)return{};if(o
   }
 
 
-`,K=`
+`,G=`
   <section>
     <section-title
         props='${JSON.stringify({name:"Workflow",img:"/assets/icons/ostrich.svg",alt:"Ostrich Logo"})}'
@@ -618,7 +618,7 @@ function h(t,o){if(t===void 0){if(o===Array)return[];if(o===Object)return{};if(o
 
      <p>Coming Soon</p>
 </section>
-`;e("section-user-interfaces-workflow",{styles:J,template:K});var R=`
+`;e("section-user-interfaces-workflow",{styles:J,template:G});var K=`
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -647,17 +647,23 @@ function h(t,o){if(t===void 0){if(o===Array)return[];if(o===Object)return{};if(o
     --local-bg: #a36aa5;
      --local-border: 1px solid var( --local-color);
   }
-`,V={name:String},Y=({name:t})=>`${t}`;e("app-badge",{props:V,styles:R,template:Y});var q=`
+`,R={name:String},V=({name:t})=>`${t}`;e("app-badge",{props:R,styles:K,template:V});var Y=`
   :host {
     display: flex;
     gap: 2rem;
     padding-block: 3rem;
     padding-inline: 5rem;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
     border: 1px dashed var(--color-text);
 
     @media (max-width: ${l}) {
       justify-content: start;
+      flex-direction: column;
+      padding: 0;
+      padding-inline: 2rem;
+      padding-block: 2rem;
+      align-items: start;
     }
   }
 
@@ -686,13 +692,59 @@ function h(t,o){if(t===void 0){if(o===Array)return[];if(o===Object)return{};if(o
     font-weight: var(--font-regular);
     margin-bottom: 0.5rem;
   }
-`,G={title:String,subTitle:String,href:String},Q=({title:t,subTitle:o,href:a})=>`
-     <article>
-      <span>${o}</span>
+
+  ol {
+     padding: 0;
+      margin: 0;
+      list-style: none;
+      padding: 0;
+      display: flex;
+      gap: 4rem;
+      width: fit-content;
+      overflow: scroll;
+
+      @media (max-width: ${l}) {
+        width: 100%;
+      }
+    }
+
+    li {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    p {
+        margin: 0;
+        font-size: var(--size-small);
+    }
+  }
+
+    article {
+      @media (max-width: ${l}) {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+`,q={title:String,subTitle:String,href:String,icon:String,alt:String,delivers:Array},Q=({title:t,subTitle:i,href:a,delivers:p,icon:s,alt:m})=>`
+  <article>
+    <hgroup>
+      <span>${i}</span>
       <h3>${t}</h3>
-      <app-link variant="plain" href=${a}>→</app-link>
-     </article>
-`;e("capabilities-item",{props:G,styles:q,template:Q});var X=`
+    </hgroup>
+    <app-link variant="plain" href=${a}>→</app-link>
+  </article>
+
+  <ol>
+    ${p.map((c)=>`
+        <li>
+          <app-icon variant="medium" src=${s} alt=${m}></app-icon>
+          <p>${c}</p>
+        </li>
+      `).join("")}
+  </ol>
+`;e("capabilities-item",{props:q,styles:Y,template:Q});var X=`
   section {
     width: 80%;
     margin-inline: auto;
@@ -710,9 +762,9 @@ function h(t,o){if(t===void 0){if(o===Array)return[];if(o===Object)return{};if(o
 
 ol {
     padding: 0;
-    display: grid;
-    gap: 2rem;
-    grid-template-columns: 1fr 1fr 1fr;
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
 
     @media (max-width: ${l}) {
       grid-template-columns: 1fr;
@@ -727,14 +779,16 @@ ol {
             
     <ol>
         <li>
-            <capabilities-item props='{"title": "Design System", "subTitle": "Build", "href": "/capabilities/design-system"}'>
+            <capabilities-item props='{"title": "Design System", "subTitle": "Build", "href": "/capabilities/design-system", "icon": "/assets/icons/design-system.svg", "alt": "Design System Icon", "delivers": ["Design Tokens", "Component Library", "Guidelines"]}'>
             </capabilities-item>
         </li>
         <li>
-            <capabilities-item props='{"title": "User Interfaces", "subTitle": "Design", "href": "/capabilities/user-interfaces"}'></capabilities-item>
+              <capabilities-item props='{"title": "User Interfaces", "subTitle": "Design", "href": "/capabilities/user-interfaces", "icon": "/assets/icons/user-interface.svg", "alt": "User Interface Icon", "delivers": ["User Flows", "Hi-Fi Interfaces", "Prototypes"]}'>
+            </capabilities-item>
         </li>
         <li>
-            <capabilities-item props='{"title": "Web Interfaces", "subTitle": "Develop", "href": "/capabilities/web-interfaces"}'></capabilities-item>
+             <capabilities-item props='{"title": "Web Interfaces", "subTitle": "Develop", "href": "/capabilities/web-interfaces", "icon": "/assets/icons/web-interface.svg", "alt": "Web Interface Icon", "delivers": ["HTML, CSS", "Web Components"]}'>
+            </capabilities-item>
         </li>
     </ol>
   </section>
