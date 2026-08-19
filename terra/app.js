@@ -1,5 +1,6 @@
 import { CY_STYLE } from "./cy-style.js";
 import { ELEMENTS } from "./data.js";
+import { asset } from "./web-components/define.js";
 
 // ==========================================
 // 1. SHADOW DOM REFERENCES
@@ -295,7 +296,7 @@ function rowItem(id, showIcon) {
 
   if (showIcon) {
     const iconName = e.id.trim().replace(/_/g, "-");
-    const iconSrc = `/terra/assets/icons/${iconName}.svg`;
+    const iconSrc = asset(`./assets/icons/${iconName}.svg`);
     div.innerHTML = `
       <img src="${iconSrc}" alt="${e.type}" class="icon" />
       <span class="small--emphasis">${e.name}</span>

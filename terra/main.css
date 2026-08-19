@@ -1,13 +1,13 @@
 @font-face {
   font-family: "SpaceGrotesk";
-  src: url("/terra/assets/fonts/SpaceGrotesk-Regular.woff2") format("woff2");
+  src: url("./assets/fonts/SpaceGrotesk-Regular.woff2") format("woff2");
   font-weight: 400;
   font-display: swap;
 }
 
 @font-face {
   font-family: "SpaceGrotesk";
-  src: url("/terra/assets/fonts/SpaceGrotesk-Bold.woff2") format("woff2");
+  src: url("./assets/fonts/SpaceGrotesk-Bold.woff2") format("woff2");
   font-weight: 700;
   font-display: swap;
 }

@@ -103,3 +103,9 @@ export function define(
 
   customElements.define(name, Component);
 }
+
+const ROOT = new URL("./", import.meta.url);
+
+export function asset(path) {
+  return new URL(path, ROOT).href;
+}

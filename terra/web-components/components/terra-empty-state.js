@@ -1,4 +1,4 @@
-import { define } from "../define.js";
+import { asset, define } from "../define.js";
 
 const styles = /*css*/ `
   :host {
@@ -34,7 +34,7 @@ const styles = /*css*/ `
 `;
 
 const template = /*html*/ `
-    <img src="/terra/assets/icons/select-node.svg" alt="Select a Node" class="icon-empty" />
+    <img src=${asset("./assets/icons/select-node.svg")} alt="Select a Node" class="icon-empty" />
     <div class="empty__content">
       <h2>Select a node</h2>
       <p>Explore the connections between natural sources and everyday goods</p>
