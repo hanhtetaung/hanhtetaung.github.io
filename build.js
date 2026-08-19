@@ -27,7 +27,7 @@ await $`mkdir -p docs`;
 for (const srcPath of allFiles) {
   const outPath = `docs/${srcPath.replace(/^\.\//, "")}`;
   console.log(`Building ${srcPath} -> ${outPath}`);
-  await $`bun build --compile --target=browser ${srcPath} --outfile=${outPath}`;
+  await $`bun build --compile --target=browser --minify ${srcPath} --outfile=${outPath}`;
 }
 
 console.log("Copying assets...");

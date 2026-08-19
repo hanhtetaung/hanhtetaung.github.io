@@ -113,7 +113,7 @@ function scaledTextMaxWidth(scale) {
   return () => LABEL_WRAP_WIDTH * scale;
 }
 
-const CY_STYLE = [
+export const CY_STYLE = [
   {
     selector: "node",
     style: {
