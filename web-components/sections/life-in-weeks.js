@@ -1,6 +1,6 @@
-import { define } from "../define";
-import "../components/app-icon";
-import "../components/app-link";
+import { define } from "../define.js";
+import "../components/app-icon.js";
+import "../components/app-link.js";
 
 const DOB = "3 Nov 2000";
 const YEARS = 70;
@@ -93,7 +93,7 @@ const template = () => /* html */ `
     <section-title
       props='${JSON.stringify({
         name: "Life in Weeks",
-        img: "/assets/icons/parrot.svg",
+        img: "./assets/icons/parrot.svg",
         alt: "Birds-singing Logo",
       })}'
     ></section-title>

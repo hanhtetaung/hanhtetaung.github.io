@@ -1,9 +1,9 @@
-import { define } from "../define";
-import "../components/section-title";
-import "../components/app-badge";
-import "../components/app-icon";
-import "../components/capabilities-item";
-import { PHONE } from "../breakpoints";
+import { define } from "../define.js";
+import "../components/section-title.js";
+import "../components/app-badge.js";
+import "../components/app-icon.js";
+import "../components/capabilities-item.js";
+import { PHONE } from "../breakpoints.js";
 
 const styles = /* css */ `
   section {
@@ -62,7 +62,7 @@ const template = () => /* html */ `
       <section-title
         props='${JSON.stringify({
           name: "Workflow",
-          img: "/assets/icons/ostrich.svg",
+          img: "./assets/icons/ostrich.svg",
           alt: "Peacock Logo",
         })}'
       ></section-title>
@@ -71,19 +71,19 @@ const template = () => /* html */ `
         <p>A process from understanding an idea to building production-ready interfaces</p>
         <ol>
             <li>
-                <app-icon variant="medium" src="/assets/icons/one-finger.svg" alt="One Finger Icon"></app-icon>
+                <app-icon variant="medium" src="./assets/icons/one-finger.svg" alt="One Finger Icon"></app-icon>
                <p><span>Understand Idea</span>Turn requirements, problems, and needs into a clear understanding.</p>
             </li>
             <li>
-                <app-icon variant="medium" src="/assets/icons/two-finger.svg" alt="Two Finger Icon"></app-icon>
+                <app-icon variant="medium" src="./assets/icons/two-finger.svg" alt="Two Finger Icon"></app-icon>
                <p><span>Design Interfaces</span>Build a design foundation and design user interface component by component.</p>
             </li>
             <li>
-                <app-icon variant="medium" src="/assets/icons/three-finger.svg" alt="Three Finger Icon"></app-icon>
+                <app-icon variant="medium" src="./assets/icons/three-finger.svg" alt="Three Finger Icon"></app-icon>
                <p><span>Develop Web Interfaces</span>Build production-ready interfaces using HTML, CSS, JavaScript, and Web Components.</p>
             </li>
             <li>
-                <app-icon variant="medium" src="/assets/icons/loop.svg" alt="Loop Icon"></app-icon>
+                <app-icon variant="medium" src="./assets/icons/loop.svg" alt="Loop Icon"></app-icon>
                <p><span>Loop</span>Iterate, refine, and improve continuously.</p>
             </li>
         </ol>

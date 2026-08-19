@@ -1,7 +1,7 @@
-import { define } from "../define";
+import { define } from "../define.js";
 
-import "../components/app-icon";
-import { PHONE } from "../breakpoints";
+import "../components/app-icon.js";
+import { PHONE } from "../breakpoints.js";
 
 const styles = /*css*/ `
     section {
@@ -37,7 +37,7 @@ const template = /* html */ `
 
       <app-icon
         variant="large"
-        src="/assets/icons/bird-with-flower.svg"
+        src="./assets/icons/bird-with-flower.svg"
         alt="Coming Soon"
       ></app-icon>
   </section>

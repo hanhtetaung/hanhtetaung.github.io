@@ -1,8 +1,9 @@
-import { define } from "../define";
+import { define } from "../define.js";
+import { asset } from "../asset.js";
 
-import "../components/app-image";
-import "../components/app-icon";
-import { PHONE } from "../breakpoints";
+import "../components/app-image.js";
+import "../components/app-icon.js";
+import { PHONE } from "../breakpoints.js";
 
 const styles = /*css*/ `
    section {
@@ -37,7 +38,7 @@ const props = { name: String, img: String, alt: String };
 
 const template = ({
   name = "Name",
-  img = "/assets/images/coming-soon.jpg",
+  img = "./assets/images/coming-soon.jpg",
   alt = "Coming Soon",
 }) => /* html */ `
   <section>
@@ -49,12 +50,12 @@ const template = ({
 
         <app-icon
           variant="large"
-          src="/assets/icons/cuckoo-clock.svg"
+          src=${asset("./assets/icons/cuckoo-clock.svg")}
           alt="Cuckoo Cock Logo"
         ></app-icon>
       </div>
 
-      <app-image variant="large" src=${img} alt=${alt}></app-image>
+      <app-image variant="large" src=${asset(img)} alt=${alt}></app-image>
   </section>
 `;
 

@@ -1,8 +1,9 @@
-import { define } from "../../define";
+import { define } from "../../define.js";
 
-import "../../components/section-title";
-import "../../components/app-image";
-import "../../components/app-article-paragraph";
+import "../../components/section-title.js";
+import "../../components/app-image.js";
+import "../../components/app-article-paragraph.js";
+import { asset } from "../../asset.js";
 
 const styles = /* css */ `
   :host {
@@ -43,7 +44,7 @@ const template = /* html */ `
 
     <app-image
       variant="full"
-      src="/assets/images/foundation-building-software/atomic-design.avif"
+      src=${asset("./assets/images/foundation-building-software/atomic-design.avif")}
       alt="Atomic design overview"
       width="1398"
       height="1236"
@@ -57,7 +58,7 @@ const template = /* html */ `
           </p>
           <app-image
             variant="full"
-            src="/assets/images/foundation-building-software/page.avif"
+            src=${asset("./assets/images/foundation-building-software/page.avif")}
             alt="Page overview"
             width="1398"
             height="1236"
@@ -72,7 +73,7 @@ const template = /* html */ `
           </p>
           <app-image
             variant="full"
-            src="/assets/images/foundation-building-software/organisms.avif"
+            src=${asset("./assets/images/foundation-building-software/organisms.avif")}
             alt="Organism overview"
             width="1398"
             height="1236"
@@ -87,7 +88,7 @@ const template = /* html */ `
           </p>
           <app-image
             variant="full"
-            src="/assets/images/foundation-building-software/molecule.avif"
+            src=${asset("./assets/images/foundation-building-software/molecule.avif")}
             alt="Molecule overview"
             width="1398"
             height="1236"
@@ -102,7 +103,7 @@ const template = /* html */ `
           </p>
           <app-image
             variant="full"
-            src="/assets/images/foundation-building-software/atom.avif"
+            src=${asset("./assets/images/foundation-building-software/atom.avif")}
             alt="Atom overview"
             width="1398"
             height="1236"
@@ -115,7 +116,7 @@ const template = /* html */ `
           <p>Smallest unit of the system, represents a design token.</p>
           <app-image
             variant="full"
-            src="/assets/images/foundation-building-software/subatomic-particles.avif"
+            src=${asset("./assets/images/foundation-building-software/subatomic-particles.avif")}
             alt="Subatomic particles overview"
             width="1398"
             height="1236"

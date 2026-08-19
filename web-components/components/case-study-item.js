@@ -1,7 +1,7 @@
-import { PHONE, TABLE } from "../breakpoints";
-import { define } from "../define";
-import "../components/app-link";
-import "../components/app-badge";
+import { PHONE, TABLE } from "../breakpoints.js";
+import { define } from "../define.js";
+import "../components/app-link.js";
+import "../components/app-badge.js";
 
 const styles = /* css */ `
   :host {

@@ -1,8 +1,8 @@
-import "../sections/header";
-import "../sections/footer";
+import "../sections/header.js";
+import "../sections/footer.js";
 
-import "../sections/sks-solar/intro";
-import "../sections/sks-solar/background";
-import "../sections/sks-solar/challenge";
-import "../sections/sks-solar/process";
-import "../sections/sks-solar/result";
+import "../sections/sks-solar/intro.js";
+import "../sections/sks-solar/background.js";
+import "../sections/sks-solar/challenge.js";
+import "../sections/sks-solar/process.js";
+import "../sections/sks-solar/result.js";

@@ -1,9 +1,10 @@
-import { define } from "../define";
-import "../components/app-logo";
-import "../components/app-link";
-import "../components/footer-nav";
-import "../components/footer-copyright";
-import { PHONE } from "../breakpoints";
+import { define } from "../define.js";
+import "../components/app-logo.js";
+import "../components/app-link.js";
+import "../components/footer-nav.js";
+import "../components/footer-copyright.js";
+import { PHONE } from "../breakpoints.js";
+import { asset } from "../asset.js";
 
 const styles = /* css */ `
   :host {
@@ -60,10 +61,8 @@ const template = /* html */ `
       <article>
         <div>
           <app-logo
-            src="/assets/images/logo.avif"
+            src="${asset("./assets/images/logo.avif")}"
             alt="Logo"
-            width="200"
-            height="200"
           ></app-logo>
         
           <p>

@@ -1,8 +1,9 @@
-import { define } from "../../define";
+import { define } from "../../define.js";
 
-import "../../components/section-title";
-import "../../components/app-image";
-import "../../components/app-article-paragraph";
+import "../../components/section-title.js";
+import "../../components/app-image.js";
+import "../../components/app-article-paragraph.js";
+import { asset } from "../../asset.js";
 
 const styles = /* css */ `
   :host {
@@ -52,7 +53,7 @@ const template = /* html */ `
 
           <app-image
             variant="medium"
-            src="/assets/images/case-study/mmo/1st-stage.avif"
+            src=${asset("./assets/images/case-study/mmo/1st-stage.avif")}
             alt="First interface preview"
             width="1398"
             height="1236"
@@ -70,7 +71,7 @@ const template = /* html */ `
 
           <app-image
             variant="medium"
-            src="/assets/images/case-study/mmo/2nd-stage.avif"
+            src=${asset("./assets/images/case-study/mmo/2nd-stage.avif")}
             alt="Second interface preview"
             width="1398"
             height="1366"
@@ -87,7 +88,7 @@ const template = /* html */ `
 
           <app-image
             variant="medium"
-            src="/assets/images/case-study/mmo/3rd-stage.avif"
+            src=${asset("./assets/images/case-study/mmo/3rd-stage.avif")}
             alt="Third interface preview"
             width="1474"
             height="864"
@@ -101,7 +102,7 @@ const template = /* html */ `
 
           <app-image
             variant="medium"
-            src="/assets/images/case-study/mmo/final-stage.avif"
+            src=${asset("./assets/images/case-study/mmo/final-stage.avif")}
             alt="Final interface preview"
             width="1474"
             height="864"

@@ -1,8 +1,8 @@
-import "../sections/header";
-import "../sections/footer";
+import "../sections/header.js";
+import "../sections/footer.js";
 
-import "../sections/portfolio/intro";
-import "../sections/portfolio/background";
-import "../sections/portfolio/challenge";
-import "../sections/portfolio/process";
-import "../sections/portfolio/result";
+import "../sections/portfolio/intro.js";
+import "../sections/portfolio/background.js";
+import "../sections/portfolio/challenge.js";
+import "../sections/portfolio/process.js";
+import "../sections/portfolio/result.js";

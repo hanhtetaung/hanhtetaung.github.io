@@ -1,32 +1,33 @@
-import { define } from "../define";
-import "../components/app-icon";
-import "../components/app-link";
-import { PHONE } from "../breakpoints";
+import { define } from "../define.js";
+import "../components/app-icon.js";
+import "../components/app-link.js";
+import "../components/app-badge.js";
+import { PHONE } from "../breakpoints.js";
 
 const tech_icons = [
-  { src: "/assets/icons/figma.svg", alt: "Figma Icon" },
-  { src: "/assets/icons/html.svg", alt: "HTML Icon" },
-  { src: "/assets/icons/css.svg", alt: "CSS Icon" },
-  { src: "/assets/icons/javascript.svg", alt: "JavaScript Icon" },
+  { src: "./assets/icons/figma.svg", alt: "Figma Icon" },
+  { src: "./assets/icons/html.svg", alt: "HTML Icon" },
+  { src: "./assets/icons/css.svg", alt: "CSS Icon" },
+  { src: "./assets/icons/javascript.svg", alt: "JavaScript Icon" },
 ];
 
 const showcases = [
   {
     name: "Terra",
     href: "/work/terra",
-    src: "/assets/images/case-study/terra/thumbnail.avif",
+    src: "./assets/images/case-study/terra/thumbnail.avif",
     alt: "Terra Thumbnail",
   },
   {
     name: "MMO",
     href: "/work/mmo",
-    src: "/assets/images/case-study/mmo/thumbnail.avif",
+    src: "./assets/images/case-study/mmo/thumbnail.avif",
     alt: "MMO Thumbnail",
   },
   {
     name: "Bamboo",
     href: "/work/bamboo",
-    src: "/assets/images/case-study/bamboo/thumbnail.avif",
+    src: "./assets/images/case-study/bamboo/thumbnail.avif",
     alt: "Bamboo Thumbnail",
   },
 ];

@@ -1,5 +1,5 @@
-import { PHONE } from "../breakpoints";
-import { define } from "../define";
+import { PHONE } from "../breakpoints.js";
+import { define } from "../define.js";
 
 const styles = /*css*/ `
   section {

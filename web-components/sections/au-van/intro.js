@@ -1,5 +1,5 @@
-import { define } from "../../define";
-import "../coming-soon-intro";
+import { define } from "../../define.js";
+import "../coming-soon-intro.js";
 
 const styles = /* css */ `
   :host {

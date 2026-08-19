@@ -1,7 +1,8 @@
-import { define } from "../../define";
+import { define } from "../../define.js";
 
-import "../../components/app-image";
-import "../../components/app-link";
+import "../../components/app-image.js";
+import "../../components/app-link.js";
+import { asset } from "../../asset.js";
 
 const styles = /* css */ `
   :host {
@@ -47,7 +48,7 @@ const template = /* html */ `
 
           <app-image
             variant="large"
-            src="/assets/images/case-study/terra/foundation.avif"
+            src=${asset("./assets/images/case-study/terra/foundation.avif")}
             alt="Wireframe Screenshot"
           ></app-image>
 

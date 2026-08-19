@@ -1,9 +1,10 @@
-import { define } from "../../define";
+import { define } from "../../define.js";
 
-import "../../components/section-title";
-import "../../components/app-image";
-import "../../components/app-link";
-import "../../components/app-article-paragraph";
+import "../../components/section-title.js";
+import "../../components/app-image.js";
+import "../../components/app-link.js";
+import "../../components/app-article-paragraph.js";
+import { asset } from "../../asset.js";
 
 const styles = /* css */ `
   :host {
@@ -53,7 +54,7 @@ const template = /* html */ `
           
           <app-image
             variant="medium"
-            src="/assets/images/case-study/portfolio/inspiration.avif"
+            src=${asset("./assets/images/case-study/portfolio/inspiration.avif")}
             alt="Inspiration Collection"
             width="1398"
             height="1236"
@@ -71,7 +72,7 @@ const template = /* html */ `
           </p>
           <app-image
             variant="medium"
-            src="/assets/images/case-study/portfolio/wireframe.avif"
+            src=${asset("./assets/images/case-study/portfolio/wireframe.avif")}
             alt="Wireframe Screenshot"
             width="1398"
             height="1366"
@@ -89,14 +90,14 @@ const template = /* html */ `
           </p>
           <app-image
             variant="medium"
-            src="/assets/images/case-study/portfolio/design-foundation.avif"
+            src=${asset("./assets/images/case-study/portfolio/design-foundation.avif")}
             alt="Design Foundation Screenshot"
             width="1474"
             height="864"
           ></app-image>
           <app-image
             variant="medium"
-            src="/assets/images/case-study/portfolio/final-design.avif"
+            src=${asset("./assets/images/case-study/portfolio/final-design.avif")}
             alt="Final Design"
             width="1402"
             height="1378"

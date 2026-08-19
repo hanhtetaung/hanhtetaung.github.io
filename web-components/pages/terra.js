@@ -1,8 +1,8 @@
-import "../sections/header";
-import "../sections/footer";
+import "../sections/header.js";
+import "../sections/footer.js";
 
-import "../sections/terra/intro";
-import "../sections/terra/overview";
-import "../sections/terra/building-block";
-import "../sections/terra/need-one-interface";
-import "../sections/terra/conclusion";
+import "../sections/terra/intro.js";
+import "../sections/terra/overview.js";
+import "../sections/terra/building-block.js";
+import "../sections/terra/need-one-interface.js";
+import "../sections/terra/conclusion.js";

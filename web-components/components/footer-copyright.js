@@ -1,5 +1,6 @@
-import { PHONE } from "../breakpoints";
-import { define } from "../define";
+import { asset } from "../asset.js";
+import { PHONE } from "../breakpoints.js";
+import { define } from "../define.js";
 
 const styles = /* css */ `
   :host {
@@ -60,7 +61,7 @@ const template = () => /* html */ `
               <li>
                   <app-link href="mailto:hanhtetaung.dev@gmail.com" variant="image">
                   <img
-                      src="/assets/icons/email.svg"
+                      src=${asset("./assets/icons/email.svg")}
                       alt="Email Icon"
                   />
                   </app-link>
@@ -73,7 +74,7 @@ const template = () => /* html */ `
                   variant="image"
                   >
                   <img
-                      src="/assets/icons/github.svg"
+                      src=${asset("./assets/icons/github.svg")}
                       alt="Github Icon"
                   />
                   </app-link>
@@ -86,7 +87,7 @@ const template = () => /* html */ `
                   variant="image"
                   >
                   <img
-                      src="/assets/icons/linkedin.svg"
+                      src=${asset("./assets/icons/linkedin.svg")}
                       alt="Linkedin Icon"
                   />
                   </app-link>
