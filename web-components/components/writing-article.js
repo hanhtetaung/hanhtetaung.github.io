@@ -2,6 +2,7 @@ import { define } from "../define.js";
 
 import "../components/app-icon.js";
 import "../components/app-link.js";
+import { navHref } from "../asset.js";
 
 const styles = /* css */ `
   :host {
@@ -47,7 +48,7 @@ const template = ({ title, img, alt, href, comingSoon }) => /* html */ `
 
     <article>
         <h3>${title}</h3>
-        ${comingSoon ? "<p>Coming soon</p>" : /*html*/ `<app-link variant="underline" href=${href} target="_blank">Read More</app-link>`}
+        ${comingSoon ? "<p>Coming soon</p>" : /*html*/ `<app-link variant="underline" href=${navHref(href)} target="_blank">Read More</app-link>`}
     </article>
 
 `;

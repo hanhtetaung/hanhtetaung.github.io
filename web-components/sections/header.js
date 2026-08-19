@@ -2,7 +2,7 @@ import { define } from "../define.js";
 import "../components/app-link.js";
 import "../components/app-logo.js";
 import { PHONE } from "../breakpoints.js";
-import { asset } from "../asset.js";
+import { asset, navHref } from "../asset.js";
 
 const styles = /* css */ `
   :host {
@@ -48,7 +48,7 @@ const styles = /* css */ `
 
 const template = /* html */ `
   <header>
-      <app-link variant="plain" href="/">
+      <app-link variant="plain" href=${navHref("/")}>
         <app-logo
           src=${asset("./assets/images/logo.avif")}
           alt="Logo"
@@ -59,16 +59,16 @@ const template = /* html */ `
         <nav>
           <ul>
             <li>
-              <app-link variant="plain" href="/">Home</app-link>
+              <app-link variant="plain" href=${navHref("/")}>Home</app-link>
             </li>
 
             <li>
-              <app-link variant="plain" href="/about">About</app-link>
+              <app-link variant="plain" href=${navHref("/about")}>About</app-link>
             </li>
           </ul>
         </nav>
 
-        <app-link variant="primary" href="/hire-me">
+        <app-link variant="primary" href=${navHref("/hire-me")}>
           Let's chat &#8629;
         </app-link>
       </div>

@@ -5,134 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Terra</title>
 
-    <link rel="stylesheet" href="/terra/scss/main.css" />
+    <link rel="stylesheet" href="./main.css" />
 
-    <!-- Cytoscape core + fCoSE layout (fCoSE registers itself automatically
-     once these three scripts are present, in this order) -->
     <script src="https://unpkg.com/cytoscape/dist/cytoscape.min.js"></script>
     <script src="https://unpkg.com/layout-base/layout-base.js"></script>
     <script src="https://unpkg.com/cose-base/cose-base.js"></script>
     <script src="https://unpkg.com/cytoscape-fcose/cytoscape-fcose.js"></script>
+
+    <script type="module" src="./web-components/index.js"></script>
   </head>
   <body>
-    <main class="main">
-      <div class="center">
-        <header class="header">
-          <h1 class="display">Terra</h1>
-
-          <div class="legend">
-            <span class="small"><i class="source-legend"></i>Source</span>
-            <span class="small"><i class="goods-legend"></i>Good</span>
-            <span class="small"
-              ><i class="components-legend"></i>Ingredient</span
-            >
-            <span class="small"><i class="use-legend"></i>Use</span>
-          </div>
-
-          <div class="search-container">
-            <input
-              type="text"
-              id="search-input"
-              placeholder="Search Sources & Goods..."
-              autocomplete="off"
-            />
-            <ul id="search-results" class="search-results"></ul>
-          </div>
-        </header>
-
-        <div id="cy"></div>
-      </div>
-
-      <div class="right">
-        <div class="empty" id="empty">
-          <img
-            src="/terra/assets/icons/select-node.svg"
-            alt="Select a Node"
-            class="icon-empty"
-          />
-          <div class="empty__content">
-            <h2>Select a node</h2>
-            <p>
-              Explore the connections between natural sources and everyday goods
-            </p>
-          </div>
-        </div>
-
-        <div id="card" class="card">
-          <div class="card__header">
-            <img id="c-icon" class="icon" alt="" style="display: none" />
-            <div>
-              <span id="c-kicker">Element</span>
-              <h2 id="c-name" class="">—</h2>
-            </div>
-          </div>
-
-          <div class="card__content">
-            <!-- Each detail section shares the same shape (heading + row-list)
-                 so app.js can look them up and fill/toggle them generically
-                 via data-section, instead of one-off id lookups per section.
-                 Class names (source-section, component-section, use-section)
-                 are kept as-is since main.css targets them directly. -->
-            <div
-              id="c-sources-section"
-              class="source-section"
-              data-section="sources"
-            >
-              <div class="source-section__heading">
-                <h3 class="heading">Sources</h3>
-              </div>
-              <div
-                id="c-sources"
-                class="source-section__list"
-                data-role="list"
-              ></div>
-            </div>
-
-            <div
-              id="c-components-section"
-              class="component-section"
-              data-section="components"
-            >
-              <div class="component-section__heading">
-                <h3 class="heading">
-                  Ingredients <span class="small"> (common)</span>
-                </h3>
-              </div>
-              <div
-                id="c-components"
-                class="component-section__list"
-                data-role="list"
-              ></div>
-            </div>
-
-            <div id="c-used-section" class="use-section" data-section="used">
-              <div class="use-section__heading">
-                <h3 class="heading">Used in</h3>
-              </div>
-              <div id="c-used" class="use-section__list" data-role="list"></div>
-            </div>
-
-            <div
-              id="c-goods-section"
-              class="goods-section"
-              data-section="goods"
-            >
-              <div class="goods-section__heading">
-                <h3 class="heading">Goods</h3>
-              </div>
-              <div
-                id="c-goods"
-                class="goods-section__list"
-                data-role="list"
-              ></div>
-            </div>
-          </div>
-        </div>
-      </div>
+    <main class="app-layout">
+      <terra-main-panel></terra-main-panel>
+      <terra-right-panel></terra-right-panel>
     </main>
-
-    <script src="data.js"></script>
-    <script src="cy-style.js"></script>
-    <script src="app.js"></script>
   </body>
 </html>

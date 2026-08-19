@@ -1,3 +1,4 @@
+import { navHref } from "../asset.js";
 import { define } from "../define.js";
 
 const styles = /*css*/ `
@@ -28,7 +29,7 @@ const template = /* html */ `
         good day!
       </p>
 
-      <app-link variant="underline" href="/">
+      <app-link variant="underline" href=${navHref("/")}>
         Back to home
       </app-link>
   </section>

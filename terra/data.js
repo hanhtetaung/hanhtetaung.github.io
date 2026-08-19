@@ -1,4 +1,4 @@
-const ELEMENTS = [
+export const ELEMENTS = [
   // ---- sources (7) ----
   { id: "plant", type: "source" },
   { id: "crude_oil", type: "source" },

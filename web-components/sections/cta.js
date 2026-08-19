@@ -1,6 +1,7 @@
 import { TABLE } from "../breakpoints.js";
 import { define } from "../define.js";
 import "../components/app-link.js";
+import { navHref } from "../asset.js";
 
 const styles = /* css */ `
   :host {
@@ -70,7 +71,7 @@ const template = /* html */ `
           and positive-minded, then I’m the one for you.
         </p>
 
-        <app-link variant="primary" href="/hire-me">
+        <app-link variant="primary" href=${navHref("/hire-me")}>
           Let's chat
           <span>&#8629;</span>
         </a>

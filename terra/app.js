@@ -1,9 +1,38 @@
+import { CY_STYLE } from "./cy-style.js";
+import { ELEMENTS } from "./data.js";
+import { asset } from "./web-components/define.js";
+
+// ==========================================
+// 1. SHADOW DOM REFERENCES
+// ==========================================
+// Query the custom elements, then access their shadowRoots
+const mainPanel = document.querySelector("terra-main-panel");
+const rightPanel = document.querySelector("terra-right-panel");
+
+if (!mainPanel || !rightPanel) {
+  console.error(
+    "Terra panels not found. Ensure custom elements are defined before this script runs.",
+  );
+}
+
+const cyContainer = mainPanel.shadowRoot.getElementById("cy");
+const headerEl = mainPanel.shadowRoot.querySelector("terra-header");
+const searchInput = headerEl.shadowRoot.getElementById("search-input");
+const searchResultsEl = headerEl.shadowRoot.getElementById("search-results");
+
+const emptyEl = rightPanel.shadowRoot.getElementById("empty");
+const cardEl = rightPanel.shadowRoot.getElementById("card");
+
+// ==========================================
+// 2. DATA PREPARATION
+// ==========================================
 function toLabel(id) {
   return id
     .split("_")
     .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
     .join(" ");
 }
+
 ELEMENTS.forEach((e) => {
   e.name = toLabel(e.id);
 });
@@ -13,15 +42,13 @@ const byId = Object.fromEntries(ELEMENTS.map((e) => [e.id, e]));
 function upstreamIds(el) {
   return el.sources || el.components || [];
 }
+
 function downstreamIds(el) {
   return ELEMENTS.filter((e) => upstreamIds(e).includes(el.id)).map(
     (e) => e.id,
   );
 }
 
-/* Recursively trace an element's components/sources all the way down to
-   the raw sources at the bottom of the chain — e.g. Pho -> Water (direct)
-   plus Plant and Animal (pulled in through Rice, Beef, Pork, etc). */
 function resolveRootSources(el) {
   const result = new Set();
   const visited = new Set();
@@ -40,10 +67,9 @@ function resolveRootSources(el) {
   return [...result];
 }
 
-/* ---- element grouping: one compound container per type ----
-        fCoSE treats these as compound parents and clusters their
-        children together, the way the fcose compound demo does.
-        No styling is applied to these — see cy-style.js. */
+// ==========================================
+// 3. CYTOSCAPE INITIALIZATION
+// ==========================================
 const GROUPS = [
   { id: "group-source", label: "Sources", type: "source" },
   { id: "group-goods", label: "Goods", type: "goods" },
@@ -51,7 +77,6 @@ const GROUPS = [
 
 const groupNodes = GROUPS.map((g, index) => ({
   data: { id: g.id, label: g.label, type: g.type },
-  // Force the two main groups to start on completely opposite sides
   position: { x: index === 0 ? 0 : 1200, y: 0 },
   selectable: false,
   grabbable: false,
@@ -60,10 +85,7 @@ const groupNodes = GROUPS.map((g, index) => ({
 const nodes = ELEMENTS.map((e, index) => {
   const weight = upstreamIds(e).length + downstreamIds(e).length;
   const typeTrimmed = (e.type || "").trim();
-
-  // Base X position depends on the group
   const baseX = typeTrimmed === "source" ? 0 : 1200;
-  // Start them in a very tight grid (small 15px offsets)
   const offsetX = ((index % 5) - 2) * 15;
   const offsetY = (Math.floor(index / 5) - 4) * 15;
 
@@ -102,26 +124,25 @@ ELEMENTS.forEach((e) => {
   });
 });
 
-/* ---- init cytoscape ---- */
 const cy = cytoscape({
-  container: document.getElementById("cy"),
+  container: cyContainer, // <-- Now correctly points to shadow DOM
   elements: [...groupNodes, ...nodes, ...edges],
   style: CY_STYLE,
   wheelSensitivity: 0.25,
-  layout: { name: "preset" }, // real layout is run below
+  layout: { name: "preset" },
 });
 
 const fcoseLayout = () =>
   cy
     .layout({
       name: "fcose",
-      quality: "proof", // "proof" provides the tightest packing for compound nodes
+      quality: "proof",
       animate: true,
       animationDuration: 700,
-      randomize: false, // Keeps layout fixed on every refresh
+      randomize: false,
       nodeDimensionsIncludeLabels: true,
-      nodeSeparation: 10, // VERY small separation to pack source nodes tightly together
-      piSepCompounds: true, // Strictly forbids the two main group boxes from overlapping
+      nodeSeparation: 10,
+      piSepCompounds: true,
       idealEdgeLength: function (edge) {
         const targetId = edge.target().id();
         const targetEl = byId[targetId];
@@ -135,14 +156,14 @@ const fcoseLayout = () =>
                 const comp = byId[id];
                 return comp && (comp.type || "").trim() === "source";
               });
-            if (allSources) return 80; // Pull simple goods close
+            if (allSources) return 80;
           }
         }
-        return 140; // Standard distance for complex goods
+        return 140;
       },
-      nodeRepulsion: 1500, // LOW repulsion so source nodes don't push each other away
-      edgeElasticity: 0.1, // Low elasticity so edges don't drag the two main groups together
-      gravity: 0.8, // HIGH gravity pulls source nodes tightly into the center of their group
+      nodeRepulsion: 1500,
+      edgeElasticity: 0.1,
+      gravity: 0.8,
       gravityRange: 1.5,
       numIter: 2500,
       tile: true,
@@ -153,29 +174,11 @@ const fcoseLayout = () =>
 
 fcoseLayout();
 
-/* ---- interaction ---- */
-const emptyEl = document.getElementById("empty");
-const cardEl = document.getElementById("card");
-const typeLabel = { source: "Source", goods: "Goods" };
-
-/* ---- side / ring arrangement of a selected node's ingredients & uses ----
-   When a node is selected, its direct components ("first-connected" /
-   ingredients) are pulled out to a vertical stack on the LEFT, and its
-   direct uses (outgoers) to a vertical stack on the RIGHT — both centered
-   on the selected node's own height.
-
-   Two cases fall back to a full ring around the selected node instead:
-     - the node has no uses (nothing downstream) — a right-only stack
-       would leave the ingredients lopsided on one side
-     - the node is a SOURCE — sources have no ingredients (nothing
-       upstream of them) to begin with, so a right-only stack of uses is
-       just as lopsided; ring them instead
-
-   Original positions are remembered and restored on deselect, so this
-   never permanently disturbs the base fCoSE layout — it's a temporary
-   focus view. */
-let arrangedNeighbors = null; // cytoscape collection currently pulled aside
-const preArrangePositions = new Map(); // id -> {x, y} to restore back to
+// ==========================================
+// 4. INTERACTION & UI LOGIC
+// ==========================================
+let arrangedNeighbors = null;
+const preArrangePositions = new Map();
 
 function restoreArrangedPositions() {
   if (!arrangedNeighbors) return;
@@ -188,8 +191,6 @@ function restoreArrangedPositions() {
   preArrangePositions.clear();
 }
 
-// Stacks `sideNodes` vertically, centered on `center.y`, offset horizontally
-// from `center.x` by `direction` (-1 = left, +1 = right).
 function arrangeSide(center, nodeRadius, sideNodes, direction) {
   if (!sideNodes || sideNodes.length === 0) return;
 
@@ -213,8 +214,6 @@ function arrangeSide(center, nodeRadius, sideNodes, direction) {
   });
 }
 
-// Places `ringNodes` evenly around `center` in a full circle, radius sized
-// so they don't overlap each other or the selected node.
 function arrangeRing(center, nodeRadius, ringNodes) {
   if (!ringNodes || ringNodes.length === 0) return;
 
@@ -228,7 +227,7 @@ function arrangeRing(center, nodeRadius, ringNodes) {
   const radius = Math.max(minRadius, circumferenceNeeded / (2 * Math.PI));
 
   ringNodes.forEach((neighborNode, i) => {
-    const angle = (2 * Math.PI * i) / count - Math.PI / 2; // first node at top
+    const angle = (2 * Math.PI * i) / count - Math.PI / 2;
     const x = center.x + radius * Math.cos(angle);
     const y = center.y + radius * Math.sin(angle);
     neighborNode.animate(
@@ -250,36 +249,30 @@ function arrangeAroundNode(node, ingredientNodes, useNodes) {
   const isSource = node.data("type") === "source";
 
   if (isSource) {
-    // Source nodes have no ingredients to begin with (combined === uses);
-    // a goods node with no uses has combined === ingredients. Either way,
-    // ring the one side that exists instead of a lopsided single-side stack.
     arrangeRing(center, nodeRadius, combined);
   } else {
-    arrangeSide(center, nodeRadius, ingredientNodes, -1); // left = ingredients
-    arrangeSide(center, nodeRadius, useNodes, 1); // right = uses
+    arrangeSide(center, nodeRadius, ingredientNodes, -1);
+    arrangeSide(center, nodeRadius, useNodes, 1);
   }
 }
 
 function clearHighlight() {
   cy.elements().removeClass(
-    "dim lit selected first-connected used-directly used-directly-source edge-direct edge-indirect", // Added edge classes
+    "dim lit selected first-connected used-directly used-directly-source edge-direct edge-indirect",
   );
   restoreArrangedPositions();
 }
 
 function highlight(node) {
-  // predecessors()/successors() walk the full directed chain (nodes + edges)
   const chain = node.predecessors().union(node.successors()).union(node);
   const withGroups = chain.union(chain.ancestors());
   cy.elements().addClass("dim");
   withGroups.removeClass("dim").addClass("lit");
   node.removeClass("dim").addClass("lit selected");
 
-  // First-connected: only the direct (one-hop) components
   const firstConnected = node.incomers("node");
   firstConnected.addClass("first-connected");
 
-  // Direct one-hop uses
   const outgoers = node.outgoers("node");
   if (node.data("type") === "source") {
     outgoers.addClass("used-directly-source");
@@ -287,15 +280,11 @@ function highlight(node) {
     outgoers.addClass("used-directly");
   }
 
-  // --- NEW: Classify edges into direct and indirect ---
-  // Direct edges (1-hop connections to the selected node)
   const directEdges = node.connectedEdges();
   directEdges.addClass("edge-direct");
 
-  // Indirect edges (multi-hop connections in the chain, not directly touching the selected node)
   const indirectEdges = chain.filter("edge").difference(directEdges);
   indirectEdges.addClass("edge-indirect");
-  // ----------------------------------------------------
 
   arrangeAroundNode(node, firstConnected, outgoers);
 }
@@ -307,7 +296,7 @@ function rowItem(id, showIcon) {
 
   if (showIcon) {
     const iconName = e.id.trim().replace(/_/g, "-");
-    const iconSrc = `/terra/assets/icons/${iconName}.svg`;
+    const iconSrc = asset(`./assets/icons/${iconName}.svg`);
     div.innerHTML = `
       <img src="${iconSrc}" alt="${e.type}" class="icon" />
       <span class="small--emphasis">${e.name}</span>
@@ -323,26 +312,23 @@ function rowItem(id, showIcon) {
   return div;
 }
 
-// Cache the card's header + section DOM nodes once, keyed by the
-// data-section value in index.html, instead of re-querying by id
-// on every renderCard() call.
+const cardShadow = cardEl.shadowRoot; // Pierce the card's shadow root
+
 const cardHeader = {
-  icon: document.getElementById("c-icon"),
-  kicker: document.getElementById("c-kicker"),
-  name: document.getElementById("c-name"),
+  icon: cardShadow.getElementById("c-icon"),
+  kicker: cardShadow.getElementById("c-kicker"),
+  name: cardShadow.getElementById("c-name"),
 };
 
 const cardSections = ["sources", "components", "used", "goods"].reduce(
   (acc, key) => {
-    const section = cardEl.querySelector(`[data-section="${key}"]`);
+    const section = cardShadow.querySelector(`[data-section="${key}"]`);
     acc[key] = { section, list: section.querySelector('[data-role="list"]') };
     return acc;
   },
   {},
 );
 
-// Show/hide a section and, if visible, fill its row-list with `ids`
-// (or an empty-state message when there are none).
 function fillSection(key, ids, emptyMessage) {
   const { section, list } = cardSections[key];
   section.style.display = "";
@@ -375,20 +361,14 @@ function renderCard(el) {
   }
 
   if (isSource) {
-    // SOURCE VIEW: Only show "Used in"
     hideSection("sources");
     hideSection("components");
     hideSection("used");
     fillSection("goods", downstreamIds(el), "No downstream uses yet");
   } else {
-    // GOODS VIEW
     hideSection("goods");
-
-    // 1. Sources: root raw materials traced all the way down
     fillSection("sources", resolveRootSources(el), "No raw sources found.");
 
-    // 2. Made up of: direct components/upstreams, hidden entirely when
-    // every direct component is itself a raw source (nothing new to show)
     const ups = upstreamIds(el);
     const allComponentsAreSources =
       ups.length > 0 &&
@@ -403,7 +383,6 @@ function renderCard(el) {
       fillSection("components", ups, "No downstream uses yet");
     }
 
-    // 3. Uses: other goods that include this one as a component
     const used = downstreamIds(el);
     if (used.length === 0) {
       hideSection("used");
@@ -412,8 +391,6 @@ function renderCard(el) {
     }
   }
 
-  // Trigger card animation; apply the node's type as a class
-  // (e.g., "card show source" or "card show goods")
   emptyEl.style.display = "none";
   cardEl.className = "card show " + type;
 }
@@ -427,9 +404,10 @@ function selectNode(id) {
 }
 
 cy.on("tap", "node", (evt) => {
-  if (!byId[evt.target.id()]) return; // group container, not a real element
+  if (!byId[evt.target.id()]) return;
   selectNode(evt.target.id());
 });
+
 cy.on("tap", (evt) => {
   if (evt.target === cy) {
     clearHighlight();
@@ -438,22 +416,18 @@ cy.on("tap", (evt) => {
   }
 });
 
+// These are assumed to be in the global light DOM (e.g., a toolbar)
 const relayoutBtn = document.getElementById("re-layout");
 if (relayoutBtn) relayoutBtn.addEventListener("click", fcoseLayout);
 
 const fitBtn = document.getElementById("fit");
 if (fitBtn) fitBtn.addEventListener("click", () => cy.fit(undefined, 40));
 
-/* ---- search ---- */
-const searchInput = document.getElementById("search-input");
-const searchResultsEl = document.getElementById("search-results");
-
+// ==========================================
+// 5. SEARCH LOGIC
+// ==========================================
 const MAX_SEARCH_RESULTS = 8;
 
-// Baseline styles applied via JS so the dropdown is visible and positioned
-// correctly even if main.css doesn't define .search-results / .show rules
-// (or defines them differently than expected). main.css can still override
-// any of these since inline styles here only set what's needed to function.
 searchResultsEl.style.listStyle = "none";
 searchResultsEl.style.margin = "0";
 searchResultsEl.style.padding = "0";
@@ -469,16 +443,12 @@ searchResultsEl.style.maxHeight = "320px";
 searchResultsEl.style.overflowY = "auto";
 searchResultsEl.style.display = "none";
 
-// The dropdown is positioned absolute relative to its container, so the
-// container needs position:relative or it'll anchor to the page instead.
+// .closest() correctly searches within the shadow DOM tree
 const searchContainerEl = searchInput.closest(".search-container");
 if (searchContainerEl) {
   searchContainerEl.style.position = "relative";
 }
 
-// Rank by where the match occurs (name starts with query > word starts
-// with query > substring anywhere), then alphabetically, so typing "co"
-// surfaces "Copper"/"Cotton" above e.g. "Silicon".
 function searchMatches(query) {
   const q = query.trim().toLowerCase();
   if (!q) return [];
@@ -488,17 +458,15 @@ function searchMatches(query) {
     const name = el.name.toLowerCase();
     const idx = name.indexOf(q);
     if (idx === -1) return;
-    let score = 2; // substring match anywhere
-    if (idx === 0)
-      score = 0; // starts with query
-    else if (name[idx - 1] === " ") score = 1; // word boundary match
+    let score = 2;
+    if (idx === 0) score = 0;
+    else if (name[idx - 1] === " ") score = 1;
     scored.push({ el, score });
   });
 
   scored.sort(
     (a, b) => a.score - b.score || a.el.name.localeCompare(b.el.name),
   );
-
   return scored.slice(0, MAX_SEARCH_RESULTS).map((s) => s.el);
 }
 
@@ -519,10 +487,6 @@ function highlightActiveResult() {
 
 function chooseSearchResult(el) {
   selectNode(el.id);
-  // cy.animate(
-  //   { center: { eles: cy.getElementById(el.id) }, zoom: 1.1 },
-  //   { duration: 400 },
-  // );
   searchInput.value = "";
   closeSearchResults();
   searchInput.blur();
@@ -557,8 +521,6 @@ function renderSearchResults(query) {
       if (!li.classList.contains("active")) li.style.background = "";
     });
     li.addEventListener("mousedown", (evt) => {
-      // mousedown (not click) fires before the input's blur handler,
-      // so the result is still in the DOM when the user picks it.
       evt.preventDefault();
       chooseSearchResult(el);
     });
@@ -575,8 +537,6 @@ searchInput.addEventListener("input", (evt) => {
   renderSearchResults(evt.target.value);
 });
 
-// Keyboard navigation: arrow keys move the highlighted result, Enter
-// selects it, Escape clears the dropdown.
 searchInput.addEventListener("keydown", (evt) => {
   const items = searchResultsEl.children;
   if (!items.length) return;
@@ -604,6 +564,5 @@ searchInput.addEventListener("keydown", (evt) => {
 });
 
 searchInput.addEventListener("blur", () => {
-  // Delay so a mousedown-triggered selection above still fires first.
   setTimeout(closeSearchResults, 100);
 });

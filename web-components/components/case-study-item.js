@@ -2,6 +2,7 @@ import { PHONE, TABLE } from "../breakpoints.js";
 import { define } from "../define.js";
 import "../components/app-link.js";
 import "../components/app-badge.js";
+import { navHref } from "../asset.js";
 
 const styles = /* css */ `
   :host {
@@ -106,7 +107,7 @@ const template = ({
           .join("")}
       </ul>
       <p>${description}</p>
-      <app-link variant="secondary" href="${href}">
+      <app-link variant="secondary" href="${navHref(href)}">
         View Case Study &#8599;
       </app-link>
     </div>

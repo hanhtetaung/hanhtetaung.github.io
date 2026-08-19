@@ -1,5 +1,5 @@
 import { define } from "../define.js";
-import { asset } from "../asset.js";
+import { asset, navHref } from "../asset.js";
 
 import "../components/app-icon.js";
 import "../components/app-link.js";
@@ -109,7 +109,7 @@ const template = ({
       <span>${subTitle}</span>
       <h3>${title}</h3>
     </hgroup>
-    <app-link variant="plain" href=${href}>→</app-link>
+    <app-link variant="plain" href=${navHref(href)}>→</app-link>
   </article>
 
   <ol>

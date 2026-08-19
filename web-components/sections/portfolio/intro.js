@@ -3,7 +3,7 @@ import { define } from "../../define.js";
 import "../../components/app-image.js";
 import "../../components/app-link.js";
 import { PHONE } from "../../breakpoints.js";
-import { asset } from "../../asset.js";
+import { asset, navHref } from "../../asset.js";
 
 const styles = /* css */ `
   :host {
@@ -74,7 +74,7 @@ const template = /* html */ `
           <span>Scope:</span>
           <p>Idea → Website</p>
 
-        <app-link variant="secondary" href="https://hanhtetaung.dev/" target="_blank">
+        <app-link variant="secondary" href=${navHref("https://hanhtetaung.dev/")} target="_blank">
           View Live Website
         </app-link>
       </article>

@@ -1,18 +1,36 @@
-@use "breakpoints";
-
 @font-face {
   font-family: "SpaceGrotesk";
-  src: url("../assets/fonts/SpaceGrotesk-Regular.woff2") format("woff2");
+  src: url("./assets/fonts/SpaceGrotesk-Regular.woff2") format("woff2");
   font-weight: 400;
   font-display: swap;
 }
 
 @font-face {
   font-family: "SpaceGrotesk";
-  src: url("../assets/fonts/SpaceGrotesk-Bold.woff2") format("woff2");
+  src: url("./assets/fonts/SpaceGrotesk-Bold.woff2") format("woff2");
   font-weight: 700;
   font-display: swap;
 }
+
+/* :root {
+  --color-bg-primary: #fcf5e8;
+  --color-bg-secondary: #e3cda4;
+  --color-text: #0e172a;
+
+  --source-color-background: #0f7399;
+  --source-color-text: #fcf5e8;
+
+  --good-color-background: #1a7b5b;
+  --good-color-text: #fcf5e8;
+
+  --component-color-background: #95722a;
+  --component-color-text: #fcf5e8;
+
+  --used-in-color-background: #974e89;
+  --used-in-color-text: #fcf5e8;
+
+  --connector-color: #b1b9c4;
+} */
 
 :root {
   --color-bg-primary: #fcf5e8;
@@ -31,8 +49,6 @@
   --used-in-color-background: #974e89;
   --used-in-color-text: #fcf5e8;
 
-  --connector-color: #b1b9c4;
-
   --font: "SpaceGrotesk", sans-serif;
 
   --font-regular: 400;
@@ -47,12 +63,25 @@
   --size-heading: calc(var(--size-body) * var(--ratio));
   --size-title: calc(var(--size-heading) * var(--ratio));
   --size-display: calc(var(--size-title) * var(--ratio));
+}
 
-  @include breakpoints.phone {
-    --size-body: 1.2rem;
-  }
+body {
+  margin: 0;
+  font-family: "SpaceGrotesk", monospace;
+}
 
-  @include breakpoints.watch {
-    --size-body: 1rem;
+main.app-layout {
+  height: 100dvh;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  margin: 0;
+  padding: 0;
+}
+
+@media (max-width: 768px) {
+  main.app-layout {
+    display: flex;
+    flex-direction: column;
   }
 }
