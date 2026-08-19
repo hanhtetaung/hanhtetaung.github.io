@@ -1,7 +1,8 @@
-import { define } from "../define";
-import "../components/app-link";
-import "../components/app-logo";
-import { PHONE } from "../breakpoints";
+import { define } from "../define.js";
+import "../components/app-link.js";
+import "../components/app-logo.js";
+import { PHONE } from "../breakpoints.js";
+import { asset } from "../asset.js";
 
 const styles = /* css */ `
   :host {
@@ -49,10 +50,8 @@ const template = /* html */ `
   <header>
       <app-link variant="plain" href="/">
         <app-logo
-          src="/assets/images/logo.avif"
+          src=${asset("./assets/images/logo.avif")}
           alt="Logo"
-          width="200"
-          height="200"
         ></app-logo>
       </app-link>
 

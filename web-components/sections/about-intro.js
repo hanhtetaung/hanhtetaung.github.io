@@ -1,6 +1,6 @@
-import { define } from "../define";
-import "../components/app-image";
-import { PHONE } from "../breakpoints";
+import { define } from "../define.js";
+import "../components/app-image.js";
+import { PHONE } from "../breakpoints.js";
 
 const styles = /*css*/ `
   section {

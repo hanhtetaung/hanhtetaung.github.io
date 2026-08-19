@@ -1,5 +1,5 @@
-import { define } from "../../define";
-import "../coming-soon-intro";
+import { define } from "../../define.js";
+import "../coming-soon-intro.js";
 
 const styles = /* css */ `
   :host {
@@ -9,7 +9,7 @@ const styles = /* css */ `
 
 const template = /* html */ `
   <section-coming-soon-intro
-    props='{"name":"Bamboo", "img": "/assets/images/case-study/bamboo/thumbnail.avif", "alt": "Bamboo Interface"}'
+    props='{"name":"Bamboo", "img": "./assets/images/case-study/bamboo/thumbnail.avif", "alt": "Bamboo Interface"}'
   ></section-coming-soon-intro>
 `;
 

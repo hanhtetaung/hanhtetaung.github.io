@@ -1,4 +1,4 @@
-import { define } from "../define";
+import { define } from "../define.js";
 
 const styles = /* css */ `
   :host {

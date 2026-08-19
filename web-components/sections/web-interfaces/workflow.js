@@ -1,6 +1,6 @@
-import { define } from "../../define";
+import { define } from "../../define.js";
 
-import "../../components/section-title";
+import "../../components/section-title.js";
 
 const styles = /* css */ `
   :host {
@@ -20,7 +20,7 @@ const template = /* html */ `
     <section-title
         props='${JSON.stringify({
           name: "Workflow",
-          img: "/assets/icons/ostrich.svg",
+          img: "./assets/icons/ostrich.svg",
           alt: "Ostrich Logo",
         })}'
       ></section-title>

@@ -1,6 +1,6 @@
-import { define } from "../../define";
+import { define } from "../../define.js";
 
-import "../../components/section-title";
+import "../../components/section-title.js";
 
 const styles = /* css */ `
   :host {

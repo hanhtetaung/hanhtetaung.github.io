@@ -1,8 +1,9 @@
-import { define } from "../../define";
+import { define } from "../../define.js";
 
-import "../../components/section-title";
-import "../../components/app-image";
-import "../../components/app-article-paragraph";
+import "../../components/section-title.js";
+import "../../components/app-image.js";
+import "../../components/app-article-paragraph.js";
+import { asset } from "../../asset.js";
 
 const styles = /* css */ `
   :host {
@@ -54,7 +55,7 @@ const template = /* html */ `
 
             <app-image
               variant="medium"
-              src="/assets/images/case-study/terra/default-state.avif"
+              src=${asset("./assets/images/case-study/terra/default-state.avif")}
               alt="Inspiration Collection"
               width="1398"
               height="1236"
@@ -72,7 +73,7 @@ const template = /* html */ `
 
             <app-image
             variant="medium"
-              src="/assets/images/case-study/terra/selecting-a-source-node.avif"
+              src=${asset("./assets/images/case-study/terra/selecting-a-source-node.avif")}
               alt="Wireframe Screenshot"
               width="1398"
               height="1366"
@@ -90,7 +91,7 @@ const template = /* html */ `
 
             <app-image
               variant="medium"
-              src="/assets/images/case-study/terra/selecting-a-good-node-1.avif"
+              src=${asset("./assets/images/case-study/terra/selecting-a-good-node-1.avif")}
               alt="Design Foundation Screenshot"
               width="1474"
               height="864"
@@ -98,7 +99,7 @@ const template = /* html */ `
 
             <app-image
               variant="medium"
-              src="/assets/images/case-study/terra/selecting-a-good-node-2.avif"
+              src=${asset("./assets/images/case-study/terra/selecting-a-good-node-2.avif")}
               alt="Design Foundation Screenshot"
               width="1474"
               height="864"

@@ -1,9 +1,10 @@
-import { define } from "../../define";
+import { define } from "../../define.js";
 
-import "../../components/section-title";
-import "../../components/app-image";
-import "../../components/app-link";
-import { PHONE } from "../../breakpoints";
+import "../../components/section-title.js";
+import "../../components/app-image.js";
+import "../../components/app-link.js";
+import { PHONE } from "../../breakpoints.js";
+import { asset } from "../../asset.js";
 
 const styles = /* css */ `
   :host {
@@ -47,7 +48,7 @@ const template = /* html */ `
       <li>
         <app-image
           variant="medium"
-          src="/assets/images/case-study/portfolio/lighthouse.avif"
+          src=${asset("./assets/images/case-study/portfolio/lighthouse.avif")}
           alt="Lighthouse Photo"
           width="960"
           height="1028"
@@ -57,7 +58,7 @@ const template = /* html */ `
        <li>
         <app-image
           variant="medium"
-          src="/assets/images/case-study/portfolio/mockup.avif"
+          src=${asset("./assets/images/case-study/portfolio/mockup.avif")}
           alt="Mockup Photo"
           width="1692"
           height="886"

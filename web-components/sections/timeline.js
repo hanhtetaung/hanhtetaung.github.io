@@ -1,11 +1,11 @@
-import { define } from "../define";
-import "../components/section-title";
-import "../components/app-badge";
-import { PHONE } from "../breakpoints";
+import { define } from "../define.js";
+import "../components/section-title.js";
+import "../components/app-badge.js";
+import { PHONE } from "../breakpoints.js";
 
 const timelineItems = [
   {
-    icon: "/assets/icons/software-developer.svg",
+    icon: "./assets/icons/software-developer.svg",
     alt: "Software Developer Icon",
     range: "2021-2022",
     title: "Software Developer",
@@ -13,7 +13,7 @@ const timelineItems = [
       "I landed my first software development role building a hospital management system to manage inventory, POS, and OPD appointments. The system is still running today.",
   },
   {
-    icon: "/assets/icons/student.svg",
+    icon: "./assets/icons/student.svg",
     alt: "Student Icon",
     range: "2022-2025",
     title: "Student",
@@ -21,7 +21,7 @@ const timelineItems = [
       "I completed my Bachelor of Science in Computer Science at Assumption University, Thailand. My favorite subject was Computer Architecture.",
   },
   {
-    icon: "/assets/icons/software-developer.svg",
+    icon: "./assets/icons/software-developer.svg",
     alt: "Software Developer Icon",
     range: "2025-2026",
     title: "Software Developer",
@@ -29,7 +29,7 @@ const timelineItems = [
       "After graduating, I worked remotely for 6 months as a software developer at an event organizing company in Singapore.",
   },
   {
-    icon: "/assets/icons/full-time-freelancer.svg",
+    icon: "./assets/icons/full-time-freelancer.svg",
     alt: "Web Design & Develop",
     range: "Present",
     title: "UX Designer",
@@ -134,7 +134,7 @@ const template = () => /* html */ `
       <section-title
         props='${JSON.stringify({
           name: "Experience Overview",
-          img: "/assets/icons/bird-flying.svg",
+          img: "./assets/icons/bird-flying.svg",
           alt: "Bird Flying Logo",
         })}'
       ></section-title>

@@ -1,8 +1,9 @@
-import { define } from "../define";
+import { define } from "../define.js";
+import { asset } from "../asset.js";
 
-import "../components/app-icon";
-import "../components/app-link";
-import { TABLE } from "../breakpoints";
+import "../components/app-icon.js";
+import "../components/app-link.js";
+import { TABLE } from "../breakpoints.js";
 
 const styles = /* css */ `
   :host {
@@ -116,7 +117,7 @@ const template = ({
       .map(
         (d) => /*html*/ `
         <li>
-          <app-icon variant="medium" src=${icon} alt=${alt}></app-icon>
+          <app-icon variant="medium" src=${asset(icon)} alt=${alt}></app-icon>
           <p>${d}</p>
         </li>
       `,

@@ -1,24 +1,24 @@
-import { define } from "../define";
-import "../components/app-icon";
+import { define } from "../define.js";
+import "../components/app-icon.js";
 
 const randomFacts = [
   {
-    src: "/assets/icons/bird-watching.svg",
+    src: "./assets/icons/bird-watching.svg",
     alt: "Watching Bird",
     text: "I love birds",
   },
   {
-    src: "/assets/icons/seafood.svg",
+    src: "./assets/icons/seafood.svg",
     alt: "Seafood",
     text: "I’m allergic to seafood",
   },
   {
-    src: "/assets/icons/travelling.svg",
+    src: "./assets/icons/travelling.svg",
     alt: "Travelling",
     text: "I enjoy travelling",
   },
   {
-    src: "/assets/icons/running.svg",
+    src: "./assets/icons/running.svg",
     alt: "Running",
     text: "I like running",
   },
@@ -49,7 +49,7 @@ const template = () => /* html */ `
        <section-title
         props='${JSON.stringify({
           name: "Random Facts",
-          img: "/assets/icons/birds-singing.svg",
+          img: "./assets/icons/birds-singing.svg",
           alt: "Birds-singing Logo",
         })}'
       ></section-title>

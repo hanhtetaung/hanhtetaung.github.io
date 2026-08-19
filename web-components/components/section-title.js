@@ -1,4 +1,5 @@
-import { define } from "../define";
+import { define } from "../define.js";
+import { asset } from "../asset.js";
 
 const styles = /* css */ `
   :host {
@@ -38,7 +39,7 @@ const props = { name: String, img: String, alt: String };
 const template = ({ name, img = "", alt = "" }) => /* html */ `
     <h2>${name}</h2>
     <img
-        src=${img}
+        src=${asset(img)}
         alt=${alt}
         height="36"
         width="76"

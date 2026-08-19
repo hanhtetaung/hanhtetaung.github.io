@@ -1,28 +1,28 @@
-import { define } from "../define";
+import { define } from "../define.js";
 
-import "../components/section-title";
-import "../components/app-image";
+import "../components/section-title.js";
+import "../components/app-image.js";
 
 const points = [
   {
     title: "Working Man",
     description:
       "I'm consistent on one thing: always giving my best. I take pride in doing things properly and take full ownership of everything I do. When I commit to something, I follow through.",
-    icon: "/assets/icons/working-man.svg",
+    icon: "./assets/icons/working-man.svg",
     alt: "Working Man Icon",
   },
   {
     title: "Detail-oriented Person",
     description:
       "I pay close attention to every detail, because the little things matter. I believe the difference between good work and great work lives in the details.",
-    icon: "/assets/icons/man-in-details.svg",
+    icon: "./assets/icons/man-in-details.svg",
     alt: "Detail-oriented Person Icon",
   },
   {
     title: "Positive Thinker",
     description:
       "A positive mindset helps me create better work and stronger collaborations. I focus on solutions rather than problems. Good energy builds great work.",
-    icon: "/assets/icons/positive-man.svg",
+    icon: "./assets/icons/positive-man.svg",
     alt: "Positive Thinker Icon",
   },
 ];
@@ -102,7 +102,7 @@ const template = () => /* html */ `
         variant="vertical"
         props='${JSON.stringify({
           name: "Why hire me?",
-          img: "/assets/icons/owl.svg",
+          img: "./assets/icons/owl.svg",
           alt: "Owl Logo",
         })}'
       ></section-title>

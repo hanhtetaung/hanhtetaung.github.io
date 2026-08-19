@@ -1,5 +1,6 @@
-import { PHONE } from "../breakpoints";
-import { define } from "../define";
+import { PHONE } from "../breakpoints.js";
+import { define } from "../define.js";
+import { navHref } from "../asset.js";
 
 const sitemaps = [
   { href: "/", name: "Home" },
@@ -80,7 +81,7 @@ const template = () => /* html */ `
               .map(
                 (s) => /*html*/ `
                 <li>
-                    <app-link variant="sitemap" href=${s.href} >${s.name}</app-link>
+                    <app-link variant="sitemap" href=${navHref(s.href)} >${s.name}</app-link>
                 </li>
             `,
               )

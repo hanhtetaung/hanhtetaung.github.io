@@ -1,6 +1,7 @@
-import { define } from "../../define";
-import "../coming-soon-intro";
-import { PHONE } from "../../breakpoints";
+import { define } from "../../define.js";
+import "../coming-soon-intro.js";
+import { PHONE } from "../../breakpoints.js";
+import { asset } from "../../asset.js";
 
 const styles = /* css */ `
   :host {
@@ -76,16 +77,16 @@ const template = /* html */ `
             <h3>What I deliver</h3>
              <ol>
                 <li>
-                    <app-icon variant="medium" src="/assets/icons/design-system.svg" alt=""></app-icon>
+                    <app-icon variant="medium" src="${asset("./assets/icons/design-system.svg")}" alt=""></app-icon>
                     <p>Design Tokens</p>
                 </li>
                 <li>
-                     <app-icon variant="medium" src="/assets/icons/design-system.svg" alt=""></app-icon>
+                     <app-icon variant="medium" src="${asset("./assets/icons/design-system.svg")}" alt=""></app-icon>
                     <p>Component Library</p>
                     
                 </li>
                 <li>
-                     <app-icon variant="medium" src="/assets/icons/design-system.svg" alt=""></app-icon>
+                     <app-icon variant="medium" src="${asset("./assets/icons/design-system.svg")}" alt=""></app-icon>
                     <p>Guidelines</p>
                     
                 </li>

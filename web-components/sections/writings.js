@@ -1,8 +1,8 @@
-import { define } from "../define";
+import { define } from "../define.js";
 
-import "../components/section-title";
-import "../components/app-image";
-import "../components/writing-article";
+import "../components/section-title.js";
+import "../components/app-image.js";
+import "../components/writing-article.js";
 
 const styles = /* css */ `
   :host {
@@ -26,13 +26,13 @@ const styles = /* css */ `
 const template = () => /* html */ `
   <section>
        <section-title
-        props='{"name": "Writings", "img": "/assets/icons/kingfisher.svg", "alt": "Kingfisher Logo"}'
+        props='{"name": "Writings", "img": "./assets/icons/kingfisher.svg", "alt": "Kingfisher Logo"}'
       ></section-title>
 
       <ul>
-        <writing-article props='{"title": "Foundation for Building Interfaces at Scale", "description": "Hello world", "img": "/assets/icons/molecule.svg", "alt": "Molecule Icon", "href": "/writings/foundation-building-interfaces-at-scale"}'></writing-article>
-        <writing-article props='{"title": "Underlying Technology Is Strong Enough", "description": "Hello world", "img": "/assets/icons/technology.svg", "alt": "Technology Icon", "comingSoon": "True"}'></writing-article>       
-        <writing-article props='{"title": "Engineering Behind This Portfolio", "description": "Hello world", "img": "/assets/icons/engineering.svg", "alt": "Molecule Icon", "comingSoon": "True"}'></writing-article>       
+        <writing-article props='{"title": "Foundation for Building Interfaces at Scale", "description": "Hello world", "img": "./assets/icons/molecule.svg", "alt": "Molecule Icon", "href": "/writings/foundation-building-interfaces-at-scale"}'></writing-article>
+        <writing-article props='{"title": "Underlying Technology Is Strong Enough", "description": "Hello world", "img": "./assets/icons/technology.svg", "alt": "Technology Icon", "comingSoon": "True"}'></writing-article>       
+        <writing-article props='{"title": "Engineering Behind This Portfolio", "description": "Hello world", "img": "./assets/icons/engineering.svg", "alt": "Molecule Icon", "comingSoon": "True"}'></writing-article>       
       </ul>
   </section>
 `;

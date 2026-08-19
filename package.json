@@ -1,5 +1,0 @@
-{
-  "scripts": {
-    "dev": "bun build web-components/pages/*.js --minify --outdir dist --root web-components/pages --watch"
-  }
-}

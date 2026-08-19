@@ -1,10 +1,10 @@
-import { define } from "../define";
-import "../components/case-study-item";
-import "../components/section-title";
+import { define } from "../define.js";
+import "../components/case-study-item.js";
+import "../components/section-title.js";
 
 const caseStudies = [
   {
-    image: "/assets/images/case-study/terra/thumbnail.avif",
+    image: "./assets/images/case-study/terra/thumbnail.avif",
     alt: "Terra Thumbnail",
     title: "Terra",
     categories: ["Product Design", "User Experience", "Design System"],
@@ -14,7 +14,7 @@ const caseStudies = [
     reverse: false,
   },
   {
-    image: "assets/images/case-study/mmo/thumbnail.avif",
+    image: "./assets/images/case-study/mmo/thumbnail.avif",
     alt: "MMO thumbnail",
     title: "MMO",
     categories: [
@@ -28,7 +28,7 @@ const caseStudies = [
     reverse: true,
   },
   // {
-  //   image: "/assets/images/case-study/portfolio/mockup.avif",
+  //   image: "./assets/images/case-study/portfolio/mockup.avif",
   //   alt: "Portfolio Mockup",
   //   title: "Portfolio",
   //   categories: ["Research", "Web Design", "Web Development"],
@@ -38,7 +38,7 @@ const caseStudies = [
   //   reverse: false,
   // },
   {
-    image: "/assets/images/case-study/skssolar/mockup.avif",
+    image: "./assets/images/case-study/skssolar/mockup.avif",
     alt: "SKS Mockup",
     title: "SKS.Solar",
     categories: ["Research", "Web Design", "Web Development"],
@@ -73,7 +73,7 @@ const template = () => /* html */ `
       <section-title
         props='${JSON.stringify({
           name: "Case Studies",
-          img: "/assets/icons/sparrow.svg",
+          img: "./assets/icons/sparrow.svg",
           alt: "Sparrow Logo",
         })}'
       ></section-title>

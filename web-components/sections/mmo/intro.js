@@ -1,6 +1,7 @@
-import { define } from "../../define";
-import "../../components/app-image";
-import { PHONE } from "../../breakpoints";
+import { define } from "../../define.js";
+import "../../components/app-image.js";
+import { PHONE } from "../../breakpoints.js";
+import { asset } from "../../asset.js";
 
 const styles = /* css */ `
   :host {
@@ -52,7 +53,7 @@ const template = /* html */ `
   <section>
     <app-image
     variant="large"
-    src="/assets/images/case-study/mmo/thumbnail.avif"
+    src=${asset("./assets/images/case-study/mmo/thumbnail.avif")}
     alt="MMO thumbnail"
     width="1692"
     height="886"

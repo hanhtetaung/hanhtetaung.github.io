@@ -1,5 +1,6 @@
-import { TABLE } from "../breakpoints";
-import { define } from "../define";
+import { TABLE } from "../breakpoints.js";
+import { define } from "../define.js";
+import "../components/app-link.js";
 
 const styles = /* css */ `
   :host {
@@ -50,7 +51,7 @@ const template = /* html */ `
        variant="text"
         props='${JSON.stringify({
           name: "Call me, Singapore",
-          img: "/assets/icons/owl.svg",
+          img: "./assets/icons/owl.svg",
           alt: "Owl Logo",
         })}'
       ></section-title>
@@ -76,7 +77,7 @@ const template = /* html */ `
       </article>
 
       <img
-        src="/assets/icons/merlion.svg"
+        src="./assets/icons/merlion.svg"
         alt="Merlion illustration"
       />
   </section>

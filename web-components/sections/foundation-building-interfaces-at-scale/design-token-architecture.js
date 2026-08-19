@@ -1,8 +1,9 @@
-import { define } from "../../define";
+import { define } from "../../define.js";
 
-import "../../components/section-title";
-import "../../components/app-image";
-import "../../components/app-article-paragraph";
+import "../../components/section-title.js";
+import "../../components/app-image.js";
+import "../../components/app-article-paragraph.js";
+import { asset } from "../../asset.js";
 
 const styles = /* css */ `
   :host {
@@ -45,7 +46,7 @@ const template = /* html */ `
 
     <app-image
       variant="full"
-      src="/assets/images/foundation-building-software/token-architecture.avif"
+      src=${asset("./assets/images/foundation-building-software/token-architecture.avif")}
       alt="Token architecture overview"
       width="1398"
       height="1236"
@@ -62,7 +63,7 @@ const template = /* html */ `
           </p>
           <app-image
             variant="full"
-            src="/assets/images/foundation-building-software/single-source-of-truth.avif"
+            src=${asset("./assets/images/foundation-building-software/single-source-of-truth.avif")}
             alt="Single source of truth overview"
             width="1398"
             height="1236"
@@ -78,7 +79,7 @@ const template = /* html */ `
           </p>
           <app-image
             variant="full"
-            src="/assets/images/foundation-building-software/theming.avif"
+            src=${asset("./assets/images/foundation-building-software/theming.avif")}
             alt="Theming overview"
             width="1398"
             height="1236"
@@ -95,7 +96,7 @@ const template = /* html */ `
           </ol>
           <app-image
             variant="full"
-            src="/assets/images/foundation-building-software/token-structure.avif"
+            src=${asset("./assets/images/foundation-building-software/token-structure.avif")}
             alt="Token structure overview"
             width="1398"
             height="1236"
@@ -111,7 +112,7 @@ const template = /* html */ `
           </p>
           <app-image
             variant="full"
-            src="/assets/images/foundation-building-software/design-token-anatomy.avif"
+            src=${asset("./assets/images/foundation-building-software/design-token-anatomy.avif")}
             alt="Design token anatomy overview"
             width="1398"
             height="1236"
@@ -127,7 +128,7 @@ const template = /* html */ `
           </p>
           <app-image
             variant="full"
-            src="/assets/images/foundation-building-software/applying-token.avif"
+            src=${asset("./assets/images/foundation-building-software/applying-token.avif")}
             alt="Applying token overview"
             width="1398"
             height="1236"

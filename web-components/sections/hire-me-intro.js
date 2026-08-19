@@ -1,8 +1,8 @@
-import { define } from "../define";
+import { define } from "../define.js";
 
-import "../components/app-link";
-import "../components/app-button";
-import { PHONE } from "../breakpoints";
+import "../components/app-link.js";
+import "../components/app-button.js";
+import { PHONE } from "../breakpoints.js";
 
 const styles = /*css*/ `
     section {
