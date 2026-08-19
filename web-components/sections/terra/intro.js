@@ -3,7 +3,7 @@ import { define } from "../../define.js";
 import "../../components/app-image.js";
 import "../../components/app-link.js";
 import { PHONE } from "../../breakpoints.js";
-import { asset } from "../../asset.js";
+import { asset, navHref } from "../../asset.js";
 
 const styles = /* css */ `
   :host {
@@ -72,7 +72,7 @@ const template = /* html */ `
 
       <app-link
         variant="secondary"
-        href="/terra"
+        href=${navHref("/terra")}
         target="_blank"
         >View Live Website</app-link>
     </article>

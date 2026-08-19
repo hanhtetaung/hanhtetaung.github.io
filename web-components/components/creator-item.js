@@ -2,6 +2,7 @@ import { define } from "../define.js";
 
 import "../components/app-link.js";
 import "../components/app-icon.js";
+import { navHref } from "../asset.js";
 
 const styles = /* css */ `
   :host {
@@ -26,7 +27,7 @@ const template = ({ icon, alt, url, name }) => /* html */ `
     <app-icon variant="creator" src="${icon}" alt="${alt}" ></app-icon>
     ${
       url
-        ? /*html*/ `<app-link variant="underline" href="${url}" target="_blank" rel="noreferrer">By ${name}</app-link>`
+        ? /*html*/ `<app-link variant="underline" href="${navHref(url)}" target="_blank" rel="noreferrer">By ${name}</app-link>`
         : /*html*/ `<p>By ${name}</p>`
     }
 `;

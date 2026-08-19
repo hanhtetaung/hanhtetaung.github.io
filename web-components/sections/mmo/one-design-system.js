@@ -1,3 +1,4 @@
+import { navHref } from "../../asset.js";
 import { define } from "../../define.js";
 
 const styles = /* css */ `
@@ -32,7 +33,7 @@ const template = /* html */ `
             interfaces.
           </p>
 
-          <app-link variant="underline" href="/foundation-building-interfaces-at-scale">Read the article</app-link>
+          <app-link variant="underline" href=${navHref("/foundation-building-interfaces-at-scale")}>Read the article</app-link>
       </article>
   </section>
 `;

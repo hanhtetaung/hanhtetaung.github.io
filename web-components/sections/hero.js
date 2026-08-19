@@ -3,6 +3,7 @@ import "../components/app-icon.js";
 import "../components/app-link.js";
 import "../components/app-badge.js";
 import { PHONE } from "../breakpoints.js";
+import { asset, navHref } from "../asset.js";
 
 const tech_icons = [
   { src: "./assets/icons/figma.svg", alt: "Figma Icon" },
@@ -14,19 +15,19 @@ const tech_icons = [
 const showcases = [
   {
     name: "Terra",
-    href: "/work/terra",
+    href: "./work/terra",
     src: "./assets/images/case-study/terra/thumbnail.avif",
     alt: "Terra Thumbnail",
   },
   {
     name: "MMO",
-    href: "/work/mmo",
+    href: "./work/mmo",
     src: "./assets/images/case-study/mmo/thumbnail.avif",
     alt: "MMO Thumbnail",
   },
   {
     name: "Bamboo",
-    href: "/work/bamboo",
+    href: "./work/bamboo",
     src: "./assets/images/case-study/bamboo/thumbnail.avif",
     alt: "Bamboo Thumbnail",
   },
@@ -189,10 +190,10 @@ const template = /* html */ `
           .map(
             (showcase) => /*html*/ `
           <li>
-            <app-link variant="image" href=${showcase.href} >
+            <app-link variant="image" href=${navHref(showcase.href)} >
               ➶ ${showcase.name}
               <img
-                src=${showcase.src}
+                src=${asset(showcase.src)}
                 alt=${showcase.alt}
               />
             </app-link>

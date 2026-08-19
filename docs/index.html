@@ -335,7 +335,7 @@ var styles3 = `
 `;
 var template3 = `
   <header>
-      <app-link variant="plain" href="/">
+      <app-link variant="plain" href=${navHref("/")}>
         <app-logo
           src=${asset("./assets/images/logo.avif")}
           alt="Logo"
@@ -346,16 +346,16 @@ var template3 = `
         <nav>
           <ul>
             <li>
-              <app-link variant="plain" href="/">Home</app-link>
+              <app-link variant="plain" href=${navHref("/")}>Home</app-link>
             </li>
 
             <li>
-              <app-link variant="plain" href="/about">About</app-link>
+              <app-link variant="plain" href=${navHref("/about")}>About</app-link>
             </li>
           </ul>
         </nav>
 
-        <app-link variant="primary" href="/hire-me">
+        <app-link variant="primary" href=${navHref("/hire-me")}>
           Let's chat &#8629;
         </app-link>
       </div>
@@ -497,7 +497,7 @@ var styles5 = `
 var template5 = () => `
       <p>
         © Han Htet Aung 2026 |
-        <app-link href="/credits" variant="underline">Credits</app-link>
+        <app-link href=${navHref("/credits")} variant="underline">Credits</app-link>
       </p>
 
       <nav>
@@ -704,19 +704,19 @@ var tech_icons = [
 var showcases = [
   {
     name: "Terra",
-    href: "/work/terra",
+    href: "./work/terra",
     src: "./assets/images/case-study/terra/thumbnail.avif",
     alt: "Terra Thumbnail"
   },
   {
     name: "MMO",
-    href: "/work/mmo",
+    href: "./work/mmo",
     src: "./assets/images/case-study/mmo/thumbnail.avif",
     alt: "MMO Thumbnail"
   },
   {
     name: "Bamboo",
-    href: "/work/bamboo",
+    href: "./work/bamboo",
     src: "./assets/images/case-study/bamboo/thumbnail.avif",
     alt: "Bamboo Thumbnail"
   }
@@ -866,10 +866,10 @@ var template9 = `
       <ol>
         ${showcases.map((showcase) => `
           <li>
-            <app-link variant="image" href=${showcase.href} >
+            <app-link variant="image" href=${navHref(showcase.href)} >
               ➶ ${showcase.name}
               <img
-                src=${showcase.src}
+                src=${asset(showcase.src)}
                 alt=${showcase.alt}
               />
             </app-link>
@@ -1028,7 +1028,7 @@ var template11 = ({
       <span>${subTitle}</span>
       <h3>${title}</h3>
     </hgroup>
-    <app-link variant="plain" href=${href}>→</app-link>
+    <app-link variant="plain" href=${navHref(href)}>→</app-link>
   </article>
 
   <ol>
@@ -1179,7 +1179,7 @@ var template14 = ({ title, img, alt, href, comingSoon }) => `
 
     <article>
         <h3>${title}</h3>
-        ${comingSoon ? "<p>Coming soon</p>" : `<app-link variant="underline" href=${href} target="_blank">Read More</app-link>`}
+        ${comingSoon ? "<p>Coming soon</p>" : `<app-link variant="underline" href=${navHref(href)} target="_blank">Read More</app-link>`}
     </article>
 
 `;
@@ -1317,7 +1317,7 @@ var template16 = ({
             `).join("")}
       </ul>
       <p>${description}</p>
-      <app-link variant="secondary" href="${href}">
+      <app-link variant="secondary" href="${navHref(href)}">
         View Case Study &#8599;
       </app-link>
     </div>
@@ -1741,7 +1741,7 @@ var template20 = `
           and positive-minded, then I’m the one for you.
         </p>
 
-        <app-link variant="primary" href="/hire-me">
+        <app-link variant="primary" href=${navHref("/hire-me")}>
           Let's chat
           <span>&#8629;</span>
         </a>

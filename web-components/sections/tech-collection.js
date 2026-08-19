@@ -1,6 +1,7 @@
 import { define } from "../define.js";
 import "../components/app-link.js";
 import "../components/section-title.js";
+import { asset, navHref } from "../asset.js";
 
 const techCollection = [
   {
@@ -157,9 +158,9 @@ const template = () => /* html */ `
           .map(
             (item) => /* html */ `
               <li>
-                <app-link href="${item.href}" target="_blank" variant="image">
+                <app-link href="${navHref(item.href)}" target="_blank" variant="image">
                   <img
-                    src="${item.src}"
+                    src="${asset(item.src)}"
                     alt="${item.alt}"
                     width="102"
                     height="73"

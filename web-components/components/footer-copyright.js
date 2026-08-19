@@ -1,4 +1,4 @@
-import { asset } from "../asset.js";
+import { asset, navHref } from "../asset.js";
 import { PHONE } from "../breakpoints.js";
 import { define } from "../define.js";
 
@@ -52,7 +52,7 @@ const styles = /* css */ `
 const template = () => /* html */ `
       <p>
         © Han Htet Aung 2026 |
-        <app-link href="/credits" variant="underline">Credits</app-link>
+        <app-link href=${navHref("/credits")} variant="underline">Credits</app-link>
       </p>
 
       <nav>
