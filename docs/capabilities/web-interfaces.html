@@ -29,42 +29,42 @@
     <main>
       <section-web-interfaces-intro></section-web-interfaces-intro>
       <section-web-interfaces-workflow></section-web-interfaces-workflow>
-      <section-capabilities></section-capabilities>
+      <section-more-capabilities></section-more-capabilities>
     </main>
 
     <section-footer></section-footer>
   <script type="module">// web-components/asset.js
 function u() {
-  let o = document.documentElement.dataset.base || "./";
-  return new URL(o, location.href);
+  let t = document.documentElement.dataset.base || "./";
+  return new URL(t, location.href);
 }
-function t(o) {
-  return new URL(o, u()).href;
+function a(t) {
+  return new URL(t, u()).href;
 }
-function n(o) {
-  let a = o.replace(/^\//, ""), i = location.protocol === "file:", c = u();
-  if (a === "")
+function n(t) {
+  let o = t.replace(/^\//, ""), i = location.protocol === "file:", c = u();
+  if (o === "")
     return i ? new URL("index.html", c).href : c.href;
-  return i ? new URL(`${a}.html`, c).href : new URL(a, c).href;
+  return i ? new URL(`${o}.html`, c).href : new URL(o, c).href;
 }
 
 // web-components/fonts.js
 var b = `
   @font-face {
     font-family: "Chicle";
-    src: url("${t("assets/fonts/Chicle-Regular.woff2")}") format("woff2");
+    src: url("${a("assets/fonts/Chicle-Regular.woff2")}") format("woff2");
     font-weight: 400;
     font-display: swap;
   }
   @font-face {
     font-family: "StackSans";
-    src: url("${t("assets/fonts/StackSansText-Bold.woff2")}") format("woff2");
+    src: url("${a("assets/fonts/StackSansText-Bold.woff2")}") format("woff2");
     font-weight: 700;
     font-display: swap;
   }
   @font-face {
     font-family: "StackSans";
-    src: url("${t("assets/fonts/StackSansText-Regular.woff2")}") format("woff2");
+    src: url("${a("assets/fonts/StackSansText-Regular.woff2")}") format("woff2");
     font-weight: 400;
     font-display: swap;
   }
@@ -73,25 +73,25 @@ v.textContent = b;
 document.head.appendChild(v);
 
 // web-components/define.js
-function w(o, a) {
-  if (o === void 0) {
-    if (a === Array)
+function w(t, o) {
+  if (t === void 0) {
+    if (o === Array)
       return [];
-    if (a === Object)
+    if (o === Object)
       return {};
-    if (a === Boolean)
+    if (o === Boolean)
       return !1;
-    if (a === Number)
+    if (o === Number)
       return 0;
     return;
   }
-  if (a === Boolean)
-    return Boolean(o);
-  if (a === Number)
-    return Number(o);
-  return o;
+  if (o === Boolean)
+    return Boolean(t);
+  if (o === Number)
+    return Number(t);
+  return t;
 }
-function e(o, { props: a = {}, attrs: i = [], styles: c = "", template: p }) {
+function e(t, { props: o = {}, attrs: i = [], styles: c = "", template: p }) {
   let h = ["props", ...i];
 
   class m extends HTMLElement {
@@ -116,8 +116,8 @@ function e(o, { props: a = {}, attrs: i = [], styles: c = "", template: p }) {
           l = {};
         }
       let g = {};
-      for (let f of Object.keys(a))
-        g[f] = w(l[f], a[f]);
+      for (let f of Object.keys(o))
+        g[f] = w(l[f], o[f]);
       return g;
     }
     _applyForwardedAttrs() {
@@ -137,7 +137,7 @@ function e(o, { props: a = {}, attrs: i = [], styles: c = "", template: p }) {
       this.shadowRoot.innerHTML = `<style>${c}</style>${s}`, this._applyForwardedAttrs();
     }
   }
-  customElements.define(o, m);
+  customElements.define(t, m);
 }
 
 // web-components/components/app-link.js
@@ -224,7 +224,7 @@ e("app-logo", { attrs: z, styles: $, template: S });
 var r = "769px", d = "992px";
 
 // web-components/sections/header.js
-var H = `
+var A = `
   :host {
     display: block;
   }
@@ -264,11 +264,11 @@ var H = `
       gap: 4rem;
     }
   }
-`, A = `
+`, H = `
   <header>
       <app-link variant="plain" href=${n("/")}>
         <app-logo
-          src=${t("./assets/images/logo.avif")}
+          src=${a("./assets/images/logo.avif")}
           alt="Logo"
         ></app-logo>
       </app-link>
@@ -292,7 +292,7 @@ var H = `
       </div>
   </header>
 `;
-e("section-header", { template: A, styles: H });
+e("section-header", { template: H, styles: A });
 
 // web-components/components/footer-nav.js
 var C = [
@@ -361,23 +361,23 @@ var C = [
     margin-right: 5rem;
     margin-bottom: 0.3rem;
   }
-`, E = () => `
+`, B = () => `
     <nav>
         <span>Sitemap</span>
 
         <ol>
-            ${C.map((o) => `
+            ${C.map((t) => `
                 <li>
-                    <app-link variant="sitemap" href=${n(o.href)} >${o.name}</app-link>
+                    <app-link variant="sitemap" href=${n(t.href)} >${t.name}</app-link>
                 </li>
             `).join("")}
         </ol>
     </nav>
 `;
-e("footer-nav", { styles: T, template: E });
+e("footer-nav", { styles: T, template: B });
 
 // web-components/components/footer-copyright.js
-var U = `
+var E = `
   :host {
    display: flex;
     justify-content: space-between;
@@ -422,7 +422,7 @@ var U = `
       margin-bottom: 0.5rem;
     }
   }
-`, _ = () => `
+`, L = () => `
       <p>
         © Han Htet Aung 2026 |
         <app-link href=${n("/credits")} variant="underline">Credits</app-link>
@@ -434,7 +434,7 @@ var U = `
               <li>
                   <app-link href="mailto:hanhtetaung.dev@gmail.com" variant="image">
                   <img
-                      src=${t("./assets/icons/email.svg")}
+                      src=${a("./assets/icons/email.svg")}
                       alt="Email Icon"
                   />
                   </app-link>
@@ -447,7 +447,7 @@ var U = `
                   variant="image"
                   >
                   <img
-                      src=${t("./assets/icons/github.svg")}
+                      src=${a("./assets/icons/github.svg")}
                       alt="Github Icon"
                   />
                   </app-link>
@@ -460,7 +460,7 @@ var U = `
                   variant="image"
                   >
                   <img
-                      src=${t("./assets/icons/linkedin.svg")}
+                      src=${a("./assets/icons/linkedin.svg")}
                       alt="Linkedin Icon"
                   />
                   </app-link>
@@ -468,10 +468,10 @@ var U = `
           </ul>
 </nav>
 `;
-e("footer-copyright", { styles: U, template: _ });
+e("footer-copyright", { styles: E, template: L });
 
 // web-components/sections/footer.js
-var B = `
+var j = `
   :host {
     --local-bg-color: var(--color-bg-secondary);
 
@@ -519,12 +519,12 @@ var B = `
   hr {
     color: var(--color-secondary);
   }
-`, L = `
+`, U = `
   <footer>
       <article>
         <div>
           <app-logo
-            src="${t("./assets/images/logo.avif")}"
+            src="${a("./assets/images/logo.avif")}"
             alt="Logo"
           ></app-logo>
         
@@ -540,10 +540,10 @@ var B = `
       <footer-copyright></footer-copyright>
   </footer>
 `;
-e("section-footer", { styles: B, template: L });
+e("section-footer", { styles: j, template: U });
 
 // web-components/components/app-image.js
-var F = `
+var _ = `
   :host {
     --local-width: 5rem;
     --local-heigth: auto;
@@ -574,11 +574,11 @@ var F = `
    :host([variant="full"]) {
     --local-width: 100%;
   }
-`, N = ["width", "height", "src", "alt"], R = () => "<img data-forward />";
-e("app-image", { attrs: N, styles: F, template: R });
+`, F = ["width", "height", "src", "alt"], R = () => "<img data-forward />";
+e("app-image", { attrs: F, styles: _, template: R });
 
 // web-components/components/app-icon.js
-var O = `
+var N = `
   :host {
     --local-width: 3rem;
     --local-height: auto;
@@ -616,11 +616,11 @@ var O = `
   }
 
 
-`, P = ["src", "alt"], q = () => '<img data-forward width="200" height="200"/>';
-e("app-icon", { attrs: P, styles: O, template: q });
+`, O = ["src", "alt"], P = () => '<img data-forward width="200" height="200"/>';
+e("app-icon", { attrs: O, styles: N, template: P });
 
 // web-components/sections/coming-soon-intro.js
-var j = `
+var q = `
    section {
         margin-inline: auto;
         width: 80%;
@@ -648,28 +648,28 @@ var j = `
     margin: 0;
   }
 `, I = { name: String, img: String, alt: String }, M = ({
-  name: o = "Name",
-  img: a = "./assets/images/coming-soon.jpg",
+  name: t = "Name",
+  img: o = "./assets/images/coming-soon.jpg",
   alt: i = "Coming Soon"
 }) => `
   <section>
       <div>
         <hgroup>
           <p>Coming Soon</p>
-          <h1>${o}</h1>
+          <h1>${t}</h1>
         </hgroup>
 
         <app-icon
           variant="large"
-          src=${t("./assets/icons/cuckoo-clock.svg")}
+          src=${a("./assets/icons/cuckoo-clock.svg")}
           alt="Cuckoo Cock Logo"
         ></app-icon>
       </div>
 
-      <app-image variant="large" src=${t(a)} alt=${i}></app-image>
+      <app-image variant="large" src=${a(o)} alt=${i}></app-image>
   </section>
 `;
-e("section-coming-soon-intro", { props: I, styles: j, template: M });
+e("section-coming-soon-intro", { props: I, styles: q, template: M });
 
 // web-components/components/capabilities-item.js
 var X = `
@@ -719,7 +719,6 @@ var X = `
   }
 
   ol {
-     padding: 0;
       margin: 0;
       list-style: none;
       padding: 0;
@@ -738,6 +737,7 @@ var X = `
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    min-width: 9ch;
 
     p {
         margin: 0;
@@ -752,6 +752,25 @@ var X = `
         justify-content: space-between;
       }
     }
+
+    :host([variant="no-list"]) {
+      width: fit-content;
+      aspect-ratio: 1 / 1;
+      border-radius: 50%;
+      overflow: hidden;
+      padding: 4rem;
+      justify-content: center;
+
+      h3 {
+        font-size: var(--size-body);
+        font-weight: var(--font-regular);
+        margin-bottom: 0.5rem;
+      }
+
+      ol {
+        display: none;
+      }
+    }
 `, G = {
   title: String,
   subTitle: String,
@@ -760,8 +779,8 @@ var X = `
   alt: String,
   delivers: Array
 }, D = ({
-  title: o,
-  subTitle: a,
+  title: t,
+  subTitle: o,
   href: i,
   delivers: c,
   icon: p,
@@ -769,8 +788,8 @@ var X = `
 }) => `
   <article>
     <hgroup>
-      <span>${a}</span>
-      <h3>${o}</h3>
+      <span>${o}</span>
+      <h3>${t}</h3>
     </hgroup>
     <app-link variant="plain" href=${n(i)}>→</app-link>
   </article>
@@ -778,7 +797,7 @@ var X = `
   <ol>
     ${c.map((m) => `
         <li>
-          <app-icon variant="medium" src=${t(m.icon)} alt=${m.alt}></app-icon>
+          <app-icon variant="medium" src=${a(m.icon)} alt=${m.alt}></app-icon>
           <p>${m.name}</p>
         </li>
       `).join("")}
@@ -786,8 +805,62 @@ var X = `
 `;
 e("capabilities-item", { props: G, styles: X, template: D });
 
-// web-components/sections/web-interfaces/intro.js
+// web-components/components/what-i-deliver.js
 var J = `
+ h3 {
+    margin: 0;
+    margin-bottom: 1rem;
+  }
+
+ ol {
+    margin: 0;
+    list-style: none;
+    padding: 0;
+    display: flex;
+    border: 1px dashed var(--color-text);
+    padding: 2rem;
+    justify-content: space-between;
+    gap: 2rem;
+    width: fit-content;
+    overflow: scroll;
+    box-sizing: border-box; 
+
+    @media (max-width: ${d}) {
+      width: 100%;
+    }
+  }
+
+   li {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 9ch;
+
+   
+  }
+
+   p {
+        margin: 0;
+        font-size: var(--size-small);
+    }
+`, K = {
+  delivers: Array
+}, Q = ({ delivers: t }) => `
+  <h3>What I deliver</h3>
+  <ol>
+    ${t.map((o) => `
+        <li>
+          <app-icon variant="medium" src=${a(o.icon)} alt=${o.alt}></app-icon>
+          <p>${o.name}</p>
+        </li>
+      `).join("")}
+  </ol>
+`;
+e("what-i-deliver", { props: K, styles: J, template: Q });
+
+// web-components/sections/web-interfaces/intro.js
+var W = `
   :host {
     display: block;
   }
@@ -816,40 +889,7 @@ var J = `
     margin: 0;
     margin-bottom: 5rem;
   }
-
-  h3 {
-    margin: 0;
-    margin-bottom: 1rem;
-  }
-
-  ol {
-    margin: 0;
-    list-style: none;
-    padding: 0;
-    display: flex;
-    gap: 5rem;
-    border: 1px dashed var(--color-text);
-    width: fit-content;
-    padding-block: 2rem;
-    padding-inline: 4rem;
-
-    @media (max-width: ${r}) {
-        flex-direction: column;
-    }
-  }
-
-  ol li {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    p {
-        margin: 0;
-        margin-top: 0.5rem;
-    }
-  }
-`, K = `
+`, Y = `
     <section>
         <hgroup>
             <span>Capabilities</span>
@@ -857,25 +897,26 @@ var J = `
             <p>Turn hi-fi designs into pixel-perfect web interfaces.</p>
         </hgroup>
 
-        <article>
-            <h3>What I deliver</h3>
-             <ol>
-                <li>
-                    <app-icon variant="medium" src=${t("./assets/icons/html-1.svg")} alt="HTML Icon"></app-icon>
-                    <p>HTML</p>
-                </li>
-                <li>
-                     <app-icon variant="medium" src=${t("./assets/icons/assets.svg")} alt="Assets Icon"></app-icon>
-                    <p>Assets</p>
-                </li>
-            </ol>
-        </article>
+        <what-i-deliver props='${JSON.stringify({
+  delivers: [
+    {
+      name: "HTML",
+      icon: "./assets/icons/html-1.svg",
+      alt: "HTML Icon"
+    },
+    {
+      name: "Assets",
+      icon: "./assets/icons/assets.svg",
+      alt: "Assets Icon"
+    }
+  ]
+})}'></what-i-deliver>
     </section>
 `;
-e("section-web-interfaces-intro", { styles: J, template: K });
+e("section-web-interfaces-intro", { styles: W, template: Y });
 
 // web-components/components/section-title.js
-var Q = `
+var Z = `
   :host {
     display: flex;
     align-items: center;
@@ -906,19 +947,19 @@ var Q = `
       display: none;
     }
   }
-`, Y = { name: String, img: String, alt: String }, Z = ({ name: o, img: a = "", alt: i = "" }) => `
-    <h2>${o}</h2>
+`, V = { name: String, img: String, alt: String }, ee = ({ name: t, img: o = "", alt: i = "" }) => `
+    <h2>${t}</h2>
     <img
-        src=${t(a)}
+        src=${a(o)}
         alt=${i}
         height="36"
         width="76"
     />
 `;
-e("section-title", { props: Y, styles: Q, template: Z });
+e("section-title", { props: V, styles: Z, template: ee });
 
 // web-components/components/app-toolkit.js
-var V = `
+var te = `
   :host {
     display: block;
   }
@@ -939,23 +980,23 @@ var V = `
     color: var(--color-secondary);
     text-transform: uppercase;
   }
-`, W = { tools: Array }, ee = ({ tools: o }) => `
+`, oe = { tools: Array }, ae = ({ tools: t }) => `
     <h4>Toolkits</h4>
     <ul>
-        ${o.map((a) => `
+        ${t.map((o) => `
             <li>
             <app-icon
-                src=${t(a.src)}
-                alt=${a.alt}
+                src=${a(o.src)}
+                alt=${o.alt}
             ></app-icon>
             </li>
         `).join("")}
     </ul>
 `;
-e("app-toolkit", { props: W, styles: V, template: ee });
+e("app-toolkit", { props: oe, styles: te, template: ae });
 
 // web-components/sections/web-interfaces/workflow.js
-var oe = `
+var re = `
   :host {
     display: block;
   }
@@ -994,7 +1035,7 @@ var oe = `
     margin: 0;
   }
 
-`, te = `
+`, ie = `
   <section>
     <section-title
         props='${JSON.stringify({
@@ -1028,10 +1069,10 @@ var oe = `
      </ul>
 </section>
 `;
-e("section-web-interfaces-workflow", { styles: oe, template: te });
+e("section-web-interfaces-workflow", { styles: re, template: ie });
 
 // web-components/components/app-badge.js
-var ae = `
+var ne = `
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -1060,42 +1101,69 @@ var ae = `
     --local-bg: #a36aa5;
      --local-border: 1px solid var( --local-color);
   }
-`, re = { name: String }, ie = ({ name: o }) => `${o}`;
-e("app-badge", { props: re, styles: ae, template: ie });
+`, le = { name: String }, se = ({ name: t }) => `${t}`;
+e("app-badge", { props: le, styles: ne, template: se });
 
-// web-components/sections/capabilities.js
-var ne = `
-  section {
-    width: 80%;
-    margin-inline: auto;
-  }
+// web-components/sections/more-capabilities.js
+var ce = `
+    section {
+        width: 80%;
+        margin-inline: auto;
+    }
 
-   h3 {
-    margin: 0;
-  }
+    h3 {
+        margin: 0;
+    }
 
-  ol {
-    padding: 0;
-    margin: 0;
-    list-style: none;
+    ol {
+        margin: 0;
+        position: relative;
+        list-style: none;
+        padding: 0;
+        height: 48rem;
+
+        @media (max-width: ${r}) {
+            position: static;
+            height: auto;
+            display: flex;
+            gap: 2rem;
+            overflow: scroll;
+        }
+    }
+
+
+li:nth-child(1) {
+    position: absolute;
+    top: 12rem;
+    left: 0rem;
 }
 
-ol {
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 5rem;
+li:nth-child(2) {
+   position: absolute;
+    top: 0rem;
+    left: 22rem;
+}
 
-    @media (max-width: ${d}) {
-      grid-template-columns: 1fr;
-      border: none;
-    }
+li:nth-child(3) {
+   position: absolute;
+    top: 25rem;
+    left: 22rem;
+}
+
+@media (max-width: ${r}) {
+  li:nth-child(1),
+  li:nth-child(2),
+  li:nth-child(3) {
+    position: static;
+    top: auto;
+    left: auto;
   }
-`, le = () => `
+}
+`, me = () => `
   <section>
       <section-title
         props='${JSON.stringify({
-  name: "Capabilities",
+  name: "More Capabilities",
   img: "./assets/icons/peacock.svg",
   alt: "Peacock Logo"
 })}'
@@ -1103,78 +1171,32 @@ ol {
             
     <ol>
         <li>
-           <capabilities-item props='${JSON.stringify({
+           <capabilities-item variant="no-list" props='${JSON.stringify({
   title: "Design System",
   subTitle: "Build",
-  href: "/capabilities/design-system",
-  delivers: [
-    {
-      name: "Design Tokens",
-      icon: "./assets/icons/design-tokens.svg",
-      alt: "Design Tokens Icon"
-    },
-    {
-      name: "Component Library",
-      icon: "./assets/icons/component-library.svg",
-      alt: "Component Library Icon"
-    },
-    {
-      name: "Guidelines",
-      icon: "./assets/icons/guidelines.svg",
-      alt: "Guidelines Icon"
-    }
-  ]
+  href: "/capabilities/design-system"
 })}'>
-  </capabilities-item>
+            </capabilities-item>
         </li>
         <li>
-            <capabilities-item props='${JSON.stringify({
+            <capabilities-item variant="no-list" props='${JSON.stringify({
   title: "User Interfaces",
   subTitle: "Design",
-  href: "/capabilities/user-interfaces",
-  delivers: [
-    {
-      name: "User Flows",
-      icon: "./assets/icons/user-flows.svg",
-      alt: "User Flows Icon"
-    },
-    {
-      name: "Hi Fi Interfaces",
-      icon: "./assets/icons/hi-fi-interfaces.svg",
-      alt: "Hi Fi Interface Icon"
-    },
-    {
-      name: "Prototypes",
-      icon: "./assets/icons/prototypes.svg",
-      alt: "Prototypes Icon"
-    }
-  ]
+  href: "/capabilities/user-interfaces"
 })}'>
-  </capabilities-item>
+            </capabilities-item>
         </li>
         <li>
-            <capabilities-item props='${JSON.stringify({
+            <capabilities-item variant="no-list" props='${JSON.stringify({
   title: "Web Interfaces",
   subTitle: "Develop",
-  href: "/capabilities/web-interfaces",
-  delivers: [
-    {
-      name: "HTML",
-      icon: "./assets/icons/html-1.svg",
-      alt: "HTML Icon"
-    },
-    {
-      name: "Assets",
-      icon: "./assets/icons/assets.svg",
-      alt: "Assets Icon"
-    }
-  ]
+  href: "/capabilities/web-interfaces"
 })}'>
-  </capabilities-item>
+            </capabilities-item>
         </li>
     </ol>
   </section>
 `;
-e("section-capabilities", { styles: ne, template: le });
+e("section-more-capabilities", { styles: ce, template: me });
 </script></body>
 </html>

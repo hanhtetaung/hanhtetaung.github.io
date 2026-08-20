@@ -29,7 +29,7 @@
     <main>
       <section-user-interfaces-intro></section-user-interfaces-intro>
       <section-user-interfaces-workflow></section-user-interfaces-workflow>
-      <section-capabilities></section-capabilities>
+      <section-more-capabilities></section-more-capabilities>
     </main>
 
     <section-footer></section-footer>
@@ -38,33 +38,33 @@ function u() {
   let t = document.documentElement.dataset.base || "./";
   return new URL(t, location.href);
 }
-function o(t) {
+function a(t) {
   return new URL(t, u()).href;
 }
 function n(t) {
-  let a = t.replace(/^\//, ""), i = location.protocol === "file:", c = u();
-  if (a === "")
+  let o = t.replace(/^\//, ""), i = location.protocol === "file:", c = u();
+  if (o === "")
     return i ? new URL("index.html", c).href : c.href;
-  return i ? new URL(`${a}.html`, c).href : new URL(a, c).href;
+  return i ? new URL(`${o}.html`, c).href : new URL(o, c).href;
 }
 
 // web-components/fonts.js
 var b = `
   @font-face {
     font-family: "Chicle";
-    src: url("${o("assets/fonts/Chicle-Regular.woff2")}") format("woff2");
+    src: url("${a("assets/fonts/Chicle-Regular.woff2")}") format("woff2");
     font-weight: 400;
     font-display: swap;
   }
   @font-face {
     font-family: "StackSans";
-    src: url("${o("assets/fonts/StackSansText-Bold.woff2")}") format("woff2");
+    src: url("${a("assets/fonts/StackSansText-Bold.woff2")}") format("woff2");
     font-weight: 700;
     font-display: swap;
   }
   @font-face {
     font-family: "StackSans";
-    src: url("${o("assets/fonts/StackSansText-Regular.woff2")}") format("woff2");
+    src: url("${a("assets/fonts/StackSansText-Regular.woff2")}") format("woff2");
     font-weight: 400;
     font-display: swap;
   }
@@ -73,25 +73,25 @@ v.textContent = b;
 document.head.appendChild(v);
 
 // web-components/define.js
-function y(t, a) {
+function w(t, o) {
   if (t === void 0) {
-    if (a === Array)
+    if (o === Array)
       return [];
-    if (a === Object)
+    if (o === Object)
       return {};
-    if (a === Boolean)
+    if (o === Boolean)
       return !1;
-    if (a === Number)
+    if (o === Number)
       return 0;
     return;
   }
-  if (a === Boolean)
+  if (o === Boolean)
     return Boolean(t);
-  if (a === Number)
+  if (o === Number)
     return Number(t);
   return t;
 }
-function e(t, { props: a = {}, attrs: i = [], styles: c = "", template: d }) {
+function e(t, { props: o = {}, attrs: i = [], styles: c = "", template: p }) {
   let h = ["props", ...i];
 
   class m extends HTMLElement {
@@ -116,8 +116,8 @@ function e(t, { props: a = {}, attrs: i = [], styles: c = "", template: d }) {
           l = {};
         }
       let g = {};
-      for (let f of Object.keys(a))
-        g[f] = y(l[f], a[f]);
+      for (let f of Object.keys(o))
+        g[f] = w(l[f], o[f]);
       return g;
     }
     _applyForwardedAttrs() {
@@ -133,7 +133,7 @@ function e(t, { props: a = {}, attrs: i = [], styles: c = "", template: d }) {
           l.removeAttribute(s);
     }
     _render() {
-      let l = this._getProps(), s = typeof d === "function" ? d(l) : d;
+      let l = this._getProps(), s = typeof p === "function" ? p(l) : p;
       this.shadowRoot.innerHTML = `<style>${c}</style>${s}`, this._applyForwardedAttrs();
     }
   }
@@ -141,7 +141,7 @@ function e(t, { props: a = {}, attrs: i = [], styles: c = "", template: d }) {
 }
 
 // web-components/components/app-link.js
-var w = `
+var y = `
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -205,7 +205,7 @@ var w = `
 `, x = ["href", "target", "rel", "download"], k = `
   <a data-forward><slot></slot></a>
 `;
-e("app-link", { attrs: x, styles: w, template: k });
+e("app-link", { attrs: x, styles: y, template: k });
 
 // web-components/components/app-logo.js
 var $ = `
@@ -221,10 +221,10 @@ var $ = `
 e("app-logo", { attrs: z, styles: $, template: S });
 
 // web-components/breakpoints.js
-var r = "769px", p = "992px";
+var r = "769px", d = "992px";
 
 // web-components/sections/header.js
-var H = `
+var A = `
   :host {
     display: block;
   }
@@ -264,11 +264,11 @@ var H = `
       gap: 4rem;
     }
   }
-`, C = `
+`, H = `
   <header>
       <app-link variant="plain" href=${n("/")}>
         <app-logo
-          src=${o("./assets/images/logo.avif")}
+          src=${a("./assets/images/logo.avif")}
           alt="Logo"
         ></app-logo>
       </app-link>
@@ -292,10 +292,10 @@ var H = `
       </div>
   </header>
 `;
-e("section-header", { template: C, styles: H });
+e("section-header", { template: H, styles: A });
 
 // web-components/components/footer-nav.js
-var A = [
+var C = [
   { href: "/", name: "Home" },
   { href: "/about", name: "About" },
   { href: "/credits", name: "Credits" },
@@ -314,7 +314,7 @@ var A = [
     href: "/writings/foundation-building-interfaces-at-scale",
     name: "Foundation"
   }
-], U = `
+], T = `
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -361,12 +361,12 @@ var A = [
     margin-right: 5rem;
     margin-bottom: 0.3rem;
   }
-`, E = () => `
+`, B = () => `
     <nav>
         <span>Sitemap</span>
 
         <ol>
-            ${A.map((t) => `
+            ${C.map((t) => `
                 <li>
                     <app-link variant="sitemap" href=${n(t.href)} >${t.name}</app-link>
                 </li>
@@ -374,10 +374,10 @@ var A = [
         </ol>
     </nav>
 `;
-e("footer-nav", { styles: U, template: E });
+e("footer-nav", { styles: T, template: B });
 
 // web-components/components/footer-copyright.js
-var F = `
+var E = `
   :host {
    display: flex;
     justify-content: space-between;
@@ -422,7 +422,7 @@ var F = `
       margin-bottom: 0.5rem;
     }
   }
-`, I = () => `
+`, L = () => `
       <p>
         © Han Htet Aung 2026 |
         <app-link href=${n("/credits")} variant="underline">Credits</app-link>
@@ -434,7 +434,7 @@ var F = `
               <li>
                   <app-link href="mailto:hanhtetaung.dev@gmail.com" variant="image">
                   <img
-                      src=${o("./assets/icons/email.svg")}
+                      src=${a("./assets/icons/email.svg")}
                       alt="Email Icon"
                   />
                   </app-link>
@@ -447,7 +447,7 @@ var F = `
                   variant="image"
                   >
                   <img
-                      src=${o("./assets/icons/github.svg")}
+                      src=${a("./assets/icons/github.svg")}
                       alt="Github Icon"
                   />
                   </app-link>
@@ -460,7 +460,7 @@ var F = `
                   variant="image"
                   >
                   <img
-                      src=${o("./assets/icons/linkedin.svg")}
+                      src=${a("./assets/icons/linkedin.svg")}
                       alt="Linkedin Icon"
                   />
                   </app-link>
@@ -468,10 +468,10 @@ var F = `
           </ul>
 </nav>
 `;
-e("footer-copyright", { styles: F, template: I });
+e("footer-copyright", { styles: E, template: L });
 
 // web-components/sections/footer.js
-var P = `
+var j = `
   :host {
     --local-bg-color: var(--color-bg-secondary);
 
@@ -519,12 +519,12 @@ var P = `
   hr {
     color: var(--color-secondary);
   }
-`, N = `
+`, U = `
   <footer>
       <article>
         <div>
           <app-logo
-            src="${o("./assets/images/logo.avif")}"
+            src="${a("./assets/images/logo.avif")}"
             alt="Logo"
           ></app-logo>
         
@@ -540,10 +540,10 @@ var P = `
       <footer-copyright></footer-copyright>
   </footer>
 `;
-e("section-footer", { styles: P, template: N });
+e("section-footer", { styles: j, template: U });
 
 // web-components/components/app-image.js
-var T = `
+var _ = `
   :host {
     --local-width: 5rem;
     --local-heigth: auto;
@@ -574,11 +574,11 @@ var T = `
    :host([variant="full"]) {
     --local-width: 100%;
   }
-`, _ = ["width", "height", "src", "alt"], B = () => "<img data-forward />";
-e("app-image", { attrs: _, styles: T, template: B });
+`, F = ["width", "height", "src", "alt"], R = () => "<img data-forward />";
+e("app-image", { attrs: F, styles: _, template: R });
 
 // web-components/components/app-icon.js
-var L = `
+var N = `
   :host {
     --local-width: 3rem;
     --local-height: auto;
@@ -616,11 +616,11 @@ var L = `
   }
 
 
-`, O = ["src", "alt"], R = () => '<img data-forward width="200" height="200"/>';
-e("app-icon", { attrs: O, styles: L, template: R });
+`, O = ["src", "alt"], P = () => '<img data-forward width="200" height="200"/>';
+e("app-icon", { attrs: O, styles: N, template: P });
 
 // web-components/sections/coming-soon-intro.js
-var j = `
+var q = `
    section {
         margin-inline: auto;
         width: 80%;
@@ -647,9 +647,9 @@ var j = `
   p {
     margin: 0;
   }
-`, q = { name: String, img: String, alt: String }, D = ({
+`, I = { name: String, img: String, alt: String }, M = ({
   name: t = "Name",
-  img: a = "./assets/images/coming-soon.jpg",
+  img: o = "./assets/images/coming-soon.jpg",
   alt: i = "Coming Soon"
 }) => `
   <section>
@@ -661,18 +661,72 @@ var j = `
 
         <app-icon
           variant="large"
-          src=${o("./assets/icons/cuckoo-clock.svg")}
+          src=${a("./assets/icons/cuckoo-clock.svg")}
           alt="Cuckoo Cock Logo"
         ></app-icon>
       </div>
 
-      <app-image variant="large" src=${o(a)} alt=${i}></app-image>
+      <app-image variant="large" src=${a(o)} alt=${i}></app-image>
   </section>
 `;
-e("section-coming-soon-intro", { props: q, styles: j, template: D });
+e("section-coming-soon-intro", { props: I, styles: q, template: M });
+
+// web-components/components/what-i-deliver.js
+var X = `
+ h3 {
+    margin: 0;
+    margin-bottom: 1rem;
+  }
+
+ ol {
+    margin: 0;
+    list-style: none;
+    padding: 0;
+    display: flex;
+    border: 1px dashed var(--color-text);
+    padding: 2rem;
+    justify-content: space-between;
+    gap: 2rem;
+    width: fit-content;
+    overflow: scroll;
+    box-sizing: border-box; 
+
+    @media (max-width: ${d}) {
+      width: 100%;
+    }
+  }
+
+   li {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 9ch;
+
+   
+  }
+
+   p {
+        margin: 0;
+        font-size: var(--size-small);
+    }
+`, G = {
+  delivers: Array
+}, D = ({ delivers: t }) => `
+  <h3>What I deliver</h3>
+  <ol>
+    ${t.map((o) => `
+        <li>
+          <app-icon variant="medium" src=${a(o.icon)} alt=${o.alt}></app-icon>
+          <p>${o.name}</p>
+        </li>
+      `).join("")}
+  </ol>
+`;
+e("what-i-deliver", { props: G, styles: X, template: D });
 
 // web-components/sections/user-interfaces/intro.js
-var M = `
+var J = `
   :host {
     display: block;
   }
@@ -701,39 +755,7 @@ var M = `
     margin: 0;
     margin-bottom: 5rem;
   }
-
-  h3 {
-    margin: 0;
-    margin-bottom: 1rem;
-  }
-
-  ol {
-    margin: 0;
-    list-style: none;
-    padding: 0;
-    display: flex;
-    gap: 5rem;
-    border: 1px dashed var(--color-text);
-    width: fit-content;
-    padding: 2rem;
-
-    @media (max-width: ${r}) {
-        flex-direction: column;
-    }
-  }
-
-  li {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    p {
-        margin: 0;
-        margin-top: 0.5rem;
-    }
-  }
-`, X = `
+`, K = `
     <section>
         <hgroup>
             <span>Capabilities</span>
@@ -741,31 +763,32 @@ var M = `
             <p>Design intuitive user interfaces and experiences.</p>
         </hgroup>
 
-        <article>
-            <h3>What I deliver</h3>
-             <ol>
-                <li>
-                    <app-icon variant="medium" src=${o("./assets/icons/user-flows.svg")} alt="User Flows Icon"></app-icon>
-                    <p>User Flows</p>
-                </li>
-                <li>
-                  <app-icon variant="medium" src=${o("./assets/icons/hi-fi-interfaces.svg")} alt="Hi Fi Interfaces Icon"></app-icon>
-                  <p>Hi-Fi Interfaces</p>
-                    
-                </li>
-                <li>
-                     <app-icon variant="medium" src=${o("./assets/icons/prototypes.svg")} alt="Prototype Icon"></app-icon>
-                    <p>Prototypes</p>
-                    
-                </li>
-            </ol>
-        </article>
+
+       <what-i-deliver props='${JSON.stringify({
+  delivers: [
+    {
+      name: "User Flows",
+      icon: "./assets/icons/user-flows.svg",
+      alt: "User Flows Icon"
+    },
+    {
+      name: "Hi Fi Interfaces",
+      icon: "./assets/icons/hi-fi-interfaces.svg",
+      alt: "Hi Fi Interface Icon"
+    },
+    {
+      name: "Prototypes",
+      icon: "./assets/icons/prototypes.svg",
+      alt: "Prototypes Icon"
+    }
+  ]
+})}'></what-i-deliver>
     </section>
 `;
-e("section-user-interfaces-intro", { styles: M, template: X });
+e("section-user-interfaces-intro", { styles: J, template: K });
 
 // web-components/components/section-title.js
-var G = `
+var Q = `
   :host {
     display: flex;
     align-items: center;
@@ -796,19 +819,19 @@ var G = `
       display: none;
     }
   }
-`, J = { name: String, img: String, alt: String }, K = ({ name: t, img: a = "", alt: i = "" }) => `
+`, W = { name: String, img: String, alt: String }, Y = ({ name: t, img: o = "", alt: i = "" }) => `
     <h2>${t}</h2>
     <img
-        src=${o(a)}
+        src=${a(o)}
         alt=${i}
         height="36"
         width="76"
     />
 `;
-e("section-title", { props: J, styles: G, template: K });
+e("section-title", { props: W, styles: Q, template: Y });
 
 // web-components/sections/user-interfaces/workflow.js
-var Q = `
+var Z = `
   :host {
     display: block;
   }
@@ -819,7 +842,7 @@ var Q = `
   }
 
 
-`, W = `
+`, V = `
   <section>
     <section-title
         props='${JSON.stringify({
@@ -832,10 +855,10 @@ var Q = `
      <p>Coming Soon</p>
 </section>
 `;
-e("section-user-interfaces-workflow", { styles: Q, template: W });
+e("section-user-interfaces-workflow", { styles: Z, template: V });
 
 // web-components/components/app-badge.js
-var Y = `
+var ee = `
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -864,11 +887,11 @@ var Y = `
     --local-bg: #a36aa5;
      --local-border: 1px solid var( --local-color);
   }
-`, Z = { name: String }, V = ({ name: t }) => `${t}`;
-e("app-badge", { props: Z, styles: Y, template: V });
+`, te = { name: String }, oe = ({ name: t }) => `${t}`;
+e("app-badge", { props: te, styles: ee, template: oe });
 
 // web-components/components/capabilities-item.js
-var ee = `
+var ae = `
   :host {
     display: flex;
     gap: 2rem;
@@ -878,7 +901,7 @@ var ee = `
     align-items: center;
     border: 1px dashed var(--color-text);
 
-    @media (max-width: ${p}) {
+    @media (max-width: ${d}) {
       justify-content: start;
       flex-direction: column;
       padding: 0;
@@ -915,7 +938,6 @@ var ee = `
   }
 
   ol {
-     padding: 0;
       margin: 0;
       list-style: none;
       padding: 0;
@@ -924,7 +946,7 @@ var ee = `
       width: fit-content;
       overflow: scroll;
 
-      @media (max-width: ${p}) {
+      @media (max-width: ${d}) {
         width: 100%;
       }
     }
@@ -934,6 +956,7 @@ var ee = `
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    min-width: 9ch;
 
     p {
         margin: 0;
@@ -942,30 +965,49 @@ var ee = `
   }
 
     article {
-      @media (max-width: ${p}) {
+      @media (max-width: ${d}) {
         width: 100%;
         display: flex;
         justify-content: space-between;
       }
     }
-`, te = {
+
+    :host([variant="no-list"]) {
+      width: fit-content;
+      aspect-ratio: 1 / 1;
+      border-radius: 50%;
+      overflow: hidden;
+      padding: 4rem;
+      justify-content: center;
+
+      h3 {
+        font-size: var(--size-body);
+        font-weight: var(--font-regular);
+        margin-bottom: 0.5rem;
+      }
+
+      ol {
+        display: none;
+      }
+    }
+`, re = {
   title: String,
   subTitle: String,
   href: String,
   icon: String,
   alt: String,
   delivers: Array
-}, oe = ({
+}, ie = ({
   title: t,
-  subTitle: a,
+  subTitle: o,
   href: i,
   delivers: c,
-  icon: d,
+  icon: p,
   alt: h
 }) => `
   <article>
     <hgroup>
-      <span>${a}</span>
+      <span>${o}</span>
       <h3>${t}</h3>
     </hgroup>
     <app-link variant="plain" href=${n(i)}>→</app-link>
@@ -974,47 +1016,74 @@ var ee = `
   <ol>
     ${c.map((m) => `
         <li>
-          <app-icon variant="medium" src=${o(m.icon)} alt=${m.alt}></app-icon>
+          <app-icon variant="medium" src=${a(m.icon)} alt=${m.alt}></app-icon>
           <p>${m.name}</p>
         </li>
       `).join("")}
   </ol>
 `;
-e("capabilities-item", { props: te, styles: ee, template: oe });
+e("capabilities-item", { props: re, styles: ae, template: ie });
 
-// web-components/sections/capabilities.js
-var ae = `
-  section {
-    width: 80%;
-    margin-inline: auto;
-  }
+// web-components/sections/more-capabilities.js
+var ne = `
+    section {
+        width: 80%;
+        margin-inline: auto;
+    }
 
-   h3 {
-    margin: 0;
-  }
+    h3 {
+        margin: 0;
+    }
 
-  ol {
-    padding: 0;
-    margin: 0;
-    list-style: none;
+    ol {
+        margin: 0;
+        position: relative;
+        list-style: none;
+        padding: 0;
+        height: 48rem;
+
+        @media (max-width: ${r}) {
+            position: static;
+            height: auto;
+            display: flex;
+            gap: 2rem;
+            overflow: scroll;
+        }
+    }
+
+
+li:nth-child(1) {
+    position: absolute;
+    top: 12rem;
+    left: 0rem;
 }
 
-ol {
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 5rem;
+li:nth-child(2) {
+   position: absolute;
+    top: 0rem;
+    left: 22rem;
+}
 
-    @media (max-width: ${p}) {
-      grid-template-columns: 1fr;
-      border: none;
-    }
+li:nth-child(3) {
+   position: absolute;
+    top: 25rem;
+    left: 22rem;
+}
+
+@media (max-width: ${r}) {
+  li:nth-child(1),
+  li:nth-child(2),
+  li:nth-child(3) {
+    position: static;
+    top: auto;
+    left: auto;
   }
-`, re = () => `
+}
+`, le = () => `
   <section>
       <section-title
         props='${JSON.stringify({
-  name: "Capabilities",
+  name: "More Capabilities",
   img: "./assets/icons/peacock.svg",
   alt: "Peacock Logo"
 })}'
@@ -1022,78 +1091,32 @@ ol {
             
     <ol>
         <li>
-           <capabilities-item props='${JSON.stringify({
+           <capabilities-item variant="no-list" props='${JSON.stringify({
   title: "Design System",
   subTitle: "Build",
-  href: "/capabilities/design-system",
-  delivers: [
-    {
-      name: "Design Tokens",
-      icon: "./assets/icons/design-tokens.svg",
-      alt: "Design Tokens Icon"
-    },
-    {
-      name: "Component Library",
-      icon: "./assets/icons/component-library.svg",
-      alt: "Component Library Icon"
-    },
-    {
-      name: "Guidelines",
-      icon: "./assets/icons/guidelines.svg",
-      alt: "Guidelines Icon"
-    }
-  ]
+  href: "/capabilities/design-system"
 })}'>
-  </capabilities-item>
+            </capabilities-item>
         </li>
         <li>
-            <capabilities-item props='${JSON.stringify({
+            <capabilities-item variant="no-list" props='${JSON.stringify({
   title: "User Interfaces",
   subTitle: "Design",
-  href: "/capabilities/user-interfaces",
-  delivers: [
-    {
-      name: "User Flows",
-      icon: "./assets/icons/user-flows.svg",
-      alt: "User Flows Icon"
-    },
-    {
-      name: "Hi Fi Interfaces",
-      icon: "./assets/icons/hi-fi-interfaces.svg",
-      alt: "Hi Fi Interface Icon"
-    },
-    {
-      name: "Prototypes",
-      icon: "./assets/icons/prototypes.svg",
-      alt: "Prototypes Icon"
-    }
-  ]
+  href: "/capabilities/user-interfaces"
 })}'>
-  </capabilities-item>
+            </capabilities-item>
         </li>
         <li>
-            <capabilities-item props='${JSON.stringify({
+            <capabilities-item variant="no-list" props='${JSON.stringify({
   title: "Web Interfaces",
   subTitle: "Develop",
-  href: "/capabilities/web-interfaces",
-  delivers: [
-    {
-      name: "HTML",
-      icon: "./assets/icons/html-1.svg",
-      alt: "HTML Icon"
-    },
-    {
-      name: "Assets",
-      icon: "./assets/icons/assets.svg",
-      alt: "Assets Icon"
-    }
-  ]
+  href: "/capabilities/web-interfaces"
 })}'>
-  </capabilities-item>
+            </capabilities-item>
         </li>
     </ol>
   </section>
 `;
-e("section-capabilities", { styles: ae, template: re });
+e("section-more-capabilities", { styles: ne, template: le });
 </script></body>
 </html>

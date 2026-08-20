@@ -85,6 +85,25 @@ const styles = /* css */ `
         justify-content: space-between;
       }
     }
+
+    :host([variant="no-list"]) {
+      width: fit-content;
+      aspect-ratio: 1 / 1;
+      border-radius: 50%;
+      overflow: hidden;
+      padding: 4rem;
+      justify-content: center;
+
+      h3 {
+        font-size: var(--size-body);
+        font-weight: var(--font-regular);
+        margin-bottom: 0.5rem;
+      }
+
+      ol {
+        display: none;
+      }
+    }
 `;
 
 const props = {
