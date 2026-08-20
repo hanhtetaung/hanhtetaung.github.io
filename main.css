@@ -1,24 +1,5 @@
 @charset "UTF-8";
 
-@font-face {
-  font-family: "Chicle";
-  src: url("./assets/fonts/Chicle-Regular.woff2") format("woff2");
-  font-weight: 400;
-  font-display: swap;
-}
-@font-face {
-  font-family: "StackSans";
-  src: url("./assets/fonts/StackSansText-Bold.woff2") format("woff2");
-  font-weight: 700;
-  font-display: swap;
-}
-@font-face {
-  font-family: "StackSans";
-  src: url("./assets/fonts/StackSansText-Regular.woff2") format("woff2");
-  font-weight: 400;
-  font-display: swap;
-}
-
 :root {
   --color-bg-primary: #fff5e8;
   --color-bg-secondary: #fffaf4;

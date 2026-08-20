@@ -1,18 +1,16 @@
-const ROOT = new URL("../", import.meta.url);
-
-export function asset(path) {
-  return new URL(path, ROOT).href;
-}
-
-function getNavRoot() {
+function getRoot() {
   const base = document.documentElement.dataset.base || "./";
   return new URL(base, location.href);
+}
+
+export function asset(path) {
+  return new URL(path, getRoot()).href;
 }
 
 export function navHref(path) {
   const clean = path.replace(/^\//, "");
   const isFile = location.protocol === "file:";
-  const navRoot = getNavRoot();
+  const navRoot = getRoot();
 
   if (clean === "") {
     return isFile ? new URL("index.html", navRoot).href : navRoot.href;

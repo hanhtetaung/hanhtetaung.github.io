@@ -1,3 +1,5 @@
+// terra/web-components/components/terra-empty-state.js
+
 import { asset, define } from "../define.js";
 
 const styles = /*css*/ `

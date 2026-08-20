@@ -1,3 +1,5 @@
+// terra/web-components/define.js
+
 function coerce(value, type) {
   if (value === undefined) {
     if (type === Array) return [];
@@ -104,7 +106,7 @@ export function define(
   customElements.define(name, Component);
 }
 
-const ROOT = new URL("./", import.meta.url);
+const ROOT = new URL("./", location.href);
 
 export function asset(path) {
   return new URL(path, ROOT).href;
