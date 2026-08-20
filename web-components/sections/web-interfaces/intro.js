@@ -47,7 +47,8 @@ const styles = /* css */ `
     gap: 5rem;
     border: 1px dashed var(--color-text);
     width: fit-content;
-    padding: 2rem;
+    padding-block: 2rem;
+    padding-inline: 4rem;
 
     @media (max-width: ${PHONE}) {
         flex-direction: column;
@@ -79,11 +80,11 @@ const template = /* html */ `
             <h3>What I deliver</h3>
              <ol>
                 <li>
-                    <app-icon variant="medium" src=${asset("./assets/icons/web-interface.svg")} alt="Web Interface Icon"></app-icon>
+                    <app-icon variant="medium" src=${asset("./assets/icons/html-1.svg")} alt="HTML Icon"></app-icon>
                     <p>HTML</p>
                 </li>
                 <li>
-                     <app-icon variant="medium" src=${asset("./assets/icons/web-interface.svg")} alt="Web Interface Icon"></app-icon>
+                     <app-icon variant="medium" src=${asset("./assets/icons/assets.svg")} alt="Assets Icon"></app-icon>
                     <p>Assets</p>
                 </li>
             </ol>

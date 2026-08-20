@@ -78,16 +78,16 @@ const template = /* html */ `
             <h3>What I deliver</h3>
              <ol>
                 <li>
-                    <app-icon variant="medium" src=${asset("./assets/icons/user-interface.svg")} alt="User Interface Icon"></app-icon>
+                    <app-icon variant="medium" src=${asset("./assets/icons/user-flows.svg")} alt="User Flows Icon"></app-icon>
                     <p>User Flows</p>
                 </li>
                 <li>
-                     <app-icon variant="medium" src=${asset("./assets/icons/user-interface.svg")} alt="User Interface Icon"></app-icon>
-                    <p>Hi-Fi Interfaces</p>
+                  <app-icon variant="medium" src=${asset("./assets/icons/hi-fi-interfaces.svg")} alt="Hi Fi Interfaces Icon"></app-icon>
+                  <p>Hi-Fi Interfaces</p>
                     
                 </li>
                 <li>
-                     <app-icon variant="medium" src=${asset("./assets/icons/user-interface.svg")} alt="User Interface Icon"></app-icon>
+                     <app-icon variant="medium" src=${asset("./assets/icons/prototypes.svg")} alt="Prototype Icon"></app-icon>
                     <p>Prototypes</p>
                     
                 </li>
