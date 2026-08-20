@@ -4,7 +4,6 @@ import "../components/app-badge.js";
 import "../components/app-icon.js";
 import "../components/capabilities-item.js";
 import { TABLE } from "../breakpoints.js";
-import { asset } from "../asset.js";
 
 const styles = /* css */ `
   section {
