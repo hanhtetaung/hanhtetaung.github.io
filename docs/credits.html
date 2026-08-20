@@ -33,68 +33,68 @@
 
     <section-footer variant="secondary"></section-footer>
   <script type="module">// web-components/asset.js
-function h() {
-  let e = document.documentElement.dataset.base || "./";
-  return new URL(e, location.href);
+function u() {
+  let o = document.documentElement.dataset.base || "./";
+  return new URL(o, location.href);
 }
-function r(e) {
-  return new URL(e, h()).href;
+function n(o) {
+  return new URL(o, u()).href;
 }
-function n(e) {
-  let o = e.replace(/^\//, ""), i = location.protocol === "file:", l = h();
-  if (o === "")
-    return i ? new URL("index.html", l).href : l.href;
-  return i ? new URL(`${o}.html`, l).href : new URL(o, l).href;
+function r(o) {
+  let t = o.replace(/^\//, ""), i = location.protocol === "file:", s = u();
+  if (t === "")
+    return i ? new URL("index.html", s).href : s.href;
+  return i ? new URL(`${t}.html`, s).href : new URL(t, s).href;
 }
 
 // web-components/fonts.js
-var b = `
+var v = `
   @font-face {
     font-family: "Chicle";
-    src: url("${r("assets/fonts/Chicle-Regular.woff2")}") format("woff2");
+    src: url("${n("assets/fonts/Chicle-Regular.woff2")}") format("woff2");
     font-weight: 400;
     font-display: swap;
   }
   @font-face {
     font-family: "StackSans";
-    src: url("${r("assets/fonts/StackSansText-Bold.woff2")}") format("woff2");
+    src: url("${n("assets/fonts/StackSansText-Bold.woff2")}") format("woff2");
     font-weight: 700;
     font-display: swap;
   }
   @font-face {
     font-family: "StackSans";
-    src: url("${r("assets/fonts/StackSansText-Regular.woff2")}") format("woff2");
+    src: url("${n("assets/fonts/StackSansText-Regular.woff2")}") format("woff2");
     font-weight: 400;
     font-display: swap;
   }
 `, g = document.createElement("style");
-g.textContent = b;
+g.textContent = v;
 document.head.appendChild(g);
 
 // web-components/define.js
-function v(e, o) {
-  if (e === void 0) {
-    if (o === Array)
+function b(o, t) {
+  if (o === void 0) {
+    if (t === Array)
       return [];
-    if (o === Object)
+    if (t === Object)
       return {};
-    if (o === Boolean)
+    if (t === Boolean)
       return !1;
-    if (o === Number)
+    if (t === Number)
       return 0;
     return;
   }
-  if (o === Boolean)
-    return Boolean(e);
-  if (o === Number)
-    return Number(e);
-  return e;
+  if (t === Boolean)
+    return Boolean(o);
+  if (t === Number)
+    return Number(o);
+  return o;
 }
-function t(e, { props: o = {}, attrs: i = [], styles: l = "", template: d }) {
-  let u = ["props", ...i];
+function e(o, { props: t = {}, attrs: i = [], styles: s = "", template: m }) {
+  let f = ["props", ...i];
 
-  class m extends HTMLElement {
-    static observedAttributes = u;
+  class h extends HTMLElement {
+    static observedAttributes = f;
     constructor() {
       super();
       this.attachShadow({ mode: "open" });
@@ -107,36 +107,36 @@ function t(e, { props: o = {}, attrs: i = [], styles: l = "", template: d }) {
         this._render();
     }
     _getProps() {
-      let s = {}, c = this.getAttribute("props");
-      if (c)
+      let c = {}, l = this.getAttribute("props");
+      if (l)
         try {
-          s = JSON.parse(c);
+          c = JSON.parse(l);
         } catch {
-          s = {};
+          c = {};
         }
-      let f = {};
-      for (let p of Object.keys(o))
-        f[p] = v(s[p], o[p]);
-      return f;
+      let d = {};
+      for (let p of Object.keys(t))
+        d[p] = b(c[p], t[p]);
+      return d;
     }
     _applyForwardedAttrs() {
       if (i.length === 0)
         return;
-      let s = this.shadowRoot.querySelector("[data-forward]");
-      if (!s)
+      let c = this.shadowRoot.querySelector("[data-forward]");
+      if (!c)
         return;
-      for (let c of i)
-        if (this.hasAttribute(c))
-          s.setAttribute(c, this.getAttribute(c));
+      for (let l of i)
+        if (this.hasAttribute(l))
+          c.setAttribute(l, this.getAttribute(l));
         else
-          s.removeAttribute(c);
+          c.removeAttribute(l);
     }
     _render() {
-      let s = this._getProps(), c = typeof d === "function" ? d(s) : d;
-      this.shadowRoot.innerHTML = `<style>${l}</style>${c}`, this._applyForwardedAttrs();
+      let c = this._getProps(), l = typeof m === "function" ? m(c) : m;
+      this.shadowRoot.innerHTML = `<style>${s}</style>${l}`, this._applyForwardedAttrs();
     }
   }
-  customElements.define(e, m);
+  customElements.define(o, h);
 }
 
 // web-components/components/app-link.js
@@ -204,7 +204,7 @@ var y = `
 `, w = ["href", "target", "rel", "download"], k = `
   <a data-forward><slot></slot></a>
 `;
-t("app-link", { attrs: w, styles: y, template: k });
+e("app-link", { attrs: w, styles: y, template: k });
 
 // web-components/components/app-logo.js
 var x = `
@@ -216,14 +216,14 @@ var x = `
     max-height: 7rem;
     width: auto;
   }
-`, $ = ["width", "height", "src", "alt"], z = () => "<img data-forward />";
-t("app-logo", { attrs: $, styles: x, template: z });
+`, I = ["width", "height", "src", "alt"], j = () => "<img data-forward />";
+e("app-logo", { attrs: I, styles: x, template: j });
 
 // web-components/breakpoints.js
 var a = "769px";
 
 // web-components/sections/header.js
-var S = `
+var $ = `
   :host {
     display: block;
   }
@@ -263,11 +263,11 @@ var S = `
       gap: 4rem;
     }
   }
-`, H = `
+`, S = `
   <header>
-      <app-link variant="plain" href=${n("/")}>
+      <app-link variant="plain" href=${r("/")}>
         <app-logo
-          src=${r("./assets/images/logo.avif")}
+          src=${n("./assets/images/logo.avif")}
           alt="Logo"
         ></app-logo>
       </app-link>
@@ -276,25 +276,25 @@ var S = `
         <nav>
           <ul>
             <li>
-              <app-link variant="plain" href=${n("/")}>Home</app-link>
+              <app-link variant="plain" href=${r("/")}>Home</app-link>
             </li>
 
             <li>
-              <app-link variant="plain" href=${n("/about")}>About</app-link>
+              <app-link variant="plain" href=${r("/about")}>About</app-link>
             </li>
           </ul>
         </nav>
 
-        <app-link variant="primary" href=${n("/hire-me")}>
+        <app-link variant="primary" href=${r("/hire-me")}>
           Let's chat &#8629;
         </app-link>
       </div>
   </header>
 `;
-t("section-header", { template: H, styles: S });
+e("section-header", { template: S, styles: $ });
 
 // web-components/components/footer-nav.js
-var A = [
+var z = [
   { href: "/", name: "Home" },
   { href: "/about", name: "About" },
   { href: "/credits", name: "Credits" },
@@ -313,7 +313,7 @@ var A = [
     href: "/writings/foundation-building-interfaces-at-scale",
     name: "Foundation"
   }
-], C = `
+], H = `
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -360,23 +360,23 @@ var A = [
     margin-right: 5rem;
     margin-bottom: 0.3rem;
   }
-`, B = () => `
+`, A = () => `
     <nav>
         <span>Sitemap</span>
 
         <ol>
-            ${A.map((e) => `
+            ${z.map((o) => `
                 <li>
-                    <app-link variant="sitemap" href=${n(e.href)} >${e.name}</app-link>
+                    <app-link variant="sitemap" href=${r(o.href)} >${o.name}</app-link>
                 </li>
             `).join("")}
         </ol>
     </nav>
 `;
-t("footer-nav", { styles: C, template: B });
+e("footer-nav", { styles: H, template: A });
 
 // web-components/components/footer-copyright.js
-var _ = `
+var C = `
   :host {
    display: flex;
     justify-content: space-between;
@@ -424,7 +424,7 @@ var _ = `
 `, T = () => `
       <p>
         © Han Htet Aung 2026 |
-        <app-link href=${n("/credits")} variant="underline">Credits</app-link>
+        <app-link href=${r("/credits")} variant="underline">Credits</app-link>
       </p>
 
       <nav>
@@ -433,7 +433,7 @@ var _ = `
               <li>
                   <app-link href="mailto:hanhtetaung.dev@gmail.com" variant="image">
                   <img
-                      src=${r("./assets/icons/email.svg")}
+                      src=${n("./assets/icons/email.svg")}
                       alt="Email Icon"
                   />
                   </app-link>
@@ -446,7 +446,7 @@ var _ = `
                   variant="image"
                   >
                   <img
-                      src=${r("./assets/icons/github.svg")}
+                      src=${n("./assets/icons/github.svg")}
                       alt="Github Icon"
                   />
                   </app-link>
@@ -459,7 +459,7 @@ var _ = `
                   variant="image"
                   >
                   <img
-                      src=${r("./assets/icons/linkedin.svg")}
+                      src=${n("./assets/icons/linkedin.svg")}
                       alt="Linkedin Icon"
                   />
                   </app-link>
@@ -467,10 +467,10 @@ var _ = `
           </ul>
 </nav>
 `;
-t("footer-copyright", { styles: _, template: T });
+e("footer-copyright", { styles: C, template: T });
 
 // web-components/sections/footer.js
-var U = `
+var P = `
   :host {
     --local-bg-color: var(--color-bg-secondary);
 
@@ -518,12 +518,12 @@ var U = `
   hr {
     color: var(--color-secondary);
   }
-`, E = `
+`, L = `
   <footer>
       <article>
         <div>
           <app-logo
-            src="${r("./assets/images/logo.avif")}"
+            src="${n("./assets/images/logo.avif")}"
             alt="Logo"
           ></app-logo>
         
@@ -539,10 +539,10 @@ var U = `
       <footer-copyright></footer-copyright>
   </footer>
 `;
-t("section-footer", { styles: U, template: E });
+e("section-footer", { styles: P, template: L });
 
 // web-components/sections/credits-intro.js
-var F = `
+var B = `
     section {
         margin-inline: auto;
         width: 80%;
@@ -559,16 +559,16 @@ var F = `
     margin: 0;
     margin-bottom: 1.5rem;
   }
-`, L = `
+`, F = `
   <section>
       <h1>Credits</h1>
       <p>Thanks to the creators behind the icons.</p>
   </section>
 `;
-t("section-credits-intro", { styles: F, template: L });
+e("section-credits-intro", { styles: B, template: F });
 
 // web-components/components/app-icon.js
-var R = `
+var E = `
   :host {
     --local-width: 3rem;
     --local-height: auto;
@@ -606,11 +606,11 @@ var R = `
   }
 
 
-`, N = ["src", "alt"], O = () => '<img data-forward width="200" height="200"/>';
-t("app-icon", { attrs: N, styles: R, template: O });
+`, M = ["src", "alt"], O = () => '<img data-forward width="200" height="200"/>';
+e("app-icon", { attrs: M, styles: E, template: O });
 
 // web-components/components/creator-item.js
-var P = `
+var _ = `
   :host {
     display: flex;
     align-items: center;
@@ -625,14 +625,14 @@ var P = `
     margin: 0;
     text-decoration: none;
   }
-`, q = { icon: String, alt: String, url: String, name: String }, I = ({ icon: e, alt: o, url: i, name: l }) => `
-    <app-icon variant="creator" src="${e}" alt="${o}" ></app-icon>
-    ${i ? `<app-link variant="underline" href="${n(i)}" target="_blank" rel="noreferrer">By ${l}</app-link>` : `<p>By ${l}</p>`}
+`, R = { icon: String, alt: String, url: String, name: String }, D = ({ icon: o, alt: t, url: i, name: s }) => `
+    <app-icon variant="creator" src="${o}" alt="${t}" ></app-icon>
+    ${i ? `<app-link variant="underline" href="${r(i)}" target="_blank" rel="noreferrer">By ${s}</app-link>` : `<p>By ${s}</p>`}
 `;
-t("creator-item", { props: q, styles: P, template: I });
+e("creator-item", { props: R, styles: _, template: D });
 
 // web-components/sections/creators-list.js
-var M = [
+var U = [
   {
     icon: "./assets/images/logo.avif",
     alt: "Logo",
@@ -819,6 +819,54 @@ var M = [
     name: "Delwar Hossain"
   },
   {
+    icon: "./assets/icons/design-tokens.svg",
+    alt: "Design Token Icon",
+    url: "https://thenounproject.com/icon/sourcing-6125071/",
+    name: "icon 5"
+  },
+  {
+    icon: "./assets/icons/hi-fi-interfaces.svg",
+    alt: "Hi Fi Interfaces Icon",
+    url: "https://thenounproject.com/icon/website-149263/",
+    name: "Dawid Sobolewski"
+  },
+  {
+    icon: "./assets/icons/component-library.svg",
+    alt: "Component Library Icon",
+    url: "https://thenounproject.com/icon/components-4814706/",
+    name: "LAFS"
+  },
+  {
+    icon: "./assets/icons/guidelines.svg",
+    alt: "Guidelines Icon",
+    url: "https://thenounproject.com/icon/book-1230262/",
+    name: "Deemak Daksina"
+  },
+  {
+    icon: "./assets/icons/user-flows.svg",
+    alt: "User Flows Icon",
+    url: "https://thenounproject.com/icon/user-flow-7967816/",
+    name: "EsyaAm"
+  },
+  {
+    icon: "./assets/icons/prototypes.svg",
+    alt: "Prototype Icon",
+    url: "https://thenounproject.com/icon/prototype-8165490/",
+    name: "Hafiz Nur Lutfianto"
+  },
+  {
+    icon: "./assets/icons/html-1.svg",
+    alt: "HTML Icon",
+    url: "https://thenounproject.com/icon/source-code-2647788/",
+    name: "shashank singh"
+  },
+  {
+    icon: "./assets/icons/assets.svg",
+    alt: "Assets Icon",
+    url: "https://thenounproject.com/icon/collection-1118128/",
+    name: "Amiryshakiel"
+  },
+  {
     icon: "./assets/icons/peacock.svg",
     alt: "Peacock Icon",
     url: "https://thenounproject.com/icon/bird-6684144/",
@@ -860,7 +908,7 @@ var M = [
     url: "https://thenounproject.com/icon/ostrich-8304474/",
     name: "Vectors Market"
   }
-], X = `
+], N = `
   :host {
     display: block;
   }
@@ -883,17 +931,17 @@ var M = [
       flex-direction: column;
     }
   }
-`, G = () => `
+`, q = () => `
   <section>
       <ul>
-        ${M.map((e) => `
+        ${U.map((o) => `
               <li>
                 <creator-item
                   props='${JSON.stringify({
-  icon: r(e.icon),
-  alt: e.alt,
-  name: e.name,
-  url: e.url ?? ""
+  icon: n(o.icon),
+  alt: o.alt,
+  name: o.name,
+  url: o.url ?? ""
 })}'
                 ></creator-item>
               </li>
@@ -901,6 +949,6 @@ var M = [
       </ul>
   </section>
 `;
-t("section-creators-list", { styles: X, template: G });
+e("section-creators-list", { styles: N, template: q });
 </script></body>
 </html>
