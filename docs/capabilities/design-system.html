@@ -37,14 +37,14 @@
     <section-footer></section-footer>
   <script type="module">// web-components/asset.js
 function u() {
-  let o = document.documentElement.dataset.base || "./";
-  return new URL(o, location.href);
+  let t = document.documentElement.dataset.base || "./";
+  return new URL(t, location.href);
 }
-function t(o) {
-  return new URL(o, u()).href;
+function o(t) {
+  return new URL(t, u()).href;
 }
-function n(o) {
-  let a = o.replace(/^\//, ""), i = location.protocol === "file:", c = u();
+function n(t) {
+  let a = t.replace(/^\//, ""), i = location.protocol === "file:", c = u();
   if (a === "")
     return i ? new URL("index.html", c).href : c.href;
   return i ? new URL(`${a}.html`, c).href : new URL(a, c).href;
@@ -54,19 +54,19 @@ function n(o) {
 var b = `
   @font-face {
     font-family: "Chicle";
-    src: url("${t("assets/fonts/Chicle-Regular.woff2")}") format("woff2");
+    src: url("${o("assets/fonts/Chicle-Regular.woff2")}") format("woff2");
     font-weight: 400;
     font-display: swap;
   }
   @font-face {
     font-family: "StackSans";
-    src: url("${t("assets/fonts/StackSansText-Bold.woff2")}") format("woff2");
+    src: url("${o("assets/fonts/StackSansText-Bold.woff2")}") format("woff2");
     font-weight: 700;
     font-display: swap;
   }
   @font-face {
     font-family: "StackSans";
-    src: url("${t("assets/fonts/StackSansText-Regular.woff2")}") format("woff2");
+    src: url("${o("assets/fonts/StackSansText-Regular.woff2")}") format("woff2");
     font-weight: 400;
     font-display: swap;
   }
@@ -75,8 +75,8 @@ v.textContent = b;
 document.head.appendChild(v);
 
 // web-components/define.js
-function y(o, a) {
-  if (o === void 0) {
+function y(t, a) {
+  if (t === void 0) {
     if (a === Array)
       return [];
     if (a === Object)
@@ -88,12 +88,12 @@ function y(o, a) {
     return;
   }
   if (a === Boolean)
-    return Boolean(o);
+    return Boolean(t);
   if (a === Number)
-    return Number(o);
-  return o;
+    return Number(t);
+  return t;
 }
-function e(o, { props: a = {}, attrs: i = [], styles: c = "", template: p }) {
+function e(t, { props: a = {}, attrs: i = [], styles: c = "", template: p }) {
   let h = ["props", ...i];
 
   class m extends HTMLElement {
@@ -139,7 +139,7 @@ function e(o, { props: a = {}, attrs: i = [], styles: c = "", template: p }) {
       this.shadowRoot.innerHTML = `<style>${c}</style>${s}`, this._applyForwardedAttrs();
     }
   }
-  customElements.define(o, m);
+  customElements.define(t, m);
 }
 
 // web-components/components/app-link.js
@@ -270,7 +270,7 @@ var H = `
   <header>
       <app-link variant="plain" href=${n("/")}>
         <app-logo
-          src=${t("./assets/images/logo.avif")}
+          src=${o("./assets/images/logo.avif")}
           alt="Logo"
         ></app-logo>
       </app-link>
@@ -368,9 +368,9 @@ var A = [
         <span>Sitemap</span>
 
         <ol>
-            ${A.map((o) => `
+            ${A.map((t) => `
                 <li>
-                    <app-link variant="sitemap" href=${n(o.href)} >${o.name}</app-link>
+                    <app-link variant="sitemap" href=${n(t.href)} >${t.name}</app-link>
                 </li>
             `).join("")}
         </ol>
@@ -436,7 +436,7 @@ var B = `
               <li>
                   <app-link href="mailto:hanhtetaung.dev@gmail.com" variant="image">
                   <img
-                      src=${t("./assets/icons/email.svg")}
+                      src=${o("./assets/icons/email.svg")}
                       alt="Email Icon"
                   />
                   </app-link>
@@ -449,7 +449,7 @@ var B = `
                   variant="image"
                   >
                   <img
-                      src=${t("./assets/icons/github.svg")}
+                      src=${o("./assets/icons/github.svg")}
                       alt="Github Icon"
                   />
                   </app-link>
@@ -462,7 +462,7 @@ var B = `
                   variant="image"
                   >
                   <img
-                      src=${t("./assets/icons/linkedin.svg")}
+                      src=${o("./assets/icons/linkedin.svg")}
                       alt="Linkedin Icon"
                   />
                   </app-link>
@@ -526,7 +526,7 @@ var N = `
       <article>
         <div>
           <app-logo
-            src="${t("./assets/images/logo.avif")}"
+            src="${o("./assets/images/logo.avif")}"
             alt="Logo"
           ></app-logo>
         
@@ -650,7 +650,7 @@ var j = `
     margin: 0;
   }
 `, q = { name: String, img: String, alt: String }, D = ({
-  name: o = "Name",
+  name: t = "Name",
   img: a = "./assets/images/coming-soon.jpg",
   alt: i = "Coming Soon"
 }) => `
@@ -658,17 +658,17 @@ var j = `
       <div>
         <hgroup>
           <p>Coming Soon</p>
-          <h1>${o}</h1>
+          <h1>${t}</h1>
         </hgroup>
 
         <app-icon
           variant="large"
-          src=${t("./assets/icons/cuckoo-clock.svg")}
+          src=${o("./assets/icons/cuckoo-clock.svg")}
           alt="Cuckoo Cock Logo"
         ></app-icon>
       </div>
 
-      <app-image variant="large" src=${t(a)} alt=${i}></app-image>
+      <app-image variant="large" src=${o(a)} alt=${i}></app-image>
   </section>
 `;
 e("section-coming-soon-intro", { props: q, styles: j, template: D });
@@ -746,16 +746,16 @@ var G = `
             <h3>What I deliver</h3>
              <ol>
                 <li>
-                    <app-icon variant="medium" src="${t("./assets/icons/design-tokens.svg")}" alt="Design Token Icon"></app-icon>
+                    <app-icon variant="medium" src="${o("./assets/icons/design-tokens.svg")}" alt="Design Token Icon"></app-icon>
                     <p>Design Tokens</p>
                 </li>
                 <li>
-                     <app-icon variant="medium" src="${t("./assets/icons/component-library.svg")}" alt="Component Library Icon"></app-icon>
+                     <app-icon variant="medium" src="${o("./assets/icons/component-library.svg")}" alt="Component Library Icon"></app-icon>
                     <p>Component Library</p>
                     
                 </li>
                 <li>
-                     <app-icon variant="medium" src="${t("./assets/icons/guidelines.svg")}" alt="Guidelines Icon"></app-icon>
+                     <app-icon variant="medium" src="${o("./assets/icons/guidelines.svg")}" alt="Guidelines Icon"></app-icon>
                     <p>Guidelines</p>
                     
                 </li>
@@ -797,10 +797,10 @@ var X = `
       display: none;
     }
   }
-`, J = { name: String, img: String, alt: String }, K = ({ name: o, img: a = "", alt: i = "" }) => `
-    <h2>${o}</h2>
+`, J = { name: String, img: String, alt: String }, K = ({ name: t, img: a = "", alt: i = "" }) => `
+    <h2>${t}</h2>
     <img
-        src=${t(a)}
+        src=${o(a)}
         alt=${i}
         height="36"
         width="76"
@@ -865,7 +865,7 @@ var Y = `
     --local-bg: #a36aa5;
      --local-border: 1px solid var( --local-color);
   }
-`, Z = { name: String }, V = ({ name: o }) => `${o}`;
+`, Z = { name: String }, V = ({ name: t }) => `${t}`;
 e("app-badge", { props: Z, styles: Y, template: V });
 
 // web-components/components/capabilities-item.js
@@ -957,7 +957,7 @@ var ee = `
   alt: String,
   delivers: Array
 }, oe = ({
-  title: o,
+  title: t,
   subTitle: a,
   href: i,
   delivers: c,
@@ -967,7 +967,7 @@ var ee = `
   <article>
     <hgroup>
       <span>${a}</span>
-      <h3>${o}</h3>
+      <h3>${t}</h3>
     </hgroup>
     <app-link variant="plain" href=${n(i)}>→</app-link>
   </article>
@@ -975,7 +975,7 @@ var ee = `
   <ol>
     ${c.map((m) => `
         <li>
-          <app-icon variant="medium" src=${t(m.icon)} alt=${m.alt}></app-icon>
+          <app-icon variant="medium" src=${o(m.icon)} alt=${m.alt}></app-icon>
           <p>${m.name}</p>
         </li>
       `).join("")}
