@@ -30,7 +30,7 @@ async function buildPage(srcPath, outPath) {
 
   try {
     console.log(`Building ${srcPath} -> ${outPath} (data-base="${base}")`);
-    await $`bun build --compile --target=browser ${tempPath} --outfile=${outPath}`;
+    await $`bun build --compile --target=browser --minify-syntax --minify-identifiers ${tempPath} --outfile=${outPath}`;
   } finally {
     await $`rm -f ${tempPath}`;
   }
