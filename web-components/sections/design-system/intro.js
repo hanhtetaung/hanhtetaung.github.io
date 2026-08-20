@@ -77,16 +77,16 @@ const template = /* html */ `
             <h3>What I deliver</h3>
              <ol>
                 <li>
-                    <app-icon variant="medium" src="${asset("./assets/icons/design-system.svg")}" alt=""></app-icon>
+                    <app-icon variant="medium" src="${asset("./assets/icons/design-tokens.svg")}" alt="Design Token Icon"></app-icon>
                     <p>Design Tokens</p>
                 </li>
                 <li>
-                     <app-icon variant="medium" src="${asset("./assets/icons/design-system.svg")}" alt=""></app-icon>
+                     <app-icon variant="medium" src="${asset("./assets/icons/component-library.svg")}" alt="Component Library Icon"></app-icon>
                     <p>Component Library</p>
                     
                 </li>
                 <li>
-                     <app-icon variant="medium" src="${asset("./assets/icons/design-system.svg")}" alt=""></app-icon>
+                     <app-icon variant="medium" src="${asset("./assets/icons/guidelines.svg")}" alt="Guidelines Icon"></app-icon>
                     <p>Guidelines</p>
                     
                 </li>

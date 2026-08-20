@@ -46,16 +46,74 @@ const template = () => /* html */ `
             
     <ol>
         <li>
-            <capabilities-item props='{"title": "Design System", "subTitle": "Build", "href": "/capabilities/design-system", "icon": "./assets/icons/design-system.svg", "alt": "Design System Icon", "delivers": ["Design Tokens", "Component Library", "Guidelines"]}'>
-            </capabilities-item>
+           <capabilities-item props='${JSON.stringify({
+             title: "Design System",
+             subTitle: "Build",
+             href: "/capabilities/design-system",
+             delivers: [
+               {
+                 name: "Design Tokens",
+                 icon: "./assets/icons/design-tokens.svg",
+                 alt: "Design Tokens Icon",
+               },
+               {
+                 name: "Component Library",
+                 icon: "./assets/icons/component-library.svg",
+                 alt: "Component Library Icon",
+               },
+               {
+                 name: "Guidelines",
+                 icon: "./assets/icons/guidelines.svg",
+                 alt: "Guidelines Icon",
+               },
+             ],
+           })}'>
+  </capabilities-item>
         </li>
         <li>
-              <capabilities-item props='{"title": "User Interfaces", "subTitle": "Design", "href": "/capabilities/user-interfaces", "icon": "./assets/icons/user-interface.svg", "alt": "User Interface Icon", "delivers": ["User Flows", "Hi-Fi Interfaces", "Prototypes"]}'>
-            </capabilities-item>
+            <capabilities-item props='${JSON.stringify({
+              title: "User Interfaces",
+              subTitle: "Design",
+              href: "/capabilities/user-interfaces",
+              delivers: [
+                {
+                  name: "User Flows",
+                  icon: "./assets/icons/user-flows.svg",
+                  alt: "User Flows Icon",
+                },
+                {
+                  name: "Hi Fi Interfaces",
+                  icon: "./assets/icons/hi-fi-interfaces.svg",
+                  alt: "Hi Fi Interface Icon",
+                },
+                {
+                  name: "Prototypes",
+                  icon: "./assets/icons/prototypes.svg",
+                  alt: "Prototypes Icon",
+                },
+              ],
+            })}'>
+  </capabilities-item>
         </li>
         <li>
-             <capabilities-item props='{"title": "Web Interfaces", "subTitle": "Develop", "href": "/capabilities/web-interfaces", "icon": "./assets/icons/web-interface.svg", "alt": "Web Interface Icon", "delivers": ["HTML, CSS", "Web Components"]}'>
-            </capabilities-item>
+            <capabilities-item props='${JSON.stringify({
+              title: "Web Interfaces",
+              subTitle: "Develop",
+              href: "/capabilities/web-interfaces",
+              delivers: [
+                {
+                  name: "HTML",
+                  icon: "./assets/icons/html-1.svg",
+                  alt: "HTML Icon",
+                },
+                {
+                  name: "Assets",
+                  icon: "./assets/icons/assets.svg",
+                  alt: "Assets Icon",
+                },
+              ],
+            })}'>
+  </capabilities-item>
         </li>
     </ol>
   </section>

@@ -2,15 +2,9 @@ import { define } from "../define.js";
 import "../components/app-icon.js";
 import "../components/app-link.js";
 import "../components/app-badge.js";
+import "../components/app-toolkit.js";
 import { PHONE } from "../breakpoints.js";
 import { asset, navHref } from "../asset.js";
-
-const tech_icons = [
-  { src: "./assets/icons/figma.svg", alt: "Figma Icon" },
-  { src: "./assets/icons/html.svg", alt: "HTML Icon" },
-  { src: "./assets/icons/css.svg", alt: "CSS Icon" },
-  { src: "./assets/icons/javascript.svg", alt: "JavaScript Icon" },
-];
 
 const showcases = [
   {
@@ -63,19 +57,7 @@ const styles = /* css */ `
     grid-area: three;
   }
 
-  .highlights {
-    grid-area: two;
-    max-width: 30ch;
-    margin-left: auto;
-
-    @media (max-width: ${PHONE}) {
-      margin: 0;
-    }
-
-    li {
-      margin-bottom: 1rem;
-    }
-  }
+  
 
   h1, h3, p {
     margin: 0;
@@ -99,12 +81,6 @@ const styles = /* css */ `
     gap: 1rem;
   }
 
-  .toolkits {
-    display: flex;
-    gap: 2rem;
-    margin-top: 0.5rem;
-  }
-
   hgroup {
     margin-bottom: 1rem;
     display: flex;
@@ -117,10 +93,21 @@ const styles = /* css */ `
       flex-direction: row;
     }
   }
-
+  
   ul {
-    flex-direction: column;
     margin: 0;
+    flex-direction: column;
+    grid-area: two;
+    max-width: 30ch;
+    margin-left: auto;
+
+    @media (max-width: ${PHONE}) {
+      margin: 0;
+    }
+
+    li {
+      margin-bottom: 1rem;
+    }
   }
 
   span {
@@ -154,25 +141,18 @@ const template = /* html */ `
             operations
           </p>
         </hgroup>
-  
-        <span>Toolkit:</span>
-        <ul class="toolkits">
-          ${tech_icons
-            .map(
-              (ti) => /* html */ `
-              <li>
-                <app-icon
-                  src=${ti.src}
-                  alt=${ti.alt}
-                ></app-icon>
-              </li>
-            `,
-            )
-            .join("")}
-        </ul>
+
+        <app-toolkit props='${JSON.stringify({
+          tools: [
+            { src: "./assets/icons/figma.svg", alt: "Figma Icon" },
+            { src: "./assets/icons/html.svg", alt: "HTML Icon" },
+            { src: "./assets/icons/css.svg", alt: "CSS Icon" },
+            { src: "./assets/icons/javascript.svg", alt: "JavaScript Icon" },
+          ],
+        })}'></app-toolkit>
       </article>
 
-      <ul class="highlights">
+      <ul>
          ${highlights
            .map(
              (ti) => /* html */ `

@@ -117,8 +117,8 @@ const template = ({
       .map(
         (d) => /*html*/ `
         <li>
-          <app-icon variant="medium" src=${asset(icon)} alt=${alt}></app-icon>
-          <p>${d}</p>
+          <app-icon variant="medium" src=${asset(d.icon)} alt=${d.alt}></app-icon>
+          <p>${d.name}</p>
         </li>
       `,
       )
