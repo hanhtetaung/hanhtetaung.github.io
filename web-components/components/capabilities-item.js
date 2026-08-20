@@ -52,7 +52,6 @@ const styles = /* css */ `
   }
 
   ol {
-     padding: 0;
       margin: 0;
       list-style: none;
       padding: 0;
@@ -71,6 +70,7 @@ const styles = /* css */ `
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    min-width: 9ch;
 
     p {
         margin: 0;

@@ -1,8 +1,7 @@
 import { define } from "../../define.js";
 import "../coming-soon-intro.js";
-import { PHONE } from "../../breakpoints.js";
 import "../../components/capabilities-item.js";
-import { asset } from "../../asset.js";
+import "../../components/what-i-deliver.js";
 
 const styles = /* css */ `
   :host {
@@ -33,39 +32,6 @@ const styles = /* css */ `
     margin: 0;
     margin-bottom: 5rem;
   }
-
-  h3 {
-    margin: 0;
-    margin-bottom: 1rem;
-  }
-
-  ol {
-    margin: 0;
-    list-style: none;
-    padding: 0;
-    display: flex;
-    gap: 5rem;
-    border: 1px dashed var(--color-text);
-    width: fit-content;
-    padding-block: 2rem;
-    padding-inline: 4rem;
-
-    @media (max-width: ${PHONE}) {
-        flex-direction: column;
-    }
-  }
-
-  ol li {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    p {
-        margin: 0;
-        margin-top: 0.5rem;
-    }
-  }
 `;
 
 const template = /* html */ `
@@ -76,19 +42,20 @@ const template = /* html */ `
             <p>Turn hi-fi designs into pixel-perfect web interfaces.</p>
         </hgroup>
 
-        <article>
-            <h3>What I deliver</h3>
-             <ol>
-                <li>
-                    <app-icon variant="medium" src=${asset("./assets/icons/html-1.svg")} alt="HTML Icon"></app-icon>
-                    <p>HTML</p>
-                </li>
-                <li>
-                     <app-icon variant="medium" src=${asset("./assets/icons/assets.svg")} alt="Assets Icon"></app-icon>
-                    <p>Assets</p>
-                </li>
-            </ol>
-        </article>
+        <what-i-deliver props='${JSON.stringify({
+          delivers: [
+            {
+              name: "HTML",
+              icon: "./assets/icons/html-1.svg",
+              alt: "HTML Icon",
+            },
+            {
+              name: "Assets",
+              icon: "./assets/icons/assets.svg",
+              alt: "Assets Icon",
+            },
+          ],
+        })}'></what-i-deliver>
     </section>
 `;
 
