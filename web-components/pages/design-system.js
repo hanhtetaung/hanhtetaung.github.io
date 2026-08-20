@@ -5,4 +5,4 @@ import "../sections/footer.js";
 
 import "../sections/design-system/intro.js";
 import "../sections/design-system/workflow.js";
-import "../sections/capabilities.js";
+import "../sections/more-capabilities.js";

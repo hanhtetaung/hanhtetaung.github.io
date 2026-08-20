@@ -1,7 +1,6 @@
 import { define } from "../../define.js";
 import "../coming-soon-intro.js";
-import { PHONE } from "../../breakpoints.js";
-import { asset } from "../../asset.js";
+import "../../components/what-i-deliver.js";
 
 const styles = /* css */ `
   :host {
@@ -32,38 +31,6 @@ const styles = /* css */ `
     margin: 0;
     margin-bottom: 5rem;
   }
-
-  h3 {
-    margin: 0;
-    margin-bottom: 1rem;
-  }
-
-  ol {
-    margin: 0;
-    list-style: none;
-    padding: 0;
-    display: flex;
-    gap: 5rem;
-    border: 1px dashed var(--color-text);
-    width: fit-content;
-    padding: 2rem;
-
-    @media (max-width: ${PHONE}) {
-        flex-direction: column;
-    }
-  }
-
-  li {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    p {
-        margin: 0;
-        margin-top: 0.5rem;
-    }
-  }
 `;
 
 const template = /* html */ `
@@ -74,25 +41,26 @@ const template = /* html */ `
             <p>Design intuitive user interfaces and experiences.</p>
         </hgroup>
 
-        <article>
-            <h3>What I deliver</h3>
-             <ol>
-                <li>
-                    <app-icon variant="medium" src=${asset("./assets/icons/user-flows.svg")} alt="User Flows Icon"></app-icon>
-                    <p>User Flows</p>
-                </li>
-                <li>
-                  <app-icon variant="medium" src=${asset("./assets/icons/hi-fi-interfaces.svg")} alt="Hi Fi Interfaces Icon"></app-icon>
-                  <p>Hi-Fi Interfaces</p>
-                    
-                </li>
-                <li>
-                     <app-icon variant="medium" src=${asset("./assets/icons/prototypes.svg")} alt="Prototype Icon"></app-icon>
-                    <p>Prototypes</p>
-                    
-                </li>
-            </ol>
-        </article>
+
+       <what-i-deliver props='${JSON.stringify({
+         delivers: [
+           {
+             name: "User Flows",
+             icon: "./assets/icons/user-flows.svg",
+             alt: "User Flows Icon",
+           },
+           {
+             name: "Hi Fi Interfaces",
+             icon: "./assets/icons/hi-fi-interfaces.svg",
+             alt: "Hi Fi Interface Icon",
+           },
+           {
+             name: "Prototypes",
+             icon: "./assets/icons/prototypes.svg",
+             alt: "Prototypes Icon",
+           },
+         ],
+       })}'></what-i-deliver>
     </section>
 `;
 

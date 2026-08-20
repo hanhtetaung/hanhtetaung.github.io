@@ -101,10 +101,10 @@ function b(e, i) {
   return e;
 }
 function t(e, { props: i = {}, attrs: a = [], styles: l = "", template: s }) {
-  let g = ["props", ...a];
+  let h = ["props", ...a];
 
   class d extends HTMLElement {
-    static observedAttributes = g;
+    static observedAttributes = h;
     constructor() {
       super();
       this.attachShadow({ mode: "open" });
@@ -125,8 +125,8 @@ function t(e, { props: i = {}, attrs: a = [], styles: l = "", template: s }) {
           m = {};
         }
       let f = {};
-      for (let h of Object.keys(i))
-        f[h] = b(m[h], i[h]);
+      for (let g of Object.keys(i))
+        f[g] = b(m[g], i[g]);
       return f;
     }
     _applyForwardedAttrs() {
@@ -921,7 +921,6 @@ var V = `
   }
 
   ol {
-     padding: 0;
       margin: 0;
       list-style: none;
       padding: 0;
@@ -940,6 +939,7 @@ var V = `
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    min-width: 9ch;
 
     p {
         margin: 0;
@@ -952,6 +952,25 @@ var V = `
         width: 100%;
         display: flex;
         justify-content: space-between;
+      }
+    }
+
+    :host([variant="no-list"]) {
+      width: fit-content;
+      aspect-ratio: 1 / 1;
+      border-radius: 50%;
+      overflow: hidden;
+      padding: 4rem;
+      justify-content: center;
+
+      h3 {
+        font-size: var(--size-body);
+        font-weight: var(--font-regular);
+        margin-bottom: 0.5rem;
+      }
+
+      ol {
+        display: none;
       }
     }
 `, Y = {
@@ -967,7 +986,7 @@ var V = `
   href: a,
   delivers: l,
   icon: s,
-  alt: g
+  alt: h
 }) => `
   <article>
     <hgroup>
@@ -1302,13 +1321,13 @@ var me = `
   title: a,
   description: l,
   href: s,
-  categories: g
+  categories: h
 }) => `
     <img src="${e}" alt="${i}" />
     <div>
       <h3>${a}</h3>
       <ul>
-        ${g.map((d) => `
+        ${h.map((d) => `
               <li><app-badge variant="primary" props='${JSON.stringify({ name: d })}'></app-badge></li>
             `).join("")}
       </ul>
@@ -1321,7 +1340,7 @@ var me = `
 t("case-study-item", { props: pe, styles: me, template: de });
 
 // web-components/sections/case-studies.js
-var ge = [
+var he = [
   {
     image: "./assets/images/case-study/terra/thumbnail.avif",
     alt: "Terra Thumbnail",
@@ -1353,7 +1372,7 @@ var ge = [
     href: "/work/sks-solar",
     reverse: !1
   }
-], he = `
+], ge = `
   :host {
     background: var(--color-bg-secondary)
   }
@@ -1381,7 +1400,7 @@ var ge = [
       ></section-title>
             
       <ul>
-        ${ge.map((e) => `
+        ${he.map((e) => `
               <li>
                 <case-study-item
                   props='${JSON.stringify(e)}'
@@ -1392,7 +1411,7 @@ var ge = [
       </ul>
   </section>
 `;
-t("section-case-studies", { styles: he, template: fe });
+t("section-case-studies", { styles: ge, template: fe });
 
 // web-components/sections/timeline.js
 var ve = [

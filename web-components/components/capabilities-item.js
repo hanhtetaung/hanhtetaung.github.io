@@ -52,7 +52,6 @@ const styles = /* css */ `
   }
 
   ol {
-     padding: 0;
       margin: 0;
       list-style: none;
       padding: 0;
@@ -71,6 +70,7 @@ const styles = /* css */ `
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    min-width: 9ch;
 
     p {
         margin: 0;
@@ -83,6 +83,25 @@ const styles = /* css */ `
         width: 100%;
         display: flex;
         justify-content: space-between;
+      }
+    }
+
+    :host([variant="no-list"]) {
+      width: fit-content;
+      aspect-ratio: 1 / 1;
+      border-radius: 50%;
+      overflow: hidden;
+      padding: 4rem;
+      justify-content: center;
+
+      h3 {
+        font-size: var(--size-body);
+        font-weight: var(--font-regular);
+        margin-bottom: 0.5rem;
+      }
+
+      ol {
+        display: none;
       }
     }
 `;
