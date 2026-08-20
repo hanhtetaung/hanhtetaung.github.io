@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-base="../">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -163,7 +163,7 @@ function define(name, { props = {}, attrs = [], styles = "", template }) {
   }
   customElements.define(name, Component);
 }
-var ROOT = new URL("./", import.meta.url);
+var ROOT = new URL("./", location.href);
 function asset(path) {
   return new URL(path, ROOT).href;
 }
