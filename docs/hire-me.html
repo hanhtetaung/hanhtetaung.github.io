@@ -26,9 +26,10 @@
     <link rel="preconnect" href="https://challenges.cloudflare.com" />
     
   <style>/* main.css */
-:root{--color-bg-primary:#fff5e8;--color-bg-secondary:#fffaf4;--color-secondary:#05798e;--color-primary:#b71f57;--color-tertiary:#1c4286;--color-text:#000;--color-transparent:#0000;--font-heading:"Chicle",serif;--font-body:"StackSans",sans-serif;--font-regular:400;--font-bold:700;--ratio:1.6;--size-body:2rem;--size-small:calc(var(--size-body)/var(--ratio));--size-heading:calc(var(--size-body)*var(--ratio));--size-title:calc(var(--size-heading)*var(--ratio));--size-display:calc(var(--size-title)*var(--ratio));font-size:10px;@media (width<=769px){&{--size-body:1.6rem}}}body{background:var(--color-bg-primary);font-family:var(--font-body);font-weight:var(--font-regular);font-size:var(--size-body)}main>*{background:var(--color-bg-primary);display:block;padding-block-start:10rem;padding-block-end:10rem}main>:nth-child(2n){background:var(--color-bg-secondary)}
+:root{--color-bg-primary:#fff5e8;--color-bg-secondary:#fffaf4;--color-secondary:#05798e;--color-primary:#b71f57;--color-tertiary:#1c4286;--color-text:#000;--color-transparent:#0000;--font-heading:"Chicle",serif;--font-body:"StackSans",sans-serif;--font-regular:400;--font-bold:700;--ratio:1.6;--size-body:2rem;--size-small:calc(var(--size-body)/var(--ratio));--size-heading:calc(var(--size-body)*var(--ratio));--size-title:calc(var(--size-heading)*var(--ratio));--size-display:calc(var(--size-title)*var(--ratio));font-size:10px;@media (width<=769px){&{--size-body:1.6rem}}}body{background:var(--color-bg-primary);font-family:var(--font-body);font-weight:var(--font-regular);font-size:var(--size-body);position:relative;margin:0}main>*{background:var(--color-bg-primary);display:block;padding-block-start:10rem;padding-block-end:10rem}main>:nth-child(2n){background:var(--color-bg-secondary)}
 </style></head>
   <body>
+    <app-frame></app-frame>
     <section-header></section-header>
 
     <main>
@@ -41,7 +42,7 @@ function h() {
   let t = document.documentElement.dataset.base || "./";
   return new URL(t, location.href);
 }
-function r(t) {
+function o(t) {
   return new URL(t, h()).href;
 }
 function l(t) {
@@ -55,19 +56,19 @@ function l(t) {
 var b = `
   @font-face {
     font-family: "Chicle";
-    src: url("${r("assets/fonts/Chicle-Regular.woff2")}") format("woff2");
+    src: url("${o("assets/fonts/Chicle-Regular.woff2")}") format("woff2");
     font-weight: 400;
     font-display: swap;
   }
   @font-face {
     font-family: "StackSans";
-    src: url("${r("assets/fonts/StackSansText-Bold.woff2")}") format("woff2");
+    src: url("${o("assets/fonts/StackSansText-Bold.woff2")}") format("woff2");
     font-weight: 700;
     font-display: swap;
   }
   @font-face {
     font-family: "StackSans";
-    src: url("${r("assets/fonts/StackSansText-Regular.woff2")}") format("woff2");
+    src: url("${o("assets/fonts/StackSansText-Regular.woff2")}") format("woff2");
     font-weight: 400;
     font-display: swap;
   }
@@ -94,7 +95,7 @@ function v(t, a) {
     return Number(t);
   return t;
 }
-function e(t, { props: a = {}, attrs: s = [], styles: c = "", template: d }) {
+function e(t, { props: a = {}, attrs: s = [], styles: c = "", template: p }) {
   let u = ["props", ...s];
 
   class m extends HTMLElement {
@@ -119,8 +120,8 @@ function e(t, { props: a = {}, attrs: s = [], styles: c = "", template: d }) {
           n = {};
         }
       let f = {};
-      for (let p of Object.keys(a))
-        f[p] = v(n[p], a[p]);
+      for (let d of Object.keys(a))
+        f[d] = v(n[d], a[d]);
       return f;
     }
     _applyForwardedAttrs() {
@@ -136,7 +137,7 @@ function e(t, { props: a = {}, attrs: s = [], styles: c = "", template: d }) {
           n.removeAttribute(i);
     }
     _render() {
-      let n = this._getProps(), i = typeof d === "function" ? d(n) : d;
+      let n = this._getProps(), i = typeof p === "function" ? p(n) : p;
       this.shadowRoot.innerHTML = `<style>${c}</style>${i}`, this._applyForwardedAttrs();
     }
   }
@@ -205,13 +206,13 @@ var y = `
        content: "➶";
      }
   }
-`, w = ["href", "target", "rel", "download"], x = `
+`, w = ["href", "target", "rel", "download"], k = `
   <a data-forward><slot></slot></a>
 `;
-e("app-link", { attrs: w, styles: y, template: x });
+e("app-link", { attrs: w, styles: y, template: k });
 
 // web-components/components/app-logo.js
-var k = `
+var x = `
   :host {
     display: block;
   }
@@ -221,15 +222,17 @@ var k = `
     width: auto;
   }
 `, $ = ["width", "height", "src", "alt"], z = () => "<img data-forward />";
-e("app-logo", { attrs: $, styles: k, template: z });
+e("app-logo", { attrs: $, styles: x, template: z });
 
 // web-components/breakpoints.js
-var o = "769px";
+var r = "769px";
 
 // web-components/sections/header.js
 var A = `
   :host {
     display: block;
+    margin-top: 1rem;
+    background: var(--color-bg-primary);
   }
 
   header {
@@ -262,7 +265,7 @@ var A = `
     box-shadow: none;
   }
 
-  @media (max-width: ${o}) {
+  @media (max-width: ${r}) {
     .header__navigation {
       gap: 4rem;
     }
@@ -271,7 +274,7 @@ var A = `
   <header>
       <app-link variant="plain" href=${l("/")}>
         <app-logo
-          src=${r("./assets/images/logo.avif")}
+          src=${o("./assets/images/logo.avif")}
           alt="Logo"
         ></app-logo>
       </app-link>
@@ -326,7 +329,7 @@ var H = [
    display: flex;
    gap: 5rem;
 
-   @media (max-width: ${o}) {
+   @media (max-width: ${r}) {
         flex-direction: column;
         gap: 3rem;
         margin-block: 2rem;
@@ -355,7 +358,7 @@ var H = [
     max-height: 12.5ch;
     overflow: scroll;
 
-    @media (max-width: ${o}) {
+    @media (max-width: ${r}) {
         max-height: 20ch;
     }
   }
@@ -387,7 +390,7 @@ var E = `
     border-top: 1px solid var(--color-text);
     padding-top: 1rem;
 
-   @media (max-width: ${o}) {
+   @media (max-width: ${r}) {
         flex-direction: column-reverse;
         gap: 2rem;
         border: none;
@@ -398,7 +401,7 @@ var E = `
   p {
     margin: 0;
 
-    @media (max-width: ${o}) {
+    @media (max-width: ${r}) {
       border-top: 1px solid var(--color-text);
     padding-top: 1rem;
     }
@@ -420,7 +423,7 @@ var E = `
     text-transform: uppercase;
     
 
-    @media (max-width: ${o}) {
+    @media (max-width: ${r}) {
       display: inline-block;
       margin-bottom: 0.5rem;
     }
@@ -437,7 +440,7 @@ var E = `
               <li>
                   <app-link href="mailto:hanhtetaung.dev@gmail.com" variant="image">
                   <img
-                      src=${r("./assets/icons/email.svg")}
+                      src=${o("./assets/icons/email.svg")}
                       alt="Email Icon"
                   />
                   </app-link>
@@ -450,7 +453,7 @@ var E = `
                   variant="image"
                   >
                   <img
-                      src=${r("./assets/icons/github.svg")}
+                      src=${o("./assets/icons/github.svg")}
                       alt="Github Icon"
                   />
                   </app-link>
@@ -463,7 +466,7 @@ var E = `
                   variant="image"
                   >
                   <img
-                      src=${r("./assets/icons/linkedin.svg")}
+                      src=${o("./assets/icons/linkedin.svg")}
                       alt="Linkedin Icon"
                   />
                   </app-link>
@@ -506,7 +509,7 @@ var N = `
     gap: 5rem;
   }
 
-  @media (max-width: ${o}) {
+  @media (max-width: ${r}) {
     article {
       display: block;
     }
@@ -527,7 +530,7 @@ var N = `
       <article>
         <div>
           <app-logo
-            src="${r("./assets/images/logo.avif")}"
+            src="${o("./assets/images/logo.avif")}"
             alt="Logo"
           ></app-logo>
         
@@ -620,7 +623,7 @@ var F = `
     "three three"
      "three three";
 
-    @media (max-width: ${o}) {
+    @media (max-width: ${r}) {
      display: flex;
      flex-wrap: wrap;   
     }

@@ -25,9 +25,10 @@
 
     
   <style>/* main.css */
-:root{--color-bg-primary:#fff5e8;--color-bg-secondary:#fffaf4;--color-secondary:#05798e;--color-primary:#b71f57;--color-tertiary:#1c4286;--color-text:#000;--color-transparent:#0000;--font-heading:"Chicle",serif;--font-body:"StackSans",sans-serif;--font-regular:400;--font-bold:700;--ratio:1.6;--size-body:2rem;--size-small:calc(var(--size-body)/var(--ratio));--size-heading:calc(var(--size-body)*var(--ratio));--size-title:calc(var(--size-heading)*var(--ratio));--size-display:calc(var(--size-title)*var(--ratio));font-size:10px;@media (width<=769px){&{--size-body:1.6rem}}}body{background:var(--color-bg-primary);font-family:var(--font-body);font-weight:var(--font-regular);font-size:var(--size-body)}main>*{background:var(--color-bg-primary);display:block;padding-block-start:10rem;padding-block-end:10rem}main>:nth-child(2n){background:var(--color-bg-secondary)}
+:root{--color-bg-primary:#fff5e8;--color-bg-secondary:#fffaf4;--color-secondary:#05798e;--color-primary:#b71f57;--color-tertiary:#1c4286;--color-text:#000;--color-transparent:#0000;--font-heading:"Chicle",serif;--font-body:"StackSans",sans-serif;--font-regular:400;--font-bold:700;--ratio:1.6;--size-body:2rem;--size-small:calc(var(--size-body)/var(--ratio));--size-heading:calc(var(--size-body)*var(--ratio));--size-title:calc(var(--size-heading)*var(--ratio));--size-display:calc(var(--size-title)*var(--ratio));font-size:10px;@media (width<=769px){&{--size-body:1.6rem}}}body{background:var(--color-bg-primary);font-family:var(--font-body);font-weight:var(--font-regular);font-size:var(--size-body);position:relative;margin:0}main>*{background:var(--color-bg-primary);display:block;padding-block-start:10rem;padding-block-end:10rem}main>:nth-child(2n){background:var(--color-bg-secondary)}
 </style></head>
   <body>
+    <app-frame></app-frame>
     <section-header></section-header>
 
     <main>
@@ -101,11 +102,11 @@ function w(e, o) {
     return Number(e);
   return e;
 }
-function t(e, { props: o = {}, attrs: a = [], styles: n = "", template: m }) {
-  let p = ["props", ...a];
+function t(e, { props: o = {}, attrs: a = [], styles: n = "", template: p }) {
+  let m = ["props", ...a];
 
   class d extends HTMLElement {
-    static observedAttributes = p;
+    static observedAttributes = m;
     constructor() {
       super();
       this.attachShadow({ mode: "open" });
@@ -143,15 +144,29 @@ function t(e, { props: o = {}, attrs: a = [], styles: n = "", template: m }) {
           s.removeAttribute(c);
     }
     _render() {
-      let s = this._getProps(), c = typeof m === "function" ? m(s) : m;
+      let s = this._getProps(), c = typeof p === "function" ? p(s) : p;
       this.shadowRoot.innerHTML = `<style>${n}</style>${c}`, this._applyForwardedAttrs();
     }
   }
   customElements.define(e, d);
 }
 
-// web-components/components/app-link.js
+// web-components/components/app-frame.js
 var b = `
+  :host {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 10;
+    border: 10px solid var(--color-secondary);
+    pointer-events: none;
+  }
+`, y = `
+`;
+t("app-frame", { styles: b, template: y });
+
+// web-components/components/app-link.js
+var k = `
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -212,13 +227,13 @@ var b = `
        content: "➶";
      }
   }
-`, y = ["href", "target", "rel", "download"], k = `
+`, x = ["href", "target", "rel", "download"], $ = `
   <a data-forward><slot></slot></a>
 `;
-t("app-link", { attrs: y, styles: b, template: k });
+t("app-link", { attrs: x, styles: k, template: $ });
 
 // web-components/components/app-logo.js
-var x = `
+var S = `
   :host {
     display: block;
   }
@@ -227,16 +242,18 @@ var x = `
     max-height: 7rem;
     width: auto;
   }
-`, $ = ["width", "height", "src", "alt"], S = () => "<img data-forward />";
-t("app-logo", { attrs: $, styles: x, template: S });
+`, z = ["width", "height", "src", "alt"], H = () => "<img data-forward />";
+t("app-logo", { attrs: z, styles: S, template: H });
 
 // web-components/breakpoints.js
 var i = "769px";
 
 // web-components/sections/header.js
-var z = `
+var A = `
   :host {
     display: block;
+    margin-top: 1rem;
+    background: var(--color-bg-primary);
   }
 
   header {
@@ -274,7 +291,7 @@ var z = `
       gap: 4rem;
     }
   }
-`, H = `
+`, C = `
   <header>
       <app-link variant="plain" href=${l("/")}>
         <app-logo
@@ -302,10 +319,10 @@ var z = `
       </div>
   </header>
 `;
-t("section-header", { template: H, styles: z });
+t("section-header", { template: C, styles: A });
 
 // web-components/components/footer-nav.js
-var A = [
+var I = [
   { href: "/", name: "Home" },
   { href: "/about", name: "About" },
   { href: "/credits", name: "Credits" },
@@ -324,7 +341,7 @@ var A = [
     href: "/writings/foundation-building-interfaces-at-scale",
     name: "Foundation"
   }
-], C = `
+], T = `
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -371,12 +388,12 @@ var A = [
     margin-right: 5rem;
     margin-bottom: 0.3rem;
   }
-`, I = () => `
+`, B = () => `
     <nav>
         <span>Sitemap</span>
 
         <ol>
-            ${A.map((e) => `
+            ${I.map((e) => `
                 <li>
                     <app-link variant="sitemap" href=${l(e.href)} >${e.name}</app-link>
                 </li>
@@ -384,10 +401,10 @@ var A = [
         </ol>
     </nav>
 `;
-t("footer-nav", { styles: C, template: I });
+t("footer-nav", { styles: T, template: B });
 
 // web-components/components/footer-copyright.js
-var T = `
+var L = `
   :host {
    display: flex;
     justify-content: space-between;
@@ -432,7 +449,7 @@ var T = `
       margin-bottom: 0.5rem;
     }
   }
-`, B = () => `
+`, q = () => `
       <p>
         © Han Htet Aung 2026 |
         <app-link href=${l("/credits")} variant="underline">Credits</app-link>
@@ -478,10 +495,10 @@ var T = `
           </ul>
 </nav>
 `;
-t("footer-copyright", { styles: T, template: B });
+t("footer-copyright", { styles: L, template: q });
 
 // web-components/sections/footer.js
-var L = `
+var N = `
   :host {
     --local-bg-color: var(--color-bg-secondary);
 
@@ -529,7 +546,7 @@ var L = `
   hr {
     color: var(--color-secondary);
   }
-`, q = `
+`, O = `
   <footer>
       <article>
         <div>
@@ -550,10 +567,10 @@ var L = `
       <footer-copyright></footer-copyright>
   </footer>
 `;
-t("section-footer", { styles: L, template: q });
+t("section-footer", { styles: N, template: O });
 
 // web-components/components/app-image.js
-var N = `
+var U = `
   :host {
     --local-width: 5rem;
     --local-heigth: auto;
@@ -584,11 +601,11 @@ var N = `
    :host([variant="full"]) {
     --local-width: 100%;
   }
-`, O = ["width", "height", "src", "alt"], U = () => "<img data-forward />";
-t("app-image", { attrs: O, styles: N, template: U });
+`, E = ["width", "height", "src", "alt"], F = () => "<img data-forward />";
+t("app-image", { attrs: E, styles: U, template: F });
 
 // web-components/sections/about-intro.js
-var E = `
+var M = `
   section {
     width: 80%;
     margin-inline: auto;
@@ -617,7 +634,7 @@ var E = `
       display: block; 
     }
   }
-`, F = `
+`, R = `
   <section>
       <h1>About</h1>
       <div>
@@ -638,10 +655,10 @@ var E = `
       </div>
   </section>
 `;
-t("section-about-intro", { styles: E, template: F });
+t("section-about-intro", { styles: M, template: R });
 
 // web-components/components/section-title.js
-var M = `
+var _ = `
   :host {
     display: flex;
     align-items: center;
@@ -672,7 +689,7 @@ var M = `
       display: none;
     }
   }
-`, R = { name: String, img: String, alt: String }, _ = ({ name: e, img: o = "", alt: a = "" }) => `
+`, j = { name: String, img: String, alt: String }, P = ({ name: e, img: o = "", alt: a = "" }) => `
     <h2>${e}</h2>
     <img
         src=${r(o)}
@@ -681,10 +698,10 @@ var M = `
         width="76"
     />
 `;
-t("section-title", { props: R, styles: M, template: _ });
+t("section-title", { props: j, styles: _, template: P });
 
 // web-components/sections/tech-collection.js
-var j = [
+var D = [
   {
     href: "https://raindrop.io/",
     src: "./assets/tech-collection/raindrop-io.svg",
@@ -805,7 +822,7 @@ var j = [
     src: "./assets/tech-collection/the-noun-project.svg",
     alt: "The Noun Project logo"
   }
-], P = `
+], W = `
   section {
     width: 80%;
     margin-inline: auto;
@@ -820,7 +837,7 @@ var j = [
     display: flex;
     flex-wrap: wrap;
   }
-`, D = () => `
+`, Y = () => `
   <section>
     <section-title
         props='${JSON.stringify({
@@ -831,7 +848,7 @@ var j = [
       ></section-title>
 
       <ul>
-        ${j.map((e) => `
+        ${D.map((e) => `
               <li>
                 <app-link href="${l(e.href)}" target="_blank" variant="image">
                   <img
@@ -846,10 +863,10 @@ var j = [
       </ul>
   </section>
 `;
-t("section-tech-collection", { styles: P, template: D });
+t("section-tech-collection", { styles: W, template: Y });
 
 // web-components/components/app-icon.js
-var W = `
+var G = `
   :host {
     --local-width: 3rem;
     --local-height: auto;
@@ -887,11 +904,11 @@ var W = `
   }
 
 
-`, Y = ["src", "alt"], G = () => '<img data-forward width="200" height="200"/>';
-t("app-icon", { attrs: Y, styles: W, template: G });
+`, X = ["src", "alt"], J = () => '<img data-forward width="200" height="200"/>';
+t("app-icon", { attrs: X, styles: G, template: J });
 
 // web-components/sections/random-facts.js
-var X = [
+var K = [
   {
     src: "./assets/icons/bird-watching.svg",
     alt: "Watching Bird",
@@ -912,7 +929,7 @@ var X = [
     alt: "Running",
     text: "I like running"
   }
-], J = `
+], Q = `
   section {
     width: 80%;
     margin-inline: auto;
@@ -930,7 +947,7 @@ var X = [
     margin: 0;
     text-align: center;
   }
-`, K = () => `
+`, V = () => `
   <section>
        <section-title
         props='${JSON.stringify({
@@ -941,7 +958,7 @@ var X = [
       ></section-title>
 
       <ul>
-        ${X.map((e) => `
+        ${K.map((e) => `
               <li>
                 <figure>
                   <app-icon variant="large" src="${e.src}" alt="${e.alt}"></app-icon>
@@ -952,10 +969,10 @@ var X = [
       </ul>
   </section>
 `;
-t("section-random-facts", { styles: J, template: K });
+t("section-random-facts", { styles: Q, template: V });
 
 // web-components/sections/life-in-weeks.js
-var Q = "3 Nov 2000", V = 70, Z = `
+var Z = "3 Nov 2000", tt = 70, et = `
   section {
     width: 80%;
     margin-inline: auto;
@@ -1011,10 +1028,10 @@ var Q = "3 Nov 2000", V = 70, Z = `
         background: var(--color-secondary);
         border-color: var(--color-secondary);
     }
-`, tt = (e, o) => {
-  let a = new Date(e), n = /* @__PURE__ */ new Date, m = n.getFullYear() - a.getFullYear() - (n.getMonth() < a.getMonth() || n.getMonth() === a.getMonth() && n.getDate() < a.getDate() ? 1 : 0), p = m * 52 + Math.min(51, Math.floor((n - new Date(a.getFullYear() + m, a.getMonth(), a.getDate())) / 604800000));
-  return Array.from({ length: o * 52 }, (d, s) => `<li class="${s < p ? "lived" : ""}"></li>`).join("");
-}, et = () => `
+`, ot = (e, o) => {
+  let a = new Date(e), n = /* @__PURE__ */ new Date, p = n.getFullYear() - a.getFullYear() - (n.getMonth() < a.getMonth() || n.getMonth() === a.getMonth() && n.getDate() < a.getDate() ? 1 : 0), m = p * 52 + Math.min(51, Math.floor((n - new Date(a.getFullYear() + p, a.getMonth(), a.getDate())) / 604800000));
+  return Array.from({ length: o * 52 }, (d, s) => `<li class="${s < m ? "lived" : ""}"></li>`).join("");
+}, at = () => `
   <section>
     <section-title
       props='${JSON.stringify({
@@ -1027,16 +1044,16 @@ var Q = "3 Nov 2000", V = 70, Z = `
     <article>
       <span class="ages">Ages (70 yrs) ⇨</span>
       <span class="weeks-axis">⇦ Weeks of the year</span>
-      <ul>${tt(Q, V)}</ul>
+      <ul>${ot(Z, tt)}</ul>
     </article>
 
     <p>Based on this post: <app-link variant="underline" href="https://waitbutwhy.com/2014/05/life-weeks.html" target="_blank">Your Life in Weeks</app-link></p>
   </section>
 `;
-t("section-life-in-weeks", { styles: Z, template: et });
+t("section-life-in-weeks", { styles: et, template: at });
 
 // web-components/sections/quote.js
-var ot = `
+var rt = `
   section {
     width: 80%;
     margin-inline: auto;
@@ -1052,7 +1069,7 @@ var ot = `
       font-size: var(--size-body);
     }
   }
-`, at = `
+`, it = `
   <section>
       <blockquote>
         " What I hear, I forget.<br />
@@ -1062,6 +1079,6 @@ var ot = `
       </blockquote>
   </section>
 `;
-t("section-quote", { styles: ot, template: at });
+t("section-quote", { styles: rt, template: it });
 </script></body>
 </html>

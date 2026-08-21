@@ -2,7 +2,7 @@ import { define } from "../define.js";
 import "../components/section-title.js";
 import "../components/app-badge.js";
 import "../components/app-icon.js";
-import "../components/capabilities-item.js";
+import "../components/more-capabilities-item.js";
 import { PHONE } from "../breakpoints.js";
 
 const styles = /* css */ `
@@ -73,28 +73,28 @@ const template = () => /* html */ `
             
     <ol>
         <li>
-           <capabilities-item variant="no-list" props='${JSON.stringify({
+           <more-capabilities-item props='${JSON.stringify({
              title: "Design System",
              subTitle: "Build",
              href: "/capabilities/design-system",
            })}'>
-            </capabilities-item>
+            </more-capabilities-item>
         </li>
         <li>
-            <capabilities-item variant="no-list" props='${JSON.stringify({
+            <more-capabilities-item props='${JSON.stringify({
               title: "User Interfaces",
               subTitle: "Design",
               href: "/capabilities/user-interfaces",
             })}'>
-            </capabilities-item>
+            </more-capabilities-item>
         </li>
         <li>
-            <capabilities-item variant="no-list" props='${JSON.stringify({
+            <more-capabilities-item props='${JSON.stringify({
               title: "Web Interfaces",
               subTitle: "Develop",
               href: "/capabilities/web-interfaces",
             })}'>
-            </capabilities-item>
+            </more-capabilities-item>
         </li>
     </ol>
   </section>

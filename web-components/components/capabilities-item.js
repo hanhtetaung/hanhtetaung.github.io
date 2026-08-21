@@ -8,21 +8,14 @@ import { TABLE } from "../breakpoints.js";
 const styles = /* css */ `
   :host {
     display: flex;
-    gap: 2rem;
-    padding-block: 3rem;
-    padding-inline: 5rem;
-    justify-content: space-between;
-    align-items: center;
-    border: 1px dashed var(--color-text);
-
-    @media (max-width: ${TABLE}) {
-      justify-content: start;
-      flex-direction: column;
-      padding: 0;
-      padding-inline: 2rem;
-      padding-block: 2rem;
-      align-items: start;
-    }
+    border: 2px solid var(--color-text);
+    justify-content: start;
+    flex-direction: column;
+    padding: 0;
+    padding-inline: 2rem;
+    padding-block: 2rem;
+    align-items: start;
+    min-width: 45rem;
   }
 
   :host([variant="borderless"]) {
@@ -79,30 +72,17 @@ const styles = /* css */ `
   }
 
     article {
-      @media (max-width: ${TABLE}) {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-      }
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px dashed var(--color-text);
     }
 
-    :host([variant="no-list"]) {
-      width: fit-content;
-      aspect-ratio: 1 / 1;
-      border-radius: 50%;
-      overflow: hidden;
-      padding: 4rem;
-      justify-content: center;
-
-      h3 {
-        font-size: var(--size-body);
-        font-weight: var(--font-regular);
-        margin-bottom: 0.5rem;
-      }
-
-      ol {
-        display: none;
-      }
+    app-link {
+      font-size: var(--size-small);
+      margin-top: 0.6rem;
     }
 `;
 
@@ -110,39 +90,32 @@ const props = {
   title: String,
   subTitle: String,
   href: String,
-  icon: String,
-  alt: String,
   delivers: Array,
 };
 
-const template = ({
-  title,
-  subTitle,
-  href,
-  delivers,
-  icon,
-  alt,
-}) => /* html */ `
-  <article>
-    <hgroup>
-      <span>${subTitle}</span>
-      <h3>${title}</h3>
-    </hgroup>
-    <app-link variant="plain" href=${navHref(href)}>→</app-link>
-  </article>
+const template = ({ title, subTitle, href, delivers }) => /* html */ `
+    <article>
+      <hgroup>
+        <span>${subTitle}</span>
+        <h3>${title}</h3>
+      </hgroup>
+          <app-link variant="underline" href=${navHref(href)}>Details ➶</app-link>
 
-  <ol>
-    ${delivers
-      .map(
-        (d) => /*html*/ `
-        <li>
-          <app-icon variant="medium" src=${asset(d.icon)} alt=${d.alt}></app-icon>
-          <p>${d.name}</p>
-        </li>
-      `,
-      )
-      .join("")}
-  </ol>
+    </article>
+
+    <ol>
+      ${delivers
+        .map(
+          (d) => /*html*/ `
+          <li>
+            <app-icon variant="medium" src=${asset(d.icon)} alt=${d.alt}></app-icon>
+            <p>${d.name}</p>
+          </li>
+        `,
+        )
+        .join("")}
+    </ol>
+
 `;
 
 define("capabilities-item", { props, styles, template });

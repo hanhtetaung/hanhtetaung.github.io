@@ -16,7 +16,7 @@ const styles = /* css */ `
 
   h4 {
     margin: 0;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     font-size: var(--size-small);
     /* font-weight: var(--font-regular); */
     color: var(--color-secondary);

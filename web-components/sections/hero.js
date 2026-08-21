@@ -82,7 +82,7 @@ const styles = /* css */ `
   }
 
   hgroup {
-    margin-bottom: 1rem;
+    margin-bottom: 3rem;
     display: flex;
     flex-direction: column;
     gap: 1rem;

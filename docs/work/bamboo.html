@@ -21,9 +21,10 @@
     ></script>
     
   <style>/* main.css */
-:root{--color-bg-primary:#fff5e8;--color-bg-secondary:#fffaf4;--color-secondary:#05798e;--color-primary:#b71f57;--color-tertiary:#1c4286;--color-text:#000;--color-transparent:#0000;--font-heading:"Chicle",serif;--font-body:"StackSans",sans-serif;--font-regular:400;--font-bold:700;--ratio:1.6;--size-body:2rem;--size-small:calc(var(--size-body)/var(--ratio));--size-heading:calc(var(--size-body)*var(--ratio));--size-title:calc(var(--size-heading)*var(--ratio));--size-display:calc(var(--size-title)*var(--ratio));font-size:10px;@media (width<=769px){&{--size-body:1.6rem}}}body{background:var(--color-bg-primary);font-family:var(--font-body);font-weight:var(--font-regular);font-size:var(--size-body)}main>*{background:var(--color-bg-primary);display:block;padding-block-start:10rem;padding-block-end:10rem}main>:nth-child(2n){background:var(--color-bg-secondary)}
+:root{--color-bg-primary:#fff5e8;--color-bg-secondary:#fffaf4;--color-secondary:#05798e;--color-primary:#b71f57;--color-tertiary:#1c4286;--color-text:#000;--color-transparent:#0000;--font-heading:"Chicle",serif;--font-body:"StackSans",sans-serif;--font-regular:400;--font-bold:700;--ratio:1.6;--size-body:2rem;--size-small:calc(var(--size-body)/var(--ratio));--size-heading:calc(var(--size-body)*var(--ratio));--size-title:calc(var(--size-heading)*var(--ratio));--size-display:calc(var(--size-title)*var(--ratio));font-size:10px;@media (width<=769px){&{--size-body:1.6rem}}}body{background:var(--color-bg-primary);font-family:var(--font-body);font-weight:var(--font-regular);font-size:var(--size-body);position:relative;margin:0}main>*{background:var(--color-bg-primary);display:block;padding-block-start:10rem;padding-block-end:10rem}main>:nth-child(2n){background:var(--color-bg-secondary)}
 </style></head>
   <body>
+    <app-frame></app-frame>
     <section-header></section-header>
 
     <main>
@@ -92,7 +93,7 @@ function v(e, t) {
 function o(e, { props: t = {}, attrs: s = [], styles: c = "", template: m }) {
   let u = ["props", ...s];
 
-  class p extends HTMLElement {
+  class d extends HTMLElement {
     static observedAttributes = u;
     constructor() {
       super();
@@ -114,8 +115,8 @@ function o(e, { props: t = {}, attrs: s = [], styles: c = "", template: m }) {
           i = {};
         }
       let f = {};
-      for (let d of Object.keys(t))
-        f[d] = v(i[d], t[d]);
+      for (let p of Object.keys(t))
+        f[p] = v(i[p], t[p]);
       return f;
     }
     _applyForwardedAttrs() {
@@ -135,11 +136,25 @@ function o(e, { props: t = {}, attrs: s = [], styles: c = "", template: m }) {
       this.shadowRoot.innerHTML = `<style>${c}</style>${n}`, this._applyForwardedAttrs();
     }
   }
-  customElements.define(e, p);
+  customElements.define(e, d);
 }
 
+// web-components/components/app-frame.js
+var y = `
+  :host {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 10;
+    border: 10px solid var(--color-secondary);
+    pointer-events: none;
+  }
+`, w = `
+`;
+o("app-frame", { styles: y, template: w });
+
 // web-components/components/app-link.js
-var w = `
+var k = `
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -200,13 +215,13 @@ var w = `
        content: "➶";
      }
   }
-`, y = ["href", "target", "rel", "download"], k = `
+`, x = ["href", "target", "rel", "download"], $ = `
   <a data-forward><slot></slot></a>
 `;
-o("app-link", { attrs: y, styles: w, template: k });
+o("app-link", { attrs: x, styles: k, template: $ });
 
 // web-components/components/app-logo.js
-var x = `
+var z = `
   :host {
     display: block;
   }
@@ -215,16 +230,18 @@ var x = `
     max-height: 7rem;
     width: auto;
   }
-`, $ = ["width", "height", "src", "alt"], z = () => "<img data-forward />";
-o("app-logo", { attrs: $, styles: x, template: z });
+`, S = ["width", "height", "src", "alt"], H = () => "<img data-forward />";
+o("app-logo", { attrs: S, styles: z, template: H });
 
 // web-components/breakpoints.js
 var r = "769px";
 
 // web-components/sections/header.js
-var S = `
+var C = `
   :host {
     display: block;
+    margin-top: 1rem;
+    background: var(--color-bg-primary);
   }
 
   header {
@@ -262,7 +279,7 @@ var S = `
       gap: 4rem;
     }
   }
-`, H = `
+`, A = `
   <header>
       <app-link variant="plain" href=${l("/")}>
         <app-logo
@@ -290,10 +307,10 @@ var S = `
       </div>
   </header>
 `;
-o("section-header", { template: H, styles: S });
+o("section-header", { template: A, styles: C });
 
 // web-components/components/footer-nav.js
-var C = [
+var B = [
   { href: "/", name: "Home" },
   { href: "/about", name: "About" },
   { href: "/credits", name: "Credits" },
@@ -312,7 +329,7 @@ var C = [
     href: "/writings/foundation-building-interfaces-at-scale",
     name: "Foundation"
   }
-], A = `
+], E = `
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -359,12 +376,12 @@ var C = [
     margin-right: 5rem;
     margin-bottom: 0.3rem;
   }
-`, B = () => `
+`, U = () => `
     <nav>
         <span>Sitemap</span>
 
         <ol>
-            ${C.map((e) => `
+            ${B.map((e) => `
                 <li>
                     <app-link variant="sitemap" href=${l(e.href)} >${e.name}</app-link>
                 </li>
@@ -372,10 +389,10 @@ var C = [
         </ol>
     </nav>
 `;
-o("footer-nav", { styles: A, template: B });
+o("footer-nav", { styles: E, template: U });
 
 // web-components/components/footer-copyright.js
-var E = `
+var _ = `
   :host {
    display: flex;
     justify-content: space-between;
@@ -420,7 +437,7 @@ var E = `
       margin-bottom: 0.5rem;
     }
   }
-`, U = () => `
+`, L = () => `
       <p>
         © Han Htet Aung 2026 |
         <app-link href=${l("/credits")} variant="underline">Credits</app-link>
@@ -466,10 +483,10 @@ var E = `
           </ul>
 </nav>
 `;
-o("footer-copyright", { styles: E, template: U });
+o("footer-copyright", { styles: _, template: L });
 
 // web-components/sections/footer.js
-var _ = `
+var N = `
   :host {
     --local-bg-color: var(--color-bg-secondary);
 
@@ -517,7 +534,7 @@ var _ = `
   hr {
     color: var(--color-secondary);
   }
-`, L = `
+`, T = `
   <footer>
       <article>
         <div>
@@ -538,10 +555,10 @@ var _ = `
       <footer-copyright></footer-copyright>
   </footer>
 `;
-o("section-footer", { styles: _, template: L });
+o("section-footer", { styles: N, template: T });
 
 // web-components/components/app-image.js
-var N = `
+var F = `
   :host {
     --local-width: 5rem;
     --local-heigth: auto;
@@ -572,11 +589,11 @@ var N = `
    :host([variant="full"]) {
     --local-width: 100%;
   }
-`, T = ["width", "height", "src", "alt"], F = () => "<img data-forward />";
-o("app-image", { attrs: T, styles: N, template: F });
+`, O = ["width", "height", "src", "alt"], P = () => "<img data-forward />";
+o("app-image", { attrs: O, styles: F, template: P });
 
 // web-components/components/app-icon.js
-var O = `
+var R = `
   :host {
     --local-width: 3rem;
     --local-height: auto;
@@ -614,11 +631,11 @@ var O = `
   }
 
 
-`, P = ["src", "alt"], R = () => '<img data-forward width="200" height="200"/>';
-o("app-icon", { attrs: P, styles: O, template: R });
+`, j = ["src", "alt"], q = () => '<img data-forward width="200" height="200"/>';
+o("app-icon", { attrs: j, styles: R, template: q });
 
 // web-components/sections/coming-soon-intro.js
-var j = `
+var I = `
    section {
         margin-inline: auto;
         width: 80%;
@@ -645,7 +662,7 @@ var j = `
   p {
     margin: 0;
   }
-`, q = { name: String, img: String, alt: String }, I = ({
+`, M = { name: String, img: String, alt: String }, X = ({
   name: e = "Name",
   img: t = "./assets/images/coming-soon.jpg",
   alt: s = "Coming Soon"
@@ -667,18 +684,18 @@ var j = `
       <app-image variant="large" src=${a(t)} alt=${s}></app-image>
   </section>
 `;
-o("section-coming-soon-intro", { props: q, styles: j, template: I });
+o("section-coming-soon-intro", { props: M, styles: I, template: X });
 
 // web-components/sections/bamboo/intro.js
-var M = `
+var G = `
   :host {
     display: block;
   }
-`, X = `
+`, D = `
   <section-coming-soon-intro
     props='{"name":"Bamboo", "img": "./assets/images/case-study/bamboo/thumbnail.avif", "alt": "Bamboo Interface"}'
   ></section-coming-soon-intro>
 `;
-o("section-bamboo-intro", { styles: M, template: X });
+o("section-bamboo-intro", { styles: G, template: D });
 </script></body>
 </html>

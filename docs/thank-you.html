@@ -26,9 +26,10 @@
     <link rel="preconnect" href="https://challenges.cloudflare.com" />
     
   <style>/* main.css */
-:root{--color-bg-primary:#fff5e8;--color-bg-secondary:#fffaf4;--color-secondary:#05798e;--color-primary:#b71f57;--color-tertiary:#1c4286;--color-text:#000;--color-transparent:#0000;--font-heading:"Chicle",serif;--font-body:"StackSans",sans-serif;--font-regular:400;--font-bold:700;--ratio:1.6;--size-body:2rem;--size-small:calc(var(--size-body)/var(--ratio));--size-heading:calc(var(--size-body)*var(--ratio));--size-title:calc(var(--size-heading)*var(--ratio));--size-display:calc(var(--size-title)*var(--ratio));font-size:10px;@media (width<=769px){&{--size-body:1.6rem}}}body{background:var(--color-bg-primary);font-family:var(--font-body);font-weight:var(--font-regular);font-size:var(--size-body)}main>*{background:var(--color-bg-primary);display:block;padding-block-start:10rem;padding-block-end:10rem}main>:nth-child(2n){background:var(--color-bg-secondary)}
+:root{--color-bg-primary:#fff5e8;--color-bg-secondary:#fffaf4;--color-secondary:#05798e;--color-primary:#b71f57;--color-tertiary:#1c4286;--color-text:#000;--color-transparent:#0000;--font-heading:"Chicle",serif;--font-body:"StackSans",sans-serif;--font-regular:400;--font-bold:700;--ratio:1.6;--size-body:2rem;--size-small:calc(var(--size-body)/var(--ratio));--size-heading:calc(var(--size-body)*var(--ratio));--size-title:calc(var(--size-heading)*var(--ratio));--size-display:calc(var(--size-title)*var(--ratio));font-size:10px;@media (width<=769px){&{--size-body:1.6rem}}}body{background:var(--color-bg-primary);font-family:var(--font-body);font-weight:var(--font-regular);font-size:var(--size-body);position:relative;margin:0}main>*{background:var(--color-bg-primary);display:block;padding-block-start:10rem;padding-block-end:10rem}main>:nth-child(2n){background:var(--color-bg-secondary)}
 </style></head>
   <body>
+    <app-frame></app-frame>
     <section-header></section-header>
 
     <main>
@@ -41,10 +42,10 @@ function h() {
   let e = document.documentElement.dataset.base || "./";
   return new URL(e, location.href);
 }
-function t(e) {
+function r(e) {
   return new URL(e, h()).href;
 }
-function r(e) {
+function t(e) {
   let a = e.replace(/^\//, ""), s = location.protocol === "file:", c = h();
   if (a === "")
     return s ? new URL("index.html", c).href : c.href;
@@ -55,19 +56,19 @@ function r(e) {
 var b = `
   @font-face {
     font-family: "Chicle";
-    src: url("${t("assets/fonts/Chicle-Regular.woff2")}") format("woff2");
+    src: url("${r("assets/fonts/Chicle-Regular.woff2")}") format("woff2");
     font-weight: 400;
     font-display: swap;
   }
   @font-face {
     font-family: "StackSans";
-    src: url("${t("assets/fonts/StackSansText-Bold.woff2")}") format("woff2");
+    src: url("${r("assets/fonts/StackSansText-Bold.woff2")}") format("woff2");
     font-weight: 700;
     font-display: swap;
   }
   @font-face {
     font-family: "StackSans";
-    src: url("${t("assets/fonts/StackSansText-Regular.woff2")}") format("woff2");
+    src: url("${r("assets/fonts/StackSansText-Regular.woff2")}") format("woff2");
     font-weight: 400;
     font-display: swap;
   }
@@ -97,7 +98,7 @@ function v(e, a) {
 function o(e, { props: a = {}, attrs: s = [], styles: c = "", template: p }) {
   let u = ["props", ...s];
 
-  class m extends HTMLElement {
+  class d extends HTMLElement {
     static observedAttributes = u;
     constructor() {
       super();
@@ -119,8 +120,8 @@ function o(e, { props: a = {}, attrs: s = [], styles: c = "", template: p }) {
           i = {};
         }
       let f = {};
-      for (let d of Object.keys(a))
-        f[d] = v(i[d], a[d]);
+      for (let m of Object.keys(a))
+        f[m] = v(i[m], a[m]);
       return f;
     }
     _applyForwardedAttrs() {
@@ -140,7 +141,7 @@ function o(e, { props: a = {}, attrs: s = [], styles: c = "", template: p }) {
       this.shadowRoot.innerHTML = `<style>${c}</style>${l}`, this._applyForwardedAttrs();
     }
   }
-  customElements.define(e, m);
+  customElements.define(e, d);
 }
 
 // web-components/components/app-link.js
@@ -205,10 +206,10 @@ var y = `
        content: "➶";
      }
   }
-`, w = ["href", "target", "rel", "download"], k = `
+`, k = ["href", "target", "rel", "download"], w = `
   <a data-forward><slot></slot></a>
 `;
-o("app-link", { attrs: w, styles: y, template: k });
+o("app-link", { attrs: k, styles: y, template: w });
 
 // web-components/components/app-logo.js
 var x = `
@@ -230,6 +231,8 @@ var n = "769px";
 var H = `
   :host {
     display: block;
+    margin-top: 1rem;
+    background: var(--color-bg-primary);
   }
 
   header {
@@ -269,9 +272,9 @@ var H = `
   }
 `, S = `
   <header>
-      <app-link variant="plain" href=${r("/")}>
+      <app-link variant="plain" href=${t("/")}>
         <app-logo
-          src=${t("./assets/images/logo.avif")}
+          src=${r("./assets/images/logo.avif")}
           alt="Logo"
         ></app-logo>
       </app-link>
@@ -280,16 +283,16 @@ var H = `
         <nav>
           <ul>
             <li>
-              <app-link variant="plain" href=${r("/")}>Home</app-link>
+              <app-link variant="plain" href=${t("/")}>Home</app-link>
             </li>
 
             <li>
-              <app-link variant="plain" href=${r("/about")}>About</app-link>
+              <app-link variant="plain" href=${t("/about")}>About</app-link>
             </li>
           </ul>
         </nav>
 
-        <app-link variant="primary" href=${r("/hire-me")}>
+        <app-link variant="primary" href=${t("/hire-me")}>
           Let's chat &#8629;
         </app-link>
       </div>
@@ -371,7 +374,7 @@ var A = [
         <ol>
             ${A.map((e) => `
                 <li>
-                    <app-link variant="sitemap" href=${r(e.href)} >${e.name}</app-link>
+                    <app-link variant="sitemap" href=${t(e.href)} >${e.name}</app-link>
                 </li>
             `).join("")}
         </ol>
@@ -428,7 +431,7 @@ var B = `
 `, E = () => `
       <p>
         © Han Htet Aung 2026 |
-        <app-link href=${r("/credits")} variant="underline">Credits</app-link>
+        <app-link href=${t("/credits")} variant="underline">Credits</app-link>
       </p>
 
       <nav>
@@ -437,7 +440,7 @@ var B = `
               <li>
                   <app-link href="mailto:hanhtetaung.dev@gmail.com" variant="image">
                   <img
-                      src=${t("./assets/icons/email.svg")}
+                      src=${r("./assets/icons/email.svg")}
                       alt="Email Icon"
                   />
                   </app-link>
@@ -450,7 +453,7 @@ var B = `
                   variant="image"
                   >
                   <img
-                      src=${t("./assets/icons/github.svg")}
+                      src=${r("./assets/icons/github.svg")}
                       alt="Github Icon"
                   />
                   </app-link>
@@ -463,7 +466,7 @@ var B = `
                   variant="image"
                   >
                   <img
-                      src=${t("./assets/icons/linkedin.svg")}
+                      src=${r("./assets/icons/linkedin.svg")}
                       alt="Linkedin Icon"
                   />
                   </app-link>
@@ -527,7 +530,7 @@ var U = `
       <article>
         <div>
           <app-logo
-            src="${t("./assets/images/logo.avif")}"
+            src="${r("./assets/images/logo.avif")}"
             alt="Logo"
           ></app-logo>
         
@@ -572,7 +575,7 @@ var F = `
         good day!
       </p>
 
-      <app-link variant="underline" href=${r("/")}>
+      <app-link variant="underline" href=${t("/")}>
         Back to home
       </app-link>
   </section>

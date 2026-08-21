@@ -7,6 +7,8 @@ import { asset, navHref } from "../asset.js";
 const styles = /* css */ `
   :host {
     display: block;
+    margin-top: 1rem;
+    background: var(--color-bg-primary);
   }
 
   header {

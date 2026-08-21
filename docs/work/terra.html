@@ -21,9 +21,10 @@
     ></script>
     
   <style>/* main.css */
-:root{--color-bg-primary:#fff5e8;--color-bg-secondary:#fffaf4;--color-secondary:#05798e;--color-primary:#b71f57;--color-tertiary:#1c4286;--color-text:#000;--color-transparent:#0000;--font-heading:"Chicle",serif;--font-body:"StackSans",sans-serif;--font-regular:400;--font-bold:700;--ratio:1.6;--size-body:2rem;--size-small:calc(var(--size-body)/var(--ratio));--size-heading:calc(var(--size-body)*var(--ratio));--size-title:calc(var(--size-heading)*var(--ratio));--size-display:calc(var(--size-title)*var(--ratio));font-size:10px;@media (width<=769px){&{--size-body:1.6rem}}}body{background:var(--color-bg-primary);font-family:var(--font-body);font-weight:var(--font-regular);font-size:var(--size-body)}main>*{background:var(--color-bg-primary);display:block;padding-block-start:10rem;padding-block-end:10rem}main>:nth-child(2n){background:var(--color-bg-secondary)}
+:root{--color-bg-primary:#fff5e8;--color-bg-secondary:#fffaf4;--color-secondary:#05798e;--color-primary:#b71f57;--color-tertiary:#1c4286;--color-text:#000;--color-transparent:#0000;--font-heading:"Chicle",serif;--font-body:"StackSans",sans-serif;--font-regular:400;--font-bold:700;--ratio:1.6;--size-body:2rem;--size-small:calc(var(--size-body)/var(--ratio));--size-heading:calc(var(--size-body)*var(--ratio));--size-title:calc(var(--size-heading)*var(--ratio));--size-display:calc(var(--size-title)*var(--ratio));font-size:10px;@media (width<=769px){&{--size-body:1.6rem}}}body{background:var(--color-bg-primary);font-family:var(--font-body);font-weight:var(--font-regular);font-size:var(--size-body);position:relative;margin:0}main>*{background:var(--color-bg-primary);display:block;padding-block-start:10rem;padding-block-end:10rem}main>:nth-child(2n){background:var(--color-bg-secondary)}
 </style></head>
   <body>
+    <app-frame></app-frame>
     <section-header></section-header>
 
     <main>
@@ -146,8 +147,22 @@ function e(a, { props: o = {}, attrs: s = [], styles: c = "", template: m }) {
   customElements.define(a, p);
 }
 
-// web-components/components/app-link.js
+// web-components/components/app-frame.js
 var y = `
+  :host {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 10;
+    border: 10px solid var(--color-secondary);
+    pointer-events: none;
+  }
+`, w = `
+`;
+e("app-frame", { styles: y, template: w });
+
+// web-components/components/app-link.js
+var k = `
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -208,13 +223,13 @@ var y = `
        content: "➶";
      }
   }
-`, w = ["href", "target", "rel", "download"], k = `
+`, x = ["href", "target", "rel", "download"], $ = `
   <a data-forward><slot></slot></a>
 `;
-e("app-link", { attrs: w, styles: y, template: k });
+e("app-link", { attrs: x, styles: k, template: $ });
 
 // web-components/components/app-logo.js
-var x = `
+var S = `
   :host {
     display: block;
   }
@@ -223,16 +238,18 @@ var x = `
     max-height: 7rem;
     width: auto;
   }
-`, $ = ["width", "height", "src", "alt"], S = () => "<img data-forward />";
-e("app-logo", { attrs: $, styles: x, template: S });
+`, z = ["width", "height", "src", "alt"], H = () => "<img data-forward />";
+e("app-logo", { attrs: z, styles: S, template: H });
 
 // web-components/breakpoints.js
 var r = "769px";
 
 // web-components/sections/header.js
-var z = `
+var A = `
   :host {
     display: block;
+    margin-top: 1rem;
+    background: var(--color-bg-primary);
   }
 
   header {
@@ -270,7 +287,7 @@ var z = `
       gap: 4rem;
     }
   }
-`, H = `
+`, C = `
   <header>
       <app-link variant="plain" href=${i("/")}>
         <app-logo
@@ -298,10 +315,10 @@ var z = `
       </div>
   </header>
 `;
-e("section-header", { template: H, styles: z });
+e("section-header", { template: C, styles: A });
 
 // web-components/components/footer-nav.js
-var A = [
+var T = [
   { href: "/", name: "Home" },
   { href: "/about", name: "About" },
   { href: "/credits", name: "Credits" },
@@ -320,7 +337,7 @@ var A = [
     href: "/writings/foundation-building-interfaces-at-scale",
     name: "Foundation"
   }
-], C = `
+], E = `
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -367,12 +384,12 @@ var A = [
     margin-right: 5rem;
     margin-bottom: 0.3rem;
   }
-`, T = () => `
+`, P = () => `
     <nav>
         <span>Sitemap</span>
 
         <ol>
-            ${A.map((a) => `
+            ${T.map((a) => `
                 <li>
                     <app-link variant="sitemap" href=${i(a.href)} >${a.name}</app-link>
                 </li>
@@ -380,10 +397,10 @@ var A = [
         </ol>
     </nav>
 `;
-e("footer-nav", { styles: C, template: T });
+e("footer-nav", { styles: E, template: P });
 
 // web-components/components/footer-copyright.js
-var E = `
+var _ = `
   :host {
    display: flex;
     justify-content: space-between;
@@ -428,7 +445,7 @@ var E = `
       margin-bottom: 0.5rem;
     }
   }
-`, P = () => `
+`, F = () => `
       <p>
         © Han Htet Aung 2026 |
         <app-link href=${i("/credits")} variant="underline">Credits</app-link>
@@ -474,10 +491,10 @@ var E = `
           </ul>
 </nav>
 `;
-e("footer-copyright", { styles: E, template: P });
+e("footer-copyright", { styles: _, template: F });
 
 // web-components/sections/footer.js
-var _ = `
+var L = `
   :host {
     --local-bg-color: var(--color-bg-secondary);
 
@@ -525,7 +542,7 @@ var _ = `
   hr {
     color: var(--color-secondary);
   }
-`, F = `
+`, U = `
   <footer>
       <article>
         <div>
@@ -546,10 +563,10 @@ var _ = `
       <footer-copyright></footer-copyright>
   </footer>
 `;
-e("section-footer", { styles: _, template: F });
+e("section-footer", { styles: L, template: U });
 
 // web-components/components/app-image.js
-var L = `
+var B = `
   :host {
     --local-width: 5rem;
     --local-heigth: auto;
@@ -580,11 +597,11 @@ var L = `
    :host([variant="full"]) {
     --local-width: 100%;
   }
-`, U = ["width", "height", "src", "alt"], B = () => "<img data-forward />";
-e("app-image", { attrs: U, styles: L, template: B });
+`, N = ["width", "height", "src", "alt"], O = () => "<img data-forward />";
+e("app-image", { attrs: N, styles: B, template: O });
 
 // web-components/sections/terra/intro.js
-var N = `
+var R = `
   :host {
     display: block;
   }
@@ -625,7 +642,7 @@ var N = `
     font-weight: var(--font-bold);
     text-transform: uppercase;
   }
-`, O = `
+`, q = `
   <section>
     <app-image
       variant="large"
@@ -655,10 +672,10 @@ var N = `
     </article>
   </section>
 `;
-e("section-terra-intro", { styles: N, template: O });
+e("section-terra-intro", { styles: R, template: q });
 
 // web-components/components/section-title.js
-var R = `
+var I = `
   :host {
     display: flex;
     align-items: center;
@@ -689,7 +706,7 @@ var R = `
       display: none;
     }
   }
-`, q = { name: String, img: String, alt: String }, I = ({ name: a, img: o = "", alt: s = "" }) => `
+`, G = { name: String, img: String, alt: String }, M = ({ name: a, img: o = "", alt: s = "" }) => `
     <h2>${a}</h2>
     <img
         src=${t(o)}
@@ -698,10 +715,10 @@ var R = `
         width="76"
     />
 `;
-e("section-title", { props: q, styles: R, template: I });
+e("section-title", { props: G, styles: I, template: M });
 
 // web-components/sections/terra/overview.js
-var G = `
+var D = `
   :host {
     display: block;
   }
@@ -714,7 +731,7 @@ var G = `
   p {
     margin-block: 2rem;
   }
-`, M = `
+`, X = `
   <section>
     <section-title
         variant="text"
@@ -742,10 +759,10 @@ var G = `
       </article>
   </section>
 `;
-e("section-terra-overview", { styles: G, template: M });
+e("section-terra-overview", { styles: D, template: X });
 
 // web-components/sections/terra/building-block.js
-var D = `
+var J = `
   :host {
     display: block;
   }
@@ -778,7 +795,7 @@ var D = `
     display: block;
     margin-bottom: 2rem;
   }
-`, X = `
+`, Q = `
   <section>
     <section-title
         variant="text"
@@ -831,10 +848,10 @@ var D = `
           </article>
   </section>
 `;
-e("section-terra-building-block", { styles: D, template: X });
+e("section-terra-building-block", { styles: J, template: Q });
 
 // web-components/components/app-article-paragraph.js
-var J = `
+var W = `
   :host {
     display: grid;
     grid-template-columns: 1fr 2.5fr;
@@ -856,17 +873,17 @@ var J = `
   :host([variant="block"]) {
     display: block;
   }
-`, Q = { title: String }, W = ({ title: a }) => `
+`, K = { title: String }, V = ({ title: a }) => `
         <h3>${a}</h3>
 
         <article>
             <slot></slot>
         </article>
 `;
-e("app-article-paragraph", { props: Q, styles: J, template: W });
+e("app-article-paragraph", { props: K, styles: W, template: V });
 
 // web-components/sections/terra/need-one-interface.js
-var K = `
+var Y = `
   :host {
     display: block;
   }
@@ -890,7 +907,7 @@ var K = `
     border-top: 1px dashed var(--color-text);
     padding-top: 5rem;
   }
-`, V = `
+`, Z = `
   <section>
      <section-title
         variant="text"
@@ -973,10 +990,10 @@ var K = `
      
   </section>
 `;
-e("section-terra-need-one-interface", { styles: K, template: V });
+e("section-terra-need-one-interface", { styles: Y, template: Z });
 
 // web-components/sections/terra/conclusion.js
-var Y = `
+var j = `
   :host {
     display: block;
   }
@@ -985,7 +1002,7 @@ var Y = `
     width: 80%;
     margin-inline: auto;
   }
-`, Z = `
+`, ee = `
   <section>
     <section-title
         variant="text"
@@ -1002,6 +1019,6 @@ var Y = `
       </article>
   </section>
 `;
-e("section-terra-conclusion", { styles: Y, template: Z });
+e("section-terra-conclusion", { styles: j, template: ee });
 </script></body>
 </html>
