@@ -49,10 +49,10 @@ function o(t) {
   return new URL(t, h()).href;
 }
 function i(t) {
-  let r = t.replace(/^\//, ""), s = location.protocol === "file:", c = h();
-  if (r === "")
+  let a = t.replace(/^\//, ""), s = location.protocol === "file:", c = h();
+  if (a === "")
     return s ? new URL("index.html", c).href : c.href;
-  return s ? new URL(`${r}.html`, c).href : new URL(r, c).href;
+  return s ? new URL(`${a}.html`, c).href : new URL(a, c).href;
 }
 
 // web-components/fonts.js
@@ -80,25 +80,25 @@ g.textContent = v;
 document.head.appendChild(g);
 
 // web-components/define.js
-function b(t, r) {
+function b(t, a) {
   if (t === void 0) {
-    if (r === Array)
+    if (a === Array)
       return [];
-    if (r === Object)
+    if (a === Object)
       return {};
-    if (r === Boolean)
+    if (a === Boolean)
       return !1;
-    if (r === Number)
+    if (a === Number)
       return 0;
     return;
   }
-  if (r === Boolean)
+  if (a === Boolean)
     return Boolean(t);
-  if (r === Number)
+  if (a === Number)
     return Number(t);
   return t;
 }
-function e(t, { props: r = {}, attrs: s = [], styles: c = "", template: p }) {
+function e(t, { props: a = {}, attrs: s = [], styles: c = "", template: p }) {
   let u = ["props", ...s];
 
   class m extends HTMLElement {
@@ -123,8 +123,8 @@ function e(t, { props: r = {}, attrs: s = [], styles: c = "", template: p }) {
           n = {};
         }
       let f = {};
-      for (let d of Object.keys(r))
-        f[d] = b(n[d], r[d]);
+      for (let d of Object.keys(a))
+        f[d] = b(n[d], a[d]);
       return f;
     }
     _applyForwardedAttrs() {
@@ -156,6 +156,12 @@ var y = `
     z-index: 10;
     border: 10px solid var(--color-secondary);
     pointer-events: none;
+  }
+
+  :host([variant="color-primary"]) {
+    /* border-color: var(--color-primary); */
+    /* border-color: var(--color-tertiary); */
+    /* border-color: #a36aa5; */
   }
 `, w = `
 `;
@@ -242,7 +248,7 @@ var z = `
 e("app-logo", { attrs: S, styles: z, template: H });
 
 // web-components/breakpoints.js
-var a = "769px";
+var r = "769px";
 
 // web-components/sections/header.js
 var A = `
@@ -282,7 +288,7 @@ var A = `
     box-shadow: none;
   }
 
-  @media (max-width: ${a}) {
+  @media (max-width: ${r}) {
     .header__navigation {
       gap: 4rem;
     }
@@ -346,7 +352,7 @@ var E = [
    display: flex;
    gap: 5rem;
 
-   @media (max-width: ${a}) {
+   @media (max-width: ${r}) {
         flex-direction: column;
         gap: 3rem;
         margin-block: 2rem;
@@ -375,7 +381,7 @@ var E = [
     max-height: 12.5ch;
     overflow: scroll;
 
-    @media (max-width: ${a}) {
+    @media (max-width: ${r}) {
         max-height: 20ch;
     }
   }
@@ -407,7 +413,7 @@ var U = `
     border-top: 1px solid var(--color-text);
     padding-top: 1rem;
 
-   @media (max-width: ${a}) {
+   @media (max-width: ${r}) {
         flex-direction: column-reverse;
         gap: 2rem;
         border: none;
@@ -418,7 +424,7 @@ var U = `
   p {
     margin: 0;
 
-    @media (max-width: ${a}) {
+    @media (max-width: ${r}) {
       border-top: 1px solid var(--color-text);
     padding-top: 1rem;
     }
@@ -440,7 +446,7 @@ var U = `
     text-transform: uppercase;
     
 
-    @media (max-width: ${a}) {
+    @media (max-width: ${r}) {
       display: inline-block;
       margin-bottom: 0.5rem;
     }
@@ -526,7 +532,7 @@ var F = `
     gap: 5rem;
   }
 
-  @media (max-width: ${a}) {
+  @media (max-width: ${r}) {
     article {
       display: block;
     }
@@ -615,7 +621,7 @@ var O = `
     justify-content: space-between;
     gap: 3rem;
 
-    @media (max-width: ${a}) {
+    @media (max-width: ${r}) {
       flex-direction: column;
     }
   }
@@ -708,10 +714,10 @@ var I = `
       display: none;
     }
   }
-`, D = { name: String, img: String, alt: String }, M = ({ name: t, img: r = "", alt: s = "" }) => `
+`, D = { name: String, img: String, alt: String }, M = ({ name: t, img: a = "", alt: s = "" }) => `
     <h2>${t}</h2>
     <img
-        src=${o(r)}
+        src=${o(a)}
         alt=${s}
         height="36"
         width="76"
@@ -777,7 +783,7 @@ var K = `
     grid-template-columns: 1fr 2.5fr;
 
 
-    @media (max-width: ${a}) {
+    @media (max-width: ${r}) {
         display: block;
     }
   }
@@ -945,7 +951,7 @@ var j = `
     padding: 0;
     gap: 3rem;
 
-    @media (max-width: ${a}) {
+    @media (max-width: ${r}) {
       flex-direction: column;
     }
   }

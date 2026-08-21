@@ -48,10 +48,10 @@ function e(o) {
   return new URL(o, h()).href;
 }
 function l(o) {
-  let a = o.replace(/^\//, ""), s = location.protocol === "file:", c = h();
-  if (a === "")
+  let r = o.replace(/^\//, ""), s = location.protocol === "file:", c = h();
+  if (r === "")
     return s ? new URL("index.html", c).href : c.href;
-  return s ? new URL(`${a}.html`, c).href : new URL(a, c).href;
+  return s ? new URL(`${r}.html`, c).href : new URL(r, c).href;
 }
 
 // web-components/fonts.js
@@ -79,25 +79,25 @@ g.textContent = b;
 document.head.appendChild(g);
 
 // web-components/define.js
-function v(o, a) {
+function v(o, r) {
   if (o === void 0) {
-    if (a === Array)
+    if (r === Array)
       return [];
-    if (a === Object)
+    if (r === Object)
       return {};
-    if (a === Boolean)
+    if (r === Boolean)
       return !1;
-    if (a === Number)
+    if (r === Number)
       return 0;
     return;
   }
-  if (a === Boolean)
+  if (r === Boolean)
     return Boolean(o);
-  if (a === Number)
+  if (r === Number)
     return Number(o);
   return o;
 }
-function t(o, { props: a = {}, attrs: s = [], styles: c = "", template: d }) {
+function t(o, { props: r = {}, attrs: s = [], styles: c = "", template: d }) {
   let u = ["props", ...s];
 
   class p extends HTMLElement {
@@ -122,8 +122,8 @@ function t(o, { props: a = {}, attrs: s = [], styles: c = "", template: d }) {
           i = {};
         }
       let f = {};
-      for (let m of Object.keys(a))
-        f[m] = v(i[m], a[m]);
+      for (let m of Object.keys(r))
+        f[m] = v(i[m], r[m]);
       return f;
     }
     _applyForwardedAttrs() {
@@ -155,6 +155,12 @@ var y = `
     z-index: 10;
     border: 10px solid var(--color-secondary);
     pointer-events: none;
+  }
+
+  :host([variant="color-primary"]) {
+    /* border-color: var(--color-primary); */
+    /* border-color: var(--color-tertiary); */
+    /* border-color: #a36aa5; */
   }
 `, w = `
 `;
@@ -241,7 +247,7 @@ var z = `
 t("app-logo", { attrs: S, styles: z, template: H });
 
 // web-components/breakpoints.js
-var r = "769px";
+var a = "769px";
 
 // web-components/sections/header.js
 var A = `
@@ -281,7 +287,7 @@ var A = `
     box-shadow: none;
   }
 
-  @media (max-width: ${r}) {
+  @media (max-width: ${a}) {
     .header__navigation {
       gap: 4rem;
     }
@@ -345,7 +351,7 @@ var B = [
    display: flex;
    gap: 5rem;
 
-   @media (max-width: ${r}) {
+   @media (max-width: ${a}) {
         flex-direction: column;
         gap: 3rem;
         margin-block: 2rem;
@@ -374,7 +380,7 @@ var B = [
     max-height: 12.5ch;
     overflow: scroll;
 
-    @media (max-width: ${r}) {
+    @media (max-width: ${a}) {
         max-height: 20ch;
     }
   }
@@ -406,7 +412,7 @@ var _ = `
     border-top: 1px solid var(--color-text);
     padding-top: 1rem;
 
-   @media (max-width: ${r}) {
+   @media (max-width: ${a}) {
         flex-direction: column-reverse;
         gap: 2rem;
         border: none;
@@ -417,7 +423,7 @@ var _ = `
   p {
     margin: 0;
 
-    @media (max-width: ${r}) {
+    @media (max-width: ${a}) {
       border-top: 1px solid var(--color-text);
     padding-top: 1rem;
     }
@@ -439,7 +445,7 @@ var _ = `
     text-transform: uppercase;
     
 
-    @media (max-width: ${r}) {
+    @media (max-width: ${a}) {
       display: inline-block;
       margin-bottom: 0.5rem;
     }
@@ -525,7 +531,7 @@ var O = `
     gap: 5rem;
   }
 
-  @media (max-width: ${r}) {
+  @media (max-width: ${a}) {
     article {
       display: block;
     }
@@ -656,10 +662,10 @@ var P = `
       display: none;
     }
   }
-`, R = { name: String, img: String, alt: String }, q = ({ name: o, img: a = "", alt: s = "" }) => `
+`, R = { name: String, img: String, alt: String }, q = ({ name: o, img: r = "", alt: s = "" }) => `
     <h2>${o}</h2>
     <img
-        src=${e(a)}
+        src=${e(r)}
         alt=${s}
         height="36"
         width="76"
@@ -709,7 +715,7 @@ var D = `
     grid-template-columns: 1fr 2.5fr;
 
 
-    @media (max-width: ${r}) {
+    @media (max-width: ${a}) {
         display: block;
     }
   }

@@ -35,14 +35,14 @@
     <section-footer></section-footer>
   <script type="module">// web-components/asset.js
 function h() {
-  let o = document.documentElement.dataset.base || "./";
-  return new URL(o, location.href);
+  let e = document.documentElement.dataset.base || "./";
+  return new URL(e, location.href);
 }
-function a(o) {
-  return new URL(o, h()).href;
+function a(e) {
+  return new URL(e, h()).href;
 }
-function l(o) {
-  let t = o.replace(/^\//, ""), s = location.protocol === "file:", c = h();
+function l(e) {
+  let t = e.replace(/^\//, ""), s = location.protocol === "file:", c = h();
   if (t === "")
     return s ? new URL("index.html", c).href : c.href;
   return s ? new URL(`${t}.html`, c).href : new URL(t, c).href;
@@ -73,8 +73,8 @@ g.textContent = v;
 document.head.appendChild(g);
 
 // web-components/define.js
-function b(o, t) {
-  if (o === void 0) {
+function b(e, t) {
+  if (e === void 0) {
     if (t === Array)
       return [];
     if (t === Object)
@@ -86,12 +86,12 @@ function b(o, t) {
     return;
   }
   if (t === Boolean)
-    return Boolean(o);
+    return Boolean(e);
   if (t === Number)
-    return Number(o);
-  return o;
+    return Number(e);
+  return e;
 }
-function e(o, { props: t = {}, attrs: s = [], styles: c = "", template: m }) {
+function o(e, { props: t = {}, attrs: s = [], styles: c = "", template: m }) {
   let u = ["props", ...s];
 
   class d extends HTMLElement {
@@ -137,7 +137,7 @@ function e(o, { props: t = {}, attrs: s = [], styles: c = "", template: m }) {
       this.shadowRoot.innerHTML = `<style>${c}</style>${n}`, this._applyForwardedAttrs();
     }
   }
-  customElements.define(o, d);
+  customElements.define(e, d);
 }
 
 // web-components/components/app-frame.js
@@ -150,9 +150,15 @@ var y = `
     border: 10px solid var(--color-secondary);
     pointer-events: none;
   }
+
+  :host([variant="color-primary"]) {
+    /* border-color: var(--color-primary); */
+    /* border-color: var(--color-tertiary); */
+    /* border-color: #a36aa5; */
+  }
 `, w = `
 `;
-e("app-frame", { styles: y, template: w });
+o("app-frame", { styles: y, template: w });
 
 // web-components/components/app-link.js
 var k = `
@@ -219,7 +225,7 @@ var k = `
 `, x = ["href", "target", "rel", "download"], $ = `
   <a data-forward><slot></slot></a>
 `;
-e("app-link", { attrs: x, styles: k, template: $ });
+o("app-link", { attrs: x, styles: k, template: $ });
 
 // web-components/components/app-logo.js
 var z = `
@@ -232,7 +238,7 @@ var z = `
     width: auto;
   }
 `, S = ["width", "height", "src", "alt"], H = () => "<img data-forward />";
-e("app-logo", { attrs: S, styles: z, template: H });
+o("app-logo", { attrs: S, styles: z, template: H });
 
 // web-components/breakpoints.js
 var r = "769px";
@@ -308,7 +314,7 @@ var A = `
       </div>
   </header>
 `;
-e("section-header", { template: C, styles: A });
+o("section-header", { template: C, styles: A });
 
 // web-components/components/footer-nav.js
 var E = [
@@ -382,15 +388,15 @@ var E = [
         <span>Sitemap</span>
 
         <ol>
-            ${E.map((o) => `
+            ${E.map((e) => `
                 <li>
-                    <app-link variant="sitemap" href=${l(o.href)} >${o.name}</app-link>
+                    <app-link variant="sitemap" href=${l(e.href)} >${e.name}</app-link>
                 </li>
             `).join("")}
         </ol>
     </nav>
 `;
-e("footer-nav", { styles: U, template: _ });
+o("footer-nav", { styles: U, template: _ });
 
 // web-components/components/footer-copyright.js
 var B = `
@@ -484,7 +490,7 @@ var B = `
           </ul>
 </nav>
 `;
-e("footer-copyright", { styles: B, template: L });
+o("footer-copyright", { styles: B, template: L });
 
 // web-components/sections/footer.js
 var N = `
@@ -556,7 +562,7 @@ var N = `
       <footer-copyright></footer-copyright>
   </footer>
 `;
-e("section-footer", { styles: N, template: T });
+o("section-footer", { styles: N, template: T });
 
 // web-components/components/app-image.js
 var F = `
@@ -591,7 +597,7 @@ var F = `
     --local-width: 100%;
   }
 `, O = ["width", "height", "src", "alt"], P = () => "<img data-forward />";
-e("app-image", { attrs: O, styles: F, template: P });
+o("app-image", { attrs: O, styles: F, template: P });
 
 // web-components/components/app-icon.js
 var R = `
@@ -633,7 +639,7 @@ var R = `
 
 
 `, j = ["src", "alt"], q = () => '<img data-forward width="200" height="200"/>';
-e("app-icon", { attrs: j, styles: R, template: q });
+o("app-icon", { attrs: j, styles: R, template: q });
 
 // web-components/sections/coming-soon-intro.js
 var I = `
@@ -664,7 +670,7 @@ var I = `
     margin: 0;
   }
 `, M = { name: String, img: String, alt: String }, X = ({
-  name: o = "Name",
+  name: e = "Name",
   img: t = "./assets/images/coming-soon.jpg",
   alt: s = "Coming Soon"
 }) => `
@@ -672,7 +678,7 @@ var I = `
       <div>
         <hgroup>
           <p>Coming Soon</p>
-          <h1>${o}</h1>
+          <h1>${e}</h1>
         </hgroup>
 
         <app-icon
@@ -685,7 +691,7 @@ var I = `
       <app-image variant="large" src=${a(t)} alt=${s}></app-image>
   </section>
 `;
-e("section-coming-soon-intro", { props: M, styles: I, template: X });
+o("section-coming-soon-intro", { props: M, styles: I, template: X });
 
 // web-components/sections/au-van/intro.js
 var G = `
@@ -697,6 +703,6 @@ var G = `
     props='{"name":"AU Van"}'
   ></section-coming-soon-intro>
 `;
-e("section-au-van-intro", { styles: G, template: D });
+o("section-au-van-intro", { styles: G, template: D });
 </script></body>
 </html>

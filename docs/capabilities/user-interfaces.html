@@ -36,36 +36,36 @@
     <section-footer></section-footer>
   <script type="module">// web-components/asset.js
 function g() {
-  let t = document.documentElement.dataset.base || "./";
-  return new URL(t, location.href);
+  let e = document.documentElement.dataset.base || "./";
+  return new URL(e, location.href);
 }
-function a(t) {
-  return new URL(t, g()).href;
+function r(e) {
+  return new URL(e, g()).href;
 }
-function n(t) {
-  let o = t.replace(/^\//, ""), i = location.protocol === "file:", c = g();
-  if (o === "")
+function n(e) {
+  let t = e.replace(/^\//, ""), i = location.protocol === "file:", c = g();
+  if (t === "")
     return i ? new URL("index.html", c).href : c.href;
-  return i ? new URL(`${o}.html`, c).href : new URL(o, c).href;
+  return i ? new URL(`${t}.html`, c).href : new URL(t, c).href;
 }
 
 // web-components/fonts.js
 var b = `
   @font-face {
     font-family: "Chicle";
-    src: url("${a("assets/fonts/Chicle-Regular.woff2")}") format("woff2");
+    src: url("${r("assets/fonts/Chicle-Regular.woff2")}") format("woff2");
     font-weight: 400;
     font-display: swap;
   }
   @font-face {
     font-family: "StackSans";
-    src: url("${a("assets/fonts/StackSansText-Bold.woff2")}") format("woff2");
+    src: url("${r("assets/fonts/StackSansText-Bold.woff2")}") format("woff2");
     font-weight: 700;
     font-display: swap;
   }
   @font-face {
     font-family: "StackSans";
-    src: url("${a("assets/fonts/StackSansText-Regular.woff2")}") format("woff2");
+    src: url("${r("assets/fonts/StackSansText-Regular.woff2")}") format("woff2");
     font-weight: 400;
     font-display: swap;
   }
@@ -74,25 +74,25 @@ u.textContent = b;
 document.head.appendChild(u);
 
 // web-components/define.js
-function w(t, o) {
-  if (t === void 0) {
-    if (o === Array)
+function w(e, t) {
+  if (e === void 0) {
+    if (t === Array)
       return [];
-    if (o === Object)
+    if (t === Object)
       return {};
-    if (o === Boolean)
+    if (t === Boolean)
       return !1;
-    if (o === Number)
+    if (t === Number)
       return 0;
     return;
   }
-  if (o === Boolean)
-    return Boolean(t);
-  if (o === Number)
-    return Number(t);
-  return t;
+  if (t === Boolean)
+    return Boolean(e);
+  if (t === Number)
+    return Number(e);
+  return e;
 }
-function e(t, { props: o = {}, attrs: i = [], styles: c = "", template: m }) {
+function o(e, { props: t = {}, attrs: i = [], styles: c = "", template: d }) {
   let v = ["props", ...i];
 
   class f extends HTMLElement {
@@ -117,8 +117,8 @@ function e(t, { props: o = {}, attrs: i = [], styles: c = "", template: m }) {
           l = {};
         }
       let h = {};
-      for (let p of Object.keys(o))
-        h[p] = w(l[p], o[p]);
+      for (let p of Object.keys(t))
+        h[p] = w(l[p], t[p]);
       return h;
     }
     _applyForwardedAttrs() {
@@ -134,11 +134,11 @@ function e(t, { props: o = {}, attrs: i = [], styles: c = "", template: m }) {
           l.removeAttribute(s);
     }
     _render() {
-      let l = this._getProps(), s = typeof m === "function" ? m(l) : m;
+      let l = this._getProps(), s = typeof d === "function" ? d(l) : d;
       this.shadowRoot.innerHTML = `<style>${c}</style>${s}`, this._applyForwardedAttrs();
     }
   }
-  customElements.define(t, f);
+  customElements.define(e, f);
 }
 
 // web-components/components/app-frame.js
@@ -151,9 +151,15 @@ var y = `
     border: 10px solid var(--color-secondary);
     pointer-events: none;
   }
+
+  :host([variant="color-primary"]) {
+    /* border-color: var(--color-primary); */
+    /* border-color: var(--color-tertiary); */
+    /* border-color: #a36aa5; */
+  }
 `, x = `
 `;
-e("app-frame", { styles: y, template: x });
+o("app-frame", { styles: y, template: x });
 
 // web-components/components/app-link.js
 var k = `
@@ -220,7 +226,7 @@ var k = `
 `, $ = ["href", "target", "rel", "download"], z = `
   <a data-forward><slot></slot></a>
 `;
-e("app-link", { attrs: $, styles: k, template: z });
+o("app-link", { attrs: $, styles: k, template: z });
 
 // web-components/components/app-logo.js
 var S = `
@@ -233,10 +239,10 @@ var S = `
     width: auto;
   }
 `, A = ["width", "height", "src", "alt"], H = () => "<img data-forward />";
-e("app-logo", { attrs: A, styles: S, template: H });
+o("app-logo", { attrs: A, styles: S, template: H });
 
 // web-components/breakpoints.js
-var r = "769px", d = "992px";
+var a = "769px", m = "992px";
 
 // web-components/sections/header.js
 var C = `
@@ -276,16 +282,16 @@ var C = `
     box-shadow: none;
   }
 
-  @media (max-width: ${r}) {
+  @media (max-width: ${a}) {
     .header__navigation {
       gap: 4rem;
     }
   }
-`, T = `
+`, E = `
   <header>
       <app-link variant="plain" href=${n("/")}>
         <app-logo
-          src=${a("./assets/images/logo.avif")}
+          src=${r("./assets/images/logo.avif")}
           alt="Logo"
         ></app-logo>
       </app-link>
@@ -309,10 +315,10 @@ var C = `
       </div>
   </header>
 `;
-e("section-header", { template: T, styles: C });
+o("section-header", { template: E, styles: C });
 
 // web-components/components/footer-nav.js
-var B = [
+var T = [
   { href: "/", name: "Home" },
   { href: "/about", name: "About" },
   { href: "/credits", name: "Credits" },
@@ -331,7 +337,7 @@ var B = [
     href: "/writings/foundation-building-interfaces-at-scale",
     name: "Foundation"
   }
-], E = `
+], B = `
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -340,7 +346,7 @@ var B = [
    display: flex;
    gap: 5rem;
 
-   @media (max-width: ${r}) {
+   @media (max-width: ${a}) {
         flex-direction: column;
         gap: 3rem;
         margin-block: 2rem;
@@ -369,7 +375,7 @@ var B = [
     max-height: 12.5ch;
     overflow: scroll;
 
-    @media (max-width: ${r}) {
+    @media (max-width: ${a}) {
         max-height: 20ch;
     }
   }
@@ -383,25 +389,25 @@ var B = [
         <span>Sitemap</span>
 
         <ol>
-            ${B.map((t) => `
+            ${T.map((e) => `
                 <li>
-                    <app-link variant="sitemap" href=${n(t.href)} >${t.name}</app-link>
+                    <app-link variant="sitemap" href=${n(e.href)} >${e.name}</app-link>
                 </li>
             `).join("")}
         </ol>
     </nav>
 `;
-e("footer-nav", { styles: E, template: L });
+o("footer-nav", { styles: B, template: L });
 
 // web-components/components/footer-copyright.js
-var j = `
+var U = `
   :host {
    display: flex;
     justify-content: space-between;
     border-top: 1px solid var(--color-text);
     padding-top: 1rem;
 
-   @media (max-width: ${r}) {
+   @media (max-width: ${a}) {
         flex-direction: column-reverse;
         gap: 2rem;
         border: none;
@@ -412,7 +418,7 @@ var j = `
   p {
     margin: 0;
 
-    @media (max-width: ${r}) {
+    @media (max-width: ${a}) {
       border-top: 1px solid var(--color-text);
     padding-top: 1rem;
     }
@@ -434,12 +440,12 @@ var j = `
     text-transform: uppercase;
     
 
-    @media (max-width: ${r}) {
+    @media (max-width: ${a}) {
       display: inline-block;
       margin-bottom: 0.5rem;
     }
   }
-`, U = () => `
+`, _ = () => `
       <p>
         © Han Htet Aung 2026 |
         <app-link href=${n("/credits")} variant="underline">Credits</app-link>
@@ -451,7 +457,7 @@ var j = `
               <li>
                   <app-link href="mailto:hanhtetaung.dev@gmail.com" variant="image">
                   <img
-                      src=${a("./assets/icons/email.svg")}
+                      src=${r("./assets/icons/email.svg")}
                       alt="Email Icon"
                   />
                   </app-link>
@@ -464,7 +470,7 @@ var j = `
                   variant="image"
                   >
                   <img
-                      src=${a("./assets/icons/github.svg")}
+                      src=${r("./assets/icons/github.svg")}
                       alt="Github Icon"
                   />
                   </app-link>
@@ -477,7 +483,7 @@ var j = `
                   variant="image"
                   >
                   <img
-                      src=${a("./assets/icons/linkedin.svg")}
+                      src=${r("./assets/icons/linkedin.svg")}
                       alt="Linkedin Icon"
                   />
                   </app-link>
@@ -485,10 +491,10 @@ var j = `
           </ul>
 </nav>
 `;
-e("footer-copyright", { styles: j, template: U });
+o("footer-copyright", { styles: U, template: _ });
 
 // web-components/sections/footer.js
-var _ = `
+var F = `
   :host {
     --local-bg-color: var(--color-bg-secondary);
 
@@ -520,7 +526,7 @@ var _ = `
     gap: 5rem;
   }
 
-  @media (max-width: ${r}) {
+  @media (max-width: ${a}) {
     article {
       display: block;
     }
@@ -536,12 +542,12 @@ var _ = `
   hr {
     color: var(--color-secondary);
   }
-`, F = `
+`, N = `
   <footer>
       <article>
         <div>
           <app-logo
-            src="${a("./assets/images/logo.avif")}"
+            src="${r("./assets/images/logo.avif")}"
             alt="Logo"
           ></app-logo>
         
@@ -557,7 +563,7 @@ var _ = `
       <footer-copyright></footer-copyright>
   </footer>
 `;
-e("section-footer", { styles: _, template: F });
+o("section-footer", { styles: F, template: N });
 
 // web-components/components/app-image.js
 var R = `
@@ -591,11 +597,11 @@ var R = `
    :host([variant="full"]) {
     --local-width: 100%;
   }
-`, N = ["width", "height", "src", "alt"], O = () => "<img data-forward />";
-e("app-image", { attrs: N, styles: R, template: O });
+`, O = ["width", "height", "src", "alt"], P = () => "<img data-forward />";
+o("app-image", { attrs: O, styles: R, template: P });
 
 // web-components/components/app-icon.js
-var P = `
+var j = `
   :host {
     --local-width: 3rem;
     --local-height: auto;
@@ -634,7 +640,7 @@ var P = `
 
 
 `, q = ["src", "alt"], I = () => '<img data-forward width="200" height="200"/>';
-e("app-icon", { attrs: q, styles: P, template: I });
+o("app-icon", { attrs: q, styles: j, template: I });
 
 // web-components/sections/coming-soon-intro.js
 var M = `
@@ -644,7 +650,7 @@ var M = `
         display: flex;
         justify-content: space-between;
 
-        @media (max-width: ${r}) {
+        @media (max-width: ${a}) {
           flex-direction: column;
           gap: 3rem;
         }
@@ -665,28 +671,28 @@ var M = `
     margin: 0;
   }
 `, X = { name: String, img: String, alt: String }, G = ({
-  name: t = "Name",
-  img: o = "./assets/images/coming-soon.jpg",
+  name: e = "Name",
+  img: t = "./assets/images/coming-soon.jpg",
   alt: i = "Coming Soon"
 }) => `
   <section>
       <div>
         <hgroup>
           <p>Coming Soon</p>
-          <h1>${t}</h1>
+          <h1>${e}</h1>
         </hgroup>
 
         <app-icon
           variant="large"
-          src=${a("./assets/icons/cuckoo-clock.svg")}
+          src=${r("./assets/icons/cuckoo-clock.svg")}
           alt="Cuckoo Cock Logo"
         ></app-icon>
       </div>
 
-      <app-image variant="large" src=${a(o)} alt=${i}></app-image>
+      <app-image variant="large" src=${r(t)} alt=${i}></app-image>
   </section>
 `;
-e("section-coming-soon-intro", { props: X, styles: M, template: G });
+o("section-coming-soon-intro", { props: X, styles: M, template: G });
 
 // web-components/components/what-i-deliver.js
 var D = `
@@ -708,7 +714,7 @@ var D = `
     overflow: scroll;
     box-sizing: border-box; 
 
-    @media (max-width: ${d}) {
+    @media (max-width: ${m}) {
       width: 100%;
     }
   }
@@ -729,18 +735,18 @@ var D = `
     }
 `, J = {
   delivers: Array
-}, K = ({ delivers: t }) => `
+}, K = ({ delivers: e }) => `
   <h3>What I deliver</h3>
   <ol>
-    ${t.map((o) => `
+    ${e.map((t) => `
         <li>
-          <app-icon variant="medium" src=${a(o.icon)} alt=${o.alt}></app-icon>
-          <p>${o.name}</p>
+          <app-icon variant="medium" src=${r(t.icon)} alt=${t.alt}></app-icon>
+          <p>${t.name}</p>
         </li>
       `).join("")}
   </ol>
 `;
-e("what-i-deliver", { props: J, styles: D, template: K });
+o("what-i-deliver", { props: J, styles: D, template: K });
 
 // web-components/sections/user-interfaces/intro.js
 var Q = `
@@ -802,7 +808,7 @@ var Q = `
 })}'></what-i-deliver>
     </section>
 `;
-e("section-user-interfaces-intro", { styles: Q, template: W });
+o("section-user-interfaces-intro", { styles: Q, template: W });
 
 // web-components/components/section-title.js
 var Y = `
@@ -836,19 +842,19 @@ var Y = `
       display: none;
     }
   }
-`, Z = { name: String, img: String, alt: String }, V = ({ name: t, img: o = "", alt: i = "" }) => `
-    <h2>${t}</h2>
+`, Z = { name: String, img: String, alt: String }, V = ({ name: e, img: t = "", alt: i = "" }) => `
+    <h2>${e}</h2>
     <img
-        src=${a(o)}
+        src=${r(t)}
         alt=${i}
         height="36"
         width="76"
     />
 `;
-e("section-title", { props: Z, styles: Y, template: V });
+o("section-title", { props: Z, styles: Y, template: V });
 
 // web-components/sections/user-interfaces/workflow.js
-var ee = `
+var oo = `
   :host {
     display: block;
   }
@@ -859,7 +865,7 @@ var ee = `
   }
 
 
-`, te = `
+`, eo = `
   <section>
     <section-title
         props='${JSON.stringify({
@@ -872,10 +878,10 @@ var ee = `
      <p>Coming Soon</p>
 </section>
 `;
-e("section-user-interfaces-workflow", { styles: ee, template: te });
+o("section-user-interfaces-workflow", { styles: oo, template: eo });
 
 // web-components/components/app-badge.js
-var oe = `
+var to = `
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -904,36 +910,27 @@ var oe = `
     --local-bg: #a36aa5;
      --local-border: 1px solid var( --local-color);
   }
-`, ae = { name: String }, re = ({ name: t }) => `${t}`;
-e("app-badge", { props: ae, styles: oe, template: re });
+`, ro = { name: String }, ao = ({ name: e }) => `${e}`;
+o("app-badge", { props: ro, styles: to, template: ao });
 
-// web-components/components/capabilities-item.js
-var ie = `
+// web-components/components/more-capabilities-item.js
+var io = `
   :host {
     display: flex;
-    gap: 2rem;
-    padding-block: 3rem;
-    padding-inline: 5rem;
-    justify-content: space-between;
     align-items: center;
     border: 1px dashed var(--color-text);
 
-    @media (max-width: ${d}) {
-      justify-content: start;
+     width: fit-content;
+      aspect-ratio: 1 / 1;
+      border-radius: 50%;
+      overflow: hidden;
+      padding: 4rem;
+      justify-content: center;
+
+    @media (max-width: ${a}) {
       flex-direction: column;
-      padding: 0;
       padding-inline: 2rem;
       padding-block: 2rem;
-      align-items: start;
-    }
-  }
-
-  :host([variant="borderless"]) {
-    border: none;
-    padding: 0;
-
-    h3 {
-      font-size: var(--size-body);
     }
   }
 
@@ -948,92 +945,37 @@ var ie = `
     text-transform: uppercase;
   }
 
-  h3 {
-    font-size: var(--size-heading);
-    font-weight: var(--font-regular);
-    margin-bottom: 0.5rem;
-  }
-
-  ol {
-      margin: 0;
-      list-style: none;
-      padding: 0;
-      display: flex;
-      gap: 4rem;
-      width: fit-content;
-      overflow: scroll;
-
-      @media (max-width: ${d}) {
-        width: 100%;
-      }
-    }
-
-    li {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-width: 9ch;
-
-    p {
-        margin: 0;
-        font-size: var(--size-small);
-    }
-  }
-
     article {
-      @media (max-width: ${d}) {
+        @media (max-width: ${m}) {
         width: 100%;
         display: flex;
         justify-content: space-between;
-      }
+        }
     }
 
-    :host([variant="no-list"]) {
-      width: fit-content;
-      aspect-ratio: 1 / 1;
-      border-radius: 50%;
-      overflow: hidden;
-      padding: 4rem;
-      justify-content: center;
-
-      h3 {
+    h3 {
         font-size: var(--size-body);
         font-weight: var(--font-regular);
         margin-bottom: 0.5rem;
-      }
-
-      ol {
-        display: none;
-      }
     }
-`, ne = {
+`, no = {
   title: String,
   subTitle: String,
-  href: String,
-  delivers: Array
-}, le = ({ title: t, subTitle: o, href: i, delivers: c }) => `
+  href: String
+}, lo = ({ title: e, subTitle: t, href: i }) => `
   <article>
     <hgroup>
-      <span>${o}</span>
-      <h3>${t}</h3>
+      <span>${t}</span>
+      <h3>${e}</h3>
     </hgroup>
+
     <app-link variant="plain" href=${n(i)}>→</app-link>
   </article>
-
-  <ol>
-    ${c.map((m) => `
-        <li>
-          <app-icon variant="medium" src=${a(m.icon)} alt=${m.alt}></app-icon>
-          <p>${m.name}</p>
-        </li>
-      `).join("")}
-  </ol>
 `;
-e("capabilities-item", { props: ne, styles: ie, template: le });
+o("more-capabilities-item", { props: no, styles: io, template: lo });
 
 // web-components/sections/more-capabilities.js
-var se = `
+var so = `
     section {
         width: 80%;
         margin-inline: auto;
@@ -1050,7 +992,7 @@ var se = `
         padding: 0;
         height: 48rem;
 
-        @media (max-width: ${r}) {
+        @media (max-width: ${a}) {
             position: static;
             height: auto;
             display: flex;
@@ -1078,7 +1020,7 @@ li:nth-child(3) {
     left: 22rem;
 }
 
-@media (max-width: ${r}) {
+@media (max-width: ${a}) {
   li:nth-child(1),
   li:nth-child(2),
   li:nth-child(3) {
@@ -1087,7 +1029,7 @@ li:nth-child(3) {
     left: auto;
   }
 }
-`, ce = () => `
+`, co = () => `
   <section>
       <section-title
         props='${JSON.stringify({
@@ -1099,32 +1041,32 @@ li:nth-child(3) {
             
     <ol>
         <li>
-           <capabilities-item variant="no-list" props='${JSON.stringify({
+           <more-capabilities-item props='${JSON.stringify({
   title: "Design System",
   subTitle: "Build",
   href: "/capabilities/design-system"
 })}'>
-            </capabilities-item>
+            </more-capabilities-item>
         </li>
         <li>
-            <capabilities-item variant="no-list" props='${JSON.stringify({
+            <more-capabilities-item props='${JSON.stringify({
   title: "User Interfaces",
   subTitle: "Design",
   href: "/capabilities/user-interfaces"
 })}'>
-            </capabilities-item>
+            </more-capabilities-item>
         </li>
         <li>
-            <capabilities-item variant="no-list" props='${JSON.stringify({
+            <more-capabilities-item props='${JSON.stringify({
   title: "Web Interfaces",
   subTitle: "Develop",
   href: "/capabilities/web-interfaces"
 })}'>
-            </capabilities-item>
+            </more-capabilities-item>
         </li>
     </ol>
   </section>
 `;
-e("section-more-capabilities", { styles: se, template: ce });
+o("section-more-capabilities", { styles: so, template: co });
 </script></body>
 </html>

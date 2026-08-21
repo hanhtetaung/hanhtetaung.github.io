@@ -54,7 +54,7 @@ function h() {
 function t(o) {
   return new URL(o, h()).href;
 }
-function r(o) {
+function i(o) {
   let a = o.replace(/^\//, ""), s = location.protocol === "file:", c = h();
   if (a === "")
     return s ? new URL("index.html", c).href : c.href;
@@ -163,6 +163,12 @@ var y = `
     border: 10px solid var(--color-secondary);
     pointer-events: none;
   }
+
+  :host([variant="color-primary"]) {
+    /* border-color: var(--color-primary); */
+    /* border-color: var(--color-tertiary); */
+    /* border-color: #a36aa5; */
+  }
 `, w = `
 `;
 e("app-frame", { styles: y, template: w });
@@ -248,7 +254,7 @@ var z = `
 e("app-logo", { attrs: S, styles: z, template: H });
 
 // web-components/breakpoints.js
-var i = "769px";
+var r = "769px";
 
 // web-components/sections/header.js
 var A = `
@@ -288,14 +294,14 @@ var A = `
     box-shadow: none;
   }
 
-  @media (max-width: ${i}) {
+  @media (max-width: ${r}) {
     .header__navigation {
       gap: 4rem;
     }
   }
 `, C = `
   <header>
-      <app-link variant="plain" href=${r("/")}>
+      <app-link variant="plain" href=${i("/")}>
         <app-logo
           src=${t("./assets/images/logo.avif")}
           alt="Logo"
@@ -306,16 +312,16 @@ var A = `
         <nav>
           <ul>
             <li>
-              <app-link variant="plain" href=${r("/")}>Home</app-link>
+              <app-link variant="plain" href=${i("/")}>Home</app-link>
             </li>
 
             <li>
-              <app-link variant="plain" href=${r("/about")}>About</app-link>
+              <app-link variant="plain" href=${i("/about")}>About</app-link>
             </li>
           </ul>
         </nav>
 
-        <app-link variant="primary" href=${r("/hire-me")}>
+        <app-link variant="primary" href=${i("/hire-me")}>
           Let's chat &#8629;
         </app-link>
       </div>
@@ -352,7 +358,7 @@ var R = [
    display: flex;
    gap: 5rem;
 
-   @media (max-width: ${i}) {
+   @media (max-width: ${r}) {
         flex-direction: column;
         gap: 3rem;
         margin-block: 2rem;
@@ -381,7 +387,7 @@ var R = [
     max-height: 12.5ch;
     overflow: scroll;
 
-    @media (max-width: ${i}) {
+    @media (max-width: ${r}) {
         max-height: 20ch;
     }
   }
@@ -397,7 +403,7 @@ var R = [
         <ol>
             ${R.map((o) => `
                 <li>
-                    <app-link variant="sitemap" href=${r(o.href)} >${o.name}</app-link>
+                    <app-link variant="sitemap" href=${i(o.href)} >${o.name}</app-link>
                 </li>
             `).join("")}
         </ol>
@@ -413,7 +419,7 @@ var T = `
     border-top: 1px solid var(--color-text);
     padding-top: 1rem;
 
-   @media (max-width: ${i}) {
+   @media (max-width: ${r}) {
         flex-direction: column-reverse;
         gap: 2rem;
         border: none;
@@ -424,7 +430,7 @@ var T = `
   p {
     margin: 0;
 
-    @media (max-width: ${i}) {
+    @media (max-width: ${r}) {
       border-top: 1px solid var(--color-text);
     padding-top: 1rem;
     }
@@ -446,7 +452,7 @@ var T = `
     text-transform: uppercase;
     
 
-    @media (max-width: ${i}) {
+    @media (max-width: ${r}) {
       display: inline-block;
       margin-bottom: 0.5rem;
     }
@@ -454,7 +460,7 @@ var T = `
 `, U = () => `
       <p>
         © Han Htet Aung 2026 |
-        <app-link href=${r("/credits")} variant="underline">Credits</app-link>
+        <app-link href=${i("/credits")} variant="underline">Credits</app-link>
       </p>
 
       <nav>
@@ -532,7 +538,7 @@ var B = `
     gap: 5rem;
   }
 
-  @media (max-width: ${i}) {
+  @media (max-width: ${r}) {
     article {
       display: block;
     }
@@ -621,7 +627,7 @@ var N = `
     justify-content: space-between;
     gap: 3rem;
 
-    @media (max-width: ${i}) {
+    @media (max-width: ${r}) {
       flex-direction: column;
     }
   }
@@ -930,7 +936,7 @@ var W = `
     grid-template-columns: 1fr 2.5fr;
 
 
-    @media (max-width: ${i}) {
+    @media (max-width: ${r}) {
         display: block;
     }
   }
@@ -1109,7 +1115,7 @@ var ae = `
     width: 80%;
     margin-inline: auto;
   }
-`, ie = `
+`, re = `
   <section>
     <section-title
         variant="text"
@@ -1130,14 +1136,14 @@ var ae = `
             interfaces.
           </p>
 
-          <app-link variant="underline" href=${r("/foundation-building-interfaces-at-scale")}>Read the article</app-link>
+          <app-link variant="underline" href=${i("/foundation-building-interfaces-at-scale")}>Read the article</app-link>
       </article>
   </section>
 `;
-e("section-mmo-one-design-system", { styles: ae, template: ie });
+e("section-mmo-one-design-system", { styles: ae, template: re });
 
 // web-components/sections/mmo/conclusion.js
-var re = `
+var ie = `
   :host {
     display: block;
   }
@@ -1164,6 +1170,6 @@ var re = `
     <p>The system continues to grow as users' needs change.</p>
   </section>
 `;
-e("section-mmo-conclusion", { styles: re, template: ne });
+e("section-mmo-conclusion", { styles: ie, template: ne });
 </script></body>
 </html>
