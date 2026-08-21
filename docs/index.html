@@ -48,33 +48,33 @@ function v() {
   let t = document.documentElement.dataset.base || "./";
   return new URL(t, location.href);
 }
-function i(t) {
+function a(t) {
   return new URL(t, v()).href;
 }
-function r(t) {
-  let o = t.replace(/^\//, ""), a = location.protocol === "file:", l = v();
+function n(t) {
+  let o = t.replace(/^\//, ""), r = location.protocol === "file:", l = v();
   if (o === "")
-    return a ? new URL("index.html", l).href : l.href;
-  return a ? new URL(`${o}.html`, l).href : new URL(o, l).href;
+    return r ? new URL("index.html", l).href : l.href;
+  return r ? new URL(`${o}.html`, l).href : new URL(o, l).href;
 }
 
 // web-components/fonts.js
 var b = `
   @font-face {
     font-family: "Chicle";
-    src: url("${i("assets/fonts/Chicle-Regular.woff2")}") format("woff2");
+    src: url("${a("assets/fonts/Chicle-Regular.woff2")}") format("woff2");
     font-weight: 400;
     font-display: swap;
   }
   @font-face {
     font-family: "StackSans";
-    src: url("${i("assets/fonts/StackSansText-Bold.woff2")}") format("woff2");
+    src: url("${a("assets/fonts/StackSansText-Bold.woff2")}") format("woff2");
     font-weight: 700;
     font-display: swap;
   }
   @font-face {
     font-family: "StackSans";
-    src: url("${i("assets/fonts/StackSansText-Regular.woff2")}") format("woff2");
+    src: url("${a("assets/fonts/StackSansText-Regular.woff2")}") format("woff2");
     font-weight: 400;
     font-display: swap;
   }
@@ -101,8 +101,8 @@ function y(t, o) {
     return Number(t);
   return t;
 }
-function e(t, { props: o = {}, attrs: a = [], styles: l = "", template: s }) {
-  let h = ["props", ...a];
+function e(t, { props: o = {}, attrs: r = [], styles: l = "", template: s }) {
+  let h = ["props", ...r];
 
   class d extends HTMLElement {
     static observedAttributes = h;
@@ -131,12 +131,12 @@ function e(t, { props: o = {}, attrs: a = [], styles: l = "", template: s }) {
       return f;
     }
     _applyForwardedAttrs() {
-      if (a.length === 0)
+      if (r.length === 0)
         return;
       let c = this.shadowRoot.querySelector("[data-forward]");
       if (!c)
         return;
-      for (let m of a)
+      for (let m of r)
         if (this.hasAttribute(m))
           c.setAttribute(m, this.getAttribute(m));
         else
@@ -251,7 +251,7 @@ var z = `
 e("app-logo", { attrs: I, styles: z, template: H });
 
 // web-components/breakpoints.js
-var n = "769px", p = "992px";
+var i = "769px", p = "992px";
 
 // web-components/sections/header.js
 var A = `
@@ -291,16 +291,16 @@ var A = `
     box-shadow: none;
   }
 
-  @media (max-width: ${n}) {
+  @media (max-width: ${i}) {
     .header__navigation {
       gap: 4rem;
     }
   }
 `, T = `
   <header>
-      <app-link variant="plain" href=${r("/")}>
+      <app-link variant="plain" href=${n("/")}>
         <app-logo
-          src=${i("./assets/images/logo.avif")}
+          src=${a("./assets/images/logo.avif")}
           alt="Logo"
         ></app-logo>
       </app-link>
@@ -309,16 +309,16 @@ var A = `
         <nav>
           <ul>
             <li>
-              <app-link variant="plain" href=${r("/")}>Home</app-link>
+              <app-link variant="plain" href=${n("/")}>Home</app-link>
             </li>
 
             <li>
-              <app-link variant="plain" href=${r("/about")}>About</app-link>
+              <app-link variant="plain" href=${n("/about")}>About</app-link>
             </li>
           </ul>
         </nav>
 
-        <app-link variant="primary" href=${r("/hire-me")}>
+        <app-link variant="primary" href=${n("/hire-me")}>
           Let's chat &#8629;
         </app-link>
       </div>
@@ -355,7 +355,7 @@ var O = [
    display: flex;
    gap: 5rem;
 
-   @media (max-width: ${n}) {
+   @media (max-width: ${i}) {
         flex-direction: column;
         gap: 3rem;
         margin-block: 2rem;
@@ -384,7 +384,7 @@ var O = [
     max-height: 12.5ch;
     overflow: scroll;
 
-    @media (max-width: ${n}) {
+    @media (max-width: ${i}) {
         max-height: 20ch;
     }
   }
@@ -400,7 +400,7 @@ var O = [
         <ol>
             ${O.map((t) => `
                 <li>
-                    <app-link variant="sitemap" href=${r(t.href)} >${t.name}</app-link>
+                    <app-link variant="sitemap" href=${n(t.href)} >${t.name}</app-link>
                 </li>
             `).join("")}
         </ol>
@@ -409,14 +409,14 @@ var O = [
 e("footer-nav", { styles: C, template: E });
 
 // web-components/components/footer-copyright.js
-var P = `
+var B = `
   :host {
    display: flex;
     justify-content: space-between;
     border-top: 1px solid var(--color-text);
     padding-top: 1rem;
 
-   @media (max-width: ${n}) {
+   @media (max-width: ${i}) {
         flex-direction: column-reverse;
         gap: 2rem;
         border: none;
@@ -427,7 +427,7 @@ var P = `
   p {
     margin: 0;
 
-    @media (max-width: ${n}) {
+    @media (max-width: ${i}) {
       border-top: 1px solid var(--color-text);
     padding-top: 1rem;
     }
@@ -449,15 +449,15 @@ var P = `
     text-transform: uppercase;
     
 
-    @media (max-width: ${n}) {
+    @media (max-width: ${i}) {
       display: inline-block;
       margin-bottom: 0.5rem;
     }
   }
-`, B = () => `
+`, P = () => `
       <p>
         © Han Htet Aung 2026 |
-        <app-link href=${r("/credits")} variant="underline">Credits</app-link>
+        <app-link href=${n("/credits")} variant="underline">Credits</app-link>
       </p>
 
       <nav>
@@ -466,7 +466,7 @@ var P = `
               <li>
                   <app-link href="mailto:hanhtetaung.dev@gmail.com" variant="image">
                   <img
-                      src=${i("./assets/icons/email.svg")}
+                      src=${a("./assets/icons/email.svg")}
                       alt="Email Icon"
                   />
                   </app-link>
@@ -479,7 +479,7 @@ var P = `
                   variant="image"
                   >
                   <img
-                      src=${i("./assets/icons/github.svg")}
+                      src=${a("./assets/icons/github.svg")}
                       alt="Github Icon"
                   />
                   </app-link>
@@ -492,7 +492,7 @@ var P = `
                   variant="image"
                   >
                   <img
-                      src=${i("./assets/icons/linkedin.svg")}
+                      src=${a("./assets/icons/linkedin.svg")}
                       alt="Linkedin Icon"
                   />
                   </app-link>
@@ -500,7 +500,7 @@ var P = `
           </ul>
 </nav>
 `;
-e("footer-copyright", { styles: P, template: B });
+e("footer-copyright", { styles: B, template: P });
 
 // web-components/sections/footer.js
 var L = `
@@ -535,7 +535,7 @@ var L = `
     gap: 5rem;
   }
 
-  @media (max-width: ${n}) {
+  @media (max-width: ${i}) {
     article {
       display: block;
     }
@@ -551,12 +551,12 @@ var L = `
   hr {
     color: var(--color-secondary);
   }
-`, N = `
+`, U = `
   <footer>
       <article>
         <div>
           <app-logo
-            src="${i("./assets/images/logo.avif")}"
+            src="${a("./assets/images/logo.avif")}"
             alt="Logo"
           ></app-logo>
         
@@ -572,10 +572,10 @@ var L = `
       <footer-copyright></footer-copyright>
   </footer>
 `;
-e("section-footer", { styles: L, template: N });
+e("section-footer", { styles: L, template: U });
 
 // web-components/components/app-icon.js
-var U = `
+var D = `
   :host {
     --local-width: 3rem;
     --local-height: auto;
@@ -613,8 +613,8 @@ var U = `
   }
 
 
-`, D = ["src", "alt"], M = () => '<img data-forward width="200" height="200"/>';
-e("app-icon", { attrs: D, styles: U, template: M });
+`, N = ["src", "alt"], M = () => '<img data-forward width="200" height="200"/>';
+e("app-icon", { attrs: N, styles: D, template: M });
 
 // web-components/components/app-badge.js
 var j = `
@@ -677,7 +677,7 @@ var R = `
         ${t.map((o) => `
             <li>
             <app-icon
-                src=${i(o.src)}
+                src=${a(o.src)}
                 alt=${o.alt}
             ></app-icon>
             </li>
@@ -723,7 +723,7 @@ var q = [
       "three three";
 
 
-    @media (max-width: ${n}) {
+    @media (max-width: ${i}) {
         display: flex;
         flex-direction: column;
     }
@@ -778,7 +778,7 @@ var q = [
     max-width: 30ch;
     margin-left: auto;
 
-    @media (max-width: ${n}) {
+    @media (max-width: ${i}) {
       margin: 0;
     }
 
@@ -839,10 +839,10 @@ var q = [
       <ol>
         ${q.map((t) => `
           <li>
-            <app-link variant="image" href=${r(t.href)} >
+            <app-link variant="image" href=${n(t.href)} >
               ➶ ${t.name}
               <img
-                src=${i(t.src)}
+                src=${a(t.src)}
                 alt=${t.alt}
               />
             </app-link>
@@ -885,11 +885,11 @@ var Q = `
       display: none;
     }
   }
-`, V = { name: String, img: String, alt: String }, Y = ({ name: t, img: o = "", alt: a = "" }) => `
+`, V = { name: String, img: String, alt: String }, Y = ({ name: t, img: o = "", alt: r = "" }) => `
     <h2>${t}</h2>
     <img
-        src=${i(o)}
-        alt=${a}
+        src=${a(o)}
+        alt=${r}
         height="36"
         width="76"
     />
@@ -981,20 +981,20 @@ var Z = `
   subTitle: String,
   href: String,
   delivers: Array
-}, te = ({ title: t, subTitle: o, href: a, delivers: l }) => `
+}, te = ({ title: t, subTitle: o, href: r, delivers: l }) => `
     <article>
       <hgroup>
         <span>${o}</span>
         <h3>${t}</h3>
       </hgroup>
-          <app-link variant="underline" href=${r(a)}>Details ➶</app-link>
+          <app-link variant="underline" href=${n(r)}>Details ➶</app-link>
 
     </article>
 
     <ol>
       ${l.map((s) => `
           <li>
-            <app-icon variant="medium" src=${i(s.icon)} alt=${s.alt}></app-icon>
+            <app-icon variant="medium" src=${a(s.icon)} alt=${s.alt}></app-icon>
             <p>${s.name}</p>
           </li>
         `).join("")}
@@ -1179,16 +1179,16 @@ var le = `
   alt: String,
   href: String,
   comingSoon: Boolean
-}, ce = ({ title: t, img: o, alt: a, href: l, comingSoon: s }) => `
+}, ce = ({ title: t, img: o, alt: r, href: l, comingSoon: s }) => `
     <app-icon
         variant="medium"
         src=${o}
-        alt=${a}
+        alt=${r}
     ></app-icon>
 
     <article>
         <h3>${t}</h3>
-        ${s ? "<p>Coming soon</p>" : `<app-link variant="underline" href=${r(l)} target="_blank">Read More</app-link>`}
+        ${s ? "<p>Coming soon</p>" : `<app-link variant="underline" href=${n(l)} target="_blank">Read More</app-link>`}
     </article>
 
 `;
@@ -1240,16 +1240,21 @@ var de = `
     padding-inline: 5rem; 
     box-shadow: 0 4px 12px -4px rgba(0, 0, 0, 0.35);
     
-    @media (max-width: ${n}) {
+    @media (max-width: ${i}) {
       padding: 0;
-      padding-bottom: 5rem;
+      padding-block: 5rem;
       box-shadow: 0 1px 0px 0px rgba(0, 0, 0, 0.35);
     }
 
   }
 
+  p {
+    margin: 0;
+    margin-bottom: 1rem;
+  }
+
   :host([reverse]) {
-    flex-direction: row-reverse;
+    flex-direction: column;
   }
 
   img {
@@ -1258,7 +1263,7 @@ var de = `
     width: 100%;
     height: auto;
 
-    @media (max-width: ${n}) {
+    @media (max-width: ${i}) {
       margin-bottom: 1.5rem;
     }
   }
@@ -1309,21 +1314,21 @@ var de = `
 }, ge = ({
   image: t,
   alt: o,
-  title: a,
+  title: r,
   description: l,
   href: s,
   categories: h
 }) => `
     <img src="${t}" alt="${o}" />
     <div>
-      <h3>${a}</h3>
+      <h3>${r}</h3>
       <ul>
         ${h.map((d) => `
               <li><app-badge variant="primary" props='${JSON.stringify({ name: d })}'></app-badge></li>
             `).join("")}
       </ul>
       <p>${l}</p>
-      <app-link variant="secondary" href="${r(s)}">
+      <app-link variant="secondary" href="${n(s)}">
         View Case Study &#8599;
       </app-link>
     </div>
@@ -1361,7 +1366,7 @@ var fe = [
     categories: ["Research", "Web Design", "Web Development"],
     description: "A website for SKS SOLAR (SALES & SERVICES) COMPANY LIMITED to showcase its history, services and completed project.",
     href: "/work/sks-solar",
-    reverse: !1
+    reverse: !0
   }
 ], ve = `
   :host {
@@ -1376,9 +1381,26 @@ var fe = [
   ul {
     padding: 0;
     list-style: none;
+    gap: 5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    @media (max-width: ${i}) {
+      display: block;
+    }
+  }
+
+  li {
     display: flex;
     flex-direction: column;
-    gap: 10rem;
+    
+    > * {
+      flex-grow: 1; 
+    }
+  }
+
+  li:nth-child(1) {
+    grid-column: span 2;
   }
 `, ue = () => `
   <section>
@@ -1514,7 +1536,7 @@ var be = [
     margin-right: 2rem;
   }
 
-  @media (max-width: ${n}) {
+  @media (max-width: ${i}) {
     app-icon {
       display: none;
     }
@@ -1534,7 +1556,7 @@ var be = [
       ></section-title>
 
       <ul>
-        ${be.map(({ icon: t, alt: o, range: a, title: l, description: s }) => `
+        ${be.map(({ icon: t, alt: o, range: r, title: l, description: s }) => `
               <li>
                 <app-icon src="${t}" alt="${o}"></app-icon>
 
@@ -1545,8 +1567,8 @@ var be = [
 
                 <article>
                   <app-badge
-                    props='${JSON.stringify({ name: a })}'
-                    ${a === "Present" ? "" : 'variant="outline"'}
+                    props='${JSON.stringify({ name: r })}'
+                    ${r === "Present" ? "" : 'variant="outline"'}
                   ></app-badge>
 
                   <h3>${l}</h3>
@@ -1658,14 +1680,14 @@ var xe = [
       ></section-title>
 
       <ul>
-        ${xe.map(({ title: t, description: o, icon: a, alt: l }, s) => `
+        ${xe.map(({ title: t, description: o, icon: r, alt: l }, s) => `
               <li>
                 <article>
                   <h3><span>${s + 1}.</span> ${t}</h3>
                   <p>${o}</p>
                 </article>
 
-                <app-icon variant="large" src="${a}" alt="${l}"></app-icon>
+                <app-icon variant="large" src="${r}" alt="${l}"></app-icon>
               </li>
             `).join("")}
       </ul>
@@ -1740,7 +1762,7 @@ var Se = `
           and positive-minded, then I’m the one for you.
         </p>
 
-        <app-link variant="primary" href=${r("/hire-me")}>
+        <app-link variant="primary" href=${n("/hire-me")}>
           Let's chat
           <span>&#8629;</span>
         </a>

@@ -18,14 +18,19 @@ const styles = /* css */ `
     
     @media (max-width: ${PHONE}) {
       padding: 0;
-      padding-bottom: 5rem;
+      padding-block: 5rem;
       box-shadow: 0 1px 0px 0px rgba(0, 0, 0, 0.35);
     }
 
   }
 
+  p {
+    margin: 0;
+    margin-bottom: 1rem;
+  }
+
   :host([reverse]) {
-    flex-direction: row-reverse;
+    flex-direction: column;
   }
 
   img {
