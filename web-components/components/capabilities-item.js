@@ -9,13 +9,18 @@ const styles = /* css */ `
   :host {
     display: flex;
     border: 2px solid var(--color-text);
-    justify-content: start;
+    justify-content: space-between;
     flex-direction: column;
     padding: 0;
     padding-inline: 2rem;
     padding-block: 2rem;
     align-items: start;
-    min-width: 45rem;
+    min-width: 35rem;
+    height: 40rem;
+  }
+
+  div {
+    width: 100%;
   }
 
   :host([variant="borderless"]) {
@@ -27,7 +32,7 @@ const styles = /* css */ `
     }
   }
 
-  h3, p {
+  h3, h4, p {
     margin: 0;
   }
 
@@ -44,12 +49,23 @@ const styles = /* css */ `
     margin-bottom: 0.5rem;
   }
 
+
+  h4 {
+      font-weight: var(--font-regular);
+      font-size: var(--size-small);
+      margin-bottom: 1.5rem;
+      width: 100%;
+      padding-block: 0.6rem;
+      border-block: 1px dashed var(--color-text);
+    }
+
+
   ol {
       margin: 0;
       list-style: none;
       padding: 0;
       display: flex;
-      gap: 4rem;
+      gap: 1rem;
       width: fit-content;
       overflow: scroll;
 
@@ -73,11 +89,9 @@ const styles = /* css */ `
 
     article {
       width: 100%;
-      display: flex;
+      display: block;
       justify-content: space-between;
       margin-bottom: 2rem;
-      padding-bottom: 1rem;
-      border-bottom: 1px dashed var(--color-text);
     }
 
     app-link {
@@ -99,22 +113,24 @@ const template = ({ title, subTitle, href, delivers }) => /* html */ `
         <span>${subTitle}</span>
         <h3>${title}</h3>
       </hgroup>
-          <app-link variant="underline" href=${navHref(href)}>Details ➶</app-link>
-
+      <app-link variant="underline" href=${navHref(href)}>Details ➶</app-link>
     </article>
 
-    <ol>
-      ${delivers
-        .map(
-          (d) => /*html*/ `
-          <li>
-            <app-icon variant="medium" src=${asset(d.icon)} alt=${d.alt}></app-icon>
-            <p>${d.name}</p>
-          </li>
-        `,
-        )
-        .join("")}
-    </ol>
+    <div>
+      <h4>Deliver</h4>
+      <ol>
+        ${delivers
+          .map(
+            (d) => /*html*/ `
+            <li>
+              <app-icon variant="medium" src=${asset(d.icon)} alt=${d.alt}></app-icon>
+              <p>${d.name}</p>
+            </li>
+          `,
+          )
+          .join("")}
+      </ol>
+    </div>
 
 `;
 

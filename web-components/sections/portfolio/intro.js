@@ -75,7 +75,7 @@ const template = /* html */ `
           <p>Idea → Website</p>
 
         <app-link variant="secondary" href=${navHref("https://hanhtetaung.dev/")} target="_blank">
-          View Live Website
+          Visit ➶
         </app-link>
       </article>
   </section>

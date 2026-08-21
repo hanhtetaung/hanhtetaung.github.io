@@ -41,7 +41,7 @@ const template = /* html */ `
     </p>
 
     <app-link variant="secondary" href="https://hanhtetaung.dev/" target="_blank">
-      View Live Website
+      Visit ➶
     </app-link>
 
     <ul>

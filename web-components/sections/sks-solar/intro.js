@@ -73,7 +73,7 @@ const template = /* html */ `
       <p>Revamp Website</p>
 
       <app-link variant="secondary" href="https://skssolarmyanmar.com/" target="_blank">
-        View Live Website
+        Visit ➶
       </app-link>
     </article>
   </section>

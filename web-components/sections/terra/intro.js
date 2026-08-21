@@ -74,7 +74,7 @@ const template = /* html */ `
         variant="secondary"
         href=${navHref("/terra")}
         target="_blank"
-        >View Live Website</app-link>
+        >Visit ➶</app-link>
     </article>
   </section>
 `;
