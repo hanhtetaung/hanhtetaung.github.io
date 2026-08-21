@@ -3,7 +3,6 @@ import "../components/section-title.js";
 import "../components/app-badge.js";
 import "../components/app-icon.js";
 import "../components/capabilities-item.js";
-import { TABLE } from "../breakpoints.js";
 
 const styles = /* css */ `
   section {
@@ -24,13 +23,8 @@ const styles = /* css */ `
 ol {
     padding: 0;
     display: flex;
-    flex-direction: column;
     gap: 5rem;
-
-    @media (max-width: ${TABLE}) {
-      grid-template-columns: 1fr;
-      border: none;
-    }
+    overflow: scroll;
   }
 `;
 

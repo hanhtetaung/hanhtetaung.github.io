@@ -9,6 +9,12 @@ const styles = /* css */ `
     border: 10px solid var(--color-secondary);
     pointer-events: none;
   }
+
+  :host([variant="color-primary"]) {
+    /* border-color: var(--color-primary); */
+    /* border-color: var(--color-tertiary); */
+    /* border-color: #a36aa5; */
+  }
 `;
 
 const template = /* html */ `
