@@ -21,9 +21,10 @@
     ></script>
     
   <style>/* main.css */
-:root{--color-bg-primary:#fff5e8;--color-bg-secondary:#fffaf4;--color-secondary:#05798e;--color-primary:#b71f57;--color-tertiary:#1c4286;--color-text:#000;--color-transparent:#0000;--font-heading:"Chicle",serif;--font-body:"StackSans",sans-serif;--font-regular:400;--font-bold:700;--ratio:1.6;--size-body:2rem;--size-small:calc(var(--size-body)/var(--ratio));--size-heading:calc(var(--size-body)*var(--ratio));--size-title:calc(var(--size-heading)*var(--ratio));--size-display:calc(var(--size-title)*var(--ratio));font-size:10px;@media (width<=769px){&{--size-body:1.6rem}}}body{background:var(--color-bg-primary);font-family:var(--font-body);font-weight:var(--font-regular);font-size:var(--size-body)}main>*{background:var(--color-bg-primary);display:block;padding-block-start:10rem;padding-block-end:10rem}main>:nth-child(2n){background:var(--color-bg-secondary)}
+:root{--color-bg-primary:#fff5e8;--color-bg-secondary:#fffaf4;--color-secondary:#05798e;--color-primary:#b71f57;--color-tertiary:#1c4286;--color-text:#000;--color-transparent:#0000;--font-heading:"Chicle",serif;--font-body:"StackSans",sans-serif;--font-regular:400;--font-bold:700;--ratio:1.6;--size-body:2rem;--size-small:calc(var(--size-body)/var(--ratio));--size-heading:calc(var(--size-body)*var(--ratio));--size-title:calc(var(--size-heading)*var(--ratio));--size-display:calc(var(--size-title)*var(--ratio));font-size:10px;@media (width<=769px){&{--size-body:1.6rem}}}body{background:var(--color-bg-primary);font-family:var(--font-body);font-weight:var(--font-regular);font-size:var(--size-body);position:relative;margin:0}main>*{background:var(--color-bg-primary);display:block;padding-block-start:10rem;padding-block-end:10rem}main>:nth-child(2n){background:var(--color-bg-secondary)}
 </style></head>
   <body>
+    <app-frame></app-frame>
     <section-header></section-header>
 
     <main>
@@ -106,7 +107,7 @@ function v(o, a) {
 function e(o, { props: a = {}, attrs: s = [], styles: c = "", template: m }) {
   let u = ["props", ...s];
 
-  class p extends HTMLElement {
+  class d extends HTMLElement {
     static observedAttributes = u;
     constructor() {
       super();
@@ -128,8 +129,8 @@ function e(o, { props: a = {}, attrs: s = [], styles: c = "", template: m }) {
           n = {};
         }
       let f = {};
-      for (let d of Object.keys(a))
-        f[d] = v(n[d], a[d]);
+      for (let p of Object.keys(a))
+        f[p] = v(n[p], a[p]);
       return f;
     }
     _applyForwardedAttrs() {
@@ -149,11 +150,25 @@ function e(o, { props: a = {}, attrs: s = [], styles: c = "", template: m }) {
       this.shadowRoot.innerHTML = `<style>${c}</style>${l}`, this._applyForwardedAttrs();
     }
   }
-  customElements.define(o, p);
+  customElements.define(o, d);
 }
 
-// web-components/components/app-link.js
+// web-components/components/app-frame.js
 var y = `
+  :host {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 10;
+    border: 10px solid var(--color-secondary);
+    pointer-events: none;
+  }
+`, w = `
+`;
+e("app-frame", { styles: y, template: w });
+
+// web-components/components/app-link.js
+var k = `
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -214,13 +229,13 @@ var y = `
        content: "➶";
      }
   }
-`, w = ["href", "target", "rel", "download"], k = `
+`, x = ["href", "target", "rel", "download"], $ = `
   <a data-forward><slot></slot></a>
 `;
-e("app-link", { attrs: w, styles: y, template: k });
+e("app-link", { attrs: x, styles: k, template: $ });
 
 // web-components/components/app-logo.js
-var x = `
+var z = `
   :host {
     display: block;
   }
@@ -229,16 +244,18 @@ var x = `
     max-height: 7rem;
     width: auto;
   }
-`, $ = ["width", "height", "src", "alt"], z = () => "<img data-forward />";
-e("app-logo", { attrs: $, styles: x, template: z });
+`, S = ["width", "height", "src", "alt"], H = () => "<img data-forward />";
+e("app-logo", { attrs: S, styles: z, template: H });
 
 // web-components/breakpoints.js
 var i = "769px";
 
 // web-components/sections/header.js
-var S = `
+var A = `
   :host {
     display: block;
+    margin-top: 1rem;
+    background: var(--color-bg-primary);
   }
 
   header {
@@ -276,7 +293,7 @@ var S = `
       gap: 4rem;
     }
   }
-`, H = `
+`, C = `
   <header>
       <app-link variant="plain" href=${r("/")}>
         <app-logo
@@ -304,10 +321,10 @@ var S = `
       </div>
   </header>
 `;
-e("section-header", { template: H, styles: S });
+e("section-header", { template: C, styles: A });
 
 // web-components/components/footer-nav.js
-var A = [
+var R = [
   { href: "/", name: "Home" },
   { href: "/about", name: "About" },
   { href: "/credits", name: "Credits" },
@@ -326,7 +343,7 @@ var A = [
     href: "/writings/foundation-building-interfaces-at-scale",
     name: "Foundation"
   }
-], C = `
+], E = `
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -373,12 +390,12 @@ var A = [
     margin-right: 5rem;
     margin-bottom: 0.3rem;
   }
-`, R = () => `
+`, O = () => `
     <nav>
         <span>Sitemap</span>
 
         <ol>
-            ${A.map((o) => `
+            ${R.map((o) => `
                 <li>
                     <app-link variant="sitemap" href=${r(o.href)} >${o.name}</app-link>
                 </li>
@@ -386,10 +403,10 @@ var A = [
         </ol>
     </nav>
 `;
-e("footer-nav", { styles: C, template: R });
+e("footer-nav", { styles: E, template: O });
 
 // web-components/components/footer-copyright.js
-var E = `
+var T = `
   :host {
    display: flex;
     justify-content: space-between;
@@ -434,7 +451,7 @@ var E = `
       margin-bottom: 0.5rem;
     }
   }
-`, O = () => `
+`, U = () => `
       <p>
         © Han Htet Aung 2026 |
         <app-link href=${r("/credits")} variant="underline">Credits</app-link>
@@ -480,10 +497,10 @@ var E = `
           </ul>
 </nav>
 `;
-e("footer-copyright", { styles: E, template: O });
+e("footer-copyright", { styles: T, template: U });
 
 // web-components/sections/footer.js
-var T = `
+var B = `
   :host {
     --local-bg-color: var(--color-bg-secondary);
 
@@ -531,7 +548,7 @@ var T = `
   hr {
     color: var(--color-secondary);
   }
-`, U = `
+`, P = `
   <footer>
       <article>
         <div>
@@ -552,10 +569,10 @@ var T = `
       <footer-copyright></footer-copyright>
   </footer>
 `;
-e("section-footer", { styles: T, template: U });
+e("section-footer", { styles: B, template: P });
 
 // web-components/components/app-image.js
-var B = `
+var _ = `
   :host {
     --local-width: 5rem;
     --local-heigth: auto;
@@ -586,11 +603,11 @@ var B = `
    :host([variant="full"]) {
     --local-width: 100%;
   }
-`, P = ["width", "height", "src", "alt"], _ = () => "<img data-forward />";
-e("app-image", { attrs: P, styles: B, template: _ });
+`, F = ["width", "height", "src", "alt"], L = () => "<img data-forward />";
+e("app-image", { attrs: F, styles: _, template: L });
 
 // web-components/sections/mmo/intro.js
-var F = `
+var N = `
   :host {
     display: block;
   }
@@ -634,7 +651,7 @@ var F = `
     padding: 0;
     padding-inline: 2rem;
   }
-`, L = `
+`, q = `
   <section>
     <app-image
     variant="large"
@@ -667,10 +684,10 @@ var F = `
       </article>
   </section>
 `;
-e("section-mmo-intro", { styles: F, template: L });
+e("section-mmo-intro", { styles: N, template: q });
 
 // web-components/components/section-title.js
-var N = `
+var M = `
   :host {
     display: flex;
     align-items: center;
@@ -701,7 +718,7 @@ var N = `
       display: none;
     }
   }
-`, q = { name: String, img: String, alt: String }, M = ({ name: o, img: a = "", alt: s = "" }) => `
+`, D = { name: String, img: String, alt: String }, I = ({ name: o, img: a = "", alt: s = "" }) => `
     <h2>${o}</h2>
     <img
         src=${t(a)}
@@ -710,10 +727,10 @@ var N = `
         width="76"
     />
 `;
-e("section-title", { props: q, styles: N, template: M });
+e("section-title", { props: D, styles: M, template: I });
 
 // web-components/sections/mmo/about.js
-var D = `
+var G = `
   :host {
     display: block;
   }
@@ -722,7 +739,7 @@ var D = `
     width: 80%;
     margin-inline: auto;
   }
-`, I = `
+`, X = `
   <section>
     <section-title
         variant="text"
@@ -739,10 +756,10 @@ var D = `
       </article>
   </section>
 `;
-e("section-mmo-about", { styles: D, template: I });
+e("section-mmo-about", { styles: G, template: X });
 
 // web-components/sections/mmo/voices-from-field.js
-var G = `
+var K = `
   :host {
     display: block;
   }
@@ -768,7 +785,7 @@ var G = `
     font-weight: var(--font-bold);
     text-transform: uppercase;
   }
-`, X = `
+`, J = `
   <section>
 
   <section-title
@@ -805,10 +822,10 @@ var G = `
         </ul>
   </section>
 `;
-e("section-mmo-voices-from-field", { styles: G, template: X });
+e("section-mmo-voices-from-field", { styles: K, template: J });
 
 // web-components/sections/mmo/designing-workflow.js
-var K = `
+var Q = `
   :host {
     display: block;
   }
@@ -845,7 +862,7 @@ var K = `
   article {
     margin-bottom: 5rem;
   }
-`, J = `
+`, V = `
   <section>
     <section-title
         variant="text"
@@ -904,10 +921,10 @@ var K = `
       </article>
   </section>
 `;
-e("section-mmo-designing-workflow", { styles: K, template: J });
+e("section-mmo-designing-workflow", { styles: Q, template: V });
 
 // web-components/components/app-article-paragraph.js
-var Q = `
+var W = `
   :host {
     display: grid;
     grid-template-columns: 1fr 2.5fr;
@@ -929,17 +946,17 @@ var Q = `
   :host([variant="block"]) {
     display: block;
   }
-`, V = { title: String }, W = ({ title: o }) => `
+`, Y = { title: String }, Z = ({ title: o }) => `
         <h3>${o}</h3>
 
         <article>
             <slot></slot>
         </article>
 `;
-e("app-article-paragraph", { props: V, styles: Q, template: W });
+e("app-article-paragraph", { props: Y, styles: W, template: Z });
 
 // web-components/sections/mmo/building-interfaces.js
-var Y = `
+var j = `
   :host {
     display: block;
   }
@@ -963,7 +980,7 @@ var Y = `
     border-top: 1px dashed var(--color-text);
     padding-top: 5rem;
   }
-`, Z = `
+`, ee = `
   <section>
     <section-title
       variant="text"
@@ -1044,10 +1061,10 @@ var Y = `
     </ul>
   </section>
 `;
-e("section-mmo-building-interfaces", { styles: Y, template: Z });
+e("section-mmo-building-interfaces", { styles: j, template: ee });
 
 // web-components/sections/mmo/multiple-workflows.js
-var j = `
+var te = `
   :host {
     display: block;
   }
@@ -1065,7 +1082,7 @@ var j = `
     display: flex;
     flex-direction: column;
   }
-`, ee = `
+`, oe = `
   <section>
 
   <section-title
@@ -1080,10 +1097,10 @@ var j = `
         </ul>
   </section>
 `;
-e("section-mmo-multiple-workflows", { styles: j, template: ee });
+e("section-mmo-multiple-workflows", { styles: te, template: oe });
 
 // web-components/sections/mmo/one-design-system.js
-var te = `
+var ae = `
   :host {
     display: block;
   }
@@ -1092,7 +1109,7 @@ var te = `
     width: 80%;
     margin-inline: auto;
   }
-`, oe = `
+`, ie = `
   <section>
     <section-title
         variant="text"
@@ -1117,10 +1134,10 @@ var te = `
       </article>
   </section>
 `;
-e("section-mmo-one-design-system", { styles: te, template: oe });
+e("section-mmo-one-design-system", { styles: ae, template: ie });
 
 // web-components/sections/mmo/conclusion.js
-var ae = `
+var re = `
   :host {
     display: block;
   }
@@ -1137,7 +1154,7 @@ var ae = `
     display: flex;
     flex-direction: column;
   }
-`, ie = `
+`, ne = `
   <section>
     <section-title
       variant="text"
@@ -1147,6 +1164,6 @@ var ae = `
     <p>The system continues to grow as users' needs change.</p>
   </section>
 `;
-e("section-mmo-conclusion", { styles: ae, template: ie });
+e("section-mmo-conclusion", { styles: re, template: ne });
 </script></body>
 </html>

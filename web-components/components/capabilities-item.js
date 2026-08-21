@@ -110,19 +110,10 @@ const props = {
   title: String,
   subTitle: String,
   href: String,
-  icon: String,
-  alt: String,
   delivers: Array,
 };
 
-const template = ({
-  title,
-  subTitle,
-  href,
-  delivers,
-  icon,
-  alt,
-}) => /* html */ `
+const template = ({ title, subTitle, href, delivers }) => /* html */ `
   <article>
     <hgroup>
       <span>${subTitle}</span>
