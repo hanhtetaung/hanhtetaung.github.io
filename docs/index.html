@@ -59,7 +59,7 @@ function r(t) {
 }
 
 // web-components/fonts.js
-var y = `
+var b = `
   @font-face {
     font-family: "Chicle";
     src: url("${i("assets/fonts/Chicle-Regular.woff2")}") format("woff2");
@@ -79,11 +79,11 @@ var y = `
     font-display: swap;
   }
 `, u = document.createElement("style");
-u.textContent = y;
+u.textContent = b;
 document.head.appendChild(u);
 
 // web-components/define.js
-function b(t, o) {
+function y(t, o) {
   if (t === void 0) {
     if (o === Array)
       return [];
@@ -118,33 +118,33 @@ function e(t, { props: o = {}, attrs: a = [], styles: l = "", template: s }) {
         this._render();
     }
     _getProps() {
-      let m = {}, p = this.getAttribute("props");
-      if (p)
+      let c = {}, m = this.getAttribute("props");
+      if (m)
         try {
-          m = JSON.parse(p);
+          c = JSON.parse(m);
         } catch {
-          m = {};
+          c = {};
         }
       let f = {};
       for (let g of Object.keys(o))
-        f[g] = b(m[g], o[g]);
+        f[g] = y(c[g], o[g]);
       return f;
     }
     _applyForwardedAttrs() {
       if (a.length === 0)
         return;
-      let m = this.shadowRoot.querySelector("[data-forward]");
-      if (!m)
+      let c = this.shadowRoot.querySelector("[data-forward]");
+      if (!c)
         return;
-      for (let p of a)
-        if (this.hasAttribute(p))
-          m.setAttribute(p, this.getAttribute(p));
+      for (let m of a)
+        if (this.hasAttribute(m))
+          c.setAttribute(m, this.getAttribute(m));
         else
-          m.removeAttribute(p);
+          c.removeAttribute(m);
     }
     _render() {
-      let m = this._getProps(), p = typeof s === "function" ? s(m) : s;
-      this.shadowRoot.innerHTML = `<style>${l}</style>${p}`, this._applyForwardedAttrs();
+      let c = this._getProps(), m = typeof s === "function" ? s(c) : s;
+      this.shadowRoot.innerHTML = `<style>${l}</style>${m}`, this._applyForwardedAttrs();
     }
   }
   customElements.define(t, d);
@@ -159,6 +159,12 @@ var w = `
     z-index: 10;
     border: 10px solid var(--color-secondary);
     pointer-events: none;
+  }
+
+  :host([variant="color-primary"]) {
+    /* border-color: var(--color-primary); */
+    /* border-color: var(--color-tertiary); */
+    /* border-color: #a36aa5; */
   }
 `, x = `
 `;
@@ -245,7 +251,7 @@ var z = `
 e("app-logo", { attrs: I, styles: z, template: H });
 
 // web-components/breakpoints.js
-var n = "769px", c = "992px";
+var n = "769px", p = "992px";
 
 // web-components/sections/header.js
 var A = `
@@ -290,7 +296,7 @@ var A = `
       gap: 4rem;
     }
   }
-`, O = `
+`, T = `
   <header>
       <app-link variant="plain" href=${r("/")}>
         <app-logo
@@ -318,10 +324,10 @@ var A = `
       </div>
   </header>
 `;
-e("section-header", { template: O, styles: A });
+e("section-header", { template: T, styles: A });
 
 // web-components/components/footer-nav.js
-var T = [
+var O = [
   { href: "/", name: "Home" },
   { href: "/about", name: "About" },
   { href: "/credits", name: "Credits" },
@@ -392,7 +398,7 @@ var T = [
         <span>Sitemap</span>
 
         <ol>
-            ${T.map((t) => `
+            ${O.map((t) => `
                 <li>
                     <app-link variant="sitemap" href=${r(t.href)} >${t.name}</app-link>
                 </li>
@@ -497,7 +503,7 @@ var P = `
 e("footer-copyright", { styles: P, template: B });
 
 // web-components/sections/footer.js
-var N = `
+var L = `
   :host {
     --local-bg-color: var(--color-bg-secondary);
 
@@ -545,7 +551,7 @@ var N = `
   hr {
     color: var(--color-secondary);
   }
-`, U = `
+`, N = `
   <footer>
       <article>
         <div>
@@ -566,10 +572,10 @@ var N = `
       <footer-copyright></footer-copyright>
   </footer>
 `;
-e("section-footer", { styles: N, template: U });
+e("section-footer", { styles: L, template: N });
 
 // web-components/components/app-icon.js
-var L = `
+var U = `
   :host {
     --local-width: 3rem;
     --local-height: auto;
@@ -607,11 +613,11 @@ var L = `
   }
 
 
-`, D = ["src", "alt"], j = () => '<img data-forward width="200" height="200"/>';
-e("app-icon", { attrs: D, styles: L, template: j });
+`, D = ["src", "alt"], M = () => '<img data-forward width="200" height="200"/>';
+e("app-icon", { attrs: D, styles: U, template: M });
 
 // web-components/components/app-badge.js
-var M = `
+var j = `
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -641,7 +647,7 @@ var M = `
      --local-border: 1px solid var( --local-color);
   }
 `, _ = { name: String }, F = ({ name: t }) => `${t}`;
-e("app-badge", { props: _, styles: M, template: F });
+e("app-badge", { props: _, styles: j, template: F });
 
 // web-components/components/app-toolkit.js
 var R = `
@@ -659,7 +665,7 @@ var R = `
 
   h4 {
     margin: 0;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     font-size: var(--size-small);
     /* font-weight: var(--font-regular); */
     color: var(--color-secondary);
@@ -753,7 +759,7 @@ var q = [
   }
 
   hgroup {
-    margin-bottom: 1rem;
+    margin-bottom: 3rem;
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -894,21 +900,14 @@ e("section-title", { props: V, styles: Q, template: Y });
 var Z = `
   :host {
     display: flex;
-    gap: 2rem;
-    padding-block: 3rem;
-    padding-inline: 5rem;
-    justify-content: space-between;
-    align-items: center;
-    border: 1px dashed var(--color-text);
-
-    @media (max-width: ${c}) {
-      justify-content: start;
-      flex-direction: column;
-      padding: 0;
-      padding-inline: 2rem;
-      padding-block: 2rem;
-      align-items: start;
-    }
+    border: 2px solid var(--color-text);
+    justify-content: start;
+    flex-direction: column;
+    padding: 0;
+    padding-inline: 2rem;
+    padding-block: 2rem;
+    align-items: start;
+    min-width: 45rem;
   }
 
   :host([variant="borderless"]) {
@@ -946,7 +945,7 @@ var Z = `
       width: fit-content;
       overflow: scroll;
 
-      @media (max-width: ${c}) {
+      @media (max-width: ${p}) {
         width: 100%;
       }
     }
@@ -965,30 +964,17 @@ var Z = `
   }
 
     article {
-      @media (max-width: ${c}) {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-      }
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px dashed var(--color-text);
     }
 
-    :host([variant="no-list"]) {
-      width: fit-content;
-      aspect-ratio: 1 / 1;
-      border-radius: 50%;
-      overflow: hidden;
-      padding: 4rem;
-      justify-content: center;
-
-      h3 {
-        font-size: var(--size-body);
-        font-weight: var(--font-regular);
-        margin-bottom: 0.5rem;
-      }
-
-      ol {
-        display: none;
-      }
+    app-link {
+      font-size: var(--size-small);
+      margin-top: 0.6rem;
     }
 `, ee = {
   title: String,
@@ -996,22 +982,24 @@ var Z = `
   href: String,
   delivers: Array
 }, te = ({ title: t, subTitle: o, href: a, delivers: l }) => `
-  <article>
-    <hgroup>
-      <span>${o}</span>
-      <h3>${t}</h3>
-    </hgroup>
-    <app-link variant="plain" href=${r(a)}>→</app-link>
-  </article>
+    <article>
+      <hgroup>
+        <span>${o}</span>
+        <h3>${t}</h3>
+      </hgroup>
+          <app-link variant="underline" href=${r(a)}>Details ➶</app-link>
 
-  <ol>
-    ${l.map((s) => `
-        <li>
-          <app-icon variant="medium" src=${i(s.icon)} alt=${s.alt}></app-icon>
-          <p>${s.name}</p>
-        </li>
-      `).join("")}
-  </ol>
+    </article>
+
+    <ol>
+      ${l.map((s) => `
+          <li>
+            <app-icon variant="medium" src=${i(s.icon)} alt=${s.alt}></app-icon>
+            <p>${s.name}</p>
+          </li>
+        `).join("")}
+    </ol>
+
 `;
 e("capabilities-item", { props: ee, styles: Z, template: te });
 
@@ -1035,13 +1023,8 @@ var oe = `
 ol {
     padding: 0;
     display: flex;
-    flex-direction: column;
     gap: 5rem;
-
-    @media (max-width: ${c}) {
-      grid-template-columns: 1fr;
-      border: none;
-    }
+    overflow: scroll;
   }
 `, ie = () => `
   <section>
@@ -1311,7 +1294,7 @@ var de = `
     border-radius: 4px;
   }
 
-  @media (max-width: ${c}) {
+  @media (max-width: ${p}) {
     :host {
       display: block;
     }
@@ -1422,7 +1405,7 @@ var fe = [
 e("section-case-studies", { styles: ve, template: ue });
 
 // web-components/sections/timeline.js
-var ye = [
+var be = [
   {
     icon: "./assets/icons/software-developer.svg",
     alt: "Software Developer Icon",
@@ -1451,7 +1434,7 @@ var ye = [
     title: "UX Designer",
     description: "Today, I've found my passion in UX design. Self-taught through research and hands-on practice, I design intuitive experiences by simplifying complex workflows."
   }
-], be = `
+], ye = `
   :host {
     display: block;
   }
@@ -1551,7 +1534,7 @@ var ye = [
       ></section-title>
 
       <ul>
-        ${ye.map(({ icon: t, alt: o, range: a, title: l, description: s }) => `
+        ${be.map(({ icon: t, alt: o, range: a, title: l, description: s }) => `
               <li>
                 <app-icon src="${t}" alt="${o}"></app-icon>
 
@@ -1574,7 +1557,7 @@ var ye = [
       </ul>
   </section>
 `;
-e("section-timeline", { styles: be, template: we });
+e("section-timeline", { styles: ye, template: we });
 
 // web-components/sections/why-hire-me.js
 var xe = [
@@ -1727,7 +1710,7 @@ var Se = `
     margin-top: 2rem;
   }
 
-  @media (max-width: ${c}) {
+  @media (max-width: ${p}) {
     img {
       display: none;
     }

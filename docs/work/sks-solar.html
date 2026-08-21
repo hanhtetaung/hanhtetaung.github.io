@@ -38,36 +38,36 @@
     <section-footer></section-footer>
   <script type="module">// web-components/asset.js
 function h() {
-  let o = document.documentElement.dataset.base || "./";
-  return new URL(o, location.href);
+  let a = document.documentElement.dataset.base || "./";
+  return new URL(a, location.href);
 }
-function a(o) {
-  return new URL(o, h()).href;
+function o(a) {
+  return new URL(a, h()).href;
 }
-function l(o) {
-  let r = o.replace(/^\//, ""), s = location.protocol === "file:", c = h();
-  if (r === "")
+function l(a) {
+  let t = a.replace(/^\//, ""), s = location.protocol === "file:", c = h();
+  if (t === "")
     return s ? new URL("index.html", c).href : c.href;
-  return s ? new URL(`${r}.html`, c).href : new URL(r, c).href;
+  return s ? new URL(`${t}.html`, c).href : new URL(t, c).href;
 }
 
 // web-components/fonts.js
 var v = `
   @font-face {
     font-family: "Chicle";
-    src: url("${a("assets/fonts/Chicle-Regular.woff2")}") format("woff2");
+    src: url("${o("assets/fonts/Chicle-Regular.woff2")}") format("woff2");
     font-weight: 400;
     font-display: swap;
   }
   @font-face {
     font-family: "StackSans";
-    src: url("${a("assets/fonts/StackSansText-Bold.woff2")}") format("woff2");
+    src: url("${o("assets/fonts/StackSansText-Bold.woff2")}") format("woff2");
     font-weight: 700;
     font-display: swap;
   }
   @font-face {
     font-family: "StackSans";
-    src: url("${a("assets/fonts/StackSansText-Regular.woff2")}") format("woff2");
+    src: url("${o("assets/fonts/StackSansText-Regular.woff2")}") format("woff2");
     font-weight: 400;
     font-display: swap;
   }
@@ -76,25 +76,25 @@ g.textContent = v;
 document.head.appendChild(g);
 
 // web-components/define.js
-function b(o, r) {
-  if (o === void 0) {
-    if (r === Array)
+function b(a, t) {
+  if (a === void 0) {
+    if (t === Array)
       return [];
-    if (r === Object)
+    if (t === Object)
       return {};
-    if (r === Boolean)
+    if (t === Boolean)
       return !1;
-    if (r === Number)
+    if (t === Number)
       return 0;
     return;
   }
-  if (r === Boolean)
-    return Boolean(o);
-  if (r === Number)
-    return Number(o);
-  return o;
+  if (t === Boolean)
+    return Boolean(a);
+  if (t === Number)
+    return Number(a);
+  return a;
 }
-function e(o, { props: r = {}, attrs: s = [], styles: c = "", template: m }) {
+function e(a, { props: t = {}, attrs: s = [], styles: c = "", template: m }) {
   let u = ["props", ...s];
 
   class p extends HTMLElement {
@@ -119,8 +119,8 @@ function e(o, { props: r = {}, attrs: s = [], styles: c = "", template: m }) {
           i = {};
         }
       let f = {};
-      for (let d of Object.keys(r))
-        f[d] = b(i[d], r[d]);
+      for (let d of Object.keys(t))
+        f[d] = b(i[d], t[d]);
       return f;
     }
     _applyForwardedAttrs() {
@@ -140,7 +140,7 @@ function e(o, { props: r = {}, attrs: s = [], styles: c = "", template: m }) {
       this.shadowRoot.innerHTML = `<style>${c}</style>${n}`, this._applyForwardedAttrs();
     }
   }
-  customElements.define(o, p);
+  customElements.define(a, p);
 }
 
 // web-components/components/app-frame.js
@@ -152,6 +152,12 @@ var y = `
     z-index: 10;
     border: 10px solid var(--color-secondary);
     pointer-events: none;
+  }
+
+  :host([variant="color-primary"]) {
+    /* border-color: var(--color-primary); */
+    /* border-color: var(--color-tertiary); */
+    /* border-color: #a36aa5; */
   }
 `, w = `
 `;
@@ -238,7 +244,7 @@ var S = `
 e("app-logo", { attrs: z, styles: S, template: H });
 
 // web-components/breakpoints.js
-var t = "769px";
+var r = "769px";
 
 // web-components/sections/header.js
 var A = `
@@ -278,7 +284,7 @@ var A = `
     box-shadow: none;
   }
 
-  @media (max-width: ${t}) {
+  @media (max-width: ${r}) {
     .header__navigation {
       gap: 4rem;
     }
@@ -287,7 +293,7 @@ var A = `
   <header>
       <app-link variant="plain" href=${l("/")}>
         <app-logo
-          src=${a("./assets/images/logo.avif")}
+          src=${o("./assets/images/logo.avif")}
           alt="Logo"
         ></app-logo>
       </app-link>
@@ -342,7 +348,7 @@ var E = [
    display: flex;
    gap: 5rem;
 
-   @media (max-width: ${t}) {
+   @media (max-width: ${r}) {
         flex-direction: column;
         gap: 3rem;
         margin-block: 2rem;
@@ -371,7 +377,7 @@ var E = [
     max-height: 12.5ch;
     overflow: scroll;
 
-    @media (max-width: ${t}) {
+    @media (max-width: ${r}) {
         max-height: 20ch;
     }
   }
@@ -385,9 +391,9 @@ var E = [
         <span>Sitemap</span>
 
         <ol>
-            ${E.map((o) => `
+            ${E.map((a) => `
                 <li>
-                    <app-link variant="sitemap" href=${l(o.href)} >${o.name}</app-link>
+                    <app-link variant="sitemap" href=${l(a.href)} >${a.name}</app-link>
                 </li>
             `).join("")}
         </ol>
@@ -403,7 +409,7 @@ var U = `
     border-top: 1px solid var(--color-text);
     padding-top: 1rem;
 
-   @media (max-width: ${t}) {
+   @media (max-width: ${r}) {
         flex-direction: column-reverse;
         gap: 2rem;
         border: none;
@@ -414,7 +420,7 @@ var U = `
   p {
     margin: 0;
 
-    @media (max-width: ${t}) {
+    @media (max-width: ${r}) {
       border-top: 1px solid var(--color-text);
     padding-top: 1rem;
     }
@@ -436,7 +442,7 @@ var U = `
     text-transform: uppercase;
     
 
-    @media (max-width: ${t}) {
+    @media (max-width: ${r}) {
       display: inline-block;
       margin-bottom: 0.5rem;
     }
@@ -453,7 +459,7 @@ var U = `
               <li>
                   <app-link href="mailto:hanhtetaung.dev@gmail.com" variant="image">
                   <img
-                      src=${a("./assets/icons/email.svg")}
+                      src=${o("./assets/icons/email.svg")}
                       alt="Email Icon"
                   />
                   </app-link>
@@ -466,7 +472,7 @@ var U = `
                   variant="image"
                   >
                   <img
-                      src=${a("./assets/icons/github.svg")}
+                      src=${o("./assets/icons/github.svg")}
                       alt="Github Icon"
                   />
                   </app-link>
@@ -479,7 +485,7 @@ var U = `
                   variant="image"
                   >
                   <img
-                      src=${a("./assets/icons/linkedin.svg")}
+                      src=${o("./assets/icons/linkedin.svg")}
                       alt="Linkedin Icon"
                   />
                   </app-link>
@@ -522,7 +528,7 @@ var F = `
     gap: 5rem;
   }
 
-  @media (max-width: ${t}) {
+  @media (max-width: ${r}) {
     article {
       display: block;
     }
@@ -543,7 +549,7 @@ var F = `
       <article>
         <div>
           <app-logo
-            src="${a("./assets/images/logo.avif")}"
+            src="${o("./assets/images/logo.avif")}"
             alt="Logo"
           ></app-logo>
         
@@ -610,7 +616,7 @@ var O = `
     justify-content: space-between;
     gap: 3rem;
 
-    @media (max-width: ${t}) {
+    @media (max-width: ${r}) {
       flex-direction: column;
     }
   }
@@ -641,7 +647,7 @@ var O = `
   <section>
     <app-image
       variant="full"
-      src=${a("./assets/images/case-study/skssolar/mockup.avif")}
+      src=${o("./assets/images/case-study/skssolar/mockup.avif")}
       alt="Final Product Screenshot"
       width="1692"
       height="886"
@@ -702,10 +708,10 @@ var I = `
       display: none;
     }
   }
-`, M = { name: String, img: String, alt: String }, D = ({ name: o, img: r = "", alt: s = "" }) => `
-    <h2>${o}</h2>
+`, M = { name: String, img: String, alt: String }, D = ({ name: a, img: t = "", alt: s = "" }) => `
+    <h2>${a}</h2>
     <img
-        src=${a(r)}
+        src=${o(t)}
         alt=${s}
         height="36"
         width="76"
@@ -771,7 +777,7 @@ var J = `
     grid-template-columns: 1fr 2.5fr;
 
 
-    @media (max-width: ${t}) {
+    @media (max-width: ${r}) {
         display: block;
     }
   }
@@ -787,8 +793,8 @@ var J = `
   :host([variant="block"]) {
     display: block;
   }
-`, Q = { title: String }, V = ({ title: o }) => `
-        <h3>${o}</h3>
+`, Q = { title: String }, V = ({ title: a }) => `
+        <h3>${a}</h3>
 
         <article>
             <slot></slot>
@@ -842,7 +848,7 @@ var Y = `
           </p>
           <app-image
             variant="medium"
-            src=${a("./assets/images/case-study/skssolar/inspiration.avif")}
+            src=${o("./assets/images/case-study/skssolar/inspiration.avif")}
             alt="Inspiration Collection"
             width="1398"
             height="1236"
@@ -859,7 +865,7 @@ var Y = `
           </p>
           <app-image
             variant="medium"
-            src=${a("./assets/images/case-study/skssolar/wireframe.avif")}
+            src=${o("./assets/images/case-study/skssolar/wireframe.avif")}
             alt="Wireframe Screenshot"
             width="1398"
             height="1366"
@@ -877,14 +883,14 @@ var Y = `
           </p>
           <app-image
             variant="medium"
-            src=${a("./assets/images/case-study/skssolar/design-foundation.avif")}
+            src=${o("./assets/images/case-study/skssolar/design-foundation.avif")}
             alt="Design Foundation Screenshot"
             width="1474"
             height="864"
           ></app-image>
           <app-image
             variant="medium"
-            src=${a("./assets/images/case-study/skssolar/final-design.avif")}
+            src=${o("./assets/images/case-study/skssolar/final-design.avif")}
             alt="Final Design"
             width="1402"
             height="1378"
@@ -930,7 +936,7 @@ var j = `
     padding: 0;
     gap: 3rem;
 
-    @media (max-width: ${t}) {
+    @media (max-width: ${r}) {
       flex-direction: column;
     }
   }
@@ -954,7 +960,7 @@ var j = `
       <li>
         <app-image
           variant="medium"
-          src=${a("./assets/images/case-study/skssolar/lighthouse.avif")}
+          src=${o("./assets/images/case-study/skssolar/lighthouse.avif")}
           alt="Lighthouse Photo"
           width="960"
           height="1028"
@@ -964,7 +970,7 @@ var j = `
        <li>
         <app-image
           variant="medium"
-          src=${a("./assets/images/case-study/skssolar/mockup.avif")}
+          src=${o("./assets/images/case-study/skssolar/mockup.avif")}
           alt="Mockup Photo"
           width="1692"
           height="886"

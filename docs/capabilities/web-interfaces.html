@@ -39,7 +39,7 @@ function g() {
   let o = document.documentElement.dataset.base || "./";
   return new URL(o, location.href);
 }
-function a(o) {
+function r(o) {
   return new URL(o, g()).href;
 }
 function n(o) {
@@ -53,19 +53,19 @@ function n(o) {
 var b = `
   @font-face {
     font-family: "Chicle";
-    src: url("${a("assets/fonts/Chicle-Regular.woff2")}") format("woff2");
+    src: url("${r("assets/fonts/Chicle-Regular.woff2")}") format("woff2");
     font-weight: 400;
     font-display: swap;
   }
   @font-face {
     font-family: "StackSans";
-    src: url("${a("assets/fonts/StackSansText-Bold.woff2")}") format("woff2");
+    src: url("${r("assets/fonts/StackSansText-Bold.woff2")}") format("woff2");
     font-weight: 700;
     font-display: swap;
   }
   @font-face {
     font-family: "StackSans";
-    src: url("${a("assets/fonts/StackSansText-Regular.woff2")}") format("woff2");
+    src: url("${r("assets/fonts/StackSansText-Regular.woff2")}") format("woff2");
     font-weight: 400;
     font-display: swap;
   }
@@ -74,7 +74,7 @@ v.textContent = b;
 document.head.appendChild(v);
 
 // web-components/define.js
-function w(o, t) {
+function y(o, t) {
   if (o === void 0) {
     if (t === Array)
       return [];
@@ -118,7 +118,7 @@ function e(o, { props: t = {}, attrs: i = [], styles: c = "", template: m }) {
         }
       let h = {};
       for (let d of Object.keys(t))
-        h[d] = w(l[d], t[d]);
+        h[d] = y(l[d], t[d]);
       return h;
     }
     _applyForwardedAttrs() {
@@ -142,7 +142,7 @@ function e(o, { props: t = {}, attrs: i = [], styles: c = "", template: m }) {
 }
 
 // web-components/components/app-frame.js
-var y = `
+var w = `
   :host {
     display: block;
     position: fixed;
@@ -151,9 +151,15 @@ var y = `
     border: 10px solid var(--color-secondary);
     pointer-events: none;
   }
+
+  :host([variant="color-primary"]) {
+    /* border-color: var(--color-primary); */
+    /* border-color: var(--color-tertiary); */
+    /* border-color: #a36aa5; */
+  }
 `, x = `
 `;
-e("app-frame", { styles: y, template: x });
+e("app-frame", { styles: w, template: x });
 
 // web-components/components/app-link.js
 var k = `
@@ -236,7 +242,7 @@ var S = `
 e("app-logo", { attrs: A, styles: S, template: H });
 
 // web-components/breakpoints.js
-var r = "769px", p = "992px";
+var a = "769px", p = "992px";
 
 // web-components/sections/header.js
 var C = `
@@ -276,7 +282,7 @@ var C = `
     box-shadow: none;
   }
 
-  @media (max-width: ${r}) {
+  @media (max-width: ${a}) {
     .header__navigation {
       gap: 4rem;
     }
@@ -285,7 +291,7 @@ var C = `
   <header>
       <app-link variant="plain" href=${n("/")}>
         <app-logo
-          src=${a("./assets/images/logo.avif")}
+          src=${r("./assets/images/logo.avif")}
           alt="Logo"
         ></app-logo>
       </app-link>
@@ -312,7 +318,7 @@ var C = `
 e("section-header", { template: T, styles: C });
 
 // web-components/components/footer-nav.js
-var B = [
+var E = [
   { href: "/", name: "Home" },
   { href: "/about", name: "About" },
   { href: "/credits", name: "Credits" },
@@ -331,7 +337,7 @@ var B = [
     href: "/writings/foundation-building-interfaces-at-scale",
     name: "Foundation"
   }
-], E = `
+], B = `
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -340,7 +346,7 @@ var B = [
    display: flex;
    gap: 5rem;
 
-   @media (max-width: ${r}) {
+   @media (max-width: ${a}) {
         flex-direction: column;
         gap: 3rem;
         margin-block: 2rem;
@@ -369,7 +375,7 @@ var B = [
     max-height: 12.5ch;
     overflow: scroll;
 
-    @media (max-width: ${r}) {
+    @media (max-width: ${a}) {
         max-height: 20ch;
     }
   }
@@ -383,7 +389,7 @@ var B = [
         <span>Sitemap</span>
 
         <ol>
-            ${B.map((o) => `
+            ${E.map((o) => `
                 <li>
                     <app-link variant="sitemap" href=${n(o.href)} >${o.name}</app-link>
                 </li>
@@ -391,7 +397,7 @@ var B = [
         </ol>
     </nav>
 `;
-e("footer-nav", { styles: E, template: L });
+e("footer-nav", { styles: B, template: L });
 
 // web-components/components/footer-copyright.js
 var j = `
@@ -401,7 +407,7 @@ var j = `
     border-top: 1px solid var(--color-text);
     padding-top: 1rem;
 
-   @media (max-width: ${r}) {
+   @media (max-width: ${a}) {
         flex-direction: column-reverse;
         gap: 2rem;
         border: none;
@@ -412,7 +418,7 @@ var j = `
   p {
     margin: 0;
 
-    @media (max-width: ${r}) {
+    @media (max-width: ${a}) {
       border-top: 1px solid var(--color-text);
     padding-top: 1rem;
     }
@@ -434,7 +440,7 @@ var j = `
     text-transform: uppercase;
     
 
-    @media (max-width: ${r}) {
+    @media (max-width: ${a}) {
       display: inline-block;
       margin-bottom: 0.5rem;
     }
@@ -451,7 +457,7 @@ var j = `
               <li>
                   <app-link href="mailto:hanhtetaung.dev@gmail.com" variant="image">
                   <img
-                      src=${a("./assets/icons/email.svg")}
+                      src=${r("./assets/icons/email.svg")}
                       alt="Email Icon"
                   />
                   </app-link>
@@ -464,7 +470,7 @@ var j = `
                   variant="image"
                   >
                   <img
-                      src=${a("./assets/icons/github.svg")}
+                      src=${r("./assets/icons/github.svg")}
                       alt="Github Icon"
                   />
                   </app-link>
@@ -477,7 +483,7 @@ var j = `
                   variant="image"
                   >
                   <img
-                      src=${a("./assets/icons/linkedin.svg")}
+                      src=${r("./assets/icons/linkedin.svg")}
                       alt="Linkedin Icon"
                   />
                   </app-link>
@@ -520,7 +526,7 @@ var _ = `
     gap: 5rem;
   }
 
-  @media (max-width: ${r}) {
+  @media (max-width: ${a}) {
     article {
       display: block;
     }
@@ -541,7 +547,7 @@ var _ = `
       <article>
         <div>
           <app-logo
-            src="${a("./assets/images/logo.avif")}"
+            src="${r("./assets/images/logo.avif")}"
             alt="Logo"
           ></app-logo>
         
@@ -560,7 +566,7 @@ var _ = `
 e("section-footer", { styles: _, template: F });
 
 // web-components/components/app-image.js
-var R = `
+var N = `
   :host {
     --local-width: 5rem;
     --local-heigth: auto;
@@ -591,8 +597,8 @@ var R = `
    :host([variant="full"]) {
     --local-width: 100%;
   }
-`, N = ["width", "height", "src", "alt"], O = () => "<img data-forward />";
-e("app-image", { attrs: N, styles: R, template: O });
+`, R = ["width", "height", "src", "alt"], O = () => "<img data-forward />";
+e("app-image", { attrs: R, styles: N, template: O });
 
 // web-components/components/app-icon.js
 var P = `
@@ -644,7 +650,7 @@ var M = `
         display: flex;
         justify-content: space-between;
 
-        @media (max-width: ${r}) {
+        @media (max-width: ${a}) {
           flex-direction: column;
           gap: 3rem;
         }
@@ -664,7 +670,7 @@ var M = `
   p {
     margin: 0;
   }
-`, X = { name: String, img: String, alt: String }, G = ({
+`, X = { name: String, img: String, alt: String }, D = ({
   name: o = "Name",
   img: t = "./assets/images/coming-soon.jpg",
   alt: i = "Coming Soon"
@@ -678,35 +684,28 @@ var M = `
 
         <app-icon
           variant="large"
-          src=${a("./assets/icons/cuckoo-clock.svg")}
+          src=${r("./assets/icons/cuckoo-clock.svg")}
           alt="Cuckoo Cock Logo"
         ></app-icon>
       </div>
 
-      <app-image variant="large" src=${a(t)} alt=${i}></app-image>
+      <app-image variant="large" src=${r(t)} alt=${i}></app-image>
   </section>
 `;
-e("section-coming-soon-intro", { props: X, styles: M, template: G });
+e("section-coming-soon-intro", { props: X, styles: M, template: D });
 
 // web-components/components/capabilities-item.js
-var D = `
+var G = `
   :host {
     display: flex;
-    gap: 2rem;
-    padding-block: 3rem;
-    padding-inline: 5rem;
-    justify-content: space-between;
-    align-items: center;
-    border: 1px dashed var(--color-text);
-
-    @media (max-width: ${p}) {
-      justify-content: start;
-      flex-direction: column;
-      padding: 0;
-      padding-inline: 2rem;
-      padding-block: 2rem;
-      align-items: start;
-    }
+    border: 2px solid var(--color-text);
+    justify-content: start;
+    flex-direction: column;
+    padding: 0;
+    padding-inline: 2rem;
+    padding-block: 2rem;
+    align-items: start;
+    min-width: 45rem;
   }
 
   :host([variant="borderless"]) {
@@ -763,30 +762,17 @@ var D = `
   }
 
     article {
-      @media (max-width: ${p}) {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-      }
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px dashed var(--color-text);
     }
 
-    :host([variant="no-list"]) {
-      width: fit-content;
-      aspect-ratio: 1 / 1;
-      border-radius: 50%;
-      overflow: hidden;
-      padding: 4rem;
-      justify-content: center;
-
-      h3 {
-        font-size: var(--size-body);
-        font-weight: var(--font-regular);
-        margin-bottom: 0.5rem;
-      }
-
-      ol {
-        display: none;
-      }
+    app-link {
+      font-size: var(--size-small);
+      margin-top: 0.6rem;
     }
 `, J = {
   title: String,
@@ -794,24 +780,26 @@ var D = `
   href: String,
   delivers: Array
 }, K = ({ title: o, subTitle: t, href: i, delivers: c }) => `
-  <article>
-    <hgroup>
-      <span>${t}</span>
-      <h3>${o}</h3>
-    </hgroup>
-    <app-link variant="plain" href=${n(i)}>→</app-link>
-  </article>
+    <article>
+      <hgroup>
+        <span>${t}</span>
+        <h3>${o}</h3>
+      </hgroup>
+          <app-link variant="underline" href=${n(i)}>Details ➶</app-link>
 
-  <ol>
-    ${c.map((m) => `
-        <li>
-          <app-icon variant="medium" src=${a(m.icon)} alt=${m.alt}></app-icon>
-          <p>${m.name}</p>
-        </li>
-      `).join("")}
-  </ol>
+    </article>
+
+    <ol>
+      ${c.map((m) => `
+          <li>
+            <app-icon variant="medium" src=${r(m.icon)} alt=${m.alt}></app-icon>
+            <p>${m.name}</p>
+          </li>
+        `).join("")}
+    </ol>
+
 `;
-e("capabilities-item", { props: J, styles: D, template: K });
+e("capabilities-item", { props: J, styles: G, template: K });
 
 // web-components/components/what-i-deliver.js
 var Q = `
@@ -859,7 +847,7 @@ var Q = `
   <ol>
     ${o.map((t) => `
         <li>
-          <app-icon variant="medium" src=${a(t.icon)} alt=${t.alt}></app-icon>
+          <app-icon variant="medium" src=${r(t.icon)} alt=${t.alt}></app-icon>
           <p>${t.name}</p>
         </li>
       `).join("")}
@@ -958,7 +946,7 @@ var ee = `
 `, oe = { name: String, img: String, alt: String }, te = ({ name: o, img: t = "", alt: i = "" }) => `
     <h2>${o}</h2>
     <img
-        src=${a(t)}
+        src=${r(t)}
         alt=${i}
         height="36"
         width="76"
@@ -967,7 +955,7 @@ var ee = `
 e("section-title", { props: oe, styles: ee, template: te });
 
 // web-components/components/app-toolkit.js
-var ae = `
+var re = `
   :host {
     display: block;
   }
@@ -982,26 +970,26 @@ var ae = `
 
   h4 {
     margin: 0;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     font-size: var(--size-small);
     /* font-weight: var(--font-regular); */
     color: var(--color-secondary);
     text-transform: uppercase;
   }
-`, re = { tools: Array }, ie = ({ tools: o }) => `
+`, ae = { tools: Array }, ie = ({ tools: o }) => `
     <h4>Toolkits</h4>
     <ul>
         ${o.map((t) => `
             <li>
             <app-icon
-                src=${a(t.src)}
+                src=${r(t.src)}
                 alt=${t.alt}
             ></app-icon>
             </li>
         `).join("")}
     </ul>
 `;
-e("app-toolkit", { props: re, styles: ae, template: ie });
+e("app-toolkit", { props: ae, styles: re, template: ie });
 
 // web-components/sections/web-interfaces/workflow.js
 var ne = `
@@ -1112,8 +1100,69 @@ var se = `
 `, ce = { name: String }, me = ({ name: o }) => `${o}`;
 e("app-badge", { props: ce, styles: se, template: me });
 
-// web-components/sections/more-capabilities.js
+// web-components/components/more-capabilities-item.js
 var pe = `
+  :host {
+    display: flex;
+    align-items: center;
+    border: 1px dashed var(--color-text);
+
+     width: fit-content;
+      aspect-ratio: 1 / 1;
+      border-radius: 50%;
+      overflow: hidden;
+      padding: 4rem;
+      justify-content: center;
+
+    @media (max-width: ${a}) {
+      flex-direction: column;
+      padding-inline: 2rem;
+      padding-block: 2rem;
+    }
+  }
+
+  h3, p {
+    margin: 0;
+  }
+
+  span {
+    color: var(--color-secondary);
+    font-weight: var(--font-bold);
+    font-size: var(--size-small);
+    text-transform: uppercase;
+  }
+
+    article {
+        @media (max-width: ${p}) {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        }
+    }
+
+    h3 {
+        font-size: var(--size-body);
+        font-weight: var(--font-regular);
+        margin-bottom: 0.5rem;
+    }
+`, de = {
+  title: String,
+  subTitle: String,
+  href: String
+}, fe = ({ title: o, subTitle: t, href: i }) => `
+  <article>
+    <hgroup>
+      <span>${t}</span>
+      <h3>${o}</h3>
+    </hgroup>
+
+    <app-link variant="plain" href=${n(i)}>→</app-link>
+  </article>
+`;
+e("more-capabilities-item", { props: de, styles: pe, template: fe });
+
+// web-components/sections/more-capabilities.js
+var he = `
     section {
         width: 80%;
         margin-inline: auto;
@@ -1130,7 +1179,7 @@ var pe = `
         padding: 0;
         height: 48rem;
 
-        @media (max-width: ${r}) {
+        @media (max-width: ${a}) {
             position: static;
             height: auto;
             display: flex;
@@ -1158,7 +1207,7 @@ li:nth-child(3) {
     left: 22rem;
 }
 
-@media (max-width: ${r}) {
+@media (max-width: ${a}) {
   li:nth-child(1),
   li:nth-child(2),
   li:nth-child(3) {
@@ -1167,7 +1216,7 @@ li:nth-child(3) {
     left: auto;
   }
 }
-`, de = () => `
+`, ge = () => `
   <section>
       <section-title
         props='${JSON.stringify({
@@ -1179,32 +1228,32 @@ li:nth-child(3) {
             
     <ol>
         <li>
-           <capabilities-item variant="no-list" props='${JSON.stringify({
+           <more-capabilities-item props='${JSON.stringify({
   title: "Design System",
   subTitle: "Build",
   href: "/capabilities/design-system"
 })}'>
-            </capabilities-item>
+            </more-capabilities-item>
         </li>
         <li>
-            <capabilities-item variant="no-list" props='${JSON.stringify({
+            <more-capabilities-item props='${JSON.stringify({
   title: "User Interfaces",
   subTitle: "Design",
   href: "/capabilities/user-interfaces"
 })}'>
-            </capabilities-item>
+            </more-capabilities-item>
         </li>
         <li>
-            <capabilities-item variant="no-list" props='${JSON.stringify({
+            <more-capabilities-item props='${JSON.stringify({
   title: "Web Interfaces",
   subTitle: "Develop",
   href: "/capabilities/web-interfaces"
 })}'>
-            </capabilities-item>
+            </more-capabilities-item>
         </li>
     </ol>
   </section>
 `;
-e("section-more-capabilities", { styles: pe, template: de });
+e("section-more-capabilities", { styles: he, template: ge });
 </script></body>
 </html>
