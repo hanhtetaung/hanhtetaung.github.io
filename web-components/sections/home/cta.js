@@ -97,6 +97,11 @@ const styles = /* css */ `
     }
   }
 
+  a {
+    text-decoration: none;
+    color: var(--color-text);
+  }
+
   `;
 
 const template = /* html */ `
@@ -115,12 +120,13 @@ const template = /* html */ `
     <ul>
       <li>
           <app-logo src=${asset("./assets/icons/email.svg")} alt="Email icon"></app-logo>
-          <app-link variant="plain">hanhtetaung.dev@gmail.com</app-link>
-          <button onclick="navigator.clipboard.writeText('example@email.com')">Copy</button>
+          <!-- <app-link variant="plain">hanhtetaung.dev@gmail.com</app-link> -->
+            <a href="mailto:hanhtetaung.dev@gmail.com">hanhtetaung.dev@gmail.com</a>
+          <button onclick="navigator.clipboard.writeText('hanhtetaung.dev@gmail.com')">Copy</button>
       </li>
       <li>
         <app-logo src=${asset("./assets/icons/linkedin.svg")} alt="Linkedin icon"></app-logo>
-        <app-link variant="plain">in/han-htet-aung</app-link>
+        <a href="https://www.linkedin.com/in/han-htet-aung/">in/han-htet-aung</a>
       </li>
     </ul>
 </section>

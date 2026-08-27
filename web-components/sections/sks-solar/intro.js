@@ -2,7 +2,7 @@ import { define } from "../../define.js";
 
 import "../../components/app-image.js";
 import "../../components/app-link.js";
-import { PHONE } from "../../breakpoints.js";
+import { TABLET } from "../../breakpoints.js";
 import { asset } from "../../asset.js";
 
 const styles = /* css */ `
@@ -18,7 +18,7 @@ const styles = /* css */ `
     justify-content: space-between;
     gap: 3rem;
 
-    @media (max-width: ${PHONE}) {
+    @media (max-width: ${TABLET}) {
       flex-direction: column;
     }
   }

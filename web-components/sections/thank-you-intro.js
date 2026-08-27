@@ -10,7 +10,7 @@ const styles = /*css*/ `
   h1 {
     margin: 0;
     font-size: var(--size-display);
-    font-weight: var(--font-regular);
+    font-weight: var(--font-bold);
     font-family: var(--font-heading);
     margin-bottom: 1rem;
   }

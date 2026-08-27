@@ -1,7 +1,7 @@
 import { define } from "../define.js";
 import "../components/case-study-item.js";
 import "../components/section-title.js";
-import { PHONE } from "../breakpoints.js";
+import { TABLET } from "../breakpoints.js";
 
 const caseStudies = [
   {
@@ -67,7 +67,7 @@ const styles = /* css */ `
     display: grid;
     grid-template-columns: 1fr 1fr;
 
-    @media (max-width: ${PHONE}) {
+    @media (max-width: ${TABLET}) {
       display: block;
     }
   }

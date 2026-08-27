@@ -1,4 +1,4 @@
-import { PHONE } from "../breakpoints.js";
+import { TABLET } from "../breakpoints.js";
 import "../components/creator-item.js";
 import { asset } from "../asset.js";
 import { define } from "../define.js";
@@ -299,7 +299,7 @@ const styles = /* css */ `
     gap: 2rem;
     overflow: scroll;
 
-    @media (max-width: ${PHONE}) {
+    @media (max-width: ${TABLET}) {
       display: flex;
       flex-direction: column;
     }

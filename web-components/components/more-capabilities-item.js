@@ -2,7 +2,7 @@ import { define } from "../define.js";
 
 import "../components/app-icon.js";
 import "../components/app-link.js";
-import { PHONE, TABLE } from "../breakpoints.js";
+import { TABLET, TABLE } from "../breakpoints.js";
 import { navHref } from "../asset.js";
 
 const styles = /* css */ `
@@ -18,7 +18,7 @@ const styles = /* css */ `
       padding: 4rem;
       justify-content: center;
 
-    @media (max-width: ${PHONE}) {
+    @media (max-width: ${TABLET}) {
       flex-direction: column;
       padding-inline: 2rem;
       padding-block: 2rem;

@@ -3,7 +3,7 @@ import { asset } from "../asset.js";
 
 import "./app-icon.js";
 import "./app-link.js";
-import { PHONE } from "../breakpoints.js";
+import { TABLET } from "../breakpoints.js";
 
 const styles = /* css */ `
  h3 {
@@ -24,7 +24,7 @@ const styles = /* css */ `
     overflow: scroll;
     box-sizing: border-box; 
 
-    @media (max-width: ${PHONE}) {
+    @media (max-width: ${TABLET}) {
       width: 100%;
           justify-content: start;
 

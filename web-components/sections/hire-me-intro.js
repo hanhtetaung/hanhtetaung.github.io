@@ -2,7 +2,7 @@ import { define } from "../define.js";
 
 import "../components/app-link.js";
 import "../components/app-button.js";
-import { PHONE } from "../breakpoints.js";
+import { TABLET } from "../breakpoints.js";
 
 const styles = /*css*/ `
     section {
@@ -42,7 +42,7 @@ const styles = /*css*/ `
     "three three"
      "three three";
 
-    @media (max-width: ${PHONE}) {
+    @media (max-width: ${TABLET}) {
      display: flex;
      flex-wrap: wrap;   
     }

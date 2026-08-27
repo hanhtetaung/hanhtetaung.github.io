@@ -1,5 +1,5 @@
 import { define } from "../define.js";
-import { PHONE } from "../breakpoints.js";
+import { TABLET } from "../breakpoints.js";
 
 const styles = /* css */ `
   :host {
@@ -10,7 +10,7 @@ const styles = /* css */ `
     border: 7px solid var(--color-secondary);
     pointer-events: none;
 
-    @media (max-width: ${PHONE}) {
+    @media (max-width: ${TABLET}) {
       border-width: 5px;
     }
   }
