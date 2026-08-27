@@ -2,7 +2,7 @@ import { define } from "../define.js";
 
 import "../components/app-icon.js";
 import "../components/app-link.js";
-import { TABLET, TABLE } from "../breakpoints.js";
+import { TABLET } from "../breakpoints.js";
 import { navHref } from "../asset.js";
 
 const styles = /* css */ `

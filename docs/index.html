@@ -20,92 +20,79 @@
 
     
   <style>/* main.css */
-:root{--color-bg-primary:#fff5e8;--color-bg-secondary:#fffaf4;--color-secondary:#05798e;--color-primary:#b71f57;--color-tertiary:#1c4286;--color-text:#000;--color-transparent:#0000;--font-heading:"Chicle",serif;--font-body:"StackSans",sans-serif;--font-regular:400;--font-bold:700;--ratio:1.6;--size-body:2rem;--size-small:calc(var(--size-body)/var(--ratio));--size-heading:calc(var(--size-body)*var(--ratio));--size-title:calc(var(--size-heading)*var(--ratio));--size-display:calc(var(--size-title)*var(--ratio));font-size:10px;@media (width<=769px){&{--size-body:1.6rem}}}body{background:var(--color-bg-primary);font-family:var(--font-body);font-weight:var(--font-regular);font-size:var(--size-body);position:relative;margin:0}main>*{background:var(--color-bg-primary);display:block;padding-block-start:10rem;padding-block-end:10rem}main>:nth-child(2n){background:var(--color-bg-secondary)}
+:root{--color-bg-primary:#fff5e8;--color-primary:#7e4c37;--color-text:#000;--color-transparent:#0000;--font-family:"Archivo",sans-serif;--font-regular:400;--font-bold:700;--ratio:1.4;--size-body:1.6rem;--size-small:calc(var(--size-body)/var(--ratio));--size-heading:calc(var(--size-body)*var(--ratio));--size-title:calc(var(--size-heading)*var(--ratio));--size-display:calc(var(--size-title)*var(--ratio));font-size:10px;@media (width>=640px){&{--size-body:2rem}}}body{background:var(--color-bg-primary);font-family:var(--font-family);font-size:var(--size-body);margin:0}
 </style></head>
   <body>
-    <app-frame></app-frame>
     <section-header></section-header>
 
     <main>
       <section-hero></section-hero>
-
-      <section-capabilities></section-capabilities>
-
-      <section-case-studies></section-case-studies>
-
-      <section-writings></section-writings>
-
-      <section-timeline></section-timeline>
-
-      <section-why-hire-me></section-why-hire-me>
-
-      <section-cta></section-cta>
+      <section-little-process></section-little-process>
+      <section-education></section-education>
+      <section-hobby></section-hobby>
+      <!-- <section-recent-work></section-recent-work> -->
+      <section-cta id="cta"></section-cta>
     </main>
 
     <section-footer></section-footer>
   <script type="module">// web-components/asset.js
-function v() {
-  let t = document.documentElement.dataset.base || "./";
-  return new URL(t, location.href);
+function u() {
+  let i = document.documentElement.dataset.base || "./";
+  return new URL(i, location.href);
 }
-function a(t) {
-  return new URL(t, v()).href;
+function o(i) {
+  return new URL(i, u()).href;
 }
-function n(t) {
-  let o = t.replace(/^\//, ""), r = location.protocol === "file:", l = v();
-  if (o === "")
-    return r ? new URL("index.html", l).href : l.href;
-  return r ? new URL(`${o}.html`, l).href : new URL(o, l).href;
+function l(i) {
+  let a = i.replace(/^\//, ""), c = location.protocol === "file:", p = u();
+  if (a === "")
+    return c ? new URL("index.html", p).href : p.href;
+  return c ? new URL(`${a}.html`, p).href : new URL(a, p).href;
 }
 
 // web-components/fonts.js
-var b = `
-  @font-face {
-    font-family: "Chicle";
-    src: url("${a("assets/fonts/Chicle-Regular.woff2")}") format("woff2");
-    font-weight: 400;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: "StackSans";
-    src: url("${a("assets/fonts/StackSansText-Bold.woff2")}") format("woff2");
+var w = `
+@font-face {
+    font-family: "Archivo";
+    src: url("${o("./assets/fonts/Archivo-Black.woff2")}") format("woff2");
     font-weight: 700;
     font-display: swap;
   }
+
   @font-face {
-    font-family: "StackSans";
-    src: url("${a("assets/fonts/StackSansText-Regular.woff2")}") format("woff2");
+    font-family: "Archivo";
+    src: url("${o("./assets/fonts/Archivo-Regular.woff2")}") format("woff2");
     font-weight: 400;
     font-display: swap;
   }
-`, u = document.createElement("style");
-u.textContent = b;
-document.head.appendChild(u);
+`, b = document.createElement("style");
+b.textContent = w;
+document.head.appendChild(b);
 
 // web-components/define.js
-function y(t, o) {
-  if (t === void 0) {
-    if (o === Array)
+function y(i, a) {
+  if (i === void 0) {
+    if (a === Array)
       return [];
-    if (o === Object)
+    if (a === Object)
       return {};
-    if (o === Boolean)
+    if (a === Boolean)
       return !1;
-    if (o === Number)
+    if (a === Number)
       return 0;
     return;
   }
-  if (o === Boolean)
-    return Boolean(t);
-  if (o === Number)
-    return Number(t);
-  return t;
+  if (a === Boolean)
+    return Boolean(i);
+  if (a === Number)
+    return Number(i);
+  return i;
 }
-function e(t, { props: o = {}, attrs: r = [], styles: l = "", template: s }) {
-  let h = ["props", ...r];
+function t(i, { props: a = {}, attrs: c = [], styles: p = "", template: d }) {
+  let v = ["props", ...c];
 
-  class d extends HTMLElement {
-    static observedAttributes = h;
+  class g extends HTMLElement {
+    static observedAttributes = v;
     constructor() {
       super();
       this.attachShadow({ mode: "open" });
@@ -118,60 +105,40 @@ function e(t, { props: o = {}, attrs: r = [], styles: l = "", template: s }) {
         this._render();
     }
     _getProps() {
-      let c = {}, m = this.getAttribute("props");
-      if (m)
+      let r = {}, n = this.getAttribute("props");
+      if (n)
         try {
-          c = JSON.parse(m);
+          r = JSON.parse(n);
         } catch {
-          c = {};
+          r = {};
         }
       let f = {};
-      for (let g of Object.keys(o))
-        f[g] = y(c[g], o[g]);
+      for (let h of Object.keys(a))
+        f[h] = y(r[h], a[h]);
       return f;
     }
     _applyForwardedAttrs() {
-      if (r.length === 0)
+      if (c.length === 0)
         return;
-      let c = this.shadowRoot.querySelector("[data-forward]");
-      if (!c)
+      let r = this.shadowRoot.querySelector("[data-forward]");
+      if (!r)
         return;
-      for (let m of r)
-        if (this.hasAttribute(m))
-          c.setAttribute(m, this.getAttribute(m));
+      for (let n of c)
+        if (this.hasAttribute(n))
+          r.setAttribute(n, this.getAttribute(n));
         else
-          c.removeAttribute(m);
+          r.removeAttribute(n);
     }
     _render() {
-      let c = this._getProps(), m = typeof s === "function" ? s(c) : s;
-      this.shadowRoot.innerHTML = `<style>${l}</style>${m}`, this._applyForwardedAttrs();
+      let r = this._getProps(), n = typeof d === "function" ? d(r) : d;
+      this.shadowRoot.innerHTML = `<style>${p}</style>${n}`, this._applyForwardedAttrs();
     }
   }
-  customElements.define(t, d);
+  customElements.define(i, g);
 }
 
-// web-components/components/app-frame.js
-var w = `
-  :host {
-    display: block;
-    position: fixed;
-    inset: 0;
-    z-index: 10;
-    border: 10px solid var(--color-secondary);
-    pointer-events: none;
-  }
-
-  :host([variant="color-primary"]) {
-    /* border-color: var(--color-primary); */
-    /* border-color: var(--color-tertiary); */
-    /* border-color: #a36aa5; */
-  }
-`, x = `
-`;
-e("app-frame", { styles: w, template: x });
-
 // web-components/components/app-link.js
-var k = `
+var x = `
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -200,7 +167,7 @@ var k = `
   }
 
   :host([variant="secondary"]) {
-    --local-color: var(--color-primary);
+    --local-color: var(--color-text);
   }
 
   :host([variant="underline"]) {
@@ -232,10 +199,10 @@ var k = `
        content: "➶";
      }
   }
-`, $ = ["href", "target", "rel", "download"], S = `
+`, k = ["href", "target", "rel", "download"], $ = `
   <a data-forward><slot></slot></a>
 `;
-e("app-link", { attrs: $, styles: k, template: S });
+t("app-link", { attrs: k, styles: x, template: $ });
 
 // web-components/components/app-logo.js
 var z = `
@@ -247,18 +214,18 @@ var z = `
     max-height: 7rem;
     width: auto;
   }
-`, I = ["width", "height", "src", "alt"], H = () => "<img data-forward />";
-e("app-logo", { attrs: I, styles: z, template: H });
+`, A = ["width", "height", "src", "alt"], T = () => "<img data-forward />";
+t("app-logo", { attrs: A, styles: z, template: T });
 
 // web-components/breakpoints.js
-var i = "769px", p = "992px";
+var e = "640px", s = "1024px", m = "1920px";
 
 // web-components/sections/header.js
-var A = `
+var S = `
   :host {
     display: block;
-    margin-top: 1rem;
     background: var(--color-bg-primary);
+    font-size: var(--size-small);
   }
 
   header {
@@ -291,43 +258,46 @@ var A = `
     box-shadow: none;
   }
 
-  @media (max-width: ${i}) {
+  @media (max-width: ${e}) {
     .header__navigation {
       gap: 4rem;
     }
   }
-`, T = `
+
+  img {
+    height: 5rem;
+    width: auto;
+  }
+`, E = `
   <header>
-      <app-link variant="plain" href=${n("/")}>
-        <app-logo
-          src=${a("./assets/images/logo.avif")}
-          alt="Logo"
-        ></app-logo>
+      <app-link variant="plain" href=${l("/")}>
+        <img src=${o("./assets/images/logo.avif")}
+          alt="Logo">
       </app-link>
 
       <div>
         <nav>
           <ul>
             <li>
-              <app-link variant="plain" href=${n("/")}>Home</app-link>
+              <app-link variant="plain" href=${l("/")}>Home</app-link>
             </li>
 
             <li>
-              <app-link variant="plain" href=${n("/about")}>About</app-link>
+              <app-link variant="plain" href=${l("/about")}>About</app-link>
             </li>
           </ul>
         </nav>
 
-        <app-link variant="primary" href=${n("/hire-me")}>
-          Let's chat &#8629;
+        <app-link variant="secondary" href=${l("/#cta")}>
+          Let's Craft &#8629;
         </app-link>
       </div>
   </header>
 `;
-e("section-header", { template: T, styles: A });
+t("section-header", { template: E, styles: S });
 
 // web-components/components/footer-nav.js
-var O = [
+var L = [
   { href: "/", name: "Home" },
   { href: "/about", name: "About" },
   { href: "/credits", name: "Credits" },
@@ -346,7 +316,7 @@ var O = [
     href: "/writings/foundation-building-interfaces-at-scale",
     name: "Foundation"
   }
-], C = `
+], B = `
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -355,7 +325,7 @@ var O = [
    display: flex;
    gap: 5rem;
 
-   @media (max-width: ${i}) {
+   @media (max-width: ${e}) {
         flex-direction: column;
         gap: 3rem;
         margin-block: 2rem;
@@ -384,7 +354,7 @@ var O = [
     max-height: 12.5ch;
     overflow: scroll;
 
-    @media (max-width: ${i}) {
+    @media (max-width: ${e}) {
         max-height: 20ch;
     }
   }
@@ -393,30 +363,31 @@ var O = [
     margin-right: 5rem;
     margin-bottom: 0.3rem;
   }
-`, E = () => `
+`, C = () => `
     <nav>
         <span>Sitemap</span>
 
         <ol>
-            ${O.map((t) => `
+            ${L.map((i) => `
                 <li>
-                    <app-link variant="sitemap" href=${n(t.href)} >${t.name}</app-link>
+                    <app-link variant="sitemap" href=${l(i.href)} >${i.name}</app-link>
                 </li>
             `).join("")}
         </ol>
     </nav>
 `;
-e("footer-nav", { styles: C, template: E });
+t("footer-nav", { styles: B, template: C });
 
 // web-components/components/footer-copyright.js
-var B = `
+var H = `
   :host {
    display: flex;
     justify-content: space-between;
     border-top: 1px solid var(--color-text);
     padding-top: 1rem;
+    margin-top: 3rem;
 
-   @media (max-width: ${i}) {
+   @media (max-width: ${e}) {
         flex-direction: column-reverse;
         gap: 2rem;
         border: none;
@@ -426,10 +397,12 @@ var B = `
 
   p {
     margin: 0;
-
-    @media (max-width: ${i}) {
-      border-top: 1px solid var(--color-text);
+    border-top: 1px solid var(--color-text);
     padding-top: 1rem;
+
+    @media (min-width: ${e}) {
+      border: none;
+      padding-top: none;
     }
   }
 
@@ -441,6 +414,14 @@ var B = `
     gap: 2rem;
   }
 
+  nav {
+    display: none;
+
+    @media (min-width: ${e}) {
+      display: block;
+    }
+  }
+
   span {
     display: none;
     color: var(--color-secondary);
@@ -449,15 +430,14 @@ var B = `
     text-transform: uppercase;
     
 
-    @media (max-width: ${i}) {
+    @media (max-width: ${e}) {
       display: inline-block;
       margin-bottom: 0.5rem;
     }
   }
-`, P = () => `
+`, U = () => `
       <p>
-        © Han Htet Aung 2026 |
-        <app-link href=${n("/credits")} variant="underline">Credits</app-link>
+        © Han Htet Aung 2026
       </p>
 
       <nav>
@@ -466,7 +446,7 @@ var B = `
               <li>
                   <app-link href="mailto:hanhtetaung.dev@gmail.com" variant="image">
                   <img
-                      src=${a("./assets/icons/email.svg")}
+                      src=${o("./assets/icons/email.svg")}
                       alt="Email Icon"
                   />
                   </app-link>
@@ -479,7 +459,7 @@ var B = `
                   variant="image"
                   >
                   <img
-                      src=${a("./assets/icons/github.svg")}
+                      src=${o("./assets/icons/github.svg")}
                       alt="Github Icon"
                   />
                   </app-link>
@@ -492,32 +472,26 @@ var B = `
                   variant="image"
                   >
                   <img
-                      src=${a("./assets/icons/linkedin.svg")}
+                      src=${o("./assets/icons/linkedin.svg")}
                       alt="Linkedin Icon"
                   />
                   </app-link>
               </li>
           </ul>
-</nav>
+        </nav>
 `;
-e("footer-copyright", { styles: B, template: P });
+t("footer-copyright", { styles: H, template: U });
 
 // web-components/sections/footer.js
-var L = `
+var R = `
   :host {
-    --local-bg-color: var(--color-bg-secondary);
-
     display: block;
-    background-color: var(--local-bg-color);
     padding-block: 10rem;
   }
 
-  :host([variant="secondary"]) {
-    --local-bg-color: var(--color-bg-primary);
-  }
-
-  p {
-    margin: 0;
+  q {
+    display: block;
+    text-align: center;
   }
 
   footer {
@@ -525,1255 +499,530 @@ var L = `
     margin-inline: auto;
   }
 
-  
+  img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
 
-  article {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 2rem;
-    gap: 5rem;
+  img:first-child {
+    display: none;
   }
 
-  @media (max-width: ${i}) {
-    article {
-      display: block;
+@media (min-width: ${e}) {
+  img:first-child {
+    display: block;
+  }
+
+  img:not(:first-child) {
+    display: none;
+  }
+}
+
+
+`, _ = `
+  <footer>
+
+  <img src="./assets/images/footer/highlight.avif" alt="Parting phrase">
+  <img src="./assets/images/footer/thank-you.avif" alt="Thank you phrase">
+  <img src="./assets/images/footer/looking-forward.avif" alt="Parting Phrase">
+
+
+    <!-- <footer-nav></footer-nav> -->
+
+    <footer-copyright></footer-copyright>
+  </footer>
+`;
+t("section-footer", { styles: R, template: _ });
+
+// web-components/sections/home/hero.js
+var I = `
+  :host {
+    display: block;
+    height: min(calc(100vh - 108px - 10rem), 70rem);
+    margin-top: 5rem;
+
+    @media (min-width: ${e}) {
+      margin-top: 7rem;
     }
   }
 
-  div {
+  section {
+    width: min(80%, 144rem);
+    height: min(100%, 60rem);
+    margin-inline: auto;
     display: flex;
-    gap: 3rem;
-    align-items: center;
-    min-width: 21rem;
-  }
-
-  hr {
-    color: var(--color-secondary);
-  }
-`, U = `
-  <footer>
-      <article>
-        <div>
-          <app-logo
-            src="${a("./assets/images/logo.avif")}"
-            alt="Logo"
-          ></app-logo>
-        
-          <p>
-            Thank You <br />
-            for Visiting
-          </p>
-        </div>
-
-        <footer-nav></footer-nav>
-      </article>
-
-      <footer-copyright></footer-copyright>
-  </footer>
-`;
-e("section-footer", { styles: L, template: U });
-
-// web-components/components/app-icon.js
-var D = `
-  :host {
-    --local-width: 3rem;
-    --local-height: auto;
-
-    display: block;
+    flex-direction: column;
+    justify-content: space-between;
   }
 
   img {
-    width: var(--local-width);
-    height: var(--local-height);
-  }
+    max-height: 25rem;
+    width: auto;
+    align-self: flex-end;
 
-  :host([variant="medium"]) {
-     --local-width: auto;
-    --local-height: 5rem;
-  }
-
-  :host([variant="bigger"]) {
-    --local-width: auto;
-    --local-height: 6rem;
-  }
-
-  :host([variant="large"]) {
-    --local-width: auto;
-    --local-height: 10rem;
-  }
-
-  :host([variant="creator"]) {
-    img {
-      min-width: 5rem;
-      max-width: 10rem;
-      height: 10rem;
-      width: auto;
+    @media (min-width: ${e}) {
+      max-height: 35rem;
     }
-  }
-
-
-`, N = ["src", "alt"], M = () => '<img data-forward width="200" height="200"/>';
-e("app-icon", { attrs: N, styles: D, template: M });
-
-// web-components/components/app-badge.js
-var j = `
-  :host {
-    --local-bg: var(--color-secondary);
-    --local-color: var(--color-bg-primary);
-    --local-border: none;
-
-    display: inline-block;
-    padding-block: 0.5rem;
-    padding-inline: 1.5rem;
-    width: fit-content;
-    white-space: nowrap;
-    border-radius: 3rem;
-    border: var(--local-border);
-    font-size: var(--size-small);
-    background: var(--local-bg);
-    color: var(--local-color);
-  }
-
-  :host([variant="outline"]) {
-    --local-bg: var(--color-transparent);
-    --local-color: var(--color-secondary);
-    --local-border: 1px solid var(--color-secondary);
-  }
-
-  :host([variant="success"]) {
-    /* --local-bg: #157d6c; */
-    --local-bg: #a36aa5;
-     --local-border: 1px solid var( --local-color);
-  }
-`, _ = { name: String }, F = ({ name: t }) => `${t}`;
-e("app-badge", { props: _, styles: j, template: F });
-
-// web-components/components/app-toolkit.js
-var R = `
-  :host {
-    display: block;
-  }
-
-  ul {
-    padding: 0;
-    list-style: none;
-    display: flex;
-    gap: 2rem;
-    margin-top: 0.5rem;
-  }
-
-  h4 {
-    margin: 0;
-    margin-bottom: 1rem;
-    font-size: var(--size-small);
-    /* font-weight: var(--font-regular); */
-    color: var(--color-secondary);
-    text-transform: uppercase;
-  }
-`, X = { tools: Array }, J = ({ tools: t }) => `
-    <h4>Toolkits</h4>
-    <ul>
-        ${t.map((o) => `
-            <li>
-            <app-icon
-                src=${a(o.src)}
-                alt=${o.alt}
-            ></app-icon>
-            </li>
-        `).join("")}
-    </ul>
-`;
-e("app-toolkit", { props: X, styles: R, template: J });
-
-// web-components/sections/hero.js
-var q = [
-  {
-    name: "Terra",
-    href: "./work/terra",
-    src: "./assets/images/case-study/terra/thumbnail.avif",
-    alt: "Terra Thumbnail"
-  },
-  {
-    name: "MMO",
-    href: "./work/mmo",
-    src: "./assets/images/case-study/mmo/thumbnail.avif",
-    alt: "MMO Thumbnail"
-  },
-  {
-    name: "Bamboo",
-    href: "./work/bamboo",
-    src: "./assets/images/case-study/bamboo/thumbnail.avif",
-    alt: "Bamboo Thumbnail"
-  }
-], W = [
-  { title: "Specialize In", header: "Enterprise UX" },
-  { title: "Simplify", header: "Complex workflows" },
-  { title: "Scale", header: "Design System" }
-], G = `
-  section {
-    width: 80%;
-    margin-inline: auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    gap: 5rem;
-    grid-template-areas:
-      "one two"
-      "three three";
-
-
-    @media (max-width: ${i}) {
-        display: flex;
-        flex-direction: column;
-    }
-  }
-
-
-  ol {
-    grid-area: three;
-  }
-
-  
-
-  h1, h3, p {
-    margin: 0;
   }
 
   h1 {
-    font-size: var(--size-display);
-    font-weight: var(--font-regular);
-    font-family: var(--font-heading);
-  }
-
-  h3 {
-    font-size: var(--size-heading);
-    font-family: var(--font-body);
-  }
-
-  ul, ol {
-    padding: 0;
-    list-style: none;
-    display: flex;
-    gap: 1rem;
-  }
-
-  hgroup {
-    margin-bottom: 3rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  article  {
-    ul {
-      flex-direction: row;
-    }
-  }
-  
-  ul {
     margin: 0;
-    flex-direction: column;
-    grid-area: two;
-    max-width: 30ch;
-    margin-left: auto;
-
-    @media (max-width: ${i}) {
-      margin: 0;
-    }
-
-    li {
-      margin-bottom: 1rem;
-    }
+    font-size: var(--size-display);
   }
 
-  span {
-    color: var(--color-secondary);
-    font-size: var(--size-small);
-    font-weight: var(--font-bold);
-    text-transform: uppercase;
+  p {
+    margin: 0;
+    margin-bottom: 1rem;
   }
+
   
-  ol {
-    display: flex;
-    gap: 2rem;
-
-    overflow-y: scroll;
-  }
-
-  img {
-    width: 25rem;
-    height: auto;
-  }
-`, K = `
+`, D = `
   <section>
-      <article>
-        <hgroup>
-          <p>I'm Han Htet Aung ⇾ <app-badge variant="success" props='{"name": "Open to Work"}'></app-badge></p>
-          <h1>UX Engineer</h1>
-          <p>
-            Designing human-centered interfaces that power daily business
-            operations
-          </p>
-        </hgroup>
-
-        <app-toolkit props='${JSON.stringify({
-  tools: [
-    { src: "./assets/icons/figma.svg", alt: "Figma Icon" },
-    { src: "./assets/icons/html.svg", alt: "HTML Icon" },
-    { src: "./assets/icons/css.svg", alt: "CSS Icon" },
-    { src: "./assets/icons/javascript.svg", alt: "JavaScript Icon" }
-  ]
-})}'></app-toolkit>
-      </article>
-
-      <ul>
-         ${W.map((t) => `
-                <li>
-                  <span>${t.title}</span>
-                  <h3>${t.header}</h3>
-                </li>
-              `).join("")}
-      </ul>
-
-      <ol>
-        ${q.map((t) => `
-          <li>
-            <app-link variant="image" href=${n(t.href)} >
-              ➶ ${t.name}
-              <img
-                src=${a(t.src)}
-                alt=${t.alt}
-              />
-            </app-link>
-          </li>
-          `).join("")}
-      </ol>
+    <hgroup>
+      <p>Han Htet Aung | GMT+7</p>
+      <h1>Craft Web Interfaces</h1>
+    </hgroup>
+    <img src="./assets/images/home/walking-holding-luggage.avif" alt="Man walking and holding luggage">
   </section>
 `;
-e("section-hero", { styles: G, template: K });
+t("section-hero", { styles: I, template: D });
 
-// web-components/components/section-title.js
-var Q = `
+// web-components/sections/home/little-process.js
+var F = `
   :host {
-    display: flex;
-    align-items: center;
-    width: fit-content;
-    margin-bottom: 3rem;
-    gap: 1rem;
+    position: relative;
+    display: block;
+    height: 60rem;
+    overflow: hidden;
+    margin-block: 15rem;
+
+    @media (min-width: ${s}) {
+      margin-bottom: 25rem;
+    }
+  }
+
+  section {
+    width: min(80%, 144rem);
+    margin-inline: auto;
+    
+
+    @media (min-width: ${e}) {
+      display: flex;
+      gap: 3rem;
+      justify-content: space-between;
+    }
+
+    @media (min-width: ${m}) {
+      position: relative;
+    }
   }
 
   h2 {
     margin: 0;
+    margin-top: 1rem;
     font-size: var(--size-title);
-    font-family: var(--font-heading);
-    font-weight: var(--font-regular)
   }
 
-  img {
-    height: 5rem;
-    width: auto;
-  }
-
-  :host([variant="vertical"]) {
-    flex-direction: column-reverse;
-    gap: 0;
-  }
-
-  :host([variant="text"]) {
-    img {
-      display: none;
-    }
-  }
-`, V = { name: String, img: String, alt: String }, Y = ({ name: t, img: o = "", alt: r = "" }) => `
-    <h2>${t}</h2>
-    <img
-        src=${a(o)}
-        alt=${r}
-        height="36"
-        width="76"
-    />
-`;
-e("section-title", { props: V, styles: Q, template: Y });
-
-// web-components/components/capabilities-item.js
-var Z = `
-  :host {
-    display: flex;
-    border: 2px solid var(--color-text);
-    justify-content: start;
-    flex-direction: column;
+  ul {
+    list-style: none;
     padding: 0;
-    padding-inline: 2rem;
-    padding-block: 2rem;
-    align-items: start;
-    min-width: 45rem;
-  }
-
-  :host([variant="borderless"]) {
-    border: none;
-    padding: 0;
-
-    h3 {
-      font-size: var(--size-body);
-    }
-  }
-
-  h3, p {
     margin: 0;
   }
 
-  span {
-    color: var(--color-secondary);
-    font-weight: var(--font-bold);
-    font-size: var(--size-small);
-    text-transform: uppercase;
+  li {
+    border-bottom: 1px solid var(--color-text);
+    padding-bottom: 5rem;
+    padding-top: 2rem;
+    min-width: 30ch;
   }
 
   h3 {
-    font-size: var(--size-heading);
-    font-weight: var(--font-regular);
-    margin-bottom: 0.5rem;
-  }
-
-  ol {
-      margin: 0;
-      list-style: none;
-      padding: 0;
-      display: flex;
-      gap: 4rem;
-      width: fit-content;
-      overflow: scroll;
-
-      @media (max-width: ${p}) {
-        width: 100%;
-      }
-    }
-
-    li {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-width: 9ch;
-
-    p {
-        margin: 0;
-        font-size: var(--size-small);
-    }
-  }
-
-    article {
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 2rem;
-      padding-bottom: 1rem;
-      border-bottom: 1px dashed var(--color-text);
-    }
-
-    app-link {
-      font-size: var(--size-small);
-      margin-top: 0.6rem;
-    }
-`, ee = {
-  title: String,
-  subTitle: String,
-  href: String,
-  delivers: Array
-}, te = ({ title: t, subTitle: o, href: r, delivers: l }) => `
-    <article>
-      <hgroup>
-        <span>${o}</span>
-        <h3>${t}</h3>
-      </hgroup>
-          <app-link variant="underline" href=${n(r)}>Details ➶</app-link>
-
-    </article>
-
-    <ol>
-      ${l.map((s) => `
-          <li>
-            <app-icon variant="medium" src=${a(s.icon)} alt=${s.alt}></app-icon>
-            <p>${s.name}</p>
-          </li>
-        `).join("")}
-    </ol>
-
-`;
-e("capabilities-item", { props: ee, styles: Z, template: te });
-
-// web-components/sections/capabilities.js
-var oe = `
-  section {
-    width: 80%;
-    margin-inline: auto;
-  }
-
-   h3 {
     margin: 0;
-  }
-
-  ol {
-    padding: 0;
-    margin: 0;
-    list-style: none;
-}
-
-ol {
-    padding: 0;
-    display: flex;
-    gap: 5rem;
-    overflow: scroll;
-  }
-`, ie = () => `
-  <section>
-      <section-title
-        props='${JSON.stringify({
-  name: "Capabilities",
-  img: "./assets/icons/peacock.svg",
-  alt: "Peacock Logo"
-})}'
-      ></section-title>
-            
-    <ol>
-        <li>
-           <capabilities-item props='${JSON.stringify({
-  title: "Design System",
-  subTitle: "Build",
-  href: "/capabilities/design-system",
-  delivers: [
-    {
-      name: "Design Tokens",
-      icon: "./assets/icons/design-tokens.svg",
-      alt: "Design Tokens Icon"
-    },
-    {
-      name: "Component Library",
-      icon: "./assets/icons/component-library.svg",
-      alt: "Component Library Icon"
-    },
-    {
-      name: "Guidelines",
-      icon: "./assets/icons/guidelines.svg",
-      alt: "Guidelines Icon"
-    }
-  ]
-})}'>
-  </capabilities-item>
-        </li>
-        <li>
-            <capabilities-item props='${JSON.stringify({
-  title: "User Interfaces",
-  subTitle: "Design",
-  href: "/capabilities/user-interfaces",
-  delivers: [
-    {
-      name: "User Flows",
-      icon: "./assets/icons/user-flows.svg",
-      alt: "User Flows Icon"
-    },
-    {
-      name: "Hi Fi Interfaces",
-      icon: "./assets/icons/hi-fi-interfaces.svg",
-      alt: "Hi Fi Interface Icon"
-    },
-    {
-      name: "Prototypes",
-      icon: "./assets/icons/prototypes.svg",
-      alt: "Prototypes Icon"
-    }
-  ]
-})}'>
-  </capabilities-item>
-        </li>
-        <li>
-            <capabilities-item props='${JSON.stringify({
-  title: "Web Interfaces",
-  subTitle: "Develop",
-  href: "/capabilities/web-interfaces",
-  delivers: [
-    {
-      name: "HTML",
-      icon: "./assets/icons/html-1.svg",
-      alt: "HTML Icon"
-    },
-    {
-      name: "Assets",
-      icon: "./assets/icons/assets.svg",
-      alt: "Assets Icon"
-    }
-  ]
-})}'>
-  </capabilities-item>
-        </li>
-    </ol>
-  </section>
-`;
-e("section-capabilities", { styles: oe, template: ie });
-
-// web-components/components/app-image.js
-var ae = `
-  :host {
-    --local-width: 5rem;
-    --local-heigth: auto;
-
-    display: inline-block;
-    width: fit-content;
-  }
-
-  img {
-    max-width: var(--local-width);
-    height: var(--local-heigth);
-    width: 100%;
-  }
-
-  :host([variant="normal"]) {
-    --local-width: 12rem;
-    --local-heigth: auto;
-  }
-
-  :host([variant="medium"]) {
-    --local-width: 40rem;
-  }
-
-  :host([variant="large"]) {
-    --local-width: 50rem;
-  }
-
-   :host([variant="full"]) {
-    --local-width: 100%;
-  }
-`, re = ["width", "height", "src", "alt"], ne = () => "<img data-forward />";
-e("app-image", { attrs: re, styles: ae, template: ne });
-
-// web-components/components/writing-article.js
-var le = `
-  :host {
-    display: flex;
-    /* width: fit-content; */
-    gap: 3rem;
-    border: 1px solid var(--color-text);
-    padding: 2rem 3rem;
-    min-width: 25ch;
+    font-size: var(--size-header);
+    color: var(--color-primary);
+    margin-bottom: 1rem;
   }
 
   p {
     margin: 0;
-    color: var(--color-secondary);
   }
 
-  h3 {
-    margin: 0;
+  img {
+    position: absolute;
+    bottom: 0rem;
+    left: 0rem;
+    width: auto;
+    height: 40rem;
+    z-index: -1;
+    opacity: 0.1;
+
+    @media (min-width: ${s}) {
+      opacity: 1;
+    }
+
+  }
+  span {
     font-size: var(--size-body);
+  }
+`, G = `
+
+<section>
+  <hgroup>
+    <p>[ Little Process ]</p>
+    <h2>Every Step By Hand</h2>
+  </hgroup>
+
+  <ul>
+    <li>
+      <h3>Step 1</h3>
+      <p>Design block by block</p>
+    </li>
+    <li>
+      <h3>Step 2</h3>
+      <p>Sketch illustration by hand</p>
+    </li>
+    <li>
+      <h3>Step 3</h3>
+      <p>Develop HTML, CSS, JS</p>
+    </li>
+    <li>
+      <h3>Step 4</h3>
+      <p>Deliver Standalone HTML</p>
+    </li>
+  </ul>
+
+  <img src=${o("./assets/images/home/craftsmanship.avif")} alt="Craftsmanship Illustration">
+</section>
+
+`;
+t("section-little-process", { styles: F, template: G });
+
+// web-components/sections/home/education.js
+var M = `
+  :host {
+    position: relative;
+    display: block;
+    height: 70rem;
+    margin-bottom: 10rem;
+    overflow-x: hidden;
+    overflow-y: visible;
+
+    @media (min-width: ${m}) {
+      height: auto;
+    }
+  }
+
+  section {
+    width: min(80%, 144rem);
+    margin-inline: auto;
+    margin-top: 5rem;
+
+    @media (min-width: ${m}) {
+      position: relative;
+      overflow: hidden;
+      height: 70rem;
+    }
+  }
+
+   h2 {
+     margin: 0;
+     margin-top: 1rem;
+    font-size: var(--size-title);
     margin-bottom: 1rem;
   }
 
-  app-icon {
-    margin-top: 1rem;
+  p {
+    margin: 0;
+    max-width: 50ch;
   }
 
-`, se = {
-  title: String,
-  img: String,
-  alt: String,
-  href: String,
-  comingSoon: Boolean
-}, ce = ({ title: t, img: o, alt: r, href: l, comingSoon: s }) => `
-    <app-icon
-        variant="medium"
-        src=${o}
-        alt=${r}
-    ></app-icon>
 
-    <article>
-        <h3>${t}</h3>
-        ${s ? "<p>Coming soon</p>" : `<app-link variant="underline" href=${n(l)} target="_blank">Read More</app-link>`}
-    </article>
+  img {
+    width: auto;
+    height: 65rem;
+    bottom: 5px;
+    opacity: 0.1;
+    
+    position: absolute;
+    left: 0;
+    bottom: 5rem;
+    z-index: -1;
+    
+    @media (min-width: ${e}) {
+      left: 40%;
+    }
+
+    @media (min-width: ${s}) {
+      opacity: 1;
+      right: 10%;
+      left: auto;
+    }
+    
+  }
+`, P = `
+  <section>
+    <hgroup>
+      <p>[ Education ]</p>
+      <h2>Computer Science Graduate</h2>
+    </hgroup>
+    <!-- <p>Completed a bachelor's degree in Computer Science from Assumption University, Thailand, in 2025</p> -->
+    <p>Bachelor's Degree in Computer Science, Assumption University, Thailand — 2025</p>
+    <img src="./assets/images/home/assumption-university.avif" alt="Assumption University">
+  </section>
 
 `;
-e("writing-article", { props: se, styles: le, template: ce });
+t("section-education", { styles: M, template: P });
 
-// web-components/sections/writings.js
-var me = `
+// web-components/sections/home/hobby.js
+var O = `
   :host {
     display: block;
   }
 
   section {
-    width: 80%;
+    width: min(80%, 144rem);
     margin-inline: auto;
-  }
-
-  ul {
-    padding: 0;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 3rem;
-    overflow: scroll;
-  }
-`, pe = () => `
-  <section>
-       <section-title
-        props='{"name": "Writings", "img": "./assets/icons/kingfisher.svg", "alt": "Kingfisher Logo"}'
-      ></section-title>
-
-      <ul>
-        <writing-article props='{"title": "Foundation for Building Interfaces at Scale", "description": "Hello world", "img": "./assets/icons/molecule.svg", "alt": "Molecule Icon", "href": "/writings/foundation-building-interfaces-at-scale"}'></writing-article>
-        <writing-article props='{"title": "Underlying Technology Is Strong Enough", "description": "Hello world", "img": "./assets/icons/technology.svg", "alt": "Technology Icon", "comingSoon": "True"}'></writing-article>       
-        <writing-article props='{"title": "Engineering Behind This Portfolio", "description": "Hello world", "img": "./assets/icons/engineering.svg", "alt": "Molecule Icon", "comingSoon": "True"}'></writing-article>       
-      </ul>
-  </section>
-`;
-e("section-writings", { styles: me, template: pe });
-
-// web-components/components/case-study-item.js
-var de = `
-  :host {
-    --local-border: 1px solid currentColor;
-    --local-decoration: none;
-
-    display: flex;
-    gap: 5rem;
-    align-items: center;
-    padding-block: 5rem;
-    padding-inline: 5rem; 
-    box-shadow: 0 4px 12px -4px rgba(0, 0, 0, 0.35);
-    
-    @media (max-width: ${i}) {
-      padding: 0;
-      padding-block: 5rem;
-      box-shadow: 0 1px 0px 0px rgba(0, 0, 0, 0.35);
-    }
-
+    margin-top: 5rem;
   }
 
   p {
     margin: 0;
-    margin-bottom: 1rem;
-  }
-
-  :host([reverse]) {
-    flex-direction: column;
-  }
-
-  img {
-    flex: 1;
-    max-width: 50rem;
-    width: 100%;
-    height: auto;
-
-    @media (max-width: ${i}) {
-      margin-bottom: 1.5rem;
-    }
   }
 
   div {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+    overflow: scroll;
   }
 
-  h3 {
-    font-size: var(--size-heading);
+  h2 {
     margin: 0;
-  }
-
-  ul {
-    display: flex;
-    gap: 0.5rem;
-    flex-wrap: wrap;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  a {
-    align-self: flex-start;
-    display: inline-block;
-    padding: 0.75rem 1.5rem;
-    border: var(--local-border);
-    text-decoration: var(--local-decoration);
-    color: inherit;
-    border-radius: 4px;
-  }
-
-  @media (max-width: ${p}) {
-    :host {
-      display: block;
-    }
-  }
-`, he = {
-  image: String,
-  alt: String,
-  title: String,
-  description: String,
-  href: String,
-  categories: Array
-}, ge = ({
-  image: t,
-  alt: o,
-  title: r,
-  description: l,
-  href: s,
-  categories: h
-}) => `
-    <img src="${t}" alt="${o}" />
-    <div>
-      <h3>${r}</h3>
-      <ul>
-        ${h.map((d) => `
-              <li><app-badge variant="primary" props='${JSON.stringify({ name: d })}'></app-badge></li>
-            `).join("")}
-      </ul>
-      <p>${l}</p>
-      <app-link variant="secondary" href="${n(s)}">
-        View Case Study &#8599;
-      </app-link>
-    </div>
-`;
-e("case-study-item", { props: he, styles: de, template: ge });
-
-// web-components/sections/case-studies.js
-var fe = [
-  {
-    image: "./assets/images/case-study/terra/thumbnail.avif",
-    alt: "Terra Thumbnail",
-    title: "Terra",
-    categories: ["Product Design", "User Experience", "Design System"],
-    description: "A tool to visualize the connections between everyday goods and their fundamental sources based on my knowledge.",
-    href: "/work/terra",
-    reverse: !1
-  },
-  {
-    image: "./assets/images/case-study/mmo/thumbnail.avif",
-    alt: "MMO thumbnail",
-    title: "MMO",
-    categories: [
-      "Simplify complex workflows",
-      "Build Prototype",
-      "Design System"
-    ],
-    description: "An internal portal that uses to run daily operations in hospital.",
-    href: "/work/mmo",
-    reverse: !0
-  },
-  {
-    image: "./assets/images/case-study/skssolar/mockup.avif",
-    alt: "SKS Mockup",
-    title: "SKS.Solar",
-    categories: ["Research", "Web Design", "Web Development"],
-    description: "A website for SKS SOLAR (SALES & SERVICES) COMPANY LIMITED to showcase its history, services and completed project.",
-    href: "/work/sks-solar",
-    reverse: !0
-  }
-], ve = `
-  :host {
-    background: var(--color-bg-secondary)
-  }
-
-  section {
-    width: 80%;
-    margin-inline: auto;
-  }
-
-  ul {
-    padding: 0;
-    list-style: none;
-    gap: 5rem;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-
-    @media (max-width: ${i}) {
-      display: block;
-    }
-  }
-
-  li {
-    display: flex;
-    flex-direction: column;
-    
-    > * {
-      flex-grow: 1; 
-    }
-  }
-
-  li:nth-child(1) {
-    grid-column: span 2;
-  }
-`, ue = () => `
-  <section>
-      <section-title
-        props='${JSON.stringify({
-  name: "Case Studies",
-  img: "./assets/icons/sparrow.svg",
-  alt: "Sparrow Logo"
-})}'
-      ></section-title>
-            
-      <ul>
-        ${fe.map((t) => `
-              <li>
-                <case-study-item
-                  props='${JSON.stringify(t)}'
-                  ${t.reverse ? "reverse" : ""}
-                ></case-study-item>
-              </li>
-            `).join("")}
-      </ul>
-  </section>
-`;
-e("section-case-studies", { styles: ve, template: ue });
-
-// web-components/sections/timeline.js
-var be = [
-  {
-    icon: "./assets/icons/software-developer.svg",
-    alt: "Software Developer Icon",
-    range: "2021-2022",
-    title: "Software Developer",
-    description: "I landed my first software development role building a hospital management system to manage inventory, POS, and OPD appointments. The system is still running today."
-  },
-  {
-    icon: "./assets/icons/student.svg",
-    alt: "Student Icon",
-    range: "2022-2025",
-    title: "Student",
-    description: "I completed my Bachelor of Science in Computer Science at Assumption University, Thailand. My favorite subject was Computer Architecture."
-  },
-  {
-    icon: "./assets/icons/software-developer.svg",
-    alt: "Software Developer Icon",
-    range: "2025-2026",
-    title: "Software Developer",
-    description: "After graduating, I worked remotely for 6 months as a software developer at an event organizing company in Singapore."
-  },
-  {
-    icon: "./assets/icons/full-time-freelancer.svg",
-    alt: "Web Design & Develop",
-    range: "Present",
-    title: "UX Designer",
-    description: "Today, I've found my passion in UX design. Self-taught through research and hands-on practice, I design intuitive experiences by simplifying complex workflows."
-  }
-], ye = `
-  :host {
-    display: block;
-  }
-
-  section {
-    width: 80%;
-    margin-inline: auto;
-  }
-
-  h3, p {
-    margin: 0;
-  }
-
-  h3 {
-     font-size: var(--size-heading);
-    font-weight: var(--font-bold);
-    font-family: var(--font-body);
-    margin-block: 1rem;
-  }
-
-  ul {
-    list-style: none;
-    padding: 0;
-    margin-bottom: 5rem;
-    display: flex;
-    flex-direction: column-reverse;
-  }
-
-  li {
-    display: grid;
-    grid-template-columns: auto auto 1fr;
-    gap: 0 1rem;
-    align-items: center;
-    align-self: stretch;
-  }
-
-  .connector {
-    display: flex;
-    position: relative;
-    flex-direction: column;
-    align-items: center;
-    align-self: stretch;
-  }
-
-  .icon {
-    width: 10rem;
-    max-height: 5rem;
-    height: auto;
-  }
-
-  .dot {
-    width: 0.75rem;
-    position: absolute;
-    top: 1rem;
-    height: 0.75rem;
-    border-radius: 50%;
-    background: var(--color-secondary);
-  }
-
-  .line {
-    width: 2px;
-    flex: 1;
-    background: var(--color-secondary);
-    min-height: 2rem;
-  }
-
-  article {
-    padding-bottom: 5rem;
-    max-width: 100ch;
-  }
-
-  .badge {
-    margin-bottom: 0.5rem;
-  }
-
-  app-icon {
-    margin-right: 2rem;
-  }
-
-  @media (max-width: ${i}) {
-    app-icon {
-      display: none;
-    }
-  }
-
-  p {
-    max-width: 50ch;
-  }
-`, we = () => `
-  <section>
-      <section-title
-        props='${JSON.stringify({
-  name: "Experience Overview",
-  img: "./assets/icons/bird-flying.svg",
-  alt: "Bird Flying Logo"
-})}'
-      ></section-title>
-
-      <ul>
-        ${be.map(({ icon: t, alt: o, range: r, title: l, description: s }) => `
-              <li>
-                <app-icon src="${t}" alt="${o}"></app-icon>
-
-                <div class="connector">
-                  <span class="dot"></span>
-                  <span class="line"></span>
-                </div>
-
-                <article>
-                  <app-badge
-                    props='${JSON.stringify({ name: r })}'
-                    ${r === "Present" ? "" : 'variant="outline"'}
-                  ></app-badge>
-
-                  <h3>${l}</h3>
-                  <p>${s}</p>
-                </article>
-              </li>
-            `).join("")}
-      </ul>
-  </section>
-`;
-e("section-timeline", { styles: ye, template: we });
-
-// web-components/sections/why-hire-me.js
-var xe = [
-  {
-    title: "Working Man",
-    description: "I'm consistent on one thing: always giving my best. I take pride in doing things properly and take full ownership of everything I do. When I commit to something, I follow through.",
-    icon: "./assets/icons/working-man.svg",
-    alt: "Working Man Icon"
-  },
-  {
-    title: "Detail-oriented Person",
-    description: "I pay close attention to every detail, because the little things matter. I believe the difference between good work and great work lives in the details.",
-    icon: "./assets/icons/man-in-details.svg",
-    alt: "Detail-oriented Person Icon"
-  },
-  {
-    title: "Positive Thinker",
-    description: "A positive mindset helps me create better work and stronger collaborations. I focus on solutions rather than problems. Good energy builds great work.",
-    icon: "./assets/icons/positive-man.svg",
-    alt: "Positive Thinker Icon"
-  }
-], ke = `
-  :host {
-    display: block;
-  }
-
-  section {
-    width: 80%;
-    margin-inline: auto;
-  }
-
-  h3,
-  p {
-    margin: 0;
-  }
-
-  h3 {
-    font-size: var(--size-heading);
-    font-family: var(--font-body);
-  }
-
-  .header {
-    display: flex;
-    flex-direction: column;
-    width: fit-content;
-    align-items: center;
-    gap: 0;
-  }
-
-  .header img {
-    width: 8rem;
-    max-width: 12rem;
-  }
-
-  ul {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 12rem;
-  }
-
-  li {
-    display: flex;
-    gap: 5rem;
-  }
-
-  article {
-    max-width: 50ch;
-  }
-
-   span {
-    color: var(--color-secondary);
-    font-weight: var(--font-bold);
-    text-transform: uppercase;
-  }
-
-  .icon {
-    width: 4.5rem;
-    height: auto;
-  }
-
-  @media (max-width: 769px) {
-    li {
-      flex-direction: column-reverse;
-      gap: 1rem;
-    }
-  }
-`, $e = () => `
-  <section>
-       <section-title
-        variant="vertical"
-        props='${JSON.stringify({
-  name: "Why hire me?",
-  img: "./assets/icons/owl.svg",
-  alt: "Owl Logo"
-})}'
-      ></section-title>
-
-      <ul>
-        ${xe.map(({ title: t, description: o, icon: r, alt: l }, s) => `
-              <li>
-                <article>
-                  <h3><span>${s + 1}.</span> ${t}</h3>
-                  <p>${o}</p>
-                </article>
-
-                <app-icon variant="large" src="${r}" alt="${l}"></app-icon>
-              </li>
-            `).join("")}
-      </ul>
-  </section>
-`;
-e("section-why-hire-me", { styles: ke, template: $e });
-
-// web-components/sections/cta.js
-var Se = `
-  :host {
-    display: block;
-    position: relative;
-  }
-
-  section {
-    width: 80%;
-    margin-inline: auto;
-  }
-
-  article {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    max-width: 60ch;
-  }
-
-  p {
-    margin: 0;
+    margin-top: 1rem;
+    font-size: var(--size-title);
     margin-bottom: 1rem;
   }
 
+
   img {
-    position: absolute;
-    bottom: 0;
-    right: 10%;
-    height: 30rem;
+    height: 50rem;
     width: auto;
-    max-width: 30rem;
-  }
 
-  app-link {
-    margin-top: 2rem;
-  }
-
-  @media (max-width: ${p}) {
-    img {
-      display: none;
+    @media (min-width: ${e}) {
+      width: 100%;
+      height: auto;
     }
   }
-`, ze = `
+`, q = `
+  <div>
+    <img src="./assets/images/home/sketching.avif" alt="Sketching SEA">
+  </div>
+
   <section>
-       <section-title
-       variant="text"
-        props='${JSON.stringify({
-  name: "Call me, Singapore",
-  img: "./assets/icons/owl.svg",
-  alt: "Owl Logo"
-})}'
-      ></section-title>
-
-
-
-      <article>
-        <p>
-          I'm looking for a UX Designer role in Singapore where I can simplify
-          complex workflows and design intuitive experiences for enterprise
-          products.
-        </p>
-
-        <p>
-          If you're looking for someone who is hardworking, detail-oriented,
-          and positive-minded, then I’m the one for you.
-        </p>
-
-        <app-link variant="primary" href=${n("/hire-me")}>
-          Let's chat
-          <span>&#8629;</span>
-        </a>
-      </article>
-
-      <img
-        src="./assets/icons/merlion.svg"
-        alt="Merlion illustration"
-      />
+    <p>[ Hobby ]</p>
+    <h2>Self-taught in illustration</h2>
+    <p>All hand-drawn. I bring the same approach to every website I build.</p>
   </section>
 `;
-e("section-cta", { styles: Se, template: ze });
+t("section-hobby", { styles: O, template: q });
+
+// web-components/sections/home/recent-work.js
+var K = `
+  :host {
+    position: relative;
+    display: block;
+    margin-block: 30rem;
+  }
+
+  section {
+    width: 80%;
+    margin-inline: auto;
+  }
+
+   h2 {
+     margin: 0;
+    font-weight: var(--font-bold);
+    font-family: var(--font-heading);
+    margin-bottom: 5rem;
+  }
+
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+
+    @media (max-width: ${e}) {
+      overflow: scroll;
+      display: grid;
+      grid-template-rows: repeat(3, auto);
+      grid-auto-flow: column;
+    }
+  }
+
+  li {
+    border: 1px solid var(--color-text);
+    border-radius: 3rem;
+    padding-block: 4rem;
+    min-width: 25ch;
+    text-align: center;
+  }
+
+   h3 {
+     margin: 0;
+    font-size: var(--size-header);
+    color: #7E4C37;
+    margin-bottom: 1rem;
+  }
+`, N = `
+<section>
+  <h2>A Little Corner of <br> Craftsmanship</h2>
+  <ul>
+    <li>
+      <h3>Your Slot</h3>
+    </li>
+    <li>
+      <h3>Terra</h3>
+    </li>
+    <li>
+      <h3>SKS Solar</h3>
+    </li>
+    <li>
+      <h3>Maple</h3>
+    </li>
+  </ul>
+</section>
+`;
+t("section-recent-work", { styles: K, template: N });
+
+// web-components/sections/home/cta.js
+var j = `
+  :host {
+    display: block;
+    height: 70rem;
+    position: relative;
+    overflow: hidden;
+    margin-top: 20rem;
+    margin-bottom: 10rem;
+  }
+
+  section {
+    width: min(80%, 144rem);
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 5rem;
+
+    @media (min-width: ${e}) {
+      height: 90%;
+    }
+
+    @media (min-width: ${m}) {
+      position: relative;
+      overflow: hidden;
+    }
+  }
+
+  h2 {
+    margin: 0;
+    margin-top: 1rem;
+    font-size: var(--size-title);
+    margin-bottom: 1rem;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  ul {
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    width: 100%;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    border-bottom: 1px solid var(--color-text);
+    padding-block: 2rem;
+    overflow: scroll;
+
+    
+    @media (min-width: ${e}) {
+      max-width: 50%;
+      gap: 5rem;
+    }
+  }
+
+
+  img {
+    position: absolute;
+    height: 60rem;
+    top: 5rem;
+    z-index: -1; 
+    opacity: 0.1;
+    left: -45%;
+    top: 25%;
+
+    @media (min-width: ${e}) {
+      left: auto;
+      right: 10%;
+      top: 3rem;
+    }
+
+    @media (min-width: ${s}) {
+      opacity: 1;
+    }
+  }
+
+  button {
+    background: var(--color-transparent);
+    color: var(--color-text);
+    border: 1px solid var(--color-text);
+    padding-block: 0.5rem;
+    padding-inline: 2rem;
+    
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  a {
+    text-decoration: none;
+    color: var(--color-text);
+  }
+
+  `, X = `
+
+
+<section>
+  <img src="./assets/images/home/red-telephone-box.avif" alt="Red Telephone Box">
+   
+  <hgroup>
+    <p>[ Let's Craft ]</p>
+    <h2>You bring the idea <br>
+          I craft the website  
+      </h2>
+  </hgroup>
+
+    <ul>
+      <li>
+          <app-logo src=${o("./assets/icons/email.svg")} alt="Email icon"></app-logo>
+          <!-- <app-link variant="plain">hanhtetaung.dev@gmail.com</app-link> -->
+            <a href="mailto:hanhtetaung.dev@gmail.com">hanhtetaung.dev@gmail.com</a>
+          <button onclick="navigator.clipboard.writeText('hanhtetaung.dev@gmail.com')">Copy</button>
+      </li>
+      <li>
+        <app-logo src=${o("./assets/icons/linkedin.svg")} alt="Linkedin icon"></app-logo>
+        <a href="https://www.linkedin.com/in/han-htet-aung/">in/han-htet-aung</a>
+      </li>
+    </ul>
+</section>
+
+`;
+t("section-cta", { styles: j, template: X });
 </script></body>
 </html>

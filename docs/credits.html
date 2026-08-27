@@ -20,7 +20,7 @@
     ></script>
     
   <style>/* main.css */
-:root{--color-bg-primary:#fff5e8;--color-bg-secondary:#fffaf4;--color-secondary:#05798e;--color-primary:#b71f57;--color-tertiary:#1c4286;--color-text:#000;--color-transparent:#0000;--font-heading:"Chicle",serif;--font-body:"StackSans",sans-serif;--font-regular:400;--font-bold:700;--ratio:1.6;--size-body:2rem;--size-small:calc(var(--size-body)/var(--ratio));--size-heading:calc(var(--size-body)*var(--ratio));--size-title:calc(var(--size-heading)*var(--ratio));--size-display:calc(var(--size-title)*var(--ratio));font-size:10px;@media (width<=769px){&{--size-body:1.6rem}}}body{background:var(--color-bg-primary);font-family:var(--font-body);font-weight:var(--font-regular);font-size:var(--size-body);position:relative;margin:0}main>*{background:var(--color-bg-primary);display:block;padding-block-start:10rem;padding-block-end:10rem}main>:nth-child(2n){background:var(--color-bg-secondary)}
+:root{--color-bg-primary:#fff5e8;--color-primary:#7e4c37;--color-text:#000;--color-transparent:#0000;--font-family:"Archivo",sans-serif;--font-regular:400;--font-bold:700;--ratio:1.4;--size-body:1.6rem;--size-small:calc(var(--size-body)/var(--ratio));--size-heading:calc(var(--size-body)*var(--ratio));--size-title:calc(var(--size-heading)*var(--ratio));--size-display:calc(var(--size-title)*var(--ratio));font-size:10px;@media (width>=640px){&{--size-body:2rem}}}body{background:var(--color-bg-primary);font-family:var(--font-family);font-size:var(--size-body);margin:0}
 </style></head>
   <body>
     <app-frame></app-frame>
@@ -38,33 +38,28 @@ function u() {
   let o = document.documentElement.dataset.base || "./";
   return new URL(o, location.href);
 }
-function n(o) {
+function a(o) {
   return new URL(o, u()).href;
 }
 function r(o) {
-  let t = o.replace(/^\//, ""), i = location.protocol === "file:", s = u();
-  if (t === "")
+  let n = o.replace(/^\//, ""), i = location.protocol === "file:", s = u();
+  if (n === "")
     return i ? new URL("index.html", s).href : s.href;
-  return i ? new URL(`${t}.html`, s).href : new URL(t, s).href;
+  return i ? new URL(`${n}.html`, s).href : new URL(n, s).href;
 }
 
 // web-components/fonts.js
 var v = `
-  @font-face {
-    font-family: "Chicle";
-    src: url("${n("assets/fonts/Chicle-Regular.woff2")}") format("woff2");
-    font-weight: 400;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: "StackSans";
-    src: url("${n("assets/fonts/StackSansText-Bold.woff2")}") format("woff2");
+@font-face {
+    font-family: "Archivo";
+    src: url("${a("./assets/fonts/Archivo-Black.woff2")}") format("woff2");
     font-weight: 700;
     font-display: swap;
   }
+
   @font-face {
-    font-family: "StackSans";
-    src: url("${n("assets/fonts/StackSansText-Regular.woff2")}") format("woff2");
+    font-family: "Archivo";
+    src: url("${a("./assets/fonts/Archivo-Regular.woff2")}") format("woff2");
     font-weight: 400;
     font-display: swap;
   }
@@ -73,25 +68,25 @@ g.textContent = v;
 document.head.appendChild(g);
 
 // web-components/define.js
-function b(o, t) {
+function b(o, n) {
   if (o === void 0) {
-    if (t === Array)
+    if (n === Array)
       return [];
-    if (t === Object)
+    if (n === Object)
       return {};
-    if (t === Boolean)
+    if (n === Boolean)
       return !1;
-    if (t === Number)
+    if (n === Number)
       return 0;
     return;
   }
-  if (t === Boolean)
+  if (n === Boolean)
     return Boolean(o);
-  if (t === Number)
+  if (n === Number)
     return Number(o);
   return o;
 }
-function e(o, { props: t = {}, attrs: i = [], styles: s = "", template: m }) {
+function e(o, { props: n = {}, attrs: i = [], styles: s = "", template: m }) {
   let f = ["props", ...i];
 
   class h extends HTMLElement {
@@ -116,8 +111,8 @@ function e(o, { props: t = {}, attrs: i = [], styles: s = "", template: m }) {
           c = {};
         }
       let d = {};
-      for (let p of Object.keys(t))
-        d[p] = b(c[p], t[p]);
+      for (let p of Object.keys(n))
+        d[p] = b(c[p], n[p]);
       return d;
     }
     _applyForwardedAttrs() {
@@ -140,6 +135,9 @@ function e(o, { props: t = {}, attrs: i = [], styles: s = "", template: m }) {
   customElements.define(o, h);
 }
 
+// web-components/breakpoints.js
+var t = "640px";
+
 // web-components/components/app-frame.js
 var y = `
   :host {
@@ -147,8 +145,12 @@ var y = `
     position: fixed;
     inset: 0;
     z-index: 10;
-    border: 10px solid var(--color-secondary);
+    border: 7px solid var(--color-secondary);
     pointer-events: none;
+
+    @media (max-width: ${t}) {
+      border-width: 5px;
+    }
   }
 
   :host([variant="color-primary"]) {
@@ -190,7 +192,7 @@ var k = `
   }
 
   :host([variant="secondary"]) {
-    --local-color: var(--color-primary);
+    --local-color: var(--color-text);
   }
 
   :host([variant="underline"]) {
@@ -237,18 +239,15 @@ var j = `
     max-height: 7rem;
     width: auto;
   }
-`, $ = ["width", "height", "src", "alt"], S = () => "<img data-forward />";
-e("app-logo", { attrs: $, styles: j, template: S });
-
-// web-components/breakpoints.js
-var a = "769px";
+`, $ = ["width", "height", "src", "alt"], A = () => "<img data-forward />";
+e("app-logo", { attrs: $, styles: j, template: A });
 
 // web-components/sections/header.js
-var z = `
+var S = `
   :host {
     display: block;
-    margin-top: 1rem;
     background: var(--color-bg-primary);
+    font-size: var(--size-small);
   }
 
   header {
@@ -281,18 +280,21 @@ var z = `
     box-shadow: none;
   }
 
-  @media (max-width: ${a}) {
+  @media (max-width: ${t}) {
     .header__navigation {
       gap: 4rem;
     }
   }
-`, H = `
+
+  img {
+    height: 5rem;
+    width: auto;
+  }
+`, z = `
   <header>
       <app-link variant="plain" href=${r("/")}>
-        <app-logo
-          src=${n("./assets/images/logo.avif")}
-          alt="Logo"
-        ></app-logo>
+        <img src=${a("./assets/images/logo.avif")}
+          alt="Logo">
       </app-link>
 
       <div>
@@ -308,16 +310,16 @@ var z = `
           </ul>
         </nav>
 
-        <app-link variant="primary" href=${r("/hire-me")}>
-          Let's chat &#8629;
+        <app-link variant="secondary" href=${r("/#cta")}>
+          Let's Craft &#8629;
         </app-link>
       </div>
   </header>
 `;
-e("section-header", { template: H, styles: z });
+e("section-header", { template: z, styles: S });
 
 // web-components/components/footer-nav.js
-var A = [
+var T = [
   { href: "/", name: "Home" },
   { href: "/about", name: "About" },
   { href: "/credits", name: "Credits" },
@@ -336,7 +338,7 @@ var A = [
     href: "/writings/foundation-building-interfaces-at-scale",
     name: "Foundation"
   }
-], C = `
+], L = `
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -345,7 +347,7 @@ var A = [
    display: flex;
    gap: 5rem;
 
-   @media (max-width: ${a}) {
+   @media (max-width: ${t}) {
         flex-direction: column;
         gap: 3rem;
         margin-block: 2rem;
@@ -374,7 +376,7 @@ var A = [
     max-height: 12.5ch;
     overflow: scroll;
 
-    @media (max-width: ${a}) {
+    @media (max-width: ${t}) {
         max-height: 20ch;
     }
   }
@@ -383,12 +385,12 @@ var A = [
     margin-right: 5rem;
     margin-bottom: 0.3rem;
   }
-`, T = () => `
+`, B = () => `
     <nav>
         <span>Sitemap</span>
 
         <ol>
-            ${A.map((o) => `
+            ${T.map((o) => `
                 <li>
                     <app-link variant="sitemap" href=${r(o.href)} >${o.name}</app-link>
                 </li>
@@ -396,17 +398,18 @@ var A = [
         </ol>
     </nav>
 `;
-e("footer-nav", { styles: C, template: T });
+e("footer-nav", { styles: L, template: B });
 
 // web-components/components/footer-copyright.js
-var P = `
+var H = `
   :host {
    display: flex;
     justify-content: space-between;
     border-top: 1px solid var(--color-text);
     padding-top: 1rem;
+    margin-top: 3rem;
 
-   @media (max-width: ${a}) {
+   @media (max-width: ${t}) {
         flex-direction: column-reverse;
         gap: 2rem;
         border: none;
@@ -416,10 +419,12 @@ var P = `
 
   p {
     margin: 0;
-
-    @media (max-width: ${a}) {
-      border-top: 1px solid var(--color-text);
+    border-top: 1px solid var(--color-text);
     padding-top: 1rem;
+
+    @media (min-width: ${t}) {
+      border: none;
+      padding-top: none;
     }
   }
 
@@ -431,6 +436,14 @@ var P = `
     gap: 2rem;
   }
 
+  nav {
+    display: none;
+
+    @media (min-width: ${t}) {
+      display: block;
+    }
+  }
+
   span {
     display: none;
     color: var(--color-secondary);
@@ -439,15 +452,14 @@ var P = `
     text-transform: uppercase;
     
 
-    @media (max-width: ${a}) {
+    @media (max-width: ${t}) {
       display: inline-block;
       margin-bottom: 0.5rem;
     }
   }
-`, L = () => `
+`, F = () => `
       <p>
-        © Han Htet Aung 2026 |
-        <app-link href=${r("/credits")} variant="underline">Credits</app-link>
+        © Han Htet Aung 2026
       </p>
 
       <nav>
@@ -456,7 +468,7 @@ var P = `
               <li>
                   <app-link href="mailto:hanhtetaung.dev@gmail.com" variant="image">
                   <img
-                      src=${n("./assets/icons/email.svg")}
+                      src=${a("./assets/icons/email.svg")}
                       alt="Email Icon"
                   />
                   </app-link>
@@ -469,7 +481,7 @@ var P = `
                   variant="image"
                   >
                   <img
-                      src=${n("./assets/icons/github.svg")}
+                      src=${a("./assets/icons/github.svg")}
                       alt="Github Icon"
                   />
                   </app-link>
@@ -482,32 +494,26 @@ var P = `
                   variant="image"
                   >
                   <img
-                      src=${n("./assets/icons/linkedin.svg")}
+                      src=${a("./assets/icons/linkedin.svg")}
                       alt="Linkedin Icon"
                   />
                   </app-link>
               </li>
           </ul>
-</nav>
+        </nav>
 `;
-e("footer-copyright", { styles: P, template: L });
+e("footer-copyright", { styles: H, template: F });
 
 // web-components/sections/footer.js
-var B = `
+var C = `
   :host {
-    --local-bg-color: var(--color-bg-secondary);
-
     display: block;
-    background-color: var(--local-bg-color);
     padding-block: 10rem;
   }
 
-  :host([variant="secondary"]) {
-    --local-bg-color: var(--color-bg-primary);
-  }
-
-  p {
-    margin: 0;
+  q {
+    display: block;
+    text-align: center;
   }
 
   footer {
@@ -515,57 +521,44 @@ var B = `
     margin-inline: auto;
   }
 
-  
+  img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
 
-  article {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 2rem;
-    gap: 5rem;
+  img:first-child {
+    display: none;
   }
 
-  @media (max-width: ${a}) {
-    article {
-      display: block;
-    }
+@media (min-width: ${t}) {
+  img:first-child {
+    display: block;
   }
 
-  div {
-    display: flex;
-    gap: 3rem;
-    align-items: center;
-    min-width: 21rem;
+  img:not(:first-child) {
+    display: none;
   }
+}
 
-  hr {
-    color: var(--color-secondary);
-  }
-`, F = `
+
+`, E = `
   <footer>
-      <article>
-        <div>
-          <app-logo
-            src="${n("./assets/images/logo.avif")}"
-            alt="Logo"
-          ></app-logo>
-        
-          <p>
-            Thank You <br />
-            for Visiting
-          </p>
-        </div>
 
-        <footer-nav></footer-nav>
-      </article>
+  <img src="./assets/images/footer/highlight.avif" alt="Parting phrase">
+  <img src="./assets/images/footer/thank-you.avif" alt="Thank you phrase">
+  <img src="./assets/images/footer/looking-forward.avif" alt="Parting Phrase">
 
-      <footer-copyright></footer-copyright>
+
+    <!-- <footer-nav></footer-nav> -->
+
+    <footer-copyright></footer-copyright>
   </footer>
 `;
-e("section-footer", { styles: B, template: F });
+e("section-footer", { styles: C, template: E });
 
 // web-components/sections/credits-intro.js
-var E = `
+var P = `
     section {
         margin-inline: auto;
         width: 80%;
@@ -588,10 +581,10 @@ var E = `
       <p>Thanks to the creators behind the icons.</p>
   </section>
 `;
-e("section-credits-intro", { styles: E, template: M });
+e("section-credits-intro", { styles: P, template: M });
 
 // web-components/components/app-icon.js
-var O = `
+var _ = `
   :host {
     --local-width: 3rem;
     --local-height: auto;
@@ -629,11 +622,11 @@ var O = `
   }
 
 
-`, _ = ["src", "alt"], R = () => '<img data-forward width="200" height="200"/>';
-e("app-icon", { attrs: _, styles: O, template: R });
+`, R = ["src", "alt"], D = () => '<img data-forward width="200" height="200"/>';
+e("app-icon", { attrs: R, styles: _, template: D });
 
 // web-components/components/creator-item.js
-var D = `
+var O = `
   :host {
     display: flex;
     align-items: center;
@@ -648,14 +641,14 @@ var D = `
     margin: 0;
     text-decoration: none;
   }
-`, U = { icon: String, alt: String, url: String, name: String }, N = ({ icon: o, alt: t, url: i, name: s }) => `
-    <app-icon variant="creator" src="${o}" alt="${t}" ></app-icon>
+`, U = { icon: String, alt: String, url: String, name: String }, q = ({ icon: o, alt: n, url: i, name: s }) => `
+    <app-icon variant="creator" src="${o}" alt="${n}" ></app-icon>
     ${i ? `<app-link variant="underline" href="${r(i)}" target="_blank" rel="noreferrer">By ${s}</app-link>` : `<p>By ${s}</p>`}
 `;
-e("creator-item", { props: U, styles: D, template: N });
+e("creator-item", { props: U, styles: O, template: q });
 
 // web-components/sections/creators-list.js
-var q = [
+var N = [
   {
     icon: "./assets/images/logo.avif",
     alt: "Logo",
@@ -949,7 +942,7 @@ var q = [
     gap: 2rem;
     overflow: scroll;
 
-    @media (max-width: ${a}) {
+    @media (max-width: ${t}) {
       display: flex;
       flex-direction: column;
     }
@@ -957,11 +950,11 @@ var q = [
 `, K = () => `
   <section>
       <ul>
-        ${q.map((o) => `
+        ${N.map((o) => `
               <li>
                 <creator-item
                   props='${JSON.stringify({
-  icon: n(o.icon),
+  icon: a(o.icon),
   alt: o.alt,
   name: o.name,
   url: o.url ?? ""

@@ -21,7 +21,7 @@
     ></script>
     
   <style>/* main.css */
-:root{--color-bg-primary:#fff5e8;--color-bg-secondary:#fffaf4;--color-secondary:#05798e;--color-primary:#b71f57;--color-tertiary:#1c4286;--color-text:#000;--color-transparent:#0000;--font-heading:"Chicle",serif;--font-body:"StackSans",sans-serif;--font-regular:400;--font-bold:700;--ratio:1.6;--size-body:2rem;--size-small:calc(var(--size-body)/var(--ratio));--size-heading:calc(var(--size-body)*var(--ratio));--size-title:calc(var(--size-heading)*var(--ratio));--size-display:calc(var(--size-title)*var(--ratio));font-size:10px;@media (width<=769px){&{--size-body:1.6rem}}}body{background:var(--color-bg-primary);font-family:var(--font-body);font-weight:var(--font-regular);font-size:var(--size-body);position:relative;margin:0}main>*{background:var(--color-bg-primary);display:block;padding-block-start:10rem;padding-block-end:10rem}main>:nth-child(2n){background:var(--color-bg-secondary)}
+:root{--color-bg-primary:#fff5e8;--color-primary:#7e4c37;--color-text:#000;--color-transparent:#0000;--font-family:"Archivo",sans-serif;--font-regular:400;--font-bold:700;--ratio:1.4;--size-body:1.6rem;--size-small:calc(var(--size-body)/var(--ratio));--size-heading:calc(var(--size-body)*var(--ratio));--size-title:calc(var(--size-heading)*var(--ratio));--size-display:calc(var(--size-title)*var(--ratio));font-size:10px;@media (width>=640px){&{--size-body:2rem}}}body{background:var(--color-bg-primary);font-family:var(--font-family);font-size:var(--size-body);margin:0}
 </style></head>
   <body>
     <app-frame></app-frame>
@@ -42,46 +42,41 @@
     <section-footer></section-footer>
   <script type="module">// web-components/asset.js
 function h() {
-  let t = document.documentElement.dataset.base || "./";
-  return new URL(t, location.href);
+  let r = document.documentElement.dataset.base || "./";
+  return new URL(r, location.href);
 }
-function o(t) {
-  return new URL(t, h()).href;
+function o(r) {
+  return new URL(r, h()).href;
 }
-function i(t) {
-  let a = t.replace(/^\//, ""), s = location.protocol === "file:", c = h();
+function i(r) {
+  let a = r.replace(/^\//, ""), s = location.protocol === "file:", c = h();
   if (a === "")
     return s ? new URL("index.html", c).href : c.href;
   return s ? new URL(`${a}.html`, c).href : new URL(a, c).href;
 }
 
 // web-components/fonts.js
-var v = `
-  @font-face {
-    font-family: "Chicle";
-    src: url("${o("assets/fonts/Chicle-Regular.woff2")}") format("woff2");
-    font-weight: 400;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: "StackSans";
-    src: url("${o("assets/fonts/StackSansText-Bold.woff2")}") format("woff2");
+var u = `
+@font-face {
+    font-family: "Archivo";
+    src: url("${o("./assets/fonts/Archivo-Black.woff2")}") format("woff2");
     font-weight: 700;
     font-display: swap;
   }
+
   @font-face {
-    font-family: "StackSans";
-    src: url("${o("assets/fonts/StackSansText-Regular.woff2")}") format("woff2");
+    font-family: "Archivo";
+    src: url("${o("./assets/fonts/Archivo-Regular.woff2")}") format("woff2");
     font-weight: 400;
     font-display: swap;
   }
 `, g = document.createElement("style");
-g.textContent = v;
+g.textContent = u;
 document.head.appendChild(g);
 
 // web-components/define.js
-function b(t, a) {
-  if (t === void 0) {
+function b(r, a) {
+  if (r === void 0) {
     if (a === Array)
       return [];
     if (a === Object)
@@ -93,16 +88,16 @@ function b(t, a) {
     return;
   }
   if (a === Boolean)
-    return Boolean(t);
+    return Boolean(r);
   if (a === Number)
-    return Number(t);
-  return t;
+    return Number(r);
+  return r;
 }
-function e(t, { props: a = {}, attrs: s = [], styles: c = "", template: p }) {
-  let u = ["props", ...s];
+function e(r, { props: a = {}, attrs: s = [], styles: c = "", template: m }) {
+  let v = ["props", ...s];
 
-  class m extends HTMLElement {
-    static observedAttributes = u;
+  class p extends HTMLElement {
+    static observedAttributes = v;
     constructor() {
       super();
       this.attachShadow({ mode: "open" });
@@ -140,12 +135,15 @@ function e(t, { props: a = {}, attrs: s = [], styles: c = "", template: p }) {
           n.removeAttribute(l);
     }
     _render() {
-      let n = this._getProps(), l = typeof p === "function" ? p(n) : p;
+      let n = this._getProps(), l = typeof m === "function" ? m(n) : m;
       this.shadowRoot.innerHTML = `<style>${c}</style>${l}`, this._applyForwardedAttrs();
     }
   }
-  customElements.define(t, m);
+  customElements.define(r, p);
 }
+
+// web-components/breakpoints.js
+var t = "640px";
 
 // web-components/components/app-frame.js
 var y = `
@@ -154,8 +152,12 @@ var y = `
     position: fixed;
     inset: 0;
     z-index: 10;
-    border: 10px solid var(--color-secondary);
+    border: 7px solid var(--color-secondary);
     pointer-events: none;
+
+    @media (max-width: ${t}) {
+      border-width: 5px;
+    }
   }
 
   :host([variant="color-primary"]) {
@@ -197,7 +199,7 @@ var x = `
   }
 
   :host([variant="secondary"]) {
-    --local-color: var(--color-primary);
+    --local-color: var(--color-text);
   }
 
   :host([variant="underline"]) {
@@ -244,18 +246,15 @@ var z = `
     max-height: 7rem;
     width: auto;
   }
-`, S = ["width", "height", "src", "alt"], H = () => "<img data-forward />";
-e("app-logo", { attrs: S, styles: z, template: H });
-
-// web-components/breakpoints.js
-var r = "769px";
+`, A = ["width", "height", "src", "alt"], S = () => "<img data-forward />";
+e("app-logo", { attrs: A, styles: z, template: S });
 
 // web-components/sections/header.js
-var A = `
+var T = `
   :host {
     display: block;
-    margin-top: 1rem;
     background: var(--color-bg-primary);
+    font-size: var(--size-small);
   }
 
   header {
@@ -288,18 +287,21 @@ var A = `
     box-shadow: none;
   }
 
-  @media (max-width: ${r}) {
+  @media (max-width: ${t}) {
     .header__navigation {
       gap: 4rem;
     }
   }
-`, C = `
+
+  img {
+    height: 5rem;
+    width: auto;
+  }
+`, H = `
   <header>
       <app-link variant="plain" href=${i("/")}>
-        <app-logo
-          src=${o("./assets/images/logo.avif")}
-          alt="Logo"
-        ></app-logo>
+        <img src=${o("./assets/images/logo.avif")}
+          alt="Logo">
       </app-link>
 
       <div>
@@ -315,16 +317,16 @@ var A = `
           </ul>
         </nav>
 
-        <app-link variant="primary" href=${i("/hire-me")}>
-          Let's chat &#8629;
+        <app-link variant="secondary" href=${i("/#cta")}>
+          Let's Craft &#8629;
         </app-link>
       </div>
   </header>
 `;
-e("section-header", { template: C, styles: A });
+e("section-header", { template: H, styles: T });
 
 // web-components/components/footer-nav.js
-var E = [
+var B = [
   { href: "/", name: "Home" },
   { href: "/about", name: "About" },
   { href: "/credits", name: "Credits" },
@@ -343,7 +345,7 @@ var E = [
     href: "/writings/foundation-building-interfaces-at-scale",
     name: "Foundation"
   }
-], _ = `
+], L = `
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -352,7 +354,7 @@ var E = [
    display: flex;
    gap: 5rem;
 
-   @media (max-width: ${r}) {
+   @media (max-width: ${t}) {
         flex-direction: column;
         gap: 3rem;
         margin-block: 2rem;
@@ -381,7 +383,7 @@ var E = [
     max-height: 12.5ch;
     overflow: scroll;
 
-    @media (max-width: ${r}) {
+    @media (max-width: ${t}) {
         max-height: 20ch;
     }
   }
@@ -390,30 +392,31 @@ var E = [
     margin-right: 5rem;
     margin-bottom: 0.3rem;
   }
-`, P = () => `
+`, E = () => `
     <nav>
         <span>Sitemap</span>
 
         <ol>
-            ${E.map((t) => `
+            ${B.map((r) => `
                 <li>
-                    <app-link variant="sitemap" href=${i(t.href)} >${t.name}</app-link>
+                    <app-link variant="sitemap" href=${i(r.href)} >${r.name}</app-link>
                 </li>
             `).join("")}
         </ol>
     </nav>
 `;
-e("footer-nav", { styles: _, template: P });
+e("footer-nav", { styles: L, template: E });
 
 // web-components/components/footer-copyright.js
-var U = `
+var _ = `
   :host {
    display: flex;
     justify-content: space-between;
     border-top: 1px solid var(--color-text);
     padding-top: 1rem;
+    margin-top: 3rem;
 
-   @media (max-width: ${r}) {
+   @media (max-width: ${t}) {
         flex-direction: column-reverse;
         gap: 2rem;
         border: none;
@@ -423,10 +426,12 @@ var U = `
 
   p {
     margin: 0;
-
-    @media (max-width: ${r}) {
-      border-top: 1px solid var(--color-text);
+    border-top: 1px solid var(--color-text);
     padding-top: 1rem;
+
+    @media (min-width: ${t}) {
+      border: none;
+      padding-top: none;
     }
   }
 
@@ -438,6 +443,14 @@ var U = `
     gap: 2rem;
   }
 
+  nav {
+    display: none;
+
+    @media (min-width: ${t}) {
+      display: block;
+    }
+  }
+
   span {
     display: none;
     color: var(--color-secondary);
@@ -446,15 +459,14 @@ var U = `
     text-transform: uppercase;
     
 
-    @media (max-width: ${r}) {
+    @media (max-width: ${t}) {
       display: inline-block;
       margin-bottom: 0.5rem;
     }
   }
-`, B = () => `
+`, U = () => `
       <p>
-        © Han Htet Aung 2026 |
-        <app-link href=${i("/credits")} variant="underline">Credits</app-link>
+        © Han Htet Aung 2026
       </p>
 
       <nav>
@@ -495,26 +507,20 @@ var U = `
                   </app-link>
               </li>
           </ul>
-</nav>
+        </nav>
 `;
-e("footer-copyright", { styles: U, template: B });
+e("footer-copyright", { styles: _, template: U });
 
 // web-components/sections/footer.js
-var F = `
+var C = `
   :host {
-    --local-bg-color: var(--color-bg-secondary);
-
     display: block;
-    background-color: var(--local-bg-color);
     padding-block: 10rem;
   }
 
-  :host([variant="secondary"]) {
-    --local-bg-color: var(--color-bg-primary);
-  }
-
-  p {
-    margin: 0;
+  q {
+    display: block;
+    text-align: center;
   }
 
   footer {
@@ -522,54 +528,41 @@ var F = `
     margin-inline: auto;
   }
 
-  
+  img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
 
-  article {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 2rem;
-    gap: 5rem;
+  img:first-child {
+    display: none;
   }
 
-  @media (max-width: ${r}) {
-    article {
-      display: block;
-    }
+@media (min-width: ${t}) {
+  img:first-child {
+    display: block;
   }
 
-  div {
-    display: flex;
-    gap: 3rem;
-    align-items: center;
-    min-width: 21rem;
+  img:not(:first-child) {
+    display: none;
   }
+}
 
-  hr {
-    color: var(--color-secondary);
-  }
-`, L = `
+
+`, F = `
   <footer>
-      <article>
-        <div>
-          <app-logo
-            src="${o("./assets/images/logo.avif")}"
-            alt="Logo"
-          ></app-logo>
-        
-          <p>
-            Thank You <br />
-            for Visiting
-          </p>
-        </div>
 
-        <footer-nav></footer-nav>
-      </article>
+  <img src="./assets/images/footer/highlight.avif" alt="Parting phrase">
+  <img src="./assets/images/footer/thank-you.avif" alt="Thank you phrase">
+  <img src="./assets/images/footer/looking-forward.avif" alt="Parting Phrase">
 
-      <footer-copyright></footer-copyright>
+
+    <!-- <footer-nav></footer-nav> -->
+
+    <footer-copyright></footer-copyright>
   </footer>
 `;
-e("section-footer", { styles: F, template: L });
+e("section-footer", { styles: C, template: F });
 
 // web-components/components/app-image.js
 var R = `
@@ -603,11 +596,11 @@ var R = `
    :host([variant="full"]) {
     --local-width: 100%;
   }
-`, T = ["width", "height", "src", "alt"], N = () => "<img data-forward />";
-e("app-image", { attrs: T, styles: R, template: N });
+`, P = ["width", "height", "src", "alt"], q = () => "<img data-forward />";
+e("app-image", { attrs: P, styles: R, template: q });
 
 // web-components/sections/portfolio/intro.js
-var O = `
+var I = `
   :host {
     display: block;
   }
@@ -621,7 +614,7 @@ var O = `
     justify-content: space-between;
     gap: 3rem;
 
-    @media (max-width: ${r}) {
+    @media (max-width: ${t}) {
       flex-direction: column;
     }
   }
@@ -648,7 +641,7 @@ var O = `
     font-weight: var(--font-bold);
     text-transform: uppercase;
   }
-`, q = `
+`, N = `
   <section>
       <app-image
         variant="medium"
@@ -675,15 +668,15 @@ var O = `
           <p>Idea → Website</p>
 
         <app-link variant="secondary" href=${i("https://hanhtetaung.dev/")} target="_blank">
-          View Live Website
+          Visit ➶
         </app-link>
       </article>
   </section>
 `;
-e("section-portfolio-intro", { styles: O, template: q });
+e("section-portfolio-intro", { styles: I, template: N });
 
 // web-components/components/section-title.js
-var I = `
+var O = `
   :host {
     display: flex;
     align-items: center;
@@ -714,8 +707,8 @@ var I = `
       display: none;
     }
   }
-`, D = { name: String, img: String, alt: String }, M = ({ name: t, img: a = "", alt: s = "" }) => `
-    <h2>${t}</h2>
+`, D = { name: String, img: String, alt: String }, G = ({ name: r, img: a = "", alt: s = "" }) => `
+    <h2>${r}</h2>
     <img
         src=${o(a)}
         alt=${s}
@@ -723,10 +716,10 @@ var I = `
         width="76"
     />
 `;
-e("section-title", { props: D, styles: I, template: M });
+e("section-title", { props: D, styles: O, template: G });
 
 // web-components/sections/portfolio/background.js
-var X = `
+var M = `
   :host {
     display: block;
   }
@@ -735,7 +728,7 @@ var X = `
     width: 80%;
     margin-inline: auto;
   }
-`, G = `
+`, X = `
   <section>
     <section-title variant="text" props='{"name": "Background"}'></section-title>
 
@@ -748,10 +741,10 @@ var X = `
     </p>
   </section>
 `;
-e("section-portfolio-background", { styles: X, template: G });
+e("section-portfolio-background", { styles: M, template: X });
 
 // web-components/sections/portfolio/challenge.js
-var W = `
+var J = `
   :host {
     display: block;
   }
@@ -760,7 +753,7 @@ var W = `
     width: 80%;
     margin-inline: auto;
   }
-`, J = `
+`, K = `
   <section>
     <section-title variant="text" props='{"name": "Challenge"}'></section-title>
 
@@ -774,16 +767,16 @@ var W = `
     </p>
   </section>
 `;
-e("section-portfolio-challenge", { styles: W, template: J });
+e("section-portfolio-challenge", { styles: J, template: K });
 
 // web-components/components/app-article-paragraph.js
-var K = `
+var Q = `
   :host {
     display: grid;
     grid-template-columns: 1fr 2.5fr;
 
 
-    @media (max-width: ${r}) {
+    @media (max-width: ${t}) {
         display: block;
     }
   }
@@ -799,14 +792,14 @@ var K = `
   :host([variant="block"]) {
     display: block;
   }
-`, Q = { title: String }, V = ({ title: t }) => `
-        <h3>${t}</h3>
+`, V = { title: String }, W = ({ title: r }) => `
+        <h3>${r}</h3>
 
         <article>
             <slot></slot>
         </article>
 `;
-e("app-article-paragraph", { props: Q, styles: K, template: V });
+e("app-article-paragraph", { props: V, styles: Q, template: W });
 
 // web-components/sections/portfolio/process.js
 var Y = `
@@ -951,7 +944,7 @@ var j = `
     padding: 0;
     gap: 3rem;
 
-    @media (max-width: ${r}) {
+    @media (max-width: ${t}) {
       flex-direction: column;
     }
   }
@@ -968,7 +961,7 @@ var j = `
     </p>
 
     <app-link variant="secondary" href="https://hanhtetaung.dev/" target="_blank">
-      View Live Website
+      Visit ➶
     </app-link>
 
     <ul>
