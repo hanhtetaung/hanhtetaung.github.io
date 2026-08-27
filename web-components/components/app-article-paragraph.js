@@ -1,4 +1,4 @@
-import { PHONE } from "../breakpoints.js";
+import { TABLET } from "../breakpoints.js";
 import { define } from "../define.js";
 
 const styles = /* css */ `
@@ -7,7 +7,7 @@ const styles = /* css */ `
     grid-template-columns: 1fr 2.5fr;
 
 
-    @media (max-width: ${PHONE}) {
+    @media (max-width: ${TABLET}) {
         display: block;
     }
   }

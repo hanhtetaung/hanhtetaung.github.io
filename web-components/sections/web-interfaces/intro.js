@@ -45,7 +45,7 @@ const template = /* html */ `
         <what-i-deliver props='${JSON.stringify({
           delivers: [
             {
-              name: "HTML",
+              name: "Standalone HTML",
               icon: "./assets/icons/html-1.svg",
               alt: "HTML Icon",
             },

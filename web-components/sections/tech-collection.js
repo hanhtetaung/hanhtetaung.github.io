@@ -127,6 +127,11 @@ const techCollection = [
 ];
 
 const styles = /*css*/ `
+  :host {
+    display: block;
+    margin-block: 20rem;
+  }
+
   section {
     width: 80%;
     margin-inline: auto;
@@ -141,17 +146,17 @@ const styles = /*css*/ `
     display: flex;
     flex-wrap: wrap;
   }
+
+  h2 {
+    font-size: var(--size-title);
+    margin: 0;
+    margin: 1rem;
+  }
 `;
 
 const template = () => /* html */ `
   <section>
-    <section-title
-        props='${JSON.stringify({
-          name: "Tech Collection",
-          img: "./assets/icons/penguin.svg",
-          alt: "Penguin Logo",
-        })}'
-      ></section-title>
+      <h2>Tech Collection</h2>
 
       <ul>
         ${techCollection

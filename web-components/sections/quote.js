@@ -1,4 +1,4 @@
-import { PHONE } from "../breakpoints.js";
+import { TABLET } from "../breakpoints.js";
 import { define } from "../define.js";
 
 const styles = /*css*/ `
@@ -13,7 +13,7 @@ const styles = /*css*/ `
     font-weight: var(--font-regular);
     font-family: var(--font-heading);
 
-    @media (max-width: ${PHONE}) {
+    @media (max-width: ${TABLET}) {
       font-size: var(--size-body);
     }
   }

@@ -3,7 +3,7 @@ import "../components/section-title.js";
 import "../components/app-badge.js";
 import "../components/app-icon.js";
 import "../components/capabilities-item.js";
-import { PHONE } from "../breakpoints.js";
+import { TABLET } from "../breakpoints.js";
 
 const styles = /* css */ `
   section {
@@ -25,7 +25,7 @@ const styles = /* css */ `
         display: grid;
         grid-template-columns: 1fr 1fr;
 
-        @media (max-width: ${PHONE}) {
+        @media (max-width: ${TABLET}) {
             grid-template-columns: 1fr;
             gap: 3rem;
         }
@@ -38,7 +38,7 @@ const styles = /* css */ `
         gap: 6rem;
         flex-direction: column;
 
-        @media (max-width: ${PHONE}) {
+        @media (max-width: ${TABLET}) {
             flex-direction: column;
         }
     }

@@ -1,7 +1,7 @@
 import { define } from "../define.js";
 import "../components/section-title.js";
 import "../components/app-badge.js";
-import { PHONE } from "../breakpoints.js";
+import { TABLET } from "../breakpoints.js";
 
 const timelineItems = [
   {
@@ -118,7 +118,7 @@ const styles = /* css */ `
     margin-right: 2rem;
   }
 
-  @media (max-width: ${PHONE}) {
+  @media (max-width: ${TABLET}) {
     app-icon {
       display: none;
     }

@@ -3,7 +3,7 @@ import { asset } from "../asset.js";
 
 import "../components/app-image.js";
 import "../components/app-icon.js";
-import { PHONE } from "../breakpoints.js";
+import { TABLET } from "../breakpoints.js";
 
 const styles = /*css*/ `
    section {
@@ -12,7 +12,7 @@ const styles = /*css*/ `
         display: flex;
         justify-content: space-between;
 
-        @media (max-width: ${PHONE}) {
+        @media (max-width: ${TABLET}) {
           flex-direction: column;
           gap: 3rem;
         }

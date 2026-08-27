@@ -2,7 +2,7 @@ import { define } from "../../define.js";
 
 import "../../components/app-image.js";
 import "../../components/app-link.js";
-import { PHONE } from "../../breakpoints.js";
+import { TABLET } from "../../breakpoints.js";
 import { asset, navHref } from "../../asset.js";
 
 const styles = /* css */ `
@@ -19,7 +19,7 @@ const styles = /* css */ `
     justify-content: space-between;
     gap: 3rem;
 
-    @media (max-width: ${PHONE}) {
+    @media (max-width: ${TABLET}) {
       flex-direction: column;
     }
   }
@@ -75,7 +75,7 @@ const template = /* html */ `
           <p>Idea → Website</p>
 
         <app-link variant="secondary" href=${navHref("https://hanhtetaung.dev/")} target="_blank">
-          View Live Website
+          Visit ➶
         </app-link>
       </article>
   </section>

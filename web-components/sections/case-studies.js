@@ -1,6 +1,7 @@
 import { define } from "../define.js";
 import "../components/case-study-item.js";
 import "../components/section-title.js";
+import { TABLET } from "../breakpoints.js";
 
 const caseStudies = [
   {
@@ -45,7 +46,7 @@ const caseStudies = [
     description:
       "A website for SKS SOLAR (SALES & SERVICES) COMPANY LIMITED to showcase its history, services and completed project.",
     href: "/work/sks-solar",
-    reverse: false,
+    reverse: true,
   },
 ];
 
@@ -62,9 +63,26 @@ const styles = /* css */ `
   ul {
     padding: 0;
     list-style: none;
+    gap: 5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    @media (max-width: ${TABLET}) {
+      display: block;
+    }
+  }
+
+  li {
     display: flex;
     flex-direction: column;
-    gap: 10rem;
+    
+    > * {
+      flex-grow: 1; 
+    }
+  }
+
+  li:nth-child(1) {
+    grid-column: span 2;
   }
 `;
 

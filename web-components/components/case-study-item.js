@@ -1,4 +1,4 @@
-import { PHONE, TABLE } from "../breakpoints.js";
+import { TABLET, TABLE } from "../breakpoints.js";
 import { define } from "../define.js";
 import "../components/app-link.js";
 import "../components/app-badge.js";
@@ -16,16 +16,21 @@ const styles = /* css */ `
     padding-inline: 5rem; 
     box-shadow: 0 4px 12px -4px rgba(0, 0, 0, 0.35);
     
-    @media (max-width: ${PHONE}) {
+    @media (max-width: ${TABLET}) {
       padding: 0;
-      padding-bottom: 5rem;
+      padding-block: 5rem;
       box-shadow: 0 1px 0px 0px rgba(0, 0, 0, 0.35);
     }
 
   }
 
+  p {
+    margin: 0;
+    margin-bottom: 1rem;
+  }
+
   :host([reverse]) {
-    flex-direction: row-reverse;
+    flex-direction: column;
   }
 
   img {
@@ -34,7 +39,7 @@ const styles = /* css */ `
     width: 100%;
     height: auto;
 
-    @media (max-width: ${PHONE}) {
+    @media (max-width: ${TABLET}) {
       margin-bottom: 1.5rem;
     }
   }

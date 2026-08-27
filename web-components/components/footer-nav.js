@@ -1,4 +1,4 @@
-import { PHONE } from "../breakpoints.js";
+import { TABLET } from "../breakpoints.js";
 import { define } from "../define.js";
 import { navHref } from "../asset.js";
 
@@ -32,7 +32,7 @@ const styles = /* css */ `
    display: flex;
    gap: 5rem;
 
-   @media (max-width: ${PHONE}) {
+   @media (max-width: ${TABLET}) {
         flex-direction: column;
         gap: 3rem;
         margin-block: 2rem;
@@ -61,7 +61,7 @@ const styles = /* css */ `
     max-height: 12.5ch;
     overflow: scroll;
 
-    @media (max-width: ${PHONE}) {
+    @media (max-width: ${TABLET}) {
         max-height: 20ch;
     }
   }

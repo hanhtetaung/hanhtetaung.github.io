@@ -96,7 +96,7 @@ const template = () => /* html */ `
               href: "/capabilities/web-interfaces",
               delivers: [
                 {
-                  name: "HTML",
+                  name: "Standalone HTML",
                   icon: "./assets/icons/html-1.svg",
                   alt: "HTML Icon",
                 },

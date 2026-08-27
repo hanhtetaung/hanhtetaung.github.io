@@ -1,4 +1,5 @@
 import { define } from "../define.js";
+import { TABLET } from "../breakpoints.js";
 
 const styles = /* css */ `
   :host {
@@ -6,8 +7,12 @@ const styles = /* css */ `
     position: fixed;
     inset: 0;
     z-index: 10;
-    border: 10px solid var(--color-secondary);
+    border: 7px solid var(--color-secondary);
     pointer-events: none;
+
+    @media (max-width: ${TABLET}) {
+      border-width: 5px;
+    }
   }
 
   :host([variant="color-primary"]) {

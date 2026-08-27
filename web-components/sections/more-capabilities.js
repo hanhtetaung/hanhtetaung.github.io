@@ -3,7 +3,7 @@ import "../components/section-title.js";
 import "../components/app-badge.js";
 import "../components/app-icon.js";
 import "../components/more-capabilities-item.js";
-import { PHONE } from "../breakpoints.js";
+import { TABLET } from "../breakpoints.js";
 
 const styles = /* css */ `
     section {
@@ -22,7 +22,7 @@ const styles = /* css */ `
         padding: 0;
         height: 48rem;
 
-        @media (max-width: ${PHONE}) {
+        @media (max-width: ${TABLET}) {
             position: static;
             height: auto;
             display: flex;
@@ -50,7 +50,7 @@ li:nth-child(3) {
     left: 22rem;
 }
 
-@media (max-width: ${PHONE}) {
+@media (max-width: ${TABLET}) {
   li:nth-child(1),
   li:nth-child(2),
   li:nth-child(3) {
