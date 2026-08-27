@@ -26,7 +26,7 @@
     <link rel="preconnect" href="https://challenges.cloudflare.com" />
     
   <style>/* main.css */
-:root{--color-bg-primary:#fff5e8;--color-bg-secondary:#fffaf4;--color-secondary:#05798e;--color-primary:#b71f57;--color-tertiary:#1c4286;--color-text:#000;--color-transparent:#0000;--font-heading:"Chicle",serif;--font-body:"StackSans",sans-serif;--font-regular:400;--font-bold:700;--ratio:1.6;--size-body:2rem;--size-small:calc(var(--size-body)/var(--ratio));--size-heading:calc(var(--size-body)*var(--ratio));--size-title:calc(var(--size-heading)*var(--ratio));--size-display:calc(var(--size-title)*var(--ratio));font-size:10px;@media (width<=769px){&{--size-body:1.6rem}}}body{background:var(--color-bg-primary);font-family:var(--font-body);font-weight:var(--font-regular);font-size:var(--size-body);position:relative;margin:0}main>*{background:var(--color-bg-primary);display:block;padding-block-start:10rem;padding-block-end:10rem}main>:nth-child(2n){background:var(--color-bg-secondary)}
+:root{--color-bg-primary:#fff5e8;--color-primary:#7e4c37;--color-text:#000;--color-transparent:#0000;--font-family:"Archivo",sans-serif;--font-regular:400;--font-bold:700;--ratio:1.4;--size-body:1.6rem;--size-small:calc(var(--size-body)/var(--ratio));--size-heading:calc(var(--size-body)*var(--ratio));--size-title:calc(var(--size-heading)*var(--ratio));--size-display:calc(var(--size-title)*var(--ratio));font-size:10px;@media (width>=640px){&{--size-body:2rem}}}body{background:var(--color-bg-primary);font-family:var(--font-family);font-size:var(--size-body);margin:0}
 </style></head>
   <body>
     <app-frame></app-frame>
@@ -42,33 +42,28 @@ function h() {
   let r = document.documentElement.dataset.base || "./";
   return new URL(r, location.href);
 }
-function a(r) {
+function n(r) {
   return new URL(r, h()).href;
 }
 function l(r) {
-  let t = r.replace(/^\//, ""), s = location.protocol === "file:", c = h();
-  if (t === "")
+  let o = r.replace(/^\//, ""), s = location.protocol === "file:", c = h();
+  if (o === "")
     return s ? new URL("index.html", c).href : c.href;
-  return s ? new URL(`${t}.html`, c).href : new URL(t, c).href;
+  return s ? new URL(`${o}.html`, c).href : new URL(o, c).href;
 }
 
 // web-components/fonts.js
 var b = `
-  @font-face {
-    font-family: "Chicle";
-    src: url("${a("assets/fonts/Chicle-Regular.woff2")}") format("woff2");
-    font-weight: 400;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: "StackSans";
-    src: url("${a("assets/fonts/StackSansText-Bold.woff2")}") format("woff2");
+@font-face {
+    font-family: "Archivo";
+    src: url("${n("./assets/fonts/Archivo-Black.woff2")}") format("woff2");
     font-weight: 700;
     font-display: swap;
   }
+
   @font-face {
-    font-family: "StackSans";
-    src: url("${a("assets/fonts/StackSansText-Regular.woff2")}") format("woff2");
+    font-family: "Archivo";
+    src: url("${n("./assets/fonts/Archivo-Regular.woff2")}") format("woff2");
     font-weight: 400;
     font-display: swap;
   }
@@ -77,28 +72,28 @@ g.textContent = b;
 document.head.appendChild(g);
 
 // web-components/define.js
-function v(r, t) {
+function v(r, o) {
   if (r === void 0) {
-    if (t === Array)
+    if (o === Array)
       return [];
-    if (t === Object)
+    if (o === Object)
       return {};
-    if (t === Boolean)
+    if (o === Boolean)
       return !1;
-    if (t === Number)
+    if (o === Number)
       return 0;
     return;
   }
-  if (t === Boolean)
+  if (o === Boolean)
     return Boolean(r);
-  if (t === Number)
+  if (o === Number)
     return Number(r);
   return r;
 }
-function e(r, { props: t = {}, attrs: s = [], styles: c = "", template: p }) {
+function e(r, { props: o = {}, attrs: s = [], styles: c = "", template: m }) {
   let u = ["props", ...s];
 
-  class m extends HTMLElement {
+  class p extends HTMLElement {
     static observedAttributes = u;
     constructor() {
       super();
@@ -112,37 +107,40 @@ function e(r, { props: t = {}, attrs: s = [], styles: c = "", template: p }) {
         this._render();
     }
     _getProps() {
-      let n = {}, i = this.getAttribute("props");
+      let a = {}, i = this.getAttribute("props");
       if (i)
         try {
-          n = JSON.parse(i);
+          a = JSON.parse(i);
         } catch {
-          n = {};
+          a = {};
         }
       let f = {};
-      for (let d of Object.keys(t))
-        f[d] = v(n[d], t[d]);
+      for (let d of Object.keys(o))
+        f[d] = v(a[d], o[d]);
       return f;
     }
     _applyForwardedAttrs() {
       if (s.length === 0)
         return;
-      let n = this.shadowRoot.querySelector("[data-forward]");
-      if (!n)
+      let a = this.shadowRoot.querySelector("[data-forward]");
+      if (!a)
         return;
       for (let i of s)
         if (this.hasAttribute(i))
-          n.setAttribute(i, this.getAttribute(i));
+          a.setAttribute(i, this.getAttribute(i));
         else
-          n.removeAttribute(i);
+          a.removeAttribute(i);
     }
     _render() {
-      let n = this._getProps(), i = typeof p === "function" ? p(n) : p;
+      let a = this._getProps(), i = typeof m === "function" ? m(a) : m;
       this.shadowRoot.innerHTML = `<style>${c}</style>${i}`, this._applyForwardedAttrs();
     }
   }
-  customElements.define(r, m);
+  customElements.define(r, p);
 }
+
+// web-components/breakpoints.js
+var t = "640px";
 
 // web-components/components/app-frame.js
 var y = `
@@ -151,8 +149,12 @@ var y = `
     position: fixed;
     inset: 0;
     z-index: 10;
-    border: 10px solid var(--color-secondary);
+    border: 7px solid var(--color-secondary);
     pointer-events: none;
+
+    @media (max-width: ${t}) {
+      border-width: 5px;
+    }
   }
 
   :host([variant="color-primary"]) {
@@ -194,7 +196,7 @@ var x = `
   }
 
   :host([variant="secondary"]) {
-    --local-color: var(--color-primary);
+    --local-color: var(--color-text);
   }
 
   :host([variant="underline"]) {
@@ -241,18 +243,15 @@ var z = `
     max-height: 7rem;
     width: auto;
   }
-`, A = ["width", "height", "src", "alt"], S = () => "<img data-forward />";
-e("app-logo", { attrs: A, styles: z, template: S });
-
-// web-components/breakpoints.js
-var o = "769px";
+`, A = ["width", "height", "src", "alt"], T = () => "<img data-forward />";
+e("app-logo", { attrs: A, styles: z, template: T });
 
 // web-components/sections/header.js
-var H = `
+var L = `
   :host {
     display: block;
-    margin-top: 1rem;
     background: var(--color-bg-primary);
+    font-size: var(--size-small);
   }
 
   header {
@@ -285,18 +284,21 @@ var H = `
     box-shadow: none;
   }
 
-  @media (max-width: ${o}) {
+  @media (max-width: ${t}) {
     .header__navigation {
       gap: 4rem;
     }
   }
-`, C = `
+
+  img {
+    height: 5rem;
+    width: auto;
+  }
+`, B = `
   <header>
       <app-link variant="plain" href=${l("/")}>
-        <app-logo
-          src=${a("./assets/images/logo.avif")}
-          alt="Logo"
-        ></app-logo>
+        <img src=${n("./assets/images/logo.avif")}
+          alt="Logo">
       </app-link>
 
       <div>
@@ -312,16 +314,16 @@ var H = `
           </ul>
         </nav>
 
-        <app-link variant="primary" href=${l("/hire-me")}>
-          Let's chat &#8629;
+        <app-link variant="secondary" href=${l("/#cta")}>
+          Let's Craft &#8629;
         </app-link>
       </div>
   </header>
 `;
-e("section-header", { template: C, styles: H });
+e("section-header", { template: B, styles: L });
 
 // web-components/components/footer-nav.js
-var _ = [
+var E = [
   { href: "/", name: "Home" },
   { href: "/about", name: "About" },
   { href: "/credits", name: "Credits" },
@@ -340,7 +342,7 @@ var _ = [
     href: "/writings/foundation-building-interfaces-at-scale",
     name: "Foundation"
   }
-], E = `
+], H = `
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -349,7 +351,7 @@ var _ = [
    display: flex;
    gap: 5rem;
 
-   @media (max-width: ${o}) {
+   @media (max-width: ${t}) {
         flex-direction: column;
         gap: 3rem;
         margin-block: 2rem;
@@ -378,7 +380,7 @@ var _ = [
     max-height: 12.5ch;
     overflow: scroll;
 
-    @media (max-width: ${o}) {
+    @media (max-width: ${t}) {
         max-height: 20ch;
     }
   }
@@ -387,12 +389,12 @@ var _ = [
     margin-right: 5rem;
     margin-bottom: 0.3rem;
   }
-`, q = () => `
+`, _ = () => `
     <nav>
         <span>Sitemap</span>
 
         <ol>
-            ${_.map((r) => `
+            ${E.map((r) => `
                 <li>
                     <app-link variant="sitemap" href=${l(r.href)} >${r.name}</app-link>
                 </li>
@@ -400,17 +402,18 @@ var _ = [
         </ol>
     </nav>
 `;
-e("footer-nav", { styles: E, template: q });
+e("footer-nav", { styles: H, template: _ });
 
 // web-components/components/footer-copyright.js
-var N = `
+var S = `
   :host {
    display: flex;
     justify-content: space-between;
     border-top: 1px solid var(--color-text);
     padding-top: 1rem;
+    margin-top: 3rem;
 
-   @media (max-width: ${o}) {
+   @media (max-width: ${t}) {
         flex-direction: column-reverse;
         gap: 2rem;
         border: none;
@@ -420,10 +423,12 @@ var N = `
 
   p {
     margin: 0;
-
-    @media (max-width: ${o}) {
-      border-top: 1px solid var(--color-text);
+    border-top: 1px solid var(--color-text);
     padding-top: 1rem;
+
+    @media (min-width: ${t}) {
+      border: none;
+      padding-top: none;
     }
   }
 
@@ -435,6 +440,14 @@ var N = `
     gap: 2rem;
   }
 
+  nav {
+    display: none;
+
+    @media (min-width: ${t}) {
+      display: block;
+    }
+  }
+
   span {
     display: none;
     color: var(--color-secondary);
@@ -443,15 +456,14 @@ var N = `
     text-transform: uppercase;
     
 
-    @media (max-width: ${o}) {
+    @media (max-width: ${t}) {
       display: inline-block;
       margin-bottom: 0.5rem;
     }
   }
-`, O = () => `
+`, C = () => `
       <p>
-        © Han Htet Aung 2026 |
-        <app-link href=${l("/credits")} variant="underline">Credits</app-link>
+        © Han Htet Aung 2026
       </p>
 
       <nav>
@@ -460,7 +472,7 @@ var N = `
               <li>
                   <app-link href="mailto:hanhtetaung.dev@gmail.com" variant="image">
                   <img
-                      src=${a("./assets/icons/email.svg")}
+                      src=${n("./assets/icons/email.svg")}
                       alt="Email Icon"
                   />
                   </app-link>
@@ -473,7 +485,7 @@ var N = `
                   variant="image"
                   >
                   <img
-                      src=${a("./assets/icons/github.svg")}
+                      src=${n("./assets/icons/github.svg")}
                       alt="Github Icon"
                   />
                   </app-link>
@@ -486,32 +498,26 @@ var N = `
                   variant="image"
                   >
                   <img
-                      src=${a("./assets/icons/linkedin.svg")}
+                      src=${n("./assets/icons/linkedin.svg")}
                       alt="Linkedin Icon"
                   />
                   </app-link>
               </li>
           </ul>
-</nav>
+        </nav>
 `;
-e("footer-copyright", { styles: N, template: O });
+e("footer-copyright", { styles: S, template: C });
 
 // web-components/sections/footer.js
-var T = `
+var q = `
   :host {
-    --local-bg-color: var(--color-bg-secondary);
-
     display: block;
-    background-color: var(--local-bg-color);
     padding-block: 10rem;
   }
 
-  :host([variant="secondary"]) {
-    --local-bg-color: var(--color-bg-primary);
-  }
-
-  p {
-    margin: 0;
+  q {
+    display: block;
+    text-align: center;
   }
 
   footer {
@@ -519,57 +525,44 @@ var T = `
     margin-inline: auto;
   }
 
-  
+  img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
 
-  article {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 2rem;
-    gap: 5rem;
+  img:first-child {
+    display: none;
   }
 
-  @media (max-width: ${o}) {
-    article {
-      display: block;
-    }
+@media (min-width: ${t}) {
+  img:first-child {
+    display: block;
   }
 
-  div {
-    display: flex;
-    gap: 3rem;
-    align-items: center;
-    min-width: 21rem;
+  img:not(:first-child) {
+    display: none;
   }
+}
 
-  hr {
-    color: var(--color-secondary);
-  }
+
 `, U = `
   <footer>
-      <article>
-        <div>
-          <app-logo
-            src="${a("./assets/images/logo.avif")}"
-            alt="Logo"
-          ></app-logo>
-        
-          <p>
-            Thank You <br />
-            for Visiting
-          </p>
-        </div>
 
-        <footer-nav></footer-nav>
-      </article>
+  <img src="./assets/images/footer/highlight.avif" alt="Parting phrase">
+  <img src="./assets/images/footer/thank-you.avif" alt="Thank you phrase">
+  <img src="./assets/images/footer/looking-forward.avif" alt="Parting Phrase">
 
-      <footer-copyright></footer-copyright>
+
+    <!-- <footer-nav></footer-nav> -->
+
+    <footer-copyright></footer-copyright>
   </footer>
 `;
-e("section-footer", { styles: T, template: U });
+e("section-footer", { styles: q, template: U });
 
 // web-components/components/app-button.js
-var B = `
+var F = `
   :host {
     --local-bg: var(--color-primary);
     --local-color: var(--color-bg-primary);
@@ -594,7 +587,7 @@ var B = `
     /* border: none; */
     padding: var(--local-padding);
   }
-`, F = ["type"], L = `
+`, R = ["type"], j = `
   <button
     data-forward
     onclick="const form = this.getRootNode().host.closest('form'); if (this.type === 'submit' && form) { form.requestSubmit ? form.requestSubmit() : form.submit(); }"
@@ -602,10 +595,10 @@ var B = `
     <slot></slot>
   </button>
 `;
-e("app-button", { attrs: F, styles: B, template: L });
+e("app-button", { attrs: R, styles: F, template: j });
 
 // web-components/sections/hire-me-intro.js
-var R = `
+var I = `
     section {
         margin-inline: auto;
         width: 80%;
@@ -643,7 +636,7 @@ var R = `
     "three three"
      "three three";
 
-    @media (max-width: ${o}) {
+    @media (max-width: ${t}) {
      display: flex;
      flex-wrap: wrap;   
     }
@@ -652,7 +645,7 @@ var R = `
   textarea {
     grid-area: three;
   }
-`, P = `
+`, N = `
   <section>
       <h1>Let's Chat</h1>
       <p>I'd be happy to work with you. I'll get back to you later today.</p>
@@ -711,6 +704,6 @@ var R = `
       </form>
   </section>
 `;
-e("section-hire-me-intro", { styles: R, template: P });
+e("section-hire-me-intro", { styles: I, template: N });
 </script></body>
 </html>

@@ -3,7 +3,6 @@ import { asset, navHref } from "../asset.js";
 
 import "../components/app-icon.js";
 import "../components/app-link.js";
-import { TABLE } from "../breakpoints.js";
 
 const styles = /* css */ `
   :host {
@@ -68,10 +67,6 @@ const styles = /* css */ `
       gap: 1rem;
       width: fit-content;
       overflow: scroll;
-
-      @media (max-width: ${TABLE}) {
-        width: 100%;
-      }
     }
 
     li {

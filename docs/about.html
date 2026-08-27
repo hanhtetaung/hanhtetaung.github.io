@@ -25,35 +25,32 @@
 
     
   <style>/* main.css */
-:root{--color-bg-primary:#fff5e8;--color-bg-secondary:#fffaf4;--color-secondary:#05798e;--color-primary:#b71f57;--color-tertiary:#1c4286;--color-text:#000;--color-transparent:#0000;--font-heading:"Chicle",serif;--font-body:"StackSans",sans-serif;--font-regular:400;--font-bold:700;--ratio:1.6;--size-body:2rem;--size-small:calc(var(--size-body)/var(--ratio));--size-heading:calc(var(--size-body)*var(--ratio));--size-title:calc(var(--size-heading)*var(--ratio));--size-display:calc(var(--size-title)*var(--ratio));font-size:10px;@media (width<=769px){&{--size-body:1.6rem}}}body{background:var(--color-bg-primary);font-family:var(--font-body);font-weight:var(--font-regular);font-size:var(--size-body);position:relative;margin:0}main>*{background:var(--color-bg-primary);display:block;padding-block-start:10rem;padding-block-end:10rem}main>:nth-child(2n){background:var(--color-bg-secondary)}
+:root{--color-bg-primary:#fff5e8;--color-primary:#7e4c37;--color-text:#000;--color-transparent:#0000;--font-family:"Archivo",sans-serif;--font-regular:400;--font-bold:700;--ratio:1.4;--size-body:1.6rem;--size-small:calc(var(--size-body)/var(--ratio));--size-heading:calc(var(--size-body)*var(--ratio));--size-title:calc(var(--size-heading)*var(--ratio));--size-display:calc(var(--size-title)*var(--ratio));font-size:10px;@media (width>=640px){&{--size-body:2rem}}}body{background:var(--color-bg-primary);font-family:var(--font-family);font-size:var(--size-body);margin:0}
 </style></head>
   <body>
-    <app-frame></app-frame>
     <section-header></section-header>
 
     <main>
       <section-about-intro></section-about-intro>
 
-      <section-tech-collection></section-tech-collection>
+      <!-- <section-tech-collection></section-tech-collection> -->
 
       <section-random-facts></section-random-facts>
 
       <section-life-in-weeks></section-life-in-weeks>
-
-      <section-quote></section-quote>
     </main>
 
     <section-footer></section-footer>
   <script type="module">// web-components/asset.js
 function f() {
-  let e = document.documentElement.dataset.base || "./";
-  return new URL(e, location.href);
+  let t = document.documentElement.dataset.base || "./";
+  return new URL(t, location.href);
 }
-function r(e) {
-  return new URL(e, f()).href;
+function i(t) {
+  return new URL(t, f()).href;
 }
-function l(e) {
-  let o = e.replace(/^\//, ""), a = location.protocol === "file:", n = f();
+function l(t) {
+  let o = t.replace(/^\//, ""), a = location.protocol === "file:", n = f();
   if (o === "")
     return a ? new URL("index.html", n).href : n.href;
   return a ? new URL(`${o}.html`, n).href : new URL(o, n).href;
@@ -61,21 +58,16 @@ function l(e) {
 
 // web-components/fonts.js
 var v = `
-  @font-face {
-    font-family: "Chicle";
-    src: url("${r("assets/fonts/Chicle-Regular.woff2")}") format("woff2");
-    font-weight: 400;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: "StackSans";
-    src: url("${r("assets/fonts/StackSansText-Bold.woff2")}") format("woff2");
+@font-face {
+    font-family: "Archivo";
+    src: url("${i("./assets/fonts/Archivo-Black.woff2")}") format("woff2");
     font-weight: 700;
     font-display: swap;
   }
+
   @font-face {
-    font-family: "StackSans";
-    src: url("${r("assets/fonts/StackSansText-Regular.woff2")}") format("woff2");
+    font-family: "Archivo";
+    src: url("${i("./assets/fonts/Archivo-Regular.woff2")}") format("woff2");
     font-weight: 400;
     font-display: swap;
   }
@@ -84,8 +76,8 @@ u.textContent = v;
 document.head.appendChild(u);
 
 // web-components/define.js
-function w(e, o) {
-  if (e === void 0) {
+function w(t, o) {
+  if (t === void 0) {
     if (o === Array)
       return [];
     if (o === Object)
@@ -97,16 +89,16 @@ function w(e, o) {
     return;
   }
   if (o === Boolean)
-    return Boolean(e);
+    return Boolean(t);
   if (o === Number)
-    return Number(e);
-  return e;
+    return Number(t);
+  return t;
 }
-function t(e, { props: o = {}, attrs: a = [], styles: n = "", template: p }) {
-  let m = ["props", ...a];
+function e(t, { props: o = {}, attrs: a = [], styles: n = "", template: m }) {
+  let p = ["props", ...a];
 
-  class d extends HTMLElement {
-    static observedAttributes = m;
+  class h extends HTMLElement {
+    static observedAttributes = p;
     constructor() {
       super();
       this.attachShadow({ mode: "open" });
@@ -127,8 +119,8 @@ function t(e, { props: o = {}, attrs: a = [], styles: n = "", template: p }) {
           s = {};
         }
       let g = {};
-      for (let h of Object.keys(o))
-        g[h] = w(s[h], o[h]);
+      for (let d of Object.keys(o))
+        g[d] = w(s[d], o[d]);
       return g;
     }
     _applyForwardedAttrs() {
@@ -144,35 +136,15 @@ function t(e, { props: o = {}, attrs: a = [], styles: n = "", template: p }) {
           s.removeAttribute(c);
     }
     _render() {
-      let s = this._getProps(), c = typeof p === "function" ? p(s) : p;
+      let s = this._getProps(), c = typeof m === "function" ? m(s) : m;
       this.shadowRoot.innerHTML = `<style>${n}</style>${c}`, this._applyForwardedAttrs();
     }
   }
-  customElements.define(e, d);
+  customElements.define(t, h);
 }
 
-// web-components/components/app-frame.js
-var b = `
-  :host {
-    display: block;
-    position: fixed;
-    inset: 0;
-    z-index: 10;
-    border: 10px solid var(--color-secondary);
-    pointer-events: none;
-  }
-
-  :host([variant="color-primary"]) {
-    /* border-color: var(--color-primary); */
-    /* border-color: var(--color-tertiary); */
-    /* border-color: #a36aa5; */
-  }
-`, y = `
-`;
-t("app-frame", { styles: b, template: y });
-
 // web-components/components/app-link.js
-var k = `
+var b = `
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -201,7 +173,7 @@ var k = `
   }
 
   :host([variant="secondary"]) {
-    --local-color: var(--color-primary);
+    --local-color: var(--color-text);
   }
 
   :host([variant="underline"]) {
@@ -233,13 +205,13 @@ var k = `
        content: "➶";
      }
   }
-`, x = ["href", "target", "rel", "download"], $ = `
+`, y = ["href", "target", "rel", "download"], k = `
   <a data-forward><slot></slot></a>
 `;
-t("app-link", { attrs: x, styles: k, template: $ });
+e("app-link", { attrs: y, styles: b, template: k });
 
 // web-components/components/app-logo.js
-var S = `
+var x = `
   :host {
     display: block;
   }
@@ -248,18 +220,18 @@ var S = `
     max-height: 7rem;
     width: auto;
   }
-`, z = ["width", "height", "src", "alt"], H = () => "<img data-forward />";
-t("app-logo", { attrs: z, styles: S, template: H });
+`, $ = ["width", "height", "src", "alt"], z = () => "<img data-forward />";
+e("app-logo", { attrs: $, styles: x, template: z });
 
 // web-components/breakpoints.js
-var i = "769px";
+var r = "640px";
 
 // web-components/sections/header.js
 var A = `
   :host {
     display: block;
-    margin-top: 1rem;
     background: var(--color-bg-primary);
+    font-size: var(--size-small);
   }
 
   header {
@@ -292,18 +264,21 @@ var A = `
     box-shadow: none;
   }
 
-  @media (max-width: ${i}) {
+  @media (max-width: ${r}) {
     .header__navigation {
       gap: 4rem;
     }
   }
-`, C = `
+
+  img {
+    height: 5rem;
+    width: auto;
+  }
+`, S = `
   <header>
       <app-link variant="plain" href=${l("/")}>
-        <app-logo
-          src=${r("./assets/images/logo.avif")}
-          alt="Logo"
-        ></app-logo>
+        <img src=${i("./assets/images/logo.avif")}
+          alt="Logo">
       </app-link>
 
       <div>
@@ -319,16 +294,16 @@ var A = `
           </ul>
         </nav>
 
-        <app-link variant="primary" href=${l("/hire-me")}>
-          Let's chat &#8629;
+        <app-link variant="secondary" href=${l("/#cta")}>
+          Let's Craft &#8629;
         </app-link>
       </div>
   </header>
 `;
-t("section-header", { template: C, styles: A });
+e("section-header", { template: S, styles: A });
 
 // web-components/components/footer-nav.js
-var I = [
+var T = [
   { href: "/", name: "Home" },
   { href: "/about", name: "About" },
   { href: "/credits", name: "Credits" },
@@ -347,7 +322,7 @@ var I = [
     href: "/writings/foundation-building-interfaces-at-scale",
     name: "Foundation"
   }
-], T = `
+], H = `
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -356,7 +331,7 @@ var I = [
    display: flex;
    gap: 5rem;
 
-   @media (max-width: ${i}) {
+   @media (max-width: ${r}) {
         flex-direction: column;
         gap: 3rem;
         margin-block: 2rem;
@@ -385,7 +360,7 @@ var I = [
     max-height: 12.5ch;
     overflow: scroll;
 
-    @media (max-width: ${i}) {
+    @media (max-width: ${r}) {
         max-height: 20ch;
     }
   }
@@ -399,15 +374,15 @@ var I = [
         <span>Sitemap</span>
 
         <ol>
-            ${I.map((e) => `
+            ${T.map((t) => `
                 <li>
-                    <app-link variant="sitemap" href=${l(e.href)} >${e.name}</app-link>
+                    <app-link variant="sitemap" href=${l(t.href)} >${t.name}</app-link>
                 </li>
             `).join("")}
         </ol>
     </nav>
 `;
-t("footer-nav", { styles: T, template: B });
+e("footer-nav", { styles: H, template: B });
 
 // web-components/components/footer-copyright.js
 var L = `
@@ -416,8 +391,9 @@ var L = `
     justify-content: space-between;
     border-top: 1px solid var(--color-text);
     padding-top: 1rem;
+    margin-top: 3rem;
 
-   @media (max-width: ${i}) {
+   @media (max-width: ${r}) {
         flex-direction: column-reverse;
         gap: 2rem;
         border: none;
@@ -427,10 +403,12 @@ var L = `
 
   p {
     margin: 0;
-
-    @media (max-width: ${i}) {
-      border-top: 1px solid var(--color-text);
+    border-top: 1px solid var(--color-text);
     padding-top: 1rem;
+
+    @media (min-width: ${r}) {
+      border: none;
+      padding-top: none;
     }
   }
 
@@ -442,6 +420,14 @@ var L = `
     gap: 2rem;
   }
 
+  nav {
+    display: none;
+
+    @media (min-width: ${r}) {
+      display: block;
+    }
+  }
+
   span {
     display: none;
     color: var(--color-secondary);
@@ -450,15 +436,14 @@ var L = `
     text-transform: uppercase;
     
 
-    @media (max-width: ${i}) {
+    @media (max-width: ${r}) {
       display: inline-block;
       margin-bottom: 0.5rem;
     }
   }
-`, q = () => `
+`, F = () => `
       <p>
-        © Han Htet Aung 2026 |
-        <app-link href=${l("/credits")} variant="underline">Credits</app-link>
+        © Han Htet Aung 2026
       </p>
 
       <nav>
@@ -467,7 +452,7 @@ var L = `
               <li>
                   <app-link href="mailto:hanhtetaung.dev@gmail.com" variant="image">
                   <img
-                      src=${r("./assets/icons/email.svg")}
+                      src=${i("./assets/icons/email.svg")}
                       alt="Email Icon"
                   />
                   </app-link>
@@ -480,7 +465,7 @@ var L = `
                   variant="image"
                   >
                   <img
-                      src=${r("./assets/icons/github.svg")}
+                      src=${i("./assets/icons/github.svg")}
                       alt="Github Icon"
                   />
                   </app-link>
@@ -493,32 +478,26 @@ var L = `
                   variant="image"
                   >
                   <img
-                      src=${r("./assets/icons/linkedin.svg")}
+                      src=${i("./assets/icons/linkedin.svg")}
                       alt="Linkedin Icon"
                   />
                   </app-link>
               </li>
           </ul>
-</nav>
+        </nav>
 `;
-t("footer-copyright", { styles: L, template: q });
+e("footer-copyright", { styles: L, template: F });
 
 // web-components/sections/footer.js
-var N = `
+var M = `
   :host {
-    --local-bg-color: var(--color-bg-secondary);
-
     display: block;
-    background-color: var(--local-bg-color);
     padding-block: 10rem;
   }
 
-  :host([variant="secondary"]) {
-    --local-bg-color: var(--color-bg-primary);
-  }
-
-  p {
-    margin: 0;
+  q {
+    display: block;
+    text-align: center;
   }
 
   footer {
@@ -526,57 +505,44 @@ var N = `
     margin-inline: auto;
   }
 
-  
+  img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
 
-  article {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 2rem;
-    gap: 5rem;
+  img:first-child {
+    display: none;
   }
 
-  @media (max-width: ${i}) {
-    article {
-      display: block;
-    }
+@media (min-width: ${r}) {
+  img:first-child {
+    display: block;
   }
 
-  div {
-    display: flex;
-    gap: 3rem;
-    align-items: center;
-    min-width: 21rem;
+  img:not(:first-child) {
+    display: none;
   }
+}
 
-  hr {
-    color: var(--color-secondary);
-  }
-`, O = `
+
+`, U = `
   <footer>
-      <article>
-        <div>
-          <app-logo
-            src="${r("./assets/images/logo.avif")}"
-            alt="Logo"
-          ></app-logo>
-        
-          <p>
-            Thank You <br />
-            for Visiting
-          </p>
-        </div>
 
-        <footer-nav></footer-nav>
-      </article>
+  <img src="./assets/images/footer/highlight.avif" alt="Parting phrase">
+  <img src="./assets/images/footer/thank-you.avif" alt="Thank you phrase">
+  <img src="./assets/images/footer/looking-forward.avif" alt="Parting Phrase">
 
-      <footer-copyright></footer-copyright>
+
+    <!-- <footer-nav></footer-nav> -->
+
+    <footer-copyright></footer-copyright>
   </footer>
 `;
-t("section-footer", { styles: N, template: O });
+e("section-footer", { styles: M, template: U });
 
 // web-components/components/app-image.js
-var U = `
+var j = `
   :host {
     --local-width: 5rem;
     --local-heigth: auto;
@@ -607,18 +573,23 @@ var U = `
    :host([variant="full"]) {
     --local-width: 100%;
   }
-`, E = ["width", "height", "src", "alt"], F = () => "<img data-forward />";
-t("app-image", { attrs: E, styles: U, template: F });
+`, C = ["width", "height", "src", "alt"], R = () => "<img data-forward />";
+e("app-image", { attrs: C, styles: j, template: R });
 
 // web-components/sections/about-intro.js
-var M = `
+var _ = `
+  :host {
+    display: block;
+    margin-top: 10rem;
+  }
+
   section {
     width: 80%;
     margin-inline: auto;
      display: grid;
     grid-template-columns: 1fr 1fr;
 
-    @media (max-width: ${i}) {
+    @media (max-width: ${r}) {
       display: block; 
         text-align: center;
     }
@@ -627,7 +598,6 @@ var M = `
    h1 {
     margin: 0;
     font-size: var(--size-display);
-    font-weight: var(--font-regular);
     font-family: var(--font-heading);
   }
 
@@ -636,24 +606,24 @@ var M = `
     align-items: center;
     gap: 3rem;
 
-     @media (max-width: ${i}) {
+     @media (max-width: ${r}) {
       display: block; 
     }
   }
-`, R = `
+
+  img {
+    height: 10rem;
+  }
+`, E = `
   <section>
       <h1>About</h1>
       <div>
-        <app-image
-          variant="large"
-          src="assets/images/about-profile.avif"
-          alt="profile"
-        ></app-image>
+        <img src="./assets/images/about-profile.avif"
+          alt="profile">
 
         <article>
           <p>
-            I'm Han Htet Aung, an UX Engineer who loves creating unique
-            experiences on the web.
+            I'm Han Htet Aung. I see it, capture it, sketch it and bring it to the web.
           </p>
 
           <p>I see patterns in chaos.</p>
@@ -661,10 +631,10 @@ var M = `
       </div>
   </section>
 `;
-t("section-about-intro", { styles: M, template: R });
+e("section-about-intro", { styles: _, template: E });
 
 // web-components/components/section-title.js
-var _ = `
+var I = `
   :host {
     display: flex;
     align-items: center;
@@ -695,19 +665,19 @@ var _ = `
       display: none;
     }
   }
-`, j = { name: String, img: String, alt: String }, P = ({ name: e, img: o = "", alt: a = "" }) => `
-    <h2>${e}</h2>
+`, D = { name: String, img: String, alt: String }, q = ({ name: t, img: o = "", alt: a = "" }) => `
+    <h2>${t}</h2>
     <img
-        src=${r(o)}
+        src=${i(o)}
         alt=${a}
         height="36"
         width="76"
     />
 `;
-t("section-title", { props: j, styles: _, template: P });
+e("section-title", { props: D, styles: I, template: q });
 
 // web-components/sections/tech-collection.js
-var D = [
+var N = [
   {
     href: "https://raindrop.io/",
     src: "./assets/tech-collection/raindrop-io.svg",
@@ -828,7 +798,12 @@ var D = [
     src: "./assets/tech-collection/the-noun-project.svg",
     alt: "The Noun Project logo"
   }
-], W = `
+], O = `
+  :host {
+    display: block;
+    margin-block: 20rem;
+  }
+
   section {
     width: 80%;
     margin-inline: auto;
@@ -843,23 +818,23 @@ var D = [
     display: flex;
     flex-wrap: wrap;
   }
-`, Y = () => `
+
+  h2 {
+    font-size: var(--size-title);
+    margin: 0;
+    margin: 1rem;
+  }
+`, G = () => `
   <section>
-    <section-title
-        props='${JSON.stringify({
-  name: "Tech Collection",
-  img: "./assets/icons/penguin.svg",
-  alt: "Penguin Logo"
-})}'
-      ></section-title>
+      <h2>Tech Collection</h2>
 
       <ul>
-        ${D.map((e) => `
+        ${N.map((t) => `
               <li>
-                <app-link href="${l(e.href)}" target="_blank" variant="image">
+                <app-link href="${l(t.href)}" target="_blank" variant="image">
                   <img
-                    src="${r(e.src)}"
-                    alt="${e.alt}"
+                    src="${i(t.src)}"
+                    alt="${t.alt}"
                     width="102"
                     height="73"
                   />
@@ -869,10 +844,10 @@ var D = [
       </ul>
   </section>
 `;
-t("section-tech-collection", { styles: W, template: Y });
+e("section-tech-collection", { styles: O, template: G });
 
 // web-components/components/app-icon.js
-var G = `
+var P = `
   :host {
     --local-width: 3rem;
     --local-height: auto;
@@ -910,11 +885,11 @@ var G = `
   }
 
 
-`, X = ["src", "alt"], J = () => '<img data-forward width="200" height="200"/>';
-t("app-icon", { attrs: X, styles: G, template: J });
+`, W = ["src", "alt"], Y = () => '<img data-forward width="200" height="200"/>';
+e("app-icon", { attrs: W, styles: P, template: Y });
 
 // web-components/sections/random-facts.js
-var K = [
+var X = [
   {
     src: "./assets/icons/bird-watching.svg",
     alt: "Watching Bird",
@@ -935,7 +910,12 @@ var K = [
     alt: "Running",
     text: "I like running"
   }
-], Q = `
+], J = `
+  :host {
+    display: block;
+    margin-block: 20rem;
+  }
+
   section {
     width: 80%;
     margin-inline: auto;
@@ -953,32 +933,32 @@ var K = [
     margin: 0;
     text-align: center;
   }
-`, V = () => `
+
+  h2 {
+    margin: 0;
+    margin-bottom: 1rem;
+    font-size: var(--size-title);
+  }
+`, K = () => `
   <section>
-       <section-title
-        props='${JSON.stringify({
-  name: "Random Facts",
-  img: "./assets/icons/birds-singing.svg",
-  alt: "Birds-singing Logo"
-})}'
-      ></section-title>
+      <h2>Random Facts</h2>
 
       <ul>
-        ${K.map((e) => `
+        ${X.map((t) => `
               <li>
                 <figure>
-                  <app-icon variant="large" src="${e.src}" alt="${e.alt}"></app-icon>
-                  <figcaption>${e.text}</figcaption>
+                  <app-icon variant="large" src="${t.src}" alt="${t.alt}"></app-icon>
+                  <figcaption>${t.text}</figcaption>
                 </figure>
               </li>
             `).join("")}
       </ul>
   </section>
 `;
-t("section-random-facts", { styles: Q, template: V });
+e("section-random-facts", { styles: J, template: K });
 
 // web-components/sections/life-in-weeks.js
-var Z = "3 Nov 2000", tt = 70, et = `
+var Q = "3 Nov 2000", V = 70, Z = `
   section {
     width: 80%;
     margin-inline: auto;
@@ -1031,60 +1011,31 @@ var Z = "3 Nov 2000", tt = 70, et = `
   }
 
     li.lived {
-        background: var(--color-secondary);
-        border-color: var(--color-secondary);
+        background: var(--color-primary);
+        border-color: var(--color-primary);
     }
-`, ot = (e, o) => {
-  let a = new Date(e), n = /* @__PURE__ */ new Date, p = n.getFullYear() - a.getFullYear() - (n.getMonth() < a.getMonth() || n.getMonth() === a.getMonth() && n.getDate() < a.getDate() ? 1 : 0), m = p * 52 + Math.min(51, Math.floor((n - new Date(a.getFullYear() + p, a.getMonth(), a.getDate())) / 604800000));
-  return Array.from({ length: o * 52 }, (d, s) => `<li class="${s < m ? "lived" : ""}"></li>`).join("");
-}, at = () => `
+
+   h2 {
+    font-size: var(--size-title);
+    margin: 0;
+    margin: 1rem;
+  }
+`, tt = (t, o) => {
+  let a = new Date(t), n = /* @__PURE__ */ new Date, m = n.getFullYear() - a.getFullYear() - (n.getMonth() < a.getMonth() || n.getMonth() === a.getMonth() && n.getDate() < a.getDate() ? 1 : 0), p = m * 52 + Math.min(51, Math.floor((n - new Date(a.getFullYear() + m, a.getMonth(), a.getDate())) / 604800000));
+  return Array.from({ length: o * 52 }, (h, s) => `<li class="${s < p ? "lived" : ""}"></li>`).join("");
+}, et = () => `
   <section>
-    <section-title
-      props='${JSON.stringify({
-  name: "Life in Weeks",
-  img: "./assets/icons/parrot.svg",
-  alt: "Birds-singing Logo"
-})}'
-    ></section-title>
+    <h2>Life in Weeks</h2>
 
     <article>
       <span class="ages">Ages (70 yrs) ⇨</span>
       <span class="weeks-axis">⇦ Weeks of the year</span>
-      <ul>${ot(Z, tt)}</ul>
+      <ul>${tt(Q, V)}</ul>
     </article>
 
     <p>Based on this post: <app-link variant="underline" href="https://waitbutwhy.com/2014/05/life-weeks.html" target="_blank">Your Life in Weeks</app-link></p>
   </section>
 `;
-t("section-life-in-weeks", { styles: et, template: at });
-
-// web-components/sections/quote.js
-var rt = `
-  section {
-    width: 80%;
-    margin-inline: auto;
-    text-align: center;
-  }
-
-  blockquote {
-    font-size: var(--size-title);
-    font-weight: var(--font-regular);
-    font-family: var(--font-heading);
-
-    @media (max-width: ${i}) {
-      font-size: var(--size-body);
-    }
-  }
-`, it = `
-  <section>
-      <blockquote>
-        " What I hear, I forget.<br />
-        What I see, I remember.<br />
-        What I do, I understand." <br />
-        — Confucius
-      </blockquote>
-  </section>
-`;
-t("section-quote", { styles: rt, template: it });
+e("section-life-in-weeks", { styles: Z, template: et });
 </script></body>
 </html>
