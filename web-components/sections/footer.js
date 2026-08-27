@@ -1,26 +1,17 @@
 import { define } from "../define.js";
-import "../components/app-logo.js";
-import "../components/app-link.js";
 import "../components/footer-nav.js";
 import "../components/footer-copyright.js";
-import { PHONE } from "../breakpoints.js";
-import { asset } from "../asset.js";
+import { TABLET } from "../breakpoints.js";
 
 const styles = /* css */ `
   :host {
-    --local-bg-color: var(--color-bg-secondary);
-
     display: block;
-    background-color: var(--local-bg-color);
     padding-block: 10rem;
   }
 
-  :host([variant="secondary"]) {
-    --local-bg-color: var(--color-bg-primary);
-  }
-
-  p {
-    margin: 0;
+  q {
+    display: block;
+    text-align: center;
   }
 
   footer {
@@ -28,53 +19,40 @@ const styles = /* css */ `
     margin-inline: auto;
   }
 
-  
+  img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
 
-  article {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 2rem;
-    gap: 5rem;
+  img:first-child {
+    display: none;
   }
 
-  @media (max-width: ${PHONE}) {
-    article {
-      display: block;
-    }
+@media (min-width: ${TABLET}) {
+  img:first-child {
+    display: block;
   }
 
-  div {
-    display: flex;
-    gap: 3rem;
-    align-items: center;
-    min-width: 21rem;
+  img:not(:first-child) {
+    display: none;
   }
+}
 
-  hr {
-    color: var(--color-secondary);
-  }
+
 `;
 
 const template = /* html */ `
   <footer>
-      <article>
-        <div>
-          <app-logo
-            src="${asset("./assets/images/logo.avif")}"
-            alt="Logo"
-          ></app-logo>
-        
-          <p>
-            Thank You <br />
-            for Visiting
-          </p>
-        </div>
 
-        <footer-nav></footer-nav>
-      </article>
+  <img src="./assets/images/footer/highlight.avif" alt="Parting phrase">
+  <img src="./assets/images/footer/thank-you.avif" alt="Thank you phrase">
+  <img src="./assets/images/footer/looking-forward.avif" alt="Parting Phrase">
 
-      <footer-copyright></footer-copyright>
+
+    <!-- <footer-nav></footer-nav> -->
+
+    <footer-copyright></footer-copyright>
   </footer>
 `;
 

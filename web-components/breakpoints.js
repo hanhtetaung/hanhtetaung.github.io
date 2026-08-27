@@ -1,4 +1,3 @@
-export const WATCH = "384px";
-export const PHONE = "769px";
-export const TABLE = "992px";
-export const DESKTOP = "1200px";
+export const TABLET = "640px";
+export const DESKTOP = "1024px";
+export const LARGE = "1920px";

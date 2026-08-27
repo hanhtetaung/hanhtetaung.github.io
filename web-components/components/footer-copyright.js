@@ -1,5 +1,5 @@
 import { asset, navHref } from "../asset.js";
-import { PHONE } from "../breakpoints.js";
+import { TABLET } from "../breakpoints.js";
 import { define } from "../define.js";
 
 const styles = /* css */ `
@@ -8,8 +8,9 @@ const styles = /* css */ `
     justify-content: space-between;
     border-top: 1px solid var(--color-text);
     padding-top: 1rem;
+    margin-top: 3rem;
 
-   @media (max-width: ${PHONE}) {
+   @media (max-width: ${TABLET}) {
         flex-direction: column-reverse;
         gap: 2rem;
         border: none;
@@ -19,10 +20,12 @@ const styles = /* css */ `
 
   p {
     margin: 0;
-
-    @media (max-width: ${PHONE}) {
-      border-top: 1px solid var(--color-text);
+    border-top: 1px solid var(--color-text);
     padding-top: 1rem;
+
+    @media (min-width: ${TABLET}) {
+      border: none;
+      padding-top: none;
     }
   }
 
@@ -34,6 +37,14 @@ const styles = /* css */ `
     gap: 2rem;
   }
 
+  nav {
+    display: none;
+
+    @media (min-width: ${TABLET}) {
+      display: block;
+    }
+  }
+
   span {
     display: none;
     color: var(--color-secondary);
@@ -42,7 +53,7 @@ const styles = /* css */ `
     text-transform: uppercase;
     
 
-    @media (max-width: ${PHONE}) {
+    @media (max-width: ${TABLET}) {
       display: inline-block;
       margin-bottom: 0.5rem;
     }
@@ -51,8 +62,7 @@ const styles = /* css */ `
 
 const template = () => /* html */ `
       <p>
-        © Han Htet Aung 2026 |
-        <app-link href=${navHref("/credits")} variant="underline">Credits</app-link>
+        © Han Htet Aung 2026
       </p>
 
       <nav>
@@ -93,7 +103,7 @@ const template = () => /* html */ `
                   </app-link>
               </li>
           </ul>
-</nav>
+        </nav>
 `;
 
 define("footer-copyright", { styles, template });

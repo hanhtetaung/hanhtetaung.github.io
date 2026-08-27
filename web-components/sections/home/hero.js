@@ -4,13 +4,17 @@ import { define } from "../../define.js";
 const styles = /* css */ `
   :host {
     display: block;
-    height: min(calc(100dvh - 108px - 10rem), 100rem);
+    height: min(calc(100vh - 108px - 10rem), 70rem);
+    margin-top: 5rem;
+
+    @media (min-width: ${TABLET}) {
+      margin-top: 7rem;
+    }
   }
 
   section {
     width: min(80%, 144rem);
     height: min(100%, 60rem);
-    margin-top: 5rem;
     margin-inline: auto;
     display: flex;
     flex-direction: column;

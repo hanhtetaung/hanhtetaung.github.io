@@ -1,14 +1,14 @@
 import { define } from "../define.js";
 import "../components/app-link.js";
 import "../components/app-logo.js";
-import { PHONE } from "../breakpoints.js";
+import { TABLET } from "../breakpoints.js";
 import { asset, navHref } from "../asset.js";
 
 const styles = /* css */ `
   :host {
     display: block;
-    margin-top: 1rem;
     background: var(--color-bg-primary);
+    font-size: var(--size-small);
   }
 
   header {
@@ -41,20 +41,23 @@ const styles = /* css */ `
     box-shadow: none;
   }
 
-  @media (max-width: ${PHONE}) {
+  @media (max-width: ${TABLET}) {
     .header__navigation {
       gap: 4rem;
     }
+  }
+
+  img {
+    height: 5rem;
+    width: auto;
   }
 `;
 
 const template = /* html */ `
   <header>
       <app-link variant="plain" href=${navHref("/")}>
-        <app-logo
-          src=${asset("./assets/images/logo.avif")}
-          alt="Logo"
-        ></app-logo>
+        <img src=${asset("./assets/images/logo.avif")}
+          alt="Logo">
       </app-link>
 
       <div>
@@ -70,8 +73,8 @@ const template = /* html */ `
           </ul>
         </nav>
 
-        <app-link variant="primary" href=${navHref("/hire-me")}>
-          Let's chat &#8629;
+        <app-link variant="secondary" href=${navHref("/#let-craft")}>
+          Let's Craft &#8629;
         </app-link>
       </div>
   </header>
