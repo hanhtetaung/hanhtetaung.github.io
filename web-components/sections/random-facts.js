@@ -25,6 +25,11 @@ const randomFacts = [
 ];
 
 const styles = /*css*/ `
+  :host {
+    display: block;
+    margin-block: 20rem;
+  }
+
   section {
     width: 80%;
     margin-inline: auto;
@@ -42,17 +47,17 @@ const styles = /*css*/ `
     margin: 0;
     text-align: center;
   }
+
+  h2 {
+    margin: 0;
+    margin-bottom: 1rem;
+    font-size: var(--size-title);
+  }
 `;
 
 const template = () => /* html */ `
   <section>
-       <section-title
-        props='${JSON.stringify({
-          name: "Random Facts",
-          img: "./assets/icons/birds-singing.svg",
-          alt: "Birds-singing Logo",
-        })}'
-      ></section-title>
+      <h2>Random Facts</h2>
 
       <ul>
         ${randomFacts

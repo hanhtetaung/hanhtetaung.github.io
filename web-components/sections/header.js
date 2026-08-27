@@ -73,7 +73,7 @@ const template = /* html */ `
           </ul>
         </nav>
 
-        <app-link variant="secondary" href=${navHref("/#let-craft")}>
+        <app-link variant="secondary" href=${navHref("/#cta")}>
           Let's Craft &#8629;
         </app-link>
       </div>

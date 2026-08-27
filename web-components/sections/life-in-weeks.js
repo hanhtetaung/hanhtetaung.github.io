@@ -58,9 +58,15 @@ const styles = /*css*/ `
   }
 
     li.lived {
-        background: var(--color-secondary);
-        border-color: var(--color-secondary);
+        background: var(--color-primary);
+        border-color: var(--color-primary);
     }
+
+   h2 {
+    font-size: var(--size-title);
+    margin: 0;
+    margin: 1rem;
+  }
 `;
 
 const generateWeeksHTML = (dobString, years) => {
@@ -90,13 +96,7 @@ const generateWeeksHTML = (dobString, years) => {
 
 const template = () => /* html */ `
   <section>
-    <section-title
-      props='${JSON.stringify({
-        name: "Life in Weeks",
-        img: "./assets/icons/parrot.svg",
-        alt: "Birds-singing Logo",
-      })}'
-    ></section-title>
+    <h2>Life in Weeks</h2>
 
     <article>
       <span class="ages">Ages (70 yrs) ⇨</span>

@@ -1,16 +1,21 @@
 import { define } from "../define.js";
 
 import "../components/app-icon.js";
-import { PHONE } from "../breakpoints.js";
+import { TABLET } from "../breakpoints.js";
 
 const styles = /*css*/ `
+  :host {
+    display: block;
+    margin-block: 10rem;
+  }
+
     section {
         margin-inline: auto;
         width: 80%;
         display: flex;
         gap: 3rem;
 
-        @media (max-width: ${PHONE}) {
+        @media (max-width: ${TABLET}) {
           display: block;
         }
     }
@@ -18,7 +23,6 @@ const styles = /*css*/ `
      h1 {
     margin: 0;
     font-size: var(--size-display);
-    font-weight: var(--font-regular);
     font-family: var(--font-heading);
   }
 
