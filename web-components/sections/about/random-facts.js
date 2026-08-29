@@ -3,24 +3,29 @@ import "../../components/app-icon.js";
 
 const randomFacts = [
   {
-    src: "./assets/icons/bird-watching.svg",
+    src: "./assets/images/about/birds.avif",
     alt: "Watching Bird",
     text: "I love birds",
   },
   {
-    src: "./assets/icons/seafood.svg",
+    src: "./assets/images/about/seafood.avif",
     alt: "Seafood",
     text: "I’m allergic to seafood",
   },
   {
-    src: "./assets/icons/travelling.svg",
+    src: "./assets/images/about/travelling.avif",
     alt: "Travelling",
     text: "I enjoy travelling",
   },
   {
-    src: "./assets/icons/running.svg",
+    src: "./assets/images/about/running.avif",
     alt: "Running",
     text: "I like running",
+  },
+  {
+    src: "./assets/images/about/sketching.avif",
+    alt: "Sketching",
+    text: "I sketch things",
   },
 ];
 
