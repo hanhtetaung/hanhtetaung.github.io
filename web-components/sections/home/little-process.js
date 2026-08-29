@@ -11,6 +11,7 @@ const styles = /* css */ `
     margin-block: 15rem;
 
     @media (min-width: ${DESKTOP}) {
+      margin-top: 20rem;
       margin-bottom: 25rem;
     }
   }
