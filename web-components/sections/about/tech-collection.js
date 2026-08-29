@@ -1,7 +1,7 @@
-import { define } from "../define.js";
-import "../components/app-link.js";
-import "../components/section-title.js";
-import { asset, navHref } from "../asset.js";
+import { define } from "../../define.js";
+import "../../components/app-link.js";
+import "../../components/section-title.js";
+import { asset, navHref } from "../../asset.js";
 
 const techCollection = [
   {

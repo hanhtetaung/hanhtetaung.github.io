@@ -1,6 +1,6 @@
-import { define } from "../define.js";
-import "../components/app-image.js";
-import { TABLET } from "../breakpoints.js";
+import { define } from "../../define.js";
+import "../../components/app-image.js";
+import { TABLET } from "../../breakpoints.js";
 
 const styles = /*css*/ `
   :host {

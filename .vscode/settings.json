@@ -13,18 +13,10 @@
       "./writings/foundation-building-interfaces-at-scale.html"
     ],
     ["/about", "./about.html"],
-    ["/credits", "./credits.html"],
-    ["/hire-me", "./hire-me.html"],
-    ["/thank-you", "./thank-you.html"],
     ["/work/mmo", "./work/mmo.html"],
     ["/work/portfolio", "./work/portfolio.html"],
     ["/work/sks-solar", "./work/sks-solar.html"],
     ["/work/terra", "./work/terra.html"],
-    ["/work/au-van", "./work/au-van.html"],
-    ["/work/bamboo", "./work/bamboo.html"],
-    ["/capabilities/design-system", "./capabilities/design-system.html"],
-    ["/capabilities/user-interfaces", "./capabilities/user-interfaces.html"],
-    ["/capabilities/web-interfaces", "./capabilities/web-interfaces.html"],
     ["/404", "./404.html"]
   ]
 }

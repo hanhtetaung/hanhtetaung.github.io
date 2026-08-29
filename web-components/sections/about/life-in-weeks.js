@@ -1,6 +1,6 @@
-import { define } from "../define.js";
-import "../components/app-icon.js";
-import "../components/app-link.js";
+import { define } from "../../define.js";
+import "../../components/app-icon.js";
+import "../../components/app-link.js";
 
 const DOB = "3 Nov 2000";
 const YEARS = 70;

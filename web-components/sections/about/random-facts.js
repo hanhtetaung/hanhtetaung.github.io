@@ -1,5 +1,5 @@
-import { define } from "../define.js";
-import "../components/app-icon.js";
+import { define } from "../../define.js";
+import "../../components/app-icon.js";
 
 const randomFacts = [
   {

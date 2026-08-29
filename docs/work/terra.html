@@ -6,7 +6,7 @@
     <meta name="description" content="Currently open to work." />
     <meta
       property="og:image"
-      content="https://hanhtetaung.dev/assets/images/portfolio.jpg"
+      content="https://hanhtetaung.dev/assets/images/banner.jpg"
     />
 
     <title>Han Htet Aung - UX Engineer</title>
@@ -42,17 +42,17 @@
     <section-footer></section-footer>
   <script type="module">// web-components/asset.js
 function f() {
-  let o = document.documentElement.dataset.base || "./";
-  return new URL(o, location.href);
+  let r = document.documentElement.dataset.base || "./";
+  return new URL(r, location.href);
 }
-function t(o) {
-  return new URL(o, f()).href;
+function t(r) {
+  return new URL(r, f()).href;
 }
-function i(o) {
-  let a = o.replace(/^\//, ""), s = location.protocol === "file:", c = f();
-  if (a === "")
+function i(r) {
+  let o = r.replace(/^\//, ""), s = location.protocol === "file:", c = f();
+  if (o === "")
     return s ? new URL("index.html", c).href : c.href;
-  return s ? new URL(`${a}.html`, c).href : new URL(a, c).href;
+  return s ? new URL(`${o}.html`, c).href : new URL(o, c).href;
 }
 
 // web-components/fonts.js
@@ -75,25 +75,25 @@ g.textContent = v;
 document.head.appendChild(g);
 
 // web-components/define.js
-function b(o, a) {
-  if (o === void 0) {
-    if (a === Array)
+function b(r, o) {
+  if (r === void 0) {
+    if (o === Array)
       return [];
-    if (a === Object)
+    if (o === Object)
       return {};
-    if (a === Boolean)
+    if (o === Boolean)
       return !1;
-    if (a === Number)
+    if (o === Number)
       return 0;
     return;
   }
-  if (a === Boolean)
-    return Boolean(o);
-  if (a === Number)
-    return Number(o);
-  return o;
+  if (o === Boolean)
+    return Boolean(r);
+  if (o === Number)
+    return Number(r);
+  return r;
 }
-function e(o, { props: a = {}, attrs: s = [], styles: c = "", template: m }) {
+function e(r, { props: o = {}, attrs: s = [], styles: c = "", template: m }) {
   let u = ["props", ...s];
 
   class p extends HTMLElement {
@@ -118,8 +118,8 @@ function e(o, { props: a = {}, attrs: s = [], styles: c = "", template: m }) {
           n = {};
         }
       let h = {};
-      for (let d of Object.keys(a))
-        h[d] = b(n[d], a[d]);
+      for (let d of Object.keys(o))
+        h[d] = b(n[d], o[d]);
       return h;
     }
     _applyForwardedAttrs() {
@@ -139,11 +139,11 @@ function e(o, { props: a = {}, attrs: s = [], styles: c = "", template: m }) {
       this.shadowRoot.innerHTML = `<style>${c}</style>${l}`, this._applyForwardedAttrs();
     }
   }
-  customElements.define(o, p);
+  customElements.define(r, p);
 }
 
 // web-components/breakpoints.js
-var r = "640px";
+var a = "640px";
 
 // web-components/components/app-frame.js
 var y = `
@@ -155,7 +155,7 @@ var y = `
     border: 7px solid var(--color-secondary);
     pointer-events: none;
 
-    @media (max-width: ${r}) {
+    @media (max-width: ${a}) {
       border-width: 5px;
     }
   }
@@ -287,7 +287,7 @@ var T = `
     box-shadow: none;
   }
 
-  @media (max-width: ${r}) {
+  @media (max-width: ${a}) {
     .header__navigation {
       gap: 4rem;
     }
@@ -354,7 +354,7 @@ var L = [
    display: flex;
    gap: 5rem;
 
-   @media (max-width: ${r}) {
+   @media (max-width: ${a}) {
         flex-direction: column;
         gap: 3rem;
         margin-block: 2rem;
@@ -383,7 +383,7 @@ var L = [
     max-height: 12.5ch;
     overflow: scroll;
 
-    @media (max-width: ${r}) {
+    @media (max-width: ${a}) {
         max-height: 20ch;
     }
   }
@@ -397,9 +397,9 @@ var L = [
         <span>Sitemap</span>
 
         <ol>
-            ${L.map((o) => `
+            ${L.map((r) => `
                 <li>
-                    <app-link variant="sitemap" href=${i(o.href)} >${o.name}</app-link>
+                    <app-link variant="sitemap" href=${i(r.href)} >${r.name}</app-link>
                 </li>
             `).join("")}
         </ol>
@@ -416,7 +416,7 @@ var _ = `
     padding-top: 1rem;
     margin-top: 3rem;
 
-   @media (max-width: ${r}) {
+   @media (max-width: ${a}) {
         flex-direction: column-reverse;
         gap: 2rem;
         border: none;
@@ -429,7 +429,7 @@ var _ = `
     border-top: 1px solid var(--color-text);
     padding-top: 1rem;
 
-    @media (min-width: ${r}) {
+    @media (min-width: ${a}) {
       border: none;
       padding-top: none;
     }
@@ -446,7 +446,7 @@ var _ = `
   nav {
     display: none;
 
-    @media (min-width: ${r}) {
+    @media (min-width: ${a}) {
       display: block;
     }
   }
@@ -459,7 +459,7 @@ var _ = `
     text-transform: uppercase;
     
 
-    @media (max-width: ${r}) {
+    @media (max-width: ${a}) {
       display: inline-block;
       margin-bottom: 0.5rem;
     }
@@ -538,7 +538,7 @@ var F = `
     display: none;
   }
 
-@media (min-width: ${r}) {
+@media (min-width: ${a}) {
   img:first-child {
     display: block;
   }
@@ -614,7 +614,7 @@ var G = `
     justify-content: space-between;
     gap: 3rem;
 
-    @media (max-width: ${r}) {
+    @media (max-width: ${a}) {
       flex-direction: column;
     }
   }
@@ -705,10 +705,10 @@ var M = `
       display: none;
     }
   }
-`, N = { name: String, img: String, alt: String }, O = ({ name: o, img: a = "", alt: s = "" }) => `
-    <h2>${o}</h2>
+`, N = { name: String, img: String, alt: String }, O = ({ name: r, img: o = "", alt: s = "" }) => `
+    <h2>${r}</h2>
     <img
-        src=${t(a)}
+        src=${t(o)}
         alt=${s}
         height="36"
         width="76"
@@ -856,7 +856,7 @@ var j = `
     grid-template-columns: 1fr 2.5fr;
 
 
-    @media (max-width: ${r}) {
+    @media (max-width: ${a}) {
         display: block;
     }
   }
@@ -872,8 +872,8 @@ var j = `
   :host([variant="block"]) {
     display: block;
   }
-`, K = { title: String }, V = ({ title: o }) => `
-        <h3>${o}</h3>
+`, K = { title: String }, V = ({ title: r }) => `
+        <h3>${r}</h3>
 
         <article>
             <slot></slot>

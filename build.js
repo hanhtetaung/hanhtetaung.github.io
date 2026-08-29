@@ -44,6 +44,28 @@ async function copyAssets(src, dest) {
 
 const subProjects = ["terra"];
 
+// Remove any .html files under `dir` that aren't in `expectedSet`,
+// skipping subproject dirs (they manage their own output) and non-route dirs like assets.
+async function cleanStaleHtml(dir, expectedSet, excludeDirs) {
+  const found = await $`find ${dir} -type f -name "*.html"`.text();
+  const files = found.split("\n").filter(Boolean);
+
+  for (const file of files) {
+    const isExcluded = excludeDirs.some((proj) =>
+      file.startsWith(`${dir}/${proj}/`),
+    );
+    if (isExcluded) continue;
+
+    if (!expectedSet.has(file)) {
+      console.log(`Removing stale file: ${file}`);
+      await $`rm -f ${file}`;
+    }
+  }
+
+  // Clean up any now-empty directories left behind (e.g. docs/writings)
+  await $`find ${dir} -mindepth 1 -type d -empty -delete`.nothrow();
+}
+
 async function buildMain() {
   const settingsRaw = await Bun.file(".vscode/settings.json").text();
   const settings = JSON.parse(stripJsonComments(settingsRaw));
@@ -58,6 +80,12 @@ async function buildMain() {
   const allFiles = ["./index.html", ...routes.map(([, srcPath]) => srcPath)];
 
   await $`mkdir -p docs`;
+
+  const expectedOutPaths = new Set(
+    allFiles.map((srcPath) => `docs/${srcPath.replace(/^\.\//, "")}`),
+  );
+
+  await cleanStaleHtml("docs", expectedOutPaths, subProjects);
 
   for (const srcPath of allFiles) {
     const outPath = `docs/${srcPath.replace(/^\.\//, "")}`;
