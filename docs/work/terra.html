@@ -41,22 +41,22 @@
 
     <section-footer></section-footer>
   <script type="module">// web-components/asset.js
-function f() {
-  let r = document.documentElement.dataset.base || "./";
-  return new URL(r, location.href);
+function g() {
+  let a = document.documentElement.dataset.base || "./";
+  return new URL(a, location.href);
 }
-function t(r) {
-  return new URL(r, f()).href;
+function t(a) {
+  return new URL(a, g()).href;
 }
-function i(r) {
-  let o = r.replace(/^\//, ""), s = location.protocol === "file:", c = f();
-  if (o === "")
+function n(a) {
+  let r = a.replace(/^\//, ""), s = location.protocol === "file:", c = g();
+  if (r === "")
     return s ? new URL("index.html", c).href : c.href;
-  return s ? new URL(`${o}.html`, c).href : new URL(o, c).href;
+  return s ? new URL(`${r}.html`, c).href : new URL(r, c).href;
 }
 
 // web-components/fonts.js
-var v = `
+var b = `
 @font-face {
     font-family: "Archivo";
     src: url("${t("./assets/fonts/Archivo-Black.woff2")}") format("woff2");
@@ -70,83 +70,94 @@ var v = `
     font-weight: 400;
     font-display: swap;
   }
-`, g = document.createElement("style");
-g.textContent = v;
-document.head.appendChild(g);
+`, u = document.createElement("style");
+u.textContent = b;
+document.head.appendChild(u);
 
 // web-components/define.js
-function b(r, o) {
-  if (r === void 0) {
-    if (o === Array)
+function y(a, r) {
+  if (a === void 0) {
+    if (r === Array)
       return [];
-    if (o === Object)
+    if (r === Object)
       return {};
-    if (o === Boolean)
+    if (r === Boolean)
       return !1;
-    if (o === Number)
+    if (r === Number)
       return 0;
     return;
   }
-  if (o === Boolean)
-    return Boolean(r);
-  if (o === Number)
-    return Number(r);
-  return r;
+  if (r === Boolean)
+    return Boolean(a);
+  if (r === Number)
+    return Number(a);
+  return a;
 }
-function e(r, { props: o = {}, attrs: s = [], styles: c = "", template: m }) {
-  let u = ["props", ...s];
+function e(a, { props: r = {}, attrs: s = [], styles: c = "", template: d, onRender: h = null }) {
+  let v = ["props", ...s];
 
-  class p extends HTMLElement {
-    static observedAttributes = u;
+  class f extends HTMLElement {
+    static observedAttributes = v;
     constructor() {
       super();
-      this.attachShadow({ mode: "open" });
+      this.attachShadow({ mode: "open" }), this._cleanup = null;
     }
     connectedCallback() {
       this._render();
+    }
+    disconnectedCallback() {
+      if (typeof this._cleanup === "function")
+        this._cleanup();
+      this._cleanup = null;
     }
     attributeChangedCallback() {
       if (this.isConnected)
         this._render();
     }
     _getProps() {
-      let n = {}, l = this.getAttribute("props");
+      let i = {}, l = this.getAttribute("props");
       if (l)
         try {
-          n = JSON.parse(l);
+          i = JSON.parse(l);
         } catch {
-          n = {};
+          i = {};
         }
-      let h = {};
-      for (let d of Object.keys(o))
-        h[d] = b(n[d], o[d]);
-      return h;
+      let m = {};
+      for (let p of Object.keys(r))
+        m[p] = y(i[p], r[p]);
+      return m;
     }
     _applyForwardedAttrs() {
       if (s.length === 0)
         return;
-      let n = this.shadowRoot.querySelector("[data-forward]");
-      if (!n)
+      let i = this.shadowRoot.querySelector("[data-forward]");
+      if (!i)
         return;
       for (let l of s)
         if (this.hasAttribute(l))
-          n.setAttribute(l, this.getAttribute(l));
+          i.setAttribute(l, this.getAttribute(l));
         else
-          n.removeAttribute(l);
+          i.removeAttribute(l);
     }
     _render() {
-      let n = this._getProps(), l = typeof m === "function" ? m(n) : m;
-      this.shadowRoot.innerHTML = `<style>${c}</style>${l}`, this._applyForwardedAttrs();
+      if (typeof this._cleanup === "function")
+        this._cleanup(), this._cleanup = null;
+      let i = this._getProps(), l = typeof d === "function" ? d(i) : d;
+      if (this.shadowRoot.innerHTML = `<style>${c}</style>${l}`, this._applyForwardedAttrs(), h) {
+        let m = h(this.shadowRoot, i, this);
+        if (typeof m === "function")
+          this._cleanup = m;
+      }
     }
   }
-  customElements.define(r, p);
+  customElements.define(a, f);
 }
 
 // web-components/breakpoints.js
-var a = "640px";
+var o = "640px";
 
 // web-components/components/app-frame.js
-var y = `
+var w = `
   :host {
     display: block;
     position: fixed;
@@ -155,7 +166,7 @@ var y = `
     border: 7px solid var(--color-secondary);
     pointer-events: none;
 
-    @media (max-width: ${a}) {
+    @media (max-width: ${o}) {
       border-width: 5px;
     }
   }
@@ -165,12 +176,12 @@ var y = `
     /* border-color: var(--color-tertiary); */
     /* border-color: #a36aa5; */
   }
-`, w = `
+`, x = `
 `;
-e("app-frame", { styles: y, template: w });
+e("app-frame", { styles: w, template: x });
 
 // web-components/components/app-link.js
-var x = `
+var k = `
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -231,13 +242,13 @@ var x = `
        content: "➶";
      }
   }
-`, k = ["href", "target", "rel", "download"], $ = `
+`, $ = ["href", "target", "rel", "download"], z = `
   <a data-forward><slot></slot></a>
 `;
-e("app-link", { attrs: k, styles: x, template: $ });
+e("app-link", { attrs: $, styles: k, template: z });
 
 // web-components/components/app-logo.js
-var z = `
+var S = `
   :host {
     display: block;
   }
@@ -246,11 +257,11 @@ var z = `
     max-height: 7rem;
     width: auto;
   }
-`, S = ["width", "height", "src", "alt"], A = () => "<img data-forward />";
-e("app-logo", { attrs: S, styles: z, template: A });
+`, A = ["width", "height", "src", "alt"], T = () => "<img data-forward />";
+e("app-logo", { attrs: A, styles: S, template: T });
 
 // web-components/sections/header.js
-var T = `
+var _ = `
   :host {
     display: block;
     background: var(--color-bg-primary);
@@ -287,7 +298,7 @@ var T = `
     box-shadow: none;
   }
 
-  @media (max-width: ${a}) {
+  @media (max-width: ${o}) {
     .header__navigation {
       gap: 4rem;
     }
@@ -299,7 +310,7 @@ var T = `
   }
 `, H = `
   <header>
-      <app-link variant="plain" href=${i("/")}>
+      <app-link variant="plain" href=${n("/")}>
         <img src=${t("./assets/images/logo.avif")}
           alt="Logo">
       </app-link>
@@ -308,22 +319,22 @@ var T = `
         <nav>
           <ul>
             <li>
-              <app-link variant="plain" href=${i("/")}>Home</app-link>
+              <app-link variant="plain" href=${n("/")}>Home</app-link>
             </li>
 
             <li>
-              <app-link variant="plain" href=${i("/about")}>About</app-link>
+              <app-link variant="plain" href=${n("/about")}>About</app-link>
             </li>
           </ul>
         </nav>
 
-        <app-link variant="secondary" href=${i("/#cta")}>
+        <app-link variant="secondary" href=${n("/#cta")}>
           Let's Craft &#8629;
         </app-link>
       </div>
   </header>
 `;
-e("section-header", { template: H, styles: T });
+e("section-header", { template: H, styles: _ });
 
 // web-components/components/footer-nav.js
 var L = [
@@ -354,7 +365,7 @@ var L = [
    display: flex;
    gap: 5rem;
 
-   @media (max-width: ${a}) {
+   @media (max-width: ${o}) {
         flex-direction: column;
         gap: 3rem;
         margin-block: 2rem;
@@ -383,7 +394,7 @@ var L = [
     max-height: 12.5ch;
     overflow: scroll;
 
-    @media (max-width: ${a}) {
+    @media (max-width: ${o}) {
         max-height: 20ch;
     }
   }
@@ -397,9 +408,9 @@ var L = [
         <span>Sitemap</span>
 
         <ol>
-            ${L.map((r) => `
+            ${L.map((a) => `
                 <li>
-                    <app-link variant="sitemap" href=${i(r.href)} >${r.name}</app-link>
+                    <app-link variant="sitemap" href=${n(a.href)} >${a.name}</app-link>
                 </li>
             `).join("")}
         </ol>
@@ -408,7 +419,7 @@ var L = [
 e("footer-nav", { styles: B, template: E });
 
 // web-components/components/footer-copyright.js
-var _ = `
+var C = `
   :host {
    display: flex;
     justify-content: space-between;
@@ -416,7 +427,7 @@ var _ = `
     padding-top: 1rem;
     margin-top: 3rem;
 
-   @media (max-width: ${a}) {
+   @media (max-width: ${o}) {
         flex-direction: column-reverse;
         gap: 2rem;
         border: none;
@@ -429,7 +440,7 @@ var _ = `
     border-top: 1px solid var(--color-text);
     padding-top: 1rem;
 
-    @media (min-width: ${a}) {
+    @media (min-width: ${o}) {
       border: none;
       padding-top: none;
     }
@@ -446,7 +457,7 @@ var _ = `
   nav {
     display: none;
 
-    @media (min-width: ${a}) {
+    @media (min-width: ${o}) {
       display: block;
     }
   }
@@ -459,12 +470,12 @@ var _ = `
     text-transform: uppercase;
     
 
-    @media (max-width: ${a}) {
+    @media (max-width: ${o}) {
       display: inline-block;
       margin-bottom: 0.5rem;
     }
   }
-`, C = () => `
+`, F = () => `
       <p>
         © Han Htet Aung 2026
       </p>
@@ -509,10 +520,10 @@ var _ = `
           </ul>
         </nav>
 `;
-e("footer-copyright", { styles: _, template: C });
+e("footer-copyright", { styles: C, template: F });
 
 // web-components/sections/footer.js
-var F = `
+var U = `
   :host {
     display: block;
     padding-block: 10rem;
@@ -538,7 +549,7 @@ var F = `
     display: none;
   }
 
-@media (min-width: ${a}) {
+@media (min-width: ${o}) {
   img:first-child {
     display: block;
   }
@@ -549,7 +560,7 @@ var F = `
 }
 
 
-`, U = `
+`, R = `
   <footer>
 
   <img src="./assets/images/footer/highlight.avif" alt="Parting phrase">
@@ -562,10 +573,10 @@ var F = `
     <footer-copyright></footer-copyright>
   </footer>
 `;
-e("section-footer", { styles: F, template: U });
+e("section-footer", { styles: U, template: R });
 
 // web-components/components/app-image.js
-var R = `
+var P = `
   :host {
     --local-width: 5rem;
     --local-heigth: auto;
@@ -596,11 +607,11 @@ var R = `
    :host([variant="full"]) {
     --local-width: 100%;
   }
-`, P = ["width", "height", "src", "alt"], q = () => "<img data-forward />";
-e("app-image", { attrs: P, styles: R, template: q });
+`, q = ["width", "height", "src", "alt"], G = () => "<img data-forward />";
+e("app-image", { attrs: q, styles: P, template: G });
 
 // web-components/sections/terra/intro.js
-var G = `
+var I = `
   :host {
     display: block;
   }
@@ -614,7 +625,7 @@ var G = `
     justify-content: space-between;
     gap: 3rem;
 
-    @media (max-width: ${a}) {
+    @media (max-width: ${o}) {
       flex-direction: column;
     }
   }
@@ -641,7 +652,7 @@ var G = `
     font-weight: var(--font-bold);
     text-transform: uppercase;
   }
-`, I = `
+`, M = `
   <section>
     <app-image
       variant="large"
@@ -665,16 +676,16 @@ var G = `
 
       <app-link
         variant="secondary"
-        href=${i("/terra")}
+        href=${n("/terra")}
         target="_blank"
         >Visit ➶</app-link>
     </article>
   </section>
 `;
-e("section-terra-intro", { styles: G, template: I });
+e("section-terra-intro", { styles: I, template: M });
 
 // web-components/components/section-title.js
-var M = `
+var N = `
   :host {
     display: flex;
     align-items: center;
@@ -705,19 +716,19 @@ var M = `
       display: none;
     }
   }
-`, N = { name: String, img: String, alt: String }, O = ({ name: r, img: o = "", alt: s = "" }) => `
-    <h2>${r}</h2>
+`, O = { name: String, img: String, alt: String }, D = ({ name: a, img: r = "", alt: s = "" }) => `
+    <h2>${a}</h2>
     <img
-        src=${t(o)}
+        src=${t(r)}
         alt=${s}
         height="36"
         width="76"
     />
 `;
-e("section-title", { props: N, styles: M, template: O });
+e("section-title", { props: O, styles: N, template: D });
 
 // web-components/sections/terra/overview.js
-var D = `
+var X = `
   :host {
     display: block;
   }
@@ -730,7 +741,7 @@ var D = `
   p {
     margin-block: 2rem;
   }
-`, X = `
+`, J = `
   <section>
     <section-title
         variant="text"
@@ -758,10 +769,10 @@ var D = `
       </article>
   </section>
 `;
-e("section-terra-overview", { styles: D, template: X });
+e("section-terra-overview", { styles: X, template: J });
 
 // web-components/sections/terra/building-block.js
-var J = `
+var Q = `
   :host {
     display: block;
   }
@@ -794,7 +805,7 @@ var J = `
     display: block;
     margin-bottom: 2rem;
   }
-`, Q = `
+`, j = `
   <section>
     <section-title
         variant="text"
@@ -847,16 +858,16 @@ var J = `
           </article>
   </section>
 `;
-e("section-terra-building-block", { styles: J, template: Q });
+e("section-terra-building-block", { styles: Q, template: j });
 
 // web-components/components/app-article-paragraph.js
-var j = `
+var K = `
   :host {
     display: grid;
     grid-template-columns: 1fr 2.5fr;
 
 
-    @media (max-width: ${a}) {
+    @media (max-width: ${o}) {
         display: block;
     }
   }
@@ -872,17 +883,17 @@ var j = `
   :host([variant="block"]) {
     display: block;
   }
-`, K = { title: String }, V = ({ title: r }) => `
-        <h3>${r}</h3>
+`, V = { title: String }, Y = ({ title: a }) => `
+        <h3>${a}</h3>
 
         <article>
             <slot></slot>
         </article>
 `;
-e("app-article-paragraph", { props: K, styles: j, template: V });
+e("app-article-paragraph", { props: V, styles: K, template: Y });
 
 // web-components/sections/terra/need-one-interface.js
-var Y = `
+var Z = `
   :host {
     display: block;
   }
@@ -906,7 +917,7 @@ var Y = `
     border-top: 1px dashed var(--color-text);
     padding-top: 5rem;
   }
-`, Z = `
+`, W = `
   <section>
      <section-title
         variant="text"
@@ -989,10 +1000,10 @@ var Y = `
      
   </section>
 `;
-e("section-terra-need-one-interface", { styles: Y, template: Z });
+e("section-terra-need-one-interface", { styles: Z, template: W });
 
 // web-components/sections/terra/conclusion.js
-var W = `
+var ee = `
   :host {
     display: block;
   }
@@ -1001,7 +1012,7 @@ var W = `
     width: 80%;
     margin-inline: auto;
   }
-`, ee = `
+`, te = `
   <section>
     <section-title
         variant="text"
@@ -1018,6 +1029,6 @@ var W = `
       </article>
   </section>
 `;
-e("section-terra-conclusion", { styles: W, template: ee });
+e("section-terra-conclusion", { styles: ee, template: te });
 </script></body>
 </html>

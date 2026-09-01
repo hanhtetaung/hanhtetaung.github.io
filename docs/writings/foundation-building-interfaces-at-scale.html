@@ -40,22 +40,22 @@
 
     <section-footer variant="secondary"></section-footer>
   <script type="module">// web-components/asset.js
-function h() {
+function g() {
   let o = document.documentElement.dataset.base || "./";
   return new URL(o, location.href);
 }
 function t(o) {
-  return new URL(o, h()).href;
+  return new URL(o, g()).href;
 }
 function s(o) {
-  let a = o.replace(/^\//, ""), l = location.protocol === "file:", c = h();
+  let a = o.replace(/^\//, ""), l = location.protocol === "file:", c = g();
   if (a === "")
     return l ? new URL("index.html", c).href : c.href;
   return l ? new URL(`${a}.html`, c).href : new URL(a, c).href;
 }
 
 // web-components/fonts.js
-var v = `
+var b = `
 @font-face {
     font-family: "Archivo";
     src: url("${t("./assets/fonts/Archivo-Black.woff2")}") format("woff2");
@@ -69,12 +69,12 @@ var v = `
     font-weight: 400;
     font-display: swap;
   }
-`, g = document.createElement("style");
-g.textContent = v;
-document.head.appendChild(g);
+`, u = document.createElement("style");
+u.textContent = b;
+document.head.appendChild(u);
 
 // web-components/define.js
-function b(o, a) {
+function y(o, a) {
   if (o === void 0) {
     if (a === Array)
       return [];
@@ -92,60 +92,71 @@ function b(o, a) {
     return Number(o);
   return o;
 }
-function e(o, { props: a = {}, attrs: l = [], styles: c = "", template: d }) {
-  let u = ["props", ...l];
+function e(o, { props: a = {}, attrs: l = [], styles: c = "", template: m, onRender: f = null }) {
+  let v = ["props", ...l];
 
-  class p extends HTMLElement {
-    static observedAttributes = u;
+  class h extends HTMLElement {
+    static observedAttributes = v;
     constructor() {
       super();
-      this.attachShadow({ mode: "open" });
+      this.attachShadow({ mode: "open" }), this._cleanup = null;
     }
     connectedCallback() {
       this._render();
+    }
+    disconnectedCallback() {
+      if (typeof this._cleanup === "function")
+        this._cleanup();
+      this._cleanup = null;
     }
     attributeChangedCallback() {
       if (this.isConnected)
         this._render();
     }
     _getProps() {
-      let i = {}, n = this.getAttribute("props");
+      let r = {}, n = this.getAttribute("props");
       if (n)
         try {
-          i = JSON.parse(n);
+          r = JSON.parse(n);
         } catch {
-          i = {};
+          r = {};
         }
-      let f = {};
-      for (let m of Object.keys(a))
-        f[m] = b(i[m], a[m]);
-      return f;
+      let d = {};
+      for (let p of Object.keys(a))
+        d[p] = y(r[p], a[p]);
+      return d;
     }
     _applyForwardedAttrs() {
       if (l.length === 0)
         return;
-      let i = this.shadowRoot.querySelector("[data-forward]");
-      if (!i)
+      let r = this.shadowRoot.querySelector("[data-forward]");
+      if (!r)
         return;
       for (let n of l)
         if (this.hasAttribute(n))
-          i.setAttribute(n, this.getAttribute(n));
+          r.setAttribute(n, this.getAttribute(n));
         else
-          i.removeAttribute(n);
+          r.removeAttribute(n);
     }
     _render() {
-      let i = this._getProps(), n = typeof d === "function" ? d(i) : d;
-      this.shadowRoot.innerHTML = `<style>${c}</style>${n}`, this._applyForwardedAttrs();
+      if (typeof this._cleanup === "function")
+        this._cleanup(), this._cleanup = null;
+      let r = this._getProps(), n = typeof m === "function" ? m(r) : m;
+      if (this.shadowRoot.innerHTML = `<style>${c}</style>${n}`, this._applyForwardedAttrs(), f) {
+        let d = f(this.shadowRoot, r, this);
+        if (typeof d === "function")
+          this._cleanup = d;
+      }
     }
   }
-  customElements.define(o, p);
+  customElements.define(o, h);
 }
 
 // web-components/breakpoints.js
-var r = "640px";
+var i = "640px";
 
 // web-components/components/app-frame.js
-var y = `
+var w = `
   :host {
     display: block;
     position: fixed;
@@ -154,7 +165,7 @@ var y = `
     border: 7px solid var(--color-secondary);
     pointer-events: none;
 
-    @media (max-width: ${r}) {
+    @media (max-width: ${i}) {
       border-width: 5px;
     }
   }
@@ -164,12 +175,12 @@ var y = `
     /* border-color: var(--color-tertiary); */
     /* border-color: #a36aa5; */
   }
-`, w = `
+`, k = `
 `;
-e("app-frame", { styles: y, template: w });
+e("app-frame", { styles: w, template: k });
 
 // web-components/components/app-link.js
-var k = `
+var x = `
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -230,13 +241,13 @@ var k = `
        content: "➶";
      }
   }
-`, x = ["href", "target", "rel", "download"], $ = `
+`, $ = ["href", "target", "rel", "download"], z = `
   <a data-forward><slot></slot></a>
 `;
-e("app-link", { attrs: x, styles: k, template: $ });
+e("app-link", { attrs: $, styles: x, template: z });
 
 // web-components/components/app-logo.js
-var z = `
+var A = `
   :host {
     display: block;
   }
@@ -245,8 +256,8 @@ var z = `
     max-height: 7rem;
     width: auto;
   }
-`, A = ["width", "height", "src", "alt"], B = () => "<img data-forward />";
-e("app-logo", { attrs: A, styles: z, template: B });
+`, _ = ["width", "height", "src", "alt"], B = () => "<img data-forward />";
+e("app-logo", { attrs: _, styles: A, template: B });
 
 // web-components/sections/header.js
 var T = `
@@ -286,7 +297,7 @@ var T = `
     box-shadow: none;
   }
 
-  @media (max-width: ${r}) {
+  @media (max-width: ${i}) {
     .header__navigation {
       gap: 4rem;
     }
@@ -353,7 +364,7 @@ var H = [
    display: flex;
    gap: 5rem;
 
-   @media (max-width: ${r}) {
+   @media (max-width: ${i}) {
         flex-direction: column;
         gap: 3rem;
         margin-block: 2rem;
@@ -382,7 +393,7 @@ var H = [
     max-height: 12.5ch;
     overflow: scroll;
 
-    @media (max-width: ${r}) {
+    @media (max-width: ${i}) {
         max-height: 20ch;
     }
   }
@@ -415,7 +426,7 @@ var U = `
     padding-top: 1rem;
     margin-top: 3rem;
 
-   @media (max-width: ${r}) {
+   @media (max-width: ${i}) {
         flex-direction: column-reverse;
         gap: 2rem;
         border: none;
@@ -428,7 +439,7 @@ var U = `
     border-top: 1px solid var(--color-text);
     padding-top: 1rem;
 
-    @media (min-width: ${r}) {
+    @media (min-width: ${i}) {
       border: none;
       padding-top: none;
     }
@@ -445,7 +456,7 @@ var U = `
   nav {
     display: none;
 
-    @media (min-width: ${r}) {
+    @media (min-width: ${i}) {
       display: block;
     }
   }
@@ -458,12 +469,12 @@ var U = `
     text-transform: uppercase;
     
 
-    @media (max-width: ${r}) {
+    @media (max-width: ${i}) {
       display: inline-block;
       margin-bottom: 0.5rem;
     }
   }
-`, _ = () => `
+`, C = () => `
       <p>
         © Han Htet Aung 2026
       </p>
@@ -508,7 +519,7 @@ var U = `
           </ul>
         </nav>
 `;
-e("footer-copyright", { styles: U, template: _ });
+e("footer-copyright", { styles: U, template: C });
 
 // web-components/sections/footer.js
 var F = `
@@ -537,7 +548,7 @@ var F = `
     display: none;
   }
 
-@media (min-width: ${r}) {
+@media (min-width: ${i}) {
   img:first-child {
     display: block;
   }
@@ -548,7 +559,7 @@ var F = `
 }
 
 
-`, C = `
+`, R = `
   <footer>
 
   <img src="./assets/images/footer/highlight.avif" alt="Parting phrase">
@@ -561,10 +572,10 @@ var F = `
     <footer-copyright></footer-copyright>
   </footer>
 `;
-e("section-footer", { styles: F, template: C });
+e("section-footer", { styles: F, template: R });
 
 // web-components/sections/foundation-building-interfaces-at-scale/intro.js
-var R = `
+var q = `
   :host {
     display: block;
   }
@@ -593,7 +604,7 @@ var R = `
     flex-direction: column;
     gap: 0.5rem;
   }
-`, q = `
+`, I = `
   <section>
     <h1>Foundation for Building Interfaces at Scale</h1>
 
@@ -619,12 +630,12 @@ var R = `
   </section>
 `;
 e("section-foundation-building-interfaces-at-scale-intro", {
-  styles: R,
-  template: q
+  styles: q,
+  template: I
 });
 
 // web-components/components/section-title.js
-var I = `
+var O = `
   :host {
     display: flex;
     align-items: center;
@@ -655,7 +666,7 @@ var I = `
       display: none;
     }
   }
-`, O = { name: String, img: String, alt: String }, N = ({ name: o, img: a = "", alt: l = "" }) => `
+`, N = { name: String, img: String, alt: String }, P = ({ name: o, img: a = "", alt: l = "" }) => `
     <h2>${o}</h2>
     <img
         src=${t(a)}
@@ -664,10 +675,10 @@ var I = `
         width="76"
     />
 `;
-e("section-title", { props: O, styles: I, template: N });
+e("section-title", { props: N, styles: O, template: P });
 
 // web-components/components/app-image.js
-var P = `
+var G = `
   :host {
     --local-width: 5rem;
     --local-heigth: auto;
@@ -698,17 +709,17 @@ var P = `
    :host([variant="full"]) {
     --local-width: 100%;
   }
-`, G = ["width", "height", "src", "alt"], M = () => "<img data-forward />";
-e("app-image", { attrs: G, styles: P, template: M });
+`, M = ["width", "height", "src", "alt"], X = () => "<img data-forward />";
+e("app-image", { attrs: M, styles: G, template: X });
 
 // web-components/components/app-article-paragraph.js
-var X = `
+var D = `
   :host {
     display: grid;
     grid-template-columns: 1fr 2.5fr;
 
 
-    @media (max-width: ${r}) {
+    @media (max-width: ${i}) {
         display: block;
     }
   }
@@ -724,17 +735,17 @@ var X = `
   :host([variant="block"]) {
     display: block;
   }
-`, D = { title: String }, J = ({ title: o }) => `
+`, J = { title: String }, K = ({ title: o }) => `
         <h3>${o}</h3>
 
         <article>
             <slot></slot>
         </article>
 `;
-e("app-article-paragraph", { props: D, styles: X, template: J });
+e("app-article-paragraph", { props: J, styles: D, template: K });
 
 // web-components/sections/foundation-building-interfaces-at-scale/atomic-design-principle.js
-var K = `
+var Q = `
   :host {
     display: block;
   }
@@ -760,7 +771,7 @@ var K = `
     border-top: 1px dashed var(--color-text);
     padding-top: 5rem;
   }
-`, Q = `
+`, Y = `
   <section >
     <section-title variant="text" props='{"name": "Atomic Design Principle"}'></section-title>
 
@@ -853,10 +864,10 @@ var K = `
     </ul>
   </section>
 `;
-e("section-atomic-design-principle", { styles: K, template: Q });
+e("section-atomic-design-principle", { styles: Q, template: Y });
 
 // web-components/sections/foundation-building-interfaces-at-scale/design-token-architecture.js
-var Y = `
+var Z = `
   :host {
     display: block;
   }
@@ -887,7 +898,7 @@ var Y = `
     padding: 0;
     padding-left: 1.5rem;
   }
-`, Z = `
+`, j = `
   <section>
     <section-title variant="text" props='{"name": "Design Token Architecture"}'></section-title>
 
@@ -987,10 +998,10 @@ var Y = `
 </ul>
   </section>
 `;
-e("section-design-token-architecture", { styles: Y, template: Z });
+e("section-design-token-architecture", { styles: Z, template: j });
 
 // web-components/sections/foundation-building-interfaces-at-scale/references.js
-var j = `
+var V = `
   :host {
     display: block;
   }
@@ -1007,7 +1018,7 @@ var j = `
     flex-direction: column;
     gap: 0.5rem;
   }
-`, V = `
+`, W = `
   <section>
     <section-title variant="text" props='{"name": "References"}'></section-title>
 
@@ -1036,8 +1047,8 @@ var j = `
   </section>
 `;
 e("section-foundation-building-interfaces-at-scale-references", {
-  styles: j,
-  template: V
+  styles: V,
+  template: W
 });
 </script></body>
 </html>
