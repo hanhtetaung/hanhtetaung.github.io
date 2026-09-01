@@ -32,22 +32,22 @@
 
     <section-footer></section-footer>
   <script type="module">// web-components/asset.js
-function h() {
+function g() {
   let t = document.documentElement.dataset.base || "./";
   return new URL(t, location.href);
 }
 function n(t) {
-  return new URL(t, h()).href;
+  return new URL(t, g()).href;
 }
 function l(t) {
-  let r = t.replace(/^\//, ""), s = location.protocol === "file:", c = h();
-  if (r === "")
+  let a = t.replace(/^\//, ""), s = location.protocol === "file:", c = g();
+  if (a === "")
     return s ? new URL("index.html", c).href : c.href;
-  return s ? new URL(`${r}.html`, c).href : new URL(r, c).href;
+  return s ? new URL(`${a}.html`, c).href : new URL(a, c).href;
 }
 
 // web-components/fonts.js
-var v = `
+var b = `
 @font-face {
     font-family: "Archivo";
     src: url("${n("./assets/fonts/Archivo-Black.woff2")}") format("woff2");
@@ -61,83 +61,94 @@ var v = `
     font-weight: 400;
     font-display: swap;
   }
-`, g = document.createElement("style");
-g.textContent = v;
-document.head.appendChild(g);
+`, u = document.createElement("style");
+u.textContent = b;
+document.head.appendChild(u);
 
 // web-components/define.js
-function b(t, r) {
+function y(t, a) {
   if (t === void 0) {
-    if (r === Array)
+    if (a === Array)
       return [];
-    if (r === Object)
+    if (a === Object)
       return {};
-    if (r === Boolean)
+    if (a === Boolean)
       return !1;
-    if (r === Number)
+    if (a === Number)
       return 0;
     return;
   }
-  if (r === Boolean)
+  if (a === Boolean)
     return Boolean(t);
-  if (r === Number)
+  if (a === Number)
     return Number(t);
   return t;
 }
-function e(t, { props: r = {}, attrs: s = [], styles: c = "", template: m }) {
-  let u = ["props", ...s];
+function e(t, { props: a = {}, attrs: s = [], styles: c = "", template: d, onRender: f = null }) {
+  let v = ["props", ...s];
 
-  class p extends HTMLElement {
-    static observedAttributes = u;
+  class h extends HTMLElement {
+    static observedAttributes = v;
     constructor() {
       super();
-      this.attachShadow({ mode: "open" });
+      this.attachShadow({ mode: "open" }), this._cleanup = null;
     }
     connectedCallback() {
       this._render();
+    }
+    disconnectedCallback() {
+      if (typeof this._cleanup === "function")
+        this._cleanup();
+      this._cleanup = null;
     }
     attributeChangedCallback() {
       if (this.isConnected)
         this._render();
     }
     _getProps() {
-      let a = {}, i = this.getAttribute("props");
+      let r = {}, i = this.getAttribute("props");
       if (i)
         try {
-          a = JSON.parse(i);
+          r = JSON.parse(i);
         } catch {
-          a = {};
+          r = {};
         }
-      let f = {};
-      for (let d of Object.keys(r))
-        f[d] = b(a[d], r[d]);
-      return f;
+      let m = {};
+      for (let p of Object.keys(a))
+        m[p] = y(r[p], a[p]);
+      return m;
     }
     _applyForwardedAttrs() {
       if (s.length === 0)
         return;
-      let a = this.shadowRoot.querySelector("[data-forward]");
-      if (!a)
+      let r = this.shadowRoot.querySelector("[data-forward]");
+      if (!r)
         return;
       for (let i of s)
         if (this.hasAttribute(i))
-          a.setAttribute(i, this.getAttribute(i));
+          r.setAttribute(i, this.getAttribute(i));
         else
-          a.removeAttribute(i);
+          r.removeAttribute(i);
     }
     _render() {
-      let a = this._getProps(), i = typeof m === "function" ? m(a) : m;
-      this.shadowRoot.innerHTML = `<style>${c}</style>${i}`, this._applyForwardedAttrs();
+      if (typeof this._cleanup === "function")
+        this._cleanup(), this._cleanup = null;
+      let r = this._getProps(), i = typeof d === "function" ? d(r) : d;
+      if (this.shadowRoot.innerHTML = `<style>${c}</style>${i}`, this._applyForwardedAttrs(), f) {
+        let m = f(this.shadowRoot, r, this);
+        if (typeof m === "function")
+          this._cleanup = m;
+      }
     }
   }
-  customElements.define(t, p);
+  customElements.define(t, h);
 }
 
 // web-components/breakpoints.js
 var o = "640px";
 
 // web-components/components/app-frame.js
-var y = `
+var w = `
   :host {
     display: block;
     position: fixed;
@@ -156,12 +167,12 @@ var y = `
     /* border-color: var(--color-tertiary); */
     /* border-color: #a36aa5; */
   }
-`, w = `
+`, x = `
 `;
-e("app-frame", { styles: y, template: w });
+e("app-frame", { styles: w, template: x });
 
 // web-components/components/app-link.js
-var x = `
+var k = `
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -222,13 +233,13 @@ var x = `
        content: "➶";
      }
   }
-`, k = ["href", "target", "rel", "download"], $ = `
+`, $ = ["href", "target", "rel", "download"], z = `
   <a data-forward><slot></slot></a>
 `;
-e("app-link", { attrs: k, styles: x, template: $ });
+e("app-link", { attrs: $, styles: k, template: z });
 
 // web-components/components/app-logo.js
-var z = `
+var A = `
   :host {
     display: block;
   }
@@ -237,8 +248,8 @@ var z = `
     max-height: 7rem;
     width: auto;
   }
-`, A = ["width", "height", "src", "alt"], T = () => "<img data-forward />";
-e("app-logo", { attrs: A, styles: z, template: T });
+`, _ = ["width", "height", "src", "alt"], T = () => "<img data-forward />";
+e("app-logo", { attrs: _, styles: A, template: T });
 
 // web-components/sections/header.js
 var B = `
@@ -399,7 +410,7 @@ var L = [
 e("footer-nav", { styles: E, template: S });
 
 // web-components/components/footer-copyright.js
-var U = `
+var C = `
   :host {
    display: flex;
     justify-content: space-between;
@@ -455,7 +466,7 @@ var U = `
       margin-bottom: 0.5rem;
     }
   }
-`, _ = () => `
+`, U = () => `
       <p>
         © Han Htet Aung 2026
       </p>
@@ -500,10 +511,10 @@ var U = `
           </ul>
         </nav>
 `;
-e("footer-copyright", { styles: U, template: _ });
+e("footer-copyright", { styles: C, template: U });
 
 // web-components/sections/footer.js
-var C = `
+var F = `
   :host {
     display: block;
     padding-block: 10rem;
@@ -540,7 +551,7 @@ var C = `
 }
 
 
-`, F = `
+`, R = `
   <footer>
 
   <img src="./assets/images/footer/highlight.avif" alt="Parting phrase">
@@ -553,10 +564,10 @@ var C = `
     <footer-copyright></footer-copyright>
   </footer>
 `;
-e("section-footer", { styles: C, template: F });
+e("section-footer", { styles: F, template: R });
 
 // web-components/components/app-icon.js
-var R = `
+var j = `
   :host {
     --local-width: 3rem;
     --local-height: auto;
@@ -594,11 +605,11 @@ var R = `
   }
 
 
-`, j = ["src", "alt"], q = () => '<img data-forward width="200" height="200"/>';
-e("app-icon", { attrs: j, styles: R, template: q });
+`, q = ["src", "alt"], P = () => '<img data-forward width="200" height="200"/>';
+e("app-icon", { attrs: q, styles: j, template: P });
 
 // web-components/sections/404-intro.js
-var P = `
+var I = `
   :host {
     display: block;
     margin-block: 10rem;
@@ -625,7 +636,7 @@ var P = `
     margin: 0;
     margin-bottom: 1.5rem;
   }
-`, I = `
+`, N = `
   <section>
       <hgroup>
         <h1>404</h1>
@@ -639,6 +650,6 @@ var P = `
       ></app-icon>
   </section>
 `;
-e("section-404-intro", { styles: P, template: I });
+e("section-404-intro", { styles: I, template: N });
 </script></body>
 </html>

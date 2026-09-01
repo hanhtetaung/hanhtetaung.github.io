@@ -42,41 +42,41 @@
 
     <section-footer></section-footer>
   <script type="module">// web-components/asset.js
-function f() {
+function u() {
   let e = document.documentElement.dataset.base || "./";
   return new URL(e, location.href);
 }
-function i(e) {
-  return new URL(e, f()).href;
+function r(e) {
+  return new URL(e, u()).href;
 }
 function s(e) {
-  let a = e.replace(/^\//, ""), o = location.protocol === "file:", n = f();
+  let a = e.replace(/^\//, ""), o = location.protocol === "file:", n = u();
   if (a === "")
     return o ? new URL("index.html", n).href : n.href;
   return o ? new URL(`${a}.html`, n).href : new URL(a, n).href;
 }
 
 // web-components/fonts.js
-var v = `
+var b = `
 @font-face {
     font-family: "Archivo";
-    src: url("${i("./assets/fonts/Archivo-Black.woff2")}") format("woff2");
+    src: url("${r("./assets/fonts/Archivo-Black.woff2")}") format("woff2");
     font-weight: 700;
     font-display: swap;
   }
 
   @font-face {
     font-family: "Archivo";
-    src: url("${i("./assets/fonts/Archivo-Regular.woff2")}") format("woff2");
+    src: url("${r("./assets/fonts/Archivo-Regular.woff2")}") format("woff2");
     font-weight: 400;
     font-display: swap;
   }
-`, u = document.createElement("style");
-u.textContent = v;
-document.head.appendChild(u);
+`, v = document.createElement("style");
+v.textContent = b;
+document.head.appendChild(v);
 
 // web-components/define.js
-function b(e, a) {
+function w(e, a) {
   if (e === void 0) {
     if (a === Array)
       return [];
@@ -94,17 +94,22 @@ function b(e, a) {
     return Number(e);
   return e;
 }
-function t(e, { props: a = {}, attrs: o = [], styles: n = "", template: m }) {
-  let d = ["props", ...o];
+function t(e, { props: a = {}, attrs: o = [], styles: n = "", template: m, onRender: p = null }) {
+  let g = ["props", ...o];
 
-  class p extends HTMLElement {
-    static observedAttributes = d;
+  class h extends HTMLElement {
+    static observedAttributes = g;
     constructor() {
       super();
-      this.attachShadow({ mode: "open" });
+      this.attachShadow({ mode: "open" }), this._cleanup = null;
     }
     connectedCallback() {
       this._render();
+    }
+    disconnectedCallback() {
+      if (typeof this._cleanup === "function")
+        this._cleanup();
+      this._cleanup = null;
     }
     attributeChangedCallback() {
       if (this.isConnected)
@@ -118,10 +123,10 @@ function t(e, { props: a = {}, attrs: o = [], styles: n = "", template: m }) {
         } catch {
           l = {};
         }
-      let g = {};
-      for (let h of Object.keys(a))
-        g[h] = b(l[h], a[h]);
-      return g;
+      let d = {};
+      for (let f of Object.keys(a))
+        d[f] = w(l[f], a[f]);
+      return d;
     }
     _applyForwardedAttrs() {
       if (o.length === 0)
@@ -136,15 +141,21 @@ function t(e, { props: a = {}, attrs: o = [], styles: n = "", template: m }) {
           l.removeAttribute(c);
     }
     _render() {
+      if (typeof this._cleanup === "function")
+        this._cleanup(), this._cleanup = null;
       let l = this._getProps(), c = typeof m === "function" ? m(l) : m;
-      this.shadowRoot.innerHTML = `<style>${n}</style>${c}`, this._applyForwardedAttrs();
+      if (this.shadowRoot.innerHTML = `<style>${n}</style>${c}`, this._applyForwardedAttrs(), p) {
+        let d = p(this.shadowRoot, l, this);
+        if (typeof d === "function")
+          this._cleanup = d;
+      }
     }
   }
-  customElements.define(e, p);
+  customElements.define(e, h);
 }
 
 // web-components/components/app-link.js
-var w = `
+var y = `
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -205,13 +216,13 @@ var w = `
        content: "➶";
      }
   }
-`, y = ["href", "target", "rel", "download"], k = `
+`, k = ["href", "target", "rel", "download"], x = `
   <a data-forward><slot></slot></a>
 `;
-t("app-link", { attrs: y, styles: w, template: k });
+t("app-link", { attrs: k, styles: y, template: x });
 
 // web-components/components/app-logo.js
-var x = `
+var $ = `
   :host {
     display: block;
   }
@@ -220,14 +231,14 @@ var x = `
     max-height: 7rem;
     width: auto;
   }
-`, $ = ["width", "height", "src", "alt"], z = () => "<img data-forward />";
-t("app-logo", { attrs: $, styles: x, template: z });
+`, z = ["width", "height", "src", "alt"], A = () => "<img data-forward />";
+t("app-logo", { attrs: z, styles: $, template: A });
 
 // web-components/breakpoints.js
-var r = "640px";
+var i = "640px";
 
 // web-components/sections/header.js
-var A = `
+var _ = `
   :host {
     display: block;
     background: var(--color-bg-primary);
@@ -264,7 +275,7 @@ var A = `
     box-shadow: none;
   }
 
-  @media (max-width: ${r}) {
+  @media (max-width: ${i}) {
     .header__navigation {
       gap: 4rem;
     }
@@ -277,7 +288,7 @@ var A = `
 `, B = `
   <header>
       <app-link variant="plain" href=${s("/")}>
-        <img src=${i("./assets/images/logo.avif")}
+        <img src=${r("./assets/images/logo.avif")}
           alt="Logo">
       </app-link>
 
@@ -300,7 +311,7 @@ var A = `
       </div>
   </header>
 `;
-t("section-header", { template: B, styles: A });
+t("section-header", { template: B, styles: _ });
 
 // web-components/components/footer-nav.js
 var H = [
@@ -331,7 +342,7 @@ var H = [
    display: flex;
    gap: 5rem;
 
-   @media (max-width: ${r}) {
+   @media (max-width: ${i}) {
         flex-direction: column;
         gap: 3rem;
         margin-block: 2rem;
@@ -360,7 +371,7 @@ var H = [
     max-height: 12.5ch;
     overflow: scroll;
 
-    @media (max-width: ${r}) {
+    @media (max-width: ${i}) {
         max-height: 20ch;
     }
   }
@@ -393,7 +404,7 @@ var T = `
     padding-top: 1rem;
     margin-top: 3rem;
 
-   @media (max-width: ${r}) {
+   @media (max-width: ${i}) {
         flex-direction: column-reverse;
         gap: 2rem;
         border: none;
@@ -406,7 +417,7 @@ var T = `
     border-top: 1px solid var(--color-text);
     padding-top: 1rem;
 
-    @media (min-width: ${r}) {
+    @media (min-width: ${i}) {
       border: none;
       padding-top: none;
     }
@@ -423,7 +434,7 @@ var T = `
   nav {
     display: none;
 
-    @media (min-width: ${r}) {
+    @media (min-width: ${i}) {
       display: block;
     }
   }
@@ -436,7 +447,7 @@ var T = `
     text-transform: uppercase;
     
 
-    @media (max-width: ${r}) {
+    @media (max-width: ${i}) {
       display: inline-block;
       margin-bottom: 0.5rem;
     }
@@ -452,7 +463,7 @@ var T = `
               <li>
                   <app-link href="mailto:hanhtetaung.dev@gmail.com" variant="image">
                   <img
-                      src=${i("./assets/icons/email.svg")}
+                      src=${r("./assets/icons/email.svg")}
                       alt="Email Icon"
                   />
                   </app-link>
@@ -465,7 +476,7 @@ var T = `
                   variant="image"
                   >
                   <img
-                      src=${i("./assets/icons/github.svg")}
+                      src=${r("./assets/icons/github.svg")}
                       alt="Github Icon"
                   />
                   </app-link>
@@ -478,7 +489,7 @@ var T = `
                   variant="image"
                   >
                   <img
-                      src=${i("./assets/icons/linkedin.svg")}
+                      src=${r("./assets/icons/linkedin.svg")}
                       alt="Linkedin Icon"
                   />
                   </app-link>
@@ -515,7 +526,7 @@ var I = `
     display: none;
   }
 
-@media (min-width: ${r}) {
+@media (min-width: ${i}) {
   img:first-child {
     display: block;
   }
@@ -526,7 +537,7 @@ var I = `
 }
 
 
-`, _ = `
+`, E = `
   <footer>
 
   <img src="./assets/images/footer/highlight.avif" alt="Parting phrase">
@@ -539,10 +550,10 @@ var I = `
     <footer-copyright></footer-copyright>
   </footer>
 `;
-t("section-footer", { styles: I, template: _ });
+t("section-footer", { styles: I, template: E });
 
 // web-components/components/app-image.js
-var E = `
+var M = `
   :host {
     --local-width: 5rem;
     --local-heigth: auto;
@@ -573,11 +584,11 @@ var E = `
    :host([variant="full"]) {
     --local-width: 100%;
   }
-`, M = ["width", "height", "src", "alt"], R = () => "<img data-forward />";
-t("app-image", { attrs: M, styles: E, template: R });
+`, R = ["width", "height", "src", "alt"], U = () => "<img data-forward />";
+t("app-image", { attrs: R, styles: M, template: U });
 
 // web-components/sections/about/about-intro.js
-var U = `
+var C = `
   :host {
     display: block;
     margin-top: 10rem;
@@ -589,7 +600,7 @@ var U = `
      display: grid;
     grid-template-columns: 1fr 1fr;
 
-    @media (max-width: ${r}) {
+    @media (max-width: ${i}) {
       display: block; 
         text-align: center;
     }
@@ -606,7 +617,7 @@ var U = `
     align-items: center;
     gap: 3rem;
 
-     @media (max-width: ${r}) {
+     @media (max-width: ${i}) {
       display: block; 
     }
   }
@@ -631,10 +642,10 @@ var U = `
       </div>
   </section>
 `;
-t("section-about-intro", { styles: U, template: D });
+t("section-about-intro", { styles: C, template: D });
 
 // web-components/components/section-title.js
-var C = `
+var j = `
   :host {
     display: flex;
     align-items: center;
@@ -665,19 +676,19 @@ var C = `
       display: none;
     }
   }
-`, j = { name: String, img: String, alt: String }, q = ({ name: e, img: a = "", alt: o = "" }) => `
+`, q = { name: String, img: String, alt: String }, N = ({ name: e, img: a = "", alt: o = "" }) => `
     <h2>${e}</h2>
     <img
-        src=${i(a)}
+        src=${r(a)}
         alt=${o}
         height="36"
         width="76"
     />
 `;
-t("section-title", { props: j, styles: C, template: q });
+t("section-title", { props: q, styles: j, template: N });
 
 // web-components/sections/about/tech-collection.js
-var N = [
+var O = [
   {
     href: "https://raindrop.io/",
     src: "./assets/tech-collection/raindrop-io.svg",
@@ -798,7 +809,7 @@ var N = [
     src: "./assets/tech-collection/the-noun-project.svg",
     alt: "The Noun Project logo"
   }
-], O = `
+], Y = `
   :host {
     display: block;
     margin-block: 20rem;
@@ -824,16 +835,16 @@ var N = [
     margin: 0;
     margin: 1rem;
   }
-`, Y = () => `
+`, P = () => `
   <section>
       <h2>Tech Collection</h2>
 
       <ul>
-        ${N.map((e) => `
+        ${O.map((e) => `
               <li>
                 <app-link href="${s(e.href)}" target="_blank" variant="image">
                   <img
-                    src="${i(e.src)}"
+                    src="${r(e.src)}"
                     alt="${e.alt}"
                     width="102"
                     height="73"
@@ -844,10 +855,10 @@ var N = [
       </ul>
   </section>
 `;
-t("section-tech-collection", { styles: O, template: Y });
+t("section-tech-collection", { styles: Y, template: P });
 
 // web-components/components/app-icon.js
-var P = `
+var G = `
   :host {
     --local-width: 3rem;
     --local-height: auto;
@@ -885,11 +896,11 @@ var P = `
   }
 
 
-`, G = ["src", "alt"], W = () => '<img data-forward width="200" height="200"/>';
-t("app-icon", { attrs: G, styles: P, template: W });
+`, W = ["src", "alt"], X = () => '<img data-forward width="200" height="200"/>';
+t("app-icon", { attrs: W, styles: G, template: X });
 
 // web-components/sections/about/random-facts.js
-var X = [
+var J = [
   {
     src: "./assets/images/about/birds.avif",
     alt: "Watching Bird",
@@ -915,7 +926,7 @@ var X = [
     alt: "Sketching",
     text: "I sketch things"
   }
-], J = `
+], K = `
   :host {
     display: block;
     margin-block: 20rem;
@@ -944,12 +955,12 @@ var X = [
     margin-bottom: 1rem;
     font-size: var(--size-title);
   }
-`, K = () => `
+`, Q = () => `
   <section>
       <h2>Random Facts</h2>
 
       <ul>
-        ${X.map((e) => `
+        ${J.map((e) => `
               <li>
                 <figure>
                   <app-icon variant="large" src="${e.src}" alt="${e.alt}"></app-icon>
@@ -960,10 +971,10 @@ var X = [
       </ul>
   </section>
 `;
-t("section-random-facts", { styles: J, template: K });
+t("section-random-facts", { styles: K, template: Q });
 
 // web-components/sections/about/life-in-weeks.js
-var Q = "3 Nov 2000", Z = 70, V = `
+var Z = "3 Nov 2000", V = 70, ee = `
   section {
     width: 80%;
     margin-inline: auto;
@@ -1025,22 +1036,22 @@ var Q = "3 Nov 2000", Z = 70, V = `
     margin: 0;
     margin: 1rem;
   }
-`, ee = (e, a) => {
-  let o = new Date(e), n = /* @__PURE__ */ new Date, m = n.getFullYear() - o.getFullYear() - (n.getMonth() < o.getMonth() || n.getMonth() === o.getMonth() && n.getDate() < o.getDate() ? 1 : 0), d = m * 52 + Math.min(51, Math.floor((n - new Date(o.getFullYear() + m, o.getMonth(), o.getDate())) / 604800000));
-  return Array.from({ length: a * 52 }, (p, l) => `<li class="${l < d ? "lived" : ""}"></li>`).join("");
-}, te = () => `
+`, te = (e, a) => {
+  let o = new Date(e), n = /* @__PURE__ */ new Date, m = n.getFullYear() - o.getFullYear() - (n.getMonth() < o.getMonth() || n.getMonth() === o.getMonth() && n.getDate() < o.getDate() ? 1 : 0), p = m * 52 + Math.min(51, Math.floor((n - new Date(o.getFullYear() + m, o.getMonth(), o.getDate())) / 604800000));
+  return Array.from({ length: a * 52 }, (g, h) => `<li class="${h < p ? "lived" : ""}"></li>`).join("");
+}, ae = () => `
   <section>
     <h2>Life in Weeks</h2>
 
     <article>
       <span class="ages">Ages (70 yrs) ⇨</span>
       <span class="weeks-axis">⇦ Weeks of the year</span>
-      <ul>${ee(Q, Z)}</ul>
+      <ul>${te(Z, V)}</ul>
     </article>
 
     <p>Based on this post: <app-link variant="underline" href="https://waitbutwhy.com/2014/05/life-weeks.html" target="_blank">Your Life in Weeks</app-link></p>
   </section>
 `;
-t("section-life-in-weeks", { styles: V, template: te });
+t("section-life-in-weeks", { styles: ee, template: ae });
 </script></body>
 </html>

@@ -47,22 +47,22 @@
 
     <section-footer variant="secondary"></section-footer>
   <script type="module">// web-components/asset.js
-function h() {
+function g() {
   let t = document.documentElement.dataset.base || "./";
   return new URL(t, location.href);
 }
 function o(t) {
-  return new URL(t, h()).href;
+  return new URL(t, g()).href;
 }
-function r(t) {
-  let a = t.replace(/^\//, ""), s = location.protocol === "file:", c = h();
+function n(t) {
+  let a = t.replace(/^\//, ""), s = location.protocol === "file:", c = g();
   if (a === "")
     return s ? new URL("index.html", c).href : c.href;
   return s ? new URL(`${a}.html`, c).href : new URL(a, c).href;
 }
 
 // web-components/fonts.js
-var v = `
+var b = `
 @font-face {
     font-family: "Archivo";
     src: url("${o("./assets/fonts/Archivo-Black.woff2")}") format("woff2");
@@ -76,12 +76,12 @@ var v = `
     font-weight: 400;
     font-display: swap;
   }
-`, g = document.createElement("style");
-g.textContent = v;
-document.head.appendChild(g);
+`, u = document.createElement("style");
+u.textContent = b;
+document.head.appendChild(u);
 
 // web-components/define.js
-function b(t, a) {
+function y(t, a) {
   if (t === void 0) {
     if (a === Array)
       return [];
@@ -99,60 +99,71 @@ function b(t, a) {
     return Number(t);
   return t;
 }
-function e(t, { props: a = {}, attrs: s = [], styles: c = "", template: m }) {
-  let u = ["props", ...s];
+function e(t, { props: a = {}, attrs: s = [], styles: c = "", template: p, onRender: f = null }) {
+  let v = ["props", ...s];
 
-  class p extends HTMLElement {
-    static observedAttributes = u;
+  class h extends HTMLElement {
+    static observedAttributes = v;
     constructor() {
       super();
-      this.attachShadow({ mode: "open" });
+      this.attachShadow({ mode: "open" }), this._cleanup = null;
     }
     connectedCallback() {
       this._render();
+    }
+    disconnectedCallback() {
+      if (typeof this._cleanup === "function")
+        this._cleanup();
+      this._cleanup = null;
     }
     attributeChangedCallback() {
       if (this.isConnected)
         this._render();
     }
     _getProps() {
-      let n = {}, l = this.getAttribute("props");
+      let r = {}, l = this.getAttribute("props");
       if (l)
         try {
-          n = JSON.parse(l);
+          r = JSON.parse(l);
         } catch {
-          n = {};
+          r = {};
         }
-      let f = {};
+      let m = {};
       for (let d of Object.keys(a))
-        f[d] = b(n[d], a[d]);
-      return f;
+        m[d] = y(r[d], a[d]);
+      return m;
     }
     _applyForwardedAttrs() {
       if (s.length === 0)
         return;
-      let n = this.shadowRoot.querySelector("[data-forward]");
-      if (!n)
+      let r = this.shadowRoot.querySelector("[data-forward]");
+      if (!r)
         return;
       for (let l of s)
         if (this.hasAttribute(l))
-          n.setAttribute(l, this.getAttribute(l));
+          r.setAttribute(l, this.getAttribute(l));
         else
-          n.removeAttribute(l);
+          r.removeAttribute(l);
     }
     _render() {
-      let n = this._getProps(), l = typeof m === "function" ? m(n) : m;
-      this.shadowRoot.innerHTML = `<style>${c}</style>${l}`, this._applyForwardedAttrs();
+      if (typeof this._cleanup === "function")
+        this._cleanup(), this._cleanup = null;
+      let r = this._getProps(), l = typeof p === "function" ? p(r) : p;
+      if (this.shadowRoot.innerHTML = `<style>${c}</style>${l}`, this._applyForwardedAttrs(), f) {
+        let m = f(this.shadowRoot, r, this);
+        if (typeof m === "function")
+          this._cleanup = m;
+      }
     }
   }
-  customElements.define(t, p);
+  customElements.define(t, h);
 }
 
 // web-components/breakpoints.js
 var i = "640px";
 
 // web-components/components/app-frame.js
-var y = `
+var w = `
   :host {
     display: block;
     position: fixed;
@@ -171,12 +182,12 @@ var y = `
     /* border-color: var(--color-tertiary); */
     /* border-color: #a36aa5; */
   }
-`, w = `
+`, x = `
 `;
-e("app-frame", { styles: y, template: w });
+e("app-frame", { styles: w, template: x });
 
 // web-components/components/app-link.js
-var x = `
+var k = `
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -237,13 +248,13 @@ var x = `
        content: "➶";
      }
   }
-`, k = ["href", "target", "rel", "download"], $ = `
+`, $ = ["href", "target", "rel", "download"], z = `
   <a data-forward><slot></slot></a>
 `;
-e("app-link", { attrs: k, styles: x, template: $ });
+e("app-link", { attrs: $, styles: k, template: z });
 
 // web-components/components/app-logo.js
-var z = `
+var A = `
   :host {
     display: block;
   }
@@ -252,11 +263,11 @@ var z = `
     max-height: 7rem;
     width: auto;
   }
-`, A = ["width", "height", "src", "alt"], T = () => "<img data-forward />";
-e("app-logo", { attrs: A, styles: z, template: T });
+`, T = ["width", "height", "src", "alt"], S = () => "<img data-forward />";
+e("app-logo", { attrs: T, styles: A, template: S });
 
 // web-components/sections/header.js
-var S = `
+var _ = `
   :host {
     display: block;
     background: var(--color-bg-primary);
@@ -305,7 +316,7 @@ var S = `
   }
 `, B = `
   <header>
-      <app-link variant="plain" href=${r("/")}>
+      <app-link variant="plain" href=${n("/")}>
         <img src=${o("./assets/images/logo.avif")}
           alt="Logo">
       </app-link>
@@ -314,22 +325,22 @@ var S = `
         <nav>
           <ul>
             <li>
-              <app-link variant="plain" href=${r("/")}>Home</app-link>
+              <app-link variant="plain" href=${n("/")}>Home</app-link>
             </li>
 
             <li>
-              <app-link variant="plain" href=${r("/about")}>About</app-link>
+              <app-link variant="plain" href=${n("/about")}>About</app-link>
             </li>
           </ul>
         </nav>
 
-        <app-link variant="secondary" href=${r("/#cta")}>
+        <app-link variant="secondary" href=${n("/#cta")}>
           Let's Craft &#8629;
         </app-link>
       </div>
   </header>
 `;
-e("section-header", { template: B, styles: S });
+e("section-header", { template: B, styles: _ });
 
 // web-components/components/footer-nav.js
 var H = [
@@ -405,7 +416,7 @@ var H = [
         <ol>
             ${H.map((t) => `
                 <li>
-                    <app-link variant="sitemap" href=${r(t.href)} >${t.name}</app-link>
+                    <app-link variant="sitemap" href=${n(t.href)} >${t.name}</app-link>
                 </li>
             `).join("")}
         </ol>
@@ -518,7 +529,7 @@ var R = `
 e("footer-copyright", { styles: R, template: U });
 
 // web-components/sections/footer.js
-var _ = `
+var C = `
   :host {
     display: block;
     padding-block: 10rem;
@@ -555,7 +566,7 @@ var _ = `
 }
 
 
-`, C = `
+`, F = `
   <footer>
 
   <img src="./assets/images/footer/highlight.avif" alt="Parting phrase">
@@ -568,10 +579,10 @@ var _ = `
     <footer-copyright></footer-copyright>
   </footer>
 `;
-e("section-footer", { styles: _, template: C });
+e("section-footer", { styles: C, template: F });
 
 // web-components/components/app-image.js
-var F = `
+var q = `
   :host {
     --local-width: 5rem;
     --local-heigth: auto;
@@ -602,11 +613,11 @@ var F = `
    :host([variant="full"]) {
     --local-width: 100%;
   }
-`, q = ["width", "height", "src", "alt"], M = () => "<img data-forward />";
-e("app-image", { attrs: q, styles: F, template: M });
+`, M = ["width", "height", "src", "alt"], O = () => "<img data-forward />";
+e("app-image", { attrs: M, styles: q, template: O });
 
 // web-components/sections/mmo/intro.js
-var O = `
+var D = `
   :host {
     display: block;
   }
@@ -650,7 +661,7 @@ var O = `
     padding: 0;
     padding-inline: 2rem;
   }
-`, D = `
+`, G = `
   <section>
     <app-image
     variant="large"
@@ -683,10 +694,10 @@ var O = `
       </article>
   </section>
 `;
-e("section-mmo-intro", { styles: O, template: D });
+e("section-mmo-intro", { styles: D, template: G });
 
 // web-components/components/section-title.js
-var G = `
+var I = `
   :host {
     display: flex;
     align-items: center;
@@ -717,7 +728,7 @@ var G = `
       display: none;
     }
   }
-`, I = { name: String, img: String, alt: String }, P = ({ name: t, img: a = "", alt: s = "" }) => `
+`, P = { name: String, img: String, alt: String }, N = ({ name: t, img: a = "", alt: s = "" }) => `
     <h2>${t}</h2>
     <img
         src=${o(a)}
@@ -726,10 +737,10 @@ var G = `
         width="76"
     />
 `;
-e("section-title", { props: I, styles: G, template: P });
+e("section-title", { props: P, styles: I, template: N });
 
 // web-components/sections/mmo/about.js
-var N = `
+var X = `
   :host {
     display: block;
   }
@@ -738,7 +749,7 @@ var N = `
     width: 80%;
     margin-inline: auto;
   }
-`, X = `
+`, K = `
   <section>
     <section-title
         variant="text"
@@ -755,10 +766,10 @@ var N = `
       </article>
   </section>
 `;
-e("section-mmo-about", { styles: N, template: X });
+e("section-mmo-about", { styles: X, template: K });
 
 // web-components/sections/mmo/voices-from-field.js
-var K = `
+var J = `
   :host {
     display: block;
   }
@@ -784,7 +795,7 @@ var K = `
     font-weight: var(--font-bold);
     text-transform: uppercase;
   }
-`, J = `
+`, Q = `
   <section>
 
   <section-title
@@ -821,10 +832,10 @@ var K = `
         </ul>
   </section>
 `;
-e("section-mmo-voices-from-field", { styles: K, template: J });
+e("section-mmo-voices-from-field", { styles: J, template: Q });
 
 // web-components/sections/mmo/designing-workflow.js
-var Q = `
+var V = `
   :host {
     display: block;
   }
@@ -861,7 +872,7 @@ var Q = `
   article {
     margin-bottom: 5rem;
   }
-`, V = `
+`, Y = `
   <section>
     <section-title
         variant="text"
@@ -920,10 +931,10 @@ var Q = `
       </article>
   </section>
 `;
-e("section-mmo-designing-workflow", { styles: Q, template: V });
+e("section-mmo-designing-workflow", { styles: V, template: Y });
 
 // web-components/components/app-article-paragraph.js
-var Y = `
+var Z = `
   :host {
     display: grid;
     grid-template-columns: 1fr 2.5fr;
@@ -945,17 +956,17 @@ var Y = `
   :host([variant="block"]) {
     display: block;
   }
-`, Z = { title: String }, j = ({ title: t }) => `
+`, j = { title: String }, W = ({ title: t }) => `
         <h3>${t}</h3>
 
         <article>
             <slot></slot>
         </article>
 `;
-e("app-article-paragraph", { props: Z, styles: Y, template: j });
+e("app-article-paragraph", { props: j, styles: Z, template: W });
 
 // web-components/sections/mmo/building-interfaces.js
-var W = `
+var ee = `
   :host {
     display: block;
   }
@@ -979,7 +990,7 @@ var W = `
     border-top: 1px dashed var(--color-text);
     padding-top: 5rem;
   }
-`, ee = `
+`, te = `
   <section>
     <section-title
       variant="text"
@@ -1060,10 +1071,10 @@ var W = `
     </ul>
   </section>
 `;
-e("section-mmo-building-interfaces", { styles: W, template: ee });
+e("section-mmo-building-interfaces", { styles: ee, template: te });
 
 // web-components/sections/mmo/multiple-workflows.js
-var te = `
+var oe = `
   :host {
     display: block;
   }
@@ -1081,7 +1092,7 @@ var te = `
     display: flex;
     flex-direction: column;
   }
-`, oe = `
+`, ie = `
   <section>
 
   <section-title
@@ -1096,10 +1107,10 @@ var te = `
         </ul>
   </section>
 `;
-e("section-mmo-multiple-workflows", { styles: te, template: oe });
+e("section-mmo-multiple-workflows", { styles: oe, template: ie });
 
 // web-components/sections/mmo/one-design-system.js
-var ie = `
+var ae = `
   :host {
     display: block;
   }
@@ -1108,7 +1119,7 @@ var ie = `
     width: 80%;
     margin-inline: auto;
   }
-`, ae = `
+`, re = `
   <section>
     <section-title
         variant="text"
@@ -1129,14 +1140,14 @@ var ie = `
             interfaces.
           </p>
 
-          <app-link variant="underline" href=${r("/foundation-building-interfaces-at-scale")}>Read the article</app-link>
+          <app-link variant="underline" href=${n("/foundation-building-interfaces-at-scale")}>Read the article</app-link>
       </article>
   </section>
 `;
-e("section-mmo-one-design-system", { styles: ie, template: ae });
+e("section-mmo-one-design-system", { styles: ae, template: re });
 
 // web-components/sections/mmo/conclusion.js
-var re = `
+var ne = `
   :host {
     display: block;
   }
@@ -1153,7 +1164,7 @@ var re = `
     display: flex;
     flex-direction: column;
   }
-`, ne = `
+`, le = `
   <section>
     <section-title
       variant="text"
@@ -1163,6 +1174,6 @@ var re = `
     <p>The system continues to grow as users' needs change.</p>
   </section>
 `;
-e("section-mmo-conclusion", { styles: re, template: ne });
+e("section-mmo-conclusion", { styles: ne, template: le });
 </script></body>
 </html>

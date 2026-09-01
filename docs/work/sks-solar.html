@@ -37,69 +37,74 @@
 
     <section-footer></section-footer>
   <script type="module">// web-components/asset.js
-function h() {
-  let t = document.documentElement.dataset.base || "./";
-  return new URL(t, location.href);
+function g() {
+  let a = document.documentElement.dataset.base || "./";
+  return new URL(a, location.href);
 }
-function o(t) {
-  return new URL(t, h()).href;
+function t(a) {
+  return new URL(a, g()).href;
 }
-function s(t) {
-  let a = t.replace(/^\//, ""), l = location.protocol === "file:", c = h();
-  if (a === "")
+function s(a) {
+  let r = a.replace(/^\//, ""), l = location.protocol === "file:", c = g();
+  if (r === "")
     return l ? new URL("index.html", c).href : c.href;
-  return l ? new URL(`${a}.html`, c).href : new URL(a, c).href;
+  return l ? new URL(`${r}.html`, c).href : new URL(r, c).href;
 }
 
 // web-components/fonts.js
-var u = `
+var b = `
 @font-face {
     font-family: "Archivo";
-    src: url("${o("./assets/fonts/Archivo-Black.woff2")}") format("woff2");
+    src: url("${t("./assets/fonts/Archivo-Black.woff2")}") format("woff2");
     font-weight: 700;
     font-display: swap;
   }
 
   @font-face {
     font-family: "Archivo";
-    src: url("${o("./assets/fonts/Archivo-Regular.woff2")}") format("woff2");
+    src: url("${t("./assets/fonts/Archivo-Regular.woff2")}") format("woff2");
     font-weight: 400;
     font-display: swap;
   }
-`, g = document.createElement("style");
-g.textContent = u;
-document.head.appendChild(g);
+`, u = document.createElement("style");
+u.textContent = b;
+document.head.appendChild(u);
 
 // web-components/define.js
-function b(t, a) {
-  if (t === void 0) {
-    if (a === Array)
+function y(a, r) {
+  if (a === void 0) {
+    if (r === Array)
       return [];
-    if (a === Object)
+    if (r === Object)
       return {};
-    if (a === Boolean)
+    if (r === Boolean)
       return !1;
-    if (a === Number)
+    if (r === Number)
       return 0;
     return;
   }
-  if (a === Boolean)
-    return Boolean(t);
-  if (a === Number)
-    return Number(t);
-  return t;
+  if (r === Boolean)
+    return Boolean(a);
+  if (r === Number)
+    return Number(a);
+  return a;
 }
-function e(t, { props: a = {}, attrs: l = [], styles: c = "", template: m }) {
+function e(a, { props: r = {}, attrs: l = [], styles: c = "", template: d, onRender: f = null }) {
   let v = ["props", ...l];
 
-  class p extends HTMLElement {
+  class h extends HTMLElement {
     static observedAttributes = v;
     constructor() {
       super();
-      this.attachShadow({ mode: "open" });
+      this.attachShadow({ mode: "open" }), this._cleanup = null;
     }
     connectedCallback() {
       this._render();
+    }
+    disconnectedCallback() {
+      if (typeof this._cleanup === "function")
+        this._cleanup();
+      this._cleanup = null;
     }
     attributeChangedCallback() {
       if (this.isConnected)
@@ -113,10 +118,10 @@ function e(t, { props: a = {}, attrs: l = [], styles: c = "", template: m }) {
         } catch {
           i = {};
         }
-      let f = {};
-      for (let d of Object.keys(a))
-        f[d] = b(i[d], a[d]);
-      return f;
+      let m = {};
+      for (let p of Object.keys(r))
+        m[p] = y(i[p], r[p]);
+      return m;
     }
     _applyForwardedAttrs() {
       if (l.length === 0)
@@ -131,18 +136,24 @@ function e(t, { props: a = {}, attrs: l = [], styles: c = "", template: m }) {
           i.removeAttribute(n);
     }
     _render() {
-      let i = this._getProps(), n = typeof m === "function" ? m(i) : m;
-      this.shadowRoot.innerHTML = `<style>${c}</style>${n}`, this._applyForwardedAttrs();
+      if (typeof this._cleanup === "function")
+        this._cleanup(), this._cleanup = null;
+      let i = this._getProps(), n = typeof d === "function" ? d(i) : d;
+      if (this.shadowRoot.innerHTML = `<style>${c}</style>${n}`, this._applyForwardedAttrs(), f) {
+        let m = f(this.shadowRoot, i, this);
+        if (typeof m === "function")
+          this._cleanup = m;
+      }
     }
   }
-  customElements.define(t, p);
+  customElements.define(a, h);
 }
 
 // web-components/breakpoints.js
-var r = "640px";
+var o = "640px";
 
 // web-components/components/app-frame.js
-var y = `
+var w = `
   :host {
     display: block;
     position: fixed;
@@ -151,7 +162,7 @@ var y = `
     border: 7px solid var(--color-secondary);
     pointer-events: none;
 
-    @media (max-width: ${r}) {
+    @media (max-width: ${o}) {
       border-width: 5px;
     }
   }
@@ -161,12 +172,12 @@ var y = `
     /* border-color: var(--color-tertiary); */
     /* border-color: #a36aa5; */
   }
-`, w = `
+`, k = `
 `;
-e("app-frame", { styles: y, template: w });
+e("app-frame", { styles: w, template: k });
 
 // web-components/components/app-link.js
-var k = `
+var x = `
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -227,13 +238,13 @@ var k = `
        content: "➶";
      }
   }
-`, x = ["href", "target", "rel", "download"], $ = `
+`, $ = ["href", "target", "rel", "download"], z = `
   <a data-forward><slot></slot></a>
 `;
-e("app-link", { attrs: x, styles: k, template: $ });
+e("app-link", { attrs: $, styles: x, template: z });
 
 // web-components/components/app-logo.js
-var z = `
+var A = `
   :host {
     display: block;
   }
@@ -242,8 +253,8 @@ var z = `
     max-height: 7rem;
     width: auto;
   }
-`, A = ["width", "height", "src", "alt"], S = () => "<img data-forward />";
-e("app-logo", { attrs: A, styles: z, template: S });
+`, S = ["width", "height", "src", "alt"], _ = () => "<img data-forward />";
+e("app-logo", { attrs: S, styles: A, template: _ });
 
 // web-components/sections/header.js
 var T = `
@@ -283,7 +294,7 @@ var T = `
     box-shadow: none;
   }
 
-  @media (max-width: ${r}) {
+  @media (max-width: ${o}) {
     .header__navigation {
       gap: 4rem;
     }
@@ -296,7 +307,7 @@ var T = `
 `, B = `
   <header>
       <app-link variant="plain" href=${s("/")}>
-        <img src=${o("./assets/images/logo.avif")}
+        <img src=${t("./assets/images/logo.avif")}
           alt="Logo">
       </app-link>
 
@@ -350,7 +361,7 @@ var H = [
    display: flex;
    gap: 5rem;
 
-   @media (max-width: ${r}) {
+   @media (max-width: ${o}) {
         flex-direction: column;
         gap: 3rem;
         margin-block: 2rem;
@@ -379,7 +390,7 @@ var H = [
     max-height: 12.5ch;
     overflow: scroll;
 
-    @media (max-width: ${r}) {
+    @media (max-width: ${o}) {
         max-height: 20ch;
     }
   }
@@ -393,9 +404,9 @@ var H = [
         <span>Sitemap</span>
 
         <ol>
-            ${H.map((t) => `
+            ${H.map((a) => `
                 <li>
-                    <app-link variant="sitemap" href=${s(t.href)} >${t.name}</app-link>
+                    <app-link variant="sitemap" href=${s(a.href)} >${a.name}</app-link>
                 </li>
             `).join("")}
         </ol>
@@ -404,7 +415,7 @@ var H = [
 e("footer-nav", { styles: L, template: E });
 
 // web-components/components/footer-copyright.js
-var _ = `
+var C = `
   :host {
    display: flex;
     justify-content: space-between;
@@ -412,7 +423,7 @@ var _ = `
     padding-top: 1rem;
     margin-top: 3rem;
 
-   @media (max-width: ${r}) {
+   @media (max-width: ${o}) {
         flex-direction: column-reverse;
         gap: 2rem;
         border: none;
@@ -425,7 +436,7 @@ var _ = `
     border-top: 1px solid var(--color-text);
     padding-top: 1rem;
 
-    @media (min-width: ${r}) {
+    @media (min-width: ${o}) {
       border: none;
       padding-top: none;
     }
@@ -442,7 +453,7 @@ var _ = `
   nav {
     display: none;
 
-    @media (min-width: ${r}) {
+    @media (min-width: ${o}) {
       display: block;
     }
   }
@@ -455,7 +466,7 @@ var _ = `
     text-transform: uppercase;
     
 
-    @media (max-width: ${r}) {
+    @media (max-width: ${o}) {
       display: inline-block;
       margin-bottom: 0.5rem;
     }
@@ -471,7 +482,7 @@ var _ = `
               <li>
                   <app-link href="mailto:hanhtetaung.dev@gmail.com" variant="image">
                   <img
-                      src=${o("./assets/icons/email.svg")}
+                      src=${t("./assets/icons/email.svg")}
                       alt="Email Icon"
                   />
                   </app-link>
@@ -484,7 +495,7 @@ var _ = `
                   variant="image"
                   >
                   <img
-                      src=${o("./assets/icons/github.svg")}
+                      src=${t("./assets/icons/github.svg")}
                       alt="Github Icon"
                   />
                   </app-link>
@@ -497,7 +508,7 @@ var _ = `
                   variant="image"
                   >
                   <img
-                      src=${o("./assets/icons/linkedin.svg")}
+                      src=${t("./assets/icons/linkedin.svg")}
                       alt="Linkedin Icon"
                   />
                   </app-link>
@@ -505,7 +516,7 @@ var _ = `
           </ul>
         </nav>
 `;
-e("footer-copyright", { styles: _, template: R });
+e("footer-copyright", { styles: C, template: R });
 
 // web-components/sections/footer.js
 var U = `
@@ -534,7 +545,7 @@ var U = `
     display: none;
   }
 
-@media (min-width: ${r}) {
+@media (min-width: ${o}) {
   img:first-child {
     display: block;
   }
@@ -545,7 +556,7 @@ var U = `
 }
 
 
-`, C = `
+`, F = `
   <footer>
 
   <img src="./assets/images/footer/highlight.avif" alt="Parting phrase">
@@ -558,10 +569,10 @@ var U = `
     <footer-copyright></footer-copyright>
   </footer>
 `;
-e("section-footer", { styles: U, template: C });
+e("section-footer", { styles: U, template: F });
 
 // web-components/components/app-image.js
-var F = `
+var q = `
   :host {
     --local-width: 5rem;
     --local-heigth: auto;
@@ -592,11 +603,11 @@ var F = `
    :host([variant="full"]) {
     --local-width: 100%;
   }
-`, q = ["width", "height", "src", "alt"], P = () => "<img data-forward />";
-e("app-image", { attrs: q, styles: F, template: P });
+`, P = ["width", "height", "src", "alt"], I = () => "<img data-forward />";
+e("app-image", { attrs: P, styles: q, template: I });
 
 // web-components/sections/sks-solar/intro.js
-var I = `
+var M = `
   :host {
     display: block;
   }
@@ -609,7 +620,7 @@ var I = `
     justify-content: space-between;
     gap: 3rem;
 
-    @media (max-width: ${r}) {
+    @media (max-width: ${o}) {
       flex-direction: column;
     }
   }
@@ -636,11 +647,11 @@ var I = `
     font-weight: var(--font-bold);
     text-transform: uppercase;
   }
-`, M = `
+`, N = `
   <section>
     <app-image
       variant="full"
-      src=${o("./assets/images/case-study/skssolar/mockup.avif")}
+      src=${t("./assets/images/case-study/skssolar/mockup.avif")}
       alt="Final Product Screenshot"
       width="1692"
       height="886"
@@ -667,10 +678,10 @@ var I = `
     </article>
   </section>
 `;
-e("section-sks-solar-intro", { styles: I, template: M });
+e("section-sks-solar-intro", { styles: M, template: N });
 
 // web-components/components/section-title.js
-var N = `
+var O = `
   :host {
     display: flex;
     align-items: center;
@@ -701,19 +712,19 @@ var N = `
       display: none;
     }
   }
-`, O = { name: String, img: String, alt: String }, D = ({ name: t, img: a = "", alt: l = "" }) => `
-    <h2>${t}</h2>
+`, D = { name: String, img: String, alt: String }, G = ({ name: a, img: r = "", alt: l = "" }) => `
+    <h2>${a}</h2>
     <img
-        src=${o(a)}
+        src=${t(r)}
         alt=${l}
         height="36"
         width="76"
     />
 `;
-e("section-title", { props: O, styles: N, template: D });
+e("section-title", { props: D, styles: O, template: G });
 
 // web-components/sections/sks-solar/background.js
-var G = `
+var X = `
   :host {
     display: block;
   }
@@ -722,7 +733,7 @@ var G = `
     width: 80%;
     margin-inline: auto;
   }
-`, X = `
+`, K = `
   <section>
     <section-title variant="text" props='{"name": "Background"}'></section-title>
 
@@ -736,10 +747,10 @@ var G = `
     </p>
   </section>
 `;
-e("section-sks-solar-background", { styles: G, template: X });
+e("section-sks-solar-background", { styles: X, template: K });
 
 // web-components/sections/sks-solar/challenge.js
-var K = `
+var J = `
   :host {
     display: block;
   }
@@ -748,7 +759,7 @@ var K = `
     width: 80%;
     margin-inline: auto;
   }
-`, J = `
+`, Q = `
   <section>
     <section-title variant="text" props='{"name": "Challenge"}'></section-title>
 
@@ -761,16 +772,16 @@ var K = `
     </p>
   </section>
 `;
-e("section-sks-solar-challenge", { styles: K, template: J });
+e("section-sks-solar-challenge", { styles: J, template: Q });
 
 // web-components/components/app-article-paragraph.js
-var Q = `
+var V = `
   :host {
     display: grid;
     grid-template-columns: 1fr 2.5fr;
 
 
-    @media (max-width: ${r}) {
+    @media (max-width: ${o}) {
         display: block;
     }
   }
@@ -786,17 +797,17 @@ var Q = `
   :host([variant="block"]) {
     display: block;
   }
-`, V = { title: String }, W = ({ title: t }) => `
-        <h3>${t}</h3>
+`, W = { title: String }, Y = ({ title: a }) => `
+        <h3>${a}</h3>
 
         <article>
             <slot></slot>
         </article>
 `;
-e("app-article-paragraph", { props: V, styles: Q, template: W });
+e("app-article-paragraph", { props: W, styles: V, template: Y });
 
 // web-components/sections/sks-solar/process.js
-var Y = `
+var Z = `
   :host {
     display: block;
   }
@@ -826,7 +837,7 @@ var Y = `
   ol {
     list-style: disc;
   }
-`, Z = `
+`, j = `
   <section>
     <section-title variant="text" props='{"name": "Process"}'></section-title>
 
@@ -841,7 +852,7 @@ var Y = `
           </p>
           <app-image
             variant="medium"
-            src=${o("./assets/images/case-study/skssolar/inspiration.avif")}
+            src=${t("./assets/images/case-study/skssolar/inspiration.avif")}
             alt="Inspiration Collection"
             width="1398"
             height="1236"
@@ -858,7 +869,7 @@ var Y = `
           </p>
           <app-image
             variant="medium"
-            src=${o("./assets/images/case-study/skssolar/wireframe.avif")}
+            src=${t("./assets/images/case-study/skssolar/wireframe.avif")}
             alt="Wireframe Screenshot"
             width="1398"
             height="1366"
@@ -876,14 +887,14 @@ var Y = `
           </p>
           <app-image
             variant="medium"
-            src=${o("./assets/images/case-study/skssolar/design-foundation.avif")}
+            src=${t("./assets/images/case-study/skssolar/design-foundation.avif")}
             alt="Design Foundation Screenshot"
             width="1474"
             height="864"
           ></app-image>
           <app-image
             variant="medium"
-            src=${o("./assets/images/case-study/skssolar/final-design.avif")}
+            src=${t("./assets/images/case-study/skssolar/final-design.avif")}
             alt="Final Design"
             width="1402"
             height="1378"
@@ -910,10 +921,10 @@ var Y = `
     </ul>
   </section>
 `;
-e("section-sks-solar-process", { styles: Y, template: Z });
+e("section-sks-solar-process", { styles: Z, template: j });
 
 // web-components/sections/sks-solar/result.js
-var j = `
+var ee = `
   :host {
     display: block;
   }
@@ -929,11 +940,11 @@ var j = `
     padding: 0;
     gap: 3rem;
 
-    @media (max-width: ${r}) {
+    @media (max-width: ${o}) {
       flex-direction: column;
     }
   }
-`, ee = `
+`, te = `
   <section>
     <section-title variant="text" props='{"name": "Result"}'></section-title>
 
@@ -953,7 +964,7 @@ var j = `
       <li>
         <app-image
           variant="medium"
-          src=${o("./assets/images/case-study/skssolar/lighthouse.avif")}
+          src=${t("./assets/images/case-study/skssolar/lighthouse.avif")}
           alt="Lighthouse Photo"
           width="960"
           height="1028"
@@ -963,7 +974,7 @@ var j = `
        <li>
         <app-image
           variant="medium"
-          src=${o("./assets/images/case-study/skssolar/mockup.avif")}
+          src=${t("./assets/images/case-study/skssolar/mockup.avif")}
           alt="Mockup Photo"
           width="1692"
           height="886"
@@ -972,6 +983,6 @@ var j = `
     </ul>
   </section>
 `;
-e("section-sks-solar-result", { styles: j, template: ee });
+e("section-sks-solar-result", { styles: ee, template: te });
 </script></body>
 </html>
