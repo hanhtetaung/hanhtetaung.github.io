@@ -13,7 +13,7 @@ function coerce(value, type) {
 
 export function define(
   name,
-  { props = {}, attrs = [], styles = "", template },
+  { props = {}, attrs = [], styles = "", template, onRender = null },
 ) {
   const observed = ["props", ...attrs];
 
@@ -23,10 +23,18 @@ export function define(
     constructor() {
       super();
       this.attachShadow({ mode: "open" });
+      this._cleanup = null;
     }
 
     connectedCallback() {
       this._render();
+    }
+
+    disconnectedCallback() {
+      if (typeof this._cleanup === "function") {
+        this._cleanup();
+      }
+      this._cleanup = null;
     }
 
     attributeChangedCallback() {
@@ -66,11 +74,23 @@ export function define(
     }
 
     _render() {
+      if (typeof this._cleanup === "function") {
+        this._cleanup();
+        this._cleanup = null;
+      }
+
       const values = this._getProps();
       const markup =
         typeof template === "function" ? template(values) : template;
       this.shadowRoot.innerHTML = `<style>${styles}</style>${markup}`;
       this._applyForwardedAttrs();
+
+      if (onRender) {
+        const result = onRender(this.shadowRoot, values, this);
+        if (typeof result === "function") {
+          this._cleanup = result;
+        }
+      }
     }
   }
 

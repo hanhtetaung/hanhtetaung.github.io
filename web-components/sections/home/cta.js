@@ -57,27 +57,24 @@ const styles = /* css */ `
     padding-block: 2rem;
     overflow: scroll;
 
-    
     @media (min-width: ${TABLET}) {
       max-width: 50%;
       gap: 5rem;
     }
   }
 
-
   img {
     position: absolute;
-    height: 60rem;
-    top: 5rem;
-    z-index: -1; 
+    height: 40rem;
+    z-index: -1;
     opacity: 0.1;
-    left: -45%;
-    top: 25%;
+    left: -0%;
+    top: 30%;
 
     @media (min-width: ${TABLET}) {
       left: auto;
-      right: 10%;
-      top: 3rem;
+      right: 20%;
+      top: 20rem;
     }
 
     @media (min-width: ${DESKTOP}) {
@@ -91,46 +88,64 @@ const styles = /* css */ `
     border: 1px solid var(--color-text);
     padding-block: 0.5rem;
     padding-inline: 2rem;
-    
+
     &:hover {
       cursor: pointer;
     }
+  }
+
+  button.copied {
+    background: var(--color-primary);
+    color: var(--color-bg, #fff);
   }
 
   a {
     text-decoration: none;
     color: var(--color-text);
   }
-
-  `;
+`;
 
 const template = /* html */ `
-
-
 <section>
   <img src="./assets/images/home/red-telephone-box.avif" alt="Red Telephone Box">
-   
+
   <hgroup>
     <p>[ Let's Craft ]</p>
     <h2>You bring the idea <br>
-          I craft the website  
+          I craft the website
       </h2>
   </hgroup>
 
-    <ul>
-      <li>
-          <app-logo src=${asset("./assets/icons/email.svg")} alt="Email icon"></app-logo>
-          <!-- <app-link variant="plain">hanhtetaung.dev@gmail.com</app-link> -->
-            <a href="mailto:hanhtetaung.dev@gmail.com">hanhtetaung.dev@gmail.com</a>
-          <button onclick="navigator.clipboard.writeText('hanhtetaung.dev@gmail.com')">Copy</button>
-      </li>
-      <li>
-        <app-logo src=${asset("./assets/icons/linkedin.svg")} alt="Linkedin icon"></app-logo>
-        <a href="https://www.linkedin.com/in/han-htet-aung/">in/han-htet-aung</a>
-      </li>
-    </ul>
+  <ul>
+    <li>
+      <app-logo src=${asset("./assets/icons/email.svg")} alt="Email icon"></app-logo>
+      <a href="mailto:hanhtetaung.dev@gmail.com" target="_blank">hanhtetaung.dev@gmail.com</a>
+      <button id="copyBtn">Copy</button>
+    </li>
+    <li>
+      <app-logo src=${asset("./assets/icons/linkedin.svg")} alt="Linkedin icon"></app-logo>
+      <a href="https://www.linkedin.com/in/han-htet-aung/" target="_blank">in/han-htet-aung</a>
+    </li>
+  </ul>
 </section>
-
 `;
 
-define("section-cta", { styles, template });
+function script(shadowRoot) {
+  const btn = shadowRoot.getElementById("copyBtn");
+  if (!btn) return;
+
+  btn.addEventListener("click", () => {
+    navigator.clipboard.writeText("hanhtetaung.dev@gmail.com").then(() => {
+      const originalText = btn.textContent;
+      btn.textContent = "Copied!";
+      btn.classList.add("copied");
+
+      setTimeout(() => {
+        btn.textContent = originalText;
+        btn.classList.remove("copied");
+      }, 1500);
+    });
+  });
+}
+
+define("section-cta", { styles, template, onRender: script });
