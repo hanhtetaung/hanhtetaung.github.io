@@ -56,7 +56,7 @@ function n(a) {
 }
 
 // web-components/fonts.js
-var b = `
+var v = `
 @font-face {
     font-family: "Archivo";
     src: url("${t("./assets/fonts/Archivo-Black.woff2")}") format("woff2");
@@ -71,7 +71,7 @@ var b = `
     font-display: swap;
   }
 `, u = document.createElement("style");
-u.textContent = b;
+u.textContent = v;
 document.head.appendChild(u);
 
 // web-components/define.js
@@ -94,10 +94,10 @@ function y(a, r) {
   return a;
 }
 function e(a, { props: r = {}, attrs: s = [], styles: c = "", template: d, onRender: h = null }) {
-  let v = ["props", ...s];
+  let b = ["props", ...s];
 
   class f extends HTMLElement {
-    static observedAttributes = v;
+    static observedAttributes = b;
     constructor() {
       super();
       this.attachShadow({ mode: "open" }), this._cleanup = null;
@@ -176,12 +176,12 @@ var w = `
     /* border-color: var(--color-tertiary); */
     /* border-color: #a36aa5; */
   }
-`, x = `
+`, k = `
 `;
-e("app-frame", { styles: w, template: x });
+e("app-frame", { styles: w, template: k });
 
 // web-components/components/app-link.js
-var k = `
+var x = `
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -245,7 +245,7 @@ var k = `
 `, $ = ["href", "target", "rel", "download"], z = `
   <a data-forward><slot></slot></a>
 `;
-e("app-link", { attrs: $, styles: k, template: z });
+e("app-link", { attrs: $, styles: x, template: z });
 
 // web-components/components/app-logo.js
 var S = `
@@ -257,11 +257,11 @@ var S = `
     max-height: 7rem;
     width: auto;
   }
-`, A = ["width", "height", "src", "alt"], T = () => "<img data-forward />";
-e("app-logo", { attrs: A, styles: S, template: T });
+`, A = ["width", "height", "src", "alt"], _ = () => "<img data-forward />";
+e("app-logo", { attrs: A, styles: S, template: _ });
 
 // web-components/sections/header.js
-var _ = `
+var T = `
   :host {
     display: block;
     background: var(--color-bg-primary);
@@ -334,7 +334,7 @@ var _ = `
       </div>
   </header>
 `;
-e("section-header", { template: H, styles: _ });
+e("section-header", { template: H, styles: T });
 
 // web-components/components/footer-nav.js
 var L = [
@@ -455,7 +455,7 @@ var C = `
   }
 
   nav {
-    display: none;
+    display: block;
 
     @media (min-width: ${o}) {
       display: block;
@@ -464,10 +464,8 @@ var C = `
 
   span {
     display: none;
-    color: var(--color-secondary);
     font-size: var(--size-small);
     font-weight: var(--font-bold);
-    text-transform: uppercase;
     
 
     @media (max-width: ${o}) {
@@ -477,11 +475,11 @@ var C = `
   }
 `, F = () => `
       <p>
-        © Han Htet Aung 2026
+        ©2026 Han Htet Aung
       </p>
 
       <nav>
-        <span>Find me on:</span>
+        <!-- <span>Find me on:</span> -->
         <ul>
               <li>
                   <app-link href="mailto:hanhtetaung.dev@gmail.com" variant="image">
@@ -493,14 +491,14 @@ var C = `
               </li>
               <li>
                   <app-link
-                  href="https://github.com/hanhtetaung/"
+                  href="https://www.instagram.com/_tenasserim_/"
                   target="_blank"
                   rel="noopener"
                   variant="image"
                   >
                   <img
-                      src=${t("./assets/icons/github.svg")}
-                      alt="Github Icon"
+                      src=${t("./assets/icons/instagram.svg")}
+                      alt="Linkedin Icon"
                   />
                   </app-link>
               </li>
@@ -514,6 +512,19 @@ var C = `
                   <img
                       src=${t("./assets/icons/linkedin.svg")}
                       alt="Linkedin Icon"
+                  />
+                  </app-link>
+              </li>
+              <li>
+                  <app-link
+                  href="https://github.com/hanhtetaung/"
+                  target="_blank"
+                  rel="noopener"
+                  variant="image"
+                  >
+                  <img
+                      src=${t("./assets/icons/github.svg")}
+                      alt="Github Icon"
                   />
                   </app-link>
               </li>
@@ -607,11 +618,11 @@ var P = `
    :host([variant="full"]) {
     --local-width: 100%;
   }
-`, q = ["width", "height", "src", "alt"], G = () => "<img data-forward />";
-e("app-image", { attrs: q, styles: P, template: G });
+`, I = ["width", "height", "src", "alt"], q = () => "<img data-forward />";
+e("app-image", { attrs: I, styles: P, template: q });
 
 // web-components/sections/terra/intro.js
-var I = `
+var G = `
   :host {
     display: block;
   }
@@ -682,7 +693,7 @@ var I = `
     </article>
   </section>
 `;
-e("section-terra-intro", { styles: I, template: M });
+e("section-terra-intro", { styles: G, template: M });
 
 // web-components/components/section-title.js
 var N = `

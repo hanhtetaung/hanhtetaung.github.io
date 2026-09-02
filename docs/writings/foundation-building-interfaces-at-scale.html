@@ -41,14 +41,14 @@
     <section-footer variant="secondary"></section-footer>
   <script type="module">// web-components/asset.js
 function g() {
-  let o = document.documentElement.dataset.base || "./";
-  return new URL(o, location.href);
+  let i = document.documentElement.dataset.base || "./";
+  return new URL(i, location.href);
 }
-function t(o) {
-  return new URL(o, g()).href;
+function t(i) {
+  return new URL(i, g()).href;
 }
-function s(o) {
-  let a = o.replace(/^\//, ""), l = location.protocol === "file:", c = g();
+function s(i) {
+  let a = i.replace(/^\//, ""), l = location.protocol === "file:", c = g();
   if (a === "")
     return l ? new URL("index.html", c).href : c.href;
   return l ? new URL(`${a}.html`, c).href : new URL(a, c).href;
@@ -74,8 +74,8 @@ u.textContent = b;
 document.head.appendChild(u);
 
 // web-components/define.js
-function y(o, a) {
-  if (o === void 0) {
+function y(i, a) {
+  if (i === void 0) {
     if (a === Array)
       return [];
     if (a === Object)
@@ -87,12 +87,12 @@ function y(o, a) {
     return;
   }
   if (a === Boolean)
-    return Boolean(o);
+    return Boolean(i);
   if (a === Number)
-    return Number(o);
-  return o;
+    return Number(i);
+  return i;
 }
-function e(o, { props: a = {}, attrs: l = [], styles: c = "", template: m, onRender: f = null }) {
+function e(i, { props: a = {}, attrs: l = [], styles: c = "", template: m, onRender: f = null }) {
   let v = ["props", ...l];
 
   class h extends HTMLElement {
@@ -149,11 +149,11 @@ function e(o, { props: a = {}, attrs: l = [], styles: c = "", template: m, onRen
       }
     }
   }
-  customElements.define(o, h);
+  customElements.define(i, h);
 }
 
 // web-components/breakpoints.js
-var i = "640px";
+var o = "640px";
 
 // web-components/components/app-frame.js
 var w = `
@@ -165,7 +165,7 @@ var w = `
     border: 7px solid var(--color-secondary);
     pointer-events: none;
 
-    @media (max-width: ${i}) {
+    @media (max-width: ${o}) {
       border-width: 5px;
     }
   }
@@ -297,7 +297,7 @@ var T = `
     box-shadow: none;
   }
 
-  @media (max-width: ${i}) {
+  @media (max-width: ${o}) {
     .header__navigation {
       gap: 4rem;
     }
@@ -307,7 +307,7 @@ var T = `
     height: 5rem;
     width: auto;
   }
-`, S = `
+`, L = `
   <header>
       <app-link variant="plain" href=${s("/")}>
         <img src=${t("./assets/images/logo.avif")}
@@ -333,10 +333,10 @@ var T = `
       </div>
   </header>
 `;
-e("section-header", { template: S, styles: T });
+e("section-header", { template: L, styles: T });
 
 // web-components/components/footer-nav.js
-var H = [
+var S = [
   { href: "/", name: "Home" },
   { href: "/about", name: "About" },
   { href: "/credits", name: "Credits" },
@@ -355,7 +355,7 @@ var H = [
     href: "/writings/foundation-building-interfaces-at-scale",
     name: "Foundation"
   }
-], L = `
+], H = `
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -364,7 +364,7 @@ var H = [
    display: flex;
    gap: 5rem;
 
-   @media (max-width: ${i}) {
+   @media (max-width: ${o}) {
         flex-direction: column;
         gap: 3rem;
         margin-block: 2rem;
@@ -393,7 +393,7 @@ var H = [
     max-height: 12.5ch;
     overflow: scroll;
 
-    @media (max-width: ${i}) {
+    @media (max-width: ${o}) {
         max-height: 20ch;
     }
   }
@@ -407,15 +407,15 @@ var H = [
         <span>Sitemap</span>
 
         <ol>
-            ${H.map((o) => `
+            ${S.map((i) => `
                 <li>
-                    <app-link variant="sitemap" href=${s(o.href)} >${o.name}</app-link>
+                    <app-link variant="sitemap" href=${s(i.href)} >${i.name}</app-link>
                 </li>
             `).join("")}
         </ol>
     </nav>
 `;
-e("footer-nav", { styles: L, template: E });
+e("footer-nav", { styles: H, template: E });
 
 // web-components/components/footer-copyright.js
 var U = `
@@ -426,7 +426,7 @@ var U = `
     padding-top: 1rem;
     margin-top: 3rem;
 
-   @media (max-width: ${i}) {
+   @media (max-width: ${o}) {
         flex-direction: column-reverse;
         gap: 2rem;
         border: none;
@@ -439,7 +439,7 @@ var U = `
     border-top: 1px solid var(--color-text);
     padding-top: 1rem;
 
-    @media (min-width: ${i}) {
+    @media (min-width: ${o}) {
       border: none;
       padding-top: none;
     }
@@ -454,33 +454,31 @@ var U = `
   }
 
   nav {
-    display: none;
+    display: block;
 
-    @media (min-width: ${i}) {
+    @media (min-width: ${o}) {
       display: block;
     }
   }
 
   span {
     display: none;
-    color: var(--color-secondary);
     font-size: var(--size-small);
     font-weight: var(--font-bold);
-    text-transform: uppercase;
     
 
-    @media (max-width: ${i}) {
+    @media (max-width: ${o}) {
       display: inline-block;
       margin-bottom: 0.5rem;
     }
   }
 `, C = () => `
       <p>
-        © Han Htet Aung 2026
+        ©2026 Han Htet Aung
       </p>
 
       <nav>
-        <span>Find me on:</span>
+        <!-- <span>Find me on:</span> -->
         <ul>
               <li>
                   <app-link href="mailto:hanhtetaung.dev@gmail.com" variant="image">
@@ -492,14 +490,14 @@ var U = `
               </li>
               <li>
                   <app-link
-                  href="https://github.com/hanhtetaung/"
+                  href="https://www.instagram.com/_tenasserim_/"
                   target="_blank"
                   rel="noopener"
                   variant="image"
                   >
                   <img
-                      src=${t("./assets/icons/github.svg")}
-                      alt="Github Icon"
+                      src=${t("./assets/icons/instagram.svg")}
+                      alt="Linkedin Icon"
                   />
                   </app-link>
               </li>
@@ -513,6 +511,19 @@ var U = `
                   <img
                       src=${t("./assets/icons/linkedin.svg")}
                       alt="Linkedin Icon"
+                  />
+                  </app-link>
+              </li>
+              <li>
+                  <app-link
+                  href="https://github.com/hanhtetaung/"
+                  target="_blank"
+                  rel="noopener"
+                  variant="image"
+                  >
+                  <img
+                      src=${t("./assets/icons/github.svg")}
+                      alt="Github Icon"
                   />
                   </app-link>
               </li>
@@ -548,7 +559,7 @@ var F = `
     display: none;
   }
 
-@media (min-width: ${i}) {
+@media (min-width: ${o}) {
   img:first-child {
     display: block;
   }
@@ -575,7 +586,7 @@ var F = `
 e("section-footer", { styles: F, template: R });
 
 // web-components/sections/foundation-building-interfaces-at-scale/intro.js
-var q = `
+var I = `
   :host {
     display: block;
   }
@@ -604,7 +615,7 @@ var q = `
     flex-direction: column;
     gap: 0.5rem;
   }
-`, I = `
+`, q = `
   <section>
     <h1>Foundation for Building Interfaces at Scale</h1>
 
@@ -630,8 +641,8 @@ var q = `
   </section>
 `;
 e("section-foundation-building-interfaces-at-scale-intro", {
-  styles: q,
-  template: I
+  styles: I,
+  template: q
 });
 
 // web-components/components/section-title.js
@@ -666,8 +677,8 @@ var O = `
       display: none;
     }
   }
-`, N = { name: String, img: String, alt: String }, P = ({ name: o, img: a = "", alt: l = "" }) => `
-    <h2>${o}</h2>
+`, N = { name: String, img: String, alt: String }, P = ({ name: i, img: a = "", alt: l = "" }) => `
+    <h2>${i}</h2>
     <img
         src=${t(a)}
         alt=${l}
@@ -719,7 +730,7 @@ var D = `
     grid-template-columns: 1fr 2.5fr;
 
 
-    @media (max-width: ${i}) {
+    @media (max-width: ${o}) {
         display: block;
     }
   }
@@ -735,8 +746,8 @@ var D = `
   :host([variant="block"]) {
     display: block;
   }
-`, J = { title: String }, K = ({ title: o }) => `
-        <h3>${o}</h3>
+`, J = { title: String }, K = ({ title: i }) => `
+        <h3>${i}</h3>
 
         <article>
             <slot></slot>
