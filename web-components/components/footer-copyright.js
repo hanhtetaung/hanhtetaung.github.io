@@ -38,7 +38,7 @@ const styles = /* css */ `
   }
 
   nav {
-    display: none;
+    display: block;
 
     @media (min-width: ${TABLET}) {
       display: block;
@@ -47,10 +47,8 @@ const styles = /* css */ `
 
   span {
     display: none;
-    color: var(--color-secondary);
     font-size: var(--size-small);
     font-weight: var(--font-bold);
-    text-transform: uppercase;
     
 
     @media (max-width: ${TABLET}) {
@@ -62,11 +60,11 @@ const styles = /* css */ `
 
 const template = () => /* html */ `
       <p>
-        © Han Htet Aung 2026
+        ©2026 Han Htet Aung
       </p>
 
       <nav>
-        <span>Find me on:</span>
+        <!-- <span>Find me on:</span> -->
         <ul>
               <li>
                   <app-link href="mailto:hanhtetaung.dev@gmail.com" variant="image">
@@ -78,14 +76,14 @@ const template = () => /* html */ `
               </li>
               <li>
                   <app-link
-                  href="https://github.com/hanhtetaung/"
+                  href="https://www.instagram.com/_tenasserim_/"
                   target="_blank"
                   rel="noopener"
                   variant="image"
                   >
                   <img
-                      src=${asset("./assets/icons/github.svg")}
-                      alt="Github Icon"
+                      src=${asset("./assets/icons/instagram.svg")}
+                      alt="Linkedin Icon"
                   />
                   </app-link>
               </li>
@@ -99,6 +97,19 @@ const template = () => /* html */ `
                   <img
                       src=${asset("./assets/icons/linkedin.svg")}
                       alt="Linkedin Icon"
+                  />
+                  </app-link>
+              </li>
+              <li>
+                  <app-link
+                  href="https://github.com/hanhtetaung/"
+                  target="_blank"
+                  rel="noopener"
+                  variant="image"
+                  >
+                  <img
+                      src=${asset("./assets/icons/github.svg")}
+                      alt="Github Icon"
                   />
                   </app-link>
               </li>
