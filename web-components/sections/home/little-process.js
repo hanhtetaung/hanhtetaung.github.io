@@ -86,7 +86,7 @@ const template = /* html */ `
 <section>
   <hgroup>
     <p>[ Little Process ]</p>
-    <h2>Every Step By Hand</h2>
+    <h2>Every Step, One Person</h2>
   </hgroup>
 
   <ul>
