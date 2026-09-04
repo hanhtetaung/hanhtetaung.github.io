@@ -37,6 +37,7 @@ const styles = /* css */ `
     margin-top: 1rem;
     font-size: var(--size-title);
     margin-bottom: 1rem;
+    line-height: 5rem;
   }
 
   p {
@@ -111,8 +112,8 @@ const template = /* html */ `
 
   <hgroup>
     <p>[ Let's Craft ]</p>
-    <h2>You bring the idea <br>
-          I craft the website
+    <h2>You Bring the Story <br>
+          I Craft the Website
       </h2>
   </hgroup>
 
