@@ -37,7 +37,7 @@ const styles = /* css */ `
     margin-top: 1rem;
     font-size: var(--size-title);
     margin-bottom: 1rem;
-    line-height: 5rem;
+    line-height: 4.8rem;
   }
 
   p {
