@@ -40,7 +40,7 @@ function y() {
   let o = document.documentElement.dataset.base || "./";
   return new URL(o, location.href);
 }
-function a(o) {
+function r(o) {
   return new URL(o, y()).href;
 }
 function d(o) {
@@ -54,14 +54,14 @@ function d(o) {
 var x = `
 @font-face {
     font-family: "Archivo";
-    src: url("${a("./assets/fonts/Archivo-Black.woff2")}") format("woff2");
+    src: url("${r("./assets/fonts/Archivo-Black.woff2")}") format("woff2");
     font-weight: 700;
     font-display: swap;
   }
 
   @font-face {
     font-family: "Archivo";
-    src: url("${a("./assets/fonts/Archivo-Regular.woff2")}") format("woff2");
+    src: url("${r("./assets/fonts/Archivo-Regular.woff2")}") format("woff2");
     font-weight: 400;
     font-display: swap;
   }
@@ -110,36 +110,36 @@ function i(o, { props: e = {}, attrs: l = [], styles: s = "", template: m, onRen
         this._render();
     }
     _getProps() {
-      let r = {}, n = this.getAttribute("props");
+      let a = {}, n = this.getAttribute("props");
       if (n)
         try {
-          r = JSON.parse(n);
+          a = JSON.parse(n);
         } catch {
-          r = {};
+          a = {};
         }
       let p = {};
       for (let f of Object.keys(e))
-        p[f] = k(r[f], e[f]);
+        p[f] = k(a[f], e[f]);
       return p;
     }
     _applyForwardedAttrs() {
       if (l.length === 0)
         return;
-      let r = this.shadowRoot.querySelector("[data-forward]");
-      if (!r)
+      let a = this.shadowRoot.querySelector("[data-forward]");
+      if (!a)
         return;
       for (let n of l)
         if (this.hasAttribute(n))
-          r.setAttribute(n, this.getAttribute(n));
+          a.setAttribute(n, this.getAttribute(n));
         else
-          r.removeAttribute(n);
+          a.removeAttribute(n);
     }
     _render() {
       if (typeof this._cleanup === "function")
         this._cleanup(), this._cleanup = null;
-      let r = this._getProps(), n = typeof m === "function" ? m(r) : m;
+      let a = this._getProps(), n = typeof m === "function" ? m(a) : m;
       if (this.shadowRoot.innerHTML = `<style>${s}</style>${n}`, this._applyForwardedAttrs(), g) {
-        let p = g(this.shadowRoot, r, this);
+        let p = g(this.shadowRoot, a, this);
         if (typeof p === "function")
           this._cleanup = p;
       }
@@ -282,7 +282,7 @@ var _ = `
 `, C = `
   <header>
       <app-link variant="plain" href=${d("/")}>
-        <img src=${a("./assets/images/logo.avif")}
+        <img src=${r("./assets/images/logo.avif")}
           alt="Logo">
       </app-link>
 
@@ -455,7 +455,7 @@ var U = `
               <li>
                   <app-link href="mailto:hanhtetaung.dev@gmail.com" variant="image">
                   <img
-                      src=${a("./assets/icons/email.svg")}
+                      src=${r("./assets/icons/email.svg")}
                       alt="Email Icon"
                   />
                   </app-link>
@@ -468,7 +468,7 @@ var U = `
                   variant="image"
                   >
                   <img
-                      src=${a("./assets/icons/instagram.svg")}
+                      src=${r("./assets/icons/instagram.svg")}
                       alt="Linkedin Icon"
                   />
                   </app-link>
@@ -481,7 +481,7 @@ var U = `
                   variant="image"
                   >
                   <img
-                      src=${a("./assets/icons/linkedin.svg")}
+                      src=${r("./assets/icons/linkedin.svg")}
                       alt="Linkedin Icon"
                   />
                   </app-link>
@@ -494,7 +494,7 @@ var U = `
                   variant="image"
                   >
                   <img
-                      src=${a("./assets/icons/github.svg")}
+                      src=${r("./assets/icons/github.svg")}
                       alt="Github Icon"
                   />
                   </app-link>
@@ -542,7 +542,7 @@ var F = `
 }
 
 
-`, G = `
+`, O = `
   <footer>
 
   <img src="./assets/images/footer/highlight.avif" alt="Parting phrase">
@@ -555,10 +555,10 @@ var F = `
     <footer-copyright></footer-copyright>
   </footer>
 `;
-i("section-footer", { styles: F, template: G });
+i("section-footer", { styles: F, template: O });
 
 // web-components/sections/home/hero.js
-var I = `
+var P = `
   :host {
     display: block;
     height: min(calc(100vh - 108px - 10rem), 70rem);
@@ -642,7 +642,7 @@ var I = `
   hgroup + p {
     max-width: min(25ch, 90%);
   }
-`, O = `
+`, G = `
   <section>
     <hgroup>
       <p>Han Htet Aung | GMT+7</p>
@@ -656,12 +656,12 @@ var I = `
     </div>
   </section>
 `;
-function P(o) {
+function I(o) {
   let e = o.getElementById("img-wrap"), l = o.getElementById("visible-img"), s = o.getElementById("lens-img"), m = o.getElementById("lens-ring");
   if (!e || !l || !s || !m)
     return;
-  function g(r) {
-    let n = l.getBoundingClientRect(), p = r.clientX - n.left, f = r.clientY - n.top, v = m.offsetWidth / 2;
+  function g(a) {
+    let n = l.getBoundingClientRect(), p = a.clientX - n.left, f = a.clientY - n.top, v = m.offsetWidth / 2;
     m.style.left = `${p - v}px`, m.style.top = `${f - v}px`, s.style.clipPath = `circle(${v}px at ${p}px ${f}px)`;
   }
   function b() {
@@ -674,7 +674,7 @@ function P(o) {
     e.removeEventListener("mousemove", g), e.removeEventListener("mouseenter", b), e.removeEventListener("mouseleave", u);
   };
 }
-i("section-hero", { styles: I, template: O, onRender: P });
+i("section-hero", { styles: P, template: G, onRender: I });
 
 // web-components/sections/home/little-process.js
 var q = `
@@ -759,7 +759,7 @@ var q = `
 <section>
   <hgroup>
     <p>[ Little Process ]</p>
-    <h2>Every Step By Hand</h2>
+    <h2>Every Step, One Person</h2>
   </hgroup>
 
   <ul>
@@ -781,7 +781,7 @@ var q = `
     </li>
   </ul>
 
-  <img src=${a("./assets/images/home/craftsmanship.avif")} alt="Craftsmanship Illustration">
+  <img src=${r("./assets/images/home/craftsmanship.avif")} alt="Craftsmanship Illustration">
 </section>
 
 `;
@@ -1098,12 +1098,12 @@ var j = `
 
   <ul>
     <li>
-      <app-logo src=${a("./assets/icons/email.svg")} alt="Email icon"></app-logo>
+      <app-logo src=${r("./assets/icons/email.svg")} alt="Email icon"></app-logo>
       <a href="mailto:hanhtetaung.dev@gmail.com" target="_blank">hanhtetaung.dev@gmail.com</a>
       <button id="copyBtn">Copy</button>
     </li>
     <li>
-      <app-logo src=${a("./assets/icons/linkedin.svg")} alt="Linkedin icon"></app-logo>
+      <app-logo src=${r("./assets/icons/linkedin.svg")} alt="Linkedin icon"></app-logo>
       <a href="https://www.linkedin.com/in/han-htet-aung/" target="_blank">in/han-htet-aung</a>
     </li>
   </ul>
