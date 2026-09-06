@@ -1,5 +1,6 @@
 import { define } from "../../define.js";
 import "../../components/app-icon.js";
+import { DESKTOP } from "../../breakpoints.js";
 
 const randomFacts = [
   {
@@ -42,10 +43,21 @@ const styles = /*css*/ `
 
   ul {
     padding: 0;
+    margin: 0;
     list-style-type: none;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10rem;
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);   
+    grid-auto-flow: column;              
+    grid-auto-columns: 150px;            
+    overflow-x: scroll;
+    overflow-y: hidden;                  
+    width: 100%; 
+    gap: 5rem;
+
+    @media (min-width: ${DESKTOP}) {
+      display: flex;
+      gap: 10rem;
+    }
   }
 
   figure {
@@ -55,7 +67,7 @@ const styles = /*css*/ `
 
   h2 {
     margin: 0;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
     font-size: var(--size-title);
   }
 `;

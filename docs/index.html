@@ -232,7 +232,7 @@ i("app-logo", { attrs: T, styles: S, template: L });
 var t = "640px", c = "1024px", h = "1920px";
 
 // web-components/sections/header.js
-var _ = `
+var C = `
   :host {
     display: block;
     background: var(--color-bg-primary);
@@ -279,7 +279,7 @@ var _ = `
     height: 5rem;
     width: auto;
   }
-`, C = `
+`, _ = `
   <header>
       <app-link variant="plain" href=${d("/")}>
         <img src=${r("./assets/images/logo.avif")}
@@ -305,7 +305,7 @@ var _ = `
       </div>
   </header>
 `;
-i("section-header", { template: C, styles: _ });
+i("section-header", { template: _, styles: C });
 
 // web-components/components/footer-nav.js
 var E = [
@@ -759,7 +759,7 @@ var q = `
 <section>
   <hgroup>
     <p>[ Little Process ]</p>
-    <h2>Every Step, One Person</h2>
+    <h2>Every Step <br> <span>by</span> One Person</h2>
   </hgroup>
 
   <ul>
@@ -1091,8 +1091,8 @@ var j = `
 
   <hgroup>
     <p>[ Let's Craft ]</p>
-    <h2>You bring the idea <br>
-          I craft the website
+    <h2>You Bring the Story <br>
+          I Craft the Website
       </h2>
   </hgroup>
 
@@ -1109,7 +1109,7 @@ var j = `
   </ul>
 </section>
 `;
-function Z(o) {
+function W(o) {
   let e = o.getElementById("copyBtn");
   if (!e)
     return;
@@ -1122,6 +1122,6 @@ function Z(o) {
     });
   });
 }
-i("section-cta", { styles: j, template: Q, onRender: Z });
+i("section-cta", { styles: j, template: Q, onRender: W });
 </script></body>
 </html>

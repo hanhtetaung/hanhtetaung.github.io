@@ -111,8 +111,8 @@ const template = /* html */ `
 
   <hgroup>
     <p>[ Let's Craft ]</p>
-    <h2>You bring the idea <br>
-          I craft the website
+    <h2>You Bring the Story <br>
+          I Craft the Website
       </h2>
   </hgroup>
 
