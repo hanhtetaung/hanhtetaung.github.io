@@ -1,8 +1,3 @@
-// ---- Draw ----
-// The only file that touches the canvas 2D context.
-// What gets drawn (drawObjects) and the road's shape (roadInstructions)
-// live in scene.js — this file just renders them.
-
 function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -16,8 +11,17 @@ function draw() {
   ctx.restore();
 }
 
+// Safe wrapper: skips drawing (and logs once) instead of throwing on a
+// broken or still-loading image.
+function drawAsset(name, x, y) {
+  const img = asset(name);
+  if (!isAssetReady(name)) return;
+  ctx.drawImage(img, x, y);
+}
+
 function drawRoad() {
   const road = asset("road");
+  if (!isAssetReady("road")) return;
 
   for (let i = 0; i < roadPath.length - 1; i++) {
     const p1 = roadPath[i];
@@ -34,12 +38,10 @@ function drawRoad() {
   }
 }
 
-// Builds roadPath from roadInstructions (scene.js) once the road tile image
-// has loaded — tile spacing depends on the image's real width.
 function updateRoadPath() {
   const road = asset("road");
-  const tileSpacing = road.width * 0.92; // slight overlap so tiles connect with no gap
-  const curveSpacing = tileSpacing * 0.5; // tighter spacing through curves = no gap on turns
+  const tileSpacing = road.width * 0.92;
+  const curveSpacing = tileSpacing * 0.5;
 
   roadPath = generateRoadPath(
     0,

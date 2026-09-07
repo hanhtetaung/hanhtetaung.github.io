@@ -1,8 +1,9 @@
 // ---- Asset loader ----
-// Generic image loading/caching. Nothing here is specific to any one
-// image — see scene.js to add or draw assets.
+
+const ASSET_EXT = "png"; // <-- set this to whatever your actual image format is
 
 const _imageCache = {};
+const _assetReady = {};
 const _assetReadyCallbacks = {};
 
 function asset(name) {
@@ -10,35 +11,27 @@ function asset(name) {
 
   const img = new Image();
   _imageCache[name] = img;
+  _assetReady[name] = false;
 
   const filename = name.replace(/_/g, "-");
-  const extensions = ["svg", "avif", "png", "jpg"];
-  let i = 0;
 
-  function tryNextExtension() {
-    if (i >= extensions.length) {
-      console.warn(
-        `No asset found for "${name}" (tried assets/${filename}.[${extensions.join("|")}])`,
-      );
-      return;
-    }
-    img.src = `assets/${filename}.${extensions[i]}`;
-    i++;
-  }
-
-  img.onerror = tryNextExtension;
-  img.onload = () => {
-    if (_assetReadyCallbacks[name]) _assetReadyCallbacks[name]();
-    draw(); // redraw now that this image is actually ready
+  img.onerror = () => {
+    console.warn(`Failed to load assets/${filename}.${ASSET_EXT}`);
   };
-  tryNextExtension();
+  img.onload = () => {
+    _assetReady[name] = true;
+    if (_assetReadyCallbacks[name]) _assetReadyCallbacks[name]();
+    draw();
+  };
+  img.src = `assets/${filename}.${ASSET_EXT}`;
 
   return img;
 }
 
-// Lets other files run code once a specific named asset finishes loading.
-// (draw.js uses this to regenerate the road path once the road tile is ready,
-// since tile spacing depends on the image's real width.)
+function isAssetReady(name) {
+  return !!_assetReady[name];
+}
+
 function onAssetReady(name, callback) {
   _assetReadyCallbacks[name] = callback;
 }
