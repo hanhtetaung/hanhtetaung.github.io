@@ -124,11 +124,14 @@ export function drawObjects() {
   ctx.drawImage(asset("bkk_taxi"), 800, 400);
   ctx.drawImage(asset("gate_6"), 350, 480);
   ctx.drawImage(asset("roses"), 250, 500);
+  ctx.drawImage(asset("red-luggage"), 700, 200);
 
   ctx.drawImage(asset("07_03_2023"), 1500, -50);
   ctx.drawImage(asset("the_sun"), 1550, -400);
   ctx.drawImage(asset("ayutthaya_temple"), 1850, -1050);
   ctx.drawImage(asset("kaffa_bistro"), 1900, 0);
+  ctx.drawImage(asset("crocs"), 4000, 0);
+  ctx.drawImage(asset("crocs-1"), 3350, -320);
   ctx.drawImage(asset("cherry_dessert"), 2600, -100);
   ctx.drawImage(asset("orange_juice"), 2750, -100);
   ctx.drawImage(asset("boat_ayutthaya"), 3050, -50);
@@ -140,6 +143,7 @@ export function drawObjects() {
   ctx.drawImage(asset("tuktuk"), 6000, 1400);
   ctx.drawImage(asset("il_juice_bar"), 5150, 1400);
   ctx.drawImage(asset("sunglasses"), 5150, 2000);
+  ctx.drawImage(asset("j-o-chula"), 5350, 2000);
   ctx.drawImage(asset("iconsiam"), 3400, 1300);
   ctx.drawImage(asset("grand_palace"), 5750, 1700);
   ctx.drawImage(asset("cl_building"), 2050, 1400);
@@ -166,8 +170,11 @@ export function drawObjects() {
   ctx.drawImage(asset("giraffe"), 1750, 4080);
 
   ctx.drawImage(asset("25_03_2024"), 750, 4420);
+  ctx.drawImage(asset("blue-back-bag"), 600, 4220);
+  ctx.drawImage(asset("gray-luggage"), 500, 4200);
 
   ctx.drawImage(asset("26_03_2024"), -250, 3300);
+  ctx.drawImage(asset("telephone-chiang-mai"), -650, 3200);
   ctx.drawImage(asset("mon_jam"), -750, 2300);
   ctx.drawImage(asset("wine_chocolate"), -500, 2900);
   ctx.drawImage(asset("tha-phae-gate"), -2850, 2800);
@@ -189,6 +196,7 @@ export function drawObjects() {
   ctx.drawImage(asset("03-04-2024"), -4800, -2930);
   ctx.drawImage(asset("il_juice_bar"), -4400, -3400);
   ctx.drawImage(asset("juices-in-il"), -3750, -3000);
+  ctx.drawImage(asset("lobster"), -3420, -2720);
   ctx.drawImage(asset("asiatique"), -3950, -2500);
   ctx.drawImage(asset("BTS"), -2650, -1800);
 
@@ -215,9 +223,11 @@ export function drawObjects() {
   ctx.drawImage(asset("coffee-CNX"), 6550, -4200);
 
   ctx.drawImage(asset("20-07-2025"), 7150, -4800);
+  ctx.drawImage(asset("pergasingan"), 7700, -4650);
 
   ctx.drawImage(asset("26-07-2025"), 9650, -3800);
-  ctx.drawImage(asset("bob-merlay-wall"), 9930, -3500);
+  ctx.drawImage(asset("bob-merlay-wall"), 9930, -3200);
+  ctx.drawImage(asset("horse-ride"), 9900, -3500);
   ctx.drawImage(asset("kayak"), 9600, -3300);
   ctx.drawImage(asset("bread"), 9650, -2500);
 
