@@ -42,7 +42,7 @@ async function copyAssets(src, dest) {
   await $`cp -r ${src} ${dest}`;
 }
 
-const subProjects = ["terra"];
+const subProjects = ["terra", "map"];
 
 // Remove any .html files under `dir` that aren't in `expectedSet`,
 // skipping subproject dirs (they manage their own output) and non-route dirs like assets.

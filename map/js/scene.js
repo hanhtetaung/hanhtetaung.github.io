@@ -7,7 +7,10 @@
 //   2. Add one line inside drawObjects():
 //        ctx.drawImage(asset('some_new'), x, y);
 
-const roadInstructions = [
+import { ctx } from "./main.js";
+import { asset } from "./assets.js";
+
+export const roadInstructions = [
   { straight: 4 },
   { curve: -30 },
   { straight: 2 },
@@ -114,7 +117,7 @@ const roadInstructions = [
   { curve: 90 },
 ];
 
-function drawObjects() {
+export function drawObjects() {
   ctx.drawImage(asset("06_03_2023"), 0, 280);
   ctx.drawImage(asset("bangkok_sign"), 250, 100);
   ctx.drawImage(asset("airasia_plane"), 250, -350);
@@ -145,7 +148,7 @@ function drawObjects() {
   ctx.drawImage(asset("red_luggage"), 1900, 2350);
 
   ctx.drawImage(asset("23_03_2023"), 1350, 2750);
-  ctx.drawImage(asset("merlion"), 1850, 2550);
+  ctx.drawImage(asset("merlion"), 1850, 2850);
   ctx.drawImage(asset("jewel-changi"), 900, 2050);
   ctx.drawImage(asset("marina-bay-sands"), 2700, 2550);
   ctx.drawImage(asset("guitar"), 1850, 3500);

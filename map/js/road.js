@@ -1,15 +1,19 @@
 // ---- Road path data ----
-// roadPath is a list of {x, y} points. It's filled in once the road image
-// has loaded (see assets.js), because tile spacing depends on image size.
-let roadPath = [];
+export let roadPath = [];
 
-// Builds a path from a fixed sequence of straight/curve instructions.
-//   { straight: N }       walk N tiles forward in the current direction
-//   { curve: degrees }    turn gradually by that many degrees
-//                         (positive = right turn, negative = left turn)
-function generateRoadPath(startX, startY, straightSpacing, curveSpacing, instructions) {
+export function setRoadPath(newPath) {
+  roadPath = newPath;
+}
+
+export function generateRoadPath(
+  startX,
+  startY,
+  straightSpacing,
+  curveSpacing,
+  instructions,
+) {
   const points = [{ x: startX, y: startY }];
-  let angle = 0; // 0 = pointing right (radians)
+  let angle = 0;
 
   for (const step of instructions) {
     if (step.straight) {
@@ -21,8 +25,8 @@ function generateRoadPath(startX, startY, straightSpacing, curveSpacing, instruc
         });
       }
     } else if (step.curve) {
-      const turnSteps = 14; // more steps = smoother curve, no visible gaps
-      const anglePerStep = (step.curve * Math.PI / 180) / turnSteps;
+      const turnSteps = 14;
+      const anglePerStep = (step.curve * Math.PI) / 180 / turnSteps;
       for (let i = 0; i < turnSteps; i++) {
         angle += anglePerStep;
         const last = points[points.length - 1];

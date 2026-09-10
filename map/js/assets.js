@@ -1,12 +1,11 @@
-// ---- Asset loader ----
+import { draw } from "./draw.js";
 
-const ASSET_EXT = "png"; // <-- set this to whatever your actual image format is
-
+const ASSET_EXT = "png";
 const _imageCache = {};
 const _assetReady = {};
 const _assetReadyCallbacks = {};
 
-function asset(name) {
+export function asset(name) {
   if (_imageCache[name]) return _imageCache[name];
 
   const img = new Image();
@@ -15,9 +14,8 @@ function asset(name) {
 
   const filename = name.replace(/_/g, "-");
 
-  img.onerror = () => {
+  img.onerror = () =>
     console.warn(`Failed to load assets/${filename}.${ASSET_EXT}`);
-  };
   img.onload = () => {
     _assetReady[name] = true;
     if (_assetReadyCallbacks[name]) _assetReadyCallbacks[name]();
@@ -28,10 +26,10 @@ function asset(name) {
   return img;
 }
 
-function isAssetReady(name) {
+export function isAssetReady(name) {
   return !!_assetReady[name];
 }
 
-function onAssetReady(name, callback) {
+export function onAssetReady(name, callback) {
   _assetReadyCallbacks[name] = callback;
 }

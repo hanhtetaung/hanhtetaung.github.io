@@ -1,4 +1,10 @@
-function draw() {
+import { canvas, ctx } from "./main.js";
+import { asset, isAssetReady, onAssetReady } from "./assets.js";
+import { roadPath, setRoadPath, generateRoadPath } from "./road.js";
+import { roadInstructions, drawObjects } from "./scene.js";
+import { camera } from "./camera.js";
+
+export function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
   ctx.save();
@@ -11,8 +17,6 @@ function draw() {
   ctx.restore();
 }
 
-// Safe wrapper: skips drawing (and logs once) instead of throwing on a
-// broken or still-loading image.
 function drawAsset(name, x, y) {
   const img = asset(name);
   if (!isAssetReady(name)) return;
@@ -43,12 +47,8 @@ function updateRoadPath() {
   const tileSpacing = road.width * 0.92;
   const curveSpacing = tileSpacing * 0.5;
 
-  roadPath = generateRoadPath(
-    0,
-    400,
-    tileSpacing,
-    curveSpacing,
-    roadInstructions,
+  setRoadPath(
+    generateRoadPath(0, 400, tileSpacing, curveSpacing, roadInstructions),
   );
 }
 
