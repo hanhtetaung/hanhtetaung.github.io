@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en" data-base="../">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Map</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        background: #bfe3f7;
+        overflow: hidden;
+      }
+      canvas {
+        display: block;
+        width: 100vw;
+        height: 100vh;
+        cursor: grab;
+        touch-action: none;
+      }
+      canvas.dragging {
+        cursor: grabbing;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="c"></canvas>
+
+    
+  <script type="module">// map/js/main.js
+var i = document.getElementById("c"), a = i.getContext("2d");
+function z() {
+  i.width = window.innerWidth, i.height = window.innerHeight, m();
+}
+window.addEventListener("resize", z);
+window.addEventListener("load", z);
+
+// map/js/assets.js
+var R = "png", v = {}, p = {}, f = {};
+function t(e) {
+  if (v[e])
+    return v[e];
+  let r = new Image;
+  v[e] = r, p[e] = !1;
+  let s = e.replace(/_/g, "-");
+  return r.onerror = () => console.warn(`Failed to load assets/${s}.${R}`), r.onload = () => {
+    if (p[e] = !0, f[e])
+      f[e]();
+    m();
+  }, r.src = `assets/${s}.${R}`, r;
+}
+function M(e) {
+  return !!p[e];
+}
+function E(e, r) {
+  f[e] = r;
+}
+
+// map/js/road.js
+var w = [];
+function j(e) {
+  w = e;
+}
+function A(e, r, s, n, c) {
+  let d = [{ x: e, y: r }], g = 0;
+  for (let u of c)
+    if (u.straight)
+      for (let I = 0;I < u.straight; I++) {
+        let l = d[d.length - 1];
+        d.push({
+          x: l.x + Math.cos(g) * s,
+          y: l.y + Math.sin(g) * s
+        });
+      }
+    else if (u.curve) {
+      let l = u.curve * Math.PI / 180 / 14;
+      for (let X = 0;X < 14; X++) {
+        g += l;
+        let Y = d[d.length - 1];
+        d.push({
+          x: Y.x + Math.cos(g) * n,
+          y: Y.y + Math.sin(g) * n
+        });
+      }
+    }
+  return d;
+}
+
+// map/js/scene.js
+var L = [
+  { straight: 4 },
+  { curve: -30 },
+  { straight: 2 },
+  { curve: 30 },
+  { straight: 5 },
+  { curve: 40 },
+  { curve: -40 },
+  { straight: 5 },
+  { curve: 90 },
+  { straight: 5 },
+  { curve: 90 },
+  { straight: 12 },
+  { curve: -5 },
+  { curve: 5 },
+  { curve: -90 },
+  { curve: -90 },
+  { straight: 12 },
+  { curve: 90 },
+  { curve: 90 },
+  { straight: 20 },
+  { curve: 60 },
+  { straight: 5 },
+  { curve: -30 },
+  { curve: -30 },
+  { straight: 5 },
+  { curve: 60 },
+  { curve: 30 },
+  { straight: 5 },
+  { curve: -90 },
+  { straight: 6 },
+  { curve: 60 },
+  { straight: 5 },
+  { curve: 30 },
+  { straight: 5 },
+  { curve: 90 },
+  { straight: 14 },
+  { curve: 90 },
+  { straight: 3 },
+  { curve: -90 },
+  { straight: 10 },
+  { curve: -40 },
+  { straight: 5 },
+  { curve: 40 },
+  { straight: 8 },
+  { curve: -60 },
+  { straight: 2 },
+  { curve: -30 },
+  { straight: 2 },
+  { curve: 90 },
+  { straight: 5 },
+  { curve: 90 },
+  { straight: 2 },
+  { curve: 30 },
+  { straight: 2 },
+  { curve: -50 },
+  { curve: -70 },
+  { straight: 10 },
+  { curve: -90 },
+  { straight: 3 },
+  { curve: -30 },
+  { curve: 40 },
+  { straight: 1 },
+  { curve: 80 },
+  { straight: 10 },
+  { curve: 60 },
+  { straight: 3 },
+  { curve: 30 },
+  { straight: 5 },
+  { curve: 90 },
+  { straight: 2 },
+  { curve: -90 },
+  { straight: 5 },
+  { curve: 90 },
+  { straight: 1 },
+  { curve: -90 },
+  { straight: 5 },
+  { curve: -90 },
+  { straight: 7 },
+  { curve: 60 },
+  { straight: 2 },
+  { curve: 90 },
+  { straight: 5 },
+  { curve: 30 },
+  { straight: 9 },
+  { curve: -90 },
+  { straight: 4 },
+  { curve: 90 },
+  { straight: 4 },
+  { curve: -90 },
+  { straight: 2 },
+  { curve: 90 },
+  { straight: 15 },
+  { curve: 90 },
+  { straight: 1 },
+  { curve: -90 },
+  { straight: 5 },
+  { curve: 40 },
+  { curve: -40 },
+  { straight: 5 },
+  { curve: -90 },
+  { straight: 5 },
+  { curve: -90 },
+  { straight: 5 },
+  { curve: 90 }
+];
+function S() {
+  a.drawImage(t("06_03_2023"), 0, 280), a.drawImage(t("bangkok_sign"), 250, 100), a.drawImage(t("airasia_plane"), 250, -350), a.drawImage(t("bkk_taxi"), 800, 400), a.drawImage(t("gate_6"), 350, 480), a.drawImage(t("roses"), 250, 500), a.drawImage(t("07_03_2023"), 1500, -50), a.drawImage(t("the_sun"), 1550, -400), a.drawImage(t("ayutthaya_temple"), 1850, -1050), a.drawImage(t("kaffa_bistro"), 1900, 0), a.drawImage(t("cherry_dessert"), 2600, -100), a.drawImage(t("orange_juice"), 2750, -100), a.drawImage(t("boat_ayutthaya"), 3050, -50), a.drawImage(t("elephant"), 3600, -550), a.drawImage(t("train_station_ayutthaya"), 4400, -200), a.drawImage(t("train_ayutthaya"), 5200, 500), a.drawImage(t("07_03_2023"), 5800, 1100), a.drawImage(t("tuktuk"), 6000, 1400), a.drawImage(t("il_juice_bar"), 5150, 1400), a.drawImage(t("sunglasses"), 5150, 2000), a.drawImage(t("iconsiam"), 3400, 1300), a.drawImage(t("grand_palace"), 5750, 1700), a.drawImage(t("cl_building"), 2050, 1400), a.drawImage(t("khao_san_sign"), 3050, 1950), a.drawImage(t("leo_beer"), 3000, 2050), a.drawImage(t("red_luggage"), 1900, 2350), a.drawImage(t("23_03_2023"), 1350, 2750), a.drawImage(t("merlion"), 1850, 2850), a.drawImage(t("jewel-changi"), 900, 2050), a.drawImage(t("marina-bay-sands"), 2700, 2550), a.drawImage(t("guitar"), 1850, 3500), a.drawImage(t("dinosour-toy"), 2000, 3500), a.drawImage(t("hoodie"), 2150, 3500), a.drawImage(t("27_10_2023"), 4050, 3850), a.drawImage(t("universal-studio"), 3350, 3850), a.drawImage(t("cable-car"), 2650, 4050), a.drawImage(t("prawn-curry"), 3250, 4650), a.drawImage(t("birthday-cake"), 3050, 4650), a.drawImage(t("mango-snack"), 3500, 4650), a.drawImage(t("panda"), 2050, 4050), a.drawImage(t("penguins"), 2150, 4280), a.drawImage(t("giraffe"), 1750, 4080), a.drawImage(t("25_03_2024"), 750, 4420), a.drawImage(t("26_03_2024"), -250, 3300), a.drawImage(t("mon_jam"), -750, 2300), a.drawImage(t("wine_chocolate"), -500, 2900), a.drawImage(t("tha-phae-gate"), -2850, 2800), a.drawImage(t("sun-rays-cafe"), -2050, 2100), a.drawImage(t("khao-soi-shop"), -2500, 2350), a.drawImage(t("bus-to-chiang-rai"), -3000, 1550), a.drawImage(t("31-03-2024"), -3250, 1050), a.drawImage(t("choui-fong"), -3400, 750), a.drawImage(t("macha"), -3400, 600), a.drawImage(t("golden-triangle"), -4000, 300), a.drawImage(t("white-temple"), -4500, -700), a.drawImage(t("02-04-2024"), -5700, -950), a.drawImage(t("03-04-2024"), -5870, -2100), a.drawImage(t("seafood-pattaya"), -5700, -2400), a.drawImage(t("03-04-2024"), -4800, -2930), a.drawImage(t("il_juice_bar"), -4400, -3400), a.drawImage(t("juices-in-il"), -3750, -3000), a.drawImage(t("asiatique"), -3950, -2500), a.drawImage(t("BTS"), -2650, -1800), a.drawImage(t("26-10-2024"), 0, -1900), a.drawImage(t("ice-creams"), 500, -2100), a.drawImage(t("howard-bernadette"), 700, -2430), a.drawImage(t("22-02-2025"), 1900, -2400), a.drawImage(t("momerial-bridge"), 2100, -3500), a.drawImage(t("under-armour-hat"), 2600, -2700), a.drawImage(t("18-04-2025"), 3280, -4500), a.drawImage(t("monopoly-deal"), 3800, -4580), a.drawImage(t("24-05-2025"), 4930, -4300), a.drawImage(t("the-north-face"), 4850, -4000), a.drawImage(t("27-05-2025"), 4550, -2800), a.drawImage(t("ban-rak-thai-hotel"), 5050, -2000), a.drawImage(t("bun"), 5700, -1300), a.drawImage(t("29-05-2025"), 7020, -2800), a.drawImage(t("mae-hong-son-sign"), 6530, -3200), a.drawImage(t("coffee-CNX"), 6550, -4200), a.drawImage(t("20-07-2025"), 7150, -4800), a.drawImage(t("26-07-2025"), 9650, -3800), a.drawImage(t("bob-merlay-wall"), 9930, -3500), a.drawImage(t("kayak"), 9600, -3300), a.drawImage(t("bread"), 9650, -2500), a.drawImage(t("01-11-2025"), 8950, -2000), a.drawImage(t("scoopy-c12"), 8700, -1750), a.drawImage(t("23-11-2025"), 8370, -1200), a.drawImage(t("21-12-2025"), 7200, 0), a.drawImage(t("24-12-2025"), 7400, 1500), a.drawImage(t("cherry-tree"), 7800, 1100), a.drawImage(t("highest-spot-in-thailand"), 7800, 1750), a.drawImage(t("27-12-2025"), 9050, 1750), a.drawImage(t("29-12-2025"), 9050, 3080), a.drawImage(t("happy-new-year-maya"), 7700, 3360), a.drawImage(t("kindle"), 8500, 3300), a.drawImage(t("zinme-tea-house-clock"), 8500, 3600), a.drawImage(t("scoopy-c12"), 8000, 3700), a.drawImage(t("16-01-2026"), 6100, 4400), a.drawImage(t("il-juice-bar"), 5400, 4500), a.drawImage(t("17-04-2026"), 3450, 6580), a.drawImage(t("twin-tower"), 2500, 5800), a.drawImage(t("16-06-2026"), 1000, 5350), a.drawImage(t("flowers-sg"), 700, 5250), a.drawImage(t("05-09-2026"), -2680, 5350), a.drawImage(t("09-09-2026"), -900, 7150);
+}
+
+// map/js/draw.js
+function m() {
+  a.clearRect(0, 0, i.width, i.height), a.save(), a.translate(o.x, o.y), a.scale(o.zoom, o.zoom), T(), S(), a.restore();
+}
+function T() {
+  let e = t("road");
+  if (!M("road"))
+    return;
+  for (let r = 0;r < w.length - 1; r++) {
+    let s = w[r], n = w[r + 1], c = (s.x + n.x) / 2, d = (s.y + n.y) / 2, g = Math.atan2(n.y - s.y, n.x - s.x);
+    a.save(), a.translate(c, d), a.rotate(g), a.drawImage(e, -e.width / 2, -e.height / 2), a.restore();
+  }
+}
+function O() {
+  let r = t("road").width * 0.92, s = r * 0.5;
+  j(A(0, 400, r, s, L));
+}
+E("road", O);
+
+// map/js/camera.js
+var o = { x: 0, y: 0, zoom: 0.3 }, Z = 0, D = 0.8;
+function y(e, r, s) {
+  let n = Math.min(D, Math.max(Z, o.zoom * s)), c = (e - o.x) / o.zoom, d = (r - o.y) / o.zoom;
+  o.zoom = n, o.x = e - c * o.zoom, o.y = r - d * o.zoom, m();
+}
+
+// map/js/input.js
+var b = !1, _ = 0, x = 0;
+i.addEventListener("mousedown", (e) => {
+  b = !0, _ = e.clientX, x = e.clientY, i.classList.add("dragging");
+});
+window.addEventListener("mouseup", () => {
+  b = !1, i.classList.remove("dragging");
+});
+window.addEventListener("mousemove", (e) => {
+  if (!b)
+    return;
+  o.x += e.clientX - _, o.y += e.clientY - x, _ = e.clientX, x = e.clientY, m();
+});
+i.addEventListener("wheel", (e) => {
+  e.preventDefault();
+  let r = i.getBoundingClientRect(), s = e.clientX - r.left, n = e.clientY - r.top, c = e.deltaY < 0 ? 1.1 : 0.9;
+  y(s, n, c);
+}, { passive: !1 });
+var h = null, k = null, P = 1;
+i.addEventListener("touchstart", (e) => {
+  if (e.touches.length === 1)
+    h = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+  else if (e.touches.length === 2)
+    h = null, k = C(e.touches), P = o.zoom;
+});
+i.addEventListener("touchmove", (e) => {
+  if (e.preventDefault(), e.touches.length === 1 && h) {
+    let r = e.touches[0];
+    o.x += r.clientX - h.x, o.y += r.clientY - h.y, h = { x: r.clientX, y: r.clientY }, m();
+  } else if (e.touches.length === 2) {
+    let r = C(e.touches), s = i.getBoundingClientRect(), n = (e.touches[0].clientX + e.touches[1].clientX) / 2 - s.left, c = (e.touches[0].clientY + e.touches[1].clientY) / 2 - s.top, g = P * (r / k) / o.zoom;
+    y(n, c, g);
+  }
+}, { passive: !1 });
+i.addEventListener("touchend", (e) => {
+  if (h = null, k = null, e.touches.length === 1)
+    h = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+});
+function C(e) {
+  let r = e[0].clientX - e[1].clientX, s = e[0].clientY - e[1].clientY;
+  return Math.hypot(r, s);
+}
+</script></body>
+</html>
