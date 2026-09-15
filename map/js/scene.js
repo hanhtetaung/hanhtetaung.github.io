@@ -117,20 +117,20 @@ export const roadInstructions = [
 ];
 
 const sceneObjects = [
-  { name: "09-09-2026", x: -900, y: 7150, height: 100 },
+  { name: "09-09-2026", x: -850, y: 7150, height: 100 },
 
   { name: "05-09-2026", x: -2680, y: 5350, height: 100 },
 
   { name: "16-06-2026", x: 1000, y: 5350, height: 100 },
   { name: "flowers-sg", x: 700, y: 5250, height: 100 },
 
-  { name: "17-04-2026", x: 3450, y: 6580, height: 100 },
+  { name: "17-04-2026", x: 3450, y: 6600, height: 100 },
   { name: "twin-tower", x: 2500, y: 5800, height: 800 },
 
-  { name: "16-01-2026", x: 6100, y: 4400, height: 100 },
+  { name: "16-01-2026", x: 6150, y: 4400, height: 100 },
   { name: "il-juice-bar", x: 5600, y: 4500, height: 400 },
 
-  { name: "29-12-2025", x: 9050, y: 3080, height: 100 },
+  { name: "29-12-2025", x: 9050, y: 3150, height: 100 },
   { name: "happy-new-year-maya", x: 7700, y: 3250, height: 300 },
   { name: "kindle", x: 8500, y: 3300, height: 100 },
   { name: "zinme-tea-house-clock", x: 8500, y: 3600, height: 100 },
@@ -142,57 +142,57 @@ const sceneObjects = [
   { name: "cherry-tree", x: 7800, y: 1100, height: 500 },
   { name: "highest-spot-in-thailand", x: 7800, y: 1750, height: 300 },
 
-  { name: "21-12-2025", x: 7200, y: 0, height: 100 },
+  { name: "21-12-2025", x: 7300, y: 0, height: 100 },
 
-  { name: "23-11-2025", x: 8370, y: -1200, height: 100 },
+  { name: "23-11-2025", x: 8400, y: -1200, height: 100 },
 
-  { name: "01-11-2025", x: 8950, y: -2000, height: 100 },
+  { name: "01-11-2025", x: 8950, y: -1980, height: 100 },
   { name: "scoopy-c12", x: 8700, y: -1750, height: 200 },
 
-  { name: "26-07-2025", x: 9650, y: -3800, height: 100 },
+  { name: "26-07-2025", x: 9700, y: -3800, height: 100 },
   { name: "bob-merlay-wall", x: 9930, y: -3200, height: 400 },
   { name: "horse-ride", x: 9900, y: -3500, height: 200 },
   { name: "kayak", x: 9600, y: -3300, height: 200 },
   { name: "bread", x: 9650, y: -2500, height: 100 },
 
-  { name: "20-07-2025", x: 7150, y: -4800, height: 100 },
+  { name: "20-07-2025", x: 7150, y: -4750, height: 100 },
   { name: "pergasingan", x: 7700, y: -4650, height: 300 },
 
-  { name: "29-05-2025", x: 7020, y: -2800, height: 100 },
+  { name: "29-05-2025", x: 7050, y: -2800, height: 100 },
   { name: "mae-hong-son-sign", x: 6530, y: -3200, height: 200 },
   { name: "coffee-CNX", x: 6550, y: -4200, height: 100 },
 
-  { name: "27-05-2025", x: 4550, y: -2800, height: 100 },
+  { name: "27-05-2025", x: 4650, y: -2800, height: 100 },
   { name: "ban-rak-thai-hotel", x: 5100, y: -1860, height: 400 },
   { name: "bun", x: 5700, y: -1300, height: 100 },
 
-  { name: "24-05-2025", x: 4930, y: -4300, height: 100 },
+  { name: "24-05-2025", x: 4950, y: -4300, height: 100 },
   { name: "the-north-face", x: 4850, y: -4000, height: 100 },
 
-  { name: "18-04-2025", x: 3280, y: -4500, height: 100 },
+  { name: "18-04-2025", x: 3350, y: -4500, height: 100 },
   { name: "monopoly-deal", x: 3800, y: -4580, height: 100 },
 
-  { name: "22-02-2025", x: 1900, y: -2400, height: 100 },
+  { name: "22-02-2025", x: 1900, y: -2350, height: 100 },
   { name: "momerial-bridge", x: 2400, y: -3200, height: 500 },
   { name: "under-armour-hat", x: 2550, y: -2650, height: 100 },
 
-  { name: "26-10-2024", x: 0, y: -1900, height: 100 },
+  { name: "26-10-2024", x: 0, y: -1850, height: 100 },
   { name: "ice-creams", x: 500, y: -2100, height: 100 },
   { name: "howard-bernadette", x: 700, y: -2430, height: 100 },
 
-  { name: "03-04-2024", x: -4800, y: -2930, height: 100 },
+  { name: "03-04-2024", x: -4800, y: -2900, height: 100 },
   { name: "il_juice_bar", x: -4400, y: -3300, height: 400 },
   { name: "juices-in-il", x: -3900, y: -3000, height: 100 },
   { name: "lobster", x: -3420, y: -2720, height: 100 },
   { name: "asiatique", x: -4300, y: -2350, height: 700 },
   { name: "BTS", x: -2650, y: -1800, height: 400 },
 
-  { name: "03-04-2024", x: -5870, y: -2100, height: 100 },
+  { name: "03-04-2024", x: -5800, y: -2100, height: 100 },
   { name: "seafood-pattaya", x: -5700, y: -2400, height: 100 },
 
-  { name: "02-04-2024", x: -5700, y: -950, height: 100 },
+  { name: "02-04-2024", x: -5650, y: -950, height: 100 },
 
-  { name: "31-03-2024", x: -3250, y: 1100, height: 100 },
+  { name: "31-03-2024", x: -3200, y: 1100, height: 100 },
   { name: "choui-fong", x: -3050, y: 750, height: 300 },
   { name: "macha", x: -3350, y: 800, height: 100 },
   { name: "golden-triangle", x: -4100, y: 300, height: 300 },
@@ -207,7 +207,7 @@ const sceneObjects = [
   { name: "khao-soi-shop", x: -2200, y: 2320, height: 300 },
   { name: "bus-to-chiang-rai", x: -3000, y: 1550, height: 400 },
 
-  { name: "25_03_2024", x: 750, y: 4420, height: 100 },
+  { name: "25_03_2024", x: 750, y: 4450, height: 100 },
   { name: "blue-back-bag", x: 600, y: 4280, height: 100 },
   { name: "gray-luggage", x: 450, y: 4100, height: 150 },
 
@@ -221,7 +221,7 @@ const sceneObjects = [
   { name: "penguins", x: 2150, y: 4280, height: 200 },
   { name: "giraffe", x: 1750, y: 3980, height: 500 },
 
-  { name: "23_03_2023", x: 1350, y: 2750, height: 100 },
+  { name: "23_03_2023", x: 1400, y: 2750, height: 100 },
   { name: "merlion", x: 1850, y: 2850, height: 500 },
   { name: "jewel-changi", x: 1000, y: 2050, height: 700 },
   { name: "marina-bay-sands", x: 2700, y: 2550, height: 800 },
