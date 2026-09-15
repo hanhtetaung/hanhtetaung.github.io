@@ -23,8 +23,18 @@ function drawAsset(name, x, y) {
   ctx.drawImage(img, x, y);
 }
 
+function drawAssetAtHeight(name, x, y, targetHeight) {
+  const img = asset(name);
+  if (!isAssetReady(name)) return;
+
+  const scale = targetHeight / img.naturalHeight;
+  const targetWidth = img.naturalWidth * scale;
+
+  ctx.drawImage(img, x, y, targetWidth, targetHeight);
+}
+
 function drawRoad() {
-  const road = asset("road");
+  const road = asset("road", "svg");
   if (!isAssetReady("road")) return;
 
   for (let i = 0; i < roadPath.length - 1; i++) {
@@ -43,7 +53,7 @@ function drawRoad() {
 }
 
 function updateRoadPath() {
-  const road = asset("road");
+  const road = asset("road", "svg");
   const tileSpacing = road.width * 0.92;
   const curveSpacing = tileSpacing * 0.5;
 
@@ -53,3 +63,5 @@ function updateRoadPath() {
 }
 
 onAssetReady("road", updateRoadPath);
+
+export { drawAssetAtHeight };

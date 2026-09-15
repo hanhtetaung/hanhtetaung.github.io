@@ -1,11 +1,12 @@
 import { draw } from "./draw.js";
 
-const ASSET_EXT = "png";
+const ASSET_EXT = "png"; // default for most images
+
 const _imageCache = {};
 const _assetReady = {};
 const _assetReadyCallbacks = {};
 
-export function asset(name) {
+export function asset(name, ext = ASSET_EXT) {
   if (_imageCache[name]) return _imageCache[name];
 
   const img = new Image();
@@ -14,14 +15,13 @@ export function asset(name) {
 
   const filename = name.replace(/_/g, "-");
 
-  img.onerror = () =>
-    console.warn(`Failed to load assets/${filename}.${ASSET_EXT}`);
+  img.onerror = () => console.warn(`Failed to load assets/${filename}.${ext}`);
   img.onload = () => {
     _assetReady[name] = true;
     if (_assetReadyCallbacks[name]) _assetReadyCallbacks[name]();
     draw();
   };
-  img.src = `assets/${filename}.${ASSET_EXT}`;
+  img.src = `assets/${filename}.${ext}`;
 
   return img;
 }

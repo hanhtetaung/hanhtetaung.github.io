@@ -1,9 +1,9 @@
 // ---- Camera state ----
 import { draw } from "./draw.js";
 
-export const camera = { x: 0, y: 0, zoom: 0.3 };
-const MIN_ZOOM = 0,
-  MAX_ZOOM = 0.8;
+export const camera = { x: 500, y: 300, zoom: 0.3 };
+const MIN_ZOOM = 0.05,
+  MAX_ZOOM = 5;
 
 export function zoomAt(screenX, screenY, factor) {
   const newZoom = Math.min(MAX_ZOOM, Math.max(MIN_ZOOM, camera.zoom * factor));
