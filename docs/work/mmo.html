@@ -48,14 +48,14 @@
     <section-footer variant="secondary"></section-footer>
   <script type="module">// web-components/asset.js
 function g() {
-  let t = document.documentElement.dataset.base || "./";
-  return new URL(t, location.href);
+  let o = document.documentElement.dataset.base || "./";
+  return new URL(o, location.href);
 }
-function o(t) {
-  return new URL(t, g()).href;
+function t(o) {
+  return new URL(o, g()).href;
 }
-function n(t) {
-  let a = t.replace(/^\//, ""), s = location.protocol === "file:", c = g();
+function n(o) {
+  let a = o.replace(/^\//, ""), s = location.protocol === "file:", c = g();
   if (a === "")
     return s ? new URL("index.html", c).href : c.href;
   return s ? new URL(`${a}.html`, c).href : new URL(a, c).href;
@@ -65,14 +65,14 @@ function n(t) {
 var b = `
 @font-face {
     font-family: "Archivo";
-    src: url("${o("./assets/fonts/Archivo-Black.woff2")}") format("woff2");
+    src: url("${t("./assets/fonts/Archivo-Black.woff2")}") format("woff2");
     font-weight: 700;
     font-display: swap;
   }
 
   @font-face {
     font-family: "Archivo";
-    src: url("${o("./assets/fonts/Archivo-Regular.woff2")}") format("woff2");
+    src: url("${t("./assets/fonts/Archivo-Regular.woff2")}") format("woff2");
     font-weight: 400;
     font-display: swap;
   }
@@ -81,8 +81,8 @@ u.textContent = b;
 document.head.appendChild(u);
 
 // web-components/define.js
-function y(t, a) {
-  if (t === void 0) {
+function y(o, a) {
+  if (o === void 0) {
     if (a === Array)
       return [];
     if (a === Object)
@@ -94,12 +94,12 @@ function y(t, a) {
     return;
   }
   if (a === Boolean)
-    return Boolean(t);
+    return Boolean(o);
   if (a === Number)
-    return Number(t);
-  return t;
+    return Number(o);
+  return o;
 }
-function e(t, { props: a = {}, attrs: s = [], styles: c = "", template: p, onRender: f = null }) {
+function e(o, { props: a = {}, attrs: s = [], styles: c = "", template: p, onRender: f = null }) {
   let v = ["props", ...s];
 
   class h extends HTMLElement {
@@ -156,7 +156,7 @@ function e(t, { props: a = {}, attrs: s = [], styles: c = "", template: p, onRen
       }
     }
   }
-  customElements.define(t, h);
+  customElements.define(o, h);
 }
 
 // web-components/breakpoints.js
@@ -317,7 +317,7 @@ var S = `
 `, L = `
   <header>
       <app-link variant="plain" href=${n("/")}>
-        <img src=${o("./assets/images/logo.avif")}
+        <img src=${t("./assets/images/logo.avif")}
           alt="Logo">
       </app-link>
 
@@ -414,9 +414,9 @@ var B = [
         <span>Sitemap</span>
 
         <ol>
-            ${B.map((t) => `
+            ${B.map((o) => `
                 <li>
-                    <app-link variant="sitemap" href=${n(t.href)} >${t.name}</app-link>
+                    <app-link variant="sitemap" href=${n(o.href)} >${o.name}</app-link>
                 </li>
             `).join("")}
         </ol>
@@ -490,7 +490,7 @@ var R = `
               <li>
                   <app-link href="mailto:hanhtetaung.dev@gmail.com" variant="image">
                   <img
-                      src=${o("./assets/icons/email.svg")}
+                      src=${t("./assets/icons/email.svg")}
                       alt="Email Icon"
                   />
                   </app-link>
@@ -503,7 +503,7 @@ var R = `
                   variant="image"
                   >
                   <img
-                      src=${o("./assets/icons/instagram.svg")}
+                      src=${t("./assets/icons/instagram.svg")}
                       alt="Linkedin Icon"
                   />
                   </app-link>
@@ -516,7 +516,7 @@ var R = `
                   variant="image"
                   >
                   <img
-                      src=${o("./assets/icons/linkedin.svg")}
+                      src=${t("./assets/icons/linkedin.svg")}
                       alt="Linkedin Icon"
                   />
                   </app-link>
@@ -529,7 +529,7 @@ var R = `
                   variant="image"
                   >
                   <img
-                      src=${o("./assets/icons/github.svg")}
+                      src=${t("./assets/icons/github.svg")}
                       alt="Github Icon"
                   />
                   </app-link>
@@ -580,9 +580,9 @@ var C = `
 `, F = `
   <footer>
 
-  <img src="./assets/images/footer/highlight.avif" alt="Parting phrase">
-  <img src="./assets/images/footer/thank-you.avif" alt="Thank you phrase">
-  <img src="./assets/images/footer/looking-forward.avif" alt="Parting Phrase">
+  <img src=${t("./assets/images/footer/highlight.avif")} alt="Parting phrase">
+  <img src=${t("./assets/images/footer/thank-you.avif")} alt="Thank you phrase">
+  <img src=${t("./assets/images/footer/looking-forward.avif")} alt="Parting Phrase">
 
 
     <!-- <footer-nav></footer-nav> -->
@@ -676,7 +676,7 @@ var I = `
   <section>
     <app-image
     variant="large"
-    src=${o("./assets/images/case-study/mmo/thumbnail.avif")}
+    src=${t("./assets/images/case-study/mmo/thumbnail.avif")}
     alt="MMO thumbnail"
     width="1692"
     height="886"
@@ -739,10 +739,10 @@ var G = `
       display: none;
     }
   }
-`, P = { name: String, img: String, alt: String }, N = ({ name: t, img: a = "", alt: s = "" }) => `
-    <h2>${t}</h2>
+`, P = { name: String, img: String, alt: String }, N = ({ name: o, img: a = "", alt: s = "" }) => `
+    <h2>${o}</h2>
     <img
-        src=${o(a)}
+        src=${t(a)}
         alt=${s}
         height="36"
         width="76"
@@ -967,14 +967,14 @@ var Z = `
   :host([variant="block"]) {
     display: block;
   }
-`, j = { title: String }, W = ({ title: t }) => `
-        <h3>${t}</h3>
+`, W = { title: String }, j = ({ title: o }) => `
+        <h3>${o}</h3>
 
         <article>
             <slot></slot>
         </article>
 `;
-e("app-article-paragraph", { props: j, styles: Z, template: W });
+e("app-article-paragraph", { props: W, styles: Z, template: j });
 
 // web-components/sections/mmo/building-interfaces.js
 var ee = `
@@ -1023,7 +1023,7 @@ var ee = `
 
           <app-image
             variant="medium"
-            src=${o("./assets/images/case-study/mmo/1st-stage.avif")}
+            src=${t("./assets/images/case-study/mmo/1st-stage.avif")}
             alt="First interface preview"
             width="1398"
             height="1236"
@@ -1041,7 +1041,7 @@ var ee = `
 
           <app-image
             variant="medium"
-            src=${o("./assets/images/case-study/mmo/2nd-stage.avif")}
+            src=${t("./assets/images/case-study/mmo/2nd-stage.avif")}
             alt="Second interface preview"
             width="1398"
             height="1366"
@@ -1058,7 +1058,7 @@ var ee = `
 
           <app-image
             variant="medium"
-            src=${o("./assets/images/case-study/mmo/3rd-stage.avif")}
+            src=${t("./assets/images/case-study/mmo/3rd-stage.avif")}
             alt="Third interface preview"
             width="1474"
             height="864"
@@ -1072,7 +1072,7 @@ var ee = `
 
           <app-image
             variant="medium"
-            src=${o("./assets/images/case-study/mmo/final-stage.avif")}
+            src=${t("./assets/images/case-study/mmo/final-stage.avif")}
             alt="Final interface preview"
             width="1474"
             height="864"

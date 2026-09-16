@@ -33,31 +33,31 @@
     <section-footer></section-footer>
   <script type="module">// web-components/asset.js
 function g() {
-  let o = document.documentElement.dataset.base || "./";
-  return new URL(o, location.href);
+  let t = document.documentElement.dataset.base || "./";
+  return new URL(t, location.href);
 }
-function i(o) {
-  return new URL(o, g()).href;
+function a(t) {
+  return new URL(t, g()).href;
 }
-function l(o) {
-  let a = o.replace(/^\//, ""), s = location.protocol === "file:", c = g();
-  if (a === "")
+function l(t) {
+  let r = t.replace(/^\//, ""), s = location.protocol === "file:", c = g();
+  if (r === "")
     return s ? new URL("index.html", c).href : c.href;
-  return s ? new URL(`${a}.html`, c).href : new URL(a, c).href;
+  return s ? new URL(`${r}.html`, c).href : new URL(r, c).href;
 }
 
 // web-components/fonts.js
 var v = `
 @font-face {
     font-family: "Archivo";
-    src: url("${i("./assets/fonts/Archivo-Black.woff2")}") format("woff2");
+    src: url("${a("./assets/fonts/Archivo-Black.woff2")}") format("woff2");
     font-weight: 700;
     font-display: swap;
   }
 
   @font-face {
     font-family: "Archivo";
-    src: url("${i("./assets/fonts/Archivo-Regular.woff2")}") format("woff2");
+    src: url("${a("./assets/fonts/Archivo-Regular.woff2")}") format("woff2");
     font-weight: 400;
     font-display: swap;
   }
@@ -66,25 +66,25 @@ u.textContent = v;
 document.head.appendChild(u);
 
 // web-components/define.js
-function y(o, a) {
-  if (o === void 0) {
-    if (a === Array)
+function y(t, r) {
+  if (t === void 0) {
+    if (r === Array)
       return [];
-    if (a === Object)
+    if (r === Object)
       return {};
-    if (a === Boolean)
+    if (r === Boolean)
       return !1;
-    if (a === Number)
+    if (r === Number)
       return 0;
     return;
   }
-  if (a === Boolean)
-    return Boolean(o);
-  if (a === Number)
-    return Number(o);
-  return o;
+  if (r === Boolean)
+    return Boolean(t);
+  if (r === Number)
+    return Number(t);
+  return t;
 }
-function e(o, { props: a = {}, attrs: s = [], styles: c = "", template: p, onRender: f = null }) {
+function e(t, { props: r = {}, attrs: s = [], styles: c = "", template: p, onRender: f = null }) {
   let b = ["props", ...s];
 
   class h extends HTMLElement {
@@ -106,46 +106,46 @@ function e(o, { props: a = {}, attrs: s = [], styles: c = "", template: p, onRen
         this._render();
     }
     _getProps() {
-      let r = {}, n = this.getAttribute("props");
+      let i = {}, n = this.getAttribute("props");
       if (n)
         try {
-          r = JSON.parse(n);
+          i = JSON.parse(n);
         } catch {
-          r = {};
+          i = {};
         }
       let m = {};
-      for (let d of Object.keys(a))
-        m[d] = y(r[d], a[d]);
+      for (let d of Object.keys(r))
+        m[d] = y(i[d], r[d]);
       return m;
     }
     _applyForwardedAttrs() {
       if (s.length === 0)
         return;
-      let r = this.shadowRoot.querySelector("[data-forward]");
-      if (!r)
+      let i = this.shadowRoot.querySelector("[data-forward]");
+      if (!i)
         return;
       for (let n of s)
         if (this.hasAttribute(n))
-          r.setAttribute(n, this.getAttribute(n));
+          i.setAttribute(n, this.getAttribute(n));
         else
-          r.removeAttribute(n);
+          i.removeAttribute(n);
     }
     _render() {
       if (typeof this._cleanup === "function")
         this._cleanup(), this._cleanup = null;
-      let r = this._getProps(), n = typeof p === "function" ? p(r) : p;
+      let i = this._getProps(), n = typeof p === "function" ? p(i) : p;
       if (this.shadowRoot.innerHTML = `<style>${c}</style>${n}`, this._applyForwardedAttrs(), f) {
-        let m = f(this.shadowRoot, r, this);
+        let m = f(this.shadowRoot, i, this);
         if (typeof m === "function")
           this._cleanup = m;
       }
     }
   }
-  customElements.define(o, h);
+  customElements.define(t, h);
 }
 
 // web-components/breakpoints.js
-var t = "640px";
+var o = "640px";
 
 // web-components/components/app-frame.js
 var w = `
@@ -157,7 +157,7 @@ var w = `
     border: 7px solid var(--color-secondary);
     pointer-events: none;
 
-    @media (max-width: ${t}) {
+    @media (max-width: ${o}) {
       border-width: 5px;
     }
   }
@@ -289,7 +289,7 @@ var L = `
     box-shadow: none;
   }
 
-  @media (max-width: ${t}) {
+  @media (max-width: ${o}) {
     .header__navigation {
       gap: 4rem;
     }
@@ -302,7 +302,7 @@ var L = `
 `, B = `
   <header>
       <app-link variant="plain" href=${l("/")}>
-        <img src=${i("./assets/images/logo.avif")}
+        <img src=${a("./assets/images/logo.avif")}
           alt="Logo">
       </app-link>
 
@@ -356,7 +356,7 @@ var H = [
    display: flex;
    gap: 5rem;
 
-   @media (max-width: ${t}) {
+   @media (max-width: ${o}) {
         flex-direction: column;
         gap: 3rem;
         margin-block: 2rem;
@@ -385,7 +385,7 @@ var H = [
     max-height: 12.5ch;
     overflow: scroll;
 
-    @media (max-width: ${t}) {
+    @media (max-width: ${o}) {
         max-height: 20ch;
     }
   }
@@ -399,9 +399,9 @@ var H = [
         <span>Sitemap</span>
 
         <ol>
-            ${H.map((o) => `
+            ${H.map((t) => `
                 <li>
-                    <app-link variant="sitemap" href=${l(o.href)} >${o.name}</app-link>
+                    <app-link variant="sitemap" href=${l(t.href)} >${t.name}</app-link>
                 </li>
             `).join("")}
         </ol>
@@ -418,7 +418,7 @@ var C = `
     padding-top: 1rem;
     margin-top: 3rem;
 
-   @media (max-width: ${t}) {
+   @media (max-width: ${o}) {
         flex-direction: column-reverse;
         gap: 2rem;
         border: none;
@@ -431,7 +431,7 @@ var C = `
     border-top: 1px solid var(--color-text);
     padding-top: 1rem;
 
-    @media (min-width: ${t}) {
+    @media (min-width: ${o}) {
       border: none;
       padding-top: none;
     }
@@ -448,7 +448,7 @@ var C = `
   nav {
     display: block;
 
-    @media (min-width: ${t}) {
+    @media (min-width: ${o}) {
       display: block;
     }
   }
@@ -459,7 +459,7 @@ var C = `
     font-weight: var(--font-bold);
     
 
-    @media (max-width: ${t}) {
+    @media (max-width: ${o}) {
       display: inline-block;
       margin-bottom: 0.5rem;
     }
@@ -475,7 +475,7 @@ var C = `
               <li>
                   <app-link href="mailto:hanhtetaung.dev@gmail.com" variant="image">
                   <img
-                      src=${i("./assets/icons/email.svg")}
+                      src=${a("./assets/icons/email.svg")}
                       alt="Email Icon"
                   />
                   </app-link>
@@ -488,7 +488,7 @@ var C = `
                   variant="image"
                   >
                   <img
-                      src=${i("./assets/icons/instagram.svg")}
+                      src=${a("./assets/icons/instagram.svg")}
                       alt="Linkedin Icon"
                   />
                   </app-link>
@@ -501,7 +501,7 @@ var C = `
                   variant="image"
                   >
                   <img
-                      src=${i("./assets/icons/linkedin.svg")}
+                      src=${a("./assets/icons/linkedin.svg")}
                       alt="Linkedin Icon"
                   />
                   </app-link>
@@ -514,7 +514,7 @@ var C = `
                   variant="image"
                   >
                   <img
-                      src=${i("./assets/icons/github.svg")}
+                      src=${a("./assets/icons/github.svg")}
                       alt="Github Icon"
                   />
                   </app-link>
@@ -551,7 +551,7 @@ var F = `
     display: none;
   }
 
-@media (min-width: ${t}) {
+@media (min-width: ${o}) {
   img:first-child {
     display: block;
   }
@@ -565,9 +565,9 @@ var F = `
 `, R = `
   <footer>
 
-  <img src="./assets/images/footer/highlight.avif" alt="Parting phrase">
-  <img src="./assets/images/footer/thank-you.avif" alt="Thank you phrase">
-  <img src="./assets/images/footer/looking-forward.avif" alt="Parting Phrase">
+  <img src=${a("./assets/images/footer/highlight.avif")} alt="Parting phrase">
+  <img src=${a("./assets/images/footer/thank-you.avif")} alt="Thank you phrase">
+  <img src=${a("./assets/images/footer/looking-forward.avif")} alt="Parting Phrase">
 
 
     <!-- <footer-nav></footer-nav> -->
@@ -578,7 +578,7 @@ var F = `
 e("section-footer", { styles: F, template: R });
 
 // web-components/components/app-icon.js
-var j = `
+var q = `
   :host {
     --local-width: 3rem;
     --local-height: auto;
@@ -616,11 +616,11 @@ var j = `
   }
 
 
-`, q = ["src", "alt"], I = () => '<img data-forward width="200" height="200"/>';
-e("app-icon", { attrs: q, styles: j, template: I });
+`, I = ["src", "alt"], P = () => '<img data-forward width="200" height="200"/>';
+e("app-icon", { attrs: I, styles: q, template: P });
 
 // web-components/sections/404-intro.js
-var P = `
+var j = `
   :host {
     display: block;
     margin-block: 10rem;
@@ -632,7 +632,7 @@ var P = `
         display: flex;
         gap: 3rem;
 
-        @media (max-width: ${t}) {
+        @media (max-width: ${o}) {
           display: block;
         }
     }
@@ -661,6 +661,6 @@ var P = `
       ></app-icon>
   </section>
 `;
-e("section-404-intro", { styles: P, template: N });
+e("section-404-intro", { styles: j, template: N });
 </script></body>
 </html>

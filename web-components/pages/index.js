@@ -7,5 +7,5 @@ import "../sections/home/hero.js";
 import "../sections/home/little-process.js";
 import "../sections/home/education.js";
 import "../sections/home/hobby.js";
-import "../sections/home/recent-work.js";
+import "../sections/home/recent-crafts.js";
 import "../sections/home/cta.js";

@@ -44,7 +44,7 @@ function g() {
   let i = document.documentElement.dataset.base || "./";
   return new URL(i, location.href);
 }
-function t(i) {
+function e(i) {
   return new URL(i, g()).href;
 }
 function s(i) {
@@ -58,14 +58,14 @@ function s(i) {
 var b = `
 @font-face {
     font-family: "Archivo";
-    src: url("${t("./assets/fonts/Archivo-Black.woff2")}") format("woff2");
+    src: url("${e("./assets/fonts/Archivo-Black.woff2")}") format("woff2");
     font-weight: 700;
     font-display: swap;
   }
 
   @font-face {
     font-family: "Archivo";
-    src: url("${t("./assets/fonts/Archivo-Regular.woff2")}") format("woff2");
+    src: url("${e("./assets/fonts/Archivo-Regular.woff2")}") format("woff2");
     font-weight: 400;
     font-display: swap;
   }
@@ -92,7 +92,7 @@ function y(i, a) {
     return Number(i);
   return i;
 }
-function e(i, { props: a = {}, attrs: l = [], styles: c = "", template: m, onRender: f = null }) {
+function t(i, { props: a = {}, attrs: l = [], styles: c = "", template: m, onRender: f = null }) {
   let v = ["props", ...l];
 
   class h extends HTMLElement {
@@ -177,7 +177,7 @@ var w = `
   }
 `, k = `
 `;
-e("app-frame", { styles: w, template: k });
+t("app-frame", { styles: w, template: k });
 
 // web-components/components/app-link.js
 var x = `
@@ -244,7 +244,7 @@ var x = `
 `, $ = ["href", "target", "rel", "download"], z = `
   <a data-forward><slot></slot></a>
 `;
-e("app-link", { attrs: $, styles: x, template: z });
+t("app-link", { attrs: $, styles: x, template: z });
 
 // web-components/components/app-logo.js
 var A = `
@@ -257,7 +257,7 @@ var A = `
     width: auto;
   }
 `, _ = ["width", "height", "src", "alt"], B = () => "<img data-forward />";
-e("app-logo", { attrs: _, styles: A, template: B });
+t("app-logo", { attrs: _, styles: A, template: B });
 
 // web-components/sections/header.js
 var T = `
@@ -310,7 +310,7 @@ var T = `
 `, L = `
   <header>
       <app-link variant="plain" href=${s("/")}>
-        <img src=${t("./assets/images/logo.avif")}
+        <img src=${e("./assets/images/logo.avif")}
           alt="Logo">
       </app-link>
 
@@ -333,7 +333,7 @@ var T = `
       </div>
   </header>
 `;
-e("section-header", { template: L, styles: T });
+t("section-header", { template: L, styles: T });
 
 // web-components/components/footer-nav.js
 var S = [
@@ -415,7 +415,7 @@ var S = [
         </ol>
     </nav>
 `;
-e("footer-nav", { styles: H, template: E });
+t("footer-nav", { styles: H, template: E });
 
 // web-components/components/footer-copyright.js
 var U = `
@@ -483,7 +483,7 @@ var U = `
               <li>
                   <app-link href="mailto:hanhtetaung.dev@gmail.com" variant="image">
                   <img
-                      src=${t("./assets/icons/email.svg")}
+                      src=${e("./assets/icons/email.svg")}
                       alt="Email Icon"
                   />
                   </app-link>
@@ -496,7 +496,7 @@ var U = `
                   variant="image"
                   >
                   <img
-                      src=${t("./assets/icons/instagram.svg")}
+                      src=${e("./assets/icons/instagram.svg")}
                       alt="Linkedin Icon"
                   />
                   </app-link>
@@ -509,7 +509,7 @@ var U = `
                   variant="image"
                   >
                   <img
-                      src=${t("./assets/icons/linkedin.svg")}
+                      src=${e("./assets/icons/linkedin.svg")}
                       alt="Linkedin Icon"
                   />
                   </app-link>
@@ -522,7 +522,7 @@ var U = `
                   variant="image"
                   >
                   <img
-                      src=${t("./assets/icons/github.svg")}
+                      src=${e("./assets/icons/github.svg")}
                       alt="Github Icon"
                   />
                   </app-link>
@@ -530,7 +530,7 @@ var U = `
           </ul>
         </nav>
 `;
-e("footer-copyright", { styles: U, template: C });
+t("footer-copyright", { styles: U, template: C });
 
 // web-components/sections/footer.js
 var F = `
@@ -573,9 +573,9 @@ var F = `
 `, R = `
   <footer>
 
-  <img src="./assets/images/footer/highlight.avif" alt="Parting phrase">
-  <img src="./assets/images/footer/thank-you.avif" alt="Thank you phrase">
-  <img src="./assets/images/footer/looking-forward.avif" alt="Parting Phrase">
+  <img src=${e("./assets/images/footer/highlight.avif")} alt="Parting phrase">
+  <img src=${e("./assets/images/footer/thank-you.avif")} alt="Thank you phrase">
+  <img src=${e("./assets/images/footer/looking-forward.avif")} alt="Parting Phrase">
 
 
     <!-- <footer-nav></footer-nav> -->
@@ -583,7 +583,7 @@ var F = `
     <footer-copyright></footer-copyright>
   </footer>
 `;
-e("section-footer", { styles: F, template: R });
+t("section-footer", { styles: F, template: R });
 
 // web-components/sections/foundation-building-interfaces-at-scale/intro.js
 var I = `
@@ -640,7 +640,7 @@ var I = `
     </ul>
   </section>
 `;
-e("section-foundation-building-interfaces-at-scale-intro", {
+t("section-foundation-building-interfaces-at-scale-intro", {
   styles: I,
   template: q
 });
@@ -680,13 +680,13 @@ var O = `
 `, N = { name: String, img: String, alt: String }, P = ({ name: i, img: a = "", alt: l = "" }) => `
     <h2>${i}</h2>
     <img
-        src=${t(a)}
+        src=${e(a)}
         alt=${l}
         height="36"
         width="76"
     />
 `;
-e("section-title", { props: N, styles: O, template: P });
+t("section-title", { props: N, styles: O, template: P });
 
 // web-components/components/app-image.js
 var G = `
@@ -721,7 +721,7 @@ var G = `
     --local-width: 100%;
   }
 `, M = ["width", "height", "src", "alt"], X = () => "<img data-forward />";
-e("app-image", { attrs: M, styles: G, template: X });
+t("app-image", { attrs: M, styles: G, template: X });
 
 // web-components/components/app-article-paragraph.js
 var D = `
@@ -753,7 +753,7 @@ var D = `
             <slot></slot>
         </article>
 `;
-e("app-article-paragraph", { props: J, styles: D, template: K });
+t("app-article-paragraph", { props: J, styles: D, template: K });
 
 // web-components/sections/foundation-building-interfaces-at-scale/atomic-design-principle.js
 var Q = `
@@ -793,7 +793,7 @@ var Q = `
 
     <app-image
       variant="full"
-      src=${t("./assets/images/foundation-building-software/atomic-design.avif")}
+      src=${e("./assets/images/foundation-building-software/atomic-design.avif")}
       alt="Atomic design overview"
       width="1398"
       height="1236"
@@ -807,7 +807,7 @@ var Q = `
           </p>
           <app-image
             variant="full"
-            src=${t("./assets/images/foundation-building-software/page.avif")}
+            src=${e("./assets/images/foundation-building-software/page.avif")}
             alt="Page overview"
             width="1398"
             height="1236"
@@ -822,7 +822,7 @@ var Q = `
           </p>
           <app-image
             variant="full"
-            src=${t("./assets/images/foundation-building-software/organisms.avif")}
+            src=${e("./assets/images/foundation-building-software/organisms.avif")}
             alt="Organism overview"
             width="1398"
             height="1236"
@@ -837,7 +837,7 @@ var Q = `
           </p>
           <app-image
             variant="full"
-            src=${t("./assets/images/foundation-building-software/molecule.avif")}
+            src=${e("./assets/images/foundation-building-software/molecule.avif")}
             alt="Molecule overview"
             width="1398"
             height="1236"
@@ -852,7 +852,7 @@ var Q = `
           </p>
           <app-image
             variant="full"
-            src=${t("./assets/images/foundation-building-software/atom.avif")}
+            src=${e("./assets/images/foundation-building-software/atom.avif")}
             alt="Atom overview"
             width="1398"
             height="1236"
@@ -865,7 +865,7 @@ var Q = `
           <p>Smallest unit of the system, represents a design token.</p>
           <app-image
             variant="full"
-            src=${t("./assets/images/foundation-building-software/subatomic-particles.avif")}
+            src=${e("./assets/images/foundation-building-software/subatomic-particles.avif")}
             alt="Subatomic particles overview"
             width="1398"
             height="1236"
@@ -875,7 +875,7 @@ var Q = `
     </ul>
   </section>
 `;
-e("section-atomic-design-principle", { styles: Q, template: Y });
+t("section-atomic-design-principle", { styles: Q, template: Y });
 
 // web-components/sections/foundation-building-interfaces-at-scale/design-token-architecture.js
 var Z = `
@@ -909,7 +909,7 @@ var Z = `
     padding: 0;
     padding-left: 1.5rem;
   }
-`, j = `
+`, V = `
   <section>
     <section-title variant="text" props='{"name": "Design Token Architecture"}'></section-title>
 
@@ -917,7 +917,7 @@ var Z = `
 
     <app-image
       variant="full"
-      src=${t("./assets/images/foundation-building-software/token-architecture.avif")}
+      src=${e("./assets/images/foundation-building-software/token-architecture.avif")}
       alt="Token architecture overview"
       width="1398"
       height="1236"
@@ -934,7 +934,7 @@ var Z = `
           </p>
           <app-image
             variant="full"
-            src=${t("./assets/images/foundation-building-software/single-source-of-truth.avif")}
+            src=${e("./assets/images/foundation-building-software/single-source-of-truth.avif")}
             alt="Single source of truth overview"
             width="1398"
             height="1236"
@@ -950,7 +950,7 @@ var Z = `
           </p>
           <app-image
             variant="full"
-            src=${t("./assets/images/foundation-building-software/theming.avif")}
+            src=${e("./assets/images/foundation-building-software/theming.avif")}
             alt="Theming overview"
             width="1398"
             height="1236"
@@ -967,7 +967,7 @@ var Z = `
           </ol>
           <app-image
             variant="full"
-            src=${t("./assets/images/foundation-building-software/token-structure.avif")}
+            src=${e("./assets/images/foundation-building-software/token-structure.avif")}
             alt="Token structure overview"
             width="1398"
             height="1236"
@@ -983,7 +983,7 @@ var Z = `
           </p>
           <app-image
             variant="full"
-            src=${t("./assets/images/foundation-building-software/design-token-anatomy.avif")}
+            src=${e("./assets/images/foundation-building-software/design-token-anatomy.avif")}
             alt="Design token anatomy overview"
             width="1398"
             height="1236"
@@ -999,7 +999,7 @@ var Z = `
           </p>
           <app-image
             variant="full"
-            src=${t("./assets/images/foundation-building-software/applying-token.avif")}
+            src=${e("./assets/images/foundation-building-software/applying-token.avif")}
             alt="Applying token overview"
             width="1398"
             height="1236"
@@ -1009,10 +1009,10 @@ var Z = `
 </ul>
   </section>
 `;
-e("section-design-token-architecture", { styles: Z, template: j });
+t("section-design-token-architecture", { styles: Z, template: V });
 
 // web-components/sections/foundation-building-interfaces-at-scale/references.js
-var V = `
+var j = `
   :host {
     display: block;
   }
@@ -1057,8 +1057,8 @@ var V = `
     </ul>
   </section>
 `;
-e("section-foundation-building-interfaces-at-scale-references", {
-  styles: V,
+t("section-foundation-building-interfaces-at-scale-references", {
+  styles: j,
   template: W
 });
 </script></body>
