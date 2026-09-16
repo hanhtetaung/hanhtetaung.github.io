@@ -574,9 +574,9 @@ var U = `
 `, R = `
   <footer>
 
-  <img src="./assets/images/footer/highlight.avif" alt="Parting phrase">
-  <img src="./assets/images/footer/thank-you.avif" alt="Thank you phrase">
-  <img src="./assets/images/footer/looking-forward.avif" alt="Parting Phrase">
+  <img src=${t("./assets/images/footer/highlight.avif")} alt="Parting phrase">
+  <img src=${t("./assets/images/footer/thank-you.avif")} alt="Thank you phrase">
+  <img src=${t("./assets/images/footer/looking-forward.avif")} alt="Parting Phrase">
 
 
     <!-- <footer-nav></footer-nav> -->
@@ -816,7 +816,7 @@ var Q = `
     display: block;
     margin-bottom: 2rem;
   }
-`, j = `
+`, K = `
   <section>
     <section-title
         variant="text"
@@ -869,10 +869,10 @@ var Q = `
           </article>
   </section>
 `;
-e("section-terra-building-block", { styles: Q, template: j });
+e("section-terra-building-block", { styles: Q, template: K });
 
 // web-components/components/app-article-paragraph.js
-var K = `
+var V = `
   :host {
     display: grid;
     grid-template-columns: 1fr 2.5fr;
@@ -894,17 +894,17 @@ var K = `
   :host([variant="block"]) {
     display: block;
   }
-`, V = { title: String }, Y = ({ title: a }) => `
+`, Y = { title: String }, Z = ({ title: a }) => `
         <h3>${a}</h3>
 
         <article>
             <slot></slot>
         </article>
 `;
-e("app-article-paragraph", { props: V, styles: K, template: Y });
+e("app-article-paragraph", { props: Y, styles: V, template: Z });
 
 // web-components/sections/terra/need-one-interface.js
-var Z = `
+var j = `
   :host {
     display: block;
   }
@@ -1011,7 +1011,7 @@ var Z = `
      
   </section>
 `;
-e("section-terra-need-one-interface", { styles: Z, template: W });
+e("section-terra-need-one-interface", { styles: j, template: W });
 
 // web-components/sections/terra/conclusion.js
 var ee = `

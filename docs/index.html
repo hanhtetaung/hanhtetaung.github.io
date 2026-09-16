@@ -30,38 +30,38 @@
       <section-little-process></section-little-process>
       <section-education></section-education>
       <section-hobby></section-hobby>
-      <!-- <section-recent-work></section-recent-work> -->
+      <section-recent-crafts></section-recent-crafts>
       <section-cta id="cta"></section-cta>
     </main>
 
     <section-footer></section-footer>
   <script type="module">// web-components/asset.js
 function y() {
-  let o = document.documentElement.dataset.base || "./";
-  return new URL(o, location.href);
+  let a = document.documentElement.dataset.base || "./";
+  return new URL(a, location.href);
 }
-function r(o) {
-  return new URL(o, y()).href;
+function o(a) {
+  return new URL(a, y()).href;
 }
-function d(o) {
-  let e = o.replace(/^\//, ""), l = location.protocol === "file:", s = y();
+function d(a) {
+  let e = a.replace(/^\//, ""), l = location.protocol === "file:", m = y();
   if (e === "")
-    return l ? new URL("index.html", s).href : s.href;
-  return l ? new URL(`${e}.html`, s).href : new URL(e, s).href;
+    return l ? new URL("index.html", m).href : m.href;
+  return l ? new URL(`${e}.html`, m).href : new URL(e, m).href;
 }
 
 // web-components/fonts.js
 var x = `
 @font-face {
     font-family: "Archivo";
-    src: url("${r("./assets/fonts/Archivo-Black.woff2")}") format("woff2");
+    src: url("${o("./assets/fonts/Archivo-Black.woff2")}") format("woff2");
     font-weight: 700;
     font-display: swap;
   }
 
   @font-face {
     font-family: "Archivo";
-    src: url("${r("./assets/fonts/Archivo-Regular.woff2")}") format("woff2");
+    src: url("${o("./assets/fonts/Archivo-Regular.woff2")}") format("woff2");
     font-weight: 400;
     font-display: swap;
   }
@@ -70,8 +70,8 @@ w.textContent = x;
 document.head.appendChild(w);
 
 // web-components/define.js
-function k(o, e) {
-  if (o === void 0) {
+function k(a, e) {
+  if (a === void 0) {
     if (e === Array)
       return [];
     if (e === Object)
@@ -83,12 +83,12 @@ function k(o, e) {
     return;
   }
   if (e === Boolean)
-    return Boolean(o);
+    return Boolean(a);
   if (e === Number)
-    return Number(o);
-  return o;
+    return Number(a);
+  return a;
 }
-function i(o, { props: e = {}, attrs: l = [], styles: s = "", template: m, onRender: g = null }) {
+function i(a, { props: e = {}, attrs: l = [], styles: m = "", template: c, onRender: g = null }) {
   let b = ["props", ...l];
 
   class u extends HTMLElement {
@@ -110,42 +110,42 @@ function i(o, { props: e = {}, attrs: l = [], styles: s = "", template: m, onRen
         this._render();
     }
     _getProps() {
-      let a = {}, n = this.getAttribute("props");
+      let r = {}, n = this.getAttribute("props");
       if (n)
         try {
-          a = JSON.parse(n);
+          r = JSON.parse(n);
         } catch {
-          a = {};
+          r = {};
         }
       let p = {};
       for (let f of Object.keys(e))
-        p[f] = k(a[f], e[f]);
+        p[f] = k(r[f], e[f]);
       return p;
     }
     _applyForwardedAttrs() {
       if (l.length === 0)
         return;
-      let a = this.shadowRoot.querySelector("[data-forward]");
-      if (!a)
+      let r = this.shadowRoot.querySelector("[data-forward]");
+      if (!r)
         return;
       for (let n of l)
         if (this.hasAttribute(n))
-          a.setAttribute(n, this.getAttribute(n));
+          r.setAttribute(n, this.getAttribute(n));
         else
-          a.removeAttribute(n);
+          r.removeAttribute(n);
     }
     _render() {
       if (typeof this._cleanup === "function")
         this._cleanup(), this._cleanup = null;
-      let a = this._getProps(), n = typeof m === "function" ? m(a) : m;
-      if (this.shadowRoot.innerHTML = `<style>${s}</style>${n}`, this._applyForwardedAttrs(), g) {
-        let p = g(this.shadowRoot, a, this);
+      let r = this._getProps(), n = typeof c === "function" ? c(r) : c;
+      if (this.shadowRoot.innerHTML = `<style>${m}</style>${n}`, this._applyForwardedAttrs(), g) {
+        let p = g(this.shadowRoot, r, this);
         if (typeof p === "function")
           this._cleanup = p;
       }
     }
   }
-  customElements.define(o, u);
+  customElements.define(a, u);
 }
 
 // web-components/components/app-link.js
@@ -225,14 +225,14 @@ var S = `
     max-height: 7rem;
     width: auto;
   }
-`, T = ["width", "height", "src", "alt"], L = () => "<img data-forward />";
-i("app-logo", { attrs: T, styles: S, template: L });
+`, T = ["width", "height", "src", "alt"], _ = () => "<img data-forward />";
+i("app-logo", { attrs: T, styles: S, template: _ });
 
 // web-components/breakpoints.js
-var t = "640px", c = "1024px", h = "1920px";
+var t = "640px", s = "1024px", h = "1920px";
 
 // web-components/sections/header.js
-var C = `
+var L = `
   :host {
     display: block;
     background: var(--color-bg-primary);
@@ -279,10 +279,10 @@ var C = `
     height: 5rem;
     width: auto;
   }
-`, _ = `
+`, C = `
   <header>
       <app-link variant="plain" href=${d("/")}>
-        <img src=${r("./assets/images/logo.avif")}
+        <img src=${o("./assets/images/logo.avif")}
           alt="Logo">
       </app-link>
 
@@ -305,7 +305,7 @@ var C = `
       </div>
   </header>
 `;
-i("section-header", { template: _, styles: C });
+i("section-header", { template: C, styles: L });
 
 // web-components/components/footer-nav.js
 var E = [
@@ -379,9 +379,9 @@ var E = [
         <span>Sitemap</span>
 
         <ol>
-            ${E.map((o) => `
+            ${E.map((a) => `
                 <li>
-                    <app-link variant="sitemap" href=${d(o.href)} >${o.name}</app-link>
+                    <app-link variant="sitemap" href=${d(a.href)} >${a.name}</app-link>
                 </li>
             `).join("")}
         </ol>
@@ -455,7 +455,7 @@ var U = `
               <li>
                   <app-link href="mailto:hanhtetaung.dev@gmail.com" variant="image">
                   <img
-                      src=${r("./assets/icons/email.svg")}
+                      src=${o("./assets/icons/email.svg")}
                       alt="Email Icon"
                   />
                   </app-link>
@@ -468,7 +468,7 @@ var U = `
                   variant="image"
                   >
                   <img
-                      src=${r("./assets/icons/instagram.svg")}
+                      src=${o("./assets/icons/instagram.svg")}
                       alt="Linkedin Icon"
                   />
                   </app-link>
@@ -481,7 +481,7 @@ var U = `
                   variant="image"
                   >
                   <img
-                      src=${r("./assets/icons/linkedin.svg")}
+                      src=${o("./assets/icons/linkedin.svg")}
                       alt="Linkedin Icon"
                   />
                   </app-link>
@@ -494,7 +494,7 @@ var U = `
                   variant="image"
                   >
                   <img
-                      src=${r("./assets/icons/github.svg")}
+                      src=${o("./assets/icons/github.svg")}
                       alt="Github Icon"
                   />
                   </app-link>
@@ -505,7 +505,7 @@ var U = `
 i("footer-copyright", { styles: U, template: D });
 
 // web-components/sections/footer.js
-var F = `
+var O = `
   :host {
     display: block;
     padding-block: 10rem;
@@ -542,12 +542,12 @@ var F = `
 }
 
 
-`, O = `
+`, P = `
   <footer>
 
-  <img src="./assets/images/footer/highlight.avif" alt="Parting phrase">
-  <img src="./assets/images/footer/thank-you.avif" alt="Thank you phrase">
-  <img src="./assets/images/footer/looking-forward.avif" alt="Parting Phrase">
+  <img src=${o("./assets/images/footer/highlight.avif")} alt="Parting phrase">
+  <img src=${o("./assets/images/footer/thank-you.avif")} alt="Thank you phrase">
+  <img src=${o("./assets/images/footer/looking-forward.avif")} alt="Parting Phrase">
 
 
     <!-- <footer-nav></footer-nav> -->
@@ -555,10 +555,10 @@ var F = `
     <footer-copyright></footer-copyright>
   </footer>
 `;
-i("section-footer", { styles: F, template: O });
+i("section-footer", { styles: O, template: P });
 
 // web-components/sections/home/hero.js
-var P = `
+var F = `
   :host {
     display: block;
     height: min(calc(100vh - 108px - 10rem), 70rem);
@@ -578,7 +578,7 @@ var P = `
     justify-content: start;
     position: relative;
 
-    @media (min-width: ${c}) {
+    @media (min-width: ${s}) {
       justify-content: space-between;
     }
   }
@@ -656,28 +656,28 @@ var P = `
     </div>
   </section>
 `;
-function I(o) {
-  let e = o.getElementById("img-wrap"), l = o.getElementById("visible-img"), s = o.getElementById("lens-img"), m = o.getElementById("lens-ring");
-  if (!e || !l || !s || !m)
+function I(a) {
+  let e = a.getElementById("img-wrap"), l = a.getElementById("visible-img"), m = a.getElementById("lens-img"), c = a.getElementById("lens-ring");
+  if (!e || !l || !m || !c)
     return;
-  function g(a) {
-    let n = l.getBoundingClientRect(), p = a.clientX - n.left, f = a.clientY - n.top, v = m.offsetWidth / 2;
-    m.style.left = `${p - v}px`, m.style.top = `${f - v}px`, s.style.clipPath = `circle(${v}px at ${p}px ${f}px)`;
+  function g(r) {
+    let n = l.getBoundingClientRect(), p = r.clientX - n.left, f = r.clientY - n.top, v = c.offsetWidth / 2;
+    c.style.left = `${p - v}px`, c.style.top = `${f - v}px`, m.style.clipPath = `circle(${v}px at ${p}px ${f}px)`;
   }
   function b() {
-    m.setAttribute("data-visible", "true");
+    c.setAttribute("data-visible", "true");
   }
   function u() {
-    m.removeAttribute("data-visible"), s.style.clipPath = "circle(0px at 50% 50%)";
+    c.removeAttribute("data-visible"), m.style.clipPath = "circle(0px at 50% 50%)";
   }
   return e.addEventListener("mousemove", g), e.addEventListener("mouseenter", b), e.addEventListener("mouseleave", u), () => {
     e.removeEventListener("mousemove", g), e.removeEventListener("mouseenter", b), e.removeEventListener("mouseleave", u);
   };
 }
-i("section-hero", { styles: P, template: G, onRender: I });
+i("section-hero", { styles: F, template: G, onRender: I });
 
 // web-components/sections/home/little-process.js
-var q = `
+var R = `
   :host {
     position: relative;
     display: block;
@@ -685,7 +685,7 @@ var q = `
     overflow: hidden;
     margin-block: 15rem;
 
-    @media (min-width: ${c}) {
+    @media (min-width: ${s}) {
       margin-top: 20rem;
       margin-bottom: 25rem;
     }
@@ -746,7 +746,7 @@ var q = `
     z-index: -1;
     opacity: 0.1;
 
-    @media (min-width: ${c}) {
+    @media (min-width: ${s}) {
       opacity: 1;
     }
 
@@ -754,7 +754,7 @@ var q = `
   span {
     font-size: var(--size-body);
   }
-`, R = `
+`, q = `
 
 <section>
   <hgroup>
@@ -781,14 +781,14 @@ var q = `
     </li>
   </ul>
 
-  <img src=${r("./assets/images/home/craftsmanship.avif")} alt="Craftsmanship Illustration">
+  <img src=${o("./assets/images/home/craftsmanship.avif")} alt="Craftsmanship Illustration">
 </section>
 
 `;
-i("section-little-process", { styles: q, template: R });
+i("section-little-process", { styles: R, template: q });
 
 // web-components/sections/home/education.js
-var M = `
+var K = `
   :host {
     position: relative;
     display: block;
@@ -842,14 +842,14 @@ var M = `
       left: 40%;
     }
 
-    @media (min-width: ${c}) {
+    @media (min-width: ${s}) {
       opacity: 1;
       right: 10%;
       left: auto;
     }
     
   }
-`, N = `
+`, M = `
   <section>
     <hgroup>
       <p>[ Education ]</p>
@@ -861,10 +861,10 @@ var M = `
   </section>
 
 `;
-i("section-education", { styles: M, template: N });
+i("section-education", { styles: K, template: M });
 
 // web-components/sections/home/hobby.js
-var K = `
+var N = `
   :host {
     display: block;
   }
@@ -900,7 +900,7 @@ var K = `
       height: auto;
     }
   }
-`, X = `
+`, j = `
   <div>
     <img src="./assets/images/home/sketching.avif" alt="Sketching SEA">
   </div>
@@ -911,82 +911,106 @@ var K = `
     <p>All hand-drawn. I bring the same approach to every website I build.</p>
   </section>
 `;
-i("section-hobby", { styles: K, template: X });
+i("section-hobby", { styles: N, template: j });
 
-// web-components/sections/home/recent-work.js
-var Y = `
+// web-components/sections/home/recent-crafts.js
+var X = `
   :host {
     position: relative;
     display: block;
-    margin-block: 30rem;
+    margin-block: 20rem;
   }
 
   section {
-    width: 80%;
+    width: min(80%, 144rem);
     margin-inline: auto;
   }
 
-   h2 {
-     margin: 0;
-    font-weight: var(--font-bold);
-    font-family: var(--font-heading);
+  h2 {
+    margin: 0;
+    margin-top: 1rem;
+    font-size: var(--size-title);
     margin-bottom: 5rem;
+  }
+
+   p {
+    margin: 0;
   }
 
 
   ul {
     list-style: none;
+    width: 100%;
     padding: 0;
     margin: 0;
     display: flex;
     flex-wrap: wrap;
     gap: 3rem;
 
-    @media (max-width: ${t}) {
-      overflow: scroll;
+    @media (min-width: ${t}) {
       display: grid;
-      grid-template-rows: repeat(3, auto);
-      grid-auto-flow: column;
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+
+    @media (min-width: ${s}) {
+      grid-template-columns: repeat(3, 1fr);
     }
   }
 
   li {
-    border: 1px solid var(--color-text);
+    border: 1px solid var(--color-primary);
     border-radius: 3rem;
-    padding-block: 4rem;
-    min-width: 25ch;
+    width: 100%;
     text-align: center;
   }
 
-   h3 {
-     margin: 0;
-    font-size: var(--size-header);
-    color: #7E4C37;
-    margin-bottom: 1rem;
+  a {
+    display: block;
+    width: 100%;
+    text-decoration: none;
+    color: var(--color-text);
   }
+
+  img {
+    width: auto;
+    max-width: 100%;
+    height: 20rem;
+  }
+
 `, J = `
 <section>
-  <h2>A Little Corner of <br> Craftsmanship</h2>
+  <hgroup>
+    <p>[ Recent Crafts ]</p>
+    <h2>With Love & Care</h2>
+  </hgroup>
+
   <ul>
-    <li>
-      <h3>Your Slot</h3>
+     <li>
+      <a href="/map/" target="_blank">
+        <img src=${o("./assets/images/home/story-map.avif")} alt="Story Map">
+      </a>
     </li>
+
     <li>
-      <h3>Terra</h3>
+      <a href="/terra/" target="_blank">
+        <img src=${o("./assets/images/home/terra.avif")} alt="Terra">
+      </a>
     </li>
-    <li>
-      <h3>SKS Solar</h3>
+
+     <li>
+       <a href="https://skssolarmyanmar.com/" target="_blank">
+         <img src=${o("./assets/images/home/sks-solar.avif")} alt="SKS Solar">
+      </a>
     </li>
-    <li>
-      <h3>Maple</h3>
-    </li>
+    
   </ul>
 </section>
 `;
-i("section-recent-work", { styles: Y, template: J });
+i("section-recent-crafts", { styles: X, template: J });
 
 // web-components/sections/home/cta.js
-var j = `
+var W = `
   :host {
     display: block;
     height: 70rem;
@@ -1059,7 +1083,7 @@ var j = `
       top: 20rem;
     }
 
-    @media (min-width: ${c}) {
+    @media (min-width: ${s}) {
       opacity: 1;
     }
   }
@@ -1085,7 +1109,7 @@ var j = `
     text-decoration: none;
     color: var(--color-text);
   }
-`, Q = `
+`, Y = `
 <section>
   <img src="./assets/images/home/red-telephone-box.avif" alt="Red Telephone Box">
 
@@ -1098,19 +1122,19 @@ var j = `
 
   <ul>
     <li>
-      <app-logo src=${r("./assets/icons/email.svg")} alt="Email icon"></app-logo>
+      <app-logo src=${o("./assets/icons/email.svg")} alt="Email icon"></app-logo>
       <a href="mailto:hanhtetaung.dev@gmail.com" target="_blank">hanhtetaung.dev@gmail.com</a>
       <button id="copyBtn">Copy</button>
     </li>
     <li>
-      <app-logo src=${r("./assets/icons/linkedin.svg")} alt="Linkedin icon"></app-logo>
+      <app-logo src=${o("./assets/icons/linkedin.svg")} alt="Linkedin icon"></app-logo>
       <a href="https://www.linkedin.com/in/han-htet-aung/" target="_blank">in/han-htet-aung</a>
     </li>
   </ul>
 </section>
 `;
-function W(o) {
-  let e = o.getElementById("copyBtn");
+function Q(a) {
+  let e = a.getElementById("copyBtn");
   if (!e)
     return;
   e.addEventListener("click", () => {
@@ -1122,6 +1146,6 @@ function W(o) {
     });
   });
 }
-i("section-cta", { styles: j, template: Q, onRender: W });
+i("section-cta", { styles: W, template: Y, onRender: Q });
 </script></body>
 </html>
