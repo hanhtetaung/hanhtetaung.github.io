@@ -279,7 +279,7 @@ var L = `
     height: 5rem;
     width: auto;
   }
-`, E = `
+`, C = `
   <header>
       <app-link variant="plain" href=${f("/")}>
         <img src=${o("./assets/images/logo.avif")}
@@ -305,10 +305,10 @@ var L = `
       </div>
   </header>
 `;
-a("section-header", { template: E, styles: L });
+a("section-header", { template: C, styles: L });
 
 // web-components/components/footer-nav.js
-var C = [
+var E = [
   { href: "/", name: "Home" },
   { href: "/about", name: "About" },
   { href: "/credits", name: "Credits" },
@@ -379,7 +379,7 @@ var C = [
         <span>Sitemap</span>
 
         <ol>
-            ${C.map((t) => `
+            ${E.map((t) => `
                 <li>
                     <app-link variant="sitemap" href=${f(t.href)} >${t.name}</app-link>
                 </li>
@@ -410,6 +410,9 @@ var U = `
     margin: 0;
     border-top: 1px solid var(--color-text);
     padding-top: 1rem;
+    display: flex;
+    align-items: end;
+    gap: 0.2rem;
 
     @media (min-width: ${i}) {
       border: none;
@@ -451,9 +454,36 @@ var U = `
       margin-bottom: 0.5rem;
     }
   }
+
+  p img {
+    height: 2.3rem;
+
+     @media (max-width: ${i}) {
+      
+      height: 2.5rem;
+    }
+  }
+
+  p small {
+    display: inline-block;
+    margin-left: 1.5rem;
+  }
+
+  a {
+    text-decoration: none;
+    color: var(--color-text);
+  }
 `, P = () => `
       <p>
-        ©2026 Han Htet Aung
+          <img src=${o("./assets/images/logo.avif")}
+          alt="Logo">
+          <a href="https://hanhtetaung.dev/">
+            Crafted by Han
+          </a>
+
+        <small>
+          © 2026 
+        </small>
       </p>
 
       <nav>
@@ -509,7 +539,7 @@ var U = `
 a("footer-copyright", { styles: U, template: P });
 
 // web-components/sections/footer.js
-var H = `
+var G = `
   :host {
     display: block;
   }
@@ -582,7 +612,7 @@ var H = `
       display: none;
     }
   }
-`, G = `
+`, H = `
   <footer>
 
     <div id="highlight-wrap">
@@ -617,7 +647,7 @@ function F(t) {
     e.removeEventListener("mousemove", u), e.removeEventListener("mouseenter", h), e.removeEventListener("mouseleave", n);
   };
 }
-a("section-footer", { styles: H, template: G, onRender: F });
+a("section-footer", { styles: G, template: H, onRender: F });
 
 // web-components/sections/home/hero.js
 var N = `

@@ -42,17 +42,17 @@
     <section-footer></section-footer>
   <script type="module">// web-components/asset.js
 function b() {
-  let o = document.documentElement.dataset.base || "./";
-  return new URL(o, location.href);
+  let a = document.documentElement.dataset.base || "./";
+  return new URL(a, location.href);
 }
-function t(o) {
-  return new URL(o, b()).href;
+function t(a) {
+  return new URL(a, b()).href;
 }
-function m(o) {
-  let a = o.replace(/^\//, ""), l = location.protocol === "file:", s = b();
-  if (a === "")
+function m(a) {
+  let o = a.replace(/^\//, ""), l = location.protocol === "file:", s = b();
+  if (o === "")
     return l ? new URL("index.html", s).href : s.href;
-  return l ? new URL(`${a}.html`, s).href : new URL(a, s).href;
+  return l ? new URL(`${o}.html`, s).href : new URL(o, s).href;
 }
 
 // web-components/fonts.js
@@ -75,25 +75,25 @@ y.textContent = w;
 document.head.appendChild(y);
 
 // web-components/define.js
-function x(o, a) {
-  if (o === void 0) {
-    if (a === Array)
+function x(a, o) {
+  if (a === void 0) {
+    if (o === Array)
       return [];
-    if (a === Object)
+    if (o === Object)
       return {};
-    if (a === Boolean)
+    if (o === Boolean)
       return !1;
-    if (a === Number)
+    if (o === Number)
       return 0;
     return;
   }
-  if (a === Boolean)
-    return Boolean(o);
-  if (a === Number)
-    return Number(o);
-  return o;
+  if (o === Boolean)
+    return Boolean(a);
+  if (o === Number)
+    return Number(a);
+  return a;
 }
-function e(o, { props: a = {}, attrs: l = [], styles: s = "", template: c, onRender: h = null }) {
+function e(a, { props: o = {}, attrs: l = [], styles: s = "", template: c, onRender: h = null }) {
   let g = ["props", ...l];
 
   class f extends HTMLElement {
@@ -123,8 +123,8 @@ function e(o, { props: a = {}, attrs: l = [], styles: s = "", template: c, onRen
           i = {};
         }
       let p = {};
-      for (let d of Object.keys(a))
-        p[d] = x(i[d], a[d]);
+      for (let d of Object.keys(o))
+        p[d] = x(i[d], o[d]);
       return p;
     }
     _applyForwardedAttrs() {
@@ -150,7 +150,7 @@ function e(o, { props: a = {}, attrs: l = [], styles: s = "", template: c, onRen
       }
     }
   }
-  customElements.define(o, f);
+  customElements.define(a, f);
 }
 
 // web-components/breakpoints.js
@@ -308,7 +308,7 @@ var L = `
     height: 5rem;
     width: auto;
   }
-`, E = `
+`, C = `
   <header>
       <app-link variant="plain" href=${m("/")}>
         <img src=${t("./assets/images/logo.avif")}
@@ -334,10 +334,10 @@ var L = `
       </div>
   </header>
 `;
-e("section-header", { template: E, styles: L });
+e("section-header", { template: C, styles: L });
 
 // web-components/components/footer-nav.js
-var H = [
+var E = [
   { href: "/", name: "Home" },
   { href: "/about", name: "About" },
   { href: "/credits", name: "Credits" },
@@ -356,7 +356,7 @@ var H = [
     href: "/writings/foundation-building-interfaces-at-scale",
     name: "Foundation"
   }
-], C = `
+], H = `
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -408,15 +408,15 @@ var H = [
         <span>Sitemap</span>
 
         <ol>
-            ${H.map((o) => `
+            ${E.map((a) => `
                 <li>
-                    <app-link variant="sitemap" href=${m(o.href)} >${o.name}</app-link>
+                    <app-link variant="sitemap" href=${m(a.href)} >${a.name}</app-link>
                 </li>
             `).join("")}
         </ol>
     </nav>
 `;
-e("footer-nav", { styles: C, template: U });
+e("footer-nav", { styles: H, template: U });
 
 // web-components/components/footer-copyright.js
 var F = `
@@ -439,6 +439,9 @@ var F = `
     margin: 0;
     border-top: 1px solid var(--color-text);
     padding-top: 1rem;
+    display: flex;
+    align-items: end;
+    gap: 0.2rem;
 
     @media (min-width: ${r}) {
       border: none;
@@ -480,9 +483,36 @@ var F = `
       margin-bottom: 0.5rem;
     }
   }
+
+  p img {
+    height: 2.3rem;
+
+     @media (max-width: ${r}) {
+      
+      height: 2.5rem;
+    }
+  }
+
+  p small {
+    display: inline-block;
+    margin-left: 1.5rem;
+  }
+
+  a {
+    text-decoration: none;
+    color: var(--color-text);
+  }
 `, P = () => `
       <p>
-        ©2026 Han Htet Aung
+          <img src=${t("./assets/images/logo.avif")}
+          alt="Logo">
+          <a href="https://hanhtetaung.dev/">
+            Crafted by Han
+          </a>
+
+        <small>
+          © 2026 
+        </small>
       </p>
 
       <nav>
@@ -628,9 +658,9 @@ var q = `
     <footer-copyright></footer-copyright>
   </footer>
 `;
-function N(o) {
-  let a = o.querySelector("footer"), l = o.getElementById("highlight-base"), s = o.getElementById("highlight-lens"), c = o.getElementById("lens-ring"), h = o.getElementById("highlight-wrap");
-  if (!a || !l || !s || !c || !h)
+function N(a) {
+  let o = a.querySelector("footer"), l = a.getElementById("highlight-base"), s = a.getElementById("highlight-lens"), c = a.getElementById("lens-ring"), h = a.getElementById("highlight-wrap");
+  if (!o || !l || !s || !c || !h)
     return;
   function g(n) {
     let p = l.getBoundingClientRect(), d = n.clientX - p.left, v = n.clientY - p.top, u = c.offsetWidth / 2;
@@ -642,8 +672,8 @@ function N(o) {
   function i() {
     c.removeAttribute("data-visible"), s.style.clipPath = "circle(0px at 50% 50%)";
   }
-  return a.addEventListener("mousemove", g), a.addEventListener("mouseenter", f), a.addEventListener("mouseleave", i), () => {
-    a.removeEventListener("mousemove", g), a.removeEventListener("mouseenter", f), a.removeEventListener("mouseleave", i);
+  return o.addEventListener("mousemove", g), o.addEventListener("mouseenter", f), o.addEventListener("mouseleave", i), () => {
+    o.removeEventListener("mousemove", g), o.removeEventListener("mouseenter", f), o.removeEventListener("mouseleave", i);
   };
 }
 e("section-footer", { styles: q, template: D, onRender: N });
@@ -791,10 +821,10 @@ var M = `
       display: none;
     }
   }
-`, J = { name: String, img: String, alt: String }, K = ({ name: o, img: a = "", alt: l = "" }) => `
-    <h2>${o}</h2>
+`, J = { name: String, img: String, alt: String }, K = ({ name: a, img: o = "", alt: l = "" }) => `
+    <h2>${a}</h2>
     <img
-        src=${t(a)}
+        src=${t(o)}
         alt=${l}
         height="36"
         width="76"
@@ -876,8 +906,8 @@ var R = `
   :host([variant="block"]) {
     display: block;
   }
-`, j = { title: String }, ee = ({ title: o }) => `
-        <h3>${o}</h3>
+`, j = { title: String }, ee = ({ title: a }) => `
+        <h3>${a}</h3>
 
         <article>
             <slot></slot>
@@ -916,7 +946,7 @@ var te = `
   ol {
     list-style: disc;
   }
-`, oe = `
+`, ae = `
   <section>
     <section-title variant="text" props='{"name": "Process"}'></section-title>
 
@@ -1009,10 +1039,10 @@ var te = `
     </ul>
   </section>
 `;
-e("section-portfolio-process", { styles: te, template: oe });
+e("section-portfolio-process", { styles: te, template: ae });
 
 // web-components/sections/portfolio/result.js
-var ae = `
+var oe = `
   :host {
     display: block;
   }
@@ -1071,6 +1101,6 @@ var ae = `
     </ul>
   </section>
 `;
-e("section-portfolio-result", { styles: ae, template: re });
+e("section-portfolio-result", { styles: oe, template: re });
 </script></body>
 </html>

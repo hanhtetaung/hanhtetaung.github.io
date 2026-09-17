@@ -74,7 +74,7 @@ y.textContent = w;
 document.head.appendChild(y);
 
 // web-components/define.js
-function k(i, a) {
+function x(i, a) {
   if (i === void 0) {
     if (a === Array)
       return [];
@@ -123,7 +123,7 @@ function t(i, { props: a = {}, attrs: l = [], styles: s = "", template: c, onRen
         }
       let d = {};
       for (let p of Object.keys(a))
-        d[p] = k(o[p], a[p]);
+        d[p] = x(o[p], a[p]);
       return d;
     }
     _applyForwardedAttrs() {
@@ -156,7 +156,7 @@ function t(i, { props: a = {}, attrs: l = [], styles: s = "", template: c, onRen
 var r = "640px";
 
 // web-components/components/app-frame.js
-var x = `
+var k = `
   :host {
     display: block;
     position: fixed;
@@ -177,7 +177,7 @@ var x = `
   }
 `, $ = `
 `;
-t("app-frame", { styles: x, template: $ });
+t("app-frame", { styles: k, template: $ });
 
 // web-components/components/app-link.js
 var z = `
@@ -336,7 +336,7 @@ var L = `
 t("section-header", { template: E, styles: L });
 
 // web-components/components/footer-nav.js
-var H = [
+var C = [
   { href: "/", name: "Home" },
   { href: "/about", name: "About" },
   { href: "/credits", name: "Credits" },
@@ -402,12 +402,12 @@ var H = [
     margin-right: 5rem;
     margin-bottom: 0.3rem;
   }
-`, C = () => `
+`, F = () => `
     <nav>
         <span>Sitemap</span>
 
         <ol>
-            ${H.map((i) => `
+            ${C.map((i) => `
                 <li>
                     <app-link variant="sitemap" href=${m(i.href)} >${i.name}</app-link>
                 </li>
@@ -415,10 +415,10 @@ var H = [
         </ol>
     </nav>
 `;
-t("footer-nav", { styles: U, template: C });
+t("footer-nav", { styles: U, template: F });
 
 // web-components/components/footer-copyright.js
-var F = `
+var H = `
   :host {
    display: flex;
     justify-content: space-between;
@@ -438,6 +438,9 @@ var F = `
     margin: 0;
     border-top: 1px solid var(--color-text);
     padding-top: 1rem;
+    display: flex;
+    align-items: end;
+    gap: 0.2rem;
 
     @media (min-width: ${r}) {
       border: none;
@@ -479,9 +482,36 @@ var F = `
       margin-bottom: 0.5rem;
     }
   }
+
+  p img {
+    height: 2.3rem;
+
+     @media (max-width: ${r}) {
+      
+      height: 2.5rem;
+    }
+  }
+
+  p small {
+    display: inline-block;
+    margin-left: 1.5rem;
+  }
+
+  a {
+    text-decoration: none;
+    color: var(--color-text);
+  }
 `, O = () => `
       <p>
-        ©2026 Han Htet Aung
+          <img src=${e("./assets/images/logo.avif")}
+          alt="Logo">
+          <a href="https://hanhtetaung.dev/">
+            Crafted by Han
+          </a>
+
+        <small>
+          © 2026 
+        </small>
       </p>
 
       <nav>
@@ -534,7 +564,7 @@ var F = `
           </ul>
         </nav>
 `;
-t("footer-copyright", { styles: F, template: O });
+t("footer-copyright", { styles: H, template: O });
 
 // web-components/sections/footer.js
 var q = `

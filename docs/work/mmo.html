@@ -128,10 +128,10 @@ function e(t, { props: i = {}, attrs: l = [], styles: s = "", template: c, onRen
         } catch {
           r = {};
         }
-      let p = {};
-      for (let d of Object.keys(i))
-        p[d] = x(r[d], i[d]);
-      return p;
+      let d = {};
+      for (let p of Object.keys(i))
+        d[p] = x(r[p], i[p]);
+      return d;
     }
     _applyForwardedAttrs() {
       if (l.length === 0)
@@ -150,9 +150,9 @@ function e(t, { props: i = {}, attrs: l = [], styles: s = "", template: c, onRen
         this._cleanup(), this._cleanup = null;
       let r = this._getProps(), n = typeof c === "function" ? c(r) : c;
       if (this.shadowRoot.innerHTML = `<style>${s}</style>${n}`, this._applyForwardedAttrs(), h) {
-        let p = h(this.shadowRoot, r, this);
-        if (typeof p === "function")
-          this._cleanup = p;
+        let d = h(this.shadowRoot, r, this);
+        if (typeof d === "function")
+          this._cleanup = d;
       }
     }
   }
@@ -343,7 +343,7 @@ var L = `
 e("section-header", { template: E, styles: L });
 
 // web-components/components/footer-nav.js
-var H = [
+var C = [
   { href: "/", name: "Home" },
   { href: "/about", name: "About" },
   { href: "/credits", name: "Credits" },
@@ -362,7 +362,7 @@ var H = [
     href: "/writings/foundation-building-interfaces-at-scale",
     name: "Foundation"
   }
-], U = `
+], H = `
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -409,12 +409,12 @@ var H = [
     margin-right: 5rem;
     margin-bottom: 0.3rem;
   }
-`, C = () => `
+`, U = () => `
     <nav>
         <span>Sitemap</span>
 
         <ol>
-            ${H.map((t) => `
+            ${C.map((t) => `
                 <li>
                     <app-link variant="sitemap" href=${m(t.href)} >${t.name}</app-link>
                 </li>
@@ -422,7 +422,7 @@ var H = [
         </ol>
     </nav>
 `;
-e("footer-nav", { styles: U, template: C });
+e("footer-nav", { styles: H, template: U });
 
 // web-components/components/footer-copyright.js
 var F = `
@@ -445,6 +445,9 @@ var F = `
     margin: 0;
     border-top: 1px solid var(--color-text);
     padding-top: 1rem;
+    display: flex;
+    align-items: end;
+    gap: 0.2rem;
 
     @media (min-width: ${a}) {
       border: none;
@@ -486,9 +489,36 @@ var F = `
       margin-bottom: 0.5rem;
     }
   }
+
+  p img {
+    height: 2.3rem;
+
+     @media (max-width: ${a}) {
+      
+      height: 2.5rem;
+    }
+  }
+
+  p small {
+    display: inline-block;
+    margin-left: 1.5rem;
+  }
+
+  a {
+    text-decoration: none;
+    color: var(--color-text);
+  }
 `, O = () => `
       <p>
-        ©2026 Han Htet Aung
+          <img src=${o("./assets/images/logo.avif")}
+          alt="Logo">
+          <a href="https://hanhtetaung.dev/">
+            Crafted by Han
+          </a>
+
+        <small>
+          © 2026 
+        </small>
       </p>
 
       <nav>
@@ -639,8 +669,8 @@ function G(t) {
   if (!i || !l || !s || !c || !h)
     return;
   function g(n) {
-    let p = l.getBoundingClientRect(), d = n.clientX - p.left, b = n.clientY - p.top, u = c.offsetWidth / 2;
-    c.style.left = `${d - u}px`, c.style.top = `${b - u}px`, s.style.clipPath = `circle(${u}px at ${d}px ${b}px)`;
+    let d = l.getBoundingClientRect(), p = n.clientX - d.left, b = n.clientY - d.top, u = c.offsetWidth / 2;
+    c.style.left = `${p - u}px`, c.style.top = `${b - u}px`, s.style.clipPath = `circle(${u}px at ${p}px ${b}px)`;
   }
   function f() {
     c.setAttribute("data-visible", "true");

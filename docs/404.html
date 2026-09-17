@@ -84,10 +84,10 @@ function x(e, t) {
     return Number(e);
   return e;
 }
-function a(e, { props: t = {}, attrs: c = [], styles: l = "", template: s, onRender: h = null }) {
+function a(e, { props: t = {}, attrs: c = [], styles: l = "", template: s, onRender: f = null }) {
   let g = ["props", ...c];
 
-  class f extends HTMLElement {
+  class h extends HTMLElement {
     static observedAttributes = g;
     constructor() {
       super();
@@ -134,14 +134,14 @@ function a(e, { props: t = {}, attrs: c = [], styles: l = "", template: s, onRen
       if (typeof this._cleanup === "function")
         this._cleanup(), this._cleanup = null;
       let i = this._getProps(), n = typeof s === "function" ? s(i) : s;
-      if (this.shadowRoot.innerHTML = `<style>${l}</style>${n}`, this._applyForwardedAttrs(), h) {
-        let m = h(this.shadowRoot, i, this);
+      if (this.shadowRoot.innerHTML = `<style>${l}</style>${n}`, this._applyForwardedAttrs(), f) {
+        let m = f(this.shadowRoot, i, this);
         if (typeof m === "function")
           this._cleanup = m;
       }
     }
   }
-  customElements.define(e, f);
+  customElements.define(e, h);
 }
 
 // web-components/breakpoints.js
@@ -299,7 +299,7 @@ var S = `
     height: 5rem;
     width: auto;
   }
-`, E = `
+`, C = `
   <header>
       <app-link variant="plain" href=${d("/")}>
         <img src=${o("./assets/images/logo.avif")}
@@ -325,10 +325,10 @@ var S = `
       </div>
   </header>
 `;
-a("section-header", { template: E, styles: S });
+a("section-header", { template: C, styles: S });
 
 // web-components/components/footer-nav.js
-var C = [
+var E = [
   { href: "/", name: "Home" },
   { href: "/about", name: "About" },
   { href: "/credits", name: "Credits" },
@@ -347,7 +347,7 @@ var C = [
     href: "/writings/foundation-building-interfaces-at-scale",
     name: "Foundation"
   }
-], H = `
+], U = `
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -394,12 +394,12 @@ var C = [
     margin-right: 5rem;
     margin-bottom: 0.3rem;
   }
-`, U = () => `
+`, H = () => `
     <nav>
         <span>Sitemap</span>
 
         <ol>
-            ${C.map((e) => `
+            ${E.map((e) => `
                 <li>
                     <app-link variant="sitemap" href=${d(e.href)} >${e.name}</app-link>
                 </li>
@@ -407,7 +407,7 @@ var C = [
         </ol>
     </nav>
 `;
-a("footer-nav", { styles: H, template: U });
+a("footer-nav", { styles: U, template: H });
 
 // web-components/components/footer-copyright.js
 var F = `
@@ -430,6 +430,9 @@ var F = `
     margin: 0;
     border-top: 1px solid var(--color-text);
     padding-top: 1rem;
+    display: flex;
+    align-items: end;
+    gap: 0.2rem;
 
     @media (min-width: ${r}) {
       border: none;
@@ -471,9 +474,36 @@ var F = `
       margin-bottom: 0.5rem;
     }
   }
+
+  p img {
+    height: 2.3rem;
+
+     @media (max-width: ${r}) {
+      
+      height: 2.5rem;
+    }
+  }
+
+  p small {
+    display: inline-block;
+    margin-left: 1.5rem;
+  }
+
+  a {
+    text-decoration: none;
+    color: var(--color-text);
+  }
 `, P = () => `
       <p>
-        ©2026 Han Htet Aung
+          <img src=${o("./assets/images/logo.avif")}
+          alt="Logo">
+          <a href="https://hanhtetaung.dev/">
+            Crafted by Han
+          </a>
+
+        <small>
+          © 2026 
+        </small>
       </p>
 
       <nav>
@@ -620,21 +650,21 @@ var q = `
   </footer>
 `;
 function O(e) {
-  let t = e.querySelector("footer"), c = e.getElementById("highlight-base"), l = e.getElementById("highlight-lens"), s = e.getElementById("lens-ring"), h = e.getElementById("highlight-wrap");
-  if (!t || !c || !l || !s || !h)
+  let t = e.querySelector("footer"), c = e.getElementById("highlight-base"), l = e.getElementById("highlight-lens"), s = e.getElementById("lens-ring"), f = e.getElementById("highlight-wrap");
+  if (!t || !c || !l || !s || !f)
     return;
   function g(n) {
     let m = c.getBoundingClientRect(), p = n.clientX - m.left, b = n.clientY - m.top, u = s.offsetWidth / 2;
     s.style.left = `${p - u}px`, s.style.top = `${b - u}px`, l.style.clipPath = `circle(${u}px at ${p}px ${b}px)`;
   }
-  function f() {
+  function h() {
     s.setAttribute("data-visible", "true");
   }
   function i() {
     s.removeAttribute("data-visible"), l.style.clipPath = "circle(0px at 50% 50%)";
   }
-  return t.addEventListener("mousemove", g), t.addEventListener("mouseenter", f), t.addEventListener("mouseleave", i), () => {
-    t.removeEventListener("mousemove", g), t.removeEventListener("mouseenter", f), t.removeEventListener("mouseleave", i);
+  return t.addEventListener("mousemove", g), t.addEventListener("mouseenter", h), t.addEventListener("mouseleave", i), () => {
+    t.removeEventListener("mousemove", g), t.removeEventListener("mouseenter", h), t.removeEventListener("mouseleave", i);
   };
 }
 a("section-footer", { styles: q, template: N, onRender: O });

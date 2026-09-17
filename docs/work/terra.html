@@ -308,7 +308,7 @@ var L = `
     height: 5rem;
     width: auto;
   }
-`, H = `
+`, C = `
   <header>
       <app-link variant="plain" href=${m("/")}>
         <img src=${t("./assets/images/logo.avif")}
@@ -334,10 +334,10 @@ var L = `
       </div>
   </header>
 `;
-e("section-header", { template: H, styles: L });
+e("section-header", { template: C, styles: L });
 
 // web-components/components/footer-nav.js
-var C = [
+var E = [
   { href: "/", name: "Home" },
   { href: "/about", name: "About" },
   { href: "/credits", name: "Credits" },
@@ -356,7 +356,7 @@ var C = [
     href: "/writings/foundation-building-interfaces-at-scale",
     name: "Foundation"
   }
-], E = `
+], H = `
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -408,7 +408,7 @@ var C = [
         <span>Sitemap</span>
 
         <ol>
-            ${C.map((a) => `
+            ${E.map((a) => `
                 <li>
                     <app-link variant="sitemap" href=${m(a.href)} >${a.name}</app-link>
                 </li>
@@ -416,7 +416,7 @@ var C = [
         </ol>
     </nav>
 `;
-e("footer-nav", { styles: E, template: F });
+e("footer-nav", { styles: H, template: F });
 
 // web-components/components/footer-copyright.js
 var U = `
@@ -439,6 +439,9 @@ var U = `
     margin: 0;
     border-top: 1px solid var(--color-text);
     padding-top: 1rem;
+    display: flex;
+    align-items: end;
+    gap: 0.2rem;
 
     @media (min-width: ${o}) {
       border: none;
@@ -480,9 +483,36 @@ var U = `
       margin-bottom: 0.5rem;
     }
   }
+
+  p img {
+    height: 2.3rem;
+
+     @media (max-width: ${o}) {
+      
+      height: 2.5rem;
+    }
+  }
+
+  p small {
+    display: inline-block;
+    margin-left: 1.5rem;
+  }
+
+  a {
+    text-decoration: none;
+    color: var(--color-text);
+  }
 `, P = () => `
       <p>
-        ©2026 Han Htet Aung
+          <img src=${t("./assets/images/logo.avif")}
+          alt="Logo">
+          <a href="https://hanhtetaung.dev/">
+            Crafted by Han
+          </a>
+
+        <small>
+          © 2026 
+        </small>
       </p>
 
       <nav>
