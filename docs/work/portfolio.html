@@ -42,17 +42,17 @@
     <section-footer></section-footer>
   <script type="module">// web-components/asset.js
 function g() {
-  let a = document.documentElement.dataset.base || "./";
-  return new URL(a, location.href);
+  let r = document.documentElement.dataset.base || "./";
+  return new URL(r, location.href);
 }
-function t(a) {
-  return new URL(a, g()).href;
+function t(r) {
+  return new URL(r, g()).href;
 }
-function n(a) {
-  let r = a.replace(/^\//, ""), s = location.protocol === "file:", c = g();
-  if (r === "")
+function n(r) {
+  let a = r.replace(/^\//, ""), s = location.protocol === "file:", c = g();
+  if (a === "")
     return s ? new URL("index.html", c).href : c.href;
-  return s ? new URL(`${r}.html`, c).href : new URL(r, c).href;
+  return s ? new URL(`${a}.html`, c).href : new URL(a, c).href;
 }
 
 // web-components/fonts.js
@@ -75,25 +75,25 @@ u.textContent = b;
 document.head.appendChild(u);
 
 // web-components/define.js
-function y(a, r) {
-  if (a === void 0) {
-    if (r === Array)
+function y(r, a) {
+  if (r === void 0) {
+    if (a === Array)
       return [];
-    if (r === Object)
+    if (a === Object)
       return {};
-    if (r === Boolean)
+    if (a === Boolean)
       return !1;
-    if (r === Number)
+    if (a === Number)
       return 0;
     return;
   }
-  if (r === Boolean)
-    return Boolean(a);
-  if (r === Number)
-    return Number(a);
-  return a;
+  if (a === Boolean)
+    return Boolean(r);
+  if (a === Number)
+    return Number(r);
+  return r;
 }
-function e(a, { props: r = {}, attrs: s = [], styles: c = "", template: m, onRender: f = null }) {
+function e(r, { props: a = {}, attrs: s = [], styles: c = "", template: d, onRender: f = null }) {
   let v = ["props", ...s];
 
   class h extends HTMLElement {
@@ -122,10 +122,10 @@ function e(a, { props: r = {}, attrs: s = [], styles: c = "", template: m, onRen
         } catch {
           i = {};
         }
-      let p = {};
-      for (let d of Object.keys(r))
-        p[d] = y(i[d], r[d]);
-      return p;
+      let m = {};
+      for (let p of Object.keys(a))
+        m[p] = y(i[p], a[p]);
+      return m;
     }
     _applyForwardedAttrs() {
       if (s.length === 0)
@@ -142,15 +142,15 @@ function e(a, { props: r = {}, attrs: s = [], styles: c = "", template: m, onRen
     _render() {
       if (typeof this._cleanup === "function")
         this._cleanup(), this._cleanup = null;
-      let i = this._getProps(), l = typeof m === "function" ? m(i) : m;
+      let i = this._getProps(), l = typeof d === "function" ? d(i) : d;
       if (this.shadowRoot.innerHTML = `<style>${c}</style>${l}`, this._applyForwardedAttrs(), f) {
-        let p = f(this.shadowRoot, i, this);
-        if (typeof p === "function")
-          this._cleanup = p;
+        let m = f(this.shadowRoot, i, this);
+        if (typeof m === "function")
+          this._cleanup = m;
       }
     }
   }
-  customElements.define(a, h);
+  customElements.define(r, h);
 }
 
 // web-components/breakpoints.js
@@ -261,7 +261,7 @@ var A = `
 e("app-logo", { attrs: _, styles: A, template: S });
 
 // web-components/sections/header.js
-var T = `
+var B = `
   :host {
     display: block;
     background: var(--color-bg-primary);
@@ -308,7 +308,7 @@ var T = `
     height: 5rem;
     width: auto;
   }
-`, H = `
+`, T = `
   <header>
       <app-link variant="plain" href=${n("/")}>
         <img src=${t("./assets/images/logo.avif")}
@@ -334,10 +334,10 @@ var T = `
       </div>
   </header>
 `;
-e("section-header", { template: H, styles: T });
+e("section-header", { template: T, styles: B });
 
 // web-components/components/footer-nav.js
-var L = [
+var H = [
   { href: "/", name: "Home" },
   { href: "/about", name: "About" },
   { href: "/credits", name: "Credits" },
@@ -356,7 +356,7 @@ var L = [
     href: "/writings/foundation-building-interfaces-at-scale",
     name: "Foundation"
   }
-], B = `
+], L = `
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -408,15 +408,15 @@ var L = [
         <span>Sitemap</span>
 
         <ol>
-            ${L.map((a) => `
+            ${H.map((r) => `
                 <li>
-                    <app-link variant="sitemap" href=${n(a.href)} >${a.name}</app-link>
+                    <app-link variant="sitemap" href=${n(r.href)} >${r.name}</app-link>
                 </li>
             `).join("")}
         </ol>
     </nav>
 `;
-e("footer-nav", { styles: B, template: E });
+e("footer-nav", { styles: L, template: E });
 
 // web-components/components/footer-copyright.js
 var C = `
@@ -452,6 +452,13 @@ var C = `
     padding: 0;
     display: flex;
     gap: 2rem;
+    overflow: scroll;
+    margin-top: 0.5rem;
+  }
+
+  li {
+    display: flex;
+    align-items: center;
   }
 
   nav {
@@ -479,54 +486,54 @@ var C = `
       </p>
 
       <nav>
-        <!-- <span>Find me on:</span> -->
+        <span>Find me on:</span>
         <ul>
               <li>
-                  <app-link href="mailto:hanhtetaung.dev@gmail.com" variant="image">
+                  <a href="https://wa.me/message/DVOPVSAGBDENB1">
                   <img
-                      src=${t("./assets/icons/email.svg")}
+                      src=${t("./assets/icons/whatsapp.svg")}
                       alt="Email Icon"
                   />
-                  </app-link>
+                  </a>    
               </li>
               <li>
-                  <app-link
-                  href="https://www.instagram.com/_tenasserim_/"
+                  <a
+                  href="https://www.instagram.com/crafted.han"
                   target="_blank"
                   rel="noopener"
-                  variant="image"
+                
                   >
                   <img
                       src=${t("./assets/icons/instagram.svg")}
                       alt="Linkedin Icon"
                   />
-                  </app-link>
+                  </a>
               </li>
               <li>
-                  <app-link
+                  <a
                   href="https://www.linkedin.com/in/han-htet-aung/"
                   target="_blank"
                   rel="noopener"
-                  variant="image"
+                
                   >
                   <img
                       src=${t("./assets/icons/linkedin.svg")}
                       alt="Linkedin Icon"
                   />
-                  </app-link>
+                  </a>
               </li>
               <li>
-                  <app-link
+                  <a
                   href="https://github.com/hanhtetaung/"
                   target="_blank"
                   rel="noopener"
-                  variant="image"
+                
                   >
                   <img
                       src=${t("./assets/icons/github.svg")}
                       alt="Github Icon"
                   />
-                  </app-link>
+                  </a>
               </li>
           </ul>
         </nav>
@@ -587,7 +594,7 @@ var F = `
 e("section-footer", { styles: F, template: R });
 
 // web-components/components/app-image.js
-var I = `
+var P = `
   :host {
     --local-width: 5rem;
     --local-heigth: auto;
@@ -618,11 +625,11 @@ var I = `
    :host([variant="full"]) {
     --local-width: 100%;
   }
-`, P = ["width", "height", "src", "alt"], q = () => "<img data-forward />";
-e("app-image", { attrs: P, styles: I, template: q });
+`, I = ["width", "height", "src", "alt"], q = () => "<img data-forward />";
+e("app-image", { attrs: I, styles: P, template: q });
 
 // web-components/sections/portfolio/intro.js
-var N = `
+var D = `
   :host {
     display: block;
   }
@@ -663,7 +670,7 @@ var N = `
     font-weight: var(--font-bold);
     text-transform: uppercase;
   }
-`, O = `
+`, N = `
   <section>
       <app-image
         variant="medium"
@@ -695,10 +702,10 @@ var N = `
       </article>
   </section>
 `;
-e("section-portfolio-intro", { styles: N, template: O });
+e("section-portfolio-intro", { styles: D, template: N });
 
 // web-components/components/section-title.js
-var D = `
+var O = `
   :host {
     display: flex;
     align-items: center;
@@ -729,16 +736,16 @@ var D = `
       display: none;
     }
   }
-`, G = { name: String, img: String, alt: String }, M = ({ name: a, img: r = "", alt: s = "" }) => `
-    <h2>${a}</h2>
+`, G = { name: String, img: String, alt: String }, M = ({ name: r, img: a = "", alt: s = "" }) => `
+    <h2>${r}</h2>
     <img
-        src=${t(r)}
+        src=${t(a)}
         alt=${s}
         height="36"
         width="76"
     />
 `;
-e("section-title", { props: G, styles: D, template: M });
+e("section-title", { props: G, styles: O, template: M });
 
 // web-components/sections/portfolio/background.js
 var X = `
@@ -750,7 +757,7 @@ var X = `
     width: 80%;
     margin-inline: auto;
   }
-`, J = `
+`, V = `
   <section>
     <section-title variant="text" props='{"name": "Background"}'></section-title>
 
@@ -763,10 +770,10 @@ var X = `
     </p>
   </section>
 `;
-e("section-portfolio-background", { styles: X, template: J });
+e("section-portfolio-background", { styles: X, template: V });
 
 // web-components/sections/portfolio/challenge.js
-var K = `
+var J = `
   :host {
     display: block;
   }
@@ -775,7 +782,7 @@ var K = `
     width: 80%;
     margin-inline: auto;
   }
-`, Q = `
+`, K = `
   <section>
     <section-title variant="text" props='{"name": "Challenge"}'></section-title>
 
@@ -789,10 +796,10 @@ var K = `
     </p>
   </section>
 `;
-e("section-portfolio-challenge", { styles: K, template: Q });
+e("section-portfolio-challenge", { styles: J, template: K });
 
 // web-components/components/app-article-paragraph.js
-var V = `
+var Q = `
   :host {
     display: grid;
     grid-template-columns: 1fr 2.5fr;
@@ -814,14 +821,14 @@ var V = `
   :host([variant="block"]) {
     display: block;
   }
-`, W = { title: String }, Y = ({ title: a }) => `
-        <h3>${a}</h3>
+`, W = { title: String }, Y = ({ title: r }) => `
+        <h3>${r}</h3>
 
         <article>
             <slot></slot>
         </article>
 `;
-e("app-article-paragraph", { props: W, styles: V, template: Y });
+e("app-article-paragraph", { props: W, styles: Q, template: Y });
 
 // web-components/sections/portfolio/process.js
 var Z = `

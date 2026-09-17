@@ -84,7 +84,7 @@ function y(t, r) {
     return Number(t);
   return t;
 }
-function e(t, { props: r = {}, attrs: s = [], styles: c = "", template: p, onRender: f = null }) {
+function e(t, { props: r = {}, attrs: s = [], styles: c = "", template: d, onRender: f = null }) {
   let b = ["props", ...s];
 
   class h extends HTMLElement {
@@ -114,8 +114,8 @@ function e(t, { props: r = {}, attrs: s = [], styles: c = "", template: p, onRen
           i = {};
         }
       let m = {};
-      for (let d of Object.keys(r))
-        m[d] = y(i[d], r[d]);
+      for (let p of Object.keys(r))
+        m[p] = y(i[p], r[p]);
       return m;
     }
     _applyForwardedAttrs() {
@@ -133,7 +133,7 @@ function e(t, { props: r = {}, attrs: s = [], styles: c = "", template: p, onRen
     _render() {
       if (typeof this._cleanup === "function")
         this._cleanup(), this._cleanup = null;
-      let i = this._getProps(), n = typeof p === "function" ? p(i) : p;
+      let i = this._getProps(), n = typeof d === "function" ? d(i) : d;
       if (this.shadowRoot.innerHTML = `<style>${c}</style>${n}`, this._applyForwardedAttrs(), f) {
         let m = f(this.shadowRoot, i, this);
         if (typeof m === "function")
@@ -167,12 +167,12 @@ var w = `
     /* border-color: var(--color-tertiary); */
     /* border-color: #a36aa5; */
   }
-`, k = `
+`, x = `
 `;
-e("app-frame", { styles: w, template: k });
+e("app-frame", { styles: w, template: x });
 
 // web-components/components/app-link.js
-var x = `
+var k = `
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -236,7 +236,7 @@ var x = `
 `, $ = ["href", "target", "rel", "download"], z = `
   <a data-forward><slot></slot></a>
 `;
-e("app-link", { attrs: $, styles: x, template: z });
+e("app-link", { attrs: $, styles: k, template: z });
 
 // web-components/components/app-logo.js
 var A = `
@@ -248,11 +248,11 @@ var A = `
     max-height: 7rem;
     width: auto;
   }
-`, _ = ["width", "height", "src", "alt"], T = () => "<img data-forward />";
-e("app-logo", { attrs: _, styles: A, template: T });
+`, _ = ["width", "height", "src", "alt"], B = () => "<img data-forward />";
+e("app-logo", { attrs: _, styles: A, template: B });
 
 // web-components/sections/header.js
-var L = `
+var T = `
   :host {
     display: block;
     background: var(--color-bg-primary);
@@ -299,7 +299,7 @@ var L = `
     height: 5rem;
     width: auto;
   }
-`, B = `
+`, L = `
   <header>
       <app-link variant="plain" href=${l("/")}>
         <img src=${a("./assets/images/logo.avif")}
@@ -325,10 +325,10 @@ var L = `
       </div>
   </header>
 `;
-e("section-header", { template: B, styles: L });
+e("section-header", { template: L, styles: T });
 
 // web-components/components/footer-nav.js
-var H = [
+var E = [
   { href: "/", name: "Home" },
   { href: "/about", name: "About" },
   { href: "/credits", name: "Credits" },
@@ -347,7 +347,7 @@ var H = [
     href: "/writings/foundation-building-interfaces-at-scale",
     name: "Foundation"
   }
-], E = `
+], H = `
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -399,7 +399,7 @@ var H = [
         <span>Sitemap</span>
 
         <ol>
-            ${H.map((t) => `
+            ${E.map((t) => `
                 <li>
                     <app-link variant="sitemap" href=${l(t.href)} >${t.name}</app-link>
                 </li>
@@ -407,7 +407,7 @@ var H = [
         </ol>
     </nav>
 `;
-e("footer-nav", { styles: E, template: S });
+e("footer-nav", { styles: H, template: S });
 
 // web-components/components/footer-copyright.js
 var C = `
@@ -443,6 +443,13 @@ var C = `
     padding: 0;
     display: flex;
     gap: 2rem;
+    overflow: scroll;
+    margin-top: 0.5rem;
+  }
+
+  li {
+    display: flex;
+    align-items: center;
   }
 
   nav {
@@ -470,54 +477,54 @@ var C = `
       </p>
 
       <nav>
-        <!-- <span>Find me on:</span> -->
+        <span>Find me on:</span>
         <ul>
               <li>
-                  <app-link href="mailto:hanhtetaung.dev@gmail.com" variant="image">
+                  <a href="https://wa.me/message/DVOPVSAGBDENB1">
                   <img
-                      src=${a("./assets/icons/email.svg")}
+                      src=${a("./assets/icons/whatsapp.svg")}
                       alt="Email Icon"
                   />
-                  </app-link>
+                  </a>    
               </li>
               <li>
-                  <app-link
-                  href="https://www.instagram.com/_tenasserim_/"
+                  <a
+                  href="https://www.instagram.com/crafted.han"
                   target="_blank"
                   rel="noopener"
-                  variant="image"
+                
                   >
                   <img
                       src=${a("./assets/icons/instagram.svg")}
                       alt="Linkedin Icon"
                   />
-                  </app-link>
+                  </a>
               </li>
               <li>
-                  <app-link
+                  <a
                   href="https://www.linkedin.com/in/han-htet-aung/"
                   target="_blank"
                   rel="noopener"
-                  variant="image"
+                
                   >
                   <img
                       src=${a("./assets/icons/linkedin.svg")}
                       alt="Linkedin Icon"
                   />
-                  </app-link>
+                  </a>
               </li>
               <li>
-                  <app-link
+                  <a
                   href="https://github.com/hanhtetaung/"
                   target="_blank"
                   rel="noopener"
-                  variant="image"
+                
                   >
                   <img
                       src=${a("./assets/icons/github.svg")}
                       alt="Github Icon"
                   />
-                  </app-link>
+                  </a>
               </li>
           </ul>
         </nav>
@@ -578,7 +585,7 @@ var F = `
 e("section-footer", { styles: F, template: R });
 
 // web-components/components/app-icon.js
-var q = `
+var P = `
   :host {
     --local-width: 3rem;
     --local-height: auto;
@@ -616,11 +623,11 @@ var q = `
   }
 
 
-`, I = ["src", "alt"], P = () => '<img data-forward width="200" height="200"/>';
-e("app-icon", { attrs: I, styles: q, template: P });
+`, q = ["src", "alt"], I = () => '<img data-forward width="200" height="200"/>';
+e("app-icon", { attrs: q, styles: P, template: I });
 
 // web-components/sections/404-intro.js
-var j = `
+var N = `
   :host {
     display: block;
     margin-block: 10rem;
@@ -647,7 +654,7 @@ var j = `
     margin: 0;
     margin-bottom: 1.5rem;
   }
-`, N = `
+`, O = `
   <section>
       <hgroup>
         <h1>404</h1>
@@ -661,6 +668,6 @@ var j = `
       ></app-icon>
   </section>
 `;
-e("section-404-intro", { styles: j, template: N });
+e("section-404-intro", { styles: N, template: O });
 </script></body>
 </html>

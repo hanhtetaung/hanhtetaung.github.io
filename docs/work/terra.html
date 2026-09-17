@@ -42,14 +42,14 @@
     <section-footer></section-footer>
   <script type="module">// web-components/asset.js
 function g() {
-  let a = document.documentElement.dataset.base || "./";
-  return new URL(a, location.href);
+  let o = document.documentElement.dataset.base || "./";
+  return new URL(o, location.href);
 }
-function t(a) {
-  return new URL(a, g()).href;
+function t(o) {
+  return new URL(o, g()).href;
 }
-function n(a) {
-  let r = a.replace(/^\//, ""), s = location.protocol === "file:", c = g();
+function n(o) {
+  let r = o.replace(/^\//, ""), s = location.protocol === "file:", c = g();
   if (r === "")
     return s ? new URL("index.html", c).href : c.href;
   return s ? new URL(`${r}.html`, c).href : new URL(r, c).href;
@@ -75,8 +75,8 @@ u.textContent = v;
 document.head.appendChild(u);
 
 // web-components/define.js
-function y(a, r) {
-  if (a === void 0) {
+function y(o, r) {
+  if (o === void 0) {
     if (r === Array)
       return [];
     if (r === Object)
@@ -88,12 +88,12 @@ function y(a, r) {
     return;
   }
   if (r === Boolean)
-    return Boolean(a);
+    return Boolean(o);
   if (r === Number)
-    return Number(a);
-  return a;
+    return Number(o);
+  return o;
 }
-function e(a, { props: r = {}, attrs: s = [], styles: c = "", template: d, onRender: h = null }) {
+function e(o, { props: r = {}, attrs: s = [], styles: c = "", template: d, onRender: h = null }) {
   let b = ["props", ...s];
 
   class f extends HTMLElement {
@@ -150,11 +150,11 @@ function e(a, { props: r = {}, attrs: s = [], styles: c = "", template: d, onRen
       }
     }
   }
-  customElements.define(a, f);
+  customElements.define(o, f);
 }
 
 // web-components/breakpoints.js
-var o = "640px";
+var a = "640px";
 
 // web-components/components/app-frame.js
 var w = `
@@ -166,7 +166,7 @@ var w = `
     border: 7px solid var(--color-secondary);
     pointer-events: none;
 
-    @media (max-width: ${o}) {
+    @media (max-width: ${a}) {
       border-width: 5px;
     }
   }
@@ -176,12 +176,12 @@ var w = `
     /* border-color: var(--color-tertiary); */
     /* border-color: #a36aa5; */
   }
-`, k = `
+`, x = `
 `;
-e("app-frame", { styles: w, template: k });
+e("app-frame", { styles: w, template: x });
 
 // web-components/components/app-link.js
-var x = `
+var k = `
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -245,7 +245,7 @@ var x = `
 `, $ = ["href", "target", "rel", "download"], z = `
   <a data-forward><slot></slot></a>
 `;
-e("app-link", { attrs: $, styles: x, template: z });
+e("app-link", { attrs: $, styles: k, template: z });
 
 // web-components/components/app-logo.js
 var S = `
@@ -257,11 +257,11 @@ var S = `
     max-height: 7rem;
     width: auto;
   }
-`, A = ["width", "height", "src", "alt"], _ = () => "<img data-forward />";
-e("app-logo", { attrs: A, styles: S, template: _ });
+`, A = ["width", "height", "src", "alt"], T = () => "<img data-forward />";
+e("app-logo", { attrs: A, styles: S, template: T });
 
 // web-components/sections/header.js
-var T = `
+var _ = `
   :host {
     display: block;
     background: var(--color-bg-primary);
@@ -298,7 +298,7 @@ var T = `
     box-shadow: none;
   }
 
-  @media (max-width: ${o}) {
+  @media (max-width: ${a}) {
     .header__navigation {
       gap: 4rem;
     }
@@ -308,7 +308,7 @@ var T = `
     height: 5rem;
     width: auto;
   }
-`, H = `
+`, B = `
   <header>
       <app-link variant="plain" href=${n("/")}>
         <img src=${t("./assets/images/logo.avif")}
@@ -334,10 +334,10 @@ var T = `
       </div>
   </header>
 `;
-e("section-header", { template: H, styles: T });
+e("section-header", { template: B, styles: _ });
 
 // web-components/components/footer-nav.js
-var L = [
+var H = [
   { href: "/", name: "Home" },
   { href: "/about", name: "About" },
   { href: "/credits", name: "Credits" },
@@ -356,7 +356,7 @@ var L = [
     href: "/writings/foundation-building-interfaces-at-scale",
     name: "Foundation"
   }
-], B = `
+], L = `
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -365,7 +365,7 @@ var L = [
    display: flex;
    gap: 5rem;
 
-   @media (max-width: ${o}) {
+   @media (max-width: ${a}) {
         flex-direction: column;
         gap: 3rem;
         margin-block: 2rem;
@@ -394,7 +394,7 @@ var L = [
     max-height: 12.5ch;
     overflow: scroll;
 
-    @media (max-width: ${o}) {
+    @media (max-width: ${a}) {
         max-height: 20ch;
     }
   }
@@ -408,15 +408,15 @@ var L = [
         <span>Sitemap</span>
 
         <ol>
-            ${L.map((a) => `
+            ${H.map((o) => `
                 <li>
-                    <app-link variant="sitemap" href=${n(a.href)} >${a.name}</app-link>
+                    <app-link variant="sitemap" href=${n(o.href)} >${o.name}</app-link>
                 </li>
             `).join("")}
         </ol>
     </nav>
 `;
-e("footer-nav", { styles: B, template: E });
+e("footer-nav", { styles: L, template: E });
 
 // web-components/components/footer-copyright.js
 var C = `
@@ -427,7 +427,7 @@ var C = `
     padding-top: 1rem;
     margin-top: 3rem;
 
-   @media (max-width: ${o}) {
+   @media (max-width: ${a}) {
         flex-direction: column-reverse;
         gap: 2rem;
         border: none;
@@ -440,7 +440,7 @@ var C = `
     border-top: 1px solid var(--color-text);
     padding-top: 1rem;
 
-    @media (min-width: ${o}) {
+    @media (min-width: ${a}) {
       border: none;
       padding-top: none;
     }
@@ -452,12 +452,19 @@ var C = `
     padding: 0;
     display: flex;
     gap: 2rem;
+    overflow: scroll;
+    margin-top: 0.5rem;
+  }
+
+  li {
+    display: flex;
+    align-items: center;
   }
 
   nav {
     display: block;
 
-    @media (min-width: ${o}) {
+    @media (min-width: ${a}) {
       display: block;
     }
   }
@@ -468,7 +475,7 @@ var C = `
     font-weight: var(--font-bold);
     
 
-    @media (max-width: ${o}) {
+    @media (max-width: ${a}) {
       display: inline-block;
       margin-bottom: 0.5rem;
     }
@@ -479,54 +486,54 @@ var C = `
       </p>
 
       <nav>
-        <!-- <span>Find me on:</span> -->
+        <span>Find me on:</span>
         <ul>
               <li>
-                  <app-link href="mailto:hanhtetaung.dev@gmail.com" variant="image">
+                  <a href="https://wa.me/message/DVOPVSAGBDENB1">
                   <img
-                      src=${t("./assets/icons/email.svg")}
+                      src=${t("./assets/icons/whatsapp.svg")}
                       alt="Email Icon"
                   />
-                  </app-link>
+                  </a>    
               </li>
               <li>
-                  <app-link
-                  href="https://www.instagram.com/_tenasserim_/"
+                  <a
+                  href="https://www.instagram.com/crafted.han"
                   target="_blank"
                   rel="noopener"
-                  variant="image"
+                
                   >
                   <img
                       src=${t("./assets/icons/instagram.svg")}
                       alt="Linkedin Icon"
                   />
-                  </app-link>
+                  </a>
               </li>
               <li>
-                  <app-link
+                  <a
                   href="https://www.linkedin.com/in/han-htet-aung/"
                   target="_blank"
                   rel="noopener"
-                  variant="image"
+                
                   >
                   <img
                       src=${t("./assets/icons/linkedin.svg")}
                       alt="Linkedin Icon"
                   />
-                  </app-link>
+                  </a>
               </li>
               <li>
-                  <app-link
+                  <a
                   href="https://github.com/hanhtetaung/"
                   target="_blank"
                   rel="noopener"
-                  variant="image"
+                
                   >
                   <img
                       src=${t("./assets/icons/github.svg")}
                       alt="Github Icon"
                   />
-                  </app-link>
+                  </a>
               </li>
           </ul>
         </nav>
@@ -560,7 +567,7 @@ var U = `
     display: none;
   }
 
-@media (min-width: ${o}) {
+@media (min-width: ${a}) {
   img:first-child {
     display: block;
   }
@@ -571,7 +578,7 @@ var U = `
 }
 
 
-`, R = `
+`, P = `
   <footer>
 
   <img src=${t("./assets/images/footer/highlight.avif")} alt="Parting phrase">
@@ -584,10 +591,10 @@ var U = `
     <footer-copyright></footer-copyright>
   </footer>
 `;
-e("section-footer", { styles: U, template: R });
+e("section-footer", { styles: U, template: P });
 
 // web-components/components/app-image.js
-var P = `
+var R = `
   :host {
     --local-width: 5rem;
     --local-heigth: auto;
@@ -618,11 +625,11 @@ var P = `
    :host([variant="full"]) {
     --local-width: 100%;
   }
-`, I = ["width", "height", "src", "alt"], q = () => "<img data-forward />";
-e("app-image", { attrs: I, styles: P, template: q });
+`, G = ["width", "height", "src", "alt"], I = () => "<img data-forward />";
+e("app-image", { attrs: G, styles: R, template: I });
 
 // web-components/sections/terra/intro.js
-var G = `
+var q = `
   :host {
     display: block;
   }
@@ -636,7 +643,7 @@ var G = `
     justify-content: space-between;
     gap: 3rem;
 
-    @media (max-width: ${o}) {
+    @media (max-width: ${a}) {
       flex-direction: column;
     }
   }
@@ -663,7 +670,7 @@ var G = `
     font-weight: var(--font-bold);
     text-transform: uppercase;
   }
-`, M = `
+`, D = `
   <section>
     <app-image
       variant="large"
@@ -693,7 +700,7 @@ var G = `
     </article>
   </section>
 `;
-e("section-terra-intro", { styles: G, template: M });
+e("section-terra-intro", { styles: q, template: D });
 
 // web-components/components/section-title.js
 var N = `
@@ -727,8 +734,8 @@ var N = `
       display: none;
     }
   }
-`, O = { name: String, img: String, alt: String }, D = ({ name: a, img: r = "", alt: s = "" }) => `
-    <h2>${a}</h2>
+`, O = { name: String, img: String, alt: String }, M = ({ name: o, img: r = "", alt: s = "" }) => `
+    <h2>${o}</h2>
     <img
         src=${t(r)}
         alt=${s}
@@ -736,7 +743,7 @@ var N = `
         width="76"
     />
 `;
-e("section-title", { props: O, styles: N, template: D });
+e("section-title", { props: O, styles: N, template: M });
 
 // web-components/sections/terra/overview.js
 var X = `
@@ -752,7 +759,7 @@ var X = `
   p {
     margin-block: 2rem;
   }
-`, J = `
+`, V = `
   <section>
     <section-title
         variant="text"
@@ -780,10 +787,10 @@ var X = `
       </article>
   </section>
 `;
-e("section-terra-overview", { styles: X, template: J });
+e("section-terra-overview", { styles: X, template: V });
 
 // web-components/sections/terra/building-block.js
-var Q = `
+var J = `
   :host {
     display: block;
   }
@@ -816,7 +823,7 @@ var Q = `
     display: block;
     margin-bottom: 2rem;
   }
-`, K = `
+`, Q = `
   <section>
     <section-title
         variant="text"
@@ -869,16 +876,16 @@ var Q = `
           </article>
   </section>
 `;
-e("section-terra-building-block", { styles: Q, template: K });
+e("section-terra-building-block", { styles: J, template: Q });
 
 // web-components/components/app-article-paragraph.js
-var V = `
+var K = `
   :host {
     display: grid;
     grid-template-columns: 1fr 2.5fr;
 
 
-    @media (max-width: ${o}) {
+    @media (max-width: ${a}) {
         display: block;
     }
   }
@@ -894,14 +901,14 @@ var V = `
   :host([variant="block"]) {
     display: block;
   }
-`, Y = { title: String }, Z = ({ title: a }) => `
-        <h3>${a}</h3>
+`, Y = { title: String }, Z = ({ title: o }) => `
+        <h3>${o}</h3>
 
         <article>
             <slot></slot>
         </article>
 `;
-e("app-article-paragraph", { props: Y, styles: V, template: Z });
+e("app-article-paragraph", { props: Y, styles: K, template: Z });
 
 // web-components/sections/terra/need-one-interface.js
 var j = `

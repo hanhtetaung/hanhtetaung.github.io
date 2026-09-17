@@ -93,7 +93,7 @@ const template = /* html */ `
       <p>Han Htet Aung | GMT+7</p>
       <h1>Craft Web Interfaces</h1>
     </hgroup>
-    <p>Web Designer & Developer who brings hand-drawn illustrations into every site.</p>
+    <p>Web Designer & Developer who brings hand-drawn illustrations to every site.</p>
     <div id="img-wrap">
       <img id="visible-img" src="./assets/images/home/walking-holding-luggage.avif" alt="Man walking and holding luggage">
       <img id="lens-img" src="./assets/images/home/walking-holding-luggage-color.avif" alt="Man walking and holding luggage with color" aria-hidden="true">
@@ -101,8 +101,6 @@ const template = /* html */ `
     </div>
   </section>
 `;
-
-const LENS_RADIUS = 50;
 
 function script(shadowRoot) {
   const wrap = shadowRoot.getElementById("img-wrap");

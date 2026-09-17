@@ -41,21 +41,21 @@
     <section-footer variant="secondary"></section-footer>
   <script type="module">// web-components/asset.js
 function g() {
-  let i = document.documentElement.dataset.base || "./";
-  return new URL(i, location.href);
+  let o = document.documentElement.dataset.base || "./";
+  return new URL(o, location.href);
 }
-function e(i) {
-  return new URL(i, g()).href;
+function e(o) {
+  return new URL(o, g()).href;
 }
-function s(i) {
-  let a = i.replace(/^\//, ""), l = location.protocol === "file:", c = g();
-  if (a === "")
+function s(o) {
+  let r = o.replace(/^\//, ""), l = location.protocol === "file:", c = g();
+  if (r === "")
     return l ? new URL("index.html", c).href : c.href;
-  return l ? new URL(`${a}.html`, c).href : new URL(a, c).href;
+  return l ? new URL(`${r}.html`, c).href : new URL(r, c).href;
 }
 
 // web-components/fonts.js
-var b = `
+var v = `
 @font-face {
     font-family: "Archivo";
     src: url("${e("./assets/fonts/Archivo-Black.woff2")}") format("woff2");
@@ -70,33 +70,33 @@ var b = `
     font-display: swap;
   }
 `, u = document.createElement("style");
-u.textContent = b;
+u.textContent = v;
 document.head.appendChild(u);
 
 // web-components/define.js
-function y(i, a) {
-  if (i === void 0) {
-    if (a === Array)
+function y(o, r) {
+  if (o === void 0) {
+    if (r === Array)
       return [];
-    if (a === Object)
+    if (r === Object)
       return {};
-    if (a === Boolean)
+    if (r === Boolean)
       return !1;
-    if (a === Number)
+    if (r === Number)
       return 0;
     return;
   }
-  if (a === Boolean)
-    return Boolean(i);
-  if (a === Number)
-    return Number(i);
-  return i;
+  if (r === Boolean)
+    return Boolean(o);
+  if (r === Number)
+    return Number(o);
+  return o;
 }
-function t(i, { props: a = {}, attrs: l = [], styles: c = "", template: m, onRender: f = null }) {
-  let v = ["props", ...l];
+function t(o, { props: r = {}, attrs: l = [], styles: c = "", template: m, onRender: f = null }) {
+  let b = ["props", ...l];
 
   class h extends HTMLElement {
-    static observedAttributes = v;
+    static observedAttributes = b;
     constructor() {
       super();
       this.attachShadow({ mode: "open" }), this._cleanup = null;
@@ -114,46 +114,46 @@ function t(i, { props: a = {}, attrs: l = [], styles: c = "", template: m, onRen
         this._render();
     }
     _getProps() {
-      let r = {}, n = this.getAttribute("props");
+      let a = {}, n = this.getAttribute("props");
       if (n)
         try {
-          r = JSON.parse(n);
+          a = JSON.parse(n);
         } catch {
-          r = {};
+          a = {};
         }
       let d = {};
-      for (let p of Object.keys(a))
-        d[p] = y(r[p], a[p]);
+      for (let p of Object.keys(r))
+        d[p] = y(a[p], r[p]);
       return d;
     }
     _applyForwardedAttrs() {
       if (l.length === 0)
         return;
-      let r = this.shadowRoot.querySelector("[data-forward]");
-      if (!r)
+      let a = this.shadowRoot.querySelector("[data-forward]");
+      if (!a)
         return;
       for (let n of l)
         if (this.hasAttribute(n))
-          r.setAttribute(n, this.getAttribute(n));
+          a.setAttribute(n, this.getAttribute(n));
         else
-          r.removeAttribute(n);
+          a.removeAttribute(n);
     }
     _render() {
       if (typeof this._cleanup === "function")
         this._cleanup(), this._cleanup = null;
-      let r = this._getProps(), n = typeof m === "function" ? m(r) : m;
+      let a = this._getProps(), n = typeof m === "function" ? m(a) : m;
       if (this.shadowRoot.innerHTML = `<style>${c}</style>${n}`, this._applyForwardedAttrs(), f) {
-        let d = f(this.shadowRoot, r, this);
+        let d = f(this.shadowRoot, a, this);
         if (typeof d === "function")
           this._cleanup = d;
       }
     }
   }
-  customElements.define(i, h);
+  customElements.define(o, h);
 }
 
 // web-components/breakpoints.js
-var o = "640px";
+var i = "640px";
 
 // web-components/components/app-frame.js
 var w = `
@@ -165,7 +165,7 @@ var w = `
     border: 7px solid var(--color-secondary);
     pointer-events: none;
 
-    @media (max-width: ${o}) {
+    @media (max-width: ${i}) {
       border-width: 5px;
     }
   }
@@ -175,12 +175,12 @@ var w = `
     /* border-color: var(--color-tertiary); */
     /* border-color: #a36aa5; */
   }
-`, k = `
+`, x = `
 `;
-t("app-frame", { styles: w, template: k });
+t("app-frame", { styles: w, template: x });
 
 // web-components/components/app-link.js
-var x = `
+var k = `
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -244,7 +244,7 @@ var x = `
 `, $ = ["href", "target", "rel", "download"], z = `
   <a data-forward><slot></slot></a>
 `;
-t("app-link", { attrs: $, styles: x, template: z });
+t("app-link", { attrs: $, styles: k, template: z });
 
 // web-components/components/app-logo.js
 var A = `
@@ -260,7 +260,7 @@ var A = `
 t("app-logo", { attrs: _, styles: A, template: B });
 
 // web-components/sections/header.js
-var T = `
+var S = `
   :host {
     display: block;
     background: var(--color-bg-primary);
@@ -297,7 +297,7 @@ var T = `
     box-shadow: none;
   }
 
-  @media (max-width: ${o}) {
+  @media (max-width: ${i}) {
     .header__navigation {
       gap: 4rem;
     }
@@ -307,7 +307,7 @@ var T = `
     height: 5rem;
     width: auto;
   }
-`, L = `
+`, T = `
   <header>
       <app-link variant="plain" href=${s("/")}>
         <img src=${e("./assets/images/logo.avif")}
@@ -333,10 +333,10 @@ var T = `
       </div>
   </header>
 `;
-t("section-header", { template: L, styles: T });
+t("section-header", { template: T, styles: S });
 
 // web-components/components/footer-nav.js
-var S = [
+var L = [
   { href: "/", name: "Home" },
   { href: "/about", name: "About" },
   { href: "/credits", name: "Credits" },
@@ -355,7 +355,7 @@ var S = [
     href: "/writings/foundation-building-interfaces-at-scale",
     name: "Foundation"
   }
-], H = `
+], E = `
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -364,7 +364,7 @@ var S = [
    display: flex;
    gap: 5rem;
 
-   @media (max-width: ${o}) {
+   @media (max-width: ${i}) {
         flex-direction: column;
         gap: 3rem;
         margin-block: 2rem;
@@ -393,7 +393,7 @@ var S = [
     max-height: 12.5ch;
     overflow: scroll;
 
-    @media (max-width: ${o}) {
+    @media (max-width: ${i}) {
         max-height: 20ch;
     }
   }
@@ -402,20 +402,20 @@ var S = [
     margin-right: 5rem;
     margin-bottom: 0.3rem;
   }
-`, E = () => `
+`, H = () => `
     <nav>
         <span>Sitemap</span>
 
         <ol>
-            ${S.map((i) => `
+            ${L.map((o) => `
                 <li>
-                    <app-link variant="sitemap" href=${s(i.href)} >${i.name}</app-link>
+                    <app-link variant="sitemap" href=${s(o.href)} >${o.name}</app-link>
                 </li>
             `).join("")}
         </ol>
     </nav>
 `;
-t("footer-nav", { styles: H, template: E });
+t("footer-nav", { styles: E, template: H });
 
 // web-components/components/footer-copyright.js
 var U = `
@@ -426,7 +426,7 @@ var U = `
     padding-top: 1rem;
     margin-top: 3rem;
 
-   @media (max-width: ${o}) {
+   @media (max-width: ${i}) {
         flex-direction: column-reverse;
         gap: 2rem;
         border: none;
@@ -439,7 +439,7 @@ var U = `
     border-top: 1px solid var(--color-text);
     padding-top: 1rem;
 
-    @media (min-width: ${o}) {
+    @media (min-width: ${i}) {
       border: none;
       padding-top: none;
     }
@@ -451,12 +451,19 @@ var U = `
     padding: 0;
     display: flex;
     gap: 2rem;
+    overflow: scroll;
+    margin-top: 0.5rem;
+  }
+
+  li {
+    display: flex;
+    align-items: center;
   }
 
   nav {
     display: block;
 
-    @media (min-width: ${o}) {
+    @media (min-width: ${i}) {
       display: block;
     }
   }
@@ -467,7 +474,7 @@ var U = `
     font-weight: var(--font-bold);
     
 
-    @media (max-width: ${o}) {
+    @media (max-width: ${i}) {
       display: inline-block;
       margin-bottom: 0.5rem;
     }
@@ -478,54 +485,54 @@ var U = `
       </p>
 
       <nav>
-        <!-- <span>Find me on:</span> -->
+        <span>Find me on:</span>
         <ul>
               <li>
-                  <app-link href="mailto:hanhtetaung.dev@gmail.com" variant="image">
+                  <a href="https://wa.me/message/DVOPVSAGBDENB1">
                   <img
-                      src=${e("./assets/icons/email.svg")}
+                      src=${e("./assets/icons/whatsapp.svg")}
                       alt="Email Icon"
                   />
-                  </app-link>
+                  </a>    
               </li>
               <li>
-                  <app-link
-                  href="https://www.instagram.com/_tenasserim_/"
+                  <a
+                  href="https://www.instagram.com/crafted.han"
                   target="_blank"
                   rel="noopener"
-                  variant="image"
+                
                   >
                   <img
                       src=${e("./assets/icons/instagram.svg")}
                       alt="Linkedin Icon"
                   />
-                  </app-link>
+                  </a>
               </li>
               <li>
-                  <app-link
+                  <a
                   href="https://www.linkedin.com/in/han-htet-aung/"
                   target="_blank"
                   rel="noopener"
-                  variant="image"
+                
                   >
                   <img
                       src=${e("./assets/icons/linkedin.svg")}
                       alt="Linkedin Icon"
                   />
-                  </app-link>
+                  </a>
               </li>
               <li>
-                  <app-link
+                  <a
                   href="https://github.com/hanhtetaung/"
                   target="_blank"
                   rel="noopener"
-                  variant="image"
+                
                   >
                   <img
                       src=${e("./assets/icons/github.svg")}
                       alt="Github Icon"
                   />
-                  </app-link>
+                  </a>
               </li>
           </ul>
         </nav>
@@ -559,7 +566,7 @@ var F = `
     display: none;
   }
 
-@media (min-width: ${o}) {
+@media (min-width: ${i}) {
   img:first-child {
     display: block;
   }
@@ -615,7 +622,7 @@ var I = `
     flex-direction: column;
     gap: 0.5rem;
   }
-`, q = `
+`, O = `
   <section>
     <h1>Foundation for Building Interfaces at Scale</h1>
 
@@ -642,11 +649,11 @@ var I = `
 `;
 t("section-foundation-building-interfaces-at-scale-intro", {
   styles: I,
-  template: q
+  template: O
 });
 
 // web-components/components/section-title.js
-var O = `
+var q = `
   :host {
     display: flex;
     align-items: center;
@@ -677,19 +684,19 @@ var O = `
       display: none;
     }
   }
-`, N = { name: String, img: String, alt: String }, P = ({ name: i, img: a = "", alt: l = "" }) => `
-    <h2>${i}</h2>
+`, N = { name: String, img: String, alt: String }, P = ({ name: o, img: r = "", alt: l = "" }) => `
+    <h2>${o}</h2>
     <img
-        src=${e(a)}
+        src=${e(r)}
         alt=${l}
         height="36"
         width="76"
     />
 `;
-t("section-title", { props: N, styles: O, template: P });
+t("section-title", { props: N, styles: q, template: P });
 
 // web-components/components/app-image.js
-var G = `
+var D = `
   :host {
     --local-width: 5rem;
     --local-heigth: auto;
@@ -720,17 +727,17 @@ var G = `
    :host([variant="full"]) {
     --local-width: 100%;
   }
-`, M = ["width", "height", "src", "alt"], X = () => "<img data-forward />";
-t("app-image", { attrs: M, styles: G, template: X });
+`, G = ["width", "height", "src", "alt"], M = () => "<img data-forward />";
+t("app-image", { attrs: G, styles: D, template: M });
 
 // web-components/components/app-article-paragraph.js
-var D = `
+var X = `
   :host {
     display: grid;
     grid-template-columns: 1fr 2.5fr;
 
 
-    @media (max-width: ${o}) {
+    @media (max-width: ${i}) {
         display: block;
     }
   }
@@ -746,17 +753,17 @@ var D = `
   :host([variant="block"]) {
     display: block;
   }
-`, J = { title: String }, K = ({ title: i }) => `
-        <h3>${i}</h3>
+`, V = { title: String }, J = ({ title: o }) => `
+        <h3>${o}</h3>
 
         <article>
             <slot></slot>
         </article>
 `;
-t("app-article-paragraph", { props: J, styles: D, template: K });
+t("app-article-paragraph", { props: V, styles: X, template: J });
 
 // web-components/sections/foundation-building-interfaces-at-scale/atomic-design-principle.js
-var Q = `
+var K = `
   :host {
     display: block;
   }
@@ -782,7 +789,7 @@ var Q = `
     border-top: 1px dashed var(--color-text);
     padding-top: 5rem;
   }
-`, Y = `
+`, Q = `
   <section >
     <section-title variant="text" props='{"name": "Atomic Design Principle"}'></section-title>
 
@@ -875,10 +882,10 @@ var Q = `
     </ul>
   </section>
 `;
-t("section-atomic-design-principle", { styles: Q, template: Y });
+t("section-atomic-design-principle", { styles: K, template: Q });
 
 // web-components/sections/foundation-building-interfaces-at-scale/design-token-architecture.js
-var Z = `
+var Y = `
   :host {
     display: block;
   }
@@ -909,7 +916,7 @@ var Z = `
     padding: 0;
     padding-left: 1.5rem;
   }
-`, V = `
+`, Z = `
   <section>
     <section-title variant="text" props='{"name": "Design Token Architecture"}'></section-title>
 
@@ -1009,7 +1016,7 @@ var Z = `
 </ul>
   </section>
 `;
-t("section-design-token-architecture", { styles: Z, template: V });
+t("section-design-token-architecture", { styles: Y, template: Z });
 
 // web-components/sections/foundation-building-interfaces-at-scale/references.js
 var j = `

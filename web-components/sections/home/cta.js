@@ -52,14 +52,13 @@ const styles = /* css */ `
     width: 100%;
     display: flex;
     gap: 2rem;
-    align-items: center;
     border-bottom: 1px solid var(--color-text);
     padding-block: 2rem;
     overflow: scroll;
 
     @media (min-width: ${TABLET}) {
       max-width: 50%;
-      gap: 5rem;
+      gap: 3rem;
     }
   }
 
@@ -111,12 +110,14 @@ const template = /* html */ `
 
   <hgroup>
     <p>[ Let's Craft ]</p>
-    <h2>You Bring the Story <br>
-          I Craft the Website
-      </h2>
+    <h2>Open to Working Together</h2>
   </hgroup>
 
   <ul>
+    <li>
+      <app-logo src=${asset("./assets/icons/whatsapp.svg")} alt="Whatsapp icon"></app-logo>
+      <a href="https://wa.me/message/DVOPVSAGBDENB1" target="_blank">wa/crafted.han</a>
+    </li>
     <li>
       <app-logo src=${asset("./assets/icons/email.svg")} alt="Email icon"></app-logo>
       <a href="mailto:hanhtetaung.dev@gmail.com" target="_blank">hanhtetaung.dev@gmail.com</a>

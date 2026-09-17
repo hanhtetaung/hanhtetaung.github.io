@@ -40,7 +40,7 @@ function y() {
   let a = document.documentElement.dataset.base || "./";
   return new URL(a, location.href);
 }
-function o(a) {
+function i(a) {
   return new URL(a, y()).href;
 }
 function d(a) {
@@ -54,14 +54,14 @@ function d(a) {
 var x = `
 @font-face {
     font-family: "Archivo";
-    src: url("${o("./assets/fonts/Archivo-Black.woff2")}") format("woff2");
+    src: url("${i("./assets/fonts/Archivo-Black.woff2")}") format("woff2");
     font-weight: 700;
     font-display: swap;
   }
 
   @font-face {
     font-family: "Archivo";
-    src: url("${o("./assets/fonts/Archivo-Regular.woff2")}") format("woff2");
+    src: url("${i("./assets/fonts/Archivo-Regular.woff2")}") format("woff2");
     font-weight: 400;
     font-display: swap;
   }
@@ -88,7 +88,7 @@ function k(a, e) {
     return Number(a);
   return a;
 }
-function i(a, { props: e = {}, attrs: l = [], styles: m = "", template: c, onRender: g = null }) {
+function o(a, { props: e = {}, attrs: l = [], styles: m = "", template: c, onRender: g = null }) {
   let b = ["props", ...l];
 
   class u extends HTMLElement {
@@ -213,7 +213,7 @@ var $ = `
 `, z = ["href", "target", "rel", "download"], A = `
   <a data-forward><slot></slot></a>
 `;
-i("app-link", { attrs: z, styles: $, template: A });
+o("app-link", { attrs: z, styles: $, template: A });
 
 // web-components/components/app-logo.js
 var S = `
@@ -225,14 +225,14 @@ var S = `
     max-height: 7rem;
     width: auto;
   }
-`, T = ["width", "height", "src", "alt"], _ = () => "<img data-forward />";
-i("app-logo", { attrs: T, styles: S, template: _ });
+`, T = ["width", "height", "src", "alt"], L = () => "<img data-forward />";
+o("app-logo", { attrs: T, styles: S, template: L });
 
 // web-components/breakpoints.js
 var t = "640px", s = "1024px", h = "1920px";
 
 // web-components/sections/header.js
-var L = `
+var _ = `
   :host {
     display: block;
     background: var(--color-bg-primary);
@@ -279,10 +279,10 @@ var L = `
     height: 5rem;
     width: auto;
   }
-`, C = `
+`, B = `
   <header>
       <app-link variant="plain" href=${d("/")}>
-        <img src=${o("./assets/images/logo.avif")}
+        <img src=${i("./assets/images/logo.avif")}
           alt="Logo">
       </app-link>
 
@@ -305,7 +305,7 @@ var L = `
       </div>
   </header>
 `;
-i("section-header", { template: C, styles: L });
+o("section-header", { template: B, styles: _ });
 
 // web-components/components/footer-nav.js
 var E = [
@@ -327,7 +327,7 @@ var E = [
     href: "/writings/foundation-building-interfaces-at-scale",
     name: "Foundation"
   }
-], B = `
+], C = `
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -374,7 +374,7 @@ var E = [
     margin-right: 5rem;
     margin-bottom: 0.3rem;
   }
-`, H = () => `
+`, D = () => `
     <nav>
         <span>Sitemap</span>
 
@@ -387,10 +387,10 @@ var E = [
         </ol>
     </nav>
 `;
-i("footer-nav", { styles: B, template: H });
+o("footer-nav", { styles: C, template: D });
 
 // web-components/components/footer-copyright.js
-var U = `
+var H = `
   :host {
    display: flex;
     justify-content: space-between;
@@ -423,6 +423,13 @@ var U = `
     padding: 0;
     display: flex;
     gap: 2rem;
+    overflow: scroll;
+    margin-top: 0.5rem;
+  }
+
+  li {
+    display: flex;
+    align-items: center;
   }
 
   nav {
@@ -444,68 +451,68 @@ var U = `
       margin-bottom: 0.5rem;
     }
   }
-`, D = () => `
+`, O = () => `
       <p>
         ©2026 Han Htet Aung
       </p>
 
       <nav>
-        <!-- <span>Find me on:</span> -->
+        <span>Find me on:</span>
         <ul>
               <li>
-                  <app-link href="mailto:hanhtetaung.dev@gmail.com" variant="image">
+                  <a href="https://wa.me/message/DVOPVSAGBDENB1">
                   <img
-                      src=${o("./assets/icons/email.svg")}
+                      src=${i("./assets/icons/whatsapp.svg")}
                       alt="Email Icon"
                   />
-                  </app-link>
+                  </a>    
               </li>
               <li>
-                  <app-link
-                  href="https://www.instagram.com/_tenasserim_/"
+                  <a
+                  href="https://www.instagram.com/crafted.han"
                   target="_blank"
                   rel="noopener"
-                  variant="image"
+                
                   >
                   <img
-                      src=${o("./assets/icons/instagram.svg")}
+                      src=${i("./assets/icons/instagram.svg")}
                       alt="Linkedin Icon"
                   />
-                  </app-link>
+                  </a>
               </li>
               <li>
-                  <app-link
+                  <a
                   href="https://www.linkedin.com/in/han-htet-aung/"
                   target="_blank"
                   rel="noopener"
-                  variant="image"
+                
                   >
                   <img
-                      src=${o("./assets/icons/linkedin.svg")}
+                      src=${i("./assets/icons/linkedin.svg")}
                       alt="Linkedin Icon"
                   />
-                  </app-link>
+                  </a>
               </li>
               <li>
-                  <app-link
+                  <a
                   href="https://github.com/hanhtetaung/"
                   target="_blank"
                   rel="noopener"
-                  variant="image"
+                
                   >
                   <img
-                      src=${o("./assets/icons/github.svg")}
+                      src=${i("./assets/icons/github.svg")}
                       alt="Github Icon"
                   />
-                  </app-link>
+                  </a>
               </li>
           </ul>
         </nav>
 `;
-i("footer-copyright", { styles: U, template: D });
+o("footer-copyright", { styles: H, template: O });
 
 // web-components/sections/footer.js
-var O = `
+var U = `
   :host {
     display: block;
     padding-block: 10rem;
@@ -545,9 +552,9 @@ var O = `
 `, P = `
   <footer>
 
-  <img src=${o("./assets/images/footer/highlight.avif")} alt="Parting phrase">
-  <img src=${o("./assets/images/footer/thank-you.avif")} alt="Thank you phrase">
-  <img src=${o("./assets/images/footer/looking-forward.avif")} alt="Parting Phrase">
+  <img src=${i("./assets/images/footer/highlight.avif")} alt="Parting phrase">
+  <img src=${i("./assets/images/footer/thank-you.avif")} alt="Thank you phrase">
+  <img src=${i("./assets/images/footer/looking-forward.avif")} alt="Parting Phrase">
 
 
     <!-- <footer-nav></footer-nav> -->
@@ -555,10 +562,10 @@ var O = `
     <footer-copyright></footer-copyright>
   </footer>
 `;
-i("section-footer", { styles: O, template: P });
+o("section-footer", { styles: U, template: P });
 
 // web-components/sections/home/hero.js
-var F = `
+var G = `
   :host {
     display: block;
     height: min(calc(100vh - 108px - 10rem), 70rem);
@@ -642,13 +649,13 @@ var F = `
   hgroup + p {
     max-width: min(25ch, 90%);
   }
-`, G = `
+`, F = `
   <section>
     <hgroup>
       <p>Han Htet Aung | GMT+7</p>
       <h1>Craft Web Interfaces</h1>
     </hgroup>
-    <p>Web Designer & Developer who brings hand-drawn illustrations into every site.</p>
+    <p>Web Designer & Developer who brings hand-drawn illustrations to every site.</p>
     <div id="img-wrap">
       <img id="visible-img" src="./assets/images/home/walking-holding-luggage.avif" alt="Man walking and holding luggage">
       <img id="lens-img" src="./assets/images/home/walking-holding-luggage-color.avif" alt="Man walking and holding luggage with color" aria-hidden="true">
@@ -656,7 +663,7 @@ var F = `
     </div>
   </section>
 `;
-function I(a) {
+function N(a) {
   let e = a.getElementById("img-wrap"), l = a.getElementById("visible-img"), m = a.getElementById("lens-img"), c = a.getElementById("lens-ring");
   if (!e || !l || !m || !c)
     return;
@@ -674,7 +681,7 @@ function I(a) {
     e.removeEventListener("mousemove", g), e.removeEventListener("mouseenter", b), e.removeEventListener("mouseleave", u);
   };
 }
-i("section-hero", { styles: F, template: G, onRender: I });
+o("section-hero", { styles: G, template: F, onRender: N });
 
 // web-components/sections/home/little-process.js
 var R = `
@@ -781,14 +788,14 @@ var R = `
     </li>
   </ul>
 
-  <img src=${o("./assets/images/home/craftsmanship.avif")} alt="Craftsmanship Illustration">
+  <img src=${i("./assets/images/home/craftsmanship.avif")} alt="Craftsmanship Illustration">
 </section>
 
 `;
-i("section-little-process", { styles: R, template: q });
+o("section-little-process", { styles: R, template: q });
 
 // web-components/sections/home/education.js
-var K = `
+var I = `
   :host {
     position: relative;
     display: block;
@@ -849,7 +856,7 @@ var K = `
     }
     
   }
-`, M = `
+`, K = `
   <section>
     <hgroup>
       <p>[ Education ]</p>
@@ -861,10 +868,10 @@ var K = `
   </section>
 
 `;
-i("section-education", { styles: K, template: M });
+o("section-education", { styles: I, template: K });
 
 // web-components/sections/home/hobby.js
-var N = `
+var M = `
   :host {
     display: block;
   }
@@ -900,7 +907,7 @@ var N = `
       height: auto;
     }
   }
-`, j = `
+`, V = `
   <div>
     <img src="./assets/images/home/sketching.avif" alt="Sketching SEA">
   </div>
@@ -908,13 +915,13 @@ var N = `
   <section>
     <p>[ Hobby ]</p>
     <h2>Self-taught in illustration</h2>
-    <p>All hand-drawn. I bring the same approach to every website I build.</p>
+    <p>All hand-drawn. Bring the same approach to every website I build.</p>
   </section>
 `;
-i("section-hobby", { styles: N, template: j });
+o("section-hobby", { styles: M, template: V });
 
 // web-components/sections/home/recent-crafts.js
-var X = `
+var j = `
   :host {
     position: relative;
     display: block;
@@ -978,7 +985,7 @@ var X = `
     height: 20rem;
   }
 
-`, J = `
+`, W = `
 <section>
   <hgroup>
     <p>[ Recent Crafts ]</p>
@@ -988,29 +995,29 @@ var X = `
   <ul>
      <li>
       <a href="/map/" target="_blank">
-        <img src=${o("./assets/images/home/story-map.avif")} alt="Story Map">
+        <img src=${i("./assets/images/home/story-map.avif")} alt="Story Map">
       </a>
     </li>
 
     <li>
       <a href="/terra/" target="_blank">
-        <img src=${o("./assets/images/home/terra.avif")} alt="Terra">
+        <img src=${i("./assets/images/home/terra.avif")} alt="Terra">
       </a>
     </li>
 
      <li>
        <a href="https://skssolarmyanmar.com/" target="_blank">
-         <img src=${o("./assets/images/home/sks-solar.avif")} alt="SKS Solar">
+         <img src=${i("./assets/images/home/sks-solar.avif")} alt="SKS Solar">
       </a>
     </li>
     
   </ul>
 </section>
 `;
-i("section-recent-crafts", { styles: X, template: J });
+o("section-recent-crafts", { styles: j, template: W });
 
 // web-components/sections/home/cta.js
-var W = `
+var X = `
   :host {
     display: block;
     height: 70rem;
@@ -1058,14 +1065,13 @@ var W = `
     width: 100%;
     display: flex;
     gap: 2rem;
-    align-items: center;
     border-bottom: 1px solid var(--color-text);
     padding-block: 2rem;
     overflow: scroll;
 
     @media (min-width: ${t}) {
       max-width: 50%;
-      gap: 5rem;
+      gap: 3rem;
     }
   }
 
@@ -1109,25 +1115,27 @@ var W = `
     text-decoration: none;
     color: var(--color-text);
   }
-`, Y = `
+`, J = `
 <section>
   <img src="./assets/images/home/red-telephone-box.avif" alt="Red Telephone Box">
 
   <hgroup>
     <p>[ Let's Craft ]</p>
-    <h2>You Bring the Story <br>
-          I Craft the Website
-      </h2>
+    <h2>Open to Working Together</h2>
   </hgroup>
 
   <ul>
     <li>
-      <app-logo src=${o("./assets/icons/email.svg")} alt="Email icon"></app-logo>
+      <app-logo src=${i("./assets/icons/whatsapp.svg")} alt="Whatsapp icon"></app-logo>
+      <a href="https://wa.me/message/DVOPVSAGBDENB1" target="_blank">wa/crafted.han</a>
+    </li>
+    <li>
+      <app-logo src=${i("./assets/icons/email.svg")} alt="Email icon"></app-logo>
       <a href="mailto:hanhtetaung.dev@gmail.com" target="_blank">hanhtetaung.dev@gmail.com</a>
       <button id="copyBtn">Copy</button>
     </li>
     <li>
-      <app-logo src=${o("./assets/icons/linkedin.svg")} alt="Linkedin icon"></app-logo>
+      <app-logo src=${i("./assets/icons/linkedin.svg")} alt="Linkedin icon"></app-logo>
       <a href="https://www.linkedin.com/in/han-htet-aung/" target="_blank">in/han-htet-aung</a>
     </li>
   </ul>
@@ -1146,6 +1154,6 @@ function Q(a) {
     });
   });
 }
-i("section-cta", { styles: W, template: Y, onRender: Q });
+o("section-cta", { styles: X, template: J, onRender: Q });
 </script></body>
 </html>

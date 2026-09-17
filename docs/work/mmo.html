@@ -81,7 +81,7 @@ u.textContent = b;
 document.head.appendChild(u);
 
 // web-components/define.js
-function y(o, a) {
+function w(o, a) {
   if (o === void 0) {
     if (a === Array)
       return [];
@@ -99,7 +99,7 @@ function y(o, a) {
     return Number(o);
   return o;
 }
-function e(o, { props: a = {}, attrs: s = [], styles: c = "", template: p, onRender: f = null }) {
+function e(o, { props: a = {}, attrs: s = [], styles: c = "", template: d, onRender: f = null }) {
   let v = ["props", ...s];
 
   class h extends HTMLElement {
@@ -129,8 +129,8 @@ function e(o, { props: a = {}, attrs: s = [], styles: c = "", template: p, onRen
           r = {};
         }
       let m = {};
-      for (let d of Object.keys(a))
-        m[d] = y(r[d], a[d]);
+      for (let p of Object.keys(a))
+        m[p] = w(r[p], a[p]);
       return m;
     }
     _applyForwardedAttrs() {
@@ -148,7 +148,7 @@ function e(o, { props: a = {}, attrs: s = [], styles: c = "", template: p, onRen
     _render() {
       if (typeof this._cleanup === "function")
         this._cleanup(), this._cleanup = null;
-      let r = this._getProps(), l = typeof p === "function" ? p(r) : p;
+      let r = this._getProps(), l = typeof d === "function" ? d(r) : d;
       if (this.shadowRoot.innerHTML = `<style>${c}</style>${l}`, this._applyForwardedAttrs(), f) {
         let m = f(this.shadowRoot, r, this);
         if (typeof m === "function")
@@ -163,7 +163,7 @@ function e(o, { props: a = {}, attrs: s = [], styles: c = "", template: p, onRen
 var i = "640px";
 
 // web-components/components/app-frame.js
-var w = `
+var y = `
   :host {
     display: block;
     position: fixed;
@@ -182,12 +182,12 @@ var w = `
     /* border-color: var(--color-tertiary); */
     /* border-color: #a36aa5; */
   }
-`, k = `
+`, x = `
 `;
-e("app-frame", { styles: w, template: k });
+e("app-frame", { styles: y, template: x });
 
 // web-components/components/app-link.js
-var x = `
+var k = `
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -251,7 +251,7 @@ var x = `
 `, $ = ["href", "target", "rel", "download"], z = `
   <a data-forward><slot></slot></a>
 `;
-e("app-link", { attrs: $, styles: x, template: z });
+e("app-link", { attrs: $, styles: k, template: z });
 
 // web-components/components/app-logo.js
 var A = `
@@ -263,11 +263,11 @@ var A = `
     max-height: 7rem;
     width: auto;
   }
-`, _ = ["width", "height", "src", "alt"], T = () => "<img data-forward />";
-e("app-logo", { attrs: _, styles: A, template: T });
+`, S = ["width", "height", "src", "alt"], T = () => "<img data-forward />";
+e("app-logo", { attrs: S, styles: A, template: T });
 
 // web-components/sections/header.js
-var S = `
+var _ = `
   :host {
     display: block;
     background: var(--color-bg-primary);
@@ -314,7 +314,7 @@ var S = `
     height: 5rem;
     width: auto;
   }
-`, L = `
+`, B = `
   <header>
       <app-link variant="plain" href=${n("/")}>
         <img src=${t("./assets/images/logo.avif")}
@@ -340,10 +340,10 @@ var S = `
       </div>
   </header>
 `;
-e("section-header", { template: L, styles: S });
+e("section-header", { template: B, styles: _ });
 
 // web-components/components/footer-nav.js
-var B = [
+var L = [
   { href: "/", name: "Home" },
   { href: "/about", name: "About" },
   { href: "/credits", name: "Credits" },
@@ -414,7 +414,7 @@ var B = [
         <span>Sitemap</span>
 
         <ol>
-            ${B.map((o) => `
+            ${L.map((o) => `
                 <li>
                     <app-link variant="sitemap" href=${n(o.href)} >${o.name}</app-link>
                 </li>
@@ -458,6 +458,13 @@ var R = `
     padding: 0;
     display: flex;
     gap: 2rem;
+    overflow: scroll;
+    margin-top: 0.5rem;
+  }
+
+  li {
+    display: flex;
+    align-items: center;
   }
 
   nav {
@@ -485,54 +492,54 @@ var R = `
       </p>
 
       <nav>
-        <!-- <span>Find me on:</span> -->
+        <span>Find me on:</span>
         <ul>
               <li>
-                  <app-link href="mailto:hanhtetaung.dev@gmail.com" variant="image">
+                  <a href="https://wa.me/message/DVOPVSAGBDENB1">
                   <img
-                      src=${t("./assets/icons/email.svg")}
+                      src=${t("./assets/icons/whatsapp.svg")}
                       alt="Email Icon"
                   />
-                  </app-link>
+                  </a>    
               </li>
               <li>
-                  <app-link
-                  href="https://www.instagram.com/_tenasserim_/"
+                  <a
+                  href="https://www.instagram.com/crafted.han"
                   target="_blank"
                   rel="noopener"
-                  variant="image"
+                
                   >
                   <img
                       src=${t("./assets/icons/instagram.svg")}
                       alt="Linkedin Icon"
                   />
-                  </app-link>
+                  </a>
               </li>
               <li>
-                  <app-link
+                  <a
                   href="https://www.linkedin.com/in/han-htet-aung/"
                   target="_blank"
                   rel="noopener"
-                  variant="image"
+                
                   >
                   <img
                       src=${t("./assets/icons/linkedin.svg")}
                       alt="Linkedin Icon"
                   />
-                  </app-link>
+                  </a>
               </li>
               <li>
-                  <app-link
+                  <a
                   href="https://github.com/hanhtetaung/"
                   target="_blank"
                   rel="noopener"
-                  variant="image"
+                
                   >
                   <img
                       src=${t("./assets/icons/github.svg")}
                       alt="Github Icon"
                   />
-                  </app-link>
+                  </a>
               </li>
           </ul>
         </nav>
@@ -593,7 +600,7 @@ var C = `
 e("section-footer", { styles: C, template: F });
 
 // web-components/components/app-image.js
-var q = `
+var O = `
   :host {
     --local-width: 5rem;
     --local-heigth: auto;
@@ -624,11 +631,11 @@ var q = `
    :host([variant="full"]) {
     --local-width: 100%;
   }
-`, M = ["width", "height", "src", "alt"], O = () => "<img data-forward />";
-e("app-image", { attrs: M, styles: q, template: O });
+`, q = ["width", "height", "src", "alt"], D = () => "<img data-forward />";
+e("app-image", { attrs: q, styles: O, template: D });
 
 // web-components/sections/mmo/intro.js
-var I = `
+var M = `
   :host {
     display: block;
   }
@@ -672,7 +679,7 @@ var I = `
     padding: 0;
     padding-inline: 2rem;
   }
-`, D = `
+`, G = `
   <section>
     <app-image
     variant="large"
@@ -705,10 +712,10 @@ var I = `
       </article>
   </section>
 `;
-e("section-mmo-intro", { styles: I, template: D });
+e("section-mmo-intro", { styles: M, template: G });
 
 // web-components/components/section-title.js
-var G = `
+var I = `
   :host {
     display: flex;
     align-items: center;
@@ -748,7 +755,7 @@ var G = `
         width="76"
     />
 `;
-e("section-title", { props: P, styles: G, template: N });
+e("section-title", { props: P, styles: I, template: N });
 
 // web-components/sections/mmo/about.js
 var X = `
@@ -760,7 +767,7 @@ var X = `
     width: 80%;
     margin-inline: auto;
   }
-`, K = `
+`, V = `
   <section>
     <section-title
         variant="text"
@@ -777,10 +784,10 @@ var X = `
       </article>
   </section>
 `;
-e("section-mmo-about", { styles: X, template: K });
+e("section-mmo-about", { styles: X, template: V });
 
 // web-components/sections/mmo/voices-from-field.js
-var J = `
+var K = `
   :host {
     display: block;
   }
@@ -806,7 +813,7 @@ var J = `
     font-weight: var(--font-bold);
     text-transform: uppercase;
   }
-`, Q = `
+`, J = `
   <section>
 
   <section-title
@@ -843,10 +850,10 @@ var J = `
         </ul>
   </section>
 `;
-e("section-mmo-voices-from-field", { styles: J, template: Q });
+e("section-mmo-voices-from-field", { styles: K, template: J });
 
 // web-components/sections/mmo/designing-workflow.js
-var V = `
+var Q = `
   :host {
     display: block;
   }
@@ -942,7 +949,7 @@ var V = `
       </article>
   </section>
 `;
-e("section-mmo-designing-workflow", { styles: V, template: Y });
+e("section-mmo-designing-workflow", { styles: Q, template: Y });
 
 // web-components/components/app-article-paragraph.js
 var Z = `
