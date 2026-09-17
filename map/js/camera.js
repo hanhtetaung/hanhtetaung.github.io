@@ -1,7 +1,7 @@
 // ---- Camera state ----
 import { draw } from "./draw.js";
 
-export const camera = { x: 500, y: 300, zoom: 0.3 };
+export const camera = { x: -2000, y: 2000, zoom: 0.3 };
 const MIN_ZOOM = 0.05,
   MAX_ZOOM = 5;
 
