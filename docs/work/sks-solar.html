@@ -37,22 +37,22 @@
 
     <section-footer></section-footer>
   <script type="module">// web-components/asset.js
-function g() {
+function b() {
   let a = document.documentElement.dataset.base || "./";
   return new URL(a, location.href);
 }
 function t(a) {
-  return new URL(a, g()).href;
+  return new URL(a, b()).href;
 }
-function s(a) {
-  let r = a.replace(/^\//, ""), l = location.protocol === "file:", c = g();
+function d(a) {
+  let r = a.replace(/^\//, ""), l = location.protocol === "file:", s = b();
   if (r === "")
-    return l ? new URL("index.html", c).href : c.href;
-  return l ? new URL(`${r}.html`, c).href : new URL(r, c).href;
+    return l ? new URL("index.html", s).href : s.href;
+  return l ? new URL(`${r}.html`, s).href : new URL(r, s).href;
 }
 
 // web-components/fonts.js
-var b = `
+var w = `
 @font-face {
     font-family: "Archivo";
     src: url("${t("./assets/fonts/Archivo-Black.woff2")}") format("woff2");
@@ -66,12 +66,12 @@ var b = `
     font-weight: 400;
     font-display: swap;
   }
-`, u = document.createElement("style");
-u.textContent = b;
-document.head.appendChild(u);
+`, y = document.createElement("style");
+y.textContent = w;
+document.head.appendChild(y);
 
 // web-components/define.js
-function y(a, r) {
+function k(a, r) {
   if (a === void 0) {
     if (r === Array)
       return [];
@@ -89,11 +89,11 @@ function y(a, r) {
     return Number(a);
   return a;
 }
-function e(a, { props: r = {}, attrs: l = [], styles: c = "", template: d, onRender: f = null }) {
-  let v = ["props", ...l];
+function e(a, { props: r = {}, attrs: l = [], styles: s = "", template: c, onRender: h = null }) {
+  let g = ["props", ...l];
 
-  class h extends HTMLElement {
-    static observedAttributes = v;
+  class f extends HTMLElement {
+    static observedAttributes = g;
     constructor() {
       super();
       this.attachShadow({ mode: "open" }), this._cleanup = null;
@@ -120,7 +120,7 @@ function e(a, { props: r = {}, attrs: l = [], styles: c = "", template: d, onRen
         }
       let m = {};
       for (let p of Object.keys(r))
-        m[p] = y(i[p], r[p]);
+        m[p] = k(i[p], r[p]);
       return m;
     }
     _applyForwardedAttrs() {
@@ -138,22 +138,22 @@ function e(a, { props: r = {}, attrs: l = [], styles: c = "", template: d, onRen
     _render() {
       if (typeof this._cleanup === "function")
         this._cleanup(), this._cleanup = null;
-      let i = this._getProps(), n = typeof d === "function" ? d(i) : d;
-      if (this.shadowRoot.innerHTML = `<style>${c}</style>${n}`, this._applyForwardedAttrs(), f) {
-        let m = f(this.shadowRoot, i, this);
+      let i = this._getProps(), n = typeof c === "function" ? c(i) : c;
+      if (this.shadowRoot.innerHTML = `<style>${s}</style>${n}`, this._applyForwardedAttrs(), h) {
+        let m = h(this.shadowRoot, i, this);
         if (typeof m === "function")
           this._cleanup = m;
       }
     }
   }
-  customElements.define(a, h);
+  customElements.define(a, f);
 }
 
 // web-components/breakpoints.js
 var o = "640px";
 
 // web-components/components/app-frame.js
-var w = `
+var x = `
   :host {
     display: block;
     position: fixed;
@@ -172,12 +172,12 @@ var w = `
     /* border-color: var(--color-tertiary); */
     /* border-color: #a36aa5; */
   }
-`, k = `
+`, $ = `
 `;
-e("app-frame", { styles: w, template: k });
+e("app-frame", { styles: x, template: $ });
 
 // web-components/components/app-link.js
-var x = `
+var z = `
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -238,13 +238,13 @@ var x = `
        content: "➶";
      }
   }
-`, $ = ["href", "target", "rel", "download"], z = `
+`, A = ["href", "target", "rel", "download"], S = `
   <a data-forward><slot></slot></a>
 `;
-e("app-link", { attrs: $, styles: x, template: z });
+e("app-link", { attrs: A, styles: z, template: S });
 
 // web-components/components/app-logo.js
-var A = `
+var _ = `
   :host {
     display: block;
   }
@@ -253,11 +253,11 @@ var A = `
     max-height: 7rem;
     width: auto;
   }
-`, S = ["width", "height", "src", "alt"], _ = () => "<img data-forward />";
-e("app-logo", { attrs: S, styles: A, template: _ });
+`, B = ["width", "height", "src", "alt"], T = () => "<img data-forward />";
+e("app-logo", { attrs: B, styles: _, template: T });
 
 // web-components/sections/header.js
-var B = `
+var L = `
   :host {
     display: block;
     background: var(--color-bg-primary);
@@ -304,9 +304,9 @@ var B = `
     height: 5rem;
     width: auto;
   }
-`, T = `
+`, E = `
   <header>
-      <app-link variant="plain" href=${s("/")}>
+      <app-link variant="plain" href=${d("/")}>
         <img src=${t("./assets/images/logo.avif")}
           alt="Logo">
       </app-link>
@@ -315,25 +315,25 @@ var B = `
         <nav>
           <ul>
             <li>
-              <app-link variant="plain" href=${s("/")}>Home</app-link>
+              <app-link variant="plain" href=${d("/")}>Home</app-link>
             </li>
 
             <li>
-              <app-link variant="plain" href=${s("/about")}>About</app-link>
+              <app-link variant="plain" href=${d("/about")}>About</app-link>
             </li>
           </ul>
         </nav>
 
-        <app-link variant="secondary" href=${s("/#cta")}>
+        <app-link variant="secondary" href=${d("/#cta")}>
           Let's Craft &#8629;
         </app-link>
       </div>
   </header>
 `;
-e("section-header", { template: T, styles: B });
+e("section-header", { template: E, styles: L });
 
 // web-components/components/footer-nav.js
-var L = [
+var C = [
   { href: "/", name: "Home" },
   { href: "/about", name: "About" },
   { href: "/credits", name: "Credits" },
@@ -352,7 +352,7 @@ var L = [
     href: "/writings/foundation-building-interfaces-at-scale",
     name: "Foundation"
   }
-], E = `
+], H = `
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -399,23 +399,23 @@ var L = [
     margin-right: 5rem;
     margin-bottom: 0.3rem;
   }
-`, H = () => `
+`, U = () => `
     <nav>
         <span>Sitemap</span>
 
         <ol>
-            ${L.map((a) => `
+            ${C.map((a) => `
                 <li>
-                    <app-link variant="sitemap" href=${s(a.href)} >${a.name}</app-link>
+                    <app-link variant="sitemap" href=${d(a.href)} >${a.name}</app-link>
                 </li>
             `).join("")}
         </ol>
     </nav>
 `;
-e("footer-nav", { styles: E, template: H });
+e("footer-nav", { styles: H, template: U });
 
 // web-components/components/footer-copyright.js
-var C = `
+var F = `
   :host {
    display: flex;
     justify-content: space-between;
@@ -476,7 +476,7 @@ var C = `
       margin-bottom: 0.5rem;
     }
   }
-`, R = () => `
+`, P = () => `
       <p>
         ©2026 Han Htet Aung
       </p>
@@ -485,7 +485,7 @@ var C = `
         <span>Find me on:</span>
         <ul>
               <li>
-                  <a href="https://wa.me/message/DVOPVSAGBDENB1">
+                  <a href="https://wa.me/message/DVOPVSAGBDENB1" target="_blank">
                   <img
                       src=${t("./assets/icons/whatsapp.svg")}
                       alt="Email Icon"
@@ -497,7 +497,6 @@ var C = `
                   href="https://www.instagram.com/crafted.han"
                   target="_blank"
                   rel="noopener"
-                
                   >
                   <img
                       src=${t("./assets/icons/instagram.svg")}
@@ -510,7 +509,6 @@ var C = `
                   href="https://www.linkedin.com/in/han-htet-aung/"
                   target="_blank"
                   rel="noopener"
-                
                   >
                   <img
                       src=${t("./assets/icons/linkedin.svg")}
@@ -523,7 +521,6 @@ var C = `
                   href="https://github.com/hanhtetaung/"
                   target="_blank"
                   rel="noopener"
-                
                   >
                   <img
                       src=${t("./assets/icons/github.svg")}
@@ -534,13 +531,12 @@ var C = `
           </ul>
         </nav>
 `;
-e("footer-copyright", { styles: C, template: R });
+e("footer-copyright", { styles: F, template: P });
 
 // web-components/sections/footer.js
-var U = `
+var q = `
   :host {
     display: block;
-    padding-block: 10rem;
   }
 
   q {
@@ -551,46 +547,105 @@ var U = `
   footer {
     width: 80%;
     margin-inline: auto;
+    padding-block: 10rem;
   }
 
   img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-  img:first-child {
-    display: none;
-  }
-
-@media (min-width: ${o}) {
-  img:first-child {
+    width: 100%;
+    height: auto;
     display: block;
   }
 
-  img:not(:first-child) {
+  #highlight-wrap {
+    position: relative;
+    line-height: 0;
+    /* overflow: hidden; */
     display: none;
   }
-}
 
+  #highlight-wrap img {
+    cursor: none;
+  }
 
-`, F = `
+  #highlight-lens {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+    clip-path: circle(0px at 50% 50%);
+  }
+
+  #lens-ring {
+    position: absolute;
+    box-sizing: border-box;
+    width: 20rem;
+    height: 20rem;
+    border: 0.5px solid var(--color-primary);
+    border-radius: 50%;
+    pointer-events: none;
+    display: none;
+  }
+
+  #lens-ring[data-visible="true"] {
+    display: block;
+  }
+
+  #thank-you,
+  #looking-forward {
+    display: block;
+  }
+
+  @media (min-width: ${o}) {
+    #highlight-wrap {
+      display: block;
+    }
+
+    #thank-you,
+    #looking-forward {
+      display: none;
+    }
+  }
+`, D = `
   <footer>
 
-  <img src=${t("./assets/images/footer/highlight.avif")} alt="Parting phrase">
-  <img src=${t("./assets/images/footer/thank-you.avif")} alt="Thank you phrase">
-  <img src=${t("./assets/images/footer/looking-forward.avif")} alt="Parting Phrase">
+    <div id="highlight-wrap">
+      <img id="highlight-base" src=${t("./assets/images/footer/highlight.png")} alt="Parting phrase">
+      <img id="highlight-lens" src=${t("./assets/images/footer/highlight-with-color.png")} alt="Parting phrase with color" aria-hidden="true">
+      <div id="lens-ring"></div>
+    </div>
 
+    <img id="thank-you" src=${t("./assets/images/footer/thank-you.avif")} alt="Thank you phrase">
+    <img id="looking-forward" src=${t("./assets/images/footer/looking-forward.avif")} alt="Parting Phrase">
 
     <!-- <footer-nav></footer-nav> -->
 
     <footer-copyright></footer-copyright>
   </footer>
 `;
-e("section-footer", { styles: U, template: F });
+function N(a) {
+  let r = a.querySelector("footer"), l = a.getElementById("highlight-base"), s = a.getElementById("highlight-lens"), c = a.getElementById("lens-ring"), h = a.getElementById("highlight-wrap");
+  if (!r || !l || !s || !c || !h)
+    return;
+  function g(n) {
+    let m = l.getBoundingClientRect(), p = n.clientX - m.left, v = n.clientY - m.top, u = c.offsetWidth / 2;
+    c.style.left = `${p - u}px`, c.style.top = `${v - u}px`, s.style.clipPath = `circle(${u}px at ${p}px ${v}px)`;
+  }
+  function f() {
+    c.setAttribute("data-visible", "true");
+  }
+  function i() {
+    c.removeAttribute("data-visible"), s.style.clipPath = "circle(0px at 50% 50%)";
+  }
+  return r.addEventListener("mousemove", g), r.addEventListener("mouseenter", f), r.addEventListener("mouseleave", i), () => {
+    r.removeEventListener("mousemove", g), r.removeEventListener("mouseenter", f), r.removeEventListener("mouseleave", i);
+  };
+}
+e("section-footer", { styles: q, template: D, onRender: N });
 
 // web-components/components/app-image.js
-var P = `
+var O = `
   :host {
     --local-width: 5rem;
     --local-heigth: auto;
@@ -621,8 +676,8 @@ var P = `
    :host([variant="full"]) {
     --local-width: 100%;
   }
-`, q = ["width", "height", "src", "alt"], D = () => "<img data-forward />";
-e("app-image", { attrs: q, styles: P, template: D });
+`, G = ["width", "height", "src", "alt"], X = () => "<img data-forward />";
+e("app-image", { attrs: G, styles: O, template: X });
 
 // web-components/sections/sks-solar/intro.js
 var I = `
@@ -665,7 +720,7 @@ var I = `
     font-weight: var(--font-bold);
     text-transform: uppercase;
   }
-`, N = `
+`, K = `
   <section>
     <app-image
       variant="full"
@@ -696,10 +751,10 @@ var I = `
     </article>
   </section>
 `;
-e("section-sks-solar-intro", { styles: I, template: N });
+e("section-sks-solar-intro", { styles: I, template: K });
 
 // web-components/components/section-title.js
-var O = `
+var M = `
   :host {
     display: flex;
     align-items: center;
@@ -730,7 +785,7 @@ var O = `
       display: none;
     }
   }
-`, G = { name: String, img: String, alt: String }, M = ({ name: a, img: r = "", alt: l = "" }) => `
+`, V = { name: String, img: String, alt: String }, J = ({ name: a, img: r = "", alt: l = "" }) => `
     <h2>${a}</h2>
     <img
         src=${t(r)}
@@ -739,10 +794,10 @@ var O = `
         width="76"
     />
 `;
-e("section-title", { props: G, styles: O, template: M });
+e("section-title", { props: V, styles: M, template: J });
 
 // web-components/sections/sks-solar/background.js
-var X = `
+var Q = `
   :host {
     display: block;
   }
@@ -751,7 +806,7 @@ var X = `
     width: 80%;
     margin-inline: auto;
   }
-`, K = `
+`, R = `
   <section>
     <section-title variant="text" props='{"name": "Background"}'></section-title>
 
@@ -765,10 +820,10 @@ var X = `
     </p>
   </section>
 `;
-e("section-sks-solar-background", { styles: X, template: K });
+e("section-sks-solar-background", { styles: Q, template: R });
 
 // web-components/sections/sks-solar/challenge.js
-var V = `
+var W = `
   :host {
     display: block;
   }
@@ -777,7 +832,7 @@ var V = `
     width: 80%;
     margin-inline: auto;
   }
-`, J = `
+`, Y = `
   <section>
     <section-title variant="text" props='{"name": "Challenge"}'></section-title>
 
@@ -790,10 +845,10 @@ var V = `
     </p>
   </section>
 `;
-e("section-sks-solar-challenge", { styles: V, template: J });
+e("section-sks-solar-challenge", { styles: W, template: Y });
 
 // web-components/components/app-article-paragraph.js
-var Q = `
+var Z = `
   :host {
     display: grid;
     grid-template-columns: 1fr 2.5fr;
@@ -815,17 +870,17 @@ var Q = `
   :host([variant="block"]) {
     display: block;
   }
-`, W = { title: String }, Y = ({ title: a }) => `
+`, j = { title: String }, ee = ({ title: a }) => `
         <h3>${a}</h3>
 
         <article>
             <slot></slot>
         </article>
 `;
-e("app-article-paragraph", { props: W, styles: Q, template: Y });
+e("app-article-paragraph", { props: j, styles: Z, template: ee });
 
 // web-components/sections/sks-solar/process.js
-var Z = `
+var te = `
   :host {
     display: block;
   }
@@ -855,7 +910,7 @@ var Z = `
   ol {
     list-style: disc;
   }
-`, j = `
+`, ae = `
   <section>
     <section-title variant="text" props='{"name": "Process"}'></section-title>
 
@@ -939,10 +994,10 @@ var Z = `
     </ul>
   </section>
 `;
-e("section-sks-solar-process", { styles: Z, template: j });
+e("section-sks-solar-process", { styles: te, template: ae });
 
 // web-components/sections/sks-solar/result.js
-var ee = `
+var re = `
   :host {
     display: block;
   }
@@ -962,7 +1017,7 @@ var ee = `
       flex-direction: column;
     }
   }
-`, te = `
+`, oe = `
   <section>
     <section-title variant="text" props='{"name": "Result"}'></section-title>
 
@@ -1001,6 +1056,6 @@ var ee = `
     </ul>
   </section>
 `;
-e("section-sks-solar-result", { styles: ee, template: te });
+e("section-sks-solar-result", { styles: re, template: oe });
 </script></body>
 </html>

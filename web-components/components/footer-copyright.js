@@ -74,7 +74,7 @@ const template = () => /* html */ `
         <span>Find me on:</span>
         <ul>
               <li>
-                  <a href="https://wa.me/message/DVOPVSAGBDENB1">
+                  <a href="https://wa.me/message/DVOPVSAGBDENB1" target="_blank">
                   <img
                       src=${asset("./assets/icons/whatsapp.svg")}
                       alt="Email Icon"
@@ -86,7 +86,6 @@ const template = () => /* html */ `
                   href="https://www.instagram.com/crafted.han"
                   target="_blank"
                   rel="noopener"
-                
                   >
                   <img
                       src=${asset("./assets/icons/instagram.svg")}
@@ -99,7 +98,6 @@ const template = () => /* html */ `
                   href="https://www.linkedin.com/in/han-htet-aung/"
                   target="_blank"
                   rel="noopener"
-                
                   >
                   <img
                       src=${asset("./assets/icons/linkedin.svg")}
@@ -112,7 +110,6 @@ const template = () => /* html */ `
                   href="https://github.com/hanhtetaung/"
                   target="_blank"
                   rel="noopener"
-                
                   >
                   <img
                       src=${asset("./assets/icons/github.svg")}

@@ -40,22 +40,22 @@
 
     <section-footer variant="secondary"></section-footer>
   <script type="module">// web-components/asset.js
-function g() {
-  let o = document.documentElement.dataset.base || "./";
-  return new URL(o, location.href);
+function v() {
+  let i = document.documentElement.dataset.base || "./";
+  return new URL(i, location.href);
 }
-function e(o) {
-  return new URL(o, g()).href;
+function e(i) {
+  return new URL(i, v()).href;
 }
-function s(o) {
-  let r = o.replace(/^\//, ""), l = location.protocol === "file:", c = g();
-  if (r === "")
-    return l ? new URL("index.html", c).href : c.href;
-  return l ? new URL(`${r}.html`, c).href : new URL(r, c).href;
+function m(i) {
+  let a = i.replace(/^\//, ""), l = location.protocol === "file:", s = v();
+  if (a === "")
+    return l ? new URL("index.html", s).href : s.href;
+  return l ? new URL(`${a}.html`, s).href : new URL(a, s).href;
 }
 
 // web-components/fonts.js
-var v = `
+var w = `
 @font-face {
     font-family: "Archivo";
     src: url("${e("./assets/fonts/Archivo-Black.woff2")}") format("woff2");
@@ -69,34 +69,34 @@ var v = `
     font-weight: 400;
     font-display: swap;
   }
-`, u = document.createElement("style");
-u.textContent = v;
-document.head.appendChild(u);
+`, y = document.createElement("style");
+y.textContent = w;
+document.head.appendChild(y);
 
 // web-components/define.js
-function y(o, r) {
-  if (o === void 0) {
-    if (r === Array)
+function k(i, a) {
+  if (i === void 0) {
+    if (a === Array)
       return [];
-    if (r === Object)
+    if (a === Object)
       return {};
-    if (r === Boolean)
+    if (a === Boolean)
       return !1;
-    if (r === Number)
+    if (a === Number)
       return 0;
     return;
   }
-  if (r === Boolean)
-    return Boolean(o);
-  if (r === Number)
-    return Number(o);
-  return o;
+  if (a === Boolean)
+    return Boolean(i);
+  if (a === Number)
+    return Number(i);
+  return i;
 }
-function t(o, { props: r = {}, attrs: l = [], styles: c = "", template: m, onRender: f = null }) {
-  let b = ["props", ...l];
+function t(i, { props: a = {}, attrs: l = [], styles: s = "", template: c, onRender: h = null }) {
+  let g = ["props", ...l];
 
-  class h extends HTMLElement {
-    static observedAttributes = b;
+  class f extends HTMLElement {
+    static observedAttributes = g;
     constructor() {
       super();
       this.attachShadow({ mode: "open" }), this._cleanup = null;
@@ -114,49 +114,49 @@ function t(o, { props: r = {}, attrs: l = [], styles: c = "", template: m, onRen
         this._render();
     }
     _getProps() {
-      let a = {}, n = this.getAttribute("props");
+      let o = {}, n = this.getAttribute("props");
       if (n)
         try {
-          a = JSON.parse(n);
+          o = JSON.parse(n);
         } catch {
-          a = {};
+          o = {};
         }
       let d = {};
-      for (let p of Object.keys(r))
-        d[p] = y(a[p], r[p]);
+      for (let p of Object.keys(a))
+        d[p] = k(o[p], a[p]);
       return d;
     }
     _applyForwardedAttrs() {
       if (l.length === 0)
         return;
-      let a = this.shadowRoot.querySelector("[data-forward]");
-      if (!a)
+      let o = this.shadowRoot.querySelector("[data-forward]");
+      if (!o)
         return;
       for (let n of l)
         if (this.hasAttribute(n))
-          a.setAttribute(n, this.getAttribute(n));
+          o.setAttribute(n, this.getAttribute(n));
         else
-          a.removeAttribute(n);
+          o.removeAttribute(n);
     }
     _render() {
       if (typeof this._cleanup === "function")
         this._cleanup(), this._cleanup = null;
-      let a = this._getProps(), n = typeof m === "function" ? m(a) : m;
-      if (this.shadowRoot.innerHTML = `<style>${c}</style>${n}`, this._applyForwardedAttrs(), f) {
-        let d = f(this.shadowRoot, a, this);
+      let o = this._getProps(), n = typeof c === "function" ? c(o) : c;
+      if (this.shadowRoot.innerHTML = `<style>${s}</style>${n}`, this._applyForwardedAttrs(), h) {
+        let d = h(this.shadowRoot, o, this);
         if (typeof d === "function")
           this._cleanup = d;
       }
     }
   }
-  customElements.define(o, h);
+  customElements.define(i, f);
 }
 
 // web-components/breakpoints.js
-var i = "640px";
+var r = "640px";
 
 // web-components/components/app-frame.js
-var w = `
+var x = `
   :host {
     display: block;
     position: fixed;
@@ -165,7 +165,7 @@ var w = `
     border: 7px solid var(--color-secondary);
     pointer-events: none;
 
-    @media (max-width: ${i}) {
+    @media (max-width: ${r}) {
       border-width: 5px;
     }
   }
@@ -175,12 +175,12 @@ var w = `
     /* border-color: var(--color-tertiary); */
     /* border-color: #a36aa5; */
   }
-`, x = `
+`, $ = `
 `;
-t("app-frame", { styles: w, template: x });
+t("app-frame", { styles: x, template: $ });
 
 // web-components/components/app-link.js
-var k = `
+var z = `
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -241,13 +241,13 @@ var k = `
        content: "➶";
      }
   }
-`, $ = ["href", "target", "rel", "download"], z = `
+`, A = ["href", "target", "rel", "download"], _ = `
   <a data-forward><slot></slot></a>
 `;
-t("app-link", { attrs: $, styles: k, template: z });
+t("app-link", { attrs: A, styles: z, template: _ });
 
 // web-components/components/app-logo.js
-var A = `
+var B = `
   :host {
     display: block;
   }
@@ -256,11 +256,11 @@ var A = `
     max-height: 7rem;
     width: auto;
   }
-`, _ = ["width", "height", "src", "alt"], B = () => "<img data-forward />";
-t("app-logo", { attrs: _, styles: A, template: B });
+`, S = ["width", "height", "src", "alt"], T = () => "<img data-forward />";
+t("app-logo", { attrs: S, styles: B, template: T });
 
 // web-components/sections/header.js
-var S = `
+var L = `
   :host {
     display: block;
     background: var(--color-bg-primary);
@@ -297,7 +297,7 @@ var S = `
     box-shadow: none;
   }
 
-  @media (max-width: ${i}) {
+  @media (max-width: ${r}) {
     .header__navigation {
       gap: 4rem;
     }
@@ -307,9 +307,9 @@ var S = `
     height: 5rem;
     width: auto;
   }
-`, T = `
+`, E = `
   <header>
-      <app-link variant="plain" href=${s("/")}>
+      <app-link variant="plain" href=${m("/")}>
         <img src=${e("./assets/images/logo.avif")}
           alt="Logo">
       </app-link>
@@ -318,25 +318,25 @@ var S = `
         <nav>
           <ul>
             <li>
-              <app-link variant="plain" href=${s("/")}>Home</app-link>
+              <app-link variant="plain" href=${m("/")}>Home</app-link>
             </li>
 
             <li>
-              <app-link variant="plain" href=${s("/about")}>About</app-link>
+              <app-link variant="plain" href=${m("/about")}>About</app-link>
             </li>
           </ul>
         </nav>
 
-        <app-link variant="secondary" href=${s("/#cta")}>
+        <app-link variant="secondary" href=${m("/#cta")}>
           Let's Craft &#8629;
         </app-link>
       </div>
   </header>
 `;
-t("section-header", { template: T, styles: S });
+t("section-header", { template: E, styles: L });
 
 // web-components/components/footer-nav.js
-var L = [
+var H = [
   { href: "/", name: "Home" },
   { href: "/about", name: "About" },
   { href: "/credits", name: "Credits" },
@@ -355,7 +355,7 @@ var L = [
     href: "/writings/foundation-building-interfaces-at-scale",
     name: "Foundation"
   }
-], E = `
+], U = `
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -364,7 +364,7 @@ var L = [
    display: flex;
    gap: 5rem;
 
-   @media (max-width: ${i}) {
+   @media (max-width: ${r}) {
         flex-direction: column;
         gap: 3rem;
         margin-block: 2rem;
@@ -393,7 +393,7 @@ var L = [
     max-height: 12.5ch;
     overflow: scroll;
 
-    @media (max-width: ${i}) {
+    @media (max-width: ${r}) {
         max-height: 20ch;
     }
   }
@@ -402,23 +402,23 @@ var L = [
     margin-right: 5rem;
     margin-bottom: 0.3rem;
   }
-`, H = () => `
+`, C = () => `
     <nav>
         <span>Sitemap</span>
 
         <ol>
-            ${L.map((o) => `
+            ${H.map((i) => `
                 <li>
-                    <app-link variant="sitemap" href=${s(o.href)} >${o.name}</app-link>
+                    <app-link variant="sitemap" href=${m(i.href)} >${i.name}</app-link>
                 </li>
             `).join("")}
         </ol>
     </nav>
 `;
-t("footer-nav", { styles: E, template: H });
+t("footer-nav", { styles: U, template: C });
 
 // web-components/components/footer-copyright.js
-var U = `
+var F = `
   :host {
    display: flex;
     justify-content: space-between;
@@ -426,7 +426,7 @@ var U = `
     padding-top: 1rem;
     margin-top: 3rem;
 
-   @media (max-width: ${i}) {
+   @media (max-width: ${r}) {
         flex-direction: column-reverse;
         gap: 2rem;
         border: none;
@@ -439,7 +439,7 @@ var U = `
     border-top: 1px solid var(--color-text);
     padding-top: 1rem;
 
-    @media (min-width: ${i}) {
+    @media (min-width: ${r}) {
       border: none;
       padding-top: none;
     }
@@ -463,7 +463,7 @@ var U = `
   nav {
     display: block;
 
-    @media (min-width: ${i}) {
+    @media (min-width: ${r}) {
       display: block;
     }
   }
@@ -474,12 +474,12 @@ var U = `
     font-weight: var(--font-bold);
     
 
-    @media (max-width: ${i}) {
+    @media (max-width: ${r}) {
       display: inline-block;
       margin-bottom: 0.5rem;
     }
   }
-`, C = () => `
+`, O = () => `
       <p>
         ©2026 Han Htet Aung
       </p>
@@ -488,7 +488,7 @@ var U = `
         <span>Find me on:</span>
         <ul>
               <li>
-                  <a href="https://wa.me/message/DVOPVSAGBDENB1">
+                  <a href="https://wa.me/message/DVOPVSAGBDENB1" target="_blank">
                   <img
                       src=${e("./assets/icons/whatsapp.svg")}
                       alt="Email Icon"
@@ -500,7 +500,6 @@ var U = `
                   href="https://www.instagram.com/crafted.han"
                   target="_blank"
                   rel="noopener"
-                
                   >
                   <img
                       src=${e("./assets/icons/instagram.svg")}
@@ -513,7 +512,6 @@ var U = `
                   href="https://www.linkedin.com/in/han-htet-aung/"
                   target="_blank"
                   rel="noopener"
-                
                   >
                   <img
                       src=${e("./assets/icons/linkedin.svg")}
@@ -526,7 +524,6 @@ var U = `
                   href="https://github.com/hanhtetaung/"
                   target="_blank"
                   rel="noopener"
-                
                   >
                   <img
                       src=${e("./assets/icons/github.svg")}
@@ -537,13 +534,12 @@ var U = `
           </ul>
         </nav>
 `;
-t("footer-copyright", { styles: U, template: C });
+t("footer-copyright", { styles: F, template: O });
 
 // web-components/sections/footer.js
-var F = `
+var q = `
   :host {
     display: block;
-    padding-block: 10rem;
   }
 
   q {
@@ -554,46 +550,105 @@ var F = `
   footer {
     width: 80%;
     margin-inline: auto;
+    padding-block: 10rem;
   }
 
   img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-  img:first-child {
-    display: none;
-  }
-
-@media (min-width: ${i}) {
-  img:first-child {
+    width: 100%;
+    height: auto;
     display: block;
   }
 
-  img:not(:first-child) {
+  #highlight-wrap {
+    position: relative;
+    line-height: 0;
+    /* overflow: hidden; */
     display: none;
   }
-}
 
+  #highlight-wrap img {
+    cursor: none;
+  }
 
-`, R = `
+  #highlight-lens {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+    clip-path: circle(0px at 50% 50%);
+  }
+
+  #lens-ring {
+    position: absolute;
+    box-sizing: border-box;
+    width: 20rem;
+    height: 20rem;
+    border: 0.5px solid var(--color-primary);
+    border-radius: 50%;
+    pointer-events: none;
+    display: none;
+  }
+
+  #lens-ring[data-visible="true"] {
+    display: block;
+  }
+
+  #thank-you,
+  #looking-forward {
+    display: block;
+  }
+
+  @media (min-width: ${r}) {
+    #highlight-wrap {
+      display: block;
+    }
+
+    #thank-you,
+    #looking-forward {
+      display: none;
+    }
+  }
+`, N = `
   <footer>
 
-  <img src=${e("./assets/images/footer/highlight.avif")} alt="Parting phrase">
-  <img src=${e("./assets/images/footer/thank-you.avif")} alt="Thank you phrase">
-  <img src=${e("./assets/images/footer/looking-forward.avif")} alt="Parting Phrase">
+    <div id="highlight-wrap">
+      <img id="highlight-base" src=${e("./assets/images/footer/highlight.png")} alt="Parting phrase">
+      <img id="highlight-lens" src=${e("./assets/images/footer/highlight-with-color.png")} alt="Parting phrase with color" aria-hidden="true">
+      <div id="lens-ring"></div>
+    </div>
 
+    <img id="thank-you" src=${e("./assets/images/footer/thank-you.avif")} alt="Thank you phrase">
+    <img id="looking-forward" src=${e("./assets/images/footer/looking-forward.avif")} alt="Parting Phrase">
 
     <!-- <footer-nav></footer-nav> -->
 
     <footer-copyright></footer-copyright>
   </footer>
 `;
-t("section-footer", { styles: F, template: R });
+function P(i) {
+  let a = i.querySelector("footer"), l = i.getElementById("highlight-base"), s = i.getElementById("highlight-lens"), c = i.getElementById("lens-ring"), h = i.getElementById("highlight-wrap");
+  if (!a || !l || !s || !c || !h)
+    return;
+  function g(n) {
+    let d = l.getBoundingClientRect(), p = n.clientX - d.left, b = n.clientY - d.top, u = c.offsetWidth / 2;
+    c.style.left = `${p - u}px`, c.style.top = `${b - u}px`, s.style.clipPath = `circle(${u}px at ${p}px ${b}px)`;
+  }
+  function f() {
+    c.setAttribute("data-visible", "true");
+  }
+  function o() {
+    c.removeAttribute("data-visible"), s.style.clipPath = "circle(0px at 50% 50%)";
+  }
+  return a.addEventListener("mousemove", g), a.addEventListener("mouseenter", f), a.addEventListener("mouseleave", o), () => {
+    a.removeEventListener("mousemove", g), a.removeEventListener("mouseenter", f), a.removeEventListener("mouseleave", o);
+  };
+}
+t("section-footer", { styles: q, template: N, onRender: P });
 
 // web-components/sections/foundation-building-interfaces-at-scale/intro.js
-var I = `
+var D = `
   :host {
     display: block;
   }
@@ -622,7 +677,7 @@ var I = `
     flex-direction: column;
     gap: 0.5rem;
   }
-`, O = `
+`, G = `
   <section>
     <h1>Foundation for Building Interfaces at Scale</h1>
 
@@ -648,12 +703,12 @@ var I = `
   </section>
 `;
 t("section-foundation-building-interfaces-at-scale-intro", {
-  styles: I,
-  template: O
+  styles: D,
+  template: G
 });
 
 // web-components/components/section-title.js
-var q = `
+var I = `
   :host {
     display: flex;
     align-items: center;
@@ -684,19 +739,19 @@ var q = `
       display: none;
     }
   }
-`, N = { name: String, img: String, alt: String }, P = ({ name: o, img: r = "", alt: l = "" }) => `
-    <h2>${o}</h2>
+`, X = { name: String, img: String, alt: String }, M = ({ name: i, img: a = "", alt: l = "" }) => `
+    <h2>${i}</h2>
     <img
-        src=${e(r)}
+        src=${e(a)}
         alt=${l}
         height="36"
         width="76"
     />
 `;
-t("section-title", { props: N, styles: q, template: P });
+t("section-title", { props: X, styles: I, template: M });
 
 // web-components/components/app-image.js
-var D = `
+var V = `
   :host {
     --local-width: 5rem;
     --local-heigth: auto;
@@ -727,17 +782,17 @@ var D = `
    :host([variant="full"]) {
     --local-width: 100%;
   }
-`, G = ["width", "height", "src", "alt"], M = () => "<img data-forward />";
-t("app-image", { attrs: G, styles: D, template: M });
+`, J = ["width", "height", "src", "alt"], K = () => "<img data-forward />";
+t("app-image", { attrs: J, styles: V, template: K });
 
 // web-components/components/app-article-paragraph.js
-var X = `
+var Q = `
   :host {
     display: grid;
     grid-template-columns: 1fr 2.5fr;
 
 
-    @media (max-width: ${i}) {
+    @media (max-width: ${r}) {
         display: block;
     }
   }
@@ -753,17 +808,17 @@ var X = `
   :host([variant="block"]) {
     display: block;
   }
-`, V = { title: String }, J = ({ title: o }) => `
-        <h3>${o}</h3>
+`, Y = { title: String }, Z = ({ title: i }) => `
+        <h3>${i}</h3>
 
         <article>
             <slot></slot>
         </article>
 `;
-t("app-article-paragraph", { props: V, styles: X, template: J });
+t("app-article-paragraph", { props: Y, styles: Q, template: Z });
 
 // web-components/sections/foundation-building-interfaces-at-scale/atomic-design-principle.js
-var K = `
+var j = `
   :host {
     display: block;
   }
@@ -789,7 +844,7 @@ var K = `
     border-top: 1px dashed var(--color-text);
     padding-top: 5rem;
   }
-`, Q = `
+`, R = `
   <section >
     <section-title variant="text" props='{"name": "Atomic Design Principle"}'></section-title>
 
@@ -882,10 +937,10 @@ var K = `
     </ul>
   </section>
 `;
-t("section-atomic-design-principle", { styles: K, template: Q });
+t("section-atomic-design-principle", { styles: j, template: R });
 
 // web-components/sections/foundation-building-interfaces-at-scale/design-token-architecture.js
-var Y = `
+var W = `
   :host {
     display: block;
   }
@@ -916,7 +971,7 @@ var Y = `
     padding: 0;
     padding-left: 1.5rem;
   }
-`, Z = `
+`, ee = `
   <section>
     <section-title variant="text" props='{"name": "Design Token Architecture"}'></section-title>
 
@@ -1016,10 +1071,10 @@ var Y = `
 </ul>
   </section>
 `;
-t("section-design-token-architecture", { styles: Y, template: Z });
+t("section-design-token-architecture", { styles: W, template: ee });
 
 // web-components/sections/foundation-building-interfaces-at-scale/references.js
-var j = `
+var te = `
   :host {
     display: block;
   }
@@ -1036,7 +1091,7 @@ var j = `
     flex-direction: column;
     gap: 0.5rem;
   }
-`, W = `
+`, ie = `
   <section>
     <section-title variant="text" props='{"name": "References"}'></section-title>
 
@@ -1065,8 +1120,8 @@ var j = `
   </section>
 `;
 t("section-foundation-building-interfaces-at-scale-references", {
-  styles: j,
-  template: W
+  styles: te,
+  template: ie
 });
 </script></body>
 </html>
