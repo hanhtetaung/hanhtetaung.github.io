@@ -22,6 +22,9 @@ const styles = /* css */ `
     margin: 0;
     border-top: 1px solid var(--color-text);
     padding-top: 1rem;
+    display: flex;
+    align-items: end;
+    gap: 0.2rem;
 
     @media (min-width: ${TABLET}) {
       border: none;
@@ -35,6 +38,13 @@ const styles = /* css */ `
     padding: 0;
     display: flex;
     gap: 2rem;
+    overflow: scroll;
+    margin-top: 0.5rem;
+  }
+
+  li {
+    display: flex;
+    align-items: center;
   }
 
   nav {
@@ -56,62 +66,86 @@ const styles = /* css */ `
       margin-bottom: 0.5rem;
     }
   }
+
+  p img {
+    height: 2.3rem;
+
+     @media (max-width: ${TABLET}) {
+      
+      height: 2.5rem;
+    }
+  }
+
+  p small {
+    display: inline-block;
+    margin-left: 1.5rem;
+  }
+
+  a {
+    text-decoration: none;
+    color: var(--color-text);
+  }
 `;
 
 const template = () => /* html */ `
       <p>
-        ©2026 Han Htet Aung
+          <img src=${asset("./assets/images/logo.avif")}
+          alt="Logo">
+          <a href="https://hanhtetaung.dev/">
+            Crafted by Han
+          </a>
+
+        <small>
+          © 2026 
+        </small>
       </p>
 
       <nav>
-        <!-- <span>Find me on:</span> -->
+        <span>Find me on:</span>
         <ul>
               <li>
-                  <app-link href="mailto:hanhtetaung.dev@gmail.com" variant="image">
+                  <a href="https://wa.me/message/DVOPVSAGBDENB1" target="_blank">
                   <img
-                      src=${asset("./assets/icons/email.svg")}
+                      src=${asset("./assets/icons/whatsapp.svg")}
                       alt="Email Icon"
                   />
-                  </app-link>
+                  </a>    
               </li>
               <li>
-                  <app-link
-                  href="https://www.instagram.com/_tenasserim_/"
+                  <a
+                  href="https://www.instagram.com/crafted.han"
                   target="_blank"
                   rel="noopener"
-                  variant="image"
                   >
                   <img
                       src=${asset("./assets/icons/instagram.svg")}
                       alt="Linkedin Icon"
                   />
-                  </app-link>
+                  </a>
               </li>
               <li>
-                  <app-link
+                  <a
                   href="https://www.linkedin.com/in/han-htet-aung/"
                   target="_blank"
                   rel="noopener"
-                  variant="image"
                   >
                   <img
                       src=${asset("./assets/icons/linkedin.svg")}
                       alt="Linkedin Icon"
                   />
-                  </app-link>
+                  </a>
               </li>
               <li>
-                  <app-link
+                  <a
                   href="https://github.com/hanhtetaung/"
                   target="_blank"
                   rel="noopener"
-                  variant="image"
                   >
                   <img
                       src=${asset("./assets/icons/github.svg")}
                       alt="Github Icon"
                   />
-                  </app-link>
+                  </a>
               </li>
           </ul>
         </nav>

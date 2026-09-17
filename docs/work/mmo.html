@@ -47,63 +47,63 @@
 
     <section-footer variant="secondary"></section-footer>
   <script type="module">// web-components/asset.js
-function g() {
-  let o = document.documentElement.dataset.base || "./";
-  return new URL(o, location.href);
+function v() {
+  let t = document.documentElement.dataset.base || "./";
+  return new URL(t, location.href);
 }
-function t(o) {
-  return new URL(o, g()).href;
+function o(t) {
+  return new URL(t, v()).href;
 }
-function n(o) {
-  let a = o.replace(/^\//, ""), s = location.protocol === "file:", c = g();
-  if (a === "")
-    return s ? new URL("index.html", c).href : c.href;
-  return s ? new URL(`${a}.html`, c).href : new URL(a, c).href;
+function m(t) {
+  let i = t.replace(/^\//, ""), l = location.protocol === "file:", s = v();
+  if (i === "")
+    return l ? new URL("index.html", s).href : s.href;
+  return l ? new URL(`${i}.html`, s).href : new URL(i, s).href;
 }
 
 // web-components/fonts.js
-var b = `
+var w = `
 @font-face {
     font-family: "Archivo";
-    src: url("${t("./assets/fonts/Archivo-Black.woff2")}") format("woff2");
+    src: url("${o("./assets/fonts/Archivo-Black.woff2")}") format("woff2");
     font-weight: 700;
     font-display: swap;
   }
 
   @font-face {
     font-family: "Archivo";
-    src: url("${t("./assets/fonts/Archivo-Regular.woff2")}") format("woff2");
+    src: url("${o("./assets/fonts/Archivo-Regular.woff2")}") format("woff2");
     font-weight: 400;
     font-display: swap;
   }
-`, u = document.createElement("style");
-u.textContent = b;
-document.head.appendChild(u);
+`, y = document.createElement("style");
+y.textContent = w;
+document.head.appendChild(y);
 
 // web-components/define.js
-function y(o, a) {
-  if (o === void 0) {
-    if (a === Array)
+function x(t, i) {
+  if (t === void 0) {
+    if (i === Array)
       return [];
-    if (a === Object)
+    if (i === Object)
       return {};
-    if (a === Boolean)
+    if (i === Boolean)
       return !1;
-    if (a === Number)
+    if (i === Number)
       return 0;
     return;
   }
-  if (a === Boolean)
-    return Boolean(o);
-  if (a === Number)
-    return Number(o);
-  return o;
+  if (i === Boolean)
+    return Boolean(t);
+  if (i === Number)
+    return Number(t);
+  return t;
 }
-function e(o, { props: a = {}, attrs: s = [], styles: c = "", template: p, onRender: f = null }) {
-  let v = ["props", ...s];
+function e(t, { props: i = {}, attrs: l = [], styles: s = "", template: c, onRender: h = null }) {
+  let g = ["props", ...l];
 
-  class h extends HTMLElement {
-    static observedAttributes = v;
+  class f extends HTMLElement {
+    static observedAttributes = g;
     constructor() {
       super();
       this.attachShadow({ mode: "open" }), this._cleanup = null;
@@ -121,49 +121,49 @@ function e(o, { props: a = {}, attrs: s = [], styles: c = "", template: p, onRen
         this._render();
     }
     _getProps() {
-      let r = {}, l = this.getAttribute("props");
-      if (l)
+      let r = {}, n = this.getAttribute("props");
+      if (n)
         try {
-          r = JSON.parse(l);
+          r = JSON.parse(n);
         } catch {
           r = {};
         }
-      let m = {};
-      for (let d of Object.keys(a))
-        m[d] = y(r[d], a[d]);
-      return m;
+      let d = {};
+      for (let p of Object.keys(i))
+        d[p] = x(r[p], i[p]);
+      return d;
     }
     _applyForwardedAttrs() {
-      if (s.length === 0)
+      if (l.length === 0)
         return;
       let r = this.shadowRoot.querySelector("[data-forward]");
       if (!r)
         return;
-      for (let l of s)
-        if (this.hasAttribute(l))
-          r.setAttribute(l, this.getAttribute(l));
+      for (let n of l)
+        if (this.hasAttribute(n))
+          r.setAttribute(n, this.getAttribute(n));
         else
-          r.removeAttribute(l);
+          r.removeAttribute(n);
     }
     _render() {
       if (typeof this._cleanup === "function")
         this._cleanup(), this._cleanup = null;
-      let r = this._getProps(), l = typeof p === "function" ? p(r) : p;
-      if (this.shadowRoot.innerHTML = `<style>${c}</style>${l}`, this._applyForwardedAttrs(), f) {
-        let m = f(this.shadowRoot, r, this);
-        if (typeof m === "function")
-          this._cleanup = m;
+      let r = this._getProps(), n = typeof c === "function" ? c(r) : c;
+      if (this.shadowRoot.innerHTML = `<style>${s}</style>${n}`, this._applyForwardedAttrs(), h) {
+        let d = h(this.shadowRoot, r, this);
+        if (typeof d === "function")
+          this._cleanup = d;
       }
     }
   }
-  customElements.define(o, h);
+  customElements.define(t, f);
 }
 
 // web-components/breakpoints.js
-var i = "640px";
+var a = "640px";
 
 // web-components/components/app-frame.js
-var w = `
+var k = `
   :host {
     display: block;
     position: fixed;
@@ -172,7 +172,7 @@ var w = `
     border: 7px solid var(--color-secondary);
     pointer-events: none;
 
-    @media (max-width: ${i}) {
+    @media (max-width: ${a}) {
       border-width: 5px;
     }
   }
@@ -182,12 +182,12 @@ var w = `
     /* border-color: var(--color-tertiary); */
     /* border-color: #a36aa5; */
   }
-`, k = `
+`, $ = `
 `;
-e("app-frame", { styles: w, template: k });
+e("app-frame", { styles: k, template: $ });
 
 // web-components/components/app-link.js
-var x = `
+var z = `
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -248,13 +248,13 @@ var x = `
        content: "➶";
      }
   }
-`, $ = ["href", "target", "rel", "download"], z = `
+`, A = ["href", "target", "rel", "download"], _ = `
   <a data-forward><slot></slot></a>
 `;
-e("app-link", { attrs: $, styles: x, template: z });
+e("app-link", { attrs: A, styles: z, template: _ });
 
 // web-components/components/app-logo.js
-var A = `
+var S = `
   :host {
     display: block;
   }
@@ -263,11 +263,11 @@ var A = `
     max-height: 7rem;
     width: auto;
   }
-`, _ = ["width", "height", "src", "alt"], T = () => "<img data-forward />";
-e("app-logo", { attrs: _, styles: A, template: T });
+`, T = ["width", "height", "src", "alt"], B = () => "<img data-forward />";
+e("app-logo", { attrs: T, styles: S, template: B });
 
 // web-components/sections/header.js
-var S = `
+var L = `
   :host {
     display: block;
     background: var(--color-bg-primary);
@@ -304,7 +304,7 @@ var S = `
     box-shadow: none;
   }
 
-  @media (max-width: ${i}) {
+  @media (max-width: ${a}) {
     .header__navigation {
       gap: 4rem;
     }
@@ -314,10 +314,10 @@ var S = `
     height: 5rem;
     width: auto;
   }
-`, L = `
+`, E = `
   <header>
-      <app-link variant="plain" href=${n("/")}>
-        <img src=${t("./assets/images/logo.avif")}
+      <app-link variant="plain" href=${m("/")}>
+        <img src=${o("./assets/images/logo.avif")}
           alt="Logo">
       </app-link>
 
@@ -325,25 +325,25 @@ var S = `
         <nav>
           <ul>
             <li>
-              <app-link variant="plain" href=${n("/")}>Home</app-link>
+              <app-link variant="plain" href=${m("/")}>Home</app-link>
             </li>
 
             <li>
-              <app-link variant="plain" href=${n("/about")}>About</app-link>
+              <app-link variant="plain" href=${m("/about")}>About</app-link>
             </li>
           </ul>
         </nav>
 
-        <app-link variant="secondary" href=${n("/#cta")}>
+        <app-link variant="secondary" href=${m("/#cta")}>
           Let's Craft &#8629;
         </app-link>
       </div>
   </header>
 `;
-e("section-header", { template: L, styles: S });
+e("section-header", { template: E, styles: L });
 
 // web-components/components/footer-nav.js
-var B = [
+var C = [
   { href: "/", name: "Home" },
   { href: "/about", name: "About" },
   { href: "/credits", name: "Credits" },
@@ -371,7 +371,7 @@ var B = [
    display: flex;
    gap: 5rem;
 
-   @media (max-width: ${i}) {
+   @media (max-width: ${a}) {
         flex-direction: column;
         gap: 3rem;
         margin-block: 2rem;
@@ -400,7 +400,7 @@ var B = [
     max-height: 12.5ch;
     overflow: scroll;
 
-    @media (max-width: ${i}) {
+    @media (max-width: ${a}) {
         max-height: 20ch;
     }
   }
@@ -409,23 +409,23 @@ var B = [
     margin-right: 5rem;
     margin-bottom: 0.3rem;
   }
-`, E = () => `
+`, U = () => `
     <nav>
         <span>Sitemap</span>
 
         <ol>
-            ${B.map((o) => `
+            ${C.map((t) => `
                 <li>
-                    <app-link variant="sitemap" href=${n(o.href)} >${o.name}</app-link>
+                    <app-link variant="sitemap" href=${m(t.href)} >${t.name}</app-link>
                 </li>
             `).join("")}
         </ol>
     </nav>
 `;
-e("footer-nav", { styles: H, template: E });
+e("footer-nav", { styles: H, template: U });
 
 // web-components/components/footer-copyright.js
-var R = `
+var F = `
   :host {
    display: flex;
     justify-content: space-between;
@@ -433,7 +433,7 @@ var R = `
     padding-top: 1rem;
     margin-top: 3rem;
 
-   @media (max-width: ${i}) {
+   @media (max-width: ${a}) {
         flex-direction: column-reverse;
         gap: 2rem;
         border: none;
@@ -445,8 +445,11 @@ var R = `
     margin: 0;
     border-top: 1px solid var(--color-text);
     padding-top: 1rem;
+    display: flex;
+    align-items: end;
+    gap: 0.2rem;
 
-    @media (min-width: ${i}) {
+    @media (min-width: ${a}) {
       border: none;
       padding-top: none;
     }
@@ -458,12 +461,19 @@ var R = `
     padding: 0;
     display: flex;
     gap: 2rem;
+    overflow: scroll;
+    margin-top: 0.5rem;
+  }
+
+  li {
+    display: flex;
+    align-items: center;
   }
 
   nav {
     display: block;
 
-    @media (min-width: ${i}) {
+    @media (min-width: ${a}) {
       display: block;
     }
   }
@@ -474,76 +484,99 @@ var R = `
     font-weight: var(--font-bold);
     
 
-    @media (max-width: ${i}) {
+    @media (max-width: ${a}) {
       display: inline-block;
       margin-bottom: 0.5rem;
     }
   }
-`, U = () => `
+
+  p img {
+    height: 2.3rem;
+
+     @media (max-width: ${a}) {
+      
+      height: 2.5rem;
+    }
+  }
+
+  p small {
+    display: inline-block;
+    margin-left: 1.5rem;
+  }
+
+  a {
+    text-decoration: none;
+    color: var(--color-text);
+  }
+`, O = () => `
       <p>
-        ©2026 Han Htet Aung
+          <img src=${o("./assets/images/logo.avif")}
+          alt="Logo">
+          <a href="https://hanhtetaung.dev/">
+            Crafted by Han
+          </a>
+
+        <small>
+          © 2026 
+        </small>
       </p>
 
       <nav>
-        <!-- <span>Find me on:</span> -->
+        <span>Find me on:</span>
         <ul>
               <li>
-                  <app-link href="mailto:hanhtetaung.dev@gmail.com" variant="image">
+                  <a href="https://wa.me/message/DVOPVSAGBDENB1" target="_blank">
                   <img
-                      src=${t("./assets/icons/email.svg")}
+                      src=${o("./assets/icons/whatsapp.svg")}
                       alt="Email Icon"
                   />
-                  </app-link>
+                  </a>    
               </li>
               <li>
-                  <app-link
-                  href="https://www.instagram.com/_tenasserim_/"
+                  <a
+                  href="https://www.instagram.com/crafted.han"
                   target="_blank"
                   rel="noopener"
-                  variant="image"
                   >
                   <img
-                      src=${t("./assets/icons/instagram.svg")}
+                      src=${o("./assets/icons/instagram.svg")}
                       alt="Linkedin Icon"
                   />
-                  </app-link>
+                  </a>
               </li>
               <li>
-                  <app-link
+                  <a
                   href="https://www.linkedin.com/in/han-htet-aung/"
                   target="_blank"
                   rel="noopener"
-                  variant="image"
                   >
                   <img
-                      src=${t("./assets/icons/linkedin.svg")}
+                      src=${o("./assets/icons/linkedin.svg")}
                       alt="Linkedin Icon"
                   />
-                  </app-link>
+                  </a>
               </li>
               <li>
-                  <app-link
+                  <a
                   href="https://github.com/hanhtetaung/"
                   target="_blank"
                   rel="noopener"
-                  variant="image"
                   >
                   <img
-                      src=${t("./assets/icons/github.svg")}
+                      src=${o("./assets/icons/github.svg")}
                       alt="Github Icon"
                   />
-                  </app-link>
+                  </a>
               </li>
           </ul>
         </nav>
 `;
-e("footer-copyright", { styles: R, template: U });
+e("footer-copyright", { styles: F, template: O });
 
 // web-components/sections/footer.js
-var C = `
+var q = `
   :host {
     display: block;
-    padding-block: 10rem;
   }
 
   q {
@@ -554,46 +587,105 @@ var C = `
   footer {
     width: 80%;
     margin-inline: auto;
+    padding-block: 10rem;
   }
 
   img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-  img:first-child {
-    display: none;
-  }
-
-@media (min-width: ${i}) {
-  img:first-child {
+    width: 100%;
+    height: auto;
     display: block;
   }
 
-  img:not(:first-child) {
+  #highlight-wrap {
+    position: relative;
+    line-height: 0;
+    /* overflow: hidden; */
     display: none;
   }
-}
 
+  #highlight-wrap img {
+    cursor: none;
+  }
 
-`, F = `
+  #highlight-lens {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+    clip-path: circle(0px at 50% 50%);
+  }
+
+  #lens-ring {
+    position: absolute;
+    box-sizing: border-box;
+    width: 20rem;
+    height: 20rem;
+    border: 0.5px solid var(--color-primary);
+    border-radius: 50%;
+    pointer-events: none;
+    display: none;
+  }
+
+  #lens-ring[data-visible="true"] {
+    display: block;
+  }
+
+  #thank-you,
+  #looking-forward {
+    display: block;
+  }
+
+  @media (min-width: ${a}) {
+    #highlight-wrap {
+      display: block;
+    }
+
+    #thank-you,
+    #looking-forward {
+      display: none;
+    }
+  }
+`, D = `
   <footer>
 
-  <img src=${t("./assets/images/footer/highlight.avif")} alt="Parting phrase">
-  <img src=${t("./assets/images/footer/thank-you.avif")} alt="Thank you phrase">
-  <img src=${t("./assets/images/footer/looking-forward.avif")} alt="Parting Phrase">
+    <div id="highlight-wrap">
+      <img id="highlight-base" src=${o("./assets/images/footer/highlight.png")} alt="Parting phrase">
+      <img id="highlight-lens" src=${o("./assets/images/footer/highlight-with-color.png")} alt="Parting phrase with color" aria-hidden="true">
+      <div id="lens-ring"></div>
+    </div>
 
+    <img id="thank-you" src=${o("./assets/images/footer/thank-you.avif")} alt="Thank you phrase">
+    <img id="looking-forward" src=${o("./assets/images/footer/looking-forward.avif")} alt="Parting Phrase">
 
     <!-- <footer-nav></footer-nav> -->
 
     <footer-copyright></footer-copyright>
   </footer>
 `;
-e("section-footer", { styles: C, template: F });
+function G(t) {
+  let i = t.querySelector("footer"), l = t.getElementById("highlight-base"), s = t.getElementById("highlight-lens"), c = t.getElementById("lens-ring"), h = t.getElementById("highlight-wrap");
+  if (!i || !l || !s || !c || !h)
+    return;
+  function g(n) {
+    let d = l.getBoundingClientRect(), p = n.clientX - d.left, b = n.clientY - d.top, u = c.offsetWidth / 2;
+    c.style.left = `${p - u}px`, c.style.top = `${b - u}px`, s.style.clipPath = `circle(${u}px at ${p}px ${b}px)`;
+  }
+  function f() {
+    c.setAttribute("data-visible", "true");
+  }
+  function r() {
+    c.removeAttribute("data-visible"), s.style.clipPath = "circle(0px at 50% 50%)";
+  }
+  return i.addEventListener("mousemove", g), i.addEventListener("mouseenter", f), i.addEventListener("mouseleave", r), () => {
+    i.removeEventListener("mousemove", g), i.removeEventListener("mouseenter", f), i.removeEventListener("mouseleave", r);
+  };
+}
+e("section-footer", { styles: q, template: D, onRender: G });
 
 // web-components/components/app-image.js
-var q = `
+var P = `
   :host {
     --local-width: 5rem;
     --local-heigth: auto;
@@ -624,11 +716,11 @@ var q = `
    :host([variant="full"]) {
     --local-width: 100%;
   }
-`, M = ["width", "height", "src", "alt"], O = () => "<img data-forward />";
-e("app-image", { attrs: M, styles: q, template: O });
+`, M = ["width", "height", "src", "alt"], N = () => "<img data-forward />";
+e("app-image", { attrs: M, styles: P, template: N });
 
 // web-components/sections/mmo/intro.js
-var I = `
+var X = `
   :host {
     display: block;
   }
@@ -642,7 +734,7 @@ var I = `
     justify-content: space-between;
     gap: 3rem;
 
-    @media (max-width: ${i}) {
+    @media (max-width: ${a}) {
       flex-direction: column;
     }
   }
@@ -672,11 +764,11 @@ var I = `
     padding: 0;
     padding-inline: 2rem;
   }
-`, D = `
+`, I = `
   <section>
     <app-image
     variant="large"
-    src=${t("./assets/images/case-study/mmo/thumbnail.avif")}
+    src=${o("./assets/images/case-study/mmo/thumbnail.avif")}
     alt="MMO thumbnail"
     width="1692"
     height="886"
@@ -705,10 +797,10 @@ var I = `
       </article>
   </section>
 `;
-e("section-mmo-intro", { styles: I, template: D });
+e("section-mmo-intro", { styles: X, template: I });
 
 // web-components/components/section-title.js
-var G = `
+var R = `
   :host {
     display: flex;
     align-items: center;
@@ -739,19 +831,19 @@ var G = `
       display: none;
     }
   }
-`, P = { name: String, img: String, alt: String }, N = ({ name: o, img: a = "", alt: s = "" }) => `
-    <h2>${o}</h2>
+`, V = { name: String, img: String, alt: String }, K = ({ name: t, img: i = "", alt: l = "" }) => `
+    <h2>${t}</h2>
     <img
-        src=${t(a)}
-        alt=${s}
+        src=${o(i)}
+        alt=${l}
         height="36"
         width="76"
     />
 `;
-e("section-title", { props: P, styles: G, template: N });
+e("section-title", { props: V, styles: R, template: K });
 
 // web-components/sections/mmo/about.js
-var X = `
+var J = `
   :host {
     display: block;
   }
@@ -760,7 +852,7 @@ var X = `
     width: 80%;
     margin-inline: auto;
   }
-`, K = `
+`, Q = `
   <section>
     <section-title
         variant="text"
@@ -777,10 +869,10 @@ var X = `
       </article>
   </section>
 `;
-e("section-mmo-about", { styles: X, template: K });
+e("section-mmo-about", { styles: J, template: Q });
 
 // web-components/sections/mmo/voices-from-field.js
-var J = `
+var Y = `
   :host {
     display: block;
   }
@@ -806,7 +898,7 @@ var J = `
     font-weight: var(--font-bold);
     text-transform: uppercase;
   }
-`, Q = `
+`, Z = `
   <section>
 
   <section-title
@@ -843,10 +935,10 @@ var J = `
         </ul>
   </section>
 `;
-e("section-mmo-voices-from-field", { styles: J, template: Q });
+e("section-mmo-voices-from-field", { styles: Y, template: Z });
 
 // web-components/sections/mmo/designing-workflow.js
-var V = `
+var W = `
   :host {
     display: block;
   }
@@ -883,7 +975,7 @@ var V = `
   article {
     margin-bottom: 5rem;
   }
-`, Y = `
+`, j = `
   <section>
     <section-title
         variant="text"
@@ -942,16 +1034,16 @@ var V = `
       </article>
   </section>
 `;
-e("section-mmo-designing-workflow", { styles: V, template: Y });
+e("section-mmo-designing-workflow", { styles: W, template: j });
 
 // web-components/components/app-article-paragraph.js
-var Z = `
+var ee = `
   :host {
     display: grid;
     grid-template-columns: 1fr 2.5fr;
 
 
-    @media (max-width: ${i}) {
+    @media (max-width: ${a}) {
         display: block;
     }
   }
@@ -967,17 +1059,17 @@ var Z = `
   :host([variant="block"]) {
     display: block;
   }
-`, W = { title: String }, j = ({ title: o }) => `
-        <h3>${o}</h3>
+`, te = { title: String }, oe = ({ title: t }) => `
+        <h3>${t}</h3>
 
         <article>
             <slot></slot>
         </article>
 `;
-e("app-article-paragraph", { props: W, styles: Z, template: j });
+e("app-article-paragraph", { props: te, styles: ee, template: oe });
 
 // web-components/sections/mmo/building-interfaces.js
-var ee = `
+var ie = `
   :host {
     display: block;
   }
@@ -1001,7 +1093,7 @@ var ee = `
     border-top: 1px dashed var(--color-text);
     padding-top: 5rem;
   }
-`, te = `
+`, ae = `
   <section>
     <section-title
       variant="text"
@@ -1023,7 +1115,7 @@ var ee = `
 
           <app-image
             variant="medium"
-            src=${t("./assets/images/case-study/mmo/1st-stage.avif")}
+            src=${o("./assets/images/case-study/mmo/1st-stage.avif")}
             alt="First interface preview"
             width="1398"
             height="1236"
@@ -1041,7 +1133,7 @@ var ee = `
 
           <app-image
             variant="medium"
-            src=${t("./assets/images/case-study/mmo/2nd-stage.avif")}
+            src=${o("./assets/images/case-study/mmo/2nd-stage.avif")}
             alt="Second interface preview"
             width="1398"
             height="1366"
@@ -1058,7 +1150,7 @@ var ee = `
 
           <app-image
             variant="medium"
-            src=${t("./assets/images/case-study/mmo/3rd-stage.avif")}
+            src=${o("./assets/images/case-study/mmo/3rd-stage.avif")}
             alt="Third interface preview"
             width="1474"
             height="864"
@@ -1072,7 +1164,7 @@ var ee = `
 
           <app-image
             variant="medium"
-            src=${t("./assets/images/case-study/mmo/final-stage.avif")}
+            src=${o("./assets/images/case-study/mmo/final-stage.avif")}
             alt="Final interface preview"
             width="1474"
             height="864"
@@ -1082,10 +1174,10 @@ var ee = `
     </ul>
   </section>
 `;
-e("section-mmo-building-interfaces", { styles: ee, template: te });
+e("section-mmo-building-interfaces", { styles: ie, template: ae });
 
 // web-components/sections/mmo/multiple-workflows.js
-var oe = `
+var re = `
   :host {
     display: block;
   }
@@ -1103,7 +1195,7 @@ var oe = `
     display: flex;
     flex-direction: column;
   }
-`, ie = `
+`, ne = `
   <section>
 
   <section-title
@@ -1118,10 +1210,10 @@ var oe = `
         </ul>
   </section>
 `;
-e("section-mmo-multiple-workflows", { styles: oe, template: ie });
+e("section-mmo-multiple-workflows", { styles: re, template: ne });
 
 // web-components/sections/mmo/one-design-system.js
-var ae = `
+var le = `
   :host {
     display: block;
   }
@@ -1130,7 +1222,7 @@ var ae = `
     width: 80%;
     margin-inline: auto;
   }
-`, re = `
+`, se = `
   <section>
     <section-title
         variant="text"
@@ -1151,14 +1243,14 @@ var ae = `
             interfaces.
           </p>
 
-          <app-link variant="underline" href=${n("/foundation-building-interfaces-at-scale")}>Read the article</app-link>
+          <app-link variant="underline" href=${m("/foundation-building-interfaces-at-scale")}>Read the article</app-link>
       </article>
   </section>
 `;
-e("section-mmo-one-design-system", { styles: ae, template: re });
+e("section-mmo-one-design-system", { styles: le, template: se });
 
 // web-components/sections/mmo/conclusion.js
-var ne = `
+var ce = `
   :host {
     display: block;
   }
@@ -1175,7 +1267,7 @@ var ne = `
     display: flex;
     flex-direction: column;
   }
-`, le = `
+`, me = `
   <section>
     <section-title
       variant="text"
@@ -1185,6 +1277,6 @@ var ne = `
     <p>The system continues to grow as users' needs change.</p>
   </section>
 `;
-e("section-mmo-conclusion", { styles: ne, template: le });
+e("section-mmo-conclusion", { styles: ce, template: me });
 </script></body>
 </html>

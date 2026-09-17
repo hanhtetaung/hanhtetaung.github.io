@@ -47,7 +47,7 @@ const template = /* html */ `
   <section>
     <p>[ Hobby ]</p>
     <h2>Self-taught in illustration</h2>
-    <p>All hand-drawn. I bring the same approach to every website I build.</p>
+    <p>All hand-drawn. Bring the same approach to every website I build.</p>
   </section>
 `;
 

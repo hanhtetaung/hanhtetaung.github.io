@@ -36,42 +36,42 @@
 
     <section-footer></section-footer>
   <script type="module">// web-components/asset.js
-function y() {
-  let a = document.documentElement.dataset.base || "./";
-  return new URL(a, location.href);
+function $() {
+  let i = document.documentElement.dataset.base || "./";
+  return new URL(i, location.href);
 }
-function o(a) {
-  return new URL(a, y()).href;
+function a(i) {
+  return new URL(i, $()).href;
 }
-function d(a) {
-  let e = a.replace(/^\//, ""), l = location.protocol === "file:", m = y();
+function g(i) {
+  let e = i.replace(/^\//, ""), s = location.protocol === "file:", m = $();
   if (e === "")
-    return l ? new URL("index.html", m).href : m.href;
-  return l ? new URL(`${e}.html`, m).href : new URL(e, m).href;
+    return s ? new URL("index.html", m).href : m.href;
+  return s ? new URL(`${e}.html`, m).href : new URL(e, m).href;
 }
 
 // web-components/fonts.js
-var x = `
+var S = `
 @font-face {
     font-family: "Archivo";
-    src: url("${o("./assets/fonts/Archivo-Black.woff2")}") format("woff2");
+    src: url("${a("./assets/fonts/Archivo-Black.woff2")}") format("woff2");
     font-weight: 700;
     font-display: swap;
   }
 
   @font-face {
     font-family: "Archivo";
-    src: url("${o("./assets/fonts/Archivo-Regular.woff2")}") format("woff2");
+    src: url("${a("./assets/fonts/Archivo-Regular.woff2")}") format("woff2");
     font-weight: 400;
     font-display: swap;
   }
-`, w = document.createElement("style");
-w.textContent = x;
-document.head.appendChild(w);
+`, z = document.createElement("style");
+z.textContent = S;
+document.head.appendChild(z);
 
 // web-components/define.js
-function k(a, e) {
-  if (a === void 0) {
+function A(i, e) {
+  if (i === void 0) {
     if (e === Array)
       return [];
     if (e === Object)
@@ -83,16 +83,16 @@ function k(a, e) {
     return;
   }
   if (e === Boolean)
-    return Boolean(a);
+    return Boolean(i);
   if (e === Number)
-    return Number(a);
-  return a;
+    return Number(i);
+  return i;
 }
-function i(a, { props: e = {}, attrs: l = [], styles: m = "", template: c, onRender: g = null }) {
-  let b = ["props", ...l];
+function o(i, { props: e = {}, attrs: s = [], styles: m = "", template: r, onRender: h = null }) {
+  let u = ["props", ...s];
 
-  class u extends HTMLElement {
-    static observedAttributes = b;
+  class f extends HTMLElement {
+    static observedAttributes = u;
     constructor() {
       super();
       this.attachShadow({ mode: "open" }), this._cleanup = null;
@@ -110,46 +110,46 @@ function i(a, { props: e = {}, attrs: l = [], styles: m = "", template: c, onRen
         this._render();
     }
     _getProps() {
-      let r = {}, n = this.getAttribute("props");
-      if (n)
+      let n = {}, l = this.getAttribute("props");
+      if (l)
         try {
-          r = JSON.parse(n);
+          n = JSON.parse(l);
         } catch {
-          r = {};
+          n = {};
         }
-      let p = {};
-      for (let f of Object.keys(e))
-        p[f] = k(r[f], e[f]);
-      return p;
+      let c = {};
+      for (let d of Object.keys(e))
+        c[d] = A(n[d], e[d]);
+      return c;
     }
     _applyForwardedAttrs() {
-      if (l.length === 0)
+      if (s.length === 0)
         return;
-      let r = this.shadowRoot.querySelector("[data-forward]");
-      if (!r)
+      let n = this.shadowRoot.querySelector("[data-forward]");
+      if (!n)
         return;
-      for (let n of l)
-        if (this.hasAttribute(n))
-          r.setAttribute(n, this.getAttribute(n));
+      for (let l of s)
+        if (this.hasAttribute(l))
+          n.setAttribute(l, this.getAttribute(l));
         else
-          r.removeAttribute(n);
+          n.removeAttribute(l);
     }
     _render() {
       if (typeof this._cleanup === "function")
         this._cleanup(), this._cleanup = null;
-      let r = this._getProps(), n = typeof c === "function" ? c(r) : c;
-      if (this.shadowRoot.innerHTML = `<style>${m}</style>${n}`, this._applyForwardedAttrs(), g) {
-        let p = g(this.shadowRoot, r, this);
-        if (typeof p === "function")
-          this._cleanup = p;
+      let n = this._getProps(), l = typeof r === "function" ? r(n) : r;
+      if (this.shadowRoot.innerHTML = `<style>${m}</style>${l}`, this._applyForwardedAttrs(), h) {
+        let c = h(this.shadowRoot, n, this);
+        if (typeof c === "function")
+          this._cleanup = c;
       }
     }
   }
-  customElements.define(a, u);
+  customElements.define(i, f);
 }
 
 // web-components/components/app-link.js
-var $ = `
+var _ = `
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -210,13 +210,13 @@ var $ = `
        content: "➶";
      }
   }
-`, z = ["href", "target", "rel", "download"], A = `
+`, C = ["href", "target", "rel", "download"], T = `
   <a data-forward><slot></slot></a>
 `;
-i("app-link", { attrs: z, styles: $, template: A });
+o("app-link", { attrs: C, styles: _, template: T });
 
 // web-components/components/app-logo.js
-var S = `
+var B = `
   :host {
     display: block;
   }
@@ -225,11 +225,11 @@ var S = `
     max-height: 7rem;
     width: auto;
   }
-`, T = ["width", "height", "src", "alt"], _ = () => "<img data-forward />";
-i("app-logo", { attrs: T, styles: S, template: _ });
+`, E = ["width", "height", "src", "alt"], D = () => "<img data-forward />";
+o("app-logo", { attrs: E, styles: B, template: D });
 
 // web-components/breakpoints.js
-var t = "640px", s = "1024px", h = "1920px";
+var t = "640px", p = "1024px", v = "1920px";
 
 // web-components/sections/header.js
 var L = `
@@ -279,10 +279,10 @@ var L = `
     height: 5rem;
     width: auto;
   }
-`, C = `
+`, O = `
   <header>
-      <app-link variant="plain" href=${d("/")}>
-        <img src=${o("./assets/images/logo.avif")}
+      <app-link variant="plain" href=${g("/")}>
+        <img src=${a("./assets/images/logo.avif")}
           alt="Logo">
       </app-link>
 
@@ -290,25 +290,25 @@ var L = `
         <nav>
           <ul>
             <li>
-              <app-link variant="plain" href=${d("/")}>Home</app-link>
+              <app-link variant="plain" href=${g("/")}>Home</app-link>
             </li>
 
             <li>
-              <app-link variant="plain" href=${d("/about")}>About</app-link>
+              <app-link variant="plain" href=${g("/about")}>About</app-link>
             </li>
           </ul>
         </nav>
 
-        <app-link variant="secondary" href=${d("/#cta")}>
+        <app-link variant="secondary" href=${g("/#cta")}>
           Let's Craft &#8629;
         </app-link>
       </div>
   </header>
 `;
-i("section-header", { template: C, styles: L });
+o("section-header", { template: O, styles: L });
 
 // web-components/components/footer-nav.js
-var E = [
+var P = [
   { href: "/", name: "Home" },
   { href: "/about", name: "About" },
   { href: "/credits", name: "Credits" },
@@ -327,7 +327,7 @@ var E = [
     href: "/writings/foundation-building-interfaces-at-scale",
     name: "Foundation"
   }
-], B = `
+], U = `
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -374,23 +374,23 @@ var E = [
     margin-right: 5rem;
     margin-bottom: 0.3rem;
   }
-`, H = () => `
+`, G = () => `
     <nav>
         <span>Sitemap</span>
 
         <ol>
-            ${E.map((a) => `
+            ${P.map((i) => `
                 <li>
-                    <app-link variant="sitemap" href=${d(a.href)} >${a.name}</app-link>
+                    <app-link variant="sitemap" href=${g(i.href)} >${i.name}</app-link>
                 </li>
             `).join("")}
         </ol>
     </nav>
 `;
-i("footer-nav", { styles: B, template: H });
+o("footer-nav", { styles: U, template: G });
 
 // web-components/components/footer-copyright.js
-var U = `
+var H = `
   :host {
    display: flex;
     justify-content: space-between;
@@ -410,6 +410,9 @@ var U = `
     margin: 0;
     border-top: 1px solid var(--color-text);
     padding-top: 1rem;
+    display: flex;
+    align-items: end;
+    gap: 0.2rem;
 
     @media (min-width: ${t}) {
       border: none;
@@ -423,6 +426,13 @@ var U = `
     padding: 0;
     display: flex;
     gap: 2rem;
+    overflow: scroll;
+    margin-top: 0.5rem;
+  }
+
+  li {
+    display: flex;
+    align-items: center;
   }
 
   nav {
@@ -444,71 +454,94 @@ var U = `
       margin-bottom: 0.5rem;
     }
   }
-`, D = () => `
+
+  p img {
+    height: 2.3rem;
+
+     @media (max-width: ${t}) {
+      
+      height: 2.5rem;
+    }
+  }
+
+  p small {
+    display: inline-block;
+    margin-left: 1.5rem;
+  }
+
+  a {
+    text-decoration: none;
+    color: var(--color-text);
+  }
+`, F = () => `
       <p>
-        ©2026 Han Htet Aung
+          <img src=${a("./assets/images/logo.avif")}
+          alt="Logo">
+          <a href="https://hanhtetaung.dev/">
+            Crafted by Han
+          </a>
+
+        <small>
+          © 2026 
+        </small>
       </p>
 
       <nav>
-        <!-- <span>Find me on:</span> -->
+        <span>Find me on:</span>
         <ul>
               <li>
-                  <app-link href="mailto:hanhtetaung.dev@gmail.com" variant="image">
+                  <a href="https://wa.me/message/DVOPVSAGBDENB1" target="_blank">
                   <img
-                      src=${o("./assets/icons/email.svg")}
+                      src=${a("./assets/icons/whatsapp.svg")}
                       alt="Email Icon"
                   />
-                  </app-link>
+                  </a>    
               </li>
               <li>
-                  <app-link
-                  href="https://www.instagram.com/_tenasserim_/"
+                  <a
+                  href="https://www.instagram.com/crafted.han"
                   target="_blank"
                   rel="noopener"
-                  variant="image"
                   >
                   <img
-                      src=${o("./assets/icons/instagram.svg")}
+                      src=${a("./assets/icons/instagram.svg")}
                       alt="Linkedin Icon"
                   />
-                  </app-link>
+                  </a>
               </li>
               <li>
-                  <app-link
+                  <a
                   href="https://www.linkedin.com/in/han-htet-aung/"
                   target="_blank"
                   rel="noopener"
-                  variant="image"
                   >
                   <img
-                      src=${o("./assets/icons/linkedin.svg")}
+                      src=${a("./assets/icons/linkedin.svg")}
                       alt="Linkedin Icon"
                   />
-                  </app-link>
+                  </a>
               </li>
               <li>
-                  <app-link
+                  <a
                   href="https://github.com/hanhtetaung/"
                   target="_blank"
                   rel="noopener"
-                  variant="image"
                   >
                   <img
-                      src=${o("./assets/icons/github.svg")}
+                      src=${a("./assets/icons/github.svg")}
                       alt="Github Icon"
                   />
-                  </app-link>
+                  </a>
               </li>
           </ul>
         </nav>
 `;
-i("footer-copyright", { styles: U, template: D });
+o("footer-copyright", { styles: H, template: F });
 
 // web-components/sections/footer.js
-var O = `
+var N = `
   :host {
     display: block;
-    padding-block: 10rem;
   }
 
   q {
@@ -519,46 +552,105 @@ var O = `
   footer {
     width: 80%;
     margin-inline: auto;
+    padding-block: 10rem;
   }
 
   img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-  img:first-child {
-    display: none;
-  }
-
-@media (min-width: ${t}) {
-  img:first-child {
+    width: 100%;
+    height: auto;
     display: block;
   }
 
-  img:not(:first-child) {
+  #highlight-wrap {
+    position: relative;
+    line-height: 0;
+    /* overflow: hidden; */
     display: none;
   }
-}
 
+  #highlight-wrap img {
+    cursor: none;
+  }
 
-`, P = `
+  #highlight-lens {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+    clip-path: circle(0px at 50% 50%);
+  }
+
+  #lens-ring {
+    position: absolute;
+    box-sizing: border-box;
+    width: 20rem;
+    height: 20rem;
+    border: 0.5px solid var(--color-primary);
+    border-radius: 50%;
+    pointer-events: none;
+    display: none;
+  }
+
+  #lens-ring[data-visible="true"] {
+    display: block;
+  }
+
+  #thank-you,
+  #looking-forward {
+    display: block;
+  }
+
+  @media (min-width: ${t}) {
+    #highlight-wrap {
+      display: block;
+    }
+
+    #thank-you,
+    #looking-forward {
+      display: none;
+    }
+  }
+`, K = `
   <footer>
 
-  <img src=${o("./assets/images/footer/highlight.avif")} alt="Parting phrase">
-  <img src=${o("./assets/images/footer/thank-you.avif")} alt="Thank you phrase">
-  <img src=${o("./assets/images/footer/looking-forward.avif")} alt="Parting Phrase">
+    <div id="highlight-wrap">
+      <img id="highlight-base" src=${a("./assets/images/footer/highlight.png")} alt="Parting phrase">
+      <img id="highlight-lens" src=${a("./assets/images/footer/highlight-with-color.png")} alt="Parting phrase with color" aria-hidden="true">
+      <div id="lens-ring"></div>
+    </div>
 
+    <img id="thank-you" src=${a("./assets/images/footer/thank-you.avif")} alt="Thank you phrase">
+    <img id="looking-forward" src=${a("./assets/images/footer/looking-forward.avif")} alt="Parting Phrase">
 
     <!-- <footer-nav></footer-nav> -->
 
     <footer-copyright></footer-copyright>
   </footer>
 `;
-i("section-footer", { styles: O, template: P });
+function V(i) {
+  let e = i.querySelector("footer"), s = i.getElementById("highlight-base"), m = i.getElementById("highlight-lens"), r = i.getElementById("lens-ring"), h = i.getElementById("highlight-wrap");
+  if (!e || !s || !m || !r || !h)
+    return;
+  function u(l) {
+    let c = s.getBoundingClientRect(), d = l.clientX - c.left, b = l.clientY - c.top, y = r.offsetWidth / 2;
+    r.style.left = `${d - y}px`, r.style.top = `${b - y}px`, m.style.clipPath = `circle(${y}px at ${d}px ${b}px)`;
+  }
+  function f() {
+    r.setAttribute("data-visible", "true");
+  }
+  function n() {
+    r.removeAttribute("data-visible"), m.style.clipPath = "circle(0px at 50% 50%)";
+  }
+  return e.addEventListener("mousemove", u), e.addEventListener("mouseenter", f), e.addEventListener("mouseleave", n), () => {
+    e.removeEventListener("mousemove", u), e.removeEventListener("mouseenter", f), e.removeEventListener("mouseleave", n);
+  };
+}
+o("section-footer", { styles: N, template: K, onRender: V });
 
 // web-components/sections/home/hero.js
-var F = `
+var j = `
   :host {
     display: block;
     height: min(calc(100vh - 108px - 10rem), 70rem);
@@ -578,7 +670,7 @@ var F = `
     justify-content: start;
     position: relative;
 
-    @media (min-width: ${s}) {
+    @media (min-width: ${p}) {
       justify-content: space-between;
     }
   }
@@ -596,10 +688,17 @@ var F = `
     max-height: 25rem;
     width: auto;
     display: block;
-    cursor: none;
 
     @media (min-width: ${t}) {
       max-height: 35rem;
+    }
+  }
+
+  #visible-img {
+    cursor: auto;
+
+    @media (min-width: ${t}) {
+      cursor: none;
     }
   }
 
@@ -610,12 +709,17 @@ var F = `
     height: 100%;
     object-fit: cover;
     pointer-events: none;
-    clip-path: circle(0px at 50% 50%); 
+    clip-path: circle(0px at 50% 50%);
+    display: none;
+
+    @media (min-width: ${t}) {
+      display: block;
+    }
   }
 
   #lens-ring {
     position: absolute;
-    box-sizing: border-box; 
+    box-sizing: border-box;
     width: 20rem;
     height: 20rem;
     border: 0.5px solid var(--color-primary);
@@ -624,8 +728,10 @@ var F = `
     display: none;
   }
 
-  #lens-ring[data-visible="true"] {
-    display: block;
+  @media (min-width: ${t}) {
+    #lens-ring[data-visible="true"] {
+      display: block;
+    }
   }
 
   h1 {
@@ -642,42 +748,57 @@ var F = `
   hgroup + p {
     max-width: min(25ch, 90%);
   }
-`, G = `
+`, q = `
   <section>
     <hgroup>
       <p>Han Htet Aung | GMT+7</p>
       <h1>Craft Web Interfaces</h1>
     </hgroup>
-    <p>Web Designer & Developer who brings hand-drawn illustrations into every site.</p>
+    <p>Web Designer & Developer who brings hand-drawn illustrations to every site.</p>
     <div id="img-wrap">
       <img id="visible-img" src="./assets/images/home/walking-holding-luggage.avif" alt="Man walking and holding luggage">
       <img id="lens-img" src="./assets/images/home/walking-holding-luggage-color.avif" alt="Man walking and holding luggage with color" aria-hidden="true">
       <div id="lens-ring"></div>
     </div>
   </section>
-`;
-function I(a) {
-  let e = a.getElementById("img-wrap"), l = a.getElementById("visible-img"), m = a.getElementById("lens-img"), c = a.getElementById("lens-ring");
-  if (!e || !l || !m || !c)
+`, I = `(min-width: ${t})`;
+function M(i) {
+  let e = i.getElementById("img-wrap"), s = i.getElementById("visible-img"), m = i.getElementById("lens-img"), r = i.getElementById("lens-ring");
+  if (!e || !s || !m || !r)
     return;
-  function g(r) {
-    let n = l.getBoundingClientRect(), p = r.clientX - n.left, f = r.clientY - n.top, v = c.offsetWidth / 2;
-    c.style.left = `${p - v}px`, c.style.top = `${f - v}px`, m.style.clipPath = `circle(${v}px at ${p}px ${f}px)`;
+  let h = window.matchMedia(I);
+  function u(b) {
+    let y = s.getBoundingClientRect(), x = b.clientX - y.left, k = b.clientY - y.top, w = r.offsetWidth / 2;
+    r.style.left = `${x - w}px`, r.style.top = `${k - w}px`, m.style.clipPath = `circle(${w}px at ${x}px ${k}px)`;
   }
-  function b() {
-    c.setAttribute("data-visible", "true");
+  function f() {
+    r.setAttribute("data-visible", "true");
   }
-  function u() {
-    c.removeAttribute("data-visible"), m.style.clipPath = "circle(0px at 50% 50%)";
+  function n() {
+    r.removeAttribute("data-visible"), m.style.clipPath = "circle(0px at 50% 50%)";
   }
-  return e.addEventListener("mousemove", g), e.addEventListener("mouseenter", b), e.addEventListener("mouseleave", u), () => {
-    e.removeEventListener("mousemove", g), e.removeEventListener("mouseenter", b), e.removeEventListener("mouseleave", u);
+  function l() {
+    e.addEventListener("mousemove", u), e.addEventListener("mouseenter", f), e.addEventListener("mouseleave", n);
+  }
+  function c() {
+    e.removeEventListener("mousemove", u), e.removeEventListener("mouseenter", f), e.removeEventListener("mouseleave", n), n();
+  }
+  function d(b) {
+    if (b.matches)
+      l();
+    else
+      c();
+  }
+  if (h.matches)
+    l();
+  return h.addEventListener("change", d), () => {
+    c(), h.removeEventListener("change", d);
   };
 }
-i("section-hero", { styles: F, template: G, onRender: I });
+o("section-hero", { styles: j, template: q, onRender: M });
 
 // web-components/sections/home/little-process.js
-var R = `
+var W = `
   :host {
     position: relative;
     display: block;
@@ -685,7 +806,7 @@ var R = `
     overflow: hidden;
     margin-block: 15rem;
 
-    @media (min-width: ${s}) {
+    @media (min-width: ${p}) {
       margin-top: 20rem;
       margin-bottom: 25rem;
     }
@@ -702,7 +823,7 @@ var R = `
       justify-content: space-between;
     }
 
-    @media (min-width: ${h}) {
+    @media (min-width: ${v}) {
       position: relative;
     }
   }
@@ -746,7 +867,7 @@ var R = `
     z-index: -1;
     opacity: 0.1;
 
-    @media (min-width: ${s}) {
+    @media (min-width: ${p}) {
       opacity: 1;
     }
 
@@ -754,7 +875,7 @@ var R = `
   span {
     font-size: var(--size-body);
   }
-`, q = `
+`, X = `
 
 <section>
   <hgroup>
@@ -781,14 +902,14 @@ var R = `
     </li>
   </ul>
 
-  <img src=${o("./assets/images/home/craftsmanship.avif")} alt="Craftsmanship Illustration">
+  <img src=${a("./assets/images/home/craftsmanship.avif")} alt="Craftsmanship Illustration">
 </section>
 
 `;
-i("section-little-process", { styles: R, template: q });
+o("section-little-process", { styles: W, template: X });
 
 // web-components/sections/home/education.js
-var K = `
+var J = `
   :host {
     position: relative;
     display: block;
@@ -797,7 +918,7 @@ var K = `
     overflow-x: hidden;
     overflow-y: visible;
 
-    @media (min-width: ${h}) {
+    @media (min-width: ${v}) {
       height: auto;
     }
   }
@@ -807,7 +928,7 @@ var K = `
     margin-inline: auto;
     margin-top: 5rem;
 
-    @media (min-width: ${h}) {
+    @media (min-width: ${v}) {
       position: relative;
       overflow: hidden;
       height: 70rem;
@@ -842,14 +963,14 @@ var K = `
       left: 40%;
     }
 
-    @media (min-width: ${s}) {
+    @media (min-width: ${p}) {
       opacity: 1;
       right: 10%;
       left: auto;
     }
     
   }
-`, M = `
+`, Z = `
   <section>
     <hgroup>
       <p>[ Education ]</p>
@@ -861,10 +982,10 @@ var K = `
   </section>
 
 `;
-i("section-education", { styles: K, template: M });
+o("section-education", { styles: J, template: Z });
 
 // web-components/sections/home/hobby.js
-var N = `
+var Q = `
   :host {
     display: block;
   }
@@ -900,7 +1021,7 @@ var N = `
       height: auto;
     }
   }
-`, j = `
+`, Y = `
   <div>
     <img src="./assets/images/home/sketching.avif" alt="Sketching SEA">
   </div>
@@ -908,13 +1029,13 @@ var N = `
   <section>
     <p>[ Hobby ]</p>
     <h2>Self-taught in illustration</h2>
-    <p>All hand-drawn. I bring the same approach to every website I build.</p>
+    <p>All hand-drawn. Bring the same approach to every website I build.</p>
   </section>
 `;
-i("section-hobby", { styles: N, template: j });
+o("section-hobby", { styles: Q, template: Y });
 
 // web-components/sections/home/recent-crafts.js
-var X = `
+var R = `
   :host {
     position: relative;
     display: block;
@@ -953,7 +1074,7 @@ var X = `
     }
 
 
-    @media (min-width: ${s}) {
+    @media (min-width: ${p}) {
       grid-template-columns: repeat(3, 1fr);
     }
   }
@@ -978,7 +1099,7 @@ var X = `
     height: 20rem;
   }
 
-`, J = `
+`, ee = `
 <section>
   <hgroup>
     <p>[ Recent Crafts ]</p>
@@ -988,29 +1109,29 @@ var X = `
   <ul>
      <li>
       <a href="/map/" target="_blank">
-        <img src=${o("./assets/images/home/story-map.avif")} alt="Story Map">
+        <img src=${a("./assets/images/home/story-map.avif")} alt="Story Map">
       </a>
     </li>
 
     <li>
       <a href="/terra/" target="_blank">
-        <img src=${o("./assets/images/home/terra.avif")} alt="Terra">
+        <img src=${a("./assets/images/home/terra.avif")} alt="Terra">
       </a>
     </li>
 
      <li>
        <a href="https://skssolarmyanmar.com/" target="_blank">
-         <img src=${o("./assets/images/home/sks-solar.avif")} alt="SKS Solar">
+         <img src=${a("./assets/images/home/sks-solar.avif")} alt="SKS Solar">
       </a>
     </li>
     
   </ul>
 </section>
 `;
-i("section-recent-crafts", { styles: X, template: J });
+o("section-recent-crafts", { styles: R, template: ee });
 
 // web-components/sections/home/cta.js
-var W = `
+var te = `
   :host {
     display: block;
     height: 70rem;
@@ -1032,7 +1153,7 @@ var W = `
       height: 90%;
     }
 
-    @media (min-width: ${h}) {
+    @media (min-width: ${v}) {
       position: relative;
       overflow: hidden;
     }
@@ -1058,14 +1179,13 @@ var W = `
     width: 100%;
     display: flex;
     gap: 2rem;
-    align-items: center;
     border-bottom: 1px solid var(--color-text);
     padding-block: 2rem;
     overflow: scroll;
 
     @media (min-width: ${t}) {
       max-width: 50%;
-      gap: 5rem;
+      gap: 3rem;
     }
   }
 
@@ -1083,7 +1203,7 @@ var W = `
       top: 20rem;
     }
 
-    @media (min-width: ${s}) {
+    @media (min-width: ${p}) {
       opacity: 1;
     }
   }
@@ -1109,43 +1229,45 @@ var W = `
     text-decoration: none;
     color: var(--color-text);
   }
-`, Y = `
+`, ie = `
 <section>
   <img src="./assets/images/home/red-telephone-box.avif" alt="Red Telephone Box">
 
   <hgroup>
     <p>[ Let's Craft ]</p>
-    <h2>You Bring the Story <br>
-          I Craft the Website
-      </h2>
+    <h2>Open to Working Together</h2>
   </hgroup>
 
   <ul>
     <li>
-      <app-logo src=${o("./assets/icons/email.svg")} alt="Email icon"></app-logo>
+      <app-logo src=${a("./assets/icons/whatsapp.svg")} alt="Whatsapp icon"></app-logo>
+      <a href="https://wa.me/message/DVOPVSAGBDENB1" target="_blank">wa/crafted.han</a>
+    </li>
+    <li>
+      <app-logo src=${a("./assets/icons/email.svg")} alt="Email icon"></app-logo>
       <a href="mailto:hanhtetaung.dev@gmail.com" target="_blank">hanhtetaung.dev@gmail.com</a>
       <button id="copyBtn">Copy</button>
     </li>
     <li>
-      <app-logo src=${o("./assets/icons/linkedin.svg")} alt="Linkedin icon"></app-logo>
+      <app-logo src=${a("./assets/icons/linkedin.svg")} alt="Linkedin icon"></app-logo>
       <a href="https://www.linkedin.com/in/han-htet-aung/" target="_blank">in/han-htet-aung</a>
     </li>
   </ul>
 </section>
 `;
-function Q(a) {
-  let e = a.getElementById("copyBtn");
+function ae(i) {
+  let e = i.getElementById("copyBtn");
   if (!e)
     return;
   e.addEventListener("click", () => {
     navigator.clipboard.writeText("hanhtetaung.dev@gmail.com").then(() => {
-      let l = e.textContent;
+      let s = e.textContent;
       e.textContent = "Copied!", e.classList.add("copied"), setTimeout(() => {
-        e.textContent = l, e.classList.remove("copied");
+        e.textContent = s, e.classList.remove("copied");
       }, 1500);
     });
   });
 }
-i("section-cta", { styles: W, template: Y, onRender: Q });
+o("section-cta", { styles: te, template: ie, onRender: ae });
 </script></body>
 </html>

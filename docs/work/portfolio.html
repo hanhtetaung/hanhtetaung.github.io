@@ -41,22 +41,22 @@
 
     <section-footer></section-footer>
   <script type="module">// web-components/asset.js
-function g() {
+function b() {
   let a = document.documentElement.dataset.base || "./";
   return new URL(a, location.href);
 }
 function t(a) {
-  return new URL(a, g()).href;
+  return new URL(a, b()).href;
 }
-function n(a) {
-  let r = a.replace(/^\//, ""), s = location.protocol === "file:", c = g();
-  if (r === "")
-    return s ? new URL("index.html", c).href : c.href;
-  return s ? new URL(`${r}.html`, c).href : new URL(r, c).href;
+function m(a) {
+  let o = a.replace(/^\//, ""), l = location.protocol === "file:", s = b();
+  if (o === "")
+    return l ? new URL("index.html", s).href : s.href;
+  return l ? new URL(`${o}.html`, s).href : new URL(o, s).href;
 }
 
 // web-components/fonts.js
-var b = `
+var w = `
 @font-face {
     font-family: "Archivo";
     src: url("${t("./assets/fonts/Archivo-Black.woff2")}") format("woff2");
@@ -70,34 +70,34 @@ var b = `
     font-weight: 400;
     font-display: swap;
   }
-`, u = document.createElement("style");
-u.textContent = b;
-document.head.appendChild(u);
+`, y = document.createElement("style");
+y.textContent = w;
+document.head.appendChild(y);
 
 // web-components/define.js
-function y(a, r) {
+function x(a, o) {
   if (a === void 0) {
-    if (r === Array)
+    if (o === Array)
       return [];
-    if (r === Object)
+    if (o === Object)
       return {};
-    if (r === Boolean)
+    if (o === Boolean)
       return !1;
-    if (r === Number)
+    if (o === Number)
       return 0;
     return;
   }
-  if (r === Boolean)
+  if (o === Boolean)
     return Boolean(a);
-  if (r === Number)
+  if (o === Number)
     return Number(a);
   return a;
 }
-function e(a, { props: r = {}, attrs: s = [], styles: c = "", template: m, onRender: f = null }) {
-  let v = ["props", ...s];
+function e(a, { props: o = {}, attrs: l = [], styles: s = "", template: c, onRender: h = null }) {
+  let g = ["props", ...l];
 
-  class h extends HTMLElement {
-    static observedAttributes = v;
+  class f extends HTMLElement {
+    static observedAttributes = g;
     constructor() {
       super();
       this.attachShadow({ mode: "open" }), this._cleanup = null;
@@ -115,49 +115,49 @@ function e(a, { props: r = {}, attrs: s = [], styles: c = "", template: m, onRen
         this._render();
     }
     _getProps() {
-      let i = {}, l = this.getAttribute("props");
-      if (l)
+      let i = {}, n = this.getAttribute("props");
+      if (n)
         try {
-          i = JSON.parse(l);
+          i = JSON.parse(n);
         } catch {
           i = {};
         }
       let p = {};
-      for (let d of Object.keys(r))
-        p[d] = y(i[d], r[d]);
+      for (let d of Object.keys(o))
+        p[d] = x(i[d], o[d]);
       return p;
     }
     _applyForwardedAttrs() {
-      if (s.length === 0)
+      if (l.length === 0)
         return;
       let i = this.shadowRoot.querySelector("[data-forward]");
       if (!i)
         return;
-      for (let l of s)
-        if (this.hasAttribute(l))
-          i.setAttribute(l, this.getAttribute(l));
+      for (let n of l)
+        if (this.hasAttribute(n))
+          i.setAttribute(n, this.getAttribute(n));
         else
-          i.removeAttribute(l);
+          i.removeAttribute(n);
     }
     _render() {
       if (typeof this._cleanup === "function")
         this._cleanup(), this._cleanup = null;
-      let i = this._getProps(), l = typeof m === "function" ? m(i) : m;
-      if (this.shadowRoot.innerHTML = `<style>${c}</style>${l}`, this._applyForwardedAttrs(), f) {
-        let p = f(this.shadowRoot, i, this);
+      let i = this._getProps(), n = typeof c === "function" ? c(i) : c;
+      if (this.shadowRoot.innerHTML = `<style>${s}</style>${n}`, this._applyForwardedAttrs(), h) {
+        let p = h(this.shadowRoot, i, this);
         if (typeof p === "function")
           this._cleanup = p;
       }
     }
   }
-  customElements.define(a, h);
+  customElements.define(a, f);
 }
 
 // web-components/breakpoints.js
-var o = "640px";
+var r = "640px";
 
 // web-components/components/app-frame.js
-var w = `
+var k = `
   :host {
     display: block;
     position: fixed;
@@ -166,7 +166,7 @@ var w = `
     border: 7px solid var(--color-secondary);
     pointer-events: none;
 
-    @media (max-width: ${o}) {
+    @media (max-width: ${r}) {
       border-width: 5px;
     }
   }
@@ -176,12 +176,12 @@ var w = `
     /* border-color: var(--color-tertiary); */
     /* border-color: #a36aa5; */
   }
-`, x = `
+`, $ = `
 `;
-e("app-frame", { styles: w, template: x });
+e("app-frame", { styles: k, template: $ });
 
 // web-components/components/app-link.js
-var k = `
+var z = `
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -242,13 +242,13 @@ var k = `
        content: "➶";
      }
   }
-`, $ = ["href", "target", "rel", "download"], z = `
+`, A = ["href", "target", "rel", "download"], _ = `
   <a data-forward><slot></slot></a>
 `;
-e("app-link", { attrs: $, styles: k, template: z });
+e("app-link", { attrs: A, styles: z, template: _ });
 
 // web-components/components/app-logo.js
-var A = `
+var S = `
   :host {
     display: block;
   }
@@ -257,11 +257,11 @@ var A = `
     max-height: 7rem;
     width: auto;
   }
-`, _ = ["width", "height", "src", "alt"], S = () => "<img data-forward />";
-e("app-logo", { attrs: _, styles: A, template: S });
+`, B = ["width", "height", "src", "alt"], T = () => "<img data-forward />";
+e("app-logo", { attrs: B, styles: S, template: T });
 
 // web-components/sections/header.js
-var T = `
+var L = `
   :host {
     display: block;
     background: var(--color-bg-primary);
@@ -298,7 +298,7 @@ var T = `
     box-shadow: none;
   }
 
-  @media (max-width: ${o}) {
+  @media (max-width: ${r}) {
     .header__navigation {
       gap: 4rem;
     }
@@ -308,9 +308,9 @@ var T = `
     height: 5rem;
     width: auto;
   }
-`, H = `
+`, C = `
   <header>
-      <app-link variant="plain" href=${n("/")}>
+      <app-link variant="plain" href=${m("/")}>
         <img src=${t("./assets/images/logo.avif")}
           alt="Logo">
       </app-link>
@@ -319,25 +319,25 @@ var T = `
         <nav>
           <ul>
             <li>
-              <app-link variant="plain" href=${n("/")}>Home</app-link>
+              <app-link variant="plain" href=${m("/")}>Home</app-link>
             </li>
 
             <li>
-              <app-link variant="plain" href=${n("/about")}>About</app-link>
+              <app-link variant="plain" href=${m("/about")}>About</app-link>
             </li>
           </ul>
         </nav>
 
-        <app-link variant="secondary" href=${n("/#cta")}>
+        <app-link variant="secondary" href=${m("/#cta")}>
           Let's Craft &#8629;
         </app-link>
       </div>
   </header>
 `;
-e("section-header", { template: H, styles: T });
+e("section-header", { template: C, styles: L });
 
 // web-components/components/footer-nav.js
-var L = [
+var E = [
   { href: "/", name: "Home" },
   { href: "/about", name: "About" },
   { href: "/credits", name: "Credits" },
@@ -356,7 +356,7 @@ var L = [
     href: "/writings/foundation-building-interfaces-at-scale",
     name: "Foundation"
   }
-], B = `
+], H = `
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -365,7 +365,7 @@ var L = [
    display: flex;
    gap: 5rem;
 
-   @media (max-width: ${o}) {
+   @media (max-width: ${r}) {
         flex-direction: column;
         gap: 3rem;
         margin-block: 2rem;
@@ -394,7 +394,7 @@ var L = [
     max-height: 12.5ch;
     overflow: scroll;
 
-    @media (max-width: ${o}) {
+    @media (max-width: ${r}) {
         max-height: 20ch;
     }
   }
@@ -403,23 +403,23 @@ var L = [
     margin-right: 5rem;
     margin-bottom: 0.3rem;
   }
-`, E = () => `
+`, U = () => `
     <nav>
         <span>Sitemap</span>
 
         <ol>
-            ${L.map((a) => `
+            ${E.map((a) => `
                 <li>
-                    <app-link variant="sitemap" href=${n(a.href)} >${a.name}</app-link>
+                    <app-link variant="sitemap" href=${m(a.href)} >${a.name}</app-link>
                 </li>
             `).join("")}
         </ol>
     </nav>
 `;
-e("footer-nav", { styles: B, template: E });
+e("footer-nav", { styles: H, template: U });
 
 // web-components/components/footer-copyright.js
-var C = `
+var F = `
   :host {
    display: flex;
     justify-content: space-between;
@@ -427,7 +427,7 @@ var C = `
     padding-top: 1rem;
     margin-top: 3rem;
 
-   @media (max-width: ${o}) {
+   @media (max-width: ${r}) {
         flex-direction: column-reverse;
         gap: 2rem;
         border: none;
@@ -439,8 +439,11 @@ var C = `
     margin: 0;
     border-top: 1px solid var(--color-text);
     padding-top: 1rem;
+    display: flex;
+    align-items: end;
+    gap: 0.2rem;
 
-    @media (min-width: ${o}) {
+    @media (min-width: ${r}) {
       border: none;
       padding-top: none;
     }
@@ -452,12 +455,19 @@ var C = `
     padding: 0;
     display: flex;
     gap: 2rem;
+    overflow: scroll;
+    margin-top: 0.5rem;
+  }
+
+  li {
+    display: flex;
+    align-items: center;
   }
 
   nav {
     display: block;
 
-    @media (min-width: ${o}) {
+    @media (min-width: ${r}) {
       display: block;
     }
   }
@@ -468,76 +478,99 @@ var C = `
     font-weight: var(--font-bold);
     
 
-    @media (max-width: ${o}) {
+    @media (max-width: ${r}) {
       display: inline-block;
       margin-bottom: 0.5rem;
     }
   }
-`, U = () => `
+
+  p img {
+    height: 2.3rem;
+
+     @media (max-width: ${r}) {
+      
+      height: 2.5rem;
+    }
+  }
+
+  p small {
+    display: inline-block;
+    margin-left: 1.5rem;
+  }
+
+  a {
+    text-decoration: none;
+    color: var(--color-text);
+  }
+`, P = () => `
       <p>
-        ©2026 Han Htet Aung
+          <img src=${t("./assets/images/logo.avif")}
+          alt="Logo">
+          <a href="https://hanhtetaung.dev/">
+            Crafted by Han
+          </a>
+
+        <small>
+          © 2026 
+        </small>
       </p>
 
       <nav>
-        <!-- <span>Find me on:</span> -->
+        <span>Find me on:</span>
         <ul>
               <li>
-                  <app-link href="mailto:hanhtetaung.dev@gmail.com" variant="image">
+                  <a href="https://wa.me/message/DVOPVSAGBDENB1" target="_blank">
                   <img
-                      src=${t("./assets/icons/email.svg")}
+                      src=${t("./assets/icons/whatsapp.svg")}
                       alt="Email Icon"
                   />
-                  </app-link>
+                  </a>    
               </li>
               <li>
-                  <app-link
-                  href="https://www.instagram.com/_tenasserim_/"
+                  <a
+                  href="https://www.instagram.com/crafted.han"
                   target="_blank"
                   rel="noopener"
-                  variant="image"
                   >
                   <img
                       src=${t("./assets/icons/instagram.svg")}
                       alt="Linkedin Icon"
                   />
-                  </app-link>
+                  </a>
               </li>
               <li>
-                  <app-link
+                  <a
                   href="https://www.linkedin.com/in/han-htet-aung/"
                   target="_blank"
                   rel="noopener"
-                  variant="image"
                   >
                   <img
                       src=${t("./assets/icons/linkedin.svg")}
                       alt="Linkedin Icon"
                   />
-                  </app-link>
+                  </a>
               </li>
               <li>
-                  <app-link
+                  <a
                   href="https://github.com/hanhtetaung/"
                   target="_blank"
                   rel="noopener"
-                  variant="image"
                   >
                   <img
                       src=${t("./assets/icons/github.svg")}
                       alt="Github Icon"
                   />
-                  </app-link>
+                  </a>
               </li>
           </ul>
         </nav>
 `;
-e("footer-copyright", { styles: C, template: U });
+e("footer-copyright", { styles: F, template: P });
 
 // web-components/sections/footer.js
-var F = `
+var q = `
   :host {
     display: block;
-    padding-block: 10rem;
   }
 
   q {
@@ -548,46 +581,105 @@ var F = `
   footer {
     width: 80%;
     margin-inline: auto;
+    padding-block: 10rem;
   }
 
   img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-  img:first-child {
-    display: none;
-  }
-
-@media (min-width: ${o}) {
-  img:first-child {
+    width: 100%;
+    height: auto;
     display: block;
   }
 
-  img:not(:first-child) {
+  #highlight-wrap {
+    position: relative;
+    line-height: 0;
+    /* overflow: hidden; */
     display: none;
   }
-}
 
+  #highlight-wrap img {
+    cursor: none;
+  }
 
-`, R = `
+  #highlight-lens {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+    clip-path: circle(0px at 50% 50%);
+  }
+
+  #lens-ring {
+    position: absolute;
+    box-sizing: border-box;
+    width: 20rem;
+    height: 20rem;
+    border: 0.5px solid var(--color-primary);
+    border-radius: 50%;
+    pointer-events: none;
+    display: none;
+  }
+
+  #lens-ring[data-visible="true"] {
+    display: block;
+  }
+
+  #thank-you,
+  #looking-forward {
+    display: block;
+  }
+
+  @media (min-width: ${r}) {
+    #highlight-wrap {
+      display: block;
+    }
+
+    #thank-you,
+    #looking-forward {
+      display: none;
+    }
+  }
+`, D = `
   <footer>
 
-  <img src=${t("./assets/images/footer/highlight.avif")} alt="Parting phrase">
-  <img src=${t("./assets/images/footer/thank-you.avif")} alt="Thank you phrase">
-  <img src=${t("./assets/images/footer/looking-forward.avif")} alt="Parting Phrase">
+    <div id="highlight-wrap">
+      <img id="highlight-base" src=${t("./assets/images/footer/highlight.png")} alt="Parting phrase">
+      <img id="highlight-lens" src=${t("./assets/images/footer/highlight-with-color.png")} alt="Parting phrase with color" aria-hidden="true">
+      <div id="lens-ring"></div>
+    </div>
 
+    <img id="thank-you" src=${t("./assets/images/footer/thank-you.avif")} alt="Thank you phrase">
+    <img id="looking-forward" src=${t("./assets/images/footer/looking-forward.avif")} alt="Parting Phrase">
 
     <!-- <footer-nav></footer-nav> -->
 
     <footer-copyright></footer-copyright>
   </footer>
 `;
-e("section-footer", { styles: F, template: R });
+function N(a) {
+  let o = a.querySelector("footer"), l = a.getElementById("highlight-base"), s = a.getElementById("highlight-lens"), c = a.getElementById("lens-ring"), h = a.getElementById("highlight-wrap");
+  if (!o || !l || !s || !c || !h)
+    return;
+  function g(n) {
+    let p = l.getBoundingClientRect(), d = n.clientX - p.left, v = n.clientY - p.top, u = c.offsetWidth / 2;
+    c.style.left = `${d - u}px`, c.style.top = `${v - u}px`, s.style.clipPath = `circle(${u}px at ${d}px ${v}px)`;
+  }
+  function f() {
+    c.setAttribute("data-visible", "true");
+  }
+  function i() {
+    c.removeAttribute("data-visible"), s.style.clipPath = "circle(0px at 50% 50%)";
+  }
+  return o.addEventListener("mousemove", g), o.addEventListener("mouseenter", f), o.addEventListener("mouseleave", i), () => {
+    o.removeEventListener("mousemove", g), o.removeEventListener("mouseenter", f), o.removeEventListener("mouseleave", i);
+  };
+}
+e("section-footer", { styles: q, template: D, onRender: N });
 
 // web-components/components/app-image.js
-var I = `
+var O = `
   :host {
     --local-width: 5rem;
     --local-heigth: auto;
@@ -618,11 +710,11 @@ var I = `
    :host([variant="full"]) {
     --local-width: 100%;
   }
-`, P = ["width", "height", "src", "alt"], q = () => "<img data-forward />";
-e("app-image", { attrs: P, styles: I, template: q });
+`, G = ["width", "height", "src", "alt"], I = () => "<img data-forward />";
+e("app-image", { attrs: G, styles: O, template: I });
 
 // web-components/sections/portfolio/intro.js
-var N = `
+var X = `
   :host {
     display: block;
   }
@@ -636,7 +728,7 @@ var N = `
     justify-content: space-between;
     gap: 3rem;
 
-    @media (max-width: ${o}) {
+    @media (max-width: ${r}) {
       flex-direction: column;
     }
   }
@@ -663,7 +755,7 @@ var N = `
     font-weight: var(--font-bold);
     text-transform: uppercase;
   }
-`, O = `
+`, V = `
   <section>
       <app-image
         variant="medium"
@@ -689,16 +781,16 @@ var N = `
           <span>Scope:</span>
           <p>Idea → Website</p>
 
-        <app-link variant="secondary" href=${n("https://hanhtetaung.dev/")} target="_blank">
+        <app-link variant="secondary" href=${m("https://hanhtetaung.dev/")} target="_blank">
           Visit ➶
         </app-link>
       </article>
   </section>
 `;
-e("section-portfolio-intro", { styles: N, template: O });
+e("section-portfolio-intro", { styles: X, template: V });
 
 // web-components/components/section-title.js
-var D = `
+var M = `
   :host {
     display: flex;
     align-items: center;
@@ -729,19 +821,19 @@ var D = `
       display: none;
     }
   }
-`, G = { name: String, img: String, alt: String }, M = ({ name: a, img: r = "", alt: s = "" }) => `
+`, J = { name: String, img: String, alt: String }, K = ({ name: a, img: o = "", alt: l = "" }) => `
     <h2>${a}</h2>
     <img
-        src=${t(r)}
-        alt=${s}
+        src=${t(o)}
+        alt=${l}
         height="36"
         width="76"
     />
 `;
-e("section-title", { props: G, styles: D, template: M });
+e("section-title", { props: J, styles: M, template: K });
 
 // web-components/sections/portfolio/background.js
-var X = `
+var Q = `
   :host {
     display: block;
   }
@@ -750,7 +842,7 @@ var X = `
     width: 80%;
     margin-inline: auto;
   }
-`, J = `
+`, W = `
   <section>
     <section-title variant="text" props='{"name": "Background"}'></section-title>
 
@@ -763,10 +855,10 @@ var X = `
     </p>
   </section>
 `;
-e("section-portfolio-background", { styles: X, template: J });
+e("section-portfolio-background", { styles: Q, template: W });
 
 // web-components/sections/portfolio/challenge.js
-var K = `
+var Y = `
   :host {
     display: block;
   }
@@ -775,7 +867,7 @@ var K = `
     width: 80%;
     margin-inline: auto;
   }
-`, Q = `
+`, Z = `
   <section>
     <section-title variant="text" props='{"name": "Challenge"}'></section-title>
 
@@ -789,16 +881,16 @@ var K = `
     </p>
   </section>
 `;
-e("section-portfolio-challenge", { styles: K, template: Q });
+e("section-portfolio-challenge", { styles: Y, template: Z });
 
 // web-components/components/app-article-paragraph.js
-var V = `
+var R = `
   :host {
     display: grid;
     grid-template-columns: 1fr 2.5fr;
 
 
-    @media (max-width: ${o}) {
+    @media (max-width: ${r}) {
         display: block;
     }
   }
@@ -814,17 +906,17 @@ var V = `
   :host([variant="block"]) {
     display: block;
   }
-`, W = { title: String }, Y = ({ title: a }) => `
+`, j = { title: String }, ee = ({ title: a }) => `
         <h3>${a}</h3>
 
         <article>
             <slot></slot>
         </article>
 `;
-e("app-article-paragraph", { props: W, styles: V, template: Y });
+e("app-article-paragraph", { props: j, styles: R, template: ee });
 
 // web-components/sections/portfolio/process.js
-var Z = `
+var te = `
   :host {
     display: block;
   }
@@ -854,7 +946,7 @@ var Z = `
   ol {
     list-style: disc;
   }
-`, j = `
+`, ae = `
   <section>
     <section-title variant="text" props='{"name": "Process"}'></section-title>
 
@@ -947,10 +1039,10 @@ var Z = `
     </ul>
   </section>
 `;
-e("section-portfolio-process", { styles: Z, template: j });
+e("section-portfolio-process", { styles: te, template: ae });
 
 // web-components/sections/portfolio/result.js
-var ee = `
+var oe = `
   :host {
     display: block;
   }
@@ -966,11 +1058,11 @@ var ee = `
     padding: 0;
     gap: 3rem;
 
-    @media (max-width: ${o}) {
+    @media (max-width: ${r}) {
       flex-direction: column;
     }
   }
-`, te = `
+`, re = `
   <section>
     <section-title variant="text" props='{"name": "Result"}'></section-title>
 
@@ -1009,6 +1101,6 @@ var ee = `
     </ul>
   </section>
 `;
-e("section-portfolio-result", { styles: ee, template: te });
+e("section-portfolio-result", { styles: oe, template: re });
 </script></body>
 </html>
