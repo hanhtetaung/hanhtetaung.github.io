@@ -220,12 +220,24 @@ var E = [
   { name: "01-11-2025", x: 8950, y: -1980, height: 100 },
   { name: "scoopy-c12", x: 8700, y: -1750, height: 200 },
   { name: "26-07-2025", x: 9700, y: -3800, height: 100 },
-  { name: "bob-merlay-wall", x: 9930, y: -3200, height: 400 },
+  { name: "bob-merlay-wall", x: 9930, y: -3200, height: 200 },
   { name: "horse-ride", x: 9900, y: -3500, height: 200 },
   { name: "kayak", x: 9600, y: -3300, height: 200 },
+  { name: "green-hat", x: 9650, y: -3450, height: 100 },
+  { name: "fruit-shop", x: 9500, y: -3000, height: 200 },
+  { name: "book-elephant-in-the-room", x: 9620, y: -4200, height: 100 },
+  { name: "speed-boat", x: 9050, y: -3800, height: 250 },
+  { name: "coconut-tree", x: 9800, y: -4150, height: 500 },
   { name: "bread", x: 9650, y: -2500, height: 100 },
+  { name: "beer-at-beach", x: 9950, y: -2500, height: 100 },
+  { name: "fried-rice", x: 9500, y: -2200, height: 100 },
   { name: "20-07-2025", x: 7150, y: -4750, height: 100 },
-  { name: "pergasingan", x: 7700, y: -4650, height: 300 },
+  { name: "mount-rinjani", x: 7300, y: -5600, height: 800 },
+  { name: "pergasingan", x: 7700, y: -4650, height: 200 },
+  { name: "local-food-in-lombok", x: 9000, y: -4500, height: 100 },
+  { name: "tent", x: 8300, y: -4650, height: 200 },
+  { name: "tent-chair", x: 8000, y: -4600, height: 150 },
+  { name: "footprint-in-beach", x: 7300, y: -4650, height: 200 },
   { name: "29-05-2025", x: 7050, y: -2800, height: 100 },
   { name: "mae-hong-son-sign", x: 6530, y: -3200, height: 200 },
   { name: "coffee-CNX", x: 6550, y: -4200, height: 100 },
@@ -346,29 +358,29 @@ function Z() {
 R("road", Z);
 
 // map/js/camera.js
-var h = { x: 500, y: 300, zoom: 0.3 }, q = 0.05, D = 5;
-function _(e, t, a) {
+var h = { x: -2000, y: 2000, zoom: 0.3 }, q = 0.05, D = 5;
+function b(e, t, a) {
   let i = Math.min(D, Math.max(q, h.zoom * a)), s = (e - h.x) / h.zoom, o = (t - h.y) / h.zoom;
   h.zoom = i, h.x = e - s * h.zoom, h.y = t - o * h.zoom, c();
 }
 
 // map/js/input.js
-var k = !1, b = 0, $ = 0;
+var $ = !1, _ = 0, k = 0;
 n.addEventListener("mousedown", (e) => {
-  k = !0, b = e.clientX, $ = e.clientY, n.classList.add("dragging");
+  $ = !0, _ = e.clientX, k = e.clientY, n.classList.add("dragging");
 });
 window.addEventListener("mouseup", () => {
-  k = !1, n.classList.remove("dragging");
+  $ = !1, n.classList.remove("dragging");
 });
 window.addEventListener("mousemove", (e) => {
-  if (!k)
+  if (!$)
     return;
-  h.x += e.clientX - b, h.y += e.clientY - $, b = e.clientX, $ = e.clientY, c();
+  h.x += e.clientX - _, h.y += e.clientY - k, _ = e.clientX, k = e.clientY, c();
 });
 n.addEventListener("wheel", (e) => {
   e.preventDefault();
   let t = n.getBoundingClientRect(), a = e.clientX - t.left, i = e.clientY - t.top, s = e.deltaY < 0 ? 1.1 : 0.9;
-  _(a, i, s);
+  b(a, i, s);
 }, { passive: !1 });
 var m = null, X = null, O = 1;
 n.addEventListener("touchstart", (e) => {
@@ -383,7 +395,7 @@ n.addEventListener("touchmove", (e) => {
     h.x += t.clientX - m.x, h.y += t.clientY - m.y, m = { x: t.clientX, y: t.clientY }, c();
   } else if (e.touches.length === 2) {
     let t = B(e.touches), a = n.getBoundingClientRect(), i = (e.touches[0].clientX + e.touches[1].clientX) / 2 - a.left, s = (e.touches[0].clientY + e.touches[1].clientY) / 2 - a.top, g = O * (t / X) / h.zoom;
-    _(i, s, g);
+    b(i, s, g);
   }
 }, { passive: !1 });
 n.addEventListener("touchend", (e) => {
