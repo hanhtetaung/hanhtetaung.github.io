@@ -7,8 +7,11 @@ function stripJsonComments(str) {
   );
 }
 
-function computeBase(srcPath) {
-  const cleanSrc = srcPath.replace(/^\.\//, "");
+function computeBase(srcPath, projectPrefix = "") {
+  let cleanSrc = srcPath.replace(/^\.\//, "");
+  if (projectPrefix) {
+    cleanSrc = cleanSrc.replace(new RegExp(`^${projectPrefix}/`), "");
+  }
   const depth = cleanSrc.split("/").length - 1;
   return depth > 0 ? "../".repeat(depth) : "./";
 }
@@ -20,8 +23,8 @@ function injectDataBase(html, base) {
   return html.replace(/<html([^>]*)>/, `<html$1 data-base="${base}">`);
 }
 
-async function buildPage(srcPath, outPath) {
-  const base = computeBase(srcPath);
+async function buildPage(srcPath, outPath, projectPrefix = "") {
+  const base = computeBase(srcPath, projectPrefix);
   const original = await Bun.file(srcPath).text();
   const patched = injectDataBase(original, base);
 
@@ -42,7 +45,21 @@ async function copyAssets(src, dest) {
   await $`cp -r ${src} ${dest}`;
 }
 
-const subProjects = ["terra", "map"];
+const subProjects = ["terra", "map", "maple"];
+
+async function getMountRoutes() {
+  const settingsRaw = await Bun.file(".vscode/settings.json").text();
+  const settings = JSON.parse(stripJsonComments(settingsRaw));
+  const routes = settings["liveServer.settings.mount"];
+
+  if (!routes) {
+    throw new Error(
+      '"liveServer.settings.mount" not found in .vscode/settings.json',
+    );
+  }
+
+  return routes;
+}
 
 // Remove any .html files under `dir` that aren't in `expectedSet`,
 // skipping subproject dirs (they manage their own output) and non-route dirs like assets.
@@ -67,17 +84,18 @@ async function cleanStaleHtml(dir, expectedSet, excludeDirs) {
 }
 
 async function buildMain() {
-  const settingsRaw = await Bun.file(".vscode/settings.json").text();
-  const settings = JSON.parse(stripJsonComments(settingsRaw));
-  const routes = settings["liveServer.settings.mount"];
+  const routes = await getMountRoutes();
 
-  if (!routes) {
-    throw new Error(
-      '"liveServer.settings.mount" not found in .vscode/settings.json',
-    );
-  }
+  // Exclude any route that belongs to a subproject (e.g. /terra/about);
+  // those are built separately by buildSubProject.
+  const rootRoutes = routes.filter(
+    ([urlPath]) => !subProjects.some((p) => urlPath.startsWith(`/${p}/`)),
+  );
 
-  const allFiles = ["./index.html", ...routes.map(([, srcPath]) => srcPath)];
+  const allFiles = [
+    "./index.html",
+    ...rootRoutes.map(([, srcPath]) => srcPath),
+  ];
 
   await $`mkdir -p docs`;
 
@@ -96,14 +114,29 @@ async function buildMain() {
 }
 
 async function buildSubProject(project) {
-  const srcPath = `./${project}/index.html`;
-  const outPath = `docs/${project}/index.html`;
+  const routes = await getMountRoutes();
+
+  const projectRoutes = routes
+    .filter(([urlPath]) => urlPath.startsWith(`/${project}/`))
+    .map(([, srcPath]) => srcPath);
+
+  const allFiles = [`./${project}/index.html`, ...projectRoutes];
 
   await $`mkdir -p docs/${project}`;
-  await buildPage(srcPath, outPath);
+
+  const expectedOutPaths = new Set(
+    allFiles.map((srcPath) => `docs/${srcPath.replace(/^\.\//, "")}`),
+  );
+
+  await cleanStaleHtml(`docs/${project}`, expectedOutPaths, []);
+
+  for (const srcPath of allFiles) {
+    const outPath = `docs/${srcPath.replace(/^\.\//, "")}`;
+    await buildPage(srcPath, outPath, project); // ← add project here
+  }
+
   await copyAssets(`${project}/assets`, `docs/${project}/assets`);
 }
-
 // --- CLI entry ---
 const target = process.argv[2];
 

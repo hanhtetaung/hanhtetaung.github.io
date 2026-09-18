@@ -24,7 +24,6 @@
 :root{--color-bg-primary:#fff5e8;--color-primary:#7e4c37;--color-text:#000;--color-transparent:#0000;--font-family:"Archivo",sans-serif;--font-regular:400;--font-bold:700;--ratio:1.4;--size-body:1.6rem;--size-small:calc(var(--size-body)/var(--ratio));--size-heading:calc(var(--size-body)*var(--ratio));--size-title:calc(var(--size-heading)*var(--ratio));--size-display:calc(var(--size-title)*var(--ratio));font-size:10px;@media (width>=640px){&{--size-body:2rem}}}body{background:var(--color-bg-primary);font-family:var(--font-family);font-size:var(--size-body);margin:0}
 </style></head>
   <body>
-    <app-frame></app-frame>
     <section-header></section-header>
 
     <main>
@@ -36,63 +35,63 @@
     </main>
 
     <section-footer></section-footer>
-  <script type="module">// web-components/asset.js
-function b() {
-  let a = document.documentElement.dataset.base || "./";
-  return new URL(a, location.href);
+  <script type="module">// lib/asset.js
+function y() {
+  let t = document.documentElement.dataset.base || "./";
+  return new URL(t, location.href);
 }
-function t(a) {
-  return new URL(a, b()).href;
+function e(t) {
+  return new URL(t, y()).href;
 }
-function d(a) {
-  let r = a.replace(/^\//, ""), l = location.protocol === "file:", s = b();
-  if (r === "")
-    return l ? new URL("index.html", s).href : s.href;
-  return l ? new URL(`${r}.html`, s).href : new URL(r, s).href;
+function p(t) {
+  let i = t.replace(/^\//, ""), c = location.protocol === "file:", n = y();
+  if (i === "")
+    return c ? new URL("index.html", n).href : n.href;
+  return c ? new URL(`${i}.html`, n).href : new URL(i, n).href;
 }
 
-// web-components/fonts.js
+// scripts/fonts.js
 var w = `
 @font-face {
     font-family: "Archivo";
-    src: url("${t("./assets/fonts/Archivo-Black.woff2")}") format("woff2");
+    src: url("${e("./assets/fonts/Archivo-Black.woff2")}") format("woff2");
     font-weight: 700;
     font-display: swap;
   }
 
   @font-face {
     font-family: "Archivo";
-    src: url("${t("./assets/fonts/Archivo-Regular.woff2")}") format("woff2");
+    src: url("${e("./assets/fonts/Archivo-Regular.woff2")}") format("woff2");
     font-weight: 400;
     font-display: swap;
   }
-`, y = document.createElement("style");
-y.textContent = w;
-document.head.appendChild(y);
+`, b = document.createElement("style");
+b.textContent = w;
+document.head.appendChild(b);
 
-// web-components/define.js
-function k(a, r) {
-  if (a === void 0) {
-    if (r === Array)
+// lib/define.js
+function k(t, i) {
+  if (t === void 0) {
+    if (i === Array)
       return [];
-    if (r === Object)
+    if (i === Object)
       return {};
-    if (r === Boolean)
+    if (i === Boolean)
       return !1;
-    if (r === Number)
+    if (i === Number)
       return 0;
     return;
   }
-  if (r === Boolean)
-    return Boolean(a);
-  if (r === Number)
-    return Number(a);
-  return a;
+  if (i === Boolean)
+    return Boolean(t);
+  if (i === Number)
+    return Number(t);
+  return t;
 }
-function e(a, { props: r = {}, attrs: l = [], styles: s = "", template: c, onRender: h = null }) {
-  let g = ["props", ...l];
+function a(t, { props: i = {}, attrs: c = [], styles: n = "", template: l, onRender: f = null }) {
+  let g = ["props", ...c];
 
-  class f extends HTMLElement {
+  class h extends HTMLElement {
     static observedAttributes = g;
     constructor() {
       super();
@@ -111,73 +110,46 @@ function e(a, { props: r = {}, attrs: l = [], styles: s = "", template: c, onRen
         this._render();
     }
     _getProps() {
-      let i = {}, n = this.getAttribute("props");
-      if (n)
+      let r = {}, s = this.getAttribute("props");
+      if (s)
         try {
-          i = JSON.parse(n);
+          r = JSON.parse(s);
         } catch {
-          i = {};
+          r = {};
         }
       let m = {};
-      for (let p of Object.keys(r))
-        m[p] = k(i[p], r[p]);
+      for (let d of Object.keys(i))
+        m[d] = k(r[d], i[d]);
       return m;
     }
     _applyForwardedAttrs() {
-      if (l.length === 0)
+      if (c.length === 0)
         return;
-      let i = this.shadowRoot.querySelector("[data-forward]");
-      if (!i)
+      let r = this.shadowRoot.querySelector("[data-forward]");
+      if (!r)
         return;
-      for (let n of l)
-        if (this.hasAttribute(n))
-          i.setAttribute(n, this.getAttribute(n));
+      for (let s of c)
+        if (this.hasAttribute(s))
+          r.setAttribute(s, this.getAttribute(s));
         else
-          i.removeAttribute(n);
+          r.removeAttribute(s);
     }
     _render() {
       if (typeof this._cleanup === "function")
         this._cleanup(), this._cleanup = null;
-      let i = this._getProps(), n = typeof c === "function" ? c(i) : c;
-      if (this.shadowRoot.innerHTML = `<style>${s}</style>${n}`, this._applyForwardedAttrs(), h) {
-        let m = h(this.shadowRoot, i, this);
+      let r = this._getProps(), s = typeof l === "function" ? l(r) : l;
+      if (this.shadowRoot.innerHTML = `<style>${n}</style>${s}`, this._applyForwardedAttrs(), f) {
+        let m = f(this.shadowRoot, r, this);
         if (typeof m === "function")
           this._cleanup = m;
       }
     }
   }
-  customElements.define(a, f);
+  customElements.define(t, h);
 }
 
-// web-components/breakpoints.js
-var o = "640px";
-
-// web-components/components/app-frame.js
+// scripts/components/app-link.js
 var x = `
-  :host {
-    display: block;
-    position: fixed;
-    inset: 0;
-    z-index: 10;
-    border: 7px solid var(--color-secondary);
-    pointer-events: none;
-
-    @media (max-width: ${o}) {
-      border-width: 5px;
-    }
-  }
-
-  :host([variant="color-primary"]) {
-    /* border-color: var(--color-primary); */
-    /* border-color: var(--color-tertiary); */
-    /* border-color: #a36aa5; */
-  }
-`, $ = `
-`;
-e("app-frame", { styles: x, template: $ });
-
-// web-components/components/app-link.js
-var z = `
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -238,13 +210,13 @@ var z = `
        content: "➶";
      }
   }
-`, A = ["href", "target", "rel", "download"], S = `
+`, $ = ["href", "target", "rel", "download"], z = `
   <a data-forward><slot></slot></a>
 `;
-e("app-link", { attrs: A, styles: z, template: S });
+a("app-link", { attrs: $, styles: x, template: z });
 
-// web-components/components/app-logo.js
-var _ = `
+// scripts/components/app-logo.js
+var S = `
   :host {
     display: block;
   }
@@ -253,11 +225,14 @@ var _ = `
     max-height: 7rem;
     width: auto;
   }
-`, B = ["width", "height", "src", "alt"], T = () => "<img data-forward />";
-e("app-logo", { attrs: B, styles: _, template: T });
+`, T = ["width", "height", "src", "alt"], A = () => "<img data-forward />";
+a("app-logo", { attrs: T, styles: S, template: A });
 
-// web-components/sections/header.js
-var L = `
+// scripts/breakpoints.js
+var o = "640px";
+
+// scripts/header.js
+var _ = `
   :host {
     display: block;
     background: var(--color-bg-primary);
@@ -304,10 +279,10 @@ var L = `
     height: 5rem;
     width: auto;
   }
-`, C = `
+`, B = `
   <header>
-      <app-link variant="plain" href=${d("/")}>
-        <img src=${t("./assets/images/logo.avif")}
+      <app-link variant="plain" href=${p("/")}>
+        <img src=${e("./assets/images/logo.avif")}
           alt="Logo">
       </app-link>
 
@@ -315,25 +290,25 @@ var L = `
         <nav>
           <ul>
             <li>
-              <app-link variant="plain" href=${d("/")}>Home</app-link>
+              <app-link variant="plain" href=${p("/")}>Home</app-link>
             </li>
 
             <li>
-              <app-link variant="plain" href=${d("/about")}>About</app-link>
+              <app-link variant="plain" href=${p("/about")}>About</app-link>
             </li>
           </ul>
         </nav>
 
-        <app-link variant="secondary" href=${d("/#cta")}>
+        <app-link variant="secondary" href=${p("/#cta")}>
           Let's Craft &#8629;
         </app-link>
       </div>
   </header>
 `;
-e("section-header", { template: C, styles: L });
+a("section-header", { template: B, styles: _ });
 
-// web-components/components/footer-nav.js
-var E = [
+// scripts/components/footer-nav.js
+var L = [
   { href: "/", name: "Home" },
   { href: "/about", name: "About" },
   { href: "/credits", name: "Credits" },
@@ -352,7 +327,7 @@ var E = [
     href: "/writings/foundation-building-interfaces-at-scale",
     name: "Foundation"
   }
-], U = `
+], C = `
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -399,22 +374,22 @@ var E = [
     margin-right: 5rem;
     margin-bottom: 0.3rem;
   }
-`, F = () => `
+`, E = () => `
     <nav>
         <span>Sitemap</span>
 
         <ol>
-            ${E.map((a) => `
+            ${L.map((t) => `
                 <li>
-                    <app-link variant="sitemap" href=${d(a.href)} >${a.name}</app-link>
+                    <app-link variant="sitemap" href=${p(t.href)} >${t.name}</app-link>
                 </li>
             `).join("")}
         </ol>
     </nav>
 `;
-e("footer-nav", { styles: U, template: F });
+a("footer-nav", { styles: C, template: E });
 
-// web-components/components/footer-copyright.js
+// scripts/components/footer-copyright.js
 var H = `
   :host {
    display: flex;
@@ -500,7 +475,7 @@ var H = `
   }
 `, P = () => `
       <p>
-          <img src=${t("./assets/images/logo.avif")}
+          <img src=${e("./assets/images/logo.avif")}
           alt="Logo">
           <a href="https://hanhtetaung.dev/">
             Crafted by Han
@@ -517,7 +492,7 @@ var H = `
               <li>
                   <a href="https://wa.me/message/DVOPVSAGBDENB1" target="_blank">
                   <img
-                      src=${t("./assets/icons/whatsapp.svg")}
+                      src=${e("./assets/icons/whatsapp.svg")}
                       alt="Email Icon"
                   />
                   </a>    
@@ -529,7 +504,7 @@ var H = `
                   rel="noopener"
                   >
                   <img
-                      src=${t("./assets/icons/instagram.svg")}
+                      src=${e("./assets/icons/instagram.svg")}
                       alt="Linkedin Icon"
                   />
                   </a>
@@ -541,7 +516,7 @@ var H = `
                   rel="noopener"
                   >
                   <img
-                      src=${t("./assets/icons/linkedin.svg")}
+                      src=${e("./assets/icons/linkedin.svg")}
                       alt="Linkedin Icon"
                   />
                   </a>
@@ -553,7 +528,7 @@ var H = `
                   rel="noopener"
                   >
                   <img
-                      src=${t("./assets/icons/github.svg")}
+                      src=${e("./assets/icons/github.svg")}
                       alt="Github Icon"
                   />
                   </a>
@@ -561,10 +536,10 @@ var H = `
           </ul>
         </nav>
 `;
-e("footer-copyright", { styles: H, template: P });
+a("footer-copyright", { styles: H, template: P });
 
-// web-components/sections/footer.js
-var q = `
+// scripts/footer.js
+var j = `
   :host {
     display: block;
   }
@@ -637,45 +612,45 @@ var q = `
       display: none;
     }
   }
-`, D = `
+`, F = `
   <footer>
 
     <div id="highlight-wrap">
-      <img id="highlight-base" src=${t("./assets/images/footer/highlight.png")} alt="Parting phrase">
-      <img id="highlight-lens" src=${t("./assets/images/footer/highlight-with-color.png")} alt="Parting phrase with color" aria-hidden="true">
+      <img id="highlight-base" src=${e("./assets/images/footer/highlight.png")} alt="Parting phrase">
+      <img id="highlight-lens" src=${e("./assets/images/footer/highlight-with-color.png")} alt="Parting phrase with color" aria-hidden="true">
       <div id="lens-ring"></div>
     </div>
 
-    <img id="thank-you" src=${t("./assets/images/footer/thank-you.avif")} alt="Thank you phrase">
-    <img id="looking-forward" src=${t("./assets/images/footer/looking-forward.avif")} alt="Parting Phrase">
+    <img id="thank-you" src=${e("./assets/images/footer/thank-you.avif")} alt="Thank you phrase">
+    <img id="looking-forward" src=${e("./assets/images/footer/looking-forward.avif")} alt="Parting Phrase">
 
     <!-- <footer-nav></footer-nav> -->
 
     <footer-copyright></footer-copyright>
   </footer>
 `;
-function N(a) {
-  let r = a.querySelector("footer"), l = a.getElementById("highlight-base"), s = a.getElementById("highlight-lens"), c = a.getElementById("lens-ring"), h = a.getElementById("highlight-wrap");
-  if (!r || !l || !s || !c || !h)
+function U(t) {
+  let i = t.querySelector("footer"), c = t.getElementById("highlight-base"), n = t.getElementById("highlight-lens"), l = t.getElementById("lens-ring"), f = t.getElementById("highlight-wrap");
+  if (!i || !c || !n || !l || !f)
     return;
-  function g(n) {
-    let m = l.getBoundingClientRect(), p = n.clientX - m.left, v = n.clientY - m.top, u = c.offsetWidth / 2;
-    c.style.left = `${p - u}px`, c.style.top = `${v - u}px`, s.style.clipPath = `circle(${u}px at ${p}px ${v}px)`;
+  function g(s) {
+    let m = c.getBoundingClientRect(), d = s.clientX - m.left, v = s.clientY - m.top, u = l.offsetWidth / 2;
+    l.style.left = `${d - u}px`, l.style.top = `${v - u}px`, n.style.clipPath = `circle(${u}px at ${d}px ${v}px)`;
   }
-  function f() {
-    c.setAttribute("data-visible", "true");
+  function h() {
+    l.setAttribute("data-visible", "true");
   }
-  function i() {
-    c.removeAttribute("data-visible"), s.style.clipPath = "circle(0px at 50% 50%)";
+  function r() {
+    l.removeAttribute("data-visible"), n.style.clipPath = "circle(0px at 50% 50%)";
   }
-  return r.addEventListener("mousemove", g), r.addEventListener("mouseenter", f), r.addEventListener("mouseleave", i), () => {
-    r.removeEventListener("mousemove", g), r.removeEventListener("mouseenter", f), r.removeEventListener("mouseleave", i);
+  return i.addEventListener("mousemove", g), i.addEventListener("mouseenter", h), i.addEventListener("mouseleave", r), () => {
+    i.removeEventListener("mousemove", g), i.removeEventListener("mouseenter", h), i.removeEventListener("mouseleave", r);
   };
 }
-e("section-footer", { styles: q, template: D, onRender: N });
+a("section-footer", { styles: j, template: F, onRender: U });
 
-// web-components/components/app-image.js
-var O = `
+// scripts/components/app-image.js
+var D = `
   :host {
     --local-width: 5rem;
     --local-heigth: auto;
@@ -706,13 +681,14 @@ var O = `
    :host([variant="full"]) {
     --local-width: 100%;
   }
-`, G = ["width", "height", "src", "alt"], X = () => "<img data-forward />";
-e("app-image", { attrs: G, styles: O, template: X });
+`, G = ["width", "height", "src", "alt"], O = () => "<img data-forward />";
+a("app-image", { attrs: G, styles: D, template: O });
 
-// web-components/sections/sks-solar/intro.js
-var I = `
+// scripts/work/sks-solar/intro.js
+var q = `
   :host {
     display: block;
+    margin-block: 10rem;
   }
 
   section {
@@ -731,8 +707,6 @@ var I = `
   h1 {
     margin: 0;
     font-size: var(--size-display);
-    font-weight: var(--font-regular);
-    font-family: var(--font-heading);
   }
 
   p {
@@ -747,14 +721,13 @@ var I = `
   span {
     color: var(--color-secondary);
     font-size: var(--size-small);
-    font-weight: var(--font-bold);
     text-transform: uppercase;
   }
-`, K = `
+`, N = `
   <section>
     <app-image
       variant="full"
-      src=${t("./assets/images/case-study/skssolar/mockup.avif")}
+      src=${e("./assets/images/case-study/skssolar/mockup.avif")}
       alt="Final Product Screenshot"
       width="1692"
       height="886"
@@ -781,64 +754,23 @@ var I = `
     </article>
   </section>
 `;
-e("section-sks-solar-intro", { styles: I, template: K });
+a("section-sks-solar-intro", { styles: q, template: N });
 
-// web-components/components/section-title.js
-var M = `
-  :host {
-    display: flex;
-    align-items: center;
-    width: fit-content;
-    margin-bottom: 3rem;
-    gap: 1rem;
-  }
-
-  h2 {
-    margin: 0;
-    font-size: var(--size-title);
-    font-family: var(--font-heading);
-    font-weight: var(--font-regular)
-  }
-
-  img {
-    height: 5rem;
-    width: auto;
-  }
-
-  :host([variant="vertical"]) {
-    flex-direction: column-reverse;
-    gap: 0;
-  }
-
-  :host([variant="text"]) {
-    img {
-      display: none;
-    }
-  }
-`, V = { name: String, img: String, alt: String }, J = ({ name: a, img: r = "", alt: l = "" }) => `
-    <h2>${a}</h2>
-    <img
-        src=${t(r)}
-        alt=${l}
-        height="36"
-        width="76"
-    />
-`;
-e("section-title", { props: V, styles: M, template: J });
-
-// web-components/sections/sks-solar/background.js
-var Q = `
+// scripts/work/sks-solar/background.js
+var K = `
   :host {
     display: block;
+    margin-block: 10rem;
   }
 
   section {
     width: 80%;
     margin-inline: auto;
   }
-`, R = `
+`, M = `
   <section>
-    <section-title variant="text" props='{"name": "Background"}'></section-title>
+
+    <h2>Background</h2>
 
     <p>
       This project was created for SKS Solar to redesign and redevelop the
@@ -850,21 +782,24 @@ var Q = `
     </p>
   </section>
 `;
-e("section-sks-solar-background", { styles: Q, template: R });
+a("section-sks-solar-background", { styles: K, template: M });
 
-// web-components/sections/sks-solar/challenge.js
-var W = `
+// scripts/work/sks-solar/challenge.js
+var I = `
   :host {
     display: block;
+        margin-block: 10rem;
+
   }
 
   section {
     width: 80%;
     margin-inline: auto;
   }
-`, Y = `
+`, R = `
   <section>
-    <section-title variant="text" props='{"name": "Challenge"}'></section-title>
+
+    <h2>Challenge</h2>
 
     <p>
       One of the main challenges of the project was creating a visual
@@ -875,44 +810,14 @@ var W = `
     </p>
   </section>
 `;
-e("section-sks-solar-challenge", { styles: W, template: Y });
+a("section-sks-solar-challenge", { styles: I, template: R });
 
-// web-components/components/app-article-paragraph.js
-var Z = `
-  :host {
-    display: grid;
-    grid-template-columns: 1fr 2.5fr;
-
-
-    @media (max-width: ${o}) {
-        display: block;
-    }
-  }
-
-  h3 {
-    margin: 0;
-    margin-bottom: 1rem;
-    font-size: var(--size-heading);
-    width: fit-content;
-    height: fit-content;
-  }
-
-  :host([variant="block"]) {
-    display: block;
-  }
-`, j = { title: String }, ee = ({ title: a }) => `
-        <h3>${a}</h3>
-
-        <article>
-            <slot></slot>
-        </article>
-`;
-e("app-article-paragraph", { props: j, styles: Z, template: ee });
-
-// web-components/sections/sks-solar/process.js
-var te = `
+// scripts/work/sks-solar/process.js
+var V = `
   :host {
     display: block;
+        margin-block: 20rem;
+
   }
 
   section {
@@ -940,96 +845,129 @@ var te = `
   ol {
     list-style: disc;
   }
-`, ae = `
+
+  article {
+  
+      @media (min-width:${o}) {
+        display: flex;
+        gap: 20rem;
+      }
+    }
+  
+    article p {
+      margin-bottom: 2rem;
+    }
+`, X = `
   <section>
-    <section-title variant="text" props='{"name": "Process"}'></section-title>
+
+    <h2>Process</h2>
 
     <ul>
       <li>
-        <app-article-paragraph props='{ "title": "Research" }'>
-          <p>
-            Research ideas and visual references to define the overall
-            direction of the website. This stage focused on exploring modern
-            layouts, typography, spacing, and clean visual aesthetics to
-            establish a clear and professional visual foundation.
-          </p>
-          <app-image
-            variant="medium"
-            src=${t("./assets/images/case-study/skssolar/inspiration.avif")}
-            alt="Inspiration Collection"
-            width="1398"
-            height="1236"
-          ></app-image>
-        </app-article-paragraph>
+        <article>
+          <h3>Research</h3>
+
+          <div>
+            <p>
+              Research ideas and visual references to define the overall
+              direction of the website. This stage focused on exploring modern
+              layouts, typography, spacing, and clean visual aesthetics to
+              establish a clear and professional visual foundation.
+            </p>
+            <app-image
+              variant="medium"
+              src=${e("./assets/images/case-study/skssolar/inspiration.avif")}
+              alt="Inspiration Collection"
+              width="1398"
+              height="1236"
+            ></app-image>
+          </div>
+        </article>
       </li>
 
       <li>
-        <app-article-paragraph props='{ "title": "Wireframe" }'>
-          <p>
-            Plan the structure and layout of the website through low-fidelity
-            wireframes. This stage focused on content hierarchy, storytelling
-            flow, and user navigation before moving into visual design.
-          </p>
-          <app-image
-            variant="medium"
-            src=${t("./assets/images/case-study/skssolar/wireframe.avif")}
-            alt="Wireframe Screenshot"
-            width="1398"
-            height="1366"
-          ></app-image>
-        </app-article-paragraph>
+        <article>
+          <h3>Wireframe</h3>
+
+          <div>
+
+            <p>
+              Plan the structure and layout of the website through low-fidelity
+              wireframes. This stage focused on content hierarchy, storytelling
+              flow, and user navigation before moving into visual design.
+            </p>
+            <app-image
+              variant="medium"
+              src=${e("./assets/images/case-study/skssolar/wireframe.avif")}
+              alt="Wireframe Screenshot"
+              width="1398"
+              height="1366"
+            ></app-image>
+          </div>
+        </article>
       </li>
 
       <li>
-        <app-article-paragraph props='{ "title": "Prototype" }'>
-          <p>
-            Build the design system and craft the polished visual interface.
-            This stage focused on transforming the wireframes into final
-            responsive designs with complete visual styling, reusable
-            components, refined layouts, and overall user experience.
-          </p>
-          <app-image
-            variant="medium"
-            src=${t("./assets/images/case-study/skssolar/design-foundation.avif")}
-            alt="Design Foundation Screenshot"
-            width="1474"
-            height="864"
-          ></app-image>
-          <app-image
-            variant="medium"
-            src=${t("./assets/images/case-study/skssolar/final-design.avif")}
-            alt="Final Design"
-            width="1402"
-            height="1378"
-          ></app-image>
-        </app-article-paragraph>
+        <article>
+          <h3>Prototype</h3>
+
+          <div>
+            <p>
+              Build the design system and craft the polished visual interface.
+              This stage focused on transforming the wireframes into final
+              responsive designs with complete visual styling, reusable
+              components, refined layouts, and overall user experience.
+            </p>
+            <app-image
+              variant="medium"
+              src=${e("./assets/images/case-study/skssolar/design-foundation.avif")}
+              alt="Design Foundation Screenshot"
+              width="1474"
+              height="864"
+            ></app-image>
+            <app-image
+              variant="medium"
+              src=${e("./assets/images/case-study/skssolar/final-design.avif")}
+              alt="Final Design"
+              width="1402"
+              height="1378"
+            ></app-image>
+          </div>
+        </article>
       </li>
 
       <li>
-        <app-article-paragraph props='{ "title": "Develop & Deliver" }'>
-          <p>
-            Translate the approved design into a responsive website while
-            maintaining visual consistency across all screen sizes. The
-            project was managed with GitHub and deployed automatically through
-            GitHub Pages and GitHub Actions.
-          </p>
+        <article>
+          <h3>Develop & Deliver</h3>
 
-          <p><b>Tech Stack</b></p>
-          <ol>
-            <li>HTML</li>
-            <li>CSS</li>
-          </ol>
-        </app-article-paragraph>
+          <div>
+
+            <p>
+              Translate the approved design into a responsive website while
+              maintaining visual consistency across all screen sizes. The
+              project was managed with GitHub and deployed automatically through
+              GitHub Pages and GitHub Actions.
+            </p>
+  
+            <p><b>Tech Stack</b></p>
+            <ol>
+              <li>HTML</li>
+              <li>CSS</li>
+            </ol>
+          </div>
+        </article>
       </li>
     </ul>
   </section>
 `;
-e("section-sks-solar-process", { styles: te, template: ae });
+a("section-sks-solar-process", { styles: V, template: X });
 
-// web-components/sections/sks-solar/result.js
-var re = `
+// scripts/work/sks-solar/result.js
+var W = `
   :host {
     display: block;
+        margin-bottom: 10rem;
+
   }
 
   section {
@@ -1047,9 +985,10 @@ var re = `
       flex-direction: column;
     }
   }
-`, oe = `
+`, J = `
   <section>
-    <section-title variant="text" props='{"name": "Result"}'></section-title>
+
+    <h2>Result</h2>
 
     <p>
       The project resulted in a modern, responsive, and professional SKS
@@ -1067,7 +1006,7 @@ var re = `
       <li>
         <app-image
           variant="medium"
-          src=${t("./assets/images/case-study/skssolar/lighthouse.avif")}
+          src=${e("./assets/images/case-study/skssolar/lighthouse.avif")}
           alt="Lighthouse Photo"
           width="960"
           height="1028"
@@ -1077,7 +1016,7 @@ var re = `
        <li>
         <app-image
           variant="medium"
-          src=${t("./assets/images/case-study/skssolar/mockup.avif")}
+          src=${e("./assets/images/case-study/skssolar/mockup.avif")}
           alt="Mockup Photo"
           width="1692"
           height="886"
@@ -1086,6 +1025,6 @@ var re = `
     </ul>
   </section>
 `;
-e("section-sks-solar-result", { styles: re, template: oe });
+a("section-sks-solar-result", { styles: W, template: J });
 </script></body>
 </html>

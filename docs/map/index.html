@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-base="../">
+<html lang="en" data-base="./">
   <head>
     <meta charset="UTF-8" />
     <title>Map</title>
@@ -31,7 +31,7 @@
     <canvas id="c"></canvas>
 
     
-  <script type="module">// map/js/main.js
+  <script type="module">// map/scripts/main.js
 var n = document.getElementById("c"), r = n.getContext("2d");
 function A() {
   let e = window.devicePixelRatio || 1;
@@ -40,7 +40,7 @@ function A() {
 window.addEventListener("resize", A);
 window.addEventListener("load", A);
 
-// map/js/assets.js
+// map/scripts/assets.js
 var L = "png", v = {}, p = {}, f = {};
 function l(e, t = L) {
   if (v[e])
@@ -61,7 +61,7 @@ function R(e, t) {
   f[e] = t;
 }
 
-// map/js/road.js
+// map/scripts/road.js
 var y = [];
 function M(e) {
   y = e;
@@ -91,7 +91,7 @@ function j(e, t, a, i, s) {
   return o;
 }
 
-// map/js/scene.js
+// map/scripts/scene.js
 var E = [
   { straight: 4 },
   { curve: -30 },
@@ -331,7 +331,7 @@ function P() {
     I(e, t, a, i);
 }
 
-// map/js/draw.js
+// map/scripts/draw.js
 function c() {
   r.clearRect(0, 0, n.width, n.height), r.save(), r.translate(h.x, h.y), r.scale(h.zoom, h.zoom), T(), P(), r.restore();
 }
@@ -357,14 +357,14 @@ function Z() {
 }
 R("road", Z);
 
-// map/js/camera.js
+// map/scripts/camera.js
 var h = { x: -2000, y: 2000, zoom: 0.3 }, q = 0.05, D = 5;
 function b(e, t, a) {
   let i = Math.min(D, Math.max(q, h.zoom * a)), s = (e - h.x) / h.zoom, o = (t - h.y) / h.zoom;
   h.zoom = i, h.x = e - s * h.zoom, h.y = t - o * h.zoom, c();
 }
 
-// map/js/input.js
+// map/scripts/input.js
 var $ = !1, _ = 0, k = 0;
 n.addEventListener("mousedown", (e) => {
   $ = !0, _ = e.clientX, k = e.clientY, n.classList.add("dragging");

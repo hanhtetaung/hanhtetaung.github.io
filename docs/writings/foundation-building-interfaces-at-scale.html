@@ -24,7 +24,6 @@
 :root{--color-bg-primary:#fff5e8;--color-primary:#7e4c37;--color-text:#000;--color-transparent:#0000;--font-family:"Archivo",sans-serif;--font-regular:400;--font-bold:700;--ratio:1.4;--size-body:1.6rem;--size-small:calc(var(--size-body)/var(--ratio));--size-heading:calc(var(--size-body)*var(--ratio));--size-title:calc(var(--size-heading)*var(--ratio));--size-display:calc(var(--size-title)*var(--ratio));font-size:10px;@media (width>=640px){&{--size-body:2rem}}}body{background:var(--color-bg-primary);font-family:var(--font-family);font-size:var(--size-body);margin:0}
 </style></head>
   <body>
-    <app-frame></app-frame>
     <section-header></section-header>
 
     <main>
@@ -39,23 +38,23 @@
     </main>
 
     <section-footer variant="secondary"></section-footer>
-  <script type="module">// web-components/asset.js
-function v() {
-  let i = document.documentElement.dataset.base || "./";
-  return new URL(i, location.href);
+  <script type="module">// lib/asset.js
+function b() {
+  let a = document.documentElement.dataset.base || "./";
+  return new URL(a, location.href);
 }
-function e(i) {
-  return new URL(i, v()).href;
+function e(a) {
+  return new URL(a, b()).href;
 }
-function m(i) {
-  let a = i.replace(/^\//, ""), l = location.protocol === "file:", s = v();
-  if (a === "")
-    return l ? new URL("index.html", s).href : s.href;
-  return l ? new URL(`${a}.html`, s).href : new URL(a, s).href;
+function p(a) {
+  let t = a.replace(/^\//, ""), c = location.protocol === "file:", l = b();
+  if (t === "")
+    return c ? new URL("index.html", l).href : l.href;
+  return c ? new URL(`${t}.html`, l).href : new URL(t, l).href;
 }
 
-// web-components/fonts.js
-var w = `
+// scripts/fonts.js
+var y = `
 @font-face {
     font-family: "Archivo";
     src: url("${e("./assets/fonts/Archivo-Black.woff2")}") format("woff2");
@@ -69,31 +68,31 @@ var w = `
     font-weight: 400;
     font-display: swap;
   }
-`, y = document.createElement("style");
-y.textContent = w;
-document.head.appendChild(y);
+`, w = document.createElement("style");
+w.textContent = y;
+document.head.appendChild(w);
 
-// web-components/define.js
-function x(i, a) {
-  if (i === void 0) {
-    if (a === Array)
+// lib/define.js
+function k(a, t) {
+  if (a === void 0) {
+    if (t === Array)
       return [];
-    if (a === Object)
+    if (t === Object)
       return {};
-    if (a === Boolean)
+    if (t === Boolean)
       return !1;
-    if (a === Number)
+    if (t === Number)
       return 0;
     return;
   }
-  if (a === Boolean)
-    return Boolean(i);
-  if (a === Number)
-    return Number(i);
-  return i;
+  if (t === Boolean)
+    return Boolean(a);
+  if (t === Number)
+    return Number(a);
+  return a;
 }
-function t(i, { props: a = {}, attrs: l = [], styles: s = "", template: c, onRender: h = null }) {
-  let g = ["props", ...l];
+function i(a, { props: t = {}, attrs: c = [], styles: l = "", template: s, onRender: h = null }) {
+  let g = ["props", ...c];
 
   class f extends HTMLElement {
     static observedAttributes = g;
@@ -114,73 +113,46 @@ function t(i, { props: a = {}, attrs: l = [], styles: s = "", template: c, onRen
         this._render();
     }
     _getProps() {
-      let o = {}, n = this.getAttribute("props");
-      if (n)
+      let o = {}, r = this.getAttribute("props");
+      if (r)
         try {
-          o = JSON.parse(n);
+          o = JSON.parse(r);
         } catch {
           o = {};
         }
-      let d = {};
-      for (let p of Object.keys(a))
-        d[p] = x(o[p], a[p]);
-      return d;
+      let m = {};
+      for (let d of Object.keys(t))
+        m[d] = k(o[d], t[d]);
+      return m;
     }
     _applyForwardedAttrs() {
-      if (l.length === 0)
+      if (c.length === 0)
         return;
       let o = this.shadowRoot.querySelector("[data-forward]");
       if (!o)
         return;
-      for (let n of l)
-        if (this.hasAttribute(n))
-          o.setAttribute(n, this.getAttribute(n));
+      for (let r of c)
+        if (this.hasAttribute(r))
+          o.setAttribute(r, this.getAttribute(r));
         else
-          o.removeAttribute(n);
+          o.removeAttribute(r);
     }
     _render() {
       if (typeof this._cleanup === "function")
         this._cleanup(), this._cleanup = null;
-      let o = this._getProps(), n = typeof c === "function" ? c(o) : c;
-      if (this.shadowRoot.innerHTML = `<style>${s}</style>${n}`, this._applyForwardedAttrs(), h) {
-        let d = h(this.shadowRoot, o, this);
-        if (typeof d === "function")
-          this._cleanup = d;
+      let o = this._getProps(), r = typeof s === "function" ? s(o) : s;
+      if (this.shadowRoot.innerHTML = `<style>${l}</style>${r}`, this._applyForwardedAttrs(), h) {
+        let m = h(this.shadowRoot, o, this);
+        if (typeof m === "function")
+          this._cleanup = m;
       }
     }
   }
-  customElements.define(i, f);
+  customElements.define(a, f);
 }
 
-// web-components/breakpoints.js
-var r = "640px";
-
-// web-components/components/app-frame.js
-var k = `
-  :host {
-    display: block;
-    position: fixed;
-    inset: 0;
-    z-index: 10;
-    border: 7px solid var(--color-secondary);
-    pointer-events: none;
-
-    @media (max-width: ${r}) {
-      border-width: 5px;
-    }
-  }
-
-  :host([variant="color-primary"]) {
-    /* border-color: var(--color-primary); */
-    /* border-color: var(--color-tertiary); */
-    /* border-color: #a36aa5; */
-  }
-`, $ = `
-`;
-t("app-frame", { styles: k, template: $ });
-
-// web-components/components/app-link.js
-var z = `
+// scripts/components/app-link.js
+var x = `
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -241,13 +213,13 @@ var z = `
        content: "➶";
      }
   }
-`, A = ["href", "target", "rel", "download"], _ = `
+`, $ = ["href", "target", "rel", "download"], A = `
   <a data-forward><slot></slot></a>
 `;
-t("app-link", { attrs: A, styles: z, template: _ });
+i("app-link", { attrs: $, styles: x, template: A });
 
-// web-components/components/app-logo.js
-var B = `
+// scripts/components/app-logo.js
+var z = `
   :host {
     display: block;
   }
@@ -256,11 +228,14 @@ var B = `
     max-height: 7rem;
     width: auto;
   }
-`, S = ["width", "height", "src", "alt"], T = () => "<img data-forward />";
-t("app-logo", { attrs: S, styles: B, template: T });
+`, T = ["width", "height", "src", "alt"], S = () => "<img data-forward />";
+i("app-logo", { attrs: T, styles: z, template: S });
 
-// web-components/sections/header.js
-var L = `
+// scripts/breakpoints.js
+var n = "640px";
+
+// scripts/header.js
+var _ = `
   :host {
     display: block;
     background: var(--color-bg-primary);
@@ -297,7 +272,7 @@ var L = `
     box-shadow: none;
   }
 
-  @media (max-width: ${r}) {
+  @media (max-width: ${n}) {
     .header__navigation {
       gap: 4rem;
     }
@@ -307,9 +282,9 @@ var L = `
     height: 5rem;
     width: auto;
   }
-`, E = `
+`, B = `
   <header>
-      <app-link variant="plain" href=${m("/")}>
+      <app-link variant="plain" href=${p("/")}>
         <img src=${e("./assets/images/logo.avif")}
           alt="Logo">
       </app-link>
@@ -318,25 +293,25 @@ var L = `
         <nav>
           <ul>
             <li>
-              <app-link variant="plain" href=${m("/")}>Home</app-link>
+              <app-link variant="plain" href=${p("/")}>Home</app-link>
             </li>
 
             <li>
-              <app-link variant="plain" href=${m("/about")}>About</app-link>
+              <app-link variant="plain" href=${p("/about")}>About</app-link>
             </li>
           </ul>
         </nav>
 
-        <app-link variant="secondary" href=${m("/#cta")}>
+        <app-link variant="secondary" href=${p("/#cta")}>
           Let's Craft &#8629;
         </app-link>
       </div>
   </header>
 `;
-t("section-header", { template: E, styles: L });
+i("section-header", { template: B, styles: _ });
 
-// web-components/components/footer-nav.js
-var C = [
+// scripts/components/footer-nav.js
+var D = [
   { href: "/", name: "Home" },
   { href: "/about", name: "About" },
   { href: "/credits", name: "Credits" },
@@ -355,7 +330,7 @@ var C = [
     href: "/writings/foundation-building-interfaces-at-scale",
     name: "Foundation"
   }
-], U = `
+], F = `
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -364,7 +339,7 @@ var C = [
    display: flex;
    gap: 5rem;
 
-   @media (max-width: ${r}) {
+   @media (max-width: ${n}) {
         flex-direction: column;
         gap: 3rem;
         margin-block: 2rem;
@@ -393,7 +368,7 @@ var C = [
     max-height: 12.5ch;
     overflow: scroll;
 
-    @media (max-width: ${r}) {
+    @media (max-width: ${n}) {
         max-height: 20ch;
     }
   }
@@ -402,23 +377,23 @@ var C = [
     margin-right: 5rem;
     margin-bottom: 0.3rem;
   }
-`, F = () => `
+`, L = () => `
     <nav>
         <span>Sitemap</span>
 
         <ol>
-            ${C.map((i) => `
+            ${D.map((a) => `
                 <li>
-                    <app-link variant="sitemap" href=${m(i.href)} >${i.name}</app-link>
+                    <app-link variant="sitemap" href=${p(a.href)} >${a.name}</app-link>
                 </li>
             `).join("")}
         </ol>
     </nav>
 `;
-t("footer-nav", { styles: U, template: F });
+i("footer-nav", { styles: F, template: L });
 
-// web-components/components/footer-copyright.js
-var H = `
+// scripts/components/footer-copyright.js
+var C = `
   :host {
    display: flex;
     justify-content: space-between;
@@ -426,7 +401,7 @@ var H = `
     padding-top: 1rem;
     margin-top: 3rem;
 
-   @media (max-width: ${r}) {
+   @media (max-width: ${n}) {
         flex-direction: column-reverse;
         gap: 2rem;
         border: none;
@@ -442,7 +417,7 @@ var H = `
     align-items: end;
     gap: 0.2rem;
 
-    @media (min-width: ${r}) {
+    @media (min-width: ${n}) {
       border: none;
       padding-top: none;
     }
@@ -466,7 +441,7 @@ var H = `
   nav {
     display: block;
 
-    @media (min-width: ${r}) {
+    @media (min-width: ${n}) {
       display: block;
     }
   }
@@ -477,7 +452,7 @@ var H = `
     font-weight: var(--font-bold);
     
 
-    @media (max-width: ${r}) {
+    @media (max-width: ${n}) {
       display: inline-block;
       margin-bottom: 0.5rem;
     }
@@ -486,7 +461,7 @@ var H = `
   p img {
     height: 2.3rem;
 
-     @media (max-width: ${r}) {
+     @media (max-width: ${n}) {
       
       height: 2.5rem;
     }
@@ -501,7 +476,7 @@ var H = `
     text-decoration: none;
     color: var(--color-text);
   }
-`, O = () => `
+`, P = () => `
       <p>
           <img src=${e("./assets/images/logo.avif")}
           alt="Logo">
@@ -564,10 +539,10 @@ var H = `
           </ul>
         </nav>
 `;
-t("footer-copyright", { styles: H, template: O });
+i("footer-copyright", { styles: C, template: P });
 
-// web-components/sections/footer.js
-var q = `
+// scripts/footer.js
+var U = `
   :host {
     display: block;
   }
@@ -630,7 +605,7 @@ var q = `
     display: block;
   }
 
-  @media (min-width: ${r}) {
+  @media (min-width: ${n}) {
     #highlight-wrap {
       display: block;
     }
@@ -640,7 +615,7 @@ var q = `
       display: none;
     }
   }
-`, N = `
+`, E = `
   <footer>
 
     <div id="highlight-wrap">
@@ -657,30 +632,31 @@ var q = `
     <footer-copyright></footer-copyright>
   </footer>
 `;
-function P(i) {
-  let a = i.querySelector("footer"), l = i.getElementById("highlight-base"), s = i.getElementById("highlight-lens"), c = i.getElementById("lens-ring"), h = i.getElementById("highlight-wrap");
-  if (!a || !l || !s || !c || !h)
+function H(a) {
+  let t = a.querySelector("footer"), c = a.getElementById("highlight-base"), l = a.getElementById("highlight-lens"), s = a.getElementById("lens-ring"), h = a.getElementById("highlight-wrap");
+  if (!t || !c || !l || !s || !h)
     return;
-  function g(n) {
-    let d = l.getBoundingClientRect(), p = n.clientX - d.left, b = n.clientY - d.top, u = c.offsetWidth / 2;
-    c.style.left = `${p - u}px`, c.style.top = `${b - u}px`, s.style.clipPath = `circle(${u}px at ${p}px ${b}px)`;
+  function g(r) {
+    let m = c.getBoundingClientRect(), d = r.clientX - m.left, v = r.clientY - m.top, u = s.offsetWidth / 2;
+    s.style.left = `${d - u}px`, s.style.top = `${v - u}px`, l.style.clipPath = `circle(${u}px at ${d}px ${v}px)`;
   }
   function f() {
-    c.setAttribute("data-visible", "true");
+    s.setAttribute("data-visible", "true");
   }
   function o() {
-    c.removeAttribute("data-visible"), s.style.clipPath = "circle(0px at 50% 50%)";
+    s.removeAttribute("data-visible"), l.style.clipPath = "circle(0px at 50% 50%)";
   }
-  return a.addEventListener("mousemove", g), a.addEventListener("mouseenter", f), a.addEventListener("mouseleave", o), () => {
-    a.removeEventListener("mousemove", g), a.removeEventListener("mouseenter", f), a.removeEventListener("mouseleave", o);
+  return t.addEventListener("mousemove", g), t.addEventListener("mouseenter", f), t.addEventListener("mouseleave", o), () => {
+    t.removeEventListener("mousemove", g), t.removeEventListener("mouseenter", f), t.removeEventListener("mouseleave", o);
   };
 }
-t("section-footer", { styles: q, template: N, onRender: P });
+i("section-footer", { styles: U, template: E, onRender: H });
 
-// web-components/sections/foundation-building-interfaces-at-scale/intro.js
-var D = `
+// scripts/writings/foundation-building-interfaces-at-scale/intro.js
+var O = `
   :host {
     display: block;
+    margin-block: 10rem;
   }
 
   section {
@@ -691,8 +667,6 @@ var D = `
   h1 {
     margin: 0;
     font-size: var(--size-title);
-    font-weight: var(--font-regular);
-    font-family: var(--font-heading);
   }
 
   p {
@@ -707,16 +681,30 @@ var D = `
     flex-direction: column;
     gap: 0.5rem;
   }
-`, G = `
+
+  span {
+    display: inline-block;
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+    font-weight: var(--font-bold);
+  }
+
+  hgroup span {
+    font-weight: var(--font-regular);
+  }
+`, j = `
   <section>
-    <h1>Foundation for Building Interfaces at Scale</h1>
+    <hgroup>
+      <span>[ Writing ]</span>
+      <h1>Foundation for Building Interfaces at Scale</h1>
+    </hgroup>
 
     <p>
       Build systems, not interfaces. A design system is the single source of
       truth for consistent, scalable interfaces.
     </p>
 
-    <p><b>On this page</b></p>
+    <span>On this page</span>
 
     <ul>
       <li>
@@ -732,56 +720,13 @@ var D = `
     </ul>
   </section>
 `;
-t("section-foundation-building-interfaces-at-scale-intro", {
-  styles: D,
-  template: G
+i("section-foundation-building-interfaces-at-scale-intro", {
+  styles: O,
+  template: j
 });
 
-// web-components/components/section-title.js
-var I = `
-  :host {
-    display: flex;
-    align-items: center;
-    width: fit-content;
-    margin-bottom: 3rem;
-    gap: 1rem;
-  }
-
-  h2 {
-    margin: 0;
-    font-size: var(--size-title);
-    font-family: var(--font-heading);
-    font-weight: var(--font-regular)
-  }
-
-  img {
-    height: 5rem;
-    width: auto;
-  }
-
-  :host([variant="vertical"]) {
-    flex-direction: column-reverse;
-    gap: 0;
-  }
-
-  :host([variant="text"]) {
-    img {
-      display: none;
-    }
-  }
-`, X = { name: String, img: String, alt: String }, M = ({ name: i, img: a = "", alt: l = "" }) => `
-    <h2>${i}</h2>
-    <img
-        src=${e(a)}
-        alt=${l}
-        height="36"
-        width="76"
-    />
-`;
-t("section-title", { props: X, styles: I, template: M });
-
-// web-components/components/app-image.js
-var V = `
+// scripts/components/app-image.js
+var q = `
   :host {
     --local-width: 5rem;
     --local-heigth: auto;
@@ -812,43 +757,11 @@ var V = `
    :host([variant="full"]) {
     --local-width: 100%;
   }
-`, J = ["width", "height", "src", "alt"], K = () => "<img data-forward />";
-t("app-image", { attrs: J, styles: V, template: K });
+`, G = ["width", "height", "src", "alt"], N = () => "<img data-forward />";
+i("app-image", { attrs: G, styles: q, template: N });
 
-// web-components/components/app-article-paragraph.js
-var Q = `
-  :host {
-    display: grid;
-    grid-template-columns: 1fr 2.5fr;
-
-
-    @media (max-width: ${r}) {
-        display: block;
-    }
-  }
-
-  h3 {
-    margin: 0;
-    margin-bottom: 1rem;
-    font-size: var(--size-heading);
-    width: fit-content;
-    height: fit-content;
-  }
-
-  :host([variant="block"]) {
-    display: block;
-  }
-`, Y = { title: String }, Z = ({ title: i }) => `
-        <h3>${i}</h3>
-
-        <article>
-            <slot></slot>
-        </article>
-`;
-t("app-article-paragraph", { props: Y, styles: Q, template: Z });
-
-// web-components/sections/foundation-building-interfaces-at-scale/atomic-design-principle.js
-var j = `
+// scripts/writings/foundation-building-interfaces-at-scale/atomic-design-principle.js
+var M = `
   :host {
     display: block;
   }
@@ -874,9 +787,16 @@ var j = `
     border-top: 1px dashed var(--color-text);
     padding-top: 5rem;
   }
-`, R = `
+
+  h3 {
+    font-size: var(--size-heading);
+    margin: 0;
+    margin-bottom: 2rem;
+  }
+`, I = `
   <section >
-    <section-title variant="text" props='{"name": "Atomic Design Principle"}'></section-title>
+
+    <h2>Atomic Design Principle</h2>
 
     <p>
       Follow Atomic Design principles to create scalable, reusable, and
@@ -893,7 +813,8 @@ var j = `
 
     <ul>
       <li>
-        <app-article-paragraph props='{ "title": "Page" }'>
+        <article>
+          <h3>Page</h3>
           <p>
             A complete interface that is composed of multiple organisms. Let’s break down the Strava Activities interface into organisms → molecules → atoms → subatomic particles. For example, the Strava Activities page contains four organisms.
           </p>
@@ -904,11 +825,12 @@ var j = `
             width="1398"
             height="1236"
           ></app-image>
-        </app-article-paragraph>
+        </article>
       </li>
 
       <li>
-        <app-article-paragraph props='{ "title": "Organism" }'>
+        <article>
+          <h3>Organism</h3>
           <p>
             A distinct section of an interface composed of molecules, atoms, subatomic particles, or even other organisms. The following diagram shows an organism made up of three molecules, one atom, and one other organism.
           </p>
@@ -919,11 +841,12 @@ var j = `
             width="1398"
             height="1236"
           ></app-image>
-        </app-article-paragraph>
+        </article>
       </li>
 
       <li>
-        <app-article-paragraph props='{ "title": "Molecule" }'>
+        <article>
+          <h3>Molecule</h3>
           <p>
             A simple interface element composed of atoms or subatomic particles as well as other molecules. The example below shows how six atoms combine to form a molecule.
           </p>
@@ -934,11 +857,12 @@ var j = `
             width="1398"
             height="1236"
           ></app-image>
-        </app-article-paragraph>
+        </article>
       </li>
 
       <li>
-        <app-article-paragraph props='{ "title": "Atom" }'>
+        <article>
+          <h3>Atom</h3>
           <p>
             A foundational building block of an interface composed of subatomic particles. The illustration below shows an atom composed of three subatomic particles.
           </p>
@@ -949,11 +873,12 @@ var j = `
             width="1398"
             height="1236"
           ></app-image>
-        </app-article-paragraph>
+        </article>
       </li>
 
       <li>
-        <app-article-paragraph props='{ "title": "Subatomic particle" }'>
+        <article>
+          <h3>Subatomic particle</h3>
           <p>Smallest unit of the system, represents a design token.</p>
           <app-image
             variant="full"
@@ -962,15 +887,15 @@ var j = `
             width="1398"
             height="1236"
           ></app-image>
-        </app-article-paragraph>
+        </article>
       </li>
     </ul>
   </section>
 `;
-t("section-atomic-design-principle", { styles: j, template: R });
+i("section-atomic-design-principle", { styles: M, template: I });
 
-// web-components/sections/foundation-building-interfaces-at-scale/design-token-architecture.js
-var W = `
+// scripts/writings/foundation-building-interfaces-at-scale/design-token-architecture.js
+var X = `
   :host {
     display: block;
   }
@@ -1001,9 +926,16 @@ var W = `
     padding: 0;
     padding-left: 1.5rem;
   }
-`, ee = `
+
+  h3 {
+    font-size: var(--size-heading);
+    margin: 0;
+    margin-bottom: 2rem;
+  }
+`, V = `
   <section>
-    <section-title variant="text" props='{"name": "Design Token Architecture"}'></section-title>
+
+    <h2>Design Token Architecture</h2>
 
     <p>A two-tier architecture is enough: Primitive and Semantic.</p>
 
@@ -1017,7 +949,8 @@ var W = `
 
     <ul>
       <li>
-        <app-article-paragraph variant="block" props='{ "title": "Single Source of Truth" }'>
+        <article>
+          <h3>Single Source of Truth</h3>
           <p>
             Use semantic tokens to define all interface building blocks. The
             Figma file uses slashes as separators with all letters lowercase,
@@ -1031,11 +964,12 @@ var W = `
             width="1398"
             height="1236"
           ></app-image>
-        </app-article-paragraph>
+        </article>
       </li>
 
       <li>
-        <app-article-paragraph variant="block" props='{ "title": "Theming" }'>
+        <article>
+          <h3>Theming</h3>
           <p>
             A token can point to different values related to a mode, and when
             the mode changes, the reference values are updated automatically.
@@ -1047,11 +981,12 @@ var W = `
             width="1398"
             height="1236"
           ></app-image>
-        </app-article-paragraph>
+        </article>
       </li>
 
       <li>
-        <app-article-paragraph variant="block" props='{ "title": "Token Structure" }'>
+        <article>
+          <h3>Token Structure</h3>
           <p>Tokens are named in two parts:</p>
           <ol>
             <li>Base</li>
@@ -1064,11 +999,12 @@ var W = `
             width="1398"
             height="1236"
           ></app-image>
-        </app-article-paragraph>
+        </article>
       </li>
 
       <li>
-        <app-article-paragraph variant="block" props='{ "title": "Design Token Anatomy" }'>
+        <article>
+          <h3>Design Token Anatomy</h3>
           <p>
             The diagram below shows how primitive and semantic tokens combine
             base and modifier.
@@ -1080,11 +1016,12 @@ var W = `
             width="1398"
             height="1236"
           ></app-image>
-        </app-article-paragraph>
+        </article>
       </li>
 
       <li>
-        <app-article-paragraph variant="block" props='{ "title": "Applying Design Tokens" }'>
+        <article>
+          <h3>Applying Design Tokens</h3>
           <p>
             Here is an example of how semantic tokens are used throughout a
             Strava activities page.
@@ -1096,15 +1033,15 @@ var W = `
             width="1398"
             height="1236"
           ></app-image>
-        </app-article-paragraph>
+        </article>
       </li>
 </ul>
   </section>
 `;
-t("section-design-token-architecture", { styles: W, template: ee });
+i("section-design-token-architecture", { styles: X, template: V });
 
-// web-components/sections/foundation-building-interfaces-at-scale/references.js
-var te = `
+// scripts/writings/foundation-building-interfaces-at-scale/references.js
+var J = `
   :host {
     display: block;
   }
@@ -1121,9 +1058,10 @@ var te = `
     flex-direction: column;
     gap: 0.5rem;
   }
-`, ie = `
+`, K = `
   <section>
-    <section-title variant="text" props='{"name": "References"}'></section-title>
+
+    <h2>Reference</h2>
 
     <ul>
       <li>
@@ -1149,9 +1087,9 @@ var te = `
     </ul>
   </section>
 `;
-t("section-foundation-building-interfaces-at-scale-references", {
-  styles: te,
-  template: ie
+i("section-foundation-building-interfaces-at-scale-references", {
+  styles: J,
+  template: K
 });
 </script></body>
 </html>

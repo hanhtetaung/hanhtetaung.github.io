@@ -24,7 +24,6 @@
 :root{--color-bg-primary:#fff5e8;--color-primary:#7e4c37;--color-text:#000;--color-transparent:#0000;--font-family:"Archivo",sans-serif;--font-regular:400;--font-bold:700;--ratio:1.4;--size-body:1.6rem;--size-small:calc(var(--size-body)/var(--ratio));--size-heading:calc(var(--size-body)*var(--ratio));--size-title:calc(var(--size-heading)*var(--ratio));--size-display:calc(var(--size-title)*var(--ratio));font-size:10px;@media (width>=640px){&{--size-body:2rem}}}body{background:var(--color-bg-primary);font-family:var(--font-family);font-size:var(--size-body);margin:0}
 </style></head>
   <body>
-    <app-frame></app-frame>
     <section-header></section-header>
 
     <main>
@@ -46,61 +45,61 @@
     </main>
 
     <section-footer variant="secondary"></section-footer>
-  <script type="module">// web-components/asset.js
-function v() {
-  let t = document.documentElement.dataset.base || "./";
-  return new URL(t, location.href);
+  <script type="module">// lib/asset.js
+function y() {
+  let i = document.documentElement.dataset.base || "./";
+  return new URL(i, location.href);
 }
-function o(t) {
-  return new URL(t, v()).href;
+function t(i) {
+  return new URL(i, y()).href;
 }
-function m(t) {
-  let i = t.replace(/^\//, ""), l = location.protocol === "file:", s = v();
-  if (i === "")
-    return l ? new URL("index.html", s).href : s.href;
-  return l ? new URL(`${i}.html`, s).href : new URL(i, s).href;
+function p(i) {
+  let a = i.replace(/^\//, ""), m = location.protocol === "file:", s = y();
+  if (a === "")
+    return m ? new URL("index.html", s).href : s.href;
+  return m ? new URL(`${a}.html`, s).href : new URL(a, s).href;
 }
 
-// web-components/fonts.js
-var w = `
+// scripts/fonts.js
+var k = `
 @font-face {
     font-family: "Archivo";
-    src: url("${o("./assets/fonts/Archivo-Black.woff2")}") format("woff2");
+    src: url("${t("./assets/fonts/Archivo-Black.woff2")}") format("woff2");
     font-weight: 700;
     font-display: swap;
   }
 
   @font-face {
     font-family: "Archivo";
-    src: url("${o("./assets/fonts/Archivo-Regular.woff2")}") format("woff2");
+    src: url("${t("./assets/fonts/Archivo-Regular.woff2")}") format("woff2");
     font-weight: 400;
     font-display: swap;
   }
-`, y = document.createElement("style");
-y.textContent = w;
-document.head.appendChild(y);
+`, b = document.createElement("style");
+b.textContent = k;
+document.head.appendChild(b);
 
-// web-components/define.js
-function x(t, i) {
-  if (t === void 0) {
-    if (i === Array)
+// lib/define.js
+function x(i, a) {
+  if (i === void 0) {
+    if (a === Array)
       return [];
-    if (i === Object)
+    if (a === Object)
       return {};
-    if (i === Boolean)
+    if (a === Boolean)
       return !1;
-    if (i === Number)
+    if (a === Number)
       return 0;
     return;
   }
-  if (i === Boolean)
-    return Boolean(t);
-  if (i === Number)
-    return Number(t);
-  return t;
+  if (a === Boolean)
+    return Boolean(i);
+  if (a === Number)
+    return Number(i);
+  return i;
 }
-function e(t, { props: i = {}, attrs: l = [], styles: s = "", template: c, onRender: h = null }) {
-  let g = ["props", ...l];
+function e(i, { props: a = {}, attrs: m = [], styles: s = "", template: l, onRender: h = null }) {
+  let g = ["props", ...m];
 
   class f extends HTMLElement {
     static observedAttributes = g;
@@ -121,73 +120,46 @@ function e(t, { props: i = {}, attrs: l = [], styles: s = "", template: c, onRen
         this._render();
     }
     _getProps() {
-      let r = {}, n = this.getAttribute("props");
-      if (n)
+      let o = {}, r = this.getAttribute("props");
+      if (r)
         try {
-          r = JSON.parse(n);
+          o = JSON.parse(r);
         } catch {
-          r = {};
+          o = {};
         }
-      let d = {};
-      for (let p of Object.keys(i))
-        d[p] = x(r[p], i[p]);
-      return d;
+      let c = {};
+      for (let d of Object.keys(a))
+        c[d] = x(o[d], a[d]);
+      return c;
     }
     _applyForwardedAttrs() {
-      if (l.length === 0)
+      if (m.length === 0)
         return;
-      let r = this.shadowRoot.querySelector("[data-forward]");
-      if (!r)
+      let o = this.shadowRoot.querySelector("[data-forward]");
+      if (!o)
         return;
-      for (let n of l)
-        if (this.hasAttribute(n))
-          r.setAttribute(n, this.getAttribute(n));
+      for (let r of m)
+        if (this.hasAttribute(r))
+          o.setAttribute(r, this.getAttribute(r));
         else
-          r.removeAttribute(n);
+          o.removeAttribute(r);
     }
     _render() {
       if (typeof this._cleanup === "function")
         this._cleanup(), this._cleanup = null;
-      let r = this._getProps(), n = typeof c === "function" ? c(r) : c;
-      if (this.shadowRoot.innerHTML = `<style>${s}</style>${n}`, this._applyForwardedAttrs(), h) {
-        let d = h(this.shadowRoot, r, this);
-        if (typeof d === "function")
-          this._cleanup = d;
+      let o = this._getProps(), r = typeof l === "function" ? l(o) : l;
+      if (this.shadowRoot.innerHTML = `<style>${s}</style>${r}`, this._applyForwardedAttrs(), h) {
+        let c = h(this.shadowRoot, o, this);
+        if (typeof c === "function")
+          this._cleanup = c;
       }
     }
   }
-  customElements.define(t, f);
+  customElements.define(i, f);
 }
 
-// web-components/breakpoints.js
-var a = "640px";
-
-// web-components/components/app-frame.js
-var k = `
-  :host {
-    display: block;
-    position: fixed;
-    inset: 0;
-    z-index: 10;
-    border: 7px solid var(--color-secondary);
-    pointer-events: none;
-
-    @media (max-width: ${a}) {
-      border-width: 5px;
-    }
-  }
-
-  :host([variant="color-primary"]) {
-    /* border-color: var(--color-primary); */
-    /* border-color: var(--color-tertiary); */
-    /* border-color: #a36aa5; */
-  }
-`, $ = `
-`;
-e("app-frame", { styles: k, template: $ });
-
-// web-components/components/app-link.js
-var z = `
+// scripts/components/app-link.js
+var $ = `
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -248,12 +220,12 @@ var z = `
        content: "➶";
      }
   }
-`, A = ["href", "target", "rel", "download"], _ = `
+`, z = ["href", "target", "rel", "download"], A = `
   <a data-forward><slot></slot></a>
 `;
-e("app-link", { attrs: A, styles: z, template: _ });
+e("app-link", { attrs: z, styles: $, template: A });
 
-// web-components/components/app-logo.js
+// scripts/components/app-logo.js
 var S = `
   :host {
     display: block;
@@ -263,11 +235,14 @@ var S = `
     max-height: 7rem;
     width: auto;
   }
-`, T = ["width", "height", "src", "alt"], B = () => "<img data-forward />";
-e("app-logo", { attrs: T, styles: S, template: B });
+`, B = ["width", "height", "src", "alt"], _ = () => "<img data-forward />";
+e("app-logo", { attrs: B, styles: S, template: _ });
 
-// web-components/sections/header.js
-var L = `
+// scripts/breakpoints.js
+var n = "640px", w = "1024px";
+
+// scripts/header.js
+var T = `
   :host {
     display: block;
     background: var(--color-bg-primary);
@@ -304,7 +279,7 @@ var L = `
     box-shadow: none;
   }
 
-  @media (max-width: ${a}) {
+  @media (max-width: ${n}) {
     .header__navigation {
       gap: 4rem;
     }
@@ -314,10 +289,10 @@ var L = `
     height: 5rem;
     width: auto;
   }
-`, E = `
+`, F = `
   <header>
-      <app-link variant="plain" href=${m("/")}>
-        <img src=${o("./assets/images/logo.avif")}
+      <app-link variant="plain" href=${p("/")}>
+        <img src=${t("./assets/images/logo.avif")}
           alt="Logo">
       </app-link>
 
@@ -325,24 +300,24 @@ var L = `
         <nav>
           <ul>
             <li>
-              <app-link variant="plain" href=${m("/")}>Home</app-link>
+              <app-link variant="plain" href=${p("/")}>Home</app-link>
             </li>
 
             <li>
-              <app-link variant="plain" href=${m("/about")}>About</app-link>
+              <app-link variant="plain" href=${p("/about")}>About</app-link>
             </li>
           </ul>
         </nav>
 
-        <app-link variant="secondary" href=${m("/#cta")}>
+        <app-link variant="secondary" href=${p("/#cta")}>
           Let's Craft &#8629;
         </app-link>
       </div>
   </header>
 `;
-e("section-header", { template: E, styles: L });
+e("section-header", { template: F, styles: T });
 
-// web-components/components/footer-nav.js
+// scripts/components/footer-nav.js
 var C = [
   { href: "/", name: "Home" },
   { href: "/about", name: "About" },
@@ -362,7 +337,7 @@ var C = [
     href: "/writings/foundation-building-interfaces-at-scale",
     name: "Foundation"
   }
-], H = `
+], E = `
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -371,7 +346,7 @@ var C = [
    display: flex;
    gap: 5rem;
 
-   @media (max-width: ${a}) {
+   @media (max-width: ${n}) {
         flex-direction: column;
         gap: 3rem;
         margin-block: 2rem;
@@ -400,7 +375,7 @@ var C = [
     max-height: 12.5ch;
     overflow: scroll;
 
-    @media (max-width: ${a}) {
+    @media (max-width: ${n}) {
         max-height: 20ch;
     }
   }
@@ -409,23 +384,23 @@ var C = [
     margin-right: 5rem;
     margin-bottom: 0.3rem;
   }
-`, U = () => `
+`, L = () => `
     <nav>
         <span>Sitemap</span>
 
         <ol>
-            ${C.map((t) => `
+            ${C.map((i) => `
                 <li>
-                    <app-link variant="sitemap" href=${m(t.href)} >${t.name}</app-link>
+                    <app-link variant="sitemap" href=${p(i.href)} >${i.name}</app-link>
                 </li>
             `).join("")}
         </ol>
     </nav>
 `;
-e("footer-nav", { styles: H, template: U });
+e("footer-nav", { styles: E, template: L });
 
-// web-components/components/footer-copyright.js
-var F = `
+// scripts/components/footer-copyright.js
+var I = `
   :host {
    display: flex;
     justify-content: space-between;
@@ -433,7 +408,7 @@ var F = `
     padding-top: 1rem;
     margin-top: 3rem;
 
-   @media (max-width: ${a}) {
+   @media (max-width: ${n}) {
         flex-direction: column-reverse;
         gap: 2rem;
         border: none;
@@ -449,7 +424,7 @@ var F = `
     align-items: end;
     gap: 0.2rem;
 
-    @media (min-width: ${a}) {
+    @media (min-width: ${n}) {
       border: none;
       padding-top: none;
     }
@@ -473,7 +448,7 @@ var F = `
   nav {
     display: block;
 
-    @media (min-width: ${a}) {
+    @media (min-width: ${n}) {
       display: block;
     }
   }
@@ -484,7 +459,7 @@ var F = `
     font-weight: var(--font-bold);
     
 
-    @media (max-width: ${a}) {
+    @media (max-width: ${n}) {
       display: inline-block;
       margin-bottom: 0.5rem;
     }
@@ -493,7 +468,7 @@ var F = `
   p img {
     height: 2.3rem;
 
-     @media (max-width: ${a}) {
+     @media (max-width: ${n}) {
       
       height: 2.5rem;
     }
@@ -508,9 +483,9 @@ var F = `
     text-decoration: none;
     color: var(--color-text);
   }
-`, O = () => `
+`, D = () => `
       <p>
-          <img src=${o("./assets/images/logo.avif")}
+          <img src=${t("./assets/images/logo.avif")}
           alt="Logo">
           <a href="https://hanhtetaung.dev/">
             Crafted by Han
@@ -527,7 +502,7 @@ var F = `
               <li>
                   <a href="https://wa.me/message/DVOPVSAGBDENB1" target="_blank">
                   <img
-                      src=${o("./assets/icons/whatsapp.svg")}
+                      src=${t("./assets/icons/whatsapp.svg")}
                       alt="Email Icon"
                   />
                   </a>    
@@ -539,7 +514,7 @@ var F = `
                   rel="noopener"
                   >
                   <img
-                      src=${o("./assets/icons/instagram.svg")}
+                      src=${t("./assets/icons/instagram.svg")}
                       alt="Linkedin Icon"
                   />
                   </a>
@@ -551,7 +526,7 @@ var F = `
                   rel="noopener"
                   >
                   <img
-                      src=${o("./assets/icons/linkedin.svg")}
+                      src=${t("./assets/icons/linkedin.svg")}
                       alt="Linkedin Icon"
                   />
                   </a>
@@ -563,7 +538,7 @@ var F = `
                   rel="noopener"
                   >
                   <img
-                      src=${o("./assets/icons/github.svg")}
+                      src=${t("./assets/icons/github.svg")}
                       alt="Github Icon"
                   />
                   </a>
@@ -571,10 +546,10 @@ var F = `
           </ul>
         </nav>
 `;
-e("footer-copyright", { styles: F, template: O });
+e("footer-copyright", { styles: I, template: D });
 
-// web-components/sections/footer.js
-var q = `
+// scripts/footer.js
+var O = `
   :host {
     display: block;
   }
@@ -637,7 +612,7 @@ var q = `
     display: block;
   }
 
-  @media (min-width: ${a}) {
+  @media (min-width: ${n}) {
     #highlight-wrap {
       display: block;
     }
@@ -647,45 +622,45 @@ var q = `
       display: none;
     }
   }
-`, D = `
+`, P = `
   <footer>
 
     <div id="highlight-wrap">
-      <img id="highlight-base" src=${o("./assets/images/footer/highlight.png")} alt="Parting phrase">
-      <img id="highlight-lens" src=${o("./assets/images/footer/highlight-with-color.png")} alt="Parting phrase with color" aria-hidden="true">
+      <img id="highlight-base" src=${t("./assets/images/footer/highlight.png")} alt="Parting phrase">
+      <img id="highlight-lens" src=${t("./assets/images/footer/highlight-with-color.png")} alt="Parting phrase with color" aria-hidden="true">
       <div id="lens-ring"></div>
     </div>
 
-    <img id="thank-you" src=${o("./assets/images/footer/thank-you.avif")} alt="Thank you phrase">
-    <img id="looking-forward" src=${o("./assets/images/footer/looking-forward.avif")} alt="Parting Phrase">
+    <img id="thank-you" src=${t("./assets/images/footer/thank-you.avif")} alt="Thank you phrase">
+    <img id="looking-forward" src=${t("./assets/images/footer/looking-forward.avif")} alt="Parting Phrase">
 
     <!-- <footer-nav></footer-nav> -->
 
     <footer-copyright></footer-copyright>
   </footer>
 `;
-function G(t) {
-  let i = t.querySelector("footer"), l = t.getElementById("highlight-base"), s = t.getElementById("highlight-lens"), c = t.getElementById("lens-ring"), h = t.getElementById("highlight-wrap");
-  if (!i || !l || !s || !c || !h)
+function U(i) {
+  let a = i.querySelector("footer"), m = i.getElementById("highlight-base"), s = i.getElementById("highlight-lens"), l = i.getElementById("lens-ring"), h = i.getElementById("highlight-wrap");
+  if (!a || !m || !s || !l || !h)
     return;
-  function g(n) {
-    let d = l.getBoundingClientRect(), p = n.clientX - d.left, b = n.clientY - d.top, u = c.offsetWidth / 2;
-    c.style.left = `${p - u}px`, c.style.top = `${b - u}px`, s.style.clipPath = `circle(${u}px at ${p}px ${b}px)`;
+  function g(r) {
+    let c = m.getBoundingClientRect(), d = r.clientX - c.left, v = r.clientY - c.top, u = l.offsetWidth / 2;
+    l.style.left = `${d - u}px`, l.style.top = `${v - u}px`, s.style.clipPath = `circle(${u}px at ${d}px ${v}px)`;
   }
   function f() {
-    c.setAttribute("data-visible", "true");
+    l.setAttribute("data-visible", "true");
   }
-  function r() {
-    c.removeAttribute("data-visible"), s.style.clipPath = "circle(0px at 50% 50%)";
+  function o() {
+    l.removeAttribute("data-visible"), s.style.clipPath = "circle(0px at 50% 50%)";
   }
-  return i.addEventListener("mousemove", g), i.addEventListener("mouseenter", f), i.addEventListener("mouseleave", r), () => {
-    i.removeEventListener("mousemove", g), i.removeEventListener("mouseenter", f), i.removeEventListener("mouseleave", r);
+  return a.addEventListener("mousemove", g), a.addEventListener("mouseenter", f), a.addEventListener("mouseleave", o), () => {
+    a.removeEventListener("mousemove", g), a.removeEventListener("mouseenter", f), a.removeEventListener("mouseleave", o);
   };
 }
-e("section-footer", { styles: q, template: D, onRender: G });
+e("section-footer", { styles: O, template: P, onRender: U });
 
-// web-components/components/app-image.js
-var P = `
+// scripts/components/app-image.js
+var H = `
   :host {
     --local-width: 5rem;
     --local-heigth: auto;
@@ -716,13 +691,14 @@ var P = `
    :host([variant="full"]) {
     --local-width: 100%;
   }
-`, M = ["width", "height", "src", "alt"], N = () => "<img data-forward />";
-e("app-image", { attrs: M, styles: P, template: N });
+`, j = ["width", "height", "src", "alt"], M = () => "<img data-forward />";
+e("app-image", { attrs: j, styles: H, template: M });
 
-// web-components/sections/mmo/intro.js
-var X = `
+// scripts/work/mmo/intro.js
+var q = `
   :host {
     display: block;
+    padding-block: 10rem;
   }
 
   section {
@@ -734,130 +710,124 @@ var X = `
     justify-content: space-between;
     gap: 3rem;
 
-    @media (max-width: ${a}) {
+    @media (max-width: ${n}) {
       flex-direction: column;
     }
   }
 
 
     span {
-    color: var(--color-secondary);
-    font-size: var(--size-small);
-    font-weight: var(--font-bold);
-    text-transform: uppercase;
-  }
+      font-size: var(--size-small);
+      text-transform: uppercase;
+      display: inline-block;
+      margin-bottom: 0.5rem;
+    }
 
   h1 {
     margin: 0;
     font-size: var(--size-display);
-    font-weight: var(--font-regular);
-    font-family: var(--font-heading);
+    font-weight: var(--font-bold);
+    margin-bottom: 1rem;
   }
 
   p {
     margin: 0;
-    margin-bottom: 2rem;
+  }
+
+  hgroup {
+    margin-bottom: 3rem;
   }
 
   ul {
     margin: 0;
     padding: 0;
+    list-style-type: disc;
     padding-inline: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
   }
-`, I = `
+
+  ol {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+
+    @media (min-width: ${w}) {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+`, W = `
   <section>
     <app-image
     variant="large"
-    src=${o("./assets/images/case-study/mmo/thumbnail.avif")}
+    src=${t("./assets/images/case-study/mmo/thumbnail.avif")}
     alt="MMO thumbnail"
     width="1692"
     height="886"
     ></app-image>
     
     <article>
-      <span>Case Study</span>
-      <h1>MMO</h1>
+      <hgroup>
+        <p><span>Case Study</span></p> 
+        <h1>MMO</h1>
+        <p>
+          An internal portal that uses to run daily operations in
+          hospital.
+        </p>
+      </hgroup>
 
-      <p>
-        An internal portal that uses to run daily operations in
-        hospital.
-      </p>
+      
+      <ol>
+        <li>
+          <span>Role:</span>
+          <p>UX Designer</p>
+        </li>
 
-        <span>Role:</span>
-        <p>UX Designer</p>
-
-        <span>Scope: </span>
-        <ul>
-          <li>Gather requirements</li>
-          <li>Simplify complex workflows</li>
-          <li>Build Prototype</li>
-          <li>Design System</li>
-          <li>Developer Handoff</li>
-        </ul>
+        <li>
+          <span>Scope:</span>
+          <ul>
+            <li>Gather requirements</li>
+            <li>Build Prototype</li>
+            <li>Simplify complex workflows</li>
+            <li>Design System</li>
+            <li>Developer Handoff</li>
+          </ul>
+        </li>
+      </ol>
       </article>
   </section>
 `;
-e("section-mmo-intro", { styles: X, template: I });
+e("section-mmo-intro", { styles: q, template: W });
 
-// web-components/components/section-title.js
-var R = `
-  :host {
-    display: flex;
-    align-items: center;
-    width: fit-content;
-    margin-bottom: 3rem;
-    gap: 1rem;
-  }
-
-  h2 {
-    margin: 0;
-    font-size: var(--size-title);
-    font-family: var(--font-heading);
-    font-weight: var(--font-regular)
-  }
-
-  img {
-    height: 5rem;
-    width: auto;
-  }
-
-  :host([variant="vertical"]) {
-    flex-direction: column-reverse;
-    gap: 0;
-  }
-
-  :host([variant="text"]) {
-    img {
-      display: none;
-    }
-  }
-`, V = { name: String, img: String, alt: String }, K = ({ name: t, img: i = "", alt: l = "" }) => `
-    <h2>${t}</h2>
-    <img
-        src=${o(i)}
-        alt=${l}
-        height="36"
-        width="76"
-    />
-`;
-e("section-title", { props: V, styles: R, template: K });
-
-// web-components/sections/mmo/about.js
-var J = `
+// scripts/work/mmo/about.js
+var G = `
   :host {
     display: block;
+    margin-block: 10rem;
   }
 
   section {
     width: 80%;
     margin-inline: auto;
   }
-`, Q = `
+
+  h2 {
+    margin: 0;
+    margin-bottom: 1.5rem;
+    font-size: var(--size-title);
+  }
+
+  p {
+    margin: 0;
+  }
+`, R = `
   <section>
-    <section-title
-        variant="text"
-        props='{"name": "About the Business"}'
-      ></section-title>
+      <h2>About the Business</h2>
 
       <article>
           <p>
@@ -869,12 +839,13 @@ var J = `
       </article>
   </section>
 `;
-e("section-mmo-about", { styles: J, template: Q });
+e("section-mmo-about", { styles: G, template: R });
 
-// web-components/sections/mmo/voices-from-field.js
-var Y = `
+// scripts/work/mmo/voices-from-field.js
+var N = `
   :host {
     display: block;
+    margin-block: 10rem;
   }
 
   section {
@@ -885,26 +856,31 @@ var Y = `
   ul {
     margin: 0;
     padding: 0;
-    padding-inline: 2rem;
+    padding-inline: 1rem;
+    list-style-type: none;
 
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 1.2rem;
+  }
+
+  h2 {
+    margin: 0;
+    margin-bottom: 2rem;
+    font-size: var(--size-title);
+  }
+
+  p {
+    margin: 0;
   }
 
   span {
-    color: var(--color-secondary);
     font-size: var(--size-small);
-    font-weight: var(--font-bold);
     text-transform: uppercase;
   }
-`, Z = `
+`, X = `
   <section>
-
-  <section-title
-        variant="text"
-        props='{"name": "Voices from the field"}'
-      ></section-title>
+      <h2>Voices from the Field</h2>
 
         <ul>
           <li>
@@ -935,10 +911,10 @@ var Y = `
         </ul>
   </section>
 `;
-e("section-mmo-voices-from-field", { styles: Y, template: Z });
+e("section-mmo-voices-from-field", { styles: N, template: X });
 
-// web-components/sections/mmo/designing-workflow.js
-var W = `
+// scripts/work/mmo/designing-workflow.js
+var V = `
   :host {
     display: block;
   }
@@ -952,21 +928,27 @@ var W = `
     margin: 0;
   }
 
+   h2 {
+    margin: 0;
+    margin-bottom: 2rem;
+    font-size: var(--size-title);
+  }
+
   h3 {
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    font-weight: var(--font-regular);
   }
 
   span {
-    color: var(--color-secondary);
     font-size: var(--size-small);
-    font-weight: var(--font-bold);
     text-transform: uppercase;
   }
 
    ul {
     margin: 0;
     padding: 0;
-    padding-inline: 2rem;
+    list-style-type: none;
+    padding-inline: 1rem;
      display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -975,17 +957,12 @@ var W = `
   article {
     margin-bottom: 5rem;
   }
-`, j = `
+`, K = `
   <section>
-    <section-title
-        variant="text"
-        props='{"name": "Designing Workflow"}'
-      ></section-title>
-
-
+    <h2>Designing Workflow</h2>
 
       <article>
-          <h3>Select similar key insights</h3>
+          <h3>[ Select similar key insights ]</h3>
           <ul>
             <li>
               “We sell medicines and medical supplies to patients every
@@ -1013,7 +990,7 @@ var W = `
       </article>
 
       <article>
-          <h3>Sell Medical items</h3>
+          <h3>[ Sell Medical items ]</h3>
 
           <p>
             Start → Scan item barcode → Review total → Receive payment →
@@ -1023,7 +1000,7 @@ var W = `
 
       <article>
         <div>
-          <h3>Edge case</h3>
+          <h3>[ Edge case ]</h3>
         </div>
 
         <ul>
@@ -1034,49 +1011,30 @@ var W = `
       </article>
   </section>
 `;
-e("section-mmo-designing-workflow", { styles: W, template: j });
+e("section-mmo-designing-workflow", { styles: V, template: K });
 
-// web-components/components/app-article-paragraph.js
-var ee = `
-  :host {
-    display: grid;
-    grid-template-columns: 1fr 2.5fr;
-
-
-    @media (max-width: ${a}) {
-        display: block;
-    }
-  }
-
-  h3 {
-    margin: 0;
-    margin-bottom: 1rem;
-    font-size: var(--size-heading);
-    width: fit-content;
-    height: fit-content;
-  }
-
-  :host([variant="block"]) {
-    display: block;
-  }
-`, te = { title: String }, oe = ({ title: t }) => `
-        <h3>${t}</h3>
-
-        <article>
-            <slot></slot>
-        </article>
-`;
-e("app-article-paragraph", { props: te, styles: ee, template: oe });
-
-// web-components/sections/mmo/building-interfaces.js
-var ie = `
+// scripts/work/mmo/building-interfaces.js
+var J = `
   :host {
     display: block;
+    margin-block: 20rem;
   }
 
   section {
     width: 80%;
     margin-inline: auto;
+  }
+
+  h2 {
+    margin: 0;
+    margin-bottom: 2rem;
+    font-size: var(--size-title);
+  }
+
+  h3 {
+    font-size: var(--size-heading);
+    margin: 0;
+    margin-bottom: 1rem;
   }
 
   p {
@@ -1093,12 +1051,28 @@ var ie = `
     border-top: 1px dashed var(--color-text);
     padding-top: 5rem;
   }
-`, ae = `
+
+  article {
+
+    @media (min-width:${n}) {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  article p {
+    margin-bottom: 2rem;
+  }
+
+  article div {
+
+    @media (min-width: ${n}) {
+      max-width: 60%;
+    }
+  }
+`, Q = `
   <section>
-    <section-title
-      variant="text"
-      props='{"name": "Building Interfaces for selling medical items workflow"}'
-    ></section-title>
+    <h2>Building Interfaces for Selling Medical Items Workflow</h2>
 
     <p>
       To complete the primary workflow, four interfaces are needed at first.
@@ -1106,26 +1080,33 @@ var ie = `
 
     <ul>
       <li>
-        <app-article-paragraph props='{ "title": "1st interface" }'>
-          <p>
-            Start sale, review current staff, review printer status, and
-            barcode status. Clicking start sale creates a new unique ID and
-            redirects to the next screen with this ID.
-          </p>
+        <article>
+          <h3>1st interface</h3>
 
-          <app-image
-            variant="medium"
-            src=${o("./assets/images/case-study/mmo/1st-stage.avif")}
-            alt="First interface preview"
-            width="1398"
-            height="1236"
-          ></app-image>
-        </app-article-paragraph>
+          <div>
+            <p>
+             Start sale, review current staff, review printer status, and
+             barcode status. Clicking start sale creates a new unique ID and
+             redirects to the next screen with this ID.
+           </p>
+
+           <app-image
+             variant="medium"
+             src=${t("./assets/images/case-study/mmo/1st-stage.avif")}
+             alt="First interface preview"
+             width="1398"
+             height="1236"
+           ></app-image>
+          </div>
+        </article>
       </li>
 
       <li>
-        <app-article-paragraph props='{ "title": "2nd interface" }'>
-          <p>
+         <article>
+          <h3>2nd interface</h3>
+
+          <div>
+             <p>
             Scan a barcode item, enter a manual barcode item, review total,
             review items scanned, enter cash received, and confirm payment.
             Confirming payment leads to the 3rd interface.
@@ -1133,51 +1114,60 @@ var ie = `
 
           <app-image
             variant="medium"
-            src=${o("./assets/images/case-study/mmo/2nd-stage.avif")}
+            src=${t("./assets/images/case-study/mmo/2nd-stage.avif")}
             alt="Second interface preview"
             width="1398"
             height="1366"
           ></app-image>
-        </app-article-paragraph>
+          </div>
+          </article>
       </li>
 
       <li>
-        <app-article-paragraph props='{ "title": "3rd interface" }'>
-          <p>
+        <article>
+          <h3>3rd interface</h3>
+
+          <div>
+            <p>
             Review changes, review the receipt printed, and complete the sale
             by printing the receipt. It then moves to the final step.
           </p>
 
           <app-image
             variant="medium"
-            src=${o("./assets/images/case-study/mmo/3rd-stage.avif")}
+            src=${t("./assets/images/case-study/mmo/3rd-stage.avif")}
             alt="Third interface preview"
             width="1474"
             height="864"
           ></app-image>
-        </app-article-paragraph>
+          </div>
+          </article>
       </li>
 
       <li>
-        <app-article-paragraph props='{ "title": "Final one" }'>
-          <p>Show the completed sale and provide options to go back home or start the next sale.</p>
+         <article>
+          <h3>Final One</h3>
+
+          <div>
+            <p>Show the completed sale and provide options to go back home or start the next sale.</p>
 
           <app-image
             variant="medium"
-            src=${o("./assets/images/case-study/mmo/final-stage.avif")}
+            src=${t("./assets/images/case-study/mmo/final-stage.avif")}
             alt="Final interface preview"
             width="1474"
             height="864"
           ></app-image>
-        </app-article-paragraph>
+          </div>
+          </article>
       </li>
     </ul>
   </section>
 `;
-e("section-mmo-building-interfaces", { styles: ie, template: ae });
+e("section-mmo-building-interfaces", { styles: J, template: Q });
 
-// web-components/sections/mmo/multiple-workflows.js
-var re = `
+// scripts/work/mmo/multiple-workflows.js
+var Y = `
   :host {
     display: block;
   }
@@ -1195,13 +1185,15 @@ var re = `
     display: flex;
     flex-direction: column;
   }
-`, ne = `
-  <section>
 
-  <section-title
-        variant="text"
-        props='{"name": "100+ workflows in the system"}'
-      ></section-title>
+   h2 {
+    margin: 0;
+    margin-bottom: 2rem;
+    font-size: var(--size-title);
+  }
+`, Z = `
+  <section>
+      <h2>100+ workflows in the system</h2>
 
         <ul>
           <li>Register new employee</li>
@@ -1210,24 +1202,29 @@ var re = `
         </ul>
   </section>
 `;
-e("section-mmo-multiple-workflows", { styles: re, template: ne });
+e("section-mmo-multiple-workflows", { styles: Y, template: Z });
 
-// web-components/sections/mmo/one-design-system.js
-var le = `
+// scripts/work/mmo/one-design-system.js
+var ee = `
   :host {
     display: block;
+    margin-block: 10rem;
   }
 
   section {
     width: 80%;
     margin-inline: auto;
   }
-`, se = `
+
+  h2 {
+    margin: 0;
+    margin-bottom: 2rem;
+    font-size: var(--size-title);
+  }
+`, te = `
   <section>
-    <section-title
-        variant="text"
-        props='{"name": "One Design System, 100+ Workflows"}'
-      ></section-title>
+
+      <h2>One Design System, 100+ Workflows</h2>
 
       <article>
           <p>
@@ -1238,19 +1235,13 @@ var le = `
             instead of being redesigned for each workflow.
           </p>
 
-          <p>
-            The foundations behind my design approach for scalable
-            interfaces.
-          </p>
-
-          <app-link variant="underline" href=${m("/foundation-building-interfaces-at-scale")}>Read the article</app-link>
       </article>
   </section>
 `;
-e("section-mmo-one-design-system", { styles: le, template: se });
+e("section-mmo-one-design-system", { styles: ee, template: te });
 
-// web-components/sections/mmo/conclusion.js
-var ce = `
+// scripts/work/mmo/conclusion.js
+var ie = `
   :host {
     display: block;
   }
@@ -1267,16 +1258,18 @@ var ce = `
     display: flex;
     flex-direction: column;
   }
-`, me = `
-  <section>
-    <section-title
-      variant="text"
-      props='{"name": "Keep Listening to the Voices"}'
-    ></section-title>
 
+  h2 {
+    margin: 0;
+    margin-bottom: 2rem;
+    font-size: var(--size-title);
+  }
+`, ae = `
+  <section>
+    <h2>Keep Listening to the Voices</h2>
     <p>The system continues to grow as users' needs change.</p>
   </section>
 `;
-e("section-mmo-conclusion", { styles: ce, template: me });
+e("section-mmo-conclusion", { styles: ie, template: ae });
 </script></body>
 </html>

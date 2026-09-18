@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-base="../">
+<html lang="en" data-base="./">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -21,88 +21,87 @@
       <terra-main-panel></terra-main-panel>
       <terra-right-panel></terra-right-panel>
     </main>
-  <script type="module">// terra/web-components/define.js
-function yo(o, n) {
+  <script type="module">// lib/define.js
+function uo(o, t) {
   if (o === void 0) {
-    if (n === Array)
+    if (t === Array)
       return [];
-    if (n === Object)
+    if (t === Object)
       return {};
-    if (n === Boolean)
+    if (t === Boolean)
       return !1;
-    if (n === Number)
+    if (t === Number)
       return 0;
     return;
   }
-  if (n === Boolean) {
-    if (typeof o === "string")
-      return o !== "false" && o !== "0" && o !== "";
+  if (t === Boolean)
     return Boolean(o);
-  }
-  if (n === Number) {
-    let s = Number(o);
-    return Number.isNaN(s) ? 0 : s;
-  }
+  if (t === Number)
+    return Number(o);
   return o;
 }
-function e(o, { props: n = {}, attrs: s = [], styles: t = "", template: p }) {
-  let i = ["props", ...s];
+function m(o, { props: t = {}, attrs: s = [], styles: n = "", template: e, onRender: i = null }) {
+  let c = ["props", ...s];
 
-  class r extends HTMLElement {
-    static get observedAttributes() {
-      return i;
-    }
+  class d extends HTMLElement {
+    static observedAttributes = c;
     constructor() {
       super();
-      this.attachShadow({ mode: "open" });
+      this.attachShadow({ mode: "open" }), this._cleanup = null;
     }
     connectedCallback() {
       this._render();
     }
-    disconnectedCallback() {}
-    attributeChangedCallback(d, a, m) {
-      if (a !== m && this.isConnected)
+    disconnectedCallback() {
+      if (typeof this._cleanup === "function")
+        this._cleanup();
+      this._cleanup = null;
+    }
+    attributeChangedCallback() {
+      if (this.isConnected)
         this._render();
     }
     _getProps() {
-      let d = {}, a = this.getAttribute("props");
+      let r = {}, a = this.getAttribute("props");
       if (a)
         try {
-          d = JSON.parse(a);
-        } catch (b) {
-          console.warn(`[WebComponent ${o}]: Invalid JSON in props attribute.`), d = {};
+          r = JSON.parse(a);
+        } catch {
+          r = {};
         }
-      let m = {};
-      for (let b of Object.keys(n))
-        m[b] = yo(d[b], n[b]);
-      return m;
+      let u = {};
+      for (let l of Object.keys(t))
+        u[l] = uo(r[l], t[l]);
+      return u;
     }
     _applyForwardedAttrs() {
       if (s.length === 0)
         return;
-      let d = this.shadowRoot.querySelector("[data-forward]");
-      if (!d)
+      let r = this.shadowRoot.querySelector("[data-forward]");
+      if (!r)
         return;
       for (let a of s)
         if (this.hasAttribute(a))
-          d.setAttribute(a, this.getAttribute(a));
+          r.setAttribute(a, this.getAttribute(a));
         else
-          d.removeAttribute(a);
+          r.removeAttribute(a);
     }
     _render() {
-      let d = this._getProps(), a = typeof p === "function" ? p(d) : p;
-      this.shadowRoot.innerHTML = `<style>${t}</style>${a}`, this._applyForwardedAttrs();
+      if (typeof this._cleanup === "function")
+        this._cleanup(), this._cleanup = null;
+      let r = this._getProps(), a = typeof e === "function" ? e(r) : e;
+      if (this.shadowRoot.innerHTML = `<style>${n}</style>${a}`, this._applyForwardedAttrs(), i) {
+        let u = i(this.shadowRoot, r, this);
+        if (typeof u === "function")
+          this._cleanup = u;
+      }
     }
   }
-  customElements.define(o, r);
-}
-var bo = new URL("./", location.href);
-function h(o) {
-  return new URL(o, bo).href;
+  customElements.define(o, d);
 }
 
-// terra/web-components/components/terra-legend.js
-var fo = `
+// terra/scripts/components/terra-legend.js
+var yo = `
   :host {
     display: flex;
     align-items: center;
@@ -126,19 +125,19 @@ var fo = `
 }
   :host([variant="ingredient"]) { --local-background: var(--component-color-background); }
   :host([variant="use"]) { --local-background: var(--used-in-color-background); }
-`, uo = {
+`, fo = {
   name: String
-}, ko = ({ name: o }) => `
+}, bo = ({ name: o }) => `
   <i></i>
   <span>${o}</span>
 `;
-e("terra-legend", {
-  props: uo,
-  styles: fo,
-  template: ko
+m("terra-legend", {
+  props: fo,
+  styles: yo,
+  template: bo
 });
 
-// terra/web-components/components/terra-header.js
+// terra/scripts/components/terra-header.js
 var vo = `
   :host {
     position: absolute;
@@ -225,7 +224,7 @@ var vo = `
   }
   .search-result-item:last-child { border-bottom: none; }
   .search-result-item:hover { background-color: #f8fafc; }
-`, _o = `
+`, ko = `
   <header class="header">
     <h1 class="display">Terra</h1>
     <div class="legend">
@@ -244,13 +243,13 @@ var vo = `
     </div>
   </header>
 `;
-e("terra-header", {
+m("terra-header", {
   styles: vo,
-  template: _o
+  template: ko
 });
 
-// terra/web-components/sections/terra-main-panel.js
-var xo = `
+// terra/scripts/sections/terra-main-panel.js
+var ho = `
   :host {
     display: block;
     width: 100%;
@@ -268,14 +267,23 @@ var xo = `
     width: 100%;
     height: 100%;
   }
-`, jo = `
+`, _o = `
     <terra-header></terra-header>
     <div id="cy"></div>
 `;
-e("terra-main-panel", { styles: xo, template: jo });
+m("terra-main-panel", { styles: ho, template: _o });
 
-// terra/web-components/components/terra-empty-state.js
-var ho = `
+// lib/asset.js
+function xo() {
+  let o = document.documentElement.dataset.base || "./";
+  return new URL(o, location.href);
+}
+function j(o) {
+  return new URL(o, xo()).href;
+}
+
+// terra/scripts/components/terra-empty-state.js
+var jo = `
   :host {
     display: flex;
     height: 100%;
@@ -307,16 +315,16 @@ var ho = `
     .icon-empty { height: 7rem; }
   }
 `, Do = `
-    <img src=${h("./assets/icons/select-node.svg")} alt="Select a Node" class="icon-empty" />
+    <img src=${j("./assets/icons/select-node.svg")} alt="Select a Node" class="icon-empty" />
     <div class="empty__content">
       <h2>Select a node</h2>
       <p>Explore the connections between natural sources and everyday goods</p>
     </div>
 `;
-e("terra-empty-state", { styles: ho, template: Do });
+m("terra-empty-state", { styles: jo, template: Do });
 
-// terra/web-components/components/terra-card.js
-var Zo = `
+// terra/scripts/components/terra-card.js
+var wo = `
   :host {
     display: none;
     flex-direction: column;
@@ -419,7 +427,7 @@ var Zo = `
     border: 2px solid var(--used-in-color-background);
     color: var(--used-in-color-background);
   }
-`, zo = `
+`, Zo = `
   <div class="card__header">
     <img id="c-icon" class="icon" alt="" style="display: none" />
     <div>
@@ -452,9 +460,9 @@ var Zo = `
     </div>
   </div>
 `;
-e("terra-card", { styles: Zo, template: zo });
+m("terra-card", { styles: wo, template: Zo });
 
-// terra/web-components/sections/terra-right-panel.js
+// terra/scripts/sections/terra-right-panel.js
 var Fo = `
   :host {
     display: flex;
@@ -470,65 +478,65 @@ var Fo = `
   @media (max-width: 768px) {
     :host { height: 30%; }
   }
-`, Uo = `
+`, zo = `
   <terra-empty-state id="empty"></terra-empty-state>
   <terra-card id="card"></terra-card>
 `;
-e("terra-right-panel", { styles: Fo, template: Uo });
+m("terra-right-panel", { styles: Fo, template: zo });
 
-// terra/cy-style.js
-function g(o, n) {
+// terra/scripts/cy-style.js
+function g(o, t) {
   if (typeof document > "u")
-    return n;
-  return getComputedStyle(document.documentElement).getPropertyValue(o).trim() || n;
+    return t;
+  return getComputedStyle(document.documentElement).getPropertyValue(o).trim() || t;
 }
-var w = g("--source-color-background", "#0f7399"), Q = g("--source-color-text", "#ffffff"), P = g("--good-color-background", "#1a7b5b"), Jo = g("--good-color-text", "#ffffff"), V = g("--component-color-background", "#876418"), wo = g("--component-color-text", "#ffffff"), $o = g("--used-in-color-background", "#876418"), ln = g("--used-in-color-text", "#ffffff"), Ko = g("--color-text", "#0e172a"), W = 34, To = 64;
-function Xo(o) {
+var J = g("--source-color-background", "#0f7399"), Q = g("--source-color-text", "#ffffff"), P = g("--good-color-background", "#1a7b5b"), Uo = g("--good-color-text", "#ffffff"), V = g("--component-color-background", "#876418"), Jo = g("--component-color-text", "#ffffff"), $o = g("--used-in-color-background", "#876418"), ut = g("--used-in-color-text", "#ffffff"), Ao = g("--color-text", "#0e172a"), C = 34, Lo = 64;
+function To(o) {
   let s = (Math.max(1, Math.min(9, o ?? 1)) - 1) / 8;
-  return W + s * (To - W);
+  return C + s * (Lo - C);
 }
-var T = 10, Ao = `600 ${T}px "JetBrains Mono", monospace`, Ho = T * 1.3, S = 74, Y = 12, B = typeof document < "u" ? document.createElement("canvas") : null, $ = B ? B.getContext("2d") : null;
+var L = 10, Ko = `600 ${L}px "JetBrains Mono", monospace`, Ho = L * 1.3, S = 74, B = 12, W = typeof document < "u" ? document.createElement("canvas") : null, $ = W ? W.getContext("2d") : null;
 function O(o) {
   if (!$)
-    return o.length * (T * 0.6);
-  return $.font = Ao, $.measureText(o).width;
+    return o.length * (L * 0.6);
+  return $.font = Ko, $.measureText(o).width;
 }
-function Lo(o) {
-  let n = o.split(" "), s = [], t = "";
-  if (n.forEach((p) => {
-    let i = t ? t + " " + p : p;
-    if (!t || O(i) <= S)
-      t = i;
+function Xo(o) {
+  let t = o.split(" "), s = [], n = "";
+  if (t.forEach((e) => {
+    let i = n ? n + " " + e : e;
+    if (!n || O(i) <= S)
+      n = i;
     else
-      s.push(t), t = p;
-  }), t)
-    s.push(t);
+      s.push(n), n = e;
+  }), n)
+    s.push(n);
   return s;
 }
-var K = /* @__PURE__ */ new Map;
+var A = /* @__PURE__ */ new Map;
 function Go(o) {
-  if (K.has(o))
-    return K.get(o);
-  let n = Lo(o), s = Math.max(...n.map(O), 0), t = n.length * Ho, p = {
-    width: (s + Y * 2) * 1.3,
-    height: (t + Y * 2) * 1.5
+  if (A.has(o))
+    return A.get(o);
+  let t = Xo(o), s = Math.max(...t.map(O), 0), n = t.length * Ho, e = {
+    width: (s + B * 2) * 1.3,
+    height: (n + B * 2) * 1.5
   };
-  return K.set(o, p), p;
+  return A.set(o, e), e;
 }
-function I(o) {
-  let n = Xo(o.data("weight")), s = Go(o.data("label") || ""), t = Math.max(n, s.width, s.height);
-  return { width: t, height: t };
+function R(o) {
+  let t = To(o.data("weight")), s = Go(o.data("label") || ""), n = Math.max(t, s.width, s.height);
+  return { width: n, height: n };
 }
-function C(o) {
-  return (n) => I(n).width * o;
+function Y(o) {
+  return (t) => R(t).width * o;
 }
 function M(o) {
-  return (n) => I(n).height * o;
+  return (t) => R(t).height * o;
 }
 function q(o) {
   return () => S * o;
 }
-var R = [
+var I = [
   {
     selector: "node",
     style: {
@@ -542,7 +550,7 @@ var R = [
     selector: "node.leaf",
     style: {
       shape: "ellipse",
-      width: C(1),
+      width: Y(1),
       height: M(1),
       "background-color": "#fbfaf6",
       "background-opacity": 0.95,
@@ -562,8 +570,8 @@ var R = [
   {
     selector: 'node.leaf[type="source"]',
     style: {
-      "background-color": w,
-      "border-color": w,
+      "background-color": J,
+      "border-color": J,
       color: Q
     }
   },
@@ -572,7 +580,7 @@ var R = [
     style: {
       "background-color": P,
       "border-color": P,
-      color: Jo
+      color: Uo
     }
   },
   {
@@ -648,9 +656,9 @@ var R = [
     selector: "node.leaf.selected",
     style: {
       "border-width": 4,
-      "border-color": Ko,
+      "border-color": Ao,
       opacity: 1,
-      width: C(1.5),
+      width: Y(1.5),
       height: M(1.5),
       "text-max-width": q(1.5)
     }
@@ -659,7 +667,7 @@ var R = [
     selector: "node.leaf.first-connected",
     style: {
       "background-color": V,
-      color: wo,
+      color: Jo,
       "z-index": 999,
       "border-width": 0,
       opacity: 1
@@ -668,7 +676,7 @@ var R = [
   {
     selector: 'node.leaf[type="source"].first-connected',
     style: {
-      "background-color": w,
+      "background-color": J,
       color: Q,
       "border-width": 6,
       "border-color": V,
@@ -678,7 +686,7 @@ var R = [
   }
 ];
 
-// terra/data.js
+// terra/scripts/data.js
 var k = [
   { id: "plant", type: "source" },
   { id: "crude_oil", type: "source" },
@@ -1088,86 +1096,86 @@ var k = [
   { id: "surfactants", type: "goods", components: ["crude_oil"] }
 ];
 
-// terra/app.js
-var H = document.querySelector("terra-main-panel"), L = document.querySelector("terra-right-panel");
-if (!H || !L)
+// terra/scripts/app.js
+var H = document.querySelector("terra-main-panel"), X = document.querySelector("terra-right-panel");
+if (!H || !X)
   console.error("Terra panels not found. Ensure custom elements are defined before this script runs.");
-var Qo = H.shadowRoot.getElementById("cy"), so = H.shadowRoot.querySelector("terra-header"), y = so.shadowRoot.getElementById("search-input"), c = so.shadowRoot.getElementById("search-results"), po = L.shadowRoot.getElementById("empty"), G = L.shadowRoot.getElementById("card");
+var Qo = H.shadowRoot.getElementById("cy"), so = H.shadowRoot.querySelector("terra-header"), f = so.shadowRoot.getElementById("search-input"), p = so.shadowRoot.getElementById("search-results"), eo = X.shadowRoot.getElementById("empty"), G = X.shadowRoot.getElementById("card");
 function Po(o) {
-  return o.split("_").map((n) => n.charAt(0).toUpperCase() + n.slice(1)).join(" ");
+  return o.split("_").map((t) => t.charAt(0).toUpperCase() + t.slice(1)).join(" ");
 }
 k.forEach((o) => {
   o.name = Po(o.id);
 });
-var f = Object.fromEntries(k.map((o) => [o.id, o]));
+var b = Object.fromEntries(k.map((o) => [o.id, o]));
 function _(o) {
   return o.sources || o.components || [];
 }
-function X(o) {
-  return k.filter((n) => _(n).includes(o.id)).map((n) => n.id);
+function T(o) {
+  return k.filter((t) => _(t).includes(o.id)).map((t) => t.id);
 }
 function Vo(o) {
-  let n = /* @__PURE__ */ new Set, s = /* @__PURE__ */ new Set;
-  function t(p) {
-    if (s.has(p))
+  let t = /* @__PURE__ */ new Set, s = /* @__PURE__ */ new Set;
+  function n(e) {
+    if (s.has(e))
       return;
-    s.add(p);
-    let i = f[p];
+    s.add(e);
+    let i = b[e];
     if (!i)
       return;
     if (i.type === "source") {
-      n.add(p);
+      t.add(e);
       return;
     }
-    _(i).forEach(t);
+    _(i).forEach(n);
   }
-  return _(o).forEach(t), [...n];
+  return _(o).forEach(n), [...t];
 }
-var Wo = [
+var Co = [
   { id: "group-source", label: "Sources", type: "source" },
   { id: "group-goods", label: "Goods", type: "goods" }
-], Yo = Wo.map((o, n) => ({
+], Bo = Co.map((o, t) => ({
   data: { id: o.id, label: o.label, type: o.type },
-  position: { x: n === 0 ? 0 : 1200, y: 0 },
+  position: { x: t === 0 ? 0 : 1200, y: 0 },
   selectable: !1,
   grabbable: !1
-})), Bo = k.map((o, n) => {
-  let s = _(o).length + X(o).length, t = (o.type || "").trim(), p = t === "source" ? 0 : 1200, i = (n % 5 - 2) * 15, r = (Math.floor(n / 5) - 4) * 15;
+})), Wo = k.map((o, t) => {
+  let s = _(o).length + T(o).length, n = (o.type || "").trim(), e = n === "source" ? 0 : 1200, i = (t % 5 - 2) * 15, c = (Math.floor(t / 5) - 4) * 15;
   return {
     data: {
       id: o.id,
       label: o.name,
       type: o.type,
       weight: Math.max(1, s),
-      parent: "group-" + t
+      parent: "group-" + n
     },
-    position: { x: p + i, y: r },
+    position: { x: e + i, y: c },
     classes: "leaf"
   };
 }), io = [];
 k.forEach((o) => {
-  _(o).forEach((n) => {
-    let s = f[n], t = "";
+  _(o).forEach((t) => {
+    let s = b[t], n = "";
     if (s) {
-      let p = (s.type || "").trim(), i = (o.type || "").trim();
-      if (p === "source" && i === "goods")
-        t = "edge-source-goods";
-      else if (p === "goods" && i === "goods")
-        t = "edge-goods-goods";
+      let e = (s.type || "").trim(), i = (o.type || "").trim();
+      if (e === "source" && i === "goods")
+        n = "edge-source-goods";
+      else if (e === "goods" && i === "goods")
+        n = "edge-goods-goods";
     }
     io.push({
-      data: { id: n + "__" + o.id, source: n, target: o.id },
-      classes: t
+      data: { id: t + "__" + o.id, source: t, target: o.id },
+      classes: n
     });
   });
 });
-var u = cytoscape({
+var v = cytoscape({
   container: Qo,
-  elements: [...Yo, ...Bo, ...io],
-  style: R,
+  elements: [...Bo, ...Wo, ...io],
+  style: I,
   wheelSensitivity: 0.25,
   layout: { name: "preset" }
-}), co = () => u.layout({
+}), po = () => v.layout({
   name: "fcose",
   quality: "proof",
   animate: !0,
@@ -1177,12 +1185,12 @@ var u = cytoscape({
   nodeSeparation: 10,
   piSepCompounds: !0,
   idealEdgeLength: function(o) {
-    let n = o.target().id(), s = f[n];
+    let t = o.target().id(), s = b[t];
     if (s) {
       if ((s.type || "").trim() === "goods") {
-        let p = _(s);
-        if (p.length > 0 && p.every((r) => {
-          let d = f[r];
+        let e = _(s);
+        if (e.length > 0 && e.every((c) => {
+          let d = b[c];
           return d && (d.type || "").trim() === "source";
         }))
           return 80;
@@ -1199,231 +1207,231 @@ var u = cytoscape({
   fit: !0,
   padding: 50
 }).run();
-co();
-var Z = null, A = /* @__PURE__ */ new Map;
-function Co() {
-  if (!Z)
+po();
+var w = null, K = /* @__PURE__ */ new Map;
+function Yo() {
+  if (!w)
     return;
-  Z.forEach((o) => {
-    let n = A.get(o.id());
-    if (n)
-      o.animate({ position: n }, { duration: 300, easing: "ease-out" });
-  }), Z = null, A.clear();
+  w.forEach((o) => {
+    let t = K.get(o.id());
+    if (t)
+      o.animate({ position: t }, { duration: 300, easing: "ease-out" });
+  }), w = null, K.clear();
 }
-function N(o, n, s, t) {
+function N(o, t, s, n) {
   if (!s || s.length === 0)
     return;
-  let p = Math.max(...s.map((x) => x.outerWidth() / 2)), i = 24, r = 2 * p + i, a = (s.length - 1) * r, m = o.y - a / 2, b = n + p + 90;
-  s.forEach((x, U) => {
-    let J = o.x + t * b, lo = m + U * r;
-    x.animate({ position: { x: J, y: lo } }, { duration: 400, easing: "ease-out" });
+  let e = Math.max(...s.map((l) => l.outerWidth() / 2)), i = 24, c = 2 * e + i, r = (s.length - 1) * c, a = o.y - r / 2, u = t + e + 90;
+  s.forEach((l, z) => {
+    let U = o.x + n * u, go = a + z * c;
+    l.animate({ position: { x: U, y: go } }, { duration: 400, easing: "ease-out" });
   });
 }
-function Mo(o, n, s) {
+function Mo(o, t, s) {
   if (!s || s.length === 0)
     return;
-  let t = Math.max(...s.map((m) => m.outerWidth() / 2)), p = 20, i = s.length, r = i * (2 * t + p), d = n + t + 40, a = Math.max(d, r / (2 * Math.PI));
-  s.forEach((m, b) => {
-    let x = 2 * Math.PI * b / i - Math.PI / 2, U = o.x + a * Math.cos(x), J = o.y + a * Math.sin(x);
-    m.animate({ position: { x: U, y: J } }, { duration: 400, easing: "ease-out" });
+  let n = Math.max(...s.map((a) => a.outerWidth() / 2)), e = 20, i = s.length, c = i * (2 * n + e), d = t + n + 40, r = Math.max(d, c / (2 * Math.PI));
+  s.forEach((a, u) => {
+    let l = 2 * Math.PI * u / i - Math.PI / 2, z = o.x + r * Math.cos(l), U = o.y + r * Math.sin(l);
+    a.animate({ position: { x: z, y: U } }, { duration: 400, easing: "ease-out" });
   });
 }
-function qo(o, n, s) {
-  let t = n.union(s);
-  if (t.length === 0)
+function qo(o, t, s) {
+  let n = t.union(s);
+  if (n.length === 0)
     return;
-  t.forEach((d) => A.set(d.id(), { ...d.position() })), Z = t;
-  let p = o.position(), i = o.outerWidth() / 2;
+  n.forEach((d) => K.set(d.id(), { ...d.position() })), w = n;
+  let e = o.position(), i = o.outerWidth() / 2;
   if (o.data("type") === "source")
-    Mo(p, i, t);
+    Mo(e, i, n);
   else
-    N(p, i, n, -1), N(p, i, s, 1);
+    N(e, i, t, -1), N(e, i, s, 1);
 }
-function ro() {
-  u.elements().removeClass("dim lit selected first-connected used-directly used-directly-source edge-direct edge-indirect"), Co();
+function co() {
+  v.elements().removeClass("dim lit selected first-connected used-directly used-directly-source edge-direct edge-indirect"), Yo();
 }
 function So(o) {
-  let n = o.predecessors().union(o.successors()).union(o), s = n.union(n.ancestors());
-  u.elements().addClass("dim"), s.removeClass("dim").addClass("lit"), o.removeClass("dim").addClass("lit selected");
-  let t = o.incomers("node");
-  t.addClass("first-connected");
-  let p = o.outgoers("node");
+  let t = o.predecessors().union(o.successors()).union(o), s = t.union(t.ancestors());
+  v.elements().addClass("dim"), s.removeClass("dim").addClass("lit"), o.removeClass("dim").addClass("lit selected");
+  let n = o.incomers("node");
+  n.addClass("first-connected");
+  let e = o.outgoers("node");
   if (o.data("type") === "source")
-    p.addClass("used-directly-source");
+    e.addClass("used-directly-source");
   else
-    p.addClass("used-directly");
+    e.addClass("used-directly");
   let i = o.connectedEdges();
-  i.addClass("edge-direct"), n.filter("edge").difference(i).addClass("edge-indirect"), qo(o, t, p);
+  i.addClass("edge-direct"), t.filter("edge").difference(i).addClass("edge-indirect"), qo(o, n, e);
 }
-function Oo(o, n) {
-  let s = f[o], t = document.createElement("div");
-  if (t.className = "selected-item", n) {
-    let p = s.id.trim().replace(/_/g, "-"), i = h(`./assets/icons/${p}.svg`);
-    t.innerHTML = `
+function Oo(o, t) {
+  let s = b[o], n = document.createElement("div");
+  if (n.className = "selected-item", t) {
+    let e = s.id.trim().replace(/_/g, "-"), i = j(`./assets/icons/${e}.svg`);
+    n.innerHTML = `
       <img src="${i}" alt="${s.type}" class="icon" />
       <span class="small--emphasis">${s.name}</span>
     `;
   } else
-    t.className = "selected-item selected-item--" + s.type, t.innerHTML = `
+    n.className = "selected-item selected-item--" + s.type, n.innerHTML = `
       <i class="${s.type}-legend"></i>
       <span class="small--emphasis">${s.name}</span>
     `;
-  return t;
+  return n;
 }
-var z = G.shadowRoot, v = {
-  icon: z.getElementById("c-icon"),
-  kicker: z.getElementById("c-kicker"),
-  name: z.getElementById("c-name")
-}, ao = ["sources", "components", "used", "goods"].reduce((o, n) => {
-  let s = z.querySelector(`[data-section="${n}"]`);
-  return o[n] = { section: s, list: s.querySelector('[data-role="list"]') }, o;
+var Z = G.shadowRoot, h = {
+  icon: Z.getElementById("c-icon"),
+  kicker: Z.getElementById("c-kicker"),
+  name: Z.getElementById("c-name")
+}, ro = ["sources", "components", "used", "goods"].reduce((o, t) => {
+  let s = Z.querySelector(`[data-section="${t}"]`);
+  return o[t] = { section: s, list: s.querySelector('[data-role="list"]') }, o;
 }, {});
-function D(o, n, s) {
-  let { section: t, list: p } = ao[o];
-  t.style.display = "", p.innerHTML = n.length ? "" : `<span class="none">${s}</span>`;
+function D(o, t, s) {
+  let { section: n, list: e } = ro[o];
+  n.style.display = "", e.innerHTML = t.length ? "" : `<span class="none">${s}</span>`;
   let i = o === "sources";
-  n.forEach((r) => p.appendChild(Oo(r, i)));
+  t.forEach((c) => e.appendChild(Oo(c, i)));
 }
-function j(o) {
-  ao[o].section.style.display = "none";
+function x(o) {
+  ro[o].section.style.display = "none";
 }
-function Io(o) {
-  let n = (o.type || "").trim(), s = n === "source";
-  if (v.kicker.textContent = s ? "Source" : "Goods", v.kicker.className = s ? "small--source" : "small--goods", v.name.textContent = o.name, s) {
-    let t = o.id.trim().replace(/_/g, "-");
-    v.icon.src = `/terra/assets/icons/${t}.svg`, v.icon.alt = o.type, v.icon.style.display = "";
+function Ro(o) {
+  let t = (o.type || "").trim(), s = t === "source";
+  if (h.kicker.textContent = s ? "Source" : "Goods", h.kicker.className = s ? "small--source" : "small--goods", h.name.textContent = o.name, s) {
+    let n = o.id.trim().replace(/_/g, "-");
+    h.icon.src = j(`./assets/icons/${n}.svg`), h.icon.alt = o.type, h.icon.style.display = "";
   } else
-    v.icon.style.display = "none";
+    h.icon.style.display = "none";
   if (s)
-    j("sources"), j("components"), j("used"), D("goods", X(o), "No downstream uses yet");
+    x("sources"), x("components"), x("used"), D("goods", T(o), "No downstream uses yet");
   else {
-    j("goods"), D("sources", Vo(o), "No raw sources found.");
-    let t = _(o);
-    if (t.length > 0 && t.every((r) => {
-      let d = f[r];
+    x("goods"), D("sources", Vo(o), "No raw sources found.");
+    let n = _(o);
+    if (n.length > 0 && n.every((c) => {
+      let d = b[c];
       return d && (d.type || "").trim() === "source";
     }))
-      j("components");
+      x("components");
     else
-      D("components", t, "No downstream uses yet");
-    let i = X(o);
+      D("components", n, "No downstream uses yet");
+    let i = T(o);
     if (i.length === 0)
-      j("used");
+      x("used");
     else
       D("used", i, "No downstream uses yet");
   }
-  po.style.display = "none", G.className = "card show " + n;
+  eo.style.display = "none", G.className = "card show " + t;
 }
-function eo(o) {
-  let n = u.getElementById(o);
-  if (n.empty())
+function ao(o) {
+  let t = v.getElementById(o);
+  if (t.empty())
     return;
-  ro(), So(n), Io(f[o]);
+  co(), So(t), Ro(b[o]);
 }
-u.on("tap", "node", (o) => {
-  if (!f[o.target.id()])
+v.on("tap", "node", (o) => {
+  if (!b[o.target.id()])
     return;
-  eo(o.target.id());
+  ao(o.target.id());
 });
-u.on("tap", (o) => {
-  if (o.target === u)
-    ro(), G.classList.remove("show"), po.style.display = "flex";
+v.on("tap", (o) => {
+  if (o.target === v)
+    co(), G.classList.remove("show"), eo.style.display = "flex";
 });
 var E = document.getElementById("re-layout");
 if (E)
-  E.addEventListener("click", co);
+  E.addEventListener("click", po);
 var oo = document.getElementById("fit");
 if (oo)
-  oo.addEventListener("click", () => u.fit(void 0, 40));
-var Ro = 8;
-c.style.listStyle = "none";
-c.style.margin = "0";
-c.style.padding = "0";
-c.style.position = "absolute";
-c.style.top = "100%";
-c.style.left = "0";
-c.style.right = "0";
-c.style.zIndex = "1000";
-c.style.background = "#fff";
-c.style.border = "1px solid #ccc";
-c.style.borderRadius = "6px";
-c.style.maxHeight = "320px";
-c.style.overflowY = "auto";
-c.style.display = "none";
-var no = y.closest(".search-container");
-if (no)
-  no.style.position = "relative";
+  oo.addEventListener("click", () => v.fit(void 0, 40));
+var Io = 8;
+p.style.listStyle = "none";
+p.style.margin = "0";
+p.style.padding = "0";
+p.style.position = "absolute";
+p.style.top = "100%";
+p.style.left = "0";
+p.style.right = "0";
+p.style.zIndex = "1000";
+p.style.background = "#fff";
+p.style.border = "1px solid #ccc";
+p.style.borderRadius = "6px";
+p.style.maxHeight = "320px";
+p.style.overflowY = "auto";
+p.style.display = "none";
+var to = f.closest(".search-container");
+if (to)
+  to.style.position = "relative";
 function mo(o) {
-  let n = o.trim().toLowerCase();
-  if (!n)
+  let t = o.trim().toLowerCase();
+  if (!t)
     return [];
   let s = [];
-  return k.forEach((t) => {
-    let p = t.name.toLowerCase(), i = p.indexOf(n);
+  return k.forEach((n) => {
+    let e = n.name.toLowerCase(), i = e.indexOf(t);
     if (i === -1)
       return;
-    let r = 2;
+    let c = 2;
     if (i === 0)
-      r = 0;
-    else if (p[i - 1] === " ")
-      r = 1;
-    s.push({ el: t, score: r });
-  }), s.sort((t, p) => t.score - p.score || t.el.name.localeCompare(p.el.name)), s.slice(0, Ro).map((t) => t.el);
+      c = 0;
+    else if (e[i - 1] === " ")
+      c = 1;
+    s.push({ el: n, score: c });
+  }), s.sort((n, e) => n.score - e.score || n.el.name.localeCompare(e.el.name)), s.slice(0, Io).map((n) => n.el);
 }
 function F() {
-  c.innerHTML = "", c.classList.remove("show"), c.style.display = "none", l = -1;
+  p.innerHTML = "", p.classList.remove("show"), p.style.display = "none", y = -1;
 }
-function to() {
-  [...c.children].forEach((o, n) => {
-    let s = n === l;
+function no() {
+  [...p.children].forEach((o, t) => {
+    let s = t === y;
     o.classList.toggle("active", s), o.style.background = s ? "#e0e0e0" : "";
   });
 }
-function go(o) {
-  eo(o.id), y.value = "", F(), y.blur();
+function lo(o) {
+  ao(o.id), f.value = "", F(), f.blur();
 }
 function No(o) {
-  let n = mo(o);
-  if (l = -1, n.length === 0) {
+  let t = mo(o);
+  if (y = -1, t.length === 0) {
     F();
     return;
   }
-  c.innerHTML = "", n.forEach((s) => {
-    let t = document.createElement("li");
-    t.className = "search-results__item", t.style.display = "flex", t.style.alignItems = "center", t.style.gap = "8px", t.style.padding = "8px 12px", t.style.cursor = "pointer", t.innerHTML = `
+  p.innerHTML = "", t.forEach((s) => {
+    let n = document.createElement("li");
+    n.className = "search-results__item", n.style.display = "flex", n.style.alignItems = "center", n.style.gap = "8px", n.style.padding = "8px 12px", n.style.cursor = "pointer", n.innerHTML = `
       <i class="${s.type}-legend"></i>
       <span class="small--emphasis">${s.name}</span>
-    `, t.addEventListener("mouseenter", () => {
-      t.style.background = "#f0f0f0";
-    }), t.addEventListener("mouseleave", () => {
-      if (!t.classList.contains("active"))
-        t.style.background = "";
-    }), t.addEventListener("mousedown", (p) => {
-      p.preventDefault(), go(s);
-    }), c.appendChild(t);
-  }), c.classList.add("show"), c.style.display = "block";
+    `, n.addEventListener("mouseenter", () => {
+      n.style.background = "#f0f0f0";
+    }), n.addEventListener("mouseleave", () => {
+      if (!n.classList.contains("active"))
+        n.style.background = "";
+    }), n.addEventListener("mousedown", (e) => {
+      e.preventDefault(), lo(s);
+    }), p.appendChild(n);
+  }), p.classList.add("show"), p.style.display = "block";
 }
-var l = -1;
-y.addEventListener("input", (o) => {
+var y = -1;
+f.addEventListener("input", (o) => {
   No(o.target.value);
 });
-y.addEventListener("keydown", (o) => {
-  let n = c.children;
-  if (!n.length)
+f.addEventListener("keydown", (o) => {
+  let t = p.children;
+  if (!t.length)
     return;
   if (o.key === "ArrowDown")
-    o.preventDefault(), l = (l + 1) % n.length, to();
+    o.preventDefault(), y = (y + 1) % t.length, no();
   else if (o.key === "ArrowUp")
-    o.preventDefault(), l = (l - 1 + n.length) % n.length, to();
+    o.preventDefault(), y = (y - 1 + t.length) % t.length, no();
   else if (o.key === "Enter") {
     o.preventDefault();
-    let s = y.value, t = mo(s), p = l >= 0 ? t[l] : t[0];
-    if (p)
-      go(p);
+    let s = f.value, n = mo(s), e = y >= 0 ? n[y] : n[0];
+    if (e)
+      lo(e);
   } else if (o.key === "Escape")
-    y.value = "", F(), y.blur();
+    f.value = "", F(), f.blur();
 });
-y.addEventListener("blur", () => {
+f.addEventListener("blur", () => {
   setTimeout(F, 100);
 });
 </script></body>

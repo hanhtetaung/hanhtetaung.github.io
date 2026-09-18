@@ -1,0 +1,94 @@
+import { define } from "../../../lib/define.js";
+
+import "../../components/app-image.js";
+import "../../components/app-link.js";
+import { asset } from "../../../lib/asset.js";
+
+const styles = /* css */ `
+  :host {
+    display: block;
+    margin-block: 10rem;
+  }
+
+  section {
+    width: 80%;
+    margin-inline: auto;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  ul {
+    margin: 0;
+    margin-bottom: 2rem;
+  }
+
+  h3 {
+    font-size: var(--size-heading);
+    margin: 0;
+    margin-bottom: 1rem;
+  }
+
+  article {
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  code {
+    display: block;
+    margin-bottom: 2rem;
+  }
+`;
+
+const template = /* html */ `
+  <section>
+      <h2>Design Foundation</h2>
+          <app-image
+            variant="large"
+            src=${asset("./assets/images/case-study/terra/foundation.avif")}
+            alt="Wireframe Screenshot"
+          ></app-image>
+
+
+          <article>
+            <h3>Data Structure</h3>
+
+            <p><b>Source</b></p>
+            <code> { "id": "name", "type": "source" } </code>
+
+            <p>
+              <b>Good :</b> The components field references either
+              source nodes or other goods
+            </p>
+
+            <code>
+              { "id": "name", "type": "good", "components": ["id",
+              "id", "id"] }
+            </code>
+          </article>
+
+          <article>
+            <h3>Tech Stacks</h3>
+            <ul>
+              <li>Figma</li>
+              <li>HTML5</li>
+              <li>CSS3</li>
+              <li>SCSS</li>
+              <li>JavaScript</li>
+              <li>Sonnet 5, Quwen3.7-Plus</li>
+            </ul>
+
+            <p>
+              <b>Hosted on:</b>
+              <app-link
+                variant="underline"
+                href="https://github.com/hanhtetaung/hanhtetaung.github.io/tree/main/terra"
+                target="_blank"
+                >Github</app-link>
+            </p>
+          </article>
+  </section>
+`;
+
+define("section-terra-building-block", { styles, template });

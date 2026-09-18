@@ -35,33 +35,33 @@
     </main>
 
     <section-footer></section-footer>
-  <script type="module">// web-components/asset.js
+  <script type="module">// lib/asset.js
 function $() {
   let i = document.documentElement.dataset.base || "./";
   return new URL(i, location.href);
 }
-function a(i) {
+function o(i) {
   return new URL(i, $()).href;
 }
-function g(i) {
+function b(i) {
   let e = i.replace(/^\//, ""), s = location.protocol === "file:", m = $();
   if (e === "")
     return s ? new URL("index.html", m).href : m.href;
   return s ? new URL(`${e}.html`, m).href : new URL(e, m).href;
 }
 
-// web-components/fonts.js
+// scripts/fonts.js
 var S = `
 @font-face {
     font-family: "Archivo";
-    src: url("${a("./assets/fonts/Archivo-Black.woff2")}") format("woff2");
+    src: url("${o("./assets/fonts/Archivo-Black.woff2")}") format("woff2");
     font-weight: 700;
     font-display: swap;
   }
 
   @font-face {
     font-family: "Archivo";
-    src: url("${a("./assets/fonts/Archivo-Regular.woff2")}") format("woff2");
+    src: url("${o("./assets/fonts/Archivo-Regular.woff2")}") format("woff2");
     font-weight: 400;
     font-display: swap;
   }
@@ -69,7 +69,7 @@ var S = `
 z.textContent = S;
 document.head.appendChild(z);
 
-// web-components/define.js
+// lib/define.js
 function A(i, e) {
   if (i === void 0) {
     if (e === Array)
@@ -88,11 +88,11 @@ function A(i, e) {
     return Number(i);
   return i;
 }
-function o(i, { props: e = {}, attrs: s = [], styles: m = "", template: r, onRender: h = null }) {
-  let u = ["props", ...s];
+function a(i, { props: e = {}, attrs: s = [], styles: m = "", template: r, onRender: h = null }) {
+  let g = ["props", ...s];
 
   class f extends HTMLElement {
-    static observedAttributes = u;
+    static observedAttributes = g;
     constructor() {
       super();
       this.attachShadow({ mode: "open" }), this._cleanup = null;
@@ -148,7 +148,7 @@ function o(i, { props: e = {}, attrs: s = [], styles: m = "", template: r, onRen
   customElements.define(i, f);
 }
 
-// web-components/components/app-link.js
+// scripts/components/app-link.js
 var _ = `
   :host {
     --local-bg: transparent;
@@ -213,9 +213,9 @@ var _ = `
 `, C = ["href", "target", "rel", "download"], T = `
   <a data-forward><slot></slot></a>
 `;
-o("app-link", { attrs: C, styles: _, template: T });
+a("app-link", { attrs: C, styles: _, template: T });
 
-// web-components/components/app-logo.js
+// scripts/components/app-logo.js
 var B = `
   :host {
     display: block;
@@ -226,12 +226,12 @@ var B = `
     width: auto;
   }
 `, E = ["width", "height", "src", "alt"], D = () => "<img data-forward />";
-o("app-logo", { attrs: E, styles: B, template: D });
+a("app-logo", { attrs: E, styles: B, template: D });
 
-// web-components/breakpoints.js
+// scripts/breakpoints.js
 var t = "640px", p = "1024px", v = "1920px";
 
-// web-components/sections/header.js
+// scripts/header.js
 var L = `
   :host {
     display: block;
@@ -281,8 +281,8 @@ var L = `
   }
 `, O = `
   <header>
-      <app-link variant="plain" href=${g("/")}>
-        <img src=${a("./assets/images/logo.avif")}
+      <app-link variant="plain" href=${b("/")}>
+        <img src=${o("./assets/images/logo.avif")}
           alt="Logo">
       </app-link>
 
@@ -290,24 +290,24 @@ var L = `
         <nav>
           <ul>
             <li>
-              <app-link variant="plain" href=${g("/")}>Home</app-link>
+              <app-link variant="plain" href=${b("/")}>Home</app-link>
             </li>
 
             <li>
-              <app-link variant="plain" href=${g("/about")}>About</app-link>
+              <app-link variant="plain" href=${b("/about")}>About</app-link>
             </li>
           </ul>
         </nav>
 
-        <app-link variant="secondary" href=${g("/#cta")}>
+        <app-link variant="secondary" href=${b("/#cta")}>
           Let's Craft &#8629;
         </app-link>
       </div>
   </header>
 `;
-o("section-header", { template: O, styles: L });
+a("section-header", { template: O, styles: L });
 
-// web-components/components/footer-nav.js
+// scripts/components/footer-nav.js
 var P = [
   { href: "/", name: "Home" },
   { href: "/about", name: "About" },
@@ -381,16 +381,16 @@ var P = [
         <ol>
             ${P.map((i) => `
                 <li>
-                    <app-link variant="sitemap" href=${g(i.href)} >${i.name}</app-link>
+                    <app-link variant="sitemap" href=${b(i.href)} >${i.name}</app-link>
                 </li>
             `).join("")}
         </ol>
     </nav>
 `;
-o("footer-nav", { styles: U, template: G });
+a("footer-nav", { styles: U, template: G });
 
-// web-components/components/footer-copyright.js
-var H = `
+// scripts/components/footer-copyright.js
+var F = `
   :host {
    display: flex;
     justify-content: space-between;
@@ -473,9 +473,9 @@ var H = `
     text-decoration: none;
     color: var(--color-text);
   }
-`, F = () => `
+`, H = () => `
       <p>
-          <img src=${a("./assets/images/logo.avif")}
+          <img src=${o("./assets/images/logo.avif")}
           alt="Logo">
           <a href="https://hanhtetaung.dev/">
             Crafted by Han
@@ -492,7 +492,7 @@ var H = `
               <li>
                   <a href="https://wa.me/message/DVOPVSAGBDENB1" target="_blank">
                   <img
-                      src=${a("./assets/icons/whatsapp.svg")}
+                      src=${o("./assets/icons/whatsapp.svg")}
                       alt="Email Icon"
                   />
                   </a>    
@@ -504,7 +504,7 @@ var H = `
                   rel="noopener"
                   >
                   <img
-                      src=${a("./assets/icons/instagram.svg")}
+                      src=${o("./assets/icons/instagram.svg")}
                       alt="Linkedin Icon"
                   />
                   </a>
@@ -516,7 +516,7 @@ var H = `
                   rel="noopener"
                   >
                   <img
-                      src=${a("./assets/icons/linkedin.svg")}
+                      src=${o("./assets/icons/linkedin.svg")}
                       alt="Linkedin Icon"
                   />
                   </a>
@@ -528,7 +528,7 @@ var H = `
                   rel="noopener"
                   >
                   <img
-                      src=${a("./assets/icons/github.svg")}
+                      src=${o("./assets/icons/github.svg")}
                       alt="Github Icon"
                   />
                   </a>
@@ -536,9 +536,9 @@ var H = `
           </ul>
         </nav>
 `;
-o("footer-copyright", { styles: H, template: F });
+a("footer-copyright", { styles: F, template: H });
 
-// web-components/sections/footer.js
+// scripts/footer.js
 var N = `
   :host {
     display: block;
@@ -612,30 +612,30 @@ var N = `
       display: none;
     }
   }
-`, K = `
+`, j = `
   <footer>
 
     <div id="highlight-wrap">
-      <img id="highlight-base" src=${a("./assets/images/footer/highlight.png")} alt="Parting phrase">
-      <img id="highlight-lens" src=${a("./assets/images/footer/highlight-with-color.png")} alt="Parting phrase with color" aria-hidden="true">
+      <img id="highlight-base" src=${o("./assets/images/footer/highlight.png")} alt="Parting phrase">
+      <img id="highlight-lens" src=${o("./assets/images/footer/highlight-with-color.png")} alt="Parting phrase with color" aria-hidden="true">
       <div id="lens-ring"></div>
     </div>
 
-    <img id="thank-you" src=${a("./assets/images/footer/thank-you.avif")} alt="Thank you phrase">
-    <img id="looking-forward" src=${a("./assets/images/footer/looking-forward.avif")} alt="Parting Phrase">
+    <img id="thank-you" src=${o("./assets/images/footer/thank-you.avif")} alt="Thank you phrase">
+    <img id="looking-forward" src=${o("./assets/images/footer/looking-forward.avif")} alt="Parting Phrase">
 
     <!-- <footer-nav></footer-nav> -->
 
     <footer-copyright></footer-copyright>
   </footer>
 `;
-function V(i) {
+function K(i) {
   let e = i.querySelector("footer"), s = i.getElementById("highlight-base"), m = i.getElementById("highlight-lens"), r = i.getElementById("lens-ring"), h = i.getElementById("highlight-wrap");
   if (!e || !s || !m || !r || !h)
     return;
-  function u(l) {
-    let c = s.getBoundingClientRect(), d = l.clientX - c.left, b = l.clientY - c.top, y = r.offsetWidth / 2;
-    r.style.left = `${d - y}px`, r.style.top = `${b - y}px`, m.style.clipPath = `circle(${y}px at ${d}px ${b}px)`;
+  function g(l) {
+    let c = s.getBoundingClientRect(), d = l.clientX - c.left, u = l.clientY - c.top, y = r.offsetWidth / 2;
+    r.style.left = `${d - y}px`, r.style.top = `${u - y}px`, m.style.clipPath = `circle(${y}px at ${d}px ${u}px)`;
   }
   function f() {
     r.setAttribute("data-visible", "true");
@@ -643,14 +643,14 @@ function V(i) {
   function n() {
     r.removeAttribute("data-visible"), m.style.clipPath = "circle(0px at 50% 50%)";
   }
-  return e.addEventListener("mousemove", u), e.addEventListener("mouseenter", f), e.addEventListener("mouseleave", n), () => {
-    e.removeEventListener("mousemove", u), e.removeEventListener("mouseenter", f), e.removeEventListener("mouseleave", n);
+  return e.addEventListener("mousemove", g), e.addEventListener("mouseenter", f), e.addEventListener("mouseleave", n), () => {
+    e.removeEventListener("mousemove", g), e.removeEventListener("mouseenter", f), e.removeEventListener("mouseleave", n);
   };
 }
-o("section-footer", { styles: N, template: K, onRender: V });
+a("section-footer", { styles: N, template: j, onRender: K });
 
-// web-components/sections/home/hero.js
-var j = `
+// scripts/home/hero.js
+var V = `
   :host {
     display: block;
     height: min(calc(100vh - 108px - 10rem), 70rem);
@@ -767,8 +767,8 @@ function M(i) {
   if (!e || !s || !m || !r)
     return;
   let h = window.matchMedia(I);
-  function u(b) {
-    let y = s.getBoundingClientRect(), x = b.clientX - y.left, k = b.clientY - y.top, w = r.offsetWidth / 2;
+  function g(u) {
+    let y = s.getBoundingClientRect(), x = u.clientX - y.left, k = u.clientY - y.top, w = r.offsetWidth / 2;
     r.style.left = `${x - w}px`, r.style.top = `${k - w}px`, m.style.clipPath = `circle(${w}px at ${x}px ${k}px)`;
   }
   function f() {
@@ -778,13 +778,13 @@ function M(i) {
     r.removeAttribute("data-visible"), m.style.clipPath = "circle(0px at 50% 50%)";
   }
   function l() {
-    e.addEventListener("mousemove", u), e.addEventListener("mouseenter", f), e.addEventListener("mouseleave", n);
+    e.addEventListener("mousemove", g), e.addEventListener("mouseenter", f), e.addEventListener("mouseleave", n);
   }
   function c() {
-    e.removeEventListener("mousemove", u), e.removeEventListener("mouseenter", f), e.removeEventListener("mouseleave", n), n();
+    e.removeEventListener("mousemove", g), e.removeEventListener("mouseenter", f), e.removeEventListener("mouseleave", n), n();
   }
-  function d(b) {
-    if (b.matches)
+  function d(u) {
+    if (u.matches)
       l();
     else
       c();
@@ -795,9 +795,9 @@ function M(i) {
     c(), h.removeEventListener("change", d);
   };
 }
-o("section-hero", { styles: j, template: q, onRender: M });
+a("section-hero", { styles: V, template: q, onRender: M });
 
-// web-components/sections/home/little-process.js
+// scripts/home/little-process.js
 var W = `
   :host {
     position: relative;
@@ -902,13 +902,13 @@ var W = `
     </li>
   </ul>
 
-  <img src=${a("./assets/images/home/craftsmanship.avif")} alt="Craftsmanship Illustration">
+  <img src=${o("./assets/images/home/craftsmanship.avif")} alt="Craftsmanship Illustration">
 </section>
 
 `;
-o("section-little-process", { styles: W, template: X });
+a("section-little-process", { styles: W, template: X });
 
-// web-components/sections/home/education.js
+// scripts/home/education.js
 var J = `
   :host {
     position: relative;
@@ -982,9 +982,9 @@ var J = `
   </section>
 
 `;
-o("section-education", { styles: J, template: Z });
+a("section-education", { styles: J, template: Z });
 
-// web-components/sections/home/hobby.js
+// scripts/home/hobby.js
 var Q = `
   :host {
     display: block;
@@ -1023,7 +1023,7 @@ var Q = `
   }
 `, Y = `
   <div>
-    <img src="./assets/images/home/sketching.avif" alt="Sketching SEA">
+    <img src=${o("./assets/images/home/sketching.avif")} alt="Sketching SEA">
   </div>
 
   <section>
@@ -1032,9 +1032,9 @@ var Q = `
     <p>All hand-drawn. Bring the same approach to every website I build.</p>
   </section>
 `;
-o("section-hobby", { styles: Q, template: Y });
+a("section-hobby", { styles: Q, template: Y });
 
-// web-components/sections/home/recent-crafts.js
+// scripts/home/recent-crafts.js
 var R = `
   :host {
     position: relative;
@@ -1109,28 +1109,28 @@ var R = `
   <ul>
      <li>
       <a href="/map/" target="_blank">
-        <img src=${a("./assets/images/home/story-map.avif")} alt="Story Map">
+        <img src=${o("./assets/images/home/story-map.avif")} alt="Story Map">
       </a>
     </li>
 
     <li>
       <a href="/terra/" target="_blank">
-        <img src=${a("./assets/images/home/terra.avif")} alt="Terra">
+        <img src=${o("./assets/images/home/terra.avif")} alt="Terra">
       </a>
     </li>
 
      <li>
        <a href="https://skssolarmyanmar.com/" target="_blank">
-         <img src=${a("./assets/images/home/sks-solar.avif")} alt="SKS Solar">
+         <img src=${o("./assets/images/home/sks-solar.avif")} alt="SKS Solar">
       </a>
     </li>
     
   </ul>
 </section>
 `;
-o("section-recent-crafts", { styles: R, template: ee });
+a("section-recent-crafts", { styles: R, template: ee });
 
-// web-components/sections/home/cta.js
+// scripts/home/cta.js
 var te = `
   :host {
     display: block;
@@ -1240,22 +1240,22 @@ var te = `
 
   <ul>
     <li>
-      <app-logo src=${a("./assets/icons/whatsapp.svg")} alt="Whatsapp icon"></app-logo>
+      <app-logo src=${o("./assets/icons/whatsapp.svg")} alt="Whatsapp icon"></app-logo>
       <a href="https://wa.me/message/DVOPVSAGBDENB1" target="_blank">wa/crafted.han</a>
     </li>
     <li>
-      <app-logo src=${a("./assets/icons/email.svg")} alt="Email icon"></app-logo>
+      <app-logo src=${o("./assets/icons/email.svg")} alt="Email icon"></app-logo>
       <a href="mailto:hanhtetaung.dev@gmail.com" target="_blank">hanhtetaung.dev@gmail.com</a>
       <button id="copyBtn">Copy</button>
     </li>
     <li>
-      <app-logo src=${a("./assets/icons/linkedin.svg")} alt="Linkedin icon"></app-logo>
+      <app-logo src=${o("./assets/icons/linkedin.svg")} alt="Linkedin icon"></app-logo>
       <a href="https://www.linkedin.com/in/han-htet-aung/" target="_blank">in/han-htet-aung</a>
     </li>
   </ul>
 </section>
 `;
-function ae(i) {
+function oe(i) {
   let e = i.getElementById("copyBtn");
   if (!e)
     return;
@@ -1268,6 +1268,6 @@ function ae(i) {
     });
   });
 }
-o("section-cta", { styles: te, template: ie, onRender: ae });
+a("section-cta", { styles: te, template: ie, onRender: oe });
 </script></body>
 </html>
