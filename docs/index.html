@@ -650,7 +650,7 @@ function K(i) {
 a("section-footer", { styles: N, template: j, onRender: K });
 
 // scripts/home/hero.js
-var V = `
+var M = `
   :host {
     display: block;
     height: min(calc(100vh - 108px - 10rem), 70rem);
@@ -748,7 +748,7 @@ var V = `
   hgroup + p {
     max-width: min(25ch, 90%);
   }
-`, q = `
+`, V = `
   <section>
     <hgroup>
       <p>Han Htet Aung | GMT+7</p>
@@ -761,12 +761,12 @@ var V = `
       <div id="lens-ring"></div>
     </div>
   </section>
-`, I = `(min-width: ${t})`;
-function M(i) {
+`, q = `(min-width: ${t})`;
+function I(i) {
   let e = i.getElementById("img-wrap"), s = i.getElementById("visible-img"), m = i.getElementById("lens-img"), r = i.getElementById("lens-ring");
   if (!e || !s || !m || !r)
     return;
-  let h = window.matchMedia(I);
+  let h = window.matchMedia(q);
   function g(u) {
     let y = s.getBoundingClientRect(), x = u.clientX - y.left, k = u.clientY - y.top, w = r.offsetWidth / 2;
     r.style.left = `${x - w}px`, r.style.top = `${k - w}px`, m.style.clipPath = `circle(${w}px at ${x}px ${k}px)`;
@@ -795,7 +795,7 @@ function M(i) {
     c(), h.removeEventListener("change", d);
   };
 }
-a("section-hero", { styles: V, template: q, onRender: M });
+a("section-hero", { styles: M, template: V, onRender: I });
 
 // scripts/home/little-process.js
 var W = `
@@ -1107,18 +1107,21 @@ var R = `
   </hgroup>
 
   <ul>
+    <li>
+      <a href="/maple" target="_blank">
+        <img src=${o("./assets/images/home/maple-montessori.avif")} alt="Maple Montessori">
+      </a>
+    </li>
+
+
+
      <li>
-      <a href="/map/" target="_blank">
+      <a href="/map" target="_blank">
         <img src=${o("./assets/images/home/story-map.avif")} alt="Story Map">
       </a>
     </li>
 
-    <li>
-      <a href="/terra/" target="_blank">
-        <img src=${o("./assets/images/home/terra.avif")} alt="Terra">
-      </a>
-    </li>
-
+    
      <li>
        <a href="https://skssolarmyanmar.com/" target="_blank">
          <img src=${o("./assets/images/home/sks-solar.avif")} alt="SKS Solar">
