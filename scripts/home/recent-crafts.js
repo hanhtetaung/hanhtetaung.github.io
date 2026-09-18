@@ -76,18 +76,21 @@ const template = /* html */ `
   </hgroup>
 
   <ul>
+    <li>
+      <a href="/maple" target="_blank">
+        <img src=${asset("./assets/images/home/maple-montessori.avif")} alt="Maple Montessori">
+      </a>
+    </li>
+
+
+
      <li>
-      <a href="/map/" target="_blank">
+      <a href="/map" target="_blank">
         <img src=${asset("./assets/images/home/story-map.avif")} alt="Story Map">
       </a>
     </li>
 
-    <li>
-      <a href="/terra/" target="_blank">
-        <img src=${asset("./assets/images/home/terra.avif")} alt="Terra">
-      </a>
-    </li>
-
+    
      <li>
        <a href="https://skssolarmyanmar.com/" target="_blank">
          <img src=${asset("./assets/images/home/sks-solar.avif")} alt="SKS Solar">
