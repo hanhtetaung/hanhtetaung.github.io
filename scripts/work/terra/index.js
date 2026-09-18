@@ -1,11 +1,10 @@
-import "../web-components/fonts.js";
-import "../web-components/components/app-frame.js";
+import "../../fonts.js";
 
-import "../sections/header.js";
-import "../sections/footer.js";
+import "../../header.js";
+import "../../footer.js";
 
-import "../web-components/work/terra/intro.js";
-import "../web-components/work/terra/overview.js";
-import "../web-components/work/terra/building-block.js";
-import "../web-components/work/terra/need-one-interface.js";
-import "../web-components/work/terra/conclusion.js";
+import "./intro.js";
+import "./overview.js";
+import "./building-block.js";
+import "./need-one-interface.js";
+import "./conclusion.js";

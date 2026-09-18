@@ -1,10 +1,9 @@
-import "../web-components/fonts.js";
-import "../web-components/components/app-frame.js";
+import "../../fonts.js";
 
-import "../sections/header.js";
-import "../sections/footer.js";
+import "../../header.js";
+import "../../footer.js";
 
-import "../web-components/writings/foundation-building-interfaces-at-scale/intro.js";
-import "../web-components/writings/foundation-building-interfaces-at-scale/atomic-design-principle.js";
-import "../web-components/writings/foundation-building-interfaces-at-scale/design-token-architecture.js";
-import "../web-components/writings/foundation-building-interfaces-at-scale/references.js";
+import "./intro.js";
+import "./atomic-design-principle.js";
+import "./design-token-architecture.js";
+import "./references.js";

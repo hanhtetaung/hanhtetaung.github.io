@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-base="./">
+<html lang="en" data-base="../">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -27,47 +27,54 @@
     <section-header></section-header>
 
     <main>
-      <section-404-intro></section-404-intro>
+      <section-foundation-building-interfaces-at-scale-intro></section-foundation-building-interfaces-at-scale-intro>
+      <section-atomic-design-principle
+        id="atomic-design-principle"
+      ></section-atomic-design-principle>
+      <section-design-token-architecture
+        id="design-token-architecture"
+      ></section-design-token-architecture>
+      <section-foundation-building-interfaces-at-scale-references></section-foundation-building-interfaces-at-scale-references>
     </main>
 
-    <section-footer></section-footer>
+    <section-footer variant="secondary"></section-footer>
   <script type="module">// lib/asset.js
-function v() {
-  let e = document.documentElement.dataset.base || "./";
-  return new URL(e, location.href);
+function b() {
+  let a = document.documentElement.dataset.base || "./";
+  return new URL(a, location.href);
 }
-function a(e) {
-  return new URL(e, v()).href;
+function e(a) {
+  return new URL(a, b()).href;
 }
-function d(e) {
-  let t = e.replace(/^\//, ""), c = location.protocol === "file:", l = v();
+function p(a) {
+  let t = a.replace(/^\//, ""), c = location.protocol === "file:", l = b();
   if (t === "")
     return c ? new URL("index.html", l).href : l.href;
   return c ? new URL(`${t}.html`, l).href : new URL(t, l).href;
 }
 
 // scripts/fonts.js
-var w = `
+var y = `
 @font-face {
     font-family: "Archivo";
-    src: url("${a("./assets/fonts/Archivo-Black.woff2")}") format("woff2");
+    src: url("${e("./assets/fonts/Archivo-Black.woff2")}") format("woff2");
     font-weight: 700;
     font-display: swap;
   }
 
   @font-face {
     font-family: "Archivo";
-    src: url("${a("./assets/fonts/Archivo-Regular.woff2")}") format("woff2");
+    src: url("${e("./assets/fonts/Archivo-Regular.woff2")}") format("woff2");
     font-weight: 400;
     font-display: swap;
   }
-`, y = document.createElement("style");
-y.textContent = w;
-document.head.appendChild(y);
+`, w = document.createElement("style");
+w.textContent = y;
+document.head.appendChild(w);
 
 // lib/define.js
-function x(e, t) {
-  if (e === void 0) {
+function k(a, t) {
+  if (a === void 0) {
     if (t === Array)
       return [];
     if (t === Object)
@@ -79,15 +86,15 @@ function x(e, t) {
     return;
   }
   if (t === Boolean)
-    return Boolean(e);
+    return Boolean(a);
   if (t === Number)
-    return Number(e);
-  return e;
+    return Number(a);
+  return a;
 }
-function r(e, { props: t = {}, attrs: c = [], styles: l = "", template: s, onRender: f = null }) {
+function i(a, { props: t = {}, attrs: c = [], styles: l = "", template: s, onRender: h = null }) {
   let g = ["props", ...c];
 
-  class h extends HTMLElement {
+  class f extends HTMLElement {
     static observedAttributes = g;
     constructor() {
       super();
@@ -106,46 +113,46 @@ function r(e, { props: t = {}, attrs: c = [], styles: l = "", template: s, onRen
         this._render();
     }
     _getProps() {
-      let i = {}, n = this.getAttribute("props");
-      if (n)
+      let o = {}, r = this.getAttribute("props");
+      if (r)
         try {
-          i = JSON.parse(n);
+          o = JSON.parse(r);
         } catch {
-          i = {};
+          o = {};
         }
       let m = {};
-      for (let p of Object.keys(t))
-        m[p] = x(i[p], t[p]);
+      for (let d of Object.keys(t))
+        m[d] = k(o[d], t[d]);
       return m;
     }
     _applyForwardedAttrs() {
       if (c.length === 0)
         return;
-      let i = this.shadowRoot.querySelector("[data-forward]");
-      if (!i)
+      let o = this.shadowRoot.querySelector("[data-forward]");
+      if (!o)
         return;
-      for (let n of c)
-        if (this.hasAttribute(n))
-          i.setAttribute(n, this.getAttribute(n));
+      for (let r of c)
+        if (this.hasAttribute(r))
+          o.setAttribute(r, this.getAttribute(r));
         else
-          i.removeAttribute(n);
+          o.removeAttribute(r);
     }
     _render() {
       if (typeof this._cleanup === "function")
         this._cleanup(), this._cleanup = null;
-      let i = this._getProps(), n = typeof s === "function" ? s(i) : s;
-      if (this.shadowRoot.innerHTML = `<style>${l}</style>${n}`, this._applyForwardedAttrs(), f) {
-        let m = f(this.shadowRoot, i, this);
+      let o = this._getProps(), r = typeof s === "function" ? s(o) : s;
+      if (this.shadowRoot.innerHTML = `<style>${l}</style>${r}`, this._applyForwardedAttrs(), h) {
+        let m = h(this.shadowRoot, o, this);
         if (typeof m === "function")
           this._cleanup = m;
       }
     }
   }
-  customElements.define(e, h);
+  customElements.define(a, f);
 }
 
 // scripts/components/app-link.js
-var k = `
+var x = `
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -206,13 +213,13 @@ var k = `
        content: "➶";
      }
   }
-`, $ = ["href", "target", "rel", "download"], z = `
+`, $ = ["href", "target", "rel", "download"], A = `
   <a data-forward><slot></slot></a>
 `;
-r("app-link", { attrs: $, styles: k, template: z });
+i("app-link", { attrs: $, styles: x, template: A });
 
 // scripts/components/app-logo.js
-var A = `
+var z = `
   :host {
     display: block;
   }
@@ -221,14 +228,14 @@ var A = `
     max-height: 7rem;
     width: auto;
   }
-`, _ = ["width", "height", "src", "alt"], B = () => "<img data-forward />";
-r("app-logo", { attrs: _, styles: A, template: B });
+`, T = ["width", "height", "src", "alt"], S = () => "<img data-forward />";
+i("app-logo", { attrs: T, styles: z, template: S });
 
 // scripts/breakpoints.js
-var o = "640px";
+var n = "640px";
 
 // scripts/header.js
-var T = `
+var _ = `
   :host {
     display: block;
     background: var(--color-bg-primary);
@@ -265,7 +272,7 @@ var T = `
     box-shadow: none;
   }
 
-  @media (max-width: ${o}) {
+  @media (max-width: ${n}) {
     .header__navigation {
       gap: 4rem;
     }
@@ -275,10 +282,10 @@ var T = `
     height: 5rem;
     width: auto;
   }
-`, L = `
+`, B = `
   <header>
-      <app-link variant="plain" href=${d("/")}>
-        <img src=${a("./assets/images/logo.avif")}
+      <app-link variant="plain" href=${p("/")}>
+        <img src=${e("./assets/images/logo.avif")}
           alt="Logo">
       </app-link>
 
@@ -286,25 +293,25 @@ var T = `
         <nav>
           <ul>
             <li>
-              <app-link variant="plain" href=${d("/")}>Home</app-link>
+              <app-link variant="plain" href=${p("/")}>Home</app-link>
             </li>
 
             <li>
-              <app-link variant="plain" href=${d("/about")}>About</app-link>
+              <app-link variant="plain" href=${p("/about")}>About</app-link>
             </li>
           </ul>
         </nav>
 
-        <app-link variant="secondary" href=${d("/#cta")}>
+        <app-link variant="secondary" href=${p("/#cta")}>
           Let's Craft &#8629;
         </app-link>
       </div>
   </header>
 `;
-r("section-header", { template: L, styles: T });
+i("section-header", { template: B, styles: _ });
 
 // scripts/components/footer-nav.js
-var S = [
+var D = [
   { href: "/", name: "Home" },
   { href: "/about", name: "About" },
   { href: "/credits", name: "Credits" },
@@ -323,7 +330,7 @@ var S = [
     href: "/writings/foundation-building-interfaces-at-scale",
     name: "Foundation"
   }
-], C = `
+], F = `
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -332,7 +339,7 @@ var S = [
    display: flex;
    gap: 5rem;
 
-   @media (max-width: ${o}) {
+   @media (max-width: ${n}) {
         flex-direction: column;
         gap: 3rem;
         margin-block: 2rem;
@@ -361,7 +368,7 @@ var S = [
     max-height: 12.5ch;
     overflow: scroll;
 
-    @media (max-width: ${o}) {
+    @media (max-width: ${n}) {
         max-height: 20ch;
     }
   }
@@ -370,23 +377,23 @@ var S = [
     margin-right: 5rem;
     margin-bottom: 0.3rem;
   }
-`, E = () => `
+`, L = () => `
     <nav>
         <span>Sitemap</span>
 
         <ol>
-            ${S.map((e) => `
+            ${D.map((a) => `
                 <li>
-                    <app-link variant="sitemap" href=${d(e.href)} >${e.name}</app-link>
+                    <app-link variant="sitemap" href=${p(a.href)} >${a.name}</app-link>
                 </li>
             `).join("")}
         </ol>
     </nav>
 `;
-r("footer-nav", { styles: C, template: E });
+i("footer-nav", { styles: F, template: L });
 
 // scripts/components/footer-copyright.js
-var U = `
+var C = `
   :host {
    display: flex;
     justify-content: space-between;
@@ -394,7 +401,7 @@ var U = `
     padding-top: 1rem;
     margin-top: 3rem;
 
-   @media (max-width: ${o}) {
+   @media (max-width: ${n}) {
         flex-direction: column-reverse;
         gap: 2rem;
         border: none;
@@ -410,7 +417,7 @@ var U = `
     align-items: end;
     gap: 0.2rem;
 
-    @media (min-width: ${o}) {
+    @media (min-width: ${n}) {
       border: none;
       padding-top: none;
     }
@@ -434,7 +441,7 @@ var U = `
   nav {
     display: block;
 
-    @media (min-width: ${o}) {
+    @media (min-width: ${n}) {
       display: block;
     }
   }
@@ -445,7 +452,7 @@ var U = `
     font-weight: var(--font-bold);
     
 
-    @media (max-width: ${o}) {
+    @media (max-width: ${n}) {
       display: inline-block;
       margin-bottom: 0.5rem;
     }
@@ -454,7 +461,7 @@ var U = `
   p img {
     height: 2.3rem;
 
-     @media (max-width: ${o}) {
+     @media (max-width: ${n}) {
       
       height: 2.5rem;
     }
@@ -469,9 +476,9 @@ var U = `
     text-decoration: none;
     color: var(--color-text);
   }
-`, F = () => `
+`, P = () => `
       <p>
-          <img src=${a("./assets/images/logo.avif")}
+          <img src=${e("./assets/images/logo.avif")}
           alt="Logo">
           <a href="https://hanhtetaung.dev/">
             Crafted by Han
@@ -488,7 +495,7 @@ var U = `
               <li>
                   <a href="https://wa.me/message/DVOPVSAGBDENB1" target="_blank">
                   <img
-                      src=${a("./assets/icons/whatsapp.svg")}
+                      src=${e("./assets/icons/whatsapp.svg")}
                       alt="Email Icon"
                   />
                   </a>    
@@ -500,7 +507,7 @@ var U = `
                   rel="noopener"
                   >
                   <img
-                      src=${a("./assets/icons/instagram.svg")}
+                      src=${e("./assets/icons/instagram.svg")}
                       alt="Linkedin Icon"
                   />
                   </a>
@@ -512,7 +519,7 @@ var U = `
                   rel="noopener"
                   >
                   <img
-                      src=${a("./assets/icons/linkedin.svg")}
+                      src=${e("./assets/icons/linkedin.svg")}
                       alt="Linkedin Icon"
                   />
                   </a>
@@ -524,7 +531,7 @@ var U = `
                   rel="noopener"
                   >
                   <img
-                      src=${a("./assets/icons/github.svg")}
+                      src=${e("./assets/icons/github.svg")}
                       alt="Github Icon"
                   />
                   </a>
@@ -532,10 +539,10 @@ var U = `
           </ul>
         </nav>
 `;
-r("footer-copyright", { styles: U, template: F });
+i("footer-copyright", { styles: C, template: P });
 
 // scripts/footer.js
-var H = `
+var U = `
   :host {
     display: block;
   }
@@ -598,7 +605,7 @@ var H = `
     display: block;
   }
 
-  @media (min-width: ${o}) {
+  @media (min-width: ${n}) {
     #highlight-wrap {
       display: block;
     }
@@ -608,127 +615,481 @@ var H = `
       display: none;
     }
   }
-`, P = `
+`, E = `
   <footer>
 
     <div id="highlight-wrap">
-      <img id="highlight-base" src=${a("./assets/images/footer/highlight.png")} alt="Parting phrase">
-      <img id="highlight-lens" src=${a("./assets/images/footer/highlight-with-color.png")} alt="Parting phrase with color" aria-hidden="true">
+      <img id="highlight-base" src=${e("./assets/images/footer/highlight.png")} alt="Parting phrase">
+      <img id="highlight-lens" src=${e("./assets/images/footer/highlight-with-color.png")} alt="Parting phrase with color" aria-hidden="true">
       <div id="lens-ring"></div>
     </div>
 
-    <img id="thank-you" src=${a("./assets/images/footer/thank-you.avif")} alt="Thank you phrase">
-    <img id="looking-forward" src=${a("./assets/images/footer/looking-forward.avif")} alt="Parting Phrase">
+    <img id="thank-you" src=${e("./assets/images/footer/thank-you.avif")} alt="Thank you phrase">
+    <img id="looking-forward" src=${e("./assets/images/footer/looking-forward.avif")} alt="Parting Phrase">
 
     <!-- <footer-nav></footer-nav> -->
 
     <footer-copyright></footer-copyright>
   </footer>
 `;
-function j(e) {
-  let t = e.querySelector("footer"), c = e.getElementById("highlight-base"), l = e.getElementById("highlight-lens"), s = e.getElementById("lens-ring"), f = e.getElementById("highlight-wrap");
-  if (!t || !c || !l || !s || !f)
+function H(a) {
+  let t = a.querySelector("footer"), c = a.getElementById("highlight-base"), l = a.getElementById("highlight-lens"), s = a.getElementById("lens-ring"), h = a.getElementById("highlight-wrap");
+  if (!t || !c || !l || !s || !h)
     return;
-  function g(n) {
-    let m = c.getBoundingClientRect(), p = n.clientX - m.left, b = n.clientY - m.top, u = s.offsetWidth / 2;
-    s.style.left = `${p - u}px`, s.style.top = `${b - u}px`, l.style.clipPath = `circle(${u}px at ${p}px ${b}px)`;
+  function g(r) {
+    let m = c.getBoundingClientRect(), d = r.clientX - m.left, v = r.clientY - m.top, u = s.offsetWidth / 2;
+    s.style.left = `${d - u}px`, s.style.top = `${v - u}px`, l.style.clipPath = `circle(${u}px at ${d}px ${v}px)`;
   }
-  function h() {
+  function f() {
     s.setAttribute("data-visible", "true");
   }
-  function i() {
+  function o() {
     s.removeAttribute("data-visible"), l.style.clipPath = "circle(0px at 50% 50%)";
   }
-  return t.addEventListener("mousemove", g), t.addEventListener("mouseenter", h), t.addEventListener("mouseleave", i), () => {
-    t.removeEventListener("mousemove", g), t.removeEventListener("mouseenter", h), t.removeEventListener("mouseleave", i);
+  return t.addEventListener("mousemove", g), t.addEventListener("mouseenter", f), t.addEventListener("mouseleave", o), () => {
+    t.removeEventListener("mousemove", g), t.removeEventListener("mouseenter", f), t.removeEventListener("mouseleave", o);
   };
 }
-r("section-footer", { styles: H, template: P, onRender: j });
+i("section-footer", { styles: U, template: E, onRender: H });
 
-// scripts/components/app-icon.js
-var q = `
-  :host {
-    --local-width: 3rem;
-    --local-height: auto;
-
-    display: block;
-  }
-
-  img {
-    width: var(--local-width);
-    height: var(--local-height);
-  }
-
-  :host([variant="medium"]) {
-     --local-width: auto;
-    --local-height: 5rem;
-  }
-
-  :host([variant="bigger"]) {
-    --local-width: auto;
-    --local-height: 6rem;
-  }
-
-  :host([variant="large"]) {
-    --local-width: auto;
-    --local-height: 10rem;
-  }
-
-  :host([variant="creator"]) {
-    img {
-      min-width: 5rem;
-      max-width: 10rem;
-      height: 10rem;
-      width: auto;
-    }
-  }
-
-
-`, N = ["src", "alt"], O = () => '<img data-forward width="200" height="200"/>';
-r("app-icon", { attrs: N, styles: q, template: O });
-
-// scripts/404/intro.js
-var G = `
+// scripts/writings/foundation-building-interfaces-at-scale/intro.js
+var O = `
   :host {
     display: block;
     margin-block: 10rem;
   }
 
-    section {
-        margin-inline: auto;
-        width: 80%;
-        display: flex;
-        gap: 3rem;
+  section {
+    width: 80%;
+    margin-inline: auto;
+  }
 
-        @media (max-width: ${o}) {
-          display: block;
-        }
-    }
-
-     h1 {
+  h1 {
     margin: 0;
-    font-size: var(--size-display);
-    font-family: var(--font-heading);
+    font-size: var(--size-title);
   }
 
   p {
     margin: 0;
-    margin-bottom: 1.5rem;
+    margin-block: 1.5rem;
   }
-`, D = `
-  <section>
-      <hgroup>
-        <h1>404</h1>
-        <p>Sorry. Page not found.</p>
-      </hgroup>
 
-      <app-icon
-        variant="large"
-        src="./assets/icons/bird-with-flower.svg"
-        alt="Coming Soon"
-      ></app-icon>
+  ul {
+    margin: 0;
+    padding-left: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  span {
+    display: inline-block;
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+    font-weight: var(--font-bold);
+  }
+
+  hgroup span {
+    font-weight: var(--font-regular);
+  }
+`, j = `
+  <section>
+    <hgroup>
+      <span>[ Writing ]</span>
+      <h1>Foundation for Building Interfaces at Scale</h1>
+    </hgroup>
+
+    <p>
+      Build systems, not interfaces. A design system is the single source of
+      truth for consistent, scalable interfaces.
+    </p>
+
+    <span>On this page</span>
+
+    <ul>
+      <li>
+        <app-link href="#atomic-design-principle" variant="underline">
+          Atomic design principle
+        </app-link>
+      </li>
+      <li>
+        <app-link href="#design-token-architecture" variant="underline">
+          Design token architecture
+        </app-link>
+      </li>
+    </ul>
   </section>
 `;
-r("section-404-intro", { styles: G, template: D });
+i("section-foundation-building-interfaces-at-scale-intro", {
+  styles: O,
+  template: j
+});
+
+// scripts/components/app-image.js
+var q = `
+  :host {
+    --local-width: 5rem;
+    --local-heigth: auto;
+
+    display: inline-block;
+    width: fit-content;
+  }
+
+  img {
+    max-width: var(--local-width);
+    height: var(--local-heigth);
+    width: 100%;
+  }
+
+  :host([variant="normal"]) {
+    --local-width: 12rem;
+    --local-heigth: auto;
+  }
+
+  :host([variant="medium"]) {
+    --local-width: 40rem;
+  }
+
+  :host([variant="large"]) {
+    --local-width: 50rem;
+  }
+
+   :host([variant="full"]) {
+    --local-width: 100%;
+  }
+`, G = ["width", "height", "src", "alt"], N = () => "<img data-forward />";
+i("app-image", { attrs: G, styles: q, template: N });
+
+// scripts/writings/foundation-building-interfaces-at-scale/atomic-design-principle.js
+var M = `
+  :host {
+    display: block;
+  }
+
+  section {
+    width: 80%;
+    margin-inline: auto;
+  }
+
+  p {
+    margin: 0;
+    margin-bottom: 1rem;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    border-top: 1px dashed var(--color-text);
+    padding-top: 5rem;
+  }
+
+  h3 {
+    font-size: var(--size-heading);
+    margin: 0;
+    margin-bottom: 2rem;
+  }
+`, I = `
+  <section >
+
+    <h2>Atomic Design Principle</h2>
+
+    <p>
+      Follow Atomic Design principles to create scalable, reusable, and
+      maintainable interface building blocks.
+    </p>
+
+    <app-image
+      variant="full"
+      src=${e("./assets/images/foundation-building-software/atomic-design.avif")}
+      alt="Atomic design overview"
+      width="1398"
+      height="1236"
+    ></app-image>
+
+    <ul>
+      <li>
+        <article>
+          <h3>Page</h3>
+          <p>
+            A complete interface that is composed of multiple organisms. Let’s break down the Strava Activities interface into organisms → molecules → atoms → subatomic particles. For example, the Strava Activities page contains four organisms.
+          </p>
+          <app-image
+            variant="full"
+            src=${e("./assets/images/foundation-building-software/page.avif")}
+            alt="Page overview"
+            width="1398"
+            height="1236"
+          ></app-image>
+        </article>
+      </li>
+
+      <li>
+        <article>
+          <h3>Organism</h3>
+          <p>
+            A distinct section of an interface composed of molecules, atoms, subatomic particles, or even other organisms. The following diagram shows an organism made up of three molecules, one atom, and one other organism.
+          </p>
+          <app-image
+            variant="full"
+            src=${e("./assets/images/foundation-building-software/organisms.avif")}
+            alt="Organism overview"
+            width="1398"
+            height="1236"
+          ></app-image>
+        </article>
+      </li>
+
+      <li>
+        <article>
+          <h3>Molecule</h3>
+          <p>
+            A simple interface element composed of atoms or subatomic particles as well as other molecules. The example below shows how six atoms combine to form a molecule.
+          </p>
+          <app-image
+            variant="full"
+            src=${e("./assets/images/foundation-building-software/molecule.avif")}
+            alt="Molecule overview"
+            width="1398"
+            height="1236"
+          ></app-image>
+        </article>
+      </li>
+
+      <li>
+        <article>
+          <h3>Atom</h3>
+          <p>
+            A foundational building block of an interface composed of subatomic particles. The illustration below shows an atom composed of three subatomic particles.
+          </p>
+          <app-image
+            variant="full"
+            src=${e("./assets/images/foundation-building-software/atom.avif")}
+            alt="Atom overview"
+            width="1398"
+            height="1236"
+          ></app-image>
+        </article>
+      </li>
+
+      <li>
+        <article>
+          <h3>Subatomic particle</h3>
+          <p>Smallest unit of the system, represents a design token.</p>
+          <app-image
+            variant="full"
+            src=${e("./assets/images/foundation-building-software/subatomic-particles.avif")}
+            alt="Subatomic particles overview"
+            width="1398"
+            height="1236"
+          ></app-image>
+        </article>
+      </li>
+    </ul>
+  </section>
+`;
+i("section-atomic-design-principle", { styles: M, template: I });
+
+// scripts/writings/foundation-building-interfaces-at-scale/design-token-architecture.js
+var X = `
+  :host {
+    display: block;
+  }
+
+  section {
+    width: 80%;
+    margin-inline: auto;
+  }
+
+  p {
+    margin: 0;
+    margin-bottom: 1rem;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+
+    padding-top: 5rem;
+  }
+
+  ol {
+    list-style: disc;
+    padding: 0;
+    padding-left: 1.5rem;
+  }
+
+  h3 {
+    font-size: var(--size-heading);
+    margin: 0;
+    margin-bottom: 2rem;
+  }
+`, V = `
+  <section>
+
+    <h2>Design Token Architecture</h2>
+
+    <p>A two-tier architecture is enough: Primitive and Semantic.</p>
+
+    <app-image
+      variant="full"
+      src=${e("./assets/images/foundation-building-software/token-architecture.avif")}
+      alt="Token architecture overview"
+      width="1398"
+      height="1236"
+    ></app-image>
+
+    <ul>
+      <li>
+        <article>
+          <h3>Single Source of Truth</h3>
+          <p>
+            Use semantic tokens to define all interface building blocks. The
+            Figma file uses slashes as separators with all letters lowercase,
+            but it can be converted to a preferred platform convention like
+            dashes or camelCase.
+          </p>
+          <app-image
+            variant="full"
+            src=${e("./assets/images/foundation-building-software/single-source-of-truth.avif")}
+            alt="Single source of truth overview"
+            width="1398"
+            height="1236"
+          ></app-image>
+        </article>
+      </li>
+
+      <li>
+        <article>
+          <h3>Theming</h3>
+          <p>
+            A token can point to different values related to a mode, and when
+            the mode changes, the reference values are updated automatically.
+          </p>
+          <app-image
+            variant="full"
+            src=${e("./assets/images/foundation-building-software/theming.avif")}
+            alt="Theming overview"
+            width="1398"
+            height="1236"
+          ></app-image>
+        </article>
+      </li>
+
+      <li>
+        <article>
+          <h3>Token Structure</h3>
+          <p>Tokens are named in two parts:</p>
+          <ol>
+            <li>Base</li>
+            <li>Modifier (optional)</li>
+          </ol>
+          <app-image
+            variant="full"
+            src=${e("./assets/images/foundation-building-software/token-structure.avif")}
+            alt="Token structure overview"
+            width="1398"
+            height="1236"
+          ></app-image>
+        </article>
+      </li>
+
+      <li>
+        <article>
+          <h3>Design Token Anatomy</h3>
+          <p>
+            The diagram below shows how primitive and semantic tokens combine
+            base and modifier.
+          </p>
+          <app-image
+            variant="full"
+            src=${e("./assets/images/foundation-building-software/design-token-anatomy.avif")}
+            alt="Design token anatomy overview"
+            width="1398"
+            height="1236"
+          ></app-image>
+        </article>
+      </li>
+
+      <li>
+        <article>
+          <h3>Applying Design Tokens</h3>
+          <p>
+            Here is an example of how semantic tokens are used throughout a
+            Strava activities page.
+          </p>
+          <app-image
+            variant="full"
+            src=${e("./assets/images/foundation-building-software/applying-token.avif")}
+            alt="Applying token overview"
+            width="1398"
+            height="1236"
+          ></app-image>
+        </article>
+      </li>
+</ul>
+  </section>
+`;
+i("section-design-token-architecture", { styles: X, template: V });
+
+// scripts/writings/foundation-building-interfaces-at-scale/references.js
+var J = `
+  :host {
+    display: block;
+  }
+
+  section {
+    width: 80%;
+    margin-inline: auto;
+  }
+
+  ul {
+    margin: 0;
+    padding-left: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+`, K = `
+  <section>
+
+    <h2>Reference</h2>
+
+    <ul>
+      <li>
+        <app-link href="https://atomicdesign.bradfrost.com/chapter-2/" target="_blank" variant="underline">
+          Atomic Design Principle
+        </app-link>
+      </li>
+      <li>
+        <app-link href="https://playbook.ebay.com/foundations" target="_blank" variant="underline">
+          ebay Playbook
+        </app-link>
+      </li>
+      <li>
+        <app-link href="https://www.designsystem.tech.gov.sg/foundations/" target="_blank" variant="underline">
+          SGDS Design
+        </app-link>
+      </li>
+      <li>
+        <app-link href="https://www.strava.com/" target="_blank" variant="underline">
+          Strava
+        </app-link>
+      </li>
+    </ul>
+  </section>
+`;
+i("section-foundation-building-interfaces-at-scale-references", {
+  styles: J,
+  template: K
+});
 </script></body>
 </html>

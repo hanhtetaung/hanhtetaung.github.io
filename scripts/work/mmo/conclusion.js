@@ -1,4 +1,4 @@
-import { define } from "../../define.js";
+import { define } from "../../../lib/define.js";
 
 const styles = /* css */ `
   :host {
@@ -17,15 +17,17 @@ const styles = /* css */ `
     display: flex;
     flex-direction: column;
   }
+
+  h2 {
+    margin: 0;
+    margin-bottom: 2rem;
+    font-size: var(--size-title);
+  }
 `;
 
 const template = /* html */ `
   <section>
-    <section-title
-      variant="text"
-      props='{"name": "Keep Listening to the Voices"}'
-    ></section-title>
-
+    <h2>Keep Listening to the Voices</h2>
     <p>The system continues to grow as users' needs change.</p>
   </section>
 `;

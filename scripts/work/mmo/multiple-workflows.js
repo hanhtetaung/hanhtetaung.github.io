@@ -1,4 +1,4 @@
-import { define } from "../../define.js";
+import { define } from "../../../lib/define.js";
 
 const styles = /* css */ `
   :host {
@@ -18,15 +18,17 @@ const styles = /* css */ `
     display: flex;
     flex-direction: column;
   }
+
+   h2 {
+    margin: 0;
+    margin-bottom: 2rem;
+    font-size: var(--size-title);
+  }
 `;
 
 const template = /* html */ `
   <section>
-
-  <section-title
-        variant="text"
-        props='{"name": "100+ workflows in the system"}'
-      ></section-title>
+      <h2>100+ workflows in the system</h2>
 
         <ul>
           <li>Register new employee</li>

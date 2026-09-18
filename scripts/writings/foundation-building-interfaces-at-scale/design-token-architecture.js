@@ -1,9 +1,7 @@
-import { define } from "../../define.js";
+import { define } from "../../../lib/define.js";
+import { asset } from "../../../lib/asset.js";
 
-import "../../components/section-title.js";
 import "../../components/app-image.js";
-import "../../components/app-article-paragraph.js";
-import { asset } from "../../asset.js";
 
 const styles = /* css */ `
   :host {
@@ -36,11 +34,18 @@ const styles = /* css */ `
     padding: 0;
     padding-left: 1.5rem;
   }
+
+  h3 {
+    font-size: var(--size-heading);
+    margin: 0;
+    margin-bottom: 2rem;
+  }
 `;
 
 const template = /* html */ `
   <section>
-    <section-title variant="text" props='{"name": "Design Token Architecture"}'></section-title>
+
+    <h2>Design Token Architecture</h2>
 
     <p>A two-tier architecture is enough: Primitive and Semantic.</p>
 
@@ -54,7 +59,8 @@ const template = /* html */ `
 
     <ul>
       <li>
-        <app-article-paragraph variant="block" props='{ "title": "Single Source of Truth" }'>
+        <article>
+          <h3>Single Source of Truth</h3>
           <p>
             Use semantic tokens to define all interface building blocks. The
             Figma file uses slashes as separators with all letters lowercase,
@@ -68,11 +74,12 @@ const template = /* html */ `
             width="1398"
             height="1236"
           ></app-image>
-        </app-article-paragraph>
+        </article>
       </li>
 
       <li>
-        <app-article-paragraph variant="block" props='{ "title": "Theming" }'>
+        <article>
+          <h3>Theming</h3>
           <p>
             A token can point to different values related to a mode, and when
             the mode changes, the reference values are updated automatically.
@@ -84,11 +91,12 @@ const template = /* html */ `
             width="1398"
             height="1236"
           ></app-image>
-        </app-article-paragraph>
+        </article>
       </li>
 
       <li>
-        <app-article-paragraph variant="block" props='{ "title": "Token Structure" }'>
+        <article>
+          <h3>Token Structure</h3>
           <p>Tokens are named in two parts:</p>
           <ol>
             <li>Base</li>
@@ -101,11 +109,12 @@ const template = /* html */ `
             width="1398"
             height="1236"
           ></app-image>
-        </app-article-paragraph>
+        </article>
       </li>
 
       <li>
-        <app-article-paragraph variant="block" props='{ "title": "Design Token Anatomy" }'>
+        <article>
+          <h3>Design Token Anatomy</h3>
           <p>
             The diagram below shows how primitive and semantic tokens combine
             base and modifier.
@@ -117,11 +126,12 @@ const template = /* html */ `
             width="1398"
             height="1236"
           ></app-image>
-        </app-article-paragraph>
+        </article>
       </li>
 
       <li>
-        <app-article-paragraph variant="block" props='{ "title": "Applying Design Tokens" }'>
+        <article>
+          <h3>Applying Design Tokens</h3>
           <p>
             Here is an example of how semantic tokens are used throughout a
             Strava activities page.
@@ -133,7 +143,7 @@ const template = /* html */ `
             width="1398"
             height="1236"
           ></app-image>
-        </app-article-paragraph>
+        </article>
       </li>
 </ul>
   </section>

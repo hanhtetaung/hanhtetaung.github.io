@@ -1,9 +1,7 @@
-import { define } from "../../define.js";
+import { define } from "../../../lib/define.js";
+import { asset } from "../../../lib/asset.js";
 
-import "../../components/section-title.js";
 import "../../components/app-image.js";
-import "../../components/app-article-paragraph.js";
-import { asset } from "../../asset.js";
 
 const styles = /* css */ `
   :host {
@@ -31,11 +29,18 @@ const styles = /* css */ `
     border-top: 1px dashed var(--color-text);
     padding-top: 5rem;
   }
+
+  h3 {
+    font-size: var(--size-heading);
+    margin: 0;
+    margin-bottom: 2rem;
+  }
 `;
 
 const template = /* html */ `
   <section >
-    <section-title variant="text" props='{"name": "Atomic Design Principle"}'></section-title>
+
+    <h2>Atomic Design Principle</h2>
 
     <p>
       Follow Atomic Design principles to create scalable, reusable, and
@@ -52,7 +57,8 @@ const template = /* html */ `
 
     <ul>
       <li>
-        <app-article-paragraph props='{ "title": "Page" }'>
+        <article>
+          <h3>Page</h3>
           <p>
             A complete interface that is composed of multiple organisms. Let’s break down the Strava Activities interface into organisms → molecules → atoms → subatomic particles. For example, the Strava Activities page contains four organisms.
           </p>
@@ -63,11 +69,12 @@ const template = /* html */ `
             width="1398"
             height="1236"
           ></app-image>
-        </app-article-paragraph>
+        </article>
       </li>
 
       <li>
-        <app-article-paragraph props='{ "title": "Organism" }'>
+        <article>
+          <h3>Organism</h3>
           <p>
             A distinct section of an interface composed of molecules, atoms, subatomic particles, or even other organisms. The following diagram shows an organism made up of three molecules, one atom, and one other organism.
           </p>
@@ -78,11 +85,12 @@ const template = /* html */ `
             width="1398"
             height="1236"
           ></app-image>
-        </app-article-paragraph>
+        </article>
       </li>
 
       <li>
-        <app-article-paragraph props='{ "title": "Molecule" }'>
+        <article>
+          <h3>Molecule</h3>
           <p>
             A simple interface element composed of atoms or subatomic particles as well as other molecules. The example below shows how six atoms combine to form a molecule.
           </p>
@@ -93,11 +101,12 @@ const template = /* html */ `
             width="1398"
             height="1236"
           ></app-image>
-        </app-article-paragraph>
+        </article>
       </li>
 
       <li>
-        <app-article-paragraph props='{ "title": "Atom" }'>
+        <article>
+          <h3>Atom</h3>
           <p>
             A foundational building block of an interface composed of subatomic particles. The illustration below shows an atom composed of three subatomic particles.
           </p>
@@ -108,11 +117,12 @@ const template = /* html */ `
             width="1398"
             height="1236"
           ></app-image>
-        </app-article-paragraph>
+        </article>
       </li>
 
       <li>
-        <app-article-paragraph props='{ "title": "Subatomic particle" }'>
+        <article>
+          <h3>Subatomic particle</h3>
           <p>Smallest unit of the system, represents a design token.</p>
           <app-image
             variant="full"
@@ -121,7 +131,7 @@ const template = /* html */ `
             width="1398"
             height="1236"
           ></app-image>
-        </app-article-paragraph>
+        </article>
       </li>
     </ul>
   </section>

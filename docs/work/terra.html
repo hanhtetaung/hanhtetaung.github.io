@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-base="./">
+<html lang="en" data-base="../">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -27,37 +27,45 @@
     <section-header></section-header>
 
     <main>
-      <section-404-intro></section-404-intro>
+      <section-terra-intro></section-terra-intro>
+
+      <section-terra-overview></section-terra-overview>
+
+      <section-terra-need-one-interface></section-terra-need-one-interface>
+
+      <section-terra-building-block></section-terra-building-block>
+
+      <section-terra-conclusion></section-terra-conclusion>
     </main>
 
     <section-footer></section-footer>
   <script type="module">// lib/asset.js
 function v() {
-  let e = document.documentElement.dataset.base || "./";
-  return new URL(e, location.href);
+  let a = document.documentElement.dataset.base || "./";
+  return new URL(a, location.href);
 }
-function a(e) {
-  return new URL(e, v()).href;
+function e(a) {
+  return new URL(a, v()).href;
 }
-function d(e) {
-  let t = e.replace(/^\//, ""), c = location.protocol === "file:", l = v();
-  if (t === "")
-    return c ? new URL("index.html", l).href : l.href;
-  return c ? new URL(`${t}.html`, l).href : new URL(t, l).href;
+function d(a) {
+  let i = a.replace(/^\//, ""), c = location.protocol === "file:", s = v();
+  if (i === "")
+    return c ? new URL("index.html", s).href : s.href;
+  return c ? new URL(`${i}.html`, s).href : new URL(i, s).href;
 }
 
 // scripts/fonts.js
 var w = `
 @font-face {
     font-family: "Archivo";
-    src: url("${a("./assets/fonts/Archivo-Black.woff2")}") format("woff2");
+    src: url("${e("./assets/fonts/Archivo-Black.woff2")}") format("woff2");
     font-weight: 700;
     font-display: swap;
   }
 
   @font-face {
     font-family: "Archivo";
-    src: url("${a("./assets/fonts/Archivo-Regular.woff2")}") format("woff2");
+    src: url("${e("./assets/fonts/Archivo-Regular.woff2")}") format("woff2");
     font-weight: 400;
     font-display: swap;
   }
@@ -66,25 +74,25 @@ y.textContent = w;
 document.head.appendChild(y);
 
 // lib/define.js
-function x(e, t) {
-  if (e === void 0) {
-    if (t === Array)
+function k(a, i) {
+  if (a === void 0) {
+    if (i === Array)
       return [];
-    if (t === Object)
+    if (i === Object)
       return {};
-    if (t === Boolean)
+    if (i === Boolean)
       return !1;
-    if (t === Number)
+    if (i === Number)
       return 0;
     return;
   }
-  if (t === Boolean)
-    return Boolean(e);
-  if (t === Number)
-    return Number(e);
-  return e;
+  if (i === Boolean)
+    return Boolean(a);
+  if (i === Number)
+    return Number(a);
+  return a;
 }
-function r(e, { props: t = {}, attrs: c = [], styles: l = "", template: s, onRender: f = null }) {
+function t(a, { props: i = {}, attrs: c = [], styles: s = "", template: l, onRender: f = null }) {
   let g = ["props", ...c];
 
   class h extends HTMLElement {
@@ -106,46 +114,46 @@ function r(e, { props: t = {}, attrs: c = [], styles: l = "", template: s, onRen
         this._render();
     }
     _getProps() {
-      let i = {}, n = this.getAttribute("props");
+      let r = {}, n = this.getAttribute("props");
       if (n)
         try {
-          i = JSON.parse(n);
+          r = JSON.parse(n);
         } catch {
-          i = {};
+          r = {};
         }
       let m = {};
-      for (let p of Object.keys(t))
-        m[p] = x(i[p], t[p]);
+      for (let p of Object.keys(i))
+        m[p] = k(r[p], i[p]);
       return m;
     }
     _applyForwardedAttrs() {
       if (c.length === 0)
         return;
-      let i = this.shadowRoot.querySelector("[data-forward]");
-      if (!i)
+      let r = this.shadowRoot.querySelector("[data-forward]");
+      if (!r)
         return;
       for (let n of c)
         if (this.hasAttribute(n))
-          i.setAttribute(n, this.getAttribute(n));
+          r.setAttribute(n, this.getAttribute(n));
         else
-          i.removeAttribute(n);
+          r.removeAttribute(n);
     }
     _render() {
       if (typeof this._cleanup === "function")
         this._cleanup(), this._cleanup = null;
-      let i = this._getProps(), n = typeof s === "function" ? s(i) : s;
-      if (this.shadowRoot.innerHTML = `<style>${l}</style>${n}`, this._applyForwardedAttrs(), f) {
-        let m = f(this.shadowRoot, i, this);
+      let r = this._getProps(), n = typeof l === "function" ? l(r) : l;
+      if (this.shadowRoot.innerHTML = `<style>${s}</style>${n}`, this._applyForwardedAttrs(), f) {
+        let m = f(this.shadowRoot, r, this);
         if (typeof m === "function")
           this._cleanup = m;
       }
     }
   }
-  customElements.define(e, h);
+  customElements.define(a, h);
 }
 
 // scripts/components/app-link.js
-var k = `
+var x = `
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -206,13 +214,13 @@ var k = `
        content: "➶";
      }
   }
-`, $ = ["href", "target", "rel", "download"], z = `
+`, $ = ["href", "target", "rel", "download"], S = `
   <a data-forward><slot></slot></a>
 `;
-r("app-link", { attrs: $, styles: k, template: z });
+t("app-link", { attrs: $, styles: x, template: S });
 
 // scripts/components/app-logo.js
-var A = `
+var z = `
   :host {
     display: block;
   }
@@ -221,14 +229,14 @@ var A = `
     max-height: 7rem;
     width: auto;
   }
-`, _ = ["width", "height", "src", "alt"], B = () => "<img data-forward />";
-r("app-logo", { attrs: _, styles: A, template: B });
+`, T = ["width", "height", "src", "alt"], A = () => "<img data-forward />";
+t("app-logo", { attrs: T, styles: z, template: A });
 
 // scripts/breakpoints.js
 var o = "640px";
 
 // scripts/header.js
-var T = `
+var _ = `
   :host {
     display: block;
     background: var(--color-bg-primary);
@@ -275,10 +283,10 @@ var T = `
     height: 5rem;
     width: auto;
   }
-`, L = `
+`, C = `
   <header>
       <app-link variant="plain" href=${d("/")}>
-        <img src=${a("./assets/images/logo.avif")}
+        <img src=${e("./assets/images/logo.avif")}
           alt="Logo">
       </app-link>
 
@@ -301,10 +309,10 @@ var T = `
       </div>
   </header>
 `;
-r("section-header", { template: L, styles: T });
+t("section-header", { template: C, styles: _ });
 
 // scripts/components/footer-nav.js
-var S = [
+var B = [
   { href: "/", name: "Home" },
   { href: "/about", name: "About" },
   { href: "/credits", name: "Credits" },
@@ -323,7 +331,7 @@ var S = [
     href: "/writings/foundation-building-interfaces-at-scale",
     name: "Foundation"
   }
-], C = `
+], F = `
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -370,23 +378,23 @@ var S = [
     margin-right: 5rem;
     margin-bottom: 0.3rem;
   }
-`, E = () => `
+`, L = () => `
     <nav>
         <span>Sitemap</span>
 
         <ol>
-            ${S.map((e) => `
+            ${B.map((a) => `
                 <li>
-                    <app-link variant="sitemap" href=${d(e.href)} >${e.name}</app-link>
+                    <app-link variant="sitemap" href=${d(a.href)} >${a.name}</app-link>
                 </li>
             `).join("")}
         </ol>
     </nav>
 `;
-r("footer-nav", { styles: C, template: E });
+t("footer-nav", { styles: F, template: L });
 
 // scripts/components/footer-copyright.js
-var U = `
+var E = `
   :host {
    display: flex;
     justify-content: space-between;
@@ -469,9 +477,9 @@ var U = `
     text-decoration: none;
     color: var(--color-text);
   }
-`, F = () => `
+`, H = () => `
       <p>
-          <img src=${a("./assets/images/logo.avif")}
+          <img src=${e("./assets/images/logo.avif")}
           alt="Logo">
           <a href="https://hanhtetaung.dev/">
             Crafted by Han
@@ -488,7 +496,7 @@ var U = `
               <li>
                   <a href="https://wa.me/message/DVOPVSAGBDENB1" target="_blank">
                   <img
-                      src=${a("./assets/icons/whatsapp.svg")}
+                      src=${e("./assets/icons/whatsapp.svg")}
                       alt="Email Icon"
                   />
                   </a>    
@@ -500,7 +508,7 @@ var U = `
                   rel="noopener"
                   >
                   <img
-                      src=${a("./assets/icons/instagram.svg")}
+                      src=${e("./assets/icons/instagram.svg")}
                       alt="Linkedin Icon"
                   />
                   </a>
@@ -512,7 +520,7 @@ var U = `
                   rel="noopener"
                   >
                   <img
-                      src=${a("./assets/icons/linkedin.svg")}
+                      src=${e("./assets/icons/linkedin.svg")}
                       alt="Linkedin Icon"
                   />
                   </a>
@@ -524,7 +532,7 @@ var U = `
                   rel="noopener"
                   >
                   <img
-                      src=${a("./assets/icons/github.svg")}
+                      src=${e("./assets/icons/github.svg")}
                       alt="Github Icon"
                   />
                   </a>
@@ -532,10 +540,10 @@ var U = `
           </ul>
         </nav>
 `;
-r("footer-copyright", { styles: U, template: F });
+t("footer-copyright", { styles: E, template: H });
 
 // scripts/footer.js
-var H = `
+var G = `
   :host {
     display: block;
   }
@@ -612,123 +620,411 @@ var H = `
   <footer>
 
     <div id="highlight-wrap">
-      <img id="highlight-base" src=${a("./assets/images/footer/highlight.png")} alt="Parting phrase">
-      <img id="highlight-lens" src=${a("./assets/images/footer/highlight-with-color.png")} alt="Parting phrase with color" aria-hidden="true">
+      <img id="highlight-base" src=${e("./assets/images/footer/highlight.png")} alt="Parting phrase">
+      <img id="highlight-lens" src=${e("./assets/images/footer/highlight-with-color.png")} alt="Parting phrase with color" aria-hidden="true">
       <div id="lens-ring"></div>
     </div>
 
-    <img id="thank-you" src=${a("./assets/images/footer/thank-you.avif")} alt="Thank you phrase">
-    <img id="looking-forward" src=${a("./assets/images/footer/looking-forward.avif")} alt="Parting Phrase">
+    <img id="thank-you" src=${e("./assets/images/footer/thank-you.avif")} alt="Thank you phrase">
+    <img id="looking-forward" src=${e("./assets/images/footer/looking-forward.avif")} alt="Parting Phrase">
 
     <!-- <footer-nav></footer-nav> -->
 
     <footer-copyright></footer-copyright>
   </footer>
 `;
-function j(e) {
-  let t = e.querySelector("footer"), c = e.getElementById("highlight-base"), l = e.getElementById("highlight-lens"), s = e.getElementById("lens-ring"), f = e.getElementById("highlight-wrap");
-  if (!t || !c || !l || !s || !f)
+function U(a) {
+  let i = a.querySelector("footer"), c = a.getElementById("highlight-base"), s = a.getElementById("highlight-lens"), l = a.getElementById("lens-ring"), f = a.getElementById("highlight-wrap");
+  if (!i || !c || !s || !l || !f)
     return;
   function g(n) {
-    let m = c.getBoundingClientRect(), p = n.clientX - m.left, b = n.clientY - m.top, u = s.offsetWidth / 2;
-    s.style.left = `${p - u}px`, s.style.top = `${b - u}px`, l.style.clipPath = `circle(${u}px at ${p}px ${b}px)`;
+    let m = c.getBoundingClientRect(), p = n.clientX - m.left, b = n.clientY - m.top, u = l.offsetWidth / 2;
+    l.style.left = `${p - u}px`, l.style.top = `${b - u}px`, s.style.clipPath = `circle(${u}px at ${p}px ${b}px)`;
   }
   function h() {
-    s.setAttribute("data-visible", "true");
+    l.setAttribute("data-visible", "true");
   }
-  function i() {
-    s.removeAttribute("data-visible"), l.style.clipPath = "circle(0px at 50% 50%)";
+  function r() {
+    l.removeAttribute("data-visible"), s.style.clipPath = "circle(0px at 50% 50%)";
   }
-  return t.addEventListener("mousemove", g), t.addEventListener("mouseenter", h), t.addEventListener("mouseleave", i), () => {
-    t.removeEventListener("mousemove", g), t.removeEventListener("mouseenter", h), t.removeEventListener("mouseleave", i);
+  return i.addEventListener("mousemove", g), i.addEventListener("mouseenter", h), i.addEventListener("mouseleave", r), () => {
+    i.removeEventListener("mousemove", g), i.removeEventListener("mouseenter", h), i.removeEventListener("mouseleave", r);
   };
 }
-r("section-footer", { styles: H, template: P, onRender: j });
+t("section-footer", { styles: G, template: P, onRender: U });
 
-// scripts/components/app-icon.js
-var q = `
+// scripts/components/app-image.js
+var D = `
   :host {
-    --local-width: 3rem;
-    --local-height: auto;
+    --local-width: 5rem;
+    --local-heigth: auto;
 
-    display: block;
+    display: inline-block;
+    width: fit-content;
   }
 
   img {
-    width: var(--local-width);
-    height: var(--local-height);
+    max-width: var(--local-width);
+    height: var(--local-heigth);
+    width: 100%;
+  }
+
+  :host([variant="normal"]) {
+    --local-width: 12rem;
+    --local-heigth: auto;
   }
 
   :host([variant="medium"]) {
-     --local-width: auto;
-    --local-height: 5rem;
-  }
-
-  :host([variant="bigger"]) {
-    --local-width: auto;
-    --local-height: 6rem;
+    --local-width: 40rem;
   }
 
   :host([variant="large"]) {
-    --local-width: auto;
-    --local-height: 10rem;
+    --local-width: 50rem;
   }
 
-  :host([variant="creator"]) {
-    img {
-      min-width: 5rem;
-      max-width: 10rem;
-      height: 10rem;
-      width: auto;
-    }
+   :host([variant="full"]) {
+    --local-width: 100%;
   }
+`, N = ["width", "height", "src", "alt"], j = () => "<img data-forward />";
+t("app-image", { attrs: N, styles: D, template: j });
 
-
-`, N = ["src", "alt"], O = () => '<img data-forward width="200" height="200"/>';
-r("app-icon", { attrs: N, styles: q, template: O });
-
-// scripts/404/intro.js
-var G = `
+// scripts/work/terra/intro.js
+var O = `
   :host {
     display: block;
     margin-block: 10rem;
   }
 
-    section {
-        margin-inline: auto;
-        width: 80%;
-        display: flex;
-        gap: 3rem;
+  section {
+    width: 80%;
+    margin-inline: auto;
 
-        @media (max-width: ${o}) {
-          display: block;
-        }
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    gap: 3rem;
+
+    @media (max-width: ${o}) {
+      flex-direction: column;
     }
+  }
 
-     h1 {
+  h1 {
     margin: 0;
     font-size: var(--size-display);
-    font-family: var(--font-heading);
   }
 
   p {
     margin: 0;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
   }
-`, D = `
-  <section>
-      <hgroup>
-        <h1>404</h1>
-        <p>Sorry. Page not found.</p>
-      </hgroup>
 
-      <app-icon
-        variant="large"
-        src="./assets/icons/bird-with-flower.svg"
-        alt="Coming Soon"
-      ></app-icon>
+  article {
+    max-width: 40ch;
+  }
+
+    span {
+    color: var(--color-secondary);
+    font-size: var(--size-small);
+    font-weight: var(--font-bold);
+    text-transform: uppercase;
+  }
+`, q = `
+  <section>
+    <app-image
+      variant="large"
+      src=${e("./assets/images/case-study/terra/thumbnail.avif")}
+      alt="Final Product Screenshot"
+      width="1692"
+      height="886"
+    ></app-image>
+
+    <article>
+      <span>Case Study</span>
+      <h1>Terra</h1>
+
+      <p>
+        A tool to visualize the connections between everyday goods and
+        their fundamental sources based on my knowledge.
+      </p>
+
+      <span>Scope:</span>
+      <p>Idea → Product</p>
+
+      <app-link
+        variant="secondary"
+        href=${d("/terra")}
+        target="_blank"
+        >Visit ➶</app-link>
+    </article>
   </section>
 `;
-r("section-404-intro", { styles: G, template: D });
+t("section-terra-intro", { styles: O, template: q });
+
+// scripts/work/terra/overview.js
+var I = `
+  :host {
+    display: block;
+    margin-block: 10rem;
+  }
+
+  section {
+    width: 80%;
+    margin-inline: auto;
+  }
+
+  p {
+    margin-block: 2rem;
+  }
+`, X = `
+  <section>
+  
+
+      <h2>Overview</h2>
+
+      <article>
+        <p>
+          The Terra is built around two primary node types:
+          <b>Sources</b> and <b>Goods</b>.
+        </p>
+
+        <p>
+          Sources are the fundamental sources that all goods come from.
+          The current version includes <b> seven foundational sources</b>.
+        </p>
+
+        <p>Goods are daily products.</p>
+
+        <ul>
+          <li>Can contain sources or other goods.
+          </li>
+          <li>Can be used to make other goods.</li>
+        </ul>
+      </article>
+  </section>
+`;
+t("section-terra-overview", { styles: I, template: X });
+
+// scripts/work/terra/building-block.js
+var M = `
+  :host {
+    display: block;
+    margin-block: 10rem;
+  }
+
+  section {
+    width: 80%;
+    margin-inline: auto;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  ul {
+    margin: 0;
+    margin-bottom: 2rem;
+  }
+
+  h3 {
+    font-size: var(--size-heading);
+    margin: 0;
+    margin-bottom: 1rem;
+  }
+
+  article {
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  code {
+    display: block;
+    margin-bottom: 2rem;
+  }
+`, V = `
+  <section>
+      <h2>Design Foundation</h2>
+          <app-image
+            variant="large"
+            src=${e("./assets/images/case-study/terra/foundation.avif")}
+            alt="Wireframe Screenshot"
+          ></app-image>
+
+
+          <article>
+            <h3>Data Structure</h3>
+
+            <p><b>Source</b></p>
+            <code> { "id": "name", "type": "source" } </code>
+
+            <p>
+              <b>Good :</b> The components field references either
+              source nodes or other goods
+            </p>
+
+            <code>
+              { "id": "name", "type": "good", "components": ["id",
+              "id", "id"] }
+            </code>
+          </article>
+
+          <article>
+            <h3>Tech Stacks</h3>
+            <ul>
+              <li>Figma</li>
+              <li>HTML5</li>
+              <li>CSS3</li>
+              <li>SCSS</li>
+              <li>JavaScript</li>
+              <li>Sonnet 5, Quwen3.7-Plus</li>
+            </ul>
+
+            <p>
+              <b>Hosted on:</b>
+              <app-link
+                variant="underline"
+                href="https://github.com/hanhtetaung/hanhtetaung.github.io/tree/main/terra"
+                target="_blank"
+                >Github</app-link>
+            </p>
+          </article>
+  </section>
+`;
+t("section-terra-building-block", { styles: M, template: V });
+
+// scripts/work/terra/need-one-interface.js
+var W = `
+  :host {
+    display: block;
+  }
+
+  section {
+    width: 80%;
+    margin-inline: auto;
+  }
+
+  p {
+    margin: 0;
+    margin-bottom: 1rem;
+  }
+
+  ul {
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+    border-top: 1px dashed var(--color-text);
+    padding-top: 5rem;
+  }
+`, J = `
+  <section>
+
+      <h2>Need One Interface</h2>
+      <p>
+        The interface has two main areas: a <b>Center Panel</b> to
+        visualize the Terra and a <b> Right Panel</b> to
+        display information about the selected node.
+      </p>
+
+      <ul>
+        <li>
+          <article props='{ "title": "Default State"}'>
+            <p>
+              The center panel displays the entire Terra. Sources
+              are shown as blue nodes, while Goods are shown as green nodes.
+              Every node is clickable, and the right panel remains empty
+              until a node is selected.
+            </p>
+
+            <app-image
+              variant="medium"
+              src=${e("./assets/images/case-study/terra/default-state.avif")}
+              alt="Inspiration Collection"
+              width="1398"
+              height="1236"
+            ></app-image>
+          </article>
+        </li>
+
+        <li>
+            <article props='{ "title": "Selecting a Source Node"}'>
+         <p>
+              When a source is selected, the center panel highlights its
+              connected goods. The right panel displays the source name, and
+              a list of goods made from that source.
+            </p>
+
+            <app-image
+            variant="medium"
+              src=${e("./assets/images/case-study/terra/selecting-a-source-node.avif")}
+              alt="Wireframe Screenshot"
+              width="1398"
+              height="1366"
+            ></app-image>
+
+      </article>
+        </li>
+        <li>
+           <article props='{ "title": "Selecting a Good Node"}'>
+         <p>
+              A good can be made directly from sources or from other goods.
+              When a good is selected, the right panel displays its sources,
+              ingredients (if any), and the goods that use it (if any).
+            </p>
+
+            <app-image
+              variant="medium"
+              src=${e("./assets/images/case-study/terra/selecting-a-good-node-1.avif")}
+              alt="Design Foundation Screenshot"
+              width="1474"
+              height="864"
+            ></app-image>
+
+            <app-image
+              variant="medium"
+              src=${e("./assets/images/case-study/terra/selecting-a-good-node-2.avif")}
+              alt="Design Foundation Screenshot"
+              width="1474"
+              height="864"
+            ></app-image>
+      </article>
+        </li>
+      </ul>
+
+    
+     
+
+     
+  </section>
+`;
+t("section-terra-need-one-interface", { styles: W, template: J });
+
+// scripts/work/terra/conclusion.js
+var Q = `
+  :host {
+    display: block;
+  }
+
+  section {
+    width: 80%;
+    margin-inline: auto;
+  }
+`, K = `
+  <section>
+
+      <h2>Continue to Expand Terra</h2>
+
+      <article>
+          <p>
+            This project is designed to grow over time by adding more
+            sources, goods, and their relationships. As the Terra
+            expands, it will provide a more complete view of how everyday
+            products are connected.
+          </p>
+      </article>
+  </section>
+`;
+t("section-terra-conclusion", { styles: Q, template: K });
 </script></body>
 </html>

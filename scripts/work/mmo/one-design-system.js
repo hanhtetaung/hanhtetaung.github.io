@@ -1,23 +1,28 @@
-import { navHref } from "../../asset.js";
-import { define } from "../../define.js";
+import { navHref } from "../../../lib/asset.js";
+import { define } from "../../../lib/define.js";
 
 const styles = /* css */ `
   :host {
     display: block;
+    margin-block: 10rem;
   }
 
   section {
     width: 80%;
     margin-inline: auto;
   }
+
+  h2 {
+    margin: 0;
+    margin-bottom: 2rem;
+    font-size: var(--size-title);
+  }
 `;
 
 const template = /* html */ `
   <section>
-    <section-title
-        variant="text"
-        props='{"name": "One Design System, 100+ Workflows"}'
-      ></section-title>
+
+      <h2>One Design System, 100+ Workflows</h2>
 
       <article>
           <p>
@@ -28,12 +33,6 @@ const template = /* html */ `
             instead of being redesigned for each workflow.
           </p>
 
-          <p>
-            The foundations behind my design approach for scalable
-            interfaces.
-          </p>
-
-          <app-link variant="underline" href=${navHref("/foundation-building-interfaces-at-scale")}>Read the article</app-link>
       </article>
   </section>
 `;

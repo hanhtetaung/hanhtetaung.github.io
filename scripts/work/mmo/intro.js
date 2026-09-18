@@ -1,11 +1,12 @@
 import "../../components/app-image.js";
-import { TABLET } from "../../breakpoints.js";
+import { DESKTOP, TABLET } from "../../breakpoints.js";
 import { define } from "../../../lib/define.js";
 import { asset } from "../../../lib/asset.js";
 
 const styles = /* css */ `
   :host {
     display: block;
+    padding-block: 10rem;
   }
 
   section {
@@ -24,28 +25,49 @@ const styles = /* css */ `
 
 
     span {
-    color: var(--color-secondary);
-    font-size: var(--size-small);
-    font-weight: var(--font-bold);
-    text-transform: uppercase;
-  }
+      font-size: var(--size-small);
+      text-transform: uppercase;
+      display: inline-block;
+      margin-bottom: 0.5rem;
+    }
 
   h1 {
     margin: 0;
     font-size: var(--size-display);
-    font-weight: var(--font-regular);
-    font-family: var(--font-heading);
+    font-weight: var(--font-bold);
+    margin-bottom: 1rem;
   }
 
   p {
     margin: 0;
-    margin-bottom: 2rem;
+  }
+
+  hgroup {
+    margin-bottom: 3rem;
   }
 
   ul {
     margin: 0;
     padding: 0;
+    list-style-type: disc;
     padding-inline: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  ol {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+
+    @media (min-width: ${DESKTOP}) {
+      flex-direction: row;
+      justify-content: space-between;
+    }
   }
 `;
 
@@ -60,25 +82,33 @@ const template = /* html */ `
     ></app-image>
     
     <article>
-      <span>Case Study</span>
-      <h1>MMO</h1>
+      <hgroup>
+        <p><span>Case Study</span></p> 
+        <h1>MMO</h1>
+        <p>
+          An internal portal that uses to run daily operations in
+          hospital.
+        </p>
+      </hgroup>
 
-      <p>
-        An internal portal that uses to run daily operations in
-        hospital.
-      </p>
+      
+      <ol>
+        <li>
+          <span>Role:</span>
+          <p>UX Designer</p>
+        </li>
 
-        <span>Role:</span>
-        <p>UX Designer</p>
-
-        <span>Scope: </span>
-        <ul>
-          <li>Gather requirements</li>
-          <li>Simplify complex workflows</li>
-          <li>Build Prototype</li>
-          <li>Design System</li>
-          <li>Developer Handoff</li>
-        </ul>
+        <li>
+          <span>Scope:</span>
+          <ul>
+            <li>Gather requirements</li>
+            <li>Build Prototype</li>
+            <li>Simplify complex workflows</li>
+            <li>Design System</li>
+            <li>Developer Handoff</li>
+          </ul>
+        </li>
+      </ol>
       </article>
   </section>
 `;

@@ -1,10 +1,10 @@
-import { define } from "../../define.js";
-
-import "../../components/section-title.js";
+import { define } from "../../../lib/define.js";
 
 const styles = /* css */ `
   :host {
     display: block;
+        margin-block: 10rem;
+
   }
 
   section {
@@ -15,7 +15,8 @@ const styles = /* css */ `
 
 const template = /* html */ `
   <section>
-    <section-title variant="text" props='{"name": "Challenge"}'></section-title>
+
+    <h2>Challenge</h2>
 
     <p>
       One of the main challenges of the project was creating a visual

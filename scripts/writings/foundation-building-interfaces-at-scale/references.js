@@ -1,7 +1,6 @@
-import { define } from "../../define.js";
+import { define } from "../../../lib/define.js";
 
 import "../../components/app-link.js";
-import "../../components/section-title.js";
 
 const styles = /* css */ `
   :host {
@@ -24,7 +23,8 @@ const styles = /* css */ `
 
 const template = /* html */ `
   <section>
-    <section-title variant="text" props='{"name": "References"}'></section-title>
+
+    <h2>Reference</h2>
 
     <ul>
       <li>

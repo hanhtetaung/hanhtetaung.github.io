@@ -1,9 +1,9 @@
-import { define } from "../../define.js";
-import "../../components/section-title.js";
+import { define } from "../../../lib/define.js";
 
 const styles = /* css */ `
   :host {
     display: block;
+    margin-block: 10rem;
   }
 
   section {
@@ -14,28 +14,33 @@ const styles = /* css */ `
   ul {
     margin: 0;
     padding: 0;
-    padding-inline: 2rem;
+    padding-inline: 1rem;
+    list-style-type: none;
 
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 1.2rem;
+  }
+
+  h2 {
+    margin: 0;
+    margin-bottom: 2rem;
+    font-size: var(--size-title);
+  }
+
+  p {
+    margin: 0;
   }
 
   span {
-    color: var(--color-secondary);
     font-size: var(--size-small);
-    font-weight: var(--font-bold);
     text-transform: uppercase;
   }
 `;
 
 const template = /* html */ `
   <section>
-
-  <section-title
-        variant="text"
-        props='{"name": "Voices from the field"}'
-      ></section-title>
+      <h2>Voices from the Field</h2>
 
         <ul>
           <li>

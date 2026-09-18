@@ -1,24 +1,30 @@
-import { define } from "../../define.js";
-
-import "../../components/section-title.js";
+import { define } from "../../../lib/define.js";
 
 const styles = /* css */ `
   :host {
     display: block;
+    margin-block: 10rem;
   }
 
   section {
     width: 80%;
     margin-inline: auto;
   }
+
+  h2 {
+    margin: 0;
+    margin-bottom: 1.5rem;
+    font-size: var(--size-title);
+  }
+
+  p {
+    margin: 0;
+  }
 `;
 
 const template = /* html */ `
   <section>
-    <section-title
-        variant="text"
-        props='{"name": "About the Business"}'
-      ></section-title>
+      <h2>About the Business</h2>
 
       <article>
           <p>

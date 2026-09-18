@@ -1,14 +1,15 @@
-import { define } from "../../define.js";
+import { define } from "../../../lib/define.js";
+import { asset } from "../../../lib/asset.js";
 
-import "../../components/section-title.js";
 import "../../components/app-image.js";
 import "../../components/app-link.js";
 import { TABLET } from "../../breakpoints.js";
-import { asset } from "../../asset.js";
 
 const styles = /* css */ `
   :host {
     display: block;
+        margin-bottom: 10rem;
+
   }
 
   section {
@@ -30,7 +31,8 @@ const styles = /* css */ `
 
 const template = /* html */ `
   <section>
-    <section-title variant="text" props='{"name": "Result"}'></section-title>
+
+    <h2>Result</h2>
 
     <p>
       The project resulted in a modern, responsive, and professional SKS

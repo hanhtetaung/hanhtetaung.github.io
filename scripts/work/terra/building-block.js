@@ -1,12 +1,13 @@
-import { define } from "../../define.js";
+import { define } from "../../../lib/define.js";
 
 import "../../components/app-image.js";
 import "../../components/app-link.js";
-import { asset } from "../../asset.js";
+import { asset } from "../../../lib/asset.js";
 
 const styles = /* css */ `
   :host {
     display: block;
+    margin-block: 10rem;
   }
 
   section {
@@ -30,6 +31,7 @@ const styles = /* css */ `
   }
 
   article {
+    margin-top: 2rem;
     margin-bottom: 3rem;
   }
 
@@ -41,11 +43,7 @@ const styles = /* css */ `
 
 const template = /* html */ `
   <section>
-    <section-title
-        variant="text"
-        props='{"name": "Design Foundation"}'
-      ></section-title>
-
+      <h2>Design Foundation</h2>
           <app-image
             variant="large"
             src=${asset("./assets/images/case-study/terra/foundation.avif")}

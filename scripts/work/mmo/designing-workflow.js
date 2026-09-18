@@ -1,6 +1,4 @@
-import { define } from "../../define.js";
-
-import "../../components/section-title.js";
+import { define } from "../../../lib/define.js";
 
 const styles = /* css */ `
   :host {
@@ -16,21 +14,27 @@ const styles = /* css */ `
     margin: 0;
   }
 
+   h2 {
+    margin: 0;
+    margin-bottom: 2rem;
+    font-size: var(--size-title);
+  }
+
   h3 {
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    font-weight: var(--font-regular);
   }
 
   span {
-    color: var(--color-secondary);
     font-size: var(--size-small);
-    font-weight: var(--font-bold);
     text-transform: uppercase;
   }
 
    ul {
     margin: 0;
     padding: 0;
-    padding-inline: 2rem;
+    list-style-type: none;
+    padding-inline: 1rem;
      display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -43,15 +47,10 @@ const styles = /* css */ `
 
 const template = /* html */ `
   <section>
-    <section-title
-        variant="text"
-        props='{"name": "Designing Workflow"}'
-      ></section-title>
-
-
+    <h2>Designing Workflow</h2>
 
       <article>
-          <h3>Select similar key insights</h3>
+          <h3>[ Select similar key insights ]</h3>
           <ul>
             <li>
               “We sell medicines and medical supplies to patients every
@@ -79,7 +78,7 @@ const template = /* html */ `
       </article>
 
       <article>
-          <h3>Sell Medical items</h3>
+          <h3>[ Sell Medical items ]</h3>
 
           <p>
             Start → Scan item barcode → Review total → Receive payment →
@@ -89,7 +88,7 @@ const template = /* html */ `
 
       <article>
         <div>
-          <h3>Edge case</h3>
+          <h3>[ Edge case ]</h3>
         </div>
 
         <ul>

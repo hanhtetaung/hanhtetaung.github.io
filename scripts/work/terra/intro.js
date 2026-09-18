@@ -1,13 +1,14 @@
-import { define } from "../../define.js";
+import { define } from "../../../lib/define.js";
 
 import "../../components/app-image.js";
 import "../../components/app-link.js";
 import { TABLET } from "../../breakpoints.js";
-import { asset, navHref } from "../../asset.js";
+import { asset, navHref } from "../../../lib/asset.js";
 
 const styles = /* css */ `
   :host {
     display: block;
+    margin-block: 10rem;
   }
 
   section {
@@ -27,8 +28,6 @@ const styles = /* css */ `
   h1 {
     margin: 0;
     font-size: var(--size-display);
-    font-weight: var(--font-regular);
-    font-family: var(--font-heading);
   }
 
   p {

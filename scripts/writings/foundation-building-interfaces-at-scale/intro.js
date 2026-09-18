@@ -1,10 +1,11 @@
-import { define } from "../../define.js";
+import { define } from "../../../lib/define.js";
 
 import "../../components/app-link.js";
 
 const styles = /* css */ `
   :host {
     display: block;
+    margin-block: 10rem;
   }
 
   section {
@@ -15,8 +16,6 @@ const styles = /* css */ `
   h1 {
     margin: 0;
     font-size: var(--size-title);
-    font-weight: var(--font-regular);
-    font-family: var(--font-heading);
   }
 
   p {
@@ -31,18 +30,32 @@ const styles = /* css */ `
     flex-direction: column;
     gap: 0.5rem;
   }
+
+  span {
+    display: inline-block;
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+    font-weight: var(--font-bold);
+  }
+
+  hgroup span {
+    font-weight: var(--font-regular);
+  }
 `;
 
 const template = /* html */ `
   <section>
-    <h1>Foundation for Building Interfaces at Scale</h1>
+    <hgroup>
+      <span>[ Writing ]</span>
+      <h1>Foundation for Building Interfaces at Scale</h1>
+    </hgroup>
 
     <p>
       Build systems, not interfaces. A design system is the single source of
       truth for consistent, scalable interfaces.
     </p>
 
-    <p><b>On this page</b></p>
+    <span>On this page</span>
 
     <ul>
       <li>

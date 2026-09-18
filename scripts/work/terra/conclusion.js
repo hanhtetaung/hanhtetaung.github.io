@@ -1,6 +1,4 @@
-import { define } from "../../define.js";
-
-import "../../components/section-title.js";
+import { define } from "../../../lib/define.js";
 
 const styles = /* css */ `
   :host {
@@ -15,10 +13,8 @@ const styles = /* css */ `
 
 const template = /* html */ `
   <section>
-    <section-title
-        variant="text"
-        props='{"name": "Continue to Expand Terra"}'
-      ></section-title>
+
+      <h2>Continue to Expand Terra</h2>
 
       <article>
           <p>

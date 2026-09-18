@@ -10,14 +10,13 @@
   "liveServer.settings.mount": [
     ["/about", "./about.html"],
     ["/404", "./404.html"],
-    // [
-    //   "/writings/foundation-building-interfaces-at-scale",
-    //   "./writings/foundation-building-interfaces-at-scale.html"
-    // ],
-    // ["/work/mmo", "./work/mmo.html"],
-    // ["/work/portfolio", "./work/portfolio.html"],
-    // ["/work/sks-solar", "./work/sks-solar.html"],
-    // ["/work/terra", "./work/terra.html"],
+    [
+      "/writings/foundation-building-interfaces-at-scale",
+      "./writings/foundation-building-interfaces-at-scale.html"
+    ],
+    ["/work/mmo", "./work/mmo.html"],
+    ["/work/sks-solar", "./work/sks-solar.html"],
+    ["/work/terra", "./work/terra.html"],
 
     ["/maple/about", "./maple/about.html"]
   ]

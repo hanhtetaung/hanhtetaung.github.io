@@ -1,9 +1,7 @@
-import { define } from "../../define.js";
+import { define } from "../../../lib/define.js";
+import { asset } from "../../../lib/asset.js";
 
-import "../../components/section-title.js";
 import "../../components/app-image.js";
-import "../../components/app-article-paragraph.js";
-import { asset } from "../../asset.js";
 
 const styles = /* css */ `
   :host {
@@ -33,10 +31,8 @@ const styles = /* css */ `
 
 const template = /* html */ `
   <section>
-     <section-title
-        variant="text"
-        props='{"name": "Need One Interface"}'
-      ></section-title>
+
+      <h2>Need One Interface</h2>
       <p>
         The interface has two main areas: a <b>Center Panel</b> to
         visualize the Terra and a <b> Right Panel</b> to
@@ -45,7 +41,7 @@ const template = /* html */ `
 
       <ul>
         <li>
-          <app-article-paragraph props='{ "title": "Default State"}'>
+          <article props='{ "title": "Default State"}'>
             <p>
               The center panel displays the entire Terra. Sources
               are shown as blue nodes, while Goods are shown as green nodes.
@@ -60,11 +56,11 @@ const template = /* html */ `
               width="1398"
               height="1236"
             ></app-image>
-          </app-article-paragraph>
+          </article>
         </li>
 
         <li>
-            <app-article-paragraph props='{ "title": "Selecting a Source Node"}'>
+            <article props='{ "title": "Selecting a Source Node"}'>
          <p>
               When a source is selected, the center panel highlights its
               connected goods. The right panel displays the source name, and
@@ -79,10 +75,10 @@ const template = /* html */ `
               height="1366"
             ></app-image>
 
-      </app-article-paragraph>
+      </article>
         </li>
         <li>
-           <app-article-paragraph props='{ "title": "Selecting a Good Node"}'>
+           <article props='{ "title": "Selecting a Good Node"}'>
          <p>
               A good can be made directly from sources or from other goods.
               When a good is selected, the right panel displays its sources,
@@ -104,7 +100,7 @@ const template = /* html */ `
               width="1474"
               height="864"
             ></app-image>
-      </app-article-paragraph>
+      </article>
         </li>
       </ul>
 
