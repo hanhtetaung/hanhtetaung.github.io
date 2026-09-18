@@ -41,64 +41,64 @@
     </main>
 
     <section-footer></section-footer>
-  <script type="module">// web-components/asset.js
-function b() {
+  <script type="module">// lib/asset.js
+function v() {
   let e = document.documentElement.dataset.base || "./";
   return new URL(e, location.href);
 }
-function i(e) {
-  return new URL(e, b()).href;
+function o(e) {
+  return new URL(e, v()).href;
 }
-function m(e) {
-  let a = e.replace(/^\//, ""), r = location.protocol === "file:", o = b();
-  if (a === "")
-    return r ? new URL("index.html", o).href : o.href;
-  return r ? new URL(`${a}.html`, o).href : new URL(a, o).href;
+function p(e) {
+  let t = e.replace(/^\//, ""), i = location.protocol === "file:", r = v();
+  if (t === "")
+    return i ? new URL("index.html", r).href : r.href;
+  return i ? new URL(`${t}.html`, r).href : new URL(t, r).href;
 }
 
-// web-components/fonts.js
+// scripts/fonts.js
 var k = `
 @font-face {
     font-family: "Archivo";
-    src: url("${i("./assets/fonts/Archivo-Black.woff2")}") format("woff2");
+    src: url("${o("./assets/fonts/Archivo-Black.woff2")}") format("woff2");
     font-weight: 700;
     font-display: swap;
   }
 
   @font-face {
     font-family: "Archivo";
-    src: url("${i("./assets/fonts/Archivo-Regular.woff2")}") format("woff2");
+    src: url("${o("./assets/fonts/Archivo-Regular.woff2")}") format("woff2");
     font-weight: 400;
     font-display: swap;
   }
-`, w = document.createElement("style");
-w.textContent = k;
-document.head.appendChild(w);
+`, y = document.createElement("style");
+y.textContent = k;
+document.head.appendChild(y);
 
-// web-components/define.js
-function x(e, a) {
+// lib/define.js
+function x(e, t) {
   if (e === void 0) {
-    if (a === Array)
+    if (t === Array)
       return [];
-    if (a === Object)
+    if (t === Object)
       return {};
-    if (a === Boolean)
+    if (t === Boolean)
       return !1;
-    if (a === Number)
+    if (t === Number)
       return 0;
     return;
   }
-  if (a === Boolean)
+  if (t === Boolean)
     return Boolean(e);
-  if (a === Number)
+  if (t === Number)
     return Number(e);
   return e;
 }
-function t(e, { props: a = {}, attrs: r = [], styles: o = "", template: l, onRender: h = null }) {
-  let f = ["props", ...r];
+function a(e, { props: t = {}, attrs: i = [], styles: r = "", template: l, onRender: h = null }) {
+  let g = ["props", ...i];
 
-  class p extends HTMLElement {
-    static observedAttributes = f;
+  class d extends HTMLElement {
+    static observedAttributes = g;
     constructor() {
       super();
       this.attachShadow({ mode: "open" }), this._cleanup = null;
@@ -123,18 +123,18 @@ function t(e, { props: a = {}, attrs: r = [], styles: o = "", template: l, onRen
         } catch {
           s = {};
         }
-      let d = {};
-      for (let g of Object.keys(a))
-        d[g] = x(s[g], a[g]);
-      return d;
+      let m = {};
+      for (let f of Object.keys(t))
+        m[f] = x(s[f], t[f]);
+      return m;
     }
     _applyForwardedAttrs() {
-      if (r.length === 0)
+      if (i.length === 0)
         return;
       let s = this.shadowRoot.querySelector("[data-forward]");
       if (!s)
         return;
-      for (let c of r)
+      for (let c of i)
         if (this.hasAttribute(c))
           s.setAttribute(c, this.getAttribute(c));
         else
@@ -144,17 +144,17 @@ function t(e, { props: a = {}, attrs: r = [], styles: o = "", template: l, onRen
       if (typeof this._cleanup === "function")
         this._cleanup(), this._cleanup = null;
       let s = this._getProps(), c = typeof l === "function" ? l(s) : l;
-      if (this.shadowRoot.innerHTML = `<style>${o}</style>${c}`, this._applyForwardedAttrs(), h) {
-        let d = h(this.shadowRoot, s, this);
-        if (typeof d === "function")
-          this._cleanup = d;
+      if (this.shadowRoot.innerHTML = `<style>${r}</style>${c}`, this._applyForwardedAttrs(), h) {
+        let m = h(this.shadowRoot, s, this);
+        if (typeof m === "function")
+          this._cleanup = m;
       }
     }
   }
-  customElements.define(e, p);
+  customElements.define(e, d);
 }
 
-// web-components/components/app-link.js
+// scripts/components/app-link.js
 var $ = `
   :host {
     --local-bg: transparent;
@@ -219,9 +219,9 @@ var $ = `
 `, z = ["href", "target", "rel", "download"], A = `
   <a data-forward><slot></slot></a>
 `;
-t("app-link", { attrs: z, styles: $, template: A });
+a("app-link", { attrs: z, styles: $, template: A });
 
-// web-components/components/app-logo.js
+// scripts/components/app-logo.js
 var _ = `
   :host {
     display: block;
@@ -231,14 +231,14 @@ var _ = `
     max-height: 7rem;
     width: auto;
   }
-`, B = ["width", "height", "src", "alt"], S = () => "<img data-forward />";
-t("app-logo", { attrs: B, styles: _, template: S });
+`, B = ["width", "height", "src", "alt"], T = () => "<img data-forward />";
+a("app-logo", { attrs: B, styles: _, template: T });
 
-// web-components/breakpoints.js
-var n = "640px", y = "1024px";
+// scripts/breakpoints.js
+var n = "640px", w = "1024px";
 
-// web-components/sections/header.js
-var T = `
+// scripts/header.js
+var L = `
   :host {
     display: block;
     background: var(--color-bg-primary);
@@ -285,10 +285,10 @@ var T = `
     height: 5rem;
     width: auto;
   }
-`, L = `
+`, S = `
   <header>
-      <app-link variant="plain" href=${m("/")}>
-        <img src=${i("./assets/images/logo.avif")}
+      <app-link variant="plain" href=${p("/")}>
+        <img src=${o("./assets/images/logo.avif")}
           alt="Logo">
       </app-link>
 
@@ -296,24 +296,24 @@ var T = `
         <nav>
           <ul>
             <li>
-              <app-link variant="plain" href=${m("/")}>Home</app-link>
+              <app-link variant="plain" href=${p("/")}>Home</app-link>
             </li>
 
             <li>
-              <app-link variant="plain" href=${m("/about")}>About</app-link>
+              <app-link variant="plain" href=${p("/about")}>About</app-link>
             </li>
           </ul>
         </nav>
 
-        <app-link variant="secondary" href=${m("/#cta")}>
+        <app-link variant="secondary" href=${p("/#cta")}>
           Let's Craft &#8629;
         </app-link>
       </div>
   </header>
 `;
-t("section-header", { template: L, styles: T });
+a("section-header", { template: S, styles: L });
 
-// web-components/components/footer-nav.js
+// scripts/components/footer-nav.js
 var F = [
   { href: "/", name: "Home" },
   { href: "/about", name: "About" },
@@ -387,15 +387,15 @@ var F = [
         <ol>
             ${F.map((e) => `
                 <li>
-                    <app-link variant="sitemap" href=${m(e.href)} >${e.name}</app-link>
+                    <app-link variant="sitemap" href=${p(e.href)} >${e.name}</app-link>
                 </li>
             `).join("")}
         </ol>
     </nav>
 `;
-t("footer-nav", { styles: D, template: E });
+a("footer-nav", { styles: D, template: E });
 
-// web-components/components/footer-copyright.js
+// scripts/components/footer-copyright.js
 var H = `
   :host {
    display: flex;
@@ -479,9 +479,9 @@ var H = `
     text-decoration: none;
     color: var(--color-text);
   }
-`, I = () => `
+`, C = () => `
       <p>
-          <img src=${i("./assets/images/logo.avif")}
+          <img src=${o("./assets/images/logo.avif")}
           alt="Logo">
           <a href="https://hanhtetaung.dev/">
             Crafted by Han
@@ -498,7 +498,7 @@ var H = `
               <li>
                   <a href="https://wa.me/message/DVOPVSAGBDENB1" target="_blank">
                   <img
-                      src=${i("./assets/icons/whatsapp.svg")}
+                      src=${o("./assets/icons/whatsapp.svg")}
                       alt="Email Icon"
                   />
                   </a>    
@@ -510,7 +510,7 @@ var H = `
                   rel="noopener"
                   >
                   <img
-                      src=${i("./assets/icons/instagram.svg")}
+                      src=${o("./assets/icons/instagram.svg")}
                       alt="Linkedin Icon"
                   />
                   </a>
@@ -522,7 +522,7 @@ var H = `
                   rel="noopener"
                   >
                   <img
-                      src=${i("./assets/icons/linkedin.svg")}
+                      src=${o("./assets/icons/linkedin.svg")}
                       alt="Linkedin Icon"
                   />
                   </a>
@@ -534,7 +534,7 @@ var H = `
                   rel="noopener"
                   >
                   <img
-                      src=${i("./assets/icons/github.svg")}
+                      src=${o("./assets/icons/github.svg")}
                       alt="Github Icon"
                   />
                   </a>
@@ -542,10 +542,10 @@ var H = `
           </ul>
         </nav>
 `;
-t("footer-copyright", { styles: H, template: I });
+a("footer-copyright", { styles: H, template: C });
 
-// web-components/sections/footer.js
-var C = `
+// scripts/footer.js
+var I = `
   :host {
     display: block;
   }
@@ -622,13 +622,13 @@ var C = `
   <footer>
 
     <div id="highlight-wrap">
-      <img id="highlight-base" src=${i("./assets/images/footer/highlight.png")} alt="Parting phrase">
-      <img id="highlight-lens" src=${i("./assets/images/footer/highlight-with-color.png")} alt="Parting phrase with color" aria-hidden="true">
+      <img id="highlight-base" src=${o("./assets/images/footer/highlight.png")} alt="Parting phrase">
+      <img id="highlight-lens" src=${o("./assets/images/footer/highlight-with-color.png")} alt="Parting phrase with color" aria-hidden="true">
       <div id="lens-ring"></div>
     </div>
 
-    <img id="thank-you" src=${i("./assets/images/footer/thank-you.avif")} alt="Thank you phrase">
-    <img id="looking-forward" src=${i("./assets/images/footer/looking-forward.avif")} alt="Parting Phrase">
+    <img id="thank-you" src=${o("./assets/images/footer/thank-you.avif")} alt="Thank you phrase">
+    <img id="looking-forward" src=${o("./assets/images/footer/looking-forward.avif")} alt="Parting Phrase">
 
     <!-- <footer-nav></footer-nav> -->
 
@@ -636,62 +636,27 @@ var C = `
   </footer>
 `;
 function U(e) {
-  let a = e.querySelector("footer"), r = e.getElementById("highlight-base"), o = e.getElementById("highlight-lens"), l = e.getElementById("lens-ring"), h = e.getElementById("highlight-wrap");
-  if (!a || !r || !o || !l || !h)
+  let t = e.querySelector("footer"), i = e.getElementById("highlight-base"), r = e.getElementById("highlight-lens"), l = e.getElementById("lens-ring"), h = e.getElementById("highlight-wrap");
+  if (!t || !i || !r || !l || !h)
     return;
-  function f(c) {
-    let d = r.getBoundingClientRect(), g = c.clientX - d.left, v = c.clientY - d.top, u = l.offsetWidth / 2;
-    l.style.left = `${g - u}px`, l.style.top = `${v - u}px`, o.style.clipPath = `circle(${u}px at ${g}px ${v}px)`;
+  function g(c) {
+    let m = i.getBoundingClientRect(), f = c.clientX - m.left, b = c.clientY - m.top, u = l.offsetWidth / 2;
+    l.style.left = `${f - u}px`, l.style.top = `${b - u}px`, r.style.clipPath = `circle(${u}px at ${f}px ${b}px)`;
   }
-  function p() {
+  function d() {
     l.setAttribute("data-visible", "true");
   }
   function s() {
-    l.removeAttribute("data-visible"), o.style.clipPath = "circle(0px at 50% 50%)";
+    l.removeAttribute("data-visible"), r.style.clipPath = "circle(0px at 50% 50%)";
   }
-  return a.addEventListener("mousemove", f), a.addEventListener("mouseenter", p), a.addEventListener("mouseleave", s), () => {
-    a.removeEventListener("mousemove", f), a.removeEventListener("mouseenter", p), a.removeEventListener("mouseleave", s);
+  return t.addEventListener("mousemove", g), t.addEventListener("mouseenter", d), t.addEventListener("mouseleave", s), () => {
+    t.removeEventListener("mousemove", g), t.removeEventListener("mouseenter", d), t.removeEventListener("mouseleave", s);
   };
 }
-t("section-footer", { styles: C, template: M, onRender: U });
+a("section-footer", { styles: I, template: M, onRender: U });
 
-// web-components/components/app-image.js
+// scripts/about/about-intro.js
 var O = `
-  :host {
-    --local-width: 5rem;
-    --local-heigth: auto;
-
-    display: inline-block;
-    width: fit-content;
-  }
-
-  img {
-    max-width: var(--local-width);
-    height: var(--local-heigth);
-    width: 100%;
-  }
-
-  :host([variant="normal"]) {
-    --local-width: 12rem;
-    --local-heigth: auto;
-  }
-
-  :host([variant="medium"]) {
-    --local-width: 40rem;
-  }
-
-  :host([variant="large"]) {
-    --local-width: 50rem;
-  }
-
-   :host([variant="full"]) {
-    --local-width: 100%;
-  }
-`, N = ["width", "height", "src", "alt"], P = () => "<img data-forward />";
-t("app-image", { attrs: N, styles: O, template: P });
-
-// web-components/sections/about/about-intro.js
-var j = `
   :host {
     display: block;
     margin-top: 10rem;
@@ -728,7 +693,7 @@ var j = `
   img {
     height: 10rem;
   }
-`, q = `
+`, N = `
   <section>
       <h1>About</h1>
       <div>
@@ -745,223 +710,10 @@ var j = `
       </div>
   </section>
 `;
-t("section-about-intro", { styles: j, template: q });
+a("section-about-intro", { styles: O, template: N });
 
-// web-components/components/section-title.js
-var Y = `
-  :host {
-    display: flex;
-    align-items: center;
-    width: fit-content;
-    margin-bottom: 3rem;
-    gap: 1rem;
-  }
-
-  h2 {
-    margin: 0;
-    font-size: var(--size-title);
-    font-family: var(--font-heading);
-    font-weight: var(--font-regular)
-  }
-
-  img {
-    height: 5rem;
-    width: auto;
-  }
-
-  :host([variant="vertical"]) {
-    flex-direction: column-reverse;
-    gap: 0;
-  }
-
-  :host([variant="text"]) {
-    img {
-      display: none;
-    }
-  }
-`, G = { name: String, img: String, alt: String }, W = ({ name: e, img: a = "", alt: r = "" }) => `
-    <h2>${e}</h2>
-    <img
-        src=${i(a)}
-        alt=${r}
-        height="36"
-        width="76"
-    />
-`;
-t("section-title", { props: G, styles: Y, template: W });
-
-// web-components/sections/about/tech-collection.js
-var X = [
-  {
-    href: "https://raindrop.io/",
-    src: "./assets/tech-collection/raindrop-io.svg",
-    alt: "Raindrop-io logo"
-  },
-  {
-    href: "https://www.spendee.com/",
-    src: "./assets/tech-collection/spendee.svg",
-    alt: "Spendee logo"
-  },
-  {
-    href: "https://citymapper.com/",
-    src: "./assets/tech-collection/citymapper.svg",
-    alt: "Citymapper logo"
-  },
-  {
-    href: "https://www.figma.com/",
-    src: "./assets/tech-collection/figma.svg",
-    alt: "Figma logo"
-  },
-  {
-    href: "https://www.strava.com/",
-    src: "./assets/tech-collection/strava.svg",
-    alt: "Strava logo"
-  },
-  {
-    href: "https://www.notion.com/",
-    src: "./assets/tech-collection/notion.svg",
-    alt: "Notion logo"
-  },
-  {
-    href: "https://wise.com/",
-    src: "./assets/tech-collection/wise.svg",
-    alt: "Wise logo"
-  },
-  {
-    href: "https://dayoneapp.com/",
-    src: "./assets/tech-collection/day-one.svg",
-    alt: "Day One logo"
-  },
-  {
-    href: "https://telegram.org/",
-    src: "./assets/tech-collection/telegram.svg",
-    alt: "Telegram logo"
-  },
-  {
-    href: "https://www.redbus.com/",
-    src: "./assets/tech-collection/redbus.svg",
-    alt: "Red Bus logo"
-  },
-  {
-    href: "https://www.iqair.com/",
-    src: "./assets/tech-collection/iqair.svg",
-    alt: "IqAir logo"
-  },
-  {
-    href: "https://www.shazam.com/",
-    src: "./assets/tech-collection/shazam.svg",
-    alt: "Shazam logo"
-  },
-  {
-    href: "https://www.skyscanner.net/",
-    src: "./assets/tech-collection/skyscanner.svg",
-    alt: "Skyscanner logo"
-  },
-  {
-    href: "https://developer.mozilla.org/en-US/docs/Glossary/HTML5",
-    src: "./assets/tech-collection/html5.svg",
-    alt: "HTML5 logo"
-  },
-  {
-    href: "https://developer.mozilla.org/en-US/docs/Web/CSS",
-    src: "./assets/tech-collection/css3.svg",
-    alt: "CSS3 logo"
-  },
-  {
-    href: "https://bun.com/",
-    src: "./assets/tech-collection/bun.svg",
-    alt: "Bun logo"
-  },
-  {
-    href: "https://www.upwork.com/",
-    src: "./assets/tech-collection/upwork.svg",
-    alt: "Upwork logo"
-  },
-  {
-    href: "https://google.com/maps",
-    src: "./assets/tech-collection/google-map.svg",
-    alt: "Google Map logo"
-  },
-  {
-    href: "https://www.airbnb.com/",
-    src: "./assets/tech-collection/airbnb.svg",
-    alt: "Airbnb logo"
-  },
-  {
-    href: "https://ticktick.com/",
-    src: "./assets/tech-collection/ticktick.svg",
-    alt: "Ticktick logo"
-  },
-  {
-    href: "https://unsplash.com/",
-    src: "./assets/tech-collection/unsplash.svg",
-    alt: "Unsplash logo"
-  },
-  {
-    href: "https://oklch.com/",
-    src: "./assets/tech-collection/oklch.svg",
-    alt: "Oklch logo"
-  },
-  {
-    href: "https://vert.sh/",
-    src: "./assets/tech-collection/vert.svg",
-    alt: "Vert logo"
-  },
-  {
-    href: "https://thenounproject.com/",
-    src: "./assets/tech-collection/the-noun-project.svg",
-    alt: "The Noun Project logo"
-  }
-], K = `
-  :host {
-    display: block;
-    margin-block: 20rem;
-  }
-
-  section {
-    width: 80%;
-    margin-inline: auto;
-  }
-
-  ul {
-    position: relative;
-    list-style-type: none;
-    padding: 0;
-    max-height: 35rem;
-    overflow-x: scroll;
-    display: flex;
-    flex-wrap: wrap;
-  }
-
-  h2 {
-    font-size: var(--size-title);
-    margin: 0;
-    margin: 1rem;
-  }
-`, R = () => `
-  <section>
-      <h2>Tech Collection</h2>
-
-      <ul>
-        ${X.map((e) => `
-              <li>
-                <app-link href="${m(e.href)}" target="_blank" variant="image">
-                  <img
-                    src="${i(e.src)}"
-                    alt="${e.alt}"
-                    width="102"
-                    height="73"
-                  />
-                </app-link>
-              </li>
-            `).join("")}
-      </ul>
-  </section>
-`;
-t("section-tech-collection", { styles: K, template: R });
-
-// web-components/components/app-icon.js
-var V = `
+// scripts/components/app-icon.js
+var P = `
   :host {
     --local-width: 3rem;
     --local-height: auto;
@@ -999,11 +751,11 @@ var V = `
   }
 
 
-`, J = ["src", "alt"], Q = () => '<img data-forward width="200" height="200"/>';
-t("app-icon", { attrs: J, styles: V, template: Q });
+`, q = ["src", "alt"], Y = () => '<img data-forward width="200" height="200"/>';
+a("app-icon", { attrs: q, styles: P, template: Y });
 
-// web-components/sections/about/random-facts.js
-var Z = [
+// scripts/about/random-facts.js
+var G = [
   {
     src: "./assets/images/about/birds.avif",
     alt: "Watching Bird",
@@ -1029,7 +781,7 @@ var Z = [
     alt: "Sketching",
     text: "I sketch things"
   }
-], ee = `
+], W = `
   :host {
     display: block;
     margin-block: 20rem;
@@ -1053,7 +805,7 @@ var Z = [
     width: 100%; 
     gap: 5rem;
 
-    @media (min-width: ${y}) {
+    @media (min-width: ${w}) {
       display: flex;
       gap: 10rem;
     }
@@ -1069,12 +821,12 @@ var Z = [
     margin-bottom: 2rem;
     font-size: var(--size-title);
   }
-`, te = () => `
+`, j = () => `
   <section>
       <h2>Random Facts</h2>
 
       <ul>
-        ${Z.map((e) => `
+        ${G.map((e) => `
               <li>
                 <figure>
                   <app-icon variant="large" src="${e.src}" alt="${e.alt}"></app-icon>
@@ -1085,10 +837,10 @@ var Z = [
       </ul>
   </section>
 `;
-t("section-random-facts", { styles: ee, template: te });
+a("section-random-facts", { styles: W, template: j });
 
-// web-components/sections/about/life-in-weeks.js
-var ae = "3 Nov 2000", ie = 70, re = `
+// scripts/about/life-in-weeks.js
+var X = "3 Nov 2000", K = 70, R = `
   section {
     width: 80%;
     margin-inline: auto;
@@ -1150,22 +902,22 @@ var ae = "3 Nov 2000", ie = 70, re = `
     margin: 0;
     margin: 1rem;
   }
-`, oe = (e, a) => {
-  let r = new Date(e), o = /* @__PURE__ */ new Date, l = o.getFullYear() - r.getFullYear() - (o.getMonth() < r.getMonth() || o.getMonth() === r.getMonth() && o.getDate() < r.getDate() ? 1 : 0), h = l * 52 + Math.min(51, Math.floor((o - new Date(r.getFullYear() + l, r.getMonth(), r.getDate())) / 604800000));
-  return Array.from({ length: a * 52 }, (f, p) => `<li class="${p < h ? "lived" : ""}"></li>`).join("");
-}, ne = () => `
+`, V = (e, t) => {
+  let i = new Date(e), r = /* @__PURE__ */ new Date, l = r.getFullYear() - i.getFullYear() - (r.getMonth() < i.getMonth() || r.getMonth() === i.getMonth() && r.getDate() < i.getDate() ? 1 : 0), h = l * 52 + Math.min(51, Math.floor((r - new Date(i.getFullYear() + l, i.getMonth(), i.getDate())) / 604800000));
+  return Array.from({ length: t * 52 }, (g, d) => `<li class="${d < h ? "lived" : ""}"></li>`).join("");
+}, J = () => `
   <section>
     <h2>Life in Weeks</h2>
 
     <article>
       <span class="ages">Ages (70 yrs) ⇨</span>
       <span class="weeks-axis">⇦ Weeks of the year</span>
-      <ul>${oe(ae, ie)}</ul>
+      <ul>${V(X, K)}</ul>
     </article>
 
     <p>Based on this post: <app-link variant="underline" href="https://waitbutwhy.com/2014/05/life-weeks.html" target="_blank">Your Life in Weeks</app-link></p>
   </section>
 `;
-t("section-life-in-weeks", { styles: re, template: ne });
+a("section-life-in-weeks", { styles: R, template: J });
 </script></body>
 </html>

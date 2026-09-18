@@ -31,7 +31,7 @@
     </main>
 
     <section-footer></section-footer>
-  <script type="module">// web-components/asset.js
+  <script type="module">// lib/asset.js
 function v() {
   let e = document.documentElement.dataset.base || "./";
   return new URL(e, location.href);
@@ -46,7 +46,7 @@ function d(e) {
   return c ? new URL(`${t}.html`, l).href : new URL(t, l).href;
 }
 
-// web-components/fonts.js
+// scripts/fonts.js
 var w = `
 @font-face {
     font-family: "Archivo";
@@ -65,7 +65,7 @@ var w = `
 y.textContent = w;
 document.head.appendChild(y);
 
-// web-components/define.js
+// lib/define.js
 function x(e, t) {
   if (e === void 0) {
     if (t === Array)
@@ -144,10 +144,10 @@ function a(e, { props: t = {}, attrs: c = [], styles: l = "", template: s, onRen
   customElements.define(e, h);
 }
 
-// web-components/breakpoints.js
+// scripts/breakpoints.js
 var r = "640px";
 
-// web-components/components/app-frame.js
+// scripts/components/app-frame.js
 var k = `
   :host {
     display: block;
@@ -171,7 +171,7 @@ var k = `
 `;
 a("app-frame", { styles: k, template: $ });
 
-// web-components/components/app-link.js
+// scripts/components/app-link.js
 var z = `
   :host {
     --local-bg: transparent;
@@ -238,7 +238,7 @@ var z = `
 `;
 a("app-link", { attrs: A, styles: z, template: _ });
 
-// web-components/components/app-logo.js
+// scripts/components/app-logo.js
 var B = `
   :host {
     display: block;
@@ -251,7 +251,7 @@ var B = `
 `, T = ["width", "height", "src", "alt"], L = () => "<img data-forward />";
 a("app-logo", { attrs: T, styles: B, template: L });
 
-// web-components/sections/header.js
+// scripts/header.js
 var S = `
   :host {
     display: block;
@@ -327,7 +327,7 @@ var S = `
 `;
 a("section-header", { template: C, styles: S });
 
-// web-components/components/footer-nav.js
+// scripts/components/footer-nav.js
 var E = [
   { href: "/", name: "Home" },
   { href: "/about", name: "About" },
@@ -394,7 +394,7 @@ var E = [
     margin-right: 5rem;
     margin-bottom: 0.3rem;
   }
-`, H = () => `
+`, F = () => `
     <nav>
         <span>Sitemap</span>
 
@@ -407,10 +407,10 @@ var E = [
         </ol>
     </nav>
 `;
-a("footer-nav", { styles: U, template: H });
+a("footer-nav", { styles: U, template: F });
 
-// web-components/components/footer-copyright.js
-var F = `
+// scripts/components/footer-copyright.js
+var H = `
   :host {
    display: flex;
     justify-content: space-between;
@@ -556,10 +556,10 @@ var F = `
           </ul>
         </nav>
 `;
-a("footer-copyright", { styles: F, template: P });
+a("footer-copyright", { styles: H, template: P });
 
-// web-components/sections/footer.js
-var q = `
+// scripts/footer.js
+var j = `
   :host {
     display: block;
   }
@@ -632,7 +632,7 @@ var q = `
       display: none;
     }
   }
-`, N = `
+`, q = `
   <footer>
 
     <div id="highlight-wrap">
@@ -649,7 +649,7 @@ var q = `
     <footer-copyright></footer-copyright>
   </footer>
 `;
-function O(e) {
+function N(e) {
   let t = e.querySelector("footer"), c = e.getElementById("highlight-base"), l = e.getElementById("highlight-lens"), s = e.getElementById("lens-ring"), f = e.getElementById("highlight-wrap");
   if (!t || !c || !l || !s || !f)
     return;
@@ -667,10 +667,10 @@ function O(e) {
     t.removeEventListener("mousemove", g), t.removeEventListener("mouseenter", h), t.removeEventListener("mouseleave", i);
   };
 }
-a("section-footer", { styles: q, template: N, onRender: O });
+a("section-footer", { styles: j, template: q, onRender: N });
 
-// web-components/components/app-icon.js
-var j = `
+// scripts/components/app-icon.js
+var O = `
   :host {
     --local-width: 3rem;
     --local-height: auto;
@@ -709,9 +709,9 @@ var j = `
 
 
 `, G = ["src", "alt"], D = () => '<img data-forward width="200" height="200"/>';
-a("app-icon", { attrs: G, styles: j, template: D });
+a("app-icon", { attrs: G, styles: O, template: D });
 
-// web-components/sections/404-intro.js
+// scripts/404/intro.js
 var X = `
   :host {
     display: block;
