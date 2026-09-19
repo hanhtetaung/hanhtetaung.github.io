@@ -6,9 +6,9 @@ const styles = /* css */ `
   :host {
     position: relative;
     display: block;
-    height: 60rem;
     overflow: hidden;
-    margin-block: 15rem;
+    margin-top: 15rem;
+    margin-bottom: 10rem;
 
     @media (min-width: ${DESKTOP}) {
       margin-top: 20rem;
@@ -20,16 +20,10 @@ const styles = /* css */ `
     width: min(80%, 144rem);
     margin-inline: auto;
     
+  }
 
-    @media (min-width: ${TABLET}) {
-      display: flex;
-      gap: 3rem;
-      justify-content: space-between;
-    }
-
-    @media (min-width: ${LARGE}) {
-      position: relative;
-    }
+  hgroup {
+    margin-bottom: 2rem;
   }
 
   h2 {
@@ -42,19 +36,27 @@ const styles = /* css */ `
     list-style: none;
     padding: 0;
     margin: 0;
+    align-items: flex-start;
+
+    @media (min-width: ${TABLET}) {
+      display: flex;
+      justify-content: space-between;
+    }
   }
 
   li {
-    border-bottom: 1px solid var(--color-text);
-    padding-bottom: 5rem;
+    padding-bottom: 3rem;
     padding-top: 2rem;
-    min-width: 30ch;
+    border-bottom: 1px solid var(--color-text);
+
+     @media (min-width: ${TABLET}) {
+      border: none;
+    }
   }
 
   h3 {
     margin: 0;
-    font-size: var(--size-header);
-    color: var(--color-primary);
+    font-size: var(--size-body);
     margin-bottom: 1rem;
   }
 
@@ -63,16 +65,14 @@ const styles = /* css */ `
   }
 
   img {
-    position: absolute;
-    bottom: 0rem;
-    left: 0rem;
-    width: auto;
-    height: 40rem;
-    z-index: -1;
-    opacity: 0.1;
+    width: 100%;
+    max-width: 30rem;
+    height: auto;
+  
 
-    @media (min-width: ${DESKTOP}) {
-      opacity: 1;
+    @media (min-width: ${TABLET}) {
+      max-height: 40rem;
+      width: auto;
     }
 
   }
@@ -85,30 +85,27 @@ const template = /* html */ `
 
 <section>
   <hgroup>
-    <p>[ Little Process ]</p>
-    <h2>Every Step <br> <span>by</span> One Person</h2>
+    <p>[ Process ]</p>
+    <h2><span>By</span> One Person</h2>
   </hgroup>
 
   <ul>
     <li>
       <h3>Step 1</h3>
-      <p>Design block by block</p>
+      <p>Ask a little question</p>
     </li>
+
     <li>
       <h3>Step 2</h3>
-      <p>Sketch illustration by hand</p>
+      <p>....</p>
+      <img src=${asset("./assets/images/home/process.avif")} alt="Little Process">
     </li>
+
     <li>
       <h3>Step 3</h3>
-      <p>Develop HTML, CSS, JS</p>
-    </li>
-    <li>
-      <h3>Step 4</h3>
-      <p>Deliver Standalone HTML</p>
+      <p>Your Web Presence</p>
     </li>
   </ul>
-
-  <img src=${asset("./assets/images/home/craftsmanship.avif")} alt="Craftsmanship Illustration">
 </section>
 
 `;
