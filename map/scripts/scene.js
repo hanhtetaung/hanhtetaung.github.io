@@ -122,7 +122,8 @@ const sceneObjects = [
   { name: "05-09-2026", x: -2680, y: 5350, height: 100 },
 
   { name: "16-06-2026", x: 1000, y: 5350, height: 100 },
-  { name: "flowers-sg", x: 700, y: 5250, height: 100 },
+  { name: "flowers-sg", x: 700, y: 5180, height: 150 },
+  { name: "avocado", x: 400, y: 5500, height: 100 },
 
   { name: "17-04-2026", x: 3450, y: 6600, height: 100 },
   { name: "twin-tower", x: 2500, y: 5800, height: 800 },
@@ -138,6 +139,7 @@ const sceneObjects = [
   { name: "scoopy-c12", x: 8000, y: 3700, height: 200 },
 
   { name: "27-12-2025", x: 9050, y: 1750, height: 100 },
+  { name: "percent-coffee", x: 9250, y: 2750, height: 100 },
 
   { name: "24-12-2025", x: 7400, y: 1500, height: 100 },
   { name: "cherry-tree", x: 7800, y: 1100, height: 500 },
@@ -184,6 +186,7 @@ const sceneObjects = [
 
   { name: "18-04-2025", x: 3350, y: -4500, height: 100 },
   { name: "monopoly-deal", x: 3800, y: -4580, height: 100 },
+  { name: "guinness", x: 4400, y: -4580, height: 100 },
 
   { name: "22-02-2025", x: 1900, y: -2350, height: 100 },
   { name: "momerial-bridge", x: 2400, y: -3200, height: 500 },
@@ -229,6 +232,7 @@ const sceneObjects = [
   { name: "prawn-curry", x: 3250, y: 4650, height: 100 },
   { name: "birthday-cake", x: 3050, y: 4650, height: 100 },
   { name: "mango-snack", x: 3500, y: 4650, height: 100 },
+  { name: "strawberry-snack", x: 3400, y: 4370, height: 100 },
   { name: "panda", x: 2050, y: 4620, height: 200 },
   { name: "penguins", x: 2150, y: 4280, height: 200 },
   { name: "giraffe", x: 1750, y: 3980, height: 500 },
@@ -240,6 +244,7 @@ const sceneObjects = [
   { name: "guitar", x: 1850, y: 3500, height: 100 },
   { name: "dinosour-toy", x: 2000, y: 3500, height: 100 },
   { name: "hoodie", x: 2150, y: 3500, height: 100 },
+  { name: "breezer-beer", x: 4070, y: 3500, height: 100 },
 
   { name: "07_03_2023", x: 5850, y: 1100, height: 100 },
   { name: "tuktuk", x: 6000, y: 1400, height: 200 },

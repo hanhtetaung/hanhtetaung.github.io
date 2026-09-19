@@ -44,10 +44,10 @@ function o(i) {
   return new URL(i, $()).href;
 }
 function b(i) {
-  let e = i.replace(/^\//, ""), l = location.protocol === "file:", m = $();
-  if (e === "")
-    return l ? new URL("index.html", m).href : m.href;
-  return l ? new URL(`${e}.html`, m).href : new URL(e, m).href;
+  let t = i.replace(/^\//, ""), s = location.protocol === "file:", m = $();
+  if (t === "")
+    return s ? new URL("index.html", m).href : m.href;
+  return s ? new URL(`${t}.html`, m).href : new URL(t, m).href;
 }
 
 // scripts/fonts.js
@@ -70,26 +70,26 @@ z.textContent = A;
 document.head.appendChild(z);
 
 // lib/define.js
-function S(i, e) {
+function S(i, t) {
   if (i === void 0) {
-    if (e === Array)
+    if (t === Array)
       return [];
-    if (e === Object)
+    if (t === Object)
       return {};
-    if (e === Boolean)
+    if (t === Boolean)
       return !1;
-    if (e === Number)
+    if (t === Number)
       return 0;
     return;
   }
-  if (e === Boolean)
+  if (t === Boolean)
     return Boolean(i);
-  if (e === Number)
+  if (t === Number)
     return Number(i);
   return i;
 }
-function a(i, { props: e = {}, attrs: l = [], styles: m = "", template: r, onRender: h = null }) {
-  let g = ["props", ...l];
+function a(i, { props: t = {}, attrs: s = [], styles: m = "", template: r, onRender: h = null }) {
+  let g = ["props", ...s];
 
   class f extends HTMLElement {
     static observedAttributes = g;
@@ -110,35 +110,35 @@ function a(i, { props: e = {}, attrs: l = [], styles: m = "", template: r, onRen
         this._render();
     }
     _getProps() {
-      let n = {}, s = this.getAttribute("props");
-      if (s)
+      let n = {}, l = this.getAttribute("props");
+      if (l)
         try {
-          n = JSON.parse(s);
+          n = JSON.parse(l);
         } catch {
           n = {};
         }
       let c = {};
-      for (let d of Object.keys(e))
-        c[d] = S(n[d], e[d]);
+      for (let d of Object.keys(t))
+        c[d] = S(n[d], t[d]);
       return c;
     }
     _applyForwardedAttrs() {
-      if (l.length === 0)
+      if (s.length === 0)
         return;
       let n = this.shadowRoot.querySelector("[data-forward]");
       if (!n)
         return;
-      for (let s of l)
-        if (this.hasAttribute(s))
-          n.setAttribute(s, this.getAttribute(s));
+      for (let l of s)
+        if (this.hasAttribute(l))
+          n.setAttribute(l, this.getAttribute(l));
         else
-          n.removeAttribute(s);
+          n.removeAttribute(l);
     }
     _render() {
       if (typeof this._cleanup === "function")
         this._cleanup(), this._cleanup = null;
-      let n = this._getProps(), s = typeof r === "function" ? r(n) : r;
-      if (this.shadowRoot.innerHTML = `<style>${m}</style>${s}`, this._applyForwardedAttrs(), h) {
+      let n = this._getProps(), l = typeof r === "function" ? r(n) : r;
+      if (this.shadowRoot.innerHTML = `<style>${m}</style>${l}`, this._applyForwardedAttrs(), h) {
         let c = h(this.shadowRoot, n, this);
         if (typeof c === "function")
           this._cleanup = c;
@@ -210,10 +210,10 @@ var _ = `
        content: "➶";
      }
   }
-`, B = ["href", "target", "rel", "download"], C = `
+`, C = ["href", "target", "rel", "download"], B = `
   <a data-forward><slot></slot></a>
 `;
-a("app-link", { attrs: B, styles: _, template: C });
+a("app-link", { attrs: C, styles: _, template: B });
 
 // scripts/components/app-logo.js
 var E = `
@@ -229,7 +229,7 @@ var E = `
 a("app-logo", { attrs: T, styles: E, template: P });
 
 // scripts/breakpoints.js
-var t = "640px", p = "1024px", y = "1920px";
+var e = "640px", p = "1024px", y = "1920px";
 
 // scripts/header.js
 var D = `
@@ -269,7 +269,7 @@ var D = `
     box-shadow: none;
   }
 
-  @media (max-width: ${t}) {
+  @media (max-width: ${e}) {
     .header__navigation {
       gap: 4rem;
     }
@@ -336,7 +336,7 @@ var O = [
    display: flex;
    gap: 5rem;
 
-   @media (max-width: ${t}) {
+   @media (max-width: ${e}) {
         flex-direction: column;
         gap: 3rem;
         margin-block: 2rem;
@@ -365,7 +365,7 @@ var O = [
     max-height: 12.5ch;
     overflow: scroll;
 
-    @media (max-width: ${t}) {
+    @media (max-width: ${e}) {
         max-height: 20ch;
     }
   }
@@ -398,7 +398,7 @@ var F = `
     padding-top: 1rem;
     margin-top: 3rem;
 
-   @media (max-width: ${t}) {
+   @media (max-width: ${e}) {
         flex-direction: column-reverse;
         gap: 2rem;
         border: none;
@@ -414,7 +414,7 @@ var F = `
     align-items: end;
     gap: 0.2rem;
 
-    @media (min-width: ${t}) {
+    @media (min-width: ${e}) {
       border: none;
       padding-top: none;
     }
@@ -438,7 +438,7 @@ var F = `
   nav {
     display: block;
 
-    @media (min-width: ${t}) {
+    @media (min-width: ${e}) {
       display: block;
     }
   }
@@ -449,7 +449,7 @@ var F = `
     font-weight: var(--font-bold);
     
 
-    @media (max-width: ${t}) {
+    @media (max-width: ${e}) {
       display: inline-block;
       margin-bottom: 0.5rem;
     }
@@ -458,7 +458,7 @@ var F = `
   p img {
     height: 2.3rem;
 
-     @media (max-width: ${t}) {
+     @media (max-width: ${e}) {
       
       height: 2.5rem;
     }
@@ -602,7 +602,7 @@ var N = `
     display: block;
   }
 
-  @media (min-width: ${t}) {
+  @media (min-width: ${e}) {
     #highlight-wrap {
       display: block;
     }
@@ -630,11 +630,11 @@ var N = `
   </footer>
 `;
 function K(i) {
-  let e = i.querySelector("footer"), l = i.getElementById("highlight-base"), m = i.getElementById("highlight-lens"), r = i.getElementById("lens-ring"), h = i.getElementById("highlight-wrap");
-  if (!e || !l || !m || !r || !h)
+  let t = i.querySelector("footer"), s = i.getElementById("highlight-base"), m = i.getElementById("highlight-lens"), r = i.getElementById("lens-ring"), h = i.getElementById("highlight-wrap");
+  if (!t || !s || !m || !r || !h)
     return;
-  function g(s) {
-    let c = l.getBoundingClientRect(), d = s.clientX - c.left, u = s.clientY - c.top, v = r.offsetWidth / 2;
+  function g(l) {
+    let c = s.getBoundingClientRect(), d = l.clientX - c.left, u = l.clientY - c.top, v = r.offsetWidth / 2;
     r.style.left = `${d - v}px`, r.style.top = `${u - v}px`, m.style.clipPath = `circle(${v}px at ${d}px ${u}px)`;
   }
   function f() {
@@ -643,8 +643,8 @@ function K(i) {
   function n() {
     r.removeAttribute("data-visible"), m.style.clipPath = "circle(0px at 50% 50%)";
   }
-  return e.addEventListener("mousemove", g), e.addEventListener("mouseenter", f), e.addEventListener("mouseleave", n), () => {
-    e.removeEventListener("mousemove", g), e.removeEventListener("mouseenter", f), e.removeEventListener("mouseleave", n);
+  return t.addEventListener("mousemove", g), t.addEventListener("mouseenter", f), t.addEventListener("mouseleave", n), () => {
+    t.removeEventListener("mousemove", g), t.removeEventListener("mouseenter", f), t.removeEventListener("mouseleave", n);
   };
 }
 a("section-footer", { styles: N, template: j, onRender: K });
@@ -657,7 +657,7 @@ var q = `
     margin-top: 5rem;
     overflow: hidden;
 
-    @media (min-width: ${t}) {
+    @media (min-width: ${e}) {
       margin-top: 7rem;
     }
   }
@@ -690,7 +690,7 @@ var q = `
     width: auto;
     display: block;
 
-    @media (min-width: ${t}) {
+    @media (min-width: ${e}) {
       max-height: 35rem;
     }
   }
@@ -698,7 +698,7 @@ var q = `
   #visible-img {
     cursor: auto;
 
-    @media (min-width: ${t}) {
+    @media (min-width: ${e}) {
       cursor: none;
     }
   }
@@ -713,7 +713,7 @@ var q = `
     clip-path: circle(0px at 50% 50%);
     display: none;
 
-    @media (min-width: ${t}) {
+    @media (min-width: ${e}) {
       display: block;
     }
   }
@@ -729,7 +729,7 @@ var q = `
     display: none;
   }
 
-  @media (min-width: ${t}) {
+  @media (min-width: ${e}) {
     #lens-ring[data-visible="true"] {
       display: block;
     }
@@ -762,14 +762,14 @@ var q = `
       <div id="lens-ring"></div>
     </div>
   </section>
-`, W = `(min-width: ${t})`;
+`, W = `(min-width: ${e})`;
 function I(i) {
-  let e = i.getElementById("img-wrap"), l = i.getElementById("visible-img"), m = i.getElementById("lens-img"), r = i.getElementById("lens-ring");
-  if (!e || !l || !m || !r)
+  let t = i.getElementById("img-wrap"), s = i.getElementById("visible-img"), m = i.getElementById("lens-img"), r = i.getElementById("lens-ring");
+  if (!t || !s || !m || !r)
     return;
   let h = window.matchMedia(W);
   function g(u) {
-    let v = l.getBoundingClientRect(), x = u.clientX - v.left, k = u.clientY - v.top, w = r.offsetWidth / 2;
+    let v = s.getBoundingClientRect(), x = u.clientX - v.left, k = u.clientY - v.top, w = r.offsetWidth / 2;
     r.style.left = `${x - w}px`, r.style.top = `${k - w}px`, m.style.clipPath = `circle(${w}px at ${x}px ${k}px)`;
   }
   function f() {
@@ -778,20 +778,20 @@ function I(i) {
   function n() {
     r.removeAttribute("data-visible"), m.style.clipPath = "circle(0px at 50% 50%)";
   }
-  function s() {
-    e.addEventListener("mousemove", g), e.addEventListener("mouseenter", f), e.addEventListener("mouseleave", n);
+  function l() {
+    t.addEventListener("mousemove", g), t.addEventListener("mouseenter", f), t.addEventListener("mouseleave", n);
   }
   function c() {
-    e.removeEventListener("mousemove", g), e.removeEventListener("mouseenter", f), e.removeEventListener("mouseleave", n), n();
+    t.removeEventListener("mousemove", g), t.removeEventListener("mouseenter", f), t.removeEventListener("mouseleave", n), n();
   }
   function d(u) {
     if (u.matches)
-      s();
+      l();
     else
       c();
   }
   if (h.matches)
-    s();
+    l();
   return h.addEventListener("change", d), () => {
     c(), h.removeEventListener("change", d);
   };
@@ -804,8 +804,7 @@ var M = `
     position: relative;
     display: block;
     overflow: hidden;
-    margin-top: 15rem;
-    margin-bottom: 10rem;
+    margin-block: 15rem;
 
     @media (min-width: ${p}) {
       margin-top: 20rem;
@@ -816,11 +815,12 @@ var M = `
   section {
     width: min(80%, 144rem);
     margin-inline: auto;
-    
+    text-align: center;
   }
 
   hgroup {
     margin-bottom: 2rem;
+    text-align: start;
   }
 
   h2 {
@@ -835,9 +835,10 @@ var M = `
     margin: 0;
     align-items: flex-start;
 
-    @media (min-width: ${t}) {
+    @media (min-width: ${e}) {
       display: flex;
-      justify-content: space-between;
+      gap: 5rem;
+      align-items: normal;
     }
   }
 
@@ -845,9 +846,14 @@ var M = `
     padding-bottom: 3rem;
     padding-top: 2rem;
     border-bottom: 1px solid var(--color-text);
+    min-width: 20ch;
+    width: fit-content;
+    text-align: start;
 
-     @media (min-width: ${t}) {
-      border: none;
+     @media (min-width: ${e}) {
+      min-width: auto;
+      /* border-right: 1px solid var(--color-text); */
+      width: 100%;
     }
   }
 
@@ -865,9 +871,19 @@ var M = `
     width: 100%;
     max-width: 30rem;
     height: auto;
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    opacity: 0.1;
+    z-index: -2;
   
 
-    @media (min-width: ${t}) {
+    @media (min-width: ${e}) {
+      margin-bottom: 3rem;
+      margin-top: 2rem;
+
+      opacity: 1;
+      position: static;
       max-height: 40rem;
       width: auto;
     }
@@ -875,6 +891,11 @@ var M = `
   }
   span {
     font-size: var(--size-body);
+  }
+
+  a {
+    /* text-decoration: none; */
+    color: var(--color-primary);
   }
 `, X = `
 
@@ -884,6 +905,8 @@ var M = `
     <h2><span>By</span> One Person</h2>
   </hgroup>
 
+  <img src=${o("./assets/images/home/process.avif")} alt="Little Process">
+
   <ul>
     <li>
       <h3>Step 1</h3>
@@ -892,8 +915,7 @@ var M = `
 
     <li>
       <h3>Step 2</h3>
-      <p>....</p>
-      <img src=${o("./assets/images/home/process.avif")} alt="Little Process">
+      <p>Crafting ...</p>
     </li>
 
     <li>
@@ -957,7 +979,7 @@ var J = `
     bottom: 5rem;
     z-index: -1;
     
-    @media (min-width: ${t}) {
+    @media (min-width: ${e}) {
       left: 40%;
     }
 
@@ -1014,7 +1036,7 @@ var Z = `
     height: 50rem;
     width: auto;
 
-    @media (min-width: ${t}) {
+    @media (min-width: ${e}) {
       width: 100%;
       height: auto;
     }
@@ -1066,7 +1088,7 @@ var R = `
     flex-wrap: wrap;
     gap: 3rem;
 
-    @media (min-width: ${t}) {
+    @media (min-width: ${e}) {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
     }
@@ -1097,7 +1119,7 @@ var R = `
     height: 20rem;
   }
 
-`, ee = `
+`, tt = `
 <section>
   <hgroup>
     <p>[ Recent Crafts ]</p>
@@ -1129,10 +1151,10 @@ var R = `
   </ul>
 </section>
 `;
-a("section-recent-crafts", { styles: R, template: ee });
+a("section-recent-crafts", { styles: R, template: tt });
 
 // scripts/home/cta.js
-var te = `
+var et = `
   :host {
     display: block;
     height: 70rem;
@@ -1150,7 +1172,7 @@ var te = `
     justify-content: space-between;
     margin-top: 5rem;
 
-    @media (min-width: ${t}) {
+    @media (min-width: ${e}) {
       height: 90%;
     }
 
@@ -1184,7 +1206,7 @@ var te = `
     padding-block: 2rem;
     overflow: scroll;
 
-    @media (min-width: ${t}) {
+    @media (min-width: ${e}) {
       max-width: 50%;
       gap: 3rem;
     }
@@ -1198,7 +1220,7 @@ var te = `
     left: -0%;
     top: 30%;
 
-    @media (min-width: ${t}) {
+    @media (min-width: ${e}) {
       left: auto;
       right: 20%;
       top: 20rem;
@@ -1230,7 +1252,7 @@ var te = `
     text-decoration: none;
     color: var(--color-text);
   }
-`, ie = `
+`, it = `
 <section>
   <img src="./assets/images/home/red-telephone-box.avif" alt="Red Telephone Box">
 
@@ -1256,19 +1278,19 @@ var te = `
   </ul>
 </section>
 `;
-function oe(i) {
-  let e = i.getElementById("copyBtn");
-  if (!e)
+function ot(i) {
+  let t = i.getElementById("copyBtn");
+  if (!t)
     return;
-  e.addEventListener("click", () => {
+  t.addEventListener("click", () => {
     navigator.clipboard.writeText("hanhtetaung.dev@gmail.com").then(() => {
-      let l = e.textContent;
-      e.textContent = "Copied!", e.classList.add("copied"), setTimeout(() => {
-        e.textContent = l, e.classList.remove("copied");
+      let s = t.textContent;
+      t.textContent = "Copied!", t.classList.add("copied"), setTimeout(() => {
+        t.textContent = s, t.classList.remove("copied");
       }, 1500);
     });
   });
 }
-a("section-cta", { styles: te, template: ie, onRender: oe });
+a("section-cta", { styles: et, template: it, onRender: ot });
 </script></body>
 </html>
