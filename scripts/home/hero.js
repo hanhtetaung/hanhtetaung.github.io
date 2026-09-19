@@ -6,6 +6,7 @@ const styles = /* css */ `
     display: block;
     height: min(calc(100vh - 108px - 10rem), 70rem);
     margin-top: 5rem;
+    overflow: hidden;
 
     @media (min-width: ${TABLET}) {
       margin-top: 7rem;

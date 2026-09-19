@@ -44,14 +44,14 @@ function o(i) {
   return new URL(i, $()).href;
 }
 function b(i) {
-  let e = i.replace(/^\//, ""), s = location.protocol === "file:", m = $();
+  let e = i.replace(/^\//, ""), l = location.protocol === "file:", m = $();
   if (e === "")
-    return s ? new URL("index.html", m).href : m.href;
-  return s ? new URL(`${e}.html`, m).href : new URL(e, m).href;
+    return l ? new URL("index.html", m).href : m.href;
+  return l ? new URL(`${e}.html`, m).href : new URL(e, m).href;
 }
 
 // scripts/fonts.js
-var S = `
+var A = `
 @font-face {
     font-family: "Archivo";
     src: url("${o("./assets/fonts/Archivo-Black.woff2")}") format("woff2");
@@ -66,11 +66,11 @@ var S = `
     font-display: swap;
   }
 `, z = document.createElement("style");
-z.textContent = S;
+z.textContent = A;
 document.head.appendChild(z);
 
 // lib/define.js
-function A(i, e) {
+function S(i, e) {
   if (i === void 0) {
     if (e === Array)
       return [];
@@ -88,8 +88,8 @@ function A(i, e) {
     return Number(i);
   return i;
 }
-function a(i, { props: e = {}, attrs: s = [], styles: m = "", template: r, onRender: h = null }) {
-  let g = ["props", ...s];
+function a(i, { props: e = {}, attrs: l = [], styles: m = "", template: r, onRender: h = null }) {
+  let g = ["props", ...l];
 
   class f extends HTMLElement {
     static observedAttributes = g;
@@ -110,35 +110,35 @@ function a(i, { props: e = {}, attrs: s = [], styles: m = "", template: r, onRen
         this._render();
     }
     _getProps() {
-      let n = {}, l = this.getAttribute("props");
-      if (l)
+      let n = {}, s = this.getAttribute("props");
+      if (s)
         try {
-          n = JSON.parse(l);
+          n = JSON.parse(s);
         } catch {
           n = {};
         }
       let c = {};
       for (let d of Object.keys(e))
-        c[d] = A(n[d], e[d]);
+        c[d] = S(n[d], e[d]);
       return c;
     }
     _applyForwardedAttrs() {
-      if (s.length === 0)
+      if (l.length === 0)
         return;
       let n = this.shadowRoot.querySelector("[data-forward]");
       if (!n)
         return;
-      for (let l of s)
-        if (this.hasAttribute(l))
-          n.setAttribute(l, this.getAttribute(l));
+      for (let s of l)
+        if (this.hasAttribute(s))
+          n.setAttribute(s, this.getAttribute(s));
         else
-          n.removeAttribute(l);
+          n.removeAttribute(s);
     }
     _render() {
       if (typeof this._cleanup === "function")
         this._cleanup(), this._cleanup = null;
-      let n = this._getProps(), l = typeof r === "function" ? r(n) : r;
-      if (this.shadowRoot.innerHTML = `<style>${m}</style>${l}`, this._applyForwardedAttrs(), h) {
+      let n = this._getProps(), s = typeof r === "function" ? r(n) : r;
+      if (this.shadowRoot.innerHTML = `<style>${m}</style>${s}`, this._applyForwardedAttrs(), h) {
         let c = h(this.shadowRoot, n, this);
         if (typeof c === "function")
           this._cleanup = c;
@@ -210,13 +210,13 @@ var _ = `
        content: "➶";
      }
   }
-`, C = ["href", "target", "rel", "download"], T = `
+`, B = ["href", "target", "rel", "download"], C = `
   <a data-forward><slot></slot></a>
 `;
-a("app-link", { attrs: C, styles: _, template: T });
+a("app-link", { attrs: B, styles: _, template: C });
 
 // scripts/components/app-logo.js
-var B = `
+var E = `
   :host {
     display: block;
   }
@@ -225,14 +225,14 @@ var B = `
     max-height: 7rem;
     width: auto;
   }
-`, E = ["width", "height", "src", "alt"], D = () => "<img data-forward />";
-a("app-logo", { attrs: E, styles: B, template: D });
+`, T = ["width", "height", "src", "alt"], P = () => "<img data-forward />";
+a("app-logo", { attrs: T, styles: E, template: P });
 
 // scripts/breakpoints.js
-var t = "640px", p = "1024px", v = "1920px";
+var t = "640px", p = "1024px", y = "1920px";
 
 // scripts/header.js
-var L = `
+var D = `
   :host {
     display: block;
     background: var(--color-bg-primary);
@@ -279,7 +279,7 @@ var L = `
     height: 5rem;
     width: auto;
   }
-`, O = `
+`, L = `
   <header>
       <app-link variant="plain" href=${b("/")}>
         <img src=${o("./assets/images/logo.avif")}
@@ -305,10 +305,10 @@ var L = `
       </div>
   </header>
 `;
-a("section-header", { template: O, styles: L });
+a("section-header", { template: L, styles: D });
 
 // scripts/components/footer-nav.js
-var P = [
+var O = [
   { href: "/", name: "Home" },
   { href: "/about", name: "About" },
   { href: "/credits", name: "Credits" },
@@ -379,7 +379,7 @@ var P = [
         <span>Sitemap</span>
 
         <ol>
-            ${P.map((i) => `
+            ${O.map((i) => `
                 <li>
                     <app-link variant="sitemap" href=${b(i.href)} >${i.name}</app-link>
                 </li>
@@ -630,12 +630,12 @@ var N = `
   </footer>
 `;
 function K(i) {
-  let e = i.querySelector("footer"), s = i.getElementById("highlight-base"), m = i.getElementById("highlight-lens"), r = i.getElementById("lens-ring"), h = i.getElementById("highlight-wrap");
-  if (!e || !s || !m || !r || !h)
+  let e = i.querySelector("footer"), l = i.getElementById("highlight-base"), m = i.getElementById("highlight-lens"), r = i.getElementById("lens-ring"), h = i.getElementById("highlight-wrap");
+  if (!e || !l || !m || !r || !h)
     return;
-  function g(l) {
-    let c = s.getBoundingClientRect(), d = l.clientX - c.left, u = l.clientY - c.top, y = r.offsetWidth / 2;
-    r.style.left = `${d - y}px`, r.style.top = `${u - y}px`, m.style.clipPath = `circle(${y}px at ${d}px ${u}px)`;
+  function g(s) {
+    let c = l.getBoundingClientRect(), d = s.clientX - c.left, u = s.clientY - c.top, v = r.offsetWidth / 2;
+    r.style.left = `${d - v}px`, r.style.top = `${u - v}px`, m.style.clipPath = `circle(${v}px at ${d}px ${u}px)`;
   }
   function f() {
     r.setAttribute("data-visible", "true");
@@ -650,11 +650,12 @@ function K(i) {
 a("section-footer", { styles: N, template: j, onRender: K });
 
 // scripts/home/hero.js
-var M = `
+var q = `
   :host {
     display: block;
     height: min(calc(100vh - 108px - 10rem), 70rem);
     margin-top: 5rem;
+    overflow: hidden;
 
     @media (min-width: ${t}) {
       margin-top: 7rem;
@@ -761,14 +762,14 @@ var M = `
       <div id="lens-ring"></div>
     </div>
   </section>
-`, q = `(min-width: ${t})`;
+`, W = `(min-width: ${t})`;
 function I(i) {
-  let e = i.getElementById("img-wrap"), s = i.getElementById("visible-img"), m = i.getElementById("lens-img"), r = i.getElementById("lens-ring");
-  if (!e || !s || !m || !r)
+  let e = i.getElementById("img-wrap"), l = i.getElementById("visible-img"), m = i.getElementById("lens-img"), r = i.getElementById("lens-ring");
+  if (!e || !l || !m || !r)
     return;
-  let h = window.matchMedia(q);
+  let h = window.matchMedia(W);
   function g(u) {
-    let y = s.getBoundingClientRect(), x = u.clientX - y.left, k = u.clientY - y.top, w = r.offsetWidth / 2;
+    let v = l.getBoundingClientRect(), x = u.clientX - v.left, k = u.clientY - v.top, w = r.offsetWidth / 2;
     r.style.left = `${x - w}px`, r.style.top = `${k - w}px`, m.style.clipPath = `circle(${w}px at ${x}px ${k}px)`;
   }
   function f() {
@@ -777,7 +778,7 @@ function I(i) {
   function n() {
     r.removeAttribute("data-visible"), m.style.clipPath = "circle(0px at 50% 50%)";
   }
-  function l() {
+  function s() {
     e.addEventListener("mousemove", g), e.addEventListener("mouseenter", f), e.addEventListener("mouseleave", n);
   }
   function c() {
@@ -785,26 +786,26 @@ function I(i) {
   }
   function d(u) {
     if (u.matches)
-      l();
+      s();
     else
       c();
   }
   if (h.matches)
-    l();
+    s();
   return h.addEventListener("change", d), () => {
     c(), h.removeEventListener("change", d);
   };
 }
-a("section-hero", { styles: M, template: V, onRender: I });
+a("section-hero", { styles: q, template: V, onRender: I });
 
 // scripts/home/little-process.js
-var W = `
+var M = `
   :host {
     position: relative;
     display: block;
-    height: 60rem;
     overflow: hidden;
-    margin-block: 15rem;
+    margin-top: 15rem;
+    margin-bottom: 10rem;
 
     @media (min-width: ${p}) {
       margin-top: 20rem;
@@ -816,16 +817,10 @@ var W = `
     width: min(80%, 144rem);
     margin-inline: auto;
     
+  }
 
-    @media (min-width: ${t}) {
-      display: flex;
-      gap: 3rem;
-      justify-content: space-between;
-    }
-
-    @media (min-width: ${v}) {
-      position: relative;
-    }
+  hgroup {
+    margin-bottom: 2rem;
   }
 
   h2 {
@@ -838,19 +833,27 @@ var W = `
     list-style: none;
     padding: 0;
     margin: 0;
+    align-items: flex-start;
+
+    @media (min-width: ${t}) {
+      display: flex;
+      justify-content: space-between;
+    }
   }
 
   li {
-    border-bottom: 1px solid var(--color-text);
-    padding-bottom: 5rem;
+    padding-bottom: 3rem;
     padding-top: 2rem;
-    min-width: 30ch;
+    border-bottom: 1px solid var(--color-text);
+
+     @media (min-width: ${t}) {
+      border: none;
+    }
   }
 
   h3 {
     margin: 0;
-    font-size: var(--size-header);
-    color: var(--color-primary);
+    font-size: var(--size-body);
     margin-bottom: 1rem;
   }
 
@@ -859,16 +862,14 @@ var W = `
   }
 
   img {
-    position: absolute;
-    bottom: 0rem;
-    left: 0rem;
-    width: auto;
-    height: 40rem;
-    z-index: -1;
-    opacity: 0.1;
+    width: 100%;
+    max-width: 30rem;
+    height: auto;
+  
 
-    @media (min-width: ${p}) {
-      opacity: 1;
+    @media (min-width: ${t}) {
+      max-height: 40rem;
+      width: auto;
     }
 
   }
@@ -879,34 +880,31 @@ var W = `
 
 <section>
   <hgroup>
-    <p>[ Little Process ]</p>
-    <h2>Every Step <br> <span>by</span> One Person</h2>
+    <p>[ Process ]</p>
+    <h2><span>By</span> One Person</h2>
   </hgroup>
 
   <ul>
     <li>
       <h3>Step 1</h3>
-      <p>Design block by block</p>
+      <p>Ask a little question</p>
     </li>
+
     <li>
       <h3>Step 2</h3>
-      <p>Sketch illustration by hand</p>
+      <p>....</p>
+      <img src=${o("./assets/images/home/process.avif")} alt="Little Process">
     </li>
+
     <li>
       <h3>Step 3</h3>
-      <p>Develop HTML, CSS, JS</p>
-    </li>
-    <li>
-      <h3>Step 4</h3>
-      <p>Deliver Standalone HTML</p>
+      <p>Your Web Presence</p>
     </li>
   </ul>
-
-  <img src=${o("./assets/images/home/craftsmanship.avif")} alt="Craftsmanship Illustration">
 </section>
 
 `;
-a("section-little-process", { styles: W, template: X });
+a("section-little-process", { styles: M, template: X });
 
 // scripts/home/education.js
 var J = `
@@ -918,7 +916,7 @@ var J = `
     overflow-x: hidden;
     overflow-y: visible;
 
-    @media (min-width: ${v}) {
+    @media (min-width: ${y}) {
       height: auto;
     }
   }
@@ -928,7 +926,7 @@ var J = `
     margin-inline: auto;
     margin-top: 5rem;
 
-    @media (min-width: ${v}) {
+    @media (min-width: ${y}) {
       position: relative;
       overflow: hidden;
       height: 70rem;
@@ -970,7 +968,7 @@ var J = `
     }
     
   }
-`, Z = `
+`, Y = `
   <section>
     <hgroup>
       <p>[ Education ]</p>
@@ -982,10 +980,10 @@ var J = `
   </section>
 
 `;
-a("section-education", { styles: J, template: Z });
+a("section-education", { styles: J, template: Y });
 
 // scripts/home/hobby.js
-var Q = `
+var Z = `
   :host {
     display: block;
   }
@@ -1021,7 +1019,7 @@ var Q = `
       height: auto;
     }
   }
-`, Y = `
+`, Q = `
   <div>
     <img src=${o("./assets/images/home/sketching.avif")} alt="Sketching SEA">
   </div>
@@ -1032,7 +1030,7 @@ var Q = `
     <p>All hand-drawn. Bring the same approach to every website I build.</p>
   </section>
 `;
-a("section-hobby", { styles: Q, template: Y });
+a("section-hobby", { styles: Z, template: Q });
 
 // scripts/home/recent-crafts.js
 var R = `
@@ -1156,7 +1154,7 @@ var te = `
       height: 90%;
     }
 
-    @media (min-width: ${v}) {
+    @media (min-width: ${y}) {
       position: relative;
       overflow: hidden;
     }
@@ -1238,7 +1236,7 @@ var te = `
 
   <hgroup>
     <p>[ Let's Craft ]</p>
-    <h2>Open to Working Together</h2>
+    <h2>Bring Business Identity <br> to the Web</h2>
   </hgroup>
 
   <ul>
@@ -1264,9 +1262,9 @@ function oe(i) {
     return;
   e.addEventListener("click", () => {
     navigator.clipboard.writeText("hanhtetaung.dev@gmail.com").then(() => {
-      let s = e.textContent;
+      let l = e.textContent;
       e.textContent = "Copied!", e.classList.add("copied"), setTimeout(() => {
-        e.textContent = s, e.classList.remove("copied");
+        e.textContent = l, e.classList.remove("copied");
       }, 1500);
     });
   });
