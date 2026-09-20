@@ -210,13 +210,13 @@ var S = `
        content: "➶";
      }
   }
-`, _ = ["href", "target", "rel", "download"], E = `
+`, _ = ["href", "target", "rel", "download"], B = `
   <a data-forward><slot></slot></a>
 `;
-a("app-link", { attrs: _, styles: S, template: E });
+a("app-link", { attrs: _, styles: S, template: B });
 
 // scripts/components/app-logo.js
-var B = `
+var E = `
   :host {
     display: block;
   }
@@ -226,7 +226,7 @@ var B = `
     width: auto;
   }
 `, D = ["width", "height", "src", "alt"], T = () => "<img data-forward />";
-a("app-logo", { attrs: D, styles: B, template: T });
+a("app-logo", { attrs: D, styles: E, template: T });
 
 // scripts/breakpoints.js
 var t = "640px", c = "1024px", y = "1920px";
@@ -473,7 +473,7 @@ var G = `
     text-decoration: none;
     color: var(--color-text);
   }
-`, H = () => `
+`, N = () => `
       <p>
           <img src=${o("./assets/images/logo.avif")}
           alt="Logo">
@@ -536,10 +536,10 @@ var G = `
           </ul>
         </nav>
 `;
-a("footer-copyright", { styles: G, template: H });
+a("footer-copyright", { styles: G, template: N });
 
 // scripts/footer.js
-var N = `
+var H = `
   :host {
     display: block;
   }
@@ -647,7 +647,7 @@ function q(i) {
     e.removeEventListener("mousemove", g), e.removeEventListener("mouseenter", f), e.removeEventListener("mouseleave", n);
   };
 }
-a("section-footer", { styles: N, template: j, onRender: q });
+a("section-footer", { styles: H, template: j, onRender: q });
 
 // scripts/home/hero.js
 var K = `
@@ -850,12 +850,10 @@ var X = `
     padding-bottom: 3rem;
     padding-top: 2rem;
     border-bottom: 1px solid var(--color-text);
-    min-width: 30ch;
-    max-width: 70%;
     text-align: start;
-
-     @media (min-width: ${t}) {
-      min-width: auto;
+    
+    @media (min-width: ${t}) {
+      max-width: 70%;
       width: 100%;
     }
 
@@ -952,7 +950,7 @@ var X = `
 
     <li>
       <h3>Step 3</h3>
-      <p>Your Web identity</p>
+      <p>Your Brand New Website</p>
     </li>
   </ul>
 </section>

@@ -49,12 +49,10 @@ const styles = /* css */ `
     padding-bottom: 3rem;
     padding-top: 2rem;
     border-bottom: 1px solid var(--color-text);
-    min-width: 30ch;
-    max-width: 70%;
     text-align: start;
-
-     @media (min-width: ${TABLET}) {
-      min-width: auto;
+    
+    @media (min-width: ${TABLET}) {
+      max-width: 70%;
       width: 100%;
     }
 
@@ -153,7 +151,7 @@ const template = /* html */ `
 
     <li>
       <h3>Step 3</h3>
-      <p>Your Web identity</p>
+      <p>Your Brand New Website</p>
     </li>
   </ul>
 </section>
