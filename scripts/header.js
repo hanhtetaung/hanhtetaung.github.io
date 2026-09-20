@@ -7,7 +7,7 @@ import { TABLET } from "./breakpoints.js";
 const styles = /* css */ `
   :host {
     display: block;
-    background: var(--color-bg-primary);
+    /* background: var(--color-bg-primary); */
     font-size: var(--size-small);
   }
 

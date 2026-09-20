@@ -27,15 +27,6 @@ const styles = /* css */ `
     }
   }
 
-  #img-wrap {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    align-self: flex-end;
-    line-height: 0;
-    overflow: hidden;
-  }
-
   img {
     max-height: 25rem;
     width: auto;
@@ -44,6 +35,34 @@ const styles = /* css */ `
     @media (min-width: ${TABLET}) {
       max-height: 35rem;
     }
+  }
+
+  h1 {
+    margin: 0;
+    font-size: var(--size-display);
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  hgroup + p {
+    max-width: min(50ch, 90%);
+
+    @media (min-width: ${DESKTOP}) {
+      font-size: 2.3rem;
+    }
+  }
+
+   #img-wrap {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    align-self: flex-end;
+    line-height: 0;
+    overflow: hidden;
   }
 
   #visible-img {
@@ -85,30 +104,15 @@ const styles = /* css */ `
       display: block;
     }
   }
-
-  h1 {
-    margin: 0;
-    font-size: var(--size-display);
-    margin-top: 1rem;
-    margin-bottom: 2rem;
-  }
-
-  p {
-    margin: 0;
-  }
-
-  hgroup + p {
-    max-width: min(25ch, 90%);
-  }
 `;
 
 const template = /* html */ `
   <section>
     <hgroup>
       <p>Han Htet Aung | GMT+7</p>
-      <h1>Craft Web Interfaces</h1>
+      <h1>Craft Web identity</h1>
     </hgroup>
-    <p>Web Designer & Developer who brings hand-drawn illustrations to every site.</p>
+    <p>Web Designer & Developer who brings hand-drawn illustrations to create unique experiences.</p>
     <div id="img-wrap">
       <img id="visible-img" src="./assets/images/home/walking-holding-luggage.avif" alt="Man walking and holding luggage">
       <img id="lens-img" src="./assets/images/home/walking-holding-luggage-color.avif" alt="Man walking and holding luggage with color" aria-hidden="true">

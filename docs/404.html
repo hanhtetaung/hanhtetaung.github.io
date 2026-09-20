@@ -21,7 +21,7 @@
     ></script>
     
   <style>/* main.css */
-:root{--color-bg-primary:#fff5e8;--color-primary:#7e4c37;--color-text:#000;--color-transparent:#0000;--font-family:"Archivo",sans-serif;--font-regular:400;--font-bold:700;--ratio:1.4;--size-body:1.6rem;--size-small:calc(var(--size-body)/var(--ratio));--size-heading:calc(var(--size-body)*var(--ratio));--size-title:calc(var(--size-heading)*var(--ratio));--size-display:calc(var(--size-title)*var(--ratio));font-size:10px;@media (width>=640px){&{--size-body:2rem}}}body{background:var(--color-bg-primary);font-family:var(--font-family);font-size:var(--size-body);margin:0}
+:root{--color-bg-primary:#fff5e8;--color-primary:#7e4c37;--color-text:#000;--color-transparent:#0000;--font-family:"Archivo",sans-serif;--font-regular:400;--font-bold:700;--ratio:1.4;--size-body:1.6rem;--size-small:calc(var(--size-body)/var(--ratio));--size-heading:calc(var(--size-body)*var(--ratio));--size-title:calc(var(--size-heading)*var(--ratio));--size-display:calc(var(--size-title)*var(--ratio));font-size:10px;@media (width>=640px){&{--size-body:2rem}}}body{background:var(--color-bg-primary);font-family:var(--font-family);font-size:var(--size-body);position:relative;margin:0}body:before{content:"";position:absolute;pointer-events:none;z-index:-1;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='filter'%3E%3CfeTurbulence baseFrequency='0.40'/%3E%3CfeColorMatrix values='0 0 0 9 -4 0 0 0 9 -4 0 0 0 9 -4 0 0 0 9 -4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23filter)'/%3E%3C/svg%3E");inset:0}
 </style></head>
   <body>
     <section-header></section-header>
@@ -84,10 +84,10 @@ function x(e, t) {
     return Number(e);
   return e;
 }
-function r(e, { props: t = {}, attrs: c = [], styles: l = "", template: s, onRender: f = null }) {
+function r(e, { props: t = {}, attrs: c = [], styles: l = "", template: s, onRender: h = null }) {
   let g = ["props", ...c];
 
-  class h extends HTMLElement {
+  class f extends HTMLElement {
     static observedAttributes = g;
     constructor() {
       super();
@@ -134,14 +134,14 @@ function r(e, { props: t = {}, attrs: c = [], styles: l = "", template: s, onRen
       if (typeof this._cleanup === "function")
         this._cleanup(), this._cleanup = null;
       let i = this._getProps(), n = typeof s === "function" ? s(i) : s;
-      if (this.shadowRoot.innerHTML = `<style>${l}</style>${n}`, this._applyForwardedAttrs(), f) {
-        let m = f(this.shadowRoot, i, this);
+      if (this.shadowRoot.innerHTML = `<style>${l}</style>${n}`, this._applyForwardedAttrs(), h) {
+        let m = h(this.shadowRoot, i, this);
         if (typeof m === "function")
           this._cleanup = m;
       }
     }
   }
-  customElements.define(e, h);
+  customElements.define(e, f);
 }
 
 // scripts/components/app-link.js
@@ -221,17 +221,17 @@ var A = `
     max-height: 7rem;
     width: auto;
   }
-`, _ = ["width", "height", "src", "alt"], B = () => "<img data-forward />";
-r("app-logo", { attrs: _, styles: A, template: B });
+`, _ = ["width", "height", "src", "alt"], C = () => "<img data-forward />";
+r("app-logo", { attrs: _, styles: A, template: C });
 
 // scripts/breakpoints.js
 var o = "640px";
 
 // scripts/header.js
-var T = `
+var E = `
   :host {
     display: block;
-    background: var(--color-bg-primary);
+    /* background: var(--color-bg-primary); */
     font-size: var(--size-small);
   }
 
@@ -275,7 +275,7 @@ var T = `
     height: 5rem;
     width: auto;
   }
-`, L = `
+`, B = `
   <header>
       <app-link variant="plain" href=${d("/")}>
         <img src=${a("./assets/images/logo.avif")}
@@ -301,10 +301,10 @@ var T = `
       </div>
   </header>
 `;
-r("section-header", { template: L, styles: T });
+r("section-header", { template: B, styles: E });
 
 // scripts/components/footer-nav.js
-var S = [
+var T = [
   { href: "/", name: "Home" },
   { href: "/about", name: "About" },
   { href: "/credits", name: "Credits" },
@@ -323,7 +323,7 @@ var S = [
     href: "/writings/foundation-building-interfaces-at-scale",
     name: "Foundation"
   }
-], C = `
+], L = `
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -370,12 +370,12 @@ var S = [
     margin-right: 5rem;
     margin-bottom: 0.3rem;
   }
-`, E = () => `
+`, S = () => `
     <nav>
         <span>Sitemap</span>
 
         <ol>
-            ${S.map((e) => `
+            ${T.map((e) => `
                 <li>
                     <app-link variant="sitemap" href=${d(e.href)} >${e.name}</app-link>
                 </li>
@@ -383,7 +383,7 @@ var S = [
         </ol>
     </nav>
 `;
-r("footer-nav", { styles: C, template: E });
+r("footer-nav", { styles: L, template: S });
 
 // scripts/components/footer-copyright.js
 var U = `
@@ -608,7 +608,7 @@ var H = `
       display: none;
     }
   }
-`, P = `
+`, q = `
   <footer>
 
     <div id="highlight-wrap">
@@ -625,28 +625,28 @@ var H = `
     <footer-copyright></footer-copyright>
   </footer>
 `;
-function j(e) {
-  let t = e.querySelector("footer"), c = e.getElementById("highlight-base"), l = e.getElementById("highlight-lens"), s = e.getElementById("lens-ring"), f = e.getElementById("highlight-wrap");
-  if (!t || !c || !l || !s || !f)
+function P(e) {
+  let t = e.querySelector("footer"), c = e.getElementById("highlight-base"), l = e.getElementById("highlight-lens"), s = e.getElementById("lens-ring"), h = e.getElementById("highlight-wrap");
+  if (!t || !c || !l || !s || !h)
     return;
   function g(n) {
     let m = c.getBoundingClientRect(), p = n.clientX - m.left, b = n.clientY - m.top, u = s.offsetWidth / 2;
     s.style.left = `${p - u}px`, s.style.top = `${b - u}px`, l.style.clipPath = `circle(${u}px at ${p}px ${b}px)`;
   }
-  function h() {
+  function f() {
     s.setAttribute("data-visible", "true");
   }
   function i() {
     s.removeAttribute("data-visible"), l.style.clipPath = "circle(0px at 50% 50%)";
   }
-  return t.addEventListener("mousemove", g), t.addEventListener("mouseenter", h), t.addEventListener("mouseleave", i), () => {
-    t.removeEventListener("mousemove", g), t.removeEventListener("mouseenter", h), t.removeEventListener("mouseleave", i);
+  return t.addEventListener("mousemove", g), t.addEventListener("mouseenter", f), t.addEventListener("mouseleave", i), () => {
+    t.removeEventListener("mousemove", g), t.removeEventListener("mouseenter", f), t.removeEventListener("mouseleave", i);
   };
 }
-r("section-footer", { styles: H, template: P, onRender: j });
+r("section-footer", { styles: H, template: q, onRender: P });
 
 // scripts/components/app-icon.js
-var q = `
+var j = `
   :host {
     --local-width: 3rem;
     --local-height: auto;
@@ -685,7 +685,7 @@ var q = `
 
 
 `, N = ["src", "alt"], O = () => '<img data-forward width="200" height="200"/>';
-r("app-icon", { attrs: N, styles: q, template: O });
+r("app-icon", { attrs: N, styles: j, template: O });
 
 // scripts/404/intro.js
 var G = `

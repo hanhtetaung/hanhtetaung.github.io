@@ -20,7 +20,7 @@
 
     
   <style>/* main.css */
-:root{--color-bg-primary:#fff5e8;--color-primary:#7e4c37;--color-text:#000;--color-transparent:#0000;--font-family:"Archivo",sans-serif;--font-regular:400;--font-bold:700;--ratio:1.4;--size-body:1.6rem;--size-small:calc(var(--size-body)/var(--ratio));--size-heading:calc(var(--size-body)*var(--ratio));--size-title:calc(var(--size-heading)*var(--ratio));--size-display:calc(var(--size-title)*var(--ratio));font-size:10px;@media (width>=640px){&{--size-body:2rem}}}body{background:var(--color-bg-primary);font-family:var(--font-family);font-size:var(--size-body);margin:0}
+:root{--color-bg-primary:#fff5e8;--color-primary:#7e4c37;--color-text:#000;--color-transparent:#0000;--font-family:"Archivo",sans-serif;--font-regular:400;--font-bold:700;--ratio:1.4;--size-body:1.6rem;--size-small:calc(var(--size-body)/var(--ratio));--size-heading:calc(var(--size-body)*var(--ratio));--size-title:calc(var(--size-heading)*var(--ratio));--size-display:calc(var(--size-title)*var(--ratio));font-size:10px;@media (width>=640px){&{--size-body:2rem}}}body{background:var(--color-bg-primary);font-family:var(--font-family);font-size:var(--size-body);position:relative;margin:0}body:before{content:"";position:absolute;pointer-events:none;z-index:-1;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='filter'%3E%3CfeTurbulence baseFrequency='0.40'/%3E%3CfeColorMatrix values='0 0 0 9 -4 0 0 0 9 -4 0 0 0 9 -4 0 0 0 9 -4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23filter)'/%3E%3C/svg%3E");inset:0}
 </style></head>
   <body>
     <section-header></section-header>
@@ -44,10 +44,10 @@ function o(i) {
   return new URL(i, $()).href;
 }
 function b(i) {
-  let t = i.replace(/^\//, ""), s = location.protocol === "file:", m = $();
-  if (t === "")
+  let e = i.replace(/^\//, ""), s = location.protocol === "file:", m = $();
+  if (e === "")
     return s ? new URL("index.html", m).href : m.href;
-  return s ? new URL(`${t}.html`, m).href : new URL(t, m).href;
+  return s ? new URL(`${e}.html`, m).href : new URL(e, m).href;
 }
 
 // scripts/fonts.js
@@ -70,25 +70,25 @@ z.textContent = A;
 document.head.appendChild(z);
 
 // lib/define.js
-function S(i, t) {
+function C(i, e) {
   if (i === void 0) {
-    if (t === Array)
+    if (e === Array)
       return [];
-    if (t === Object)
+    if (e === Object)
       return {};
-    if (t === Boolean)
+    if (e === Boolean)
       return !1;
-    if (t === Number)
+    if (e === Number)
       return 0;
     return;
   }
-  if (t === Boolean)
+  if (e === Boolean)
     return Boolean(i);
-  if (t === Number)
+  if (e === Number)
     return Number(i);
   return i;
 }
-function a(i, { props: t = {}, attrs: s = [], styles: m = "", template: r, onRender: h = null }) {
+function a(i, { props: e = {}, attrs: s = [], styles: m = "", template: r, onRender: h = null }) {
   let g = ["props", ...s];
 
   class f extends HTMLElement {
@@ -117,10 +117,10 @@ function a(i, { props: t = {}, attrs: s = [], styles: m = "", template: r, onRen
         } catch {
           n = {};
         }
-      let c = {};
-      for (let d of Object.keys(t))
-        c[d] = S(n[d], t[d]);
-      return c;
+      let p = {};
+      for (let d of Object.keys(e))
+        p[d] = C(n[d], e[d]);
+      return p;
     }
     _applyForwardedAttrs() {
       if (s.length === 0)
@@ -139,9 +139,9 @@ function a(i, { props: t = {}, attrs: s = [], styles: m = "", template: r, onRen
         this._cleanup(), this._cleanup = null;
       let n = this._getProps(), l = typeof r === "function" ? r(n) : r;
       if (this.shadowRoot.innerHTML = `<style>${m}</style>${l}`, this._applyForwardedAttrs(), h) {
-        let c = h(this.shadowRoot, n, this);
-        if (typeof c === "function")
-          this._cleanup = c;
+        let p = h(this.shadowRoot, n, this);
+        if (typeof p === "function")
+          this._cleanup = p;
       }
     }
   }
@@ -149,7 +149,7 @@ function a(i, { props: t = {}, attrs: s = [], styles: m = "", template: r, onRen
 }
 
 // scripts/components/app-link.js
-var _ = `
+var S = `
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -210,13 +210,13 @@ var _ = `
        content: "➶";
      }
   }
-`, C = ["href", "target", "rel", "download"], B = `
+`, _ = ["href", "target", "rel", "download"], E = `
   <a data-forward><slot></slot></a>
 `;
-a("app-link", { attrs: C, styles: _, template: B });
+a("app-link", { attrs: _, styles: S, template: E });
 
 // scripts/components/app-logo.js
-var E = `
+var B = `
   :host {
     display: block;
   }
@@ -225,17 +225,17 @@ var E = `
     max-height: 7rem;
     width: auto;
   }
-`, T = ["width", "height", "src", "alt"], P = () => "<img data-forward />";
-a("app-logo", { attrs: T, styles: E, template: P });
+`, D = ["width", "height", "src", "alt"], T = () => "<img data-forward />";
+a("app-logo", { attrs: D, styles: B, template: T });
 
 // scripts/breakpoints.js
-var e = "640px", p = "1024px", y = "1920px";
+var t = "640px", c = "1024px", y = "1920px";
 
 // scripts/header.js
-var D = `
+var P = `
   :host {
     display: block;
-    background: var(--color-bg-primary);
+    /* background: var(--color-bg-primary); */
     font-size: var(--size-small);
   }
 
@@ -269,7 +269,7 @@ var D = `
     box-shadow: none;
   }
 
-  @media (max-width: ${e}) {
+  @media (max-width: ${t}) {
     .header__navigation {
       gap: 4rem;
     }
@@ -305,7 +305,7 @@ var D = `
       </div>
   </header>
 `;
-a("section-header", { template: L, styles: D });
+a("section-header", { template: L, styles: P });
 
 // scripts/components/footer-nav.js
 var O = [
@@ -336,7 +336,7 @@ var O = [
    display: flex;
    gap: 5rem;
 
-   @media (max-width: ${e}) {
+   @media (max-width: ${t}) {
         flex-direction: column;
         gap: 3rem;
         margin-block: 2rem;
@@ -365,7 +365,7 @@ var O = [
     max-height: 12.5ch;
     overflow: scroll;
 
-    @media (max-width: ${e}) {
+    @media (max-width: ${t}) {
         max-height: 20ch;
     }
   }
@@ -374,7 +374,7 @@ var O = [
     margin-right: 5rem;
     margin-bottom: 0.3rem;
   }
-`, G = () => `
+`, F = () => `
     <nav>
         <span>Sitemap</span>
 
@@ -387,10 +387,10 @@ var O = [
         </ol>
     </nav>
 `;
-a("footer-nav", { styles: U, template: G });
+a("footer-nav", { styles: U, template: F });
 
 // scripts/components/footer-copyright.js
-var F = `
+var G = `
   :host {
    display: flex;
     justify-content: space-between;
@@ -398,7 +398,7 @@ var F = `
     padding-top: 1rem;
     margin-top: 3rem;
 
-   @media (max-width: ${e}) {
+   @media (max-width: ${t}) {
         flex-direction: column-reverse;
         gap: 2rem;
         border: none;
@@ -414,7 +414,7 @@ var F = `
     align-items: end;
     gap: 0.2rem;
 
-    @media (min-width: ${e}) {
+    @media (min-width: ${t}) {
       border: none;
       padding-top: none;
     }
@@ -438,7 +438,7 @@ var F = `
   nav {
     display: block;
 
-    @media (min-width: ${e}) {
+    @media (min-width: ${t}) {
       display: block;
     }
   }
@@ -449,7 +449,7 @@ var F = `
     font-weight: var(--font-bold);
     
 
-    @media (max-width: ${e}) {
+    @media (max-width: ${t}) {
       display: inline-block;
       margin-bottom: 0.5rem;
     }
@@ -458,7 +458,7 @@ var F = `
   p img {
     height: 2.3rem;
 
-     @media (max-width: ${e}) {
+     @media (max-width: ${t}) {
       
       height: 2.5rem;
     }
@@ -536,7 +536,7 @@ var F = `
           </ul>
         </nav>
 `;
-a("footer-copyright", { styles: F, template: H });
+a("footer-copyright", { styles: G, template: H });
 
 // scripts/footer.js
 var N = `
@@ -602,7 +602,7 @@ var N = `
     display: block;
   }
 
-  @media (min-width: ${e}) {
+  @media (min-width: ${t}) {
     #highlight-wrap {
       display: block;
     }
@@ -629,12 +629,12 @@ var N = `
     <footer-copyright></footer-copyright>
   </footer>
 `;
-function K(i) {
-  let t = i.querySelector("footer"), s = i.getElementById("highlight-base"), m = i.getElementById("highlight-lens"), r = i.getElementById("lens-ring"), h = i.getElementById("highlight-wrap");
-  if (!t || !s || !m || !r || !h)
+function q(i) {
+  let e = i.querySelector("footer"), s = i.getElementById("highlight-base"), m = i.getElementById("highlight-lens"), r = i.getElementById("lens-ring"), h = i.getElementById("highlight-wrap");
+  if (!e || !s || !m || !r || !h)
     return;
   function g(l) {
-    let c = s.getBoundingClientRect(), d = l.clientX - c.left, u = l.clientY - c.top, v = r.offsetWidth / 2;
+    let p = s.getBoundingClientRect(), d = l.clientX - p.left, u = l.clientY - p.top, v = r.offsetWidth / 2;
     r.style.left = `${d - v}px`, r.style.top = `${u - v}px`, m.style.clipPath = `circle(${v}px at ${d}px ${u}px)`;
   }
   function f() {
@@ -643,21 +643,21 @@ function K(i) {
   function n() {
     r.removeAttribute("data-visible"), m.style.clipPath = "circle(0px at 50% 50%)";
   }
-  return t.addEventListener("mousemove", g), t.addEventListener("mouseenter", f), t.addEventListener("mouseleave", n), () => {
-    t.removeEventListener("mousemove", g), t.removeEventListener("mouseenter", f), t.removeEventListener("mouseleave", n);
+  return e.addEventListener("mousemove", g), e.addEventListener("mouseenter", f), e.addEventListener("mouseleave", n), () => {
+    e.removeEventListener("mousemove", g), e.removeEventListener("mouseenter", f), e.removeEventListener("mouseleave", n);
   };
 }
-a("section-footer", { styles: N, template: j, onRender: K });
+a("section-footer", { styles: N, template: j, onRender: q });
 
 // scripts/home/hero.js
-var q = `
+var K = `
   :host {
     display: block;
     height: min(calc(100vh - 108px - 10rem), 70rem);
     margin-top: 5rem;
     overflow: hidden;
 
-    @media (min-width: ${e}) {
+    @media (min-width: ${t}) {
       margin-top: 7rem;
     }
   }
@@ -671,18 +671,9 @@ var q = `
     justify-content: start;
     position: relative;
 
-    @media (min-width: ${p}) {
+    @media (min-width: ${c}) {
       justify-content: space-between;
     }
-  }
-
-  #img-wrap {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    align-self: flex-end;
-    line-height: 0;
-    overflow: hidden;
   }
 
   img {
@@ -690,48 +681,8 @@ var q = `
     width: auto;
     display: block;
 
-    @media (min-width: ${e}) {
+    @media (min-width: ${t}) {
       max-height: 35rem;
-    }
-  }
-
-  #visible-img {
-    cursor: auto;
-
-    @media (min-width: ${e}) {
-      cursor: none;
-    }
-  }
-
-  #lens-img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    pointer-events: none;
-    clip-path: circle(0px at 50% 50%);
-    display: none;
-
-    @media (min-width: ${e}) {
-      display: block;
-    }
-  }
-
-  #lens-ring {
-    position: absolute;
-    box-sizing: border-box;
-    width: 20rem;
-    height: 20rem;
-    border: 0.5px solid var(--color-primary);
-    border-radius: 50%;
-    pointer-events: none;
-    display: none;
-  }
-
-  @media (min-width: ${e}) {
-    #lens-ring[data-visible="true"] {
-      display: block;
     }
   }
 
@@ -747,27 +698,80 @@ var q = `
   }
 
   hgroup + p {
-    max-width: min(25ch, 90%);
+    max-width: min(50ch, 90%);
+
+    @media (min-width: ${c}) {
+      font-size: 2.3rem;
+    }
   }
-`, V = `
+
+   #img-wrap {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    align-self: flex-end;
+    line-height: 0;
+    overflow: hidden;
+  }
+
+  #visible-img {
+    cursor: auto;
+
+    @media (min-width: ${t}) {
+      cursor: none;
+    }
+  }
+
+  #lens-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+    clip-path: circle(0px at 50% 50%);
+    display: none;
+
+    @media (min-width: ${t}) {
+      display: block;
+    }
+  }
+
+  #lens-ring {
+    position: absolute;
+    box-sizing: border-box;
+    width: 20rem;
+    height: 20rem;
+    border: 0.5px solid var(--color-primary);
+    border-radius: 50%;
+    pointer-events: none;
+    display: none;
+  }
+
+  @media (min-width: ${t}) {
+    #lens-ring[data-visible="true"] {
+      display: block;
+    }
+  }
+`, M = `
   <section>
     <hgroup>
       <p>Han Htet Aung | GMT+7</p>
-      <h1>Craft Web Interfaces</h1>
+      <h1>Craft Web identity</h1>
     </hgroup>
-    <p>Web Designer & Developer who brings hand-drawn illustrations to every site.</p>
+    <p>Web Designer & Developer who brings hand-drawn illustrations to create unique experiences.</p>
     <div id="img-wrap">
       <img id="visible-img" src="./assets/images/home/walking-holding-luggage.avif" alt="Man walking and holding luggage">
       <img id="lens-img" src="./assets/images/home/walking-holding-luggage-color.avif" alt="Man walking and holding luggage with color" aria-hidden="true">
       <div id="lens-ring"></div>
     </div>
   </section>
-`, W = `(min-width: ${e})`;
-function I(i) {
-  let t = i.getElementById("img-wrap"), s = i.getElementById("visible-img"), m = i.getElementById("lens-img"), r = i.getElementById("lens-ring");
-  if (!t || !s || !m || !r)
+`, V = `(min-width: ${t})`;
+function W(i) {
+  let e = i.getElementById("img-wrap"), s = i.getElementById("visible-img"), m = i.getElementById("lens-img"), r = i.getElementById("lens-ring");
+  if (!e || !s || !m || !r)
     return;
-  let h = window.matchMedia(W);
+  let h = window.matchMedia(V);
   function g(u) {
     let v = s.getBoundingClientRect(), x = u.clientX - v.left, k = u.clientY - v.top, w = r.offsetWidth / 2;
     r.style.left = `${x - w}px`, r.style.top = `${k - w}px`, m.style.clipPath = `circle(${w}px at ${x}px ${k}px)`;
@@ -779,34 +783,34 @@ function I(i) {
     r.removeAttribute("data-visible"), m.style.clipPath = "circle(0px at 50% 50%)";
   }
   function l() {
-    t.addEventListener("mousemove", g), t.addEventListener("mouseenter", f), t.addEventListener("mouseleave", n);
+    e.addEventListener("mousemove", g), e.addEventListener("mouseenter", f), e.addEventListener("mouseleave", n);
   }
-  function c() {
-    t.removeEventListener("mousemove", g), t.removeEventListener("mouseenter", f), t.removeEventListener("mouseleave", n), n();
+  function p() {
+    e.removeEventListener("mousemove", g), e.removeEventListener("mouseenter", f), e.removeEventListener("mouseleave", n), n();
   }
   function d(u) {
     if (u.matches)
       l();
     else
-      c();
+      p();
   }
   if (h.matches)
     l();
   return h.addEventListener("change", d), () => {
-    c(), h.removeEventListener("change", d);
+    p(), h.removeEventListener("change", d);
   };
 }
-a("section-hero", { styles: q, template: V, onRender: I });
+a("section-hero", { styles: K, template: M, onRender: W });
 
 // scripts/home/little-process.js
-var M = `
+var X = `
   :host {
     position: relative;
     display: block;
     overflow: hidden;
     margin-block: 15rem;
 
-    @media (min-width: ${p}) {
+    @media (min-width: ${c}) {
       margin-top: 20rem;
       margin-bottom: 25rem;
     }
@@ -834,11 +838,11 @@ var M = `
     padding: 0;
     margin: 0;
     align-items: flex-start;
-
-    @media (min-width: ${e}) {
+    
+    @media (min-width: ${c}) {
       display: flex;
       gap: 5rem;
-      align-items: normal;
+      border-bottom: 1px solid var(--color-text);
     }
   }
 
@@ -846,15 +850,20 @@ var M = `
     padding-bottom: 3rem;
     padding-top: 2rem;
     border-bottom: 1px solid var(--color-text);
-    min-width: 20ch;
-    width: fit-content;
+    min-width: 30ch;
+    max-width: 70%;
     text-align: start;
 
-     @media (min-width: ${e}) {
+     @media (min-width: ${t}) {
       min-width: auto;
-      /* border-right: 1px solid var(--color-text); */
       width: 100%;
     }
+
+
+    @media (min-width: ${c}) {
+      border: none;
+    }
+    
   }
 
   h3 {
@@ -878,14 +887,18 @@ var M = `
     z-index: -2;
   
 
-    @media (min-width: ${e}) {
+    @media (min-width: ${t}) {
       margin-bottom: 3rem;
       margin-top: 2rem;
 
       opacity: 1;
       position: static;
-      max-height: 40rem;
+      max-height: 30rem;
       width: auto;
+    }
+
+    @media (min-width: ${c}) {
+      max-height: 40rem;
     }
 
   }
@@ -897,12 +910,25 @@ var M = `
     /* text-decoration: none; */
     color: var(--color-primary);
   }
-`, X = `
+
+  ol {
+    list-style-type: disc;
+    padding: 0;
+    padding-left: 1.5rem;
+  }
+
+  ol li {
+    border: none;
+    padding: 0;
+    padding-bottom: 0.5rem;
+  }
+`, I = `
 
 <section>
   <hgroup>
     <p>[ Process ]</p>
-    <h2><span>By</span> One Person</h2>
+    <!-- <h2><span>By</span> One Person</h2> -->
+     <h2>All in One Person</h2>
   </hgroup>
 
   <img src=${o("./assets/images/home/process.avif")} alt="Little Process">
@@ -915,18 +941,24 @@ var M = `
 
     <li>
       <h3>Step 2</h3>
-      <p>Crafting ...</p>
+      <ol>
+        <li>Design</li>
+        <li>illustrate</li>
+        <li>Develop</li>
+        <li>Deliver</li>
+      </ol>
+      <!-- <p>Design, illustrate, Develop, Deliver</p> -->
     </li>
 
     <li>
       <h3>Step 3</h3>
-      <p>Your Web Presence</p>
+      <p>Your Web identity</p>
     </li>
   </ul>
 </section>
 
 `;
-a("section-little-process", { styles: M, template: X });
+a("section-little-process", { styles: X, template: I });
 
 // scripts/home/education.js
 var J = `
@@ -979,11 +1011,11 @@ var J = `
     bottom: 5rem;
     z-index: -1;
     
-    @media (min-width: ${e}) {
+    @media (min-width: ${t}) {
       left: 40%;
     }
 
-    @media (min-width: ${p}) {
+    @media (min-width: ${c}) {
       opacity: 1;
       right: 10%;
       left: auto;
@@ -1008,6 +1040,7 @@ a("section-education", { styles: J, template: Y });
 var Z = `
   :host {
     display: block;
+    overflow: hidden;
   }
 
   section {
@@ -1036,7 +1069,7 @@ var Z = `
     height: 50rem;
     width: auto;
 
-    @media (min-width: ${e}) {
+    @media (min-width: ${t}) {
       width: 100%;
       height: auto;
     }
@@ -1049,7 +1082,7 @@ var Z = `
   <section>
     <p>[ Hobby ]</p>
     <h2>Self-taught in illustration</h2>
-    <p>All hand-drawn. Bring the same approach to every website I build.</p>
+    <p>All hand-drawn. Bring the same approach to make each website feel memorable.</p>
   </section>
 `;
 a("section-hobby", { styles: Z, template: Q });
@@ -1088,13 +1121,13 @@ var R = `
     flex-wrap: wrap;
     gap: 3rem;
 
-    @media (min-width: ${e}) {
+    @media (min-width: ${t}) {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
     }
 
 
-    @media (min-width: ${p}) {
+    @media (min-width: ${c}) {
       grid-template-columns: repeat(3, 1fr);
     }
   }
@@ -1119,7 +1152,7 @@ var R = `
     height: 20rem;
   }
 
-`, tt = `
+`, ee = `
 <section>
   <hgroup>
     <p>[ Recent Crafts ]</p>
@@ -1151,10 +1184,10 @@ var R = `
   </ul>
 </section>
 `;
-a("section-recent-crafts", { styles: R, template: tt });
+a("section-recent-crafts", { styles: R, template: ee });
 
 // scripts/home/cta.js
-var et = `
+var te = `
   :host {
     display: block;
     height: 70rem;
@@ -1172,7 +1205,7 @@ var et = `
     justify-content: space-between;
     margin-top: 5rem;
 
-    @media (min-width: ${e}) {
+    @media (min-width: ${t}) {
       height: 90%;
     }
 
@@ -1206,7 +1239,7 @@ var et = `
     padding-block: 2rem;
     overflow: scroll;
 
-    @media (min-width: ${e}) {
+    @media (min-width: ${t}) {
       max-width: 50%;
       gap: 3rem;
     }
@@ -1220,13 +1253,13 @@ var et = `
     left: -0%;
     top: 30%;
 
-    @media (min-width: ${e}) {
+    @media (min-width: ${t}) {
       left: auto;
       right: 20%;
       top: 20rem;
     }
 
-    @media (min-width: ${p}) {
+    @media (min-width: ${c}) {
       opacity: 1;
     }
   }
@@ -1252,13 +1285,13 @@ var et = `
     text-decoration: none;
     color: var(--color-text);
   }
-`, it = `
+`, ie = `
 <section>
   <img src="./assets/images/home/red-telephone-box.avif" alt="Red Telephone Box">
 
   <hgroup>
     <p>[ Let's Craft ]</p>
-    <h2>Bring Business Identity <br> to the Web</h2>
+    <h2>Bring Brand identity <br> to the Web</h2>
   </hgroup>
 
   <ul>
@@ -1278,19 +1311,19 @@ var et = `
   </ul>
 </section>
 `;
-function ot(i) {
-  let t = i.getElementById("copyBtn");
-  if (!t)
+function oe(i) {
+  let e = i.getElementById("copyBtn");
+  if (!e)
     return;
-  t.addEventListener("click", () => {
+  e.addEventListener("click", () => {
     navigator.clipboard.writeText("hanhtetaung.dev@gmail.com").then(() => {
-      let s = t.textContent;
-      t.textContent = "Copied!", t.classList.add("copied"), setTimeout(() => {
-        t.textContent = s, t.classList.remove("copied");
+      let s = e.textContent;
+      e.textContent = "Copied!", e.classList.add("copied"), setTimeout(() => {
+        e.textContent = s, e.classList.remove("copied");
       }, 1500);
     });
   });
 }
-a("section-cta", { styles: et, template: it, onRender: ot });
+a("section-cta", { styles: te, template: ie, onRender: oe });
 </script></body>
 </html>
