@@ -49,7 +49,7 @@ const template = /* html */ `
 
         <article>
           <p>
-            I'm Han Htet Aung. I see it, capture it, sketch it and bring it to the web.
+             I'm Han Htet Aung. I believe everything is unique in its own way.
           </p>
 
           <p>I see patterns in chaos.</p>

@@ -109,7 +109,7 @@ const template = /* html */ `
 
   <hgroup>
     <p>[ Let's Craft ]</p>
-    <h2>Bring Business Identity <br> to the Web</h2>
+    <h2>Bring Brand identity <br> to the Web</h2>
   </hgroup>
 
   <ul>

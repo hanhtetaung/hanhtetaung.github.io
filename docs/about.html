@@ -25,7 +25,7 @@
 
     
   <style>/* main.css */
-:root{--color-bg-primary:#fff5e8;--color-primary:#7e4c37;--color-text:#000;--color-transparent:#0000;--font-family:"Archivo",sans-serif;--font-regular:400;--font-bold:700;--ratio:1.4;--size-body:1.6rem;--size-small:calc(var(--size-body)/var(--ratio));--size-heading:calc(var(--size-body)*var(--ratio));--size-title:calc(var(--size-heading)*var(--ratio));--size-display:calc(var(--size-title)*var(--ratio));font-size:10px;@media (width>=640px){&{--size-body:2rem}}}body{background:var(--color-bg-primary);font-family:var(--font-family);font-size:var(--size-body);margin:0}
+:root{--color-bg-primary:#fff5e8;--color-primary:#7e4c37;--color-text:#000;--color-transparent:#0000;--font-family:"Archivo",sans-serif;--font-regular:400;--font-bold:700;--ratio:1.4;--size-body:1.6rem;--size-small:calc(var(--size-body)/var(--ratio));--size-heading:calc(var(--size-body)*var(--ratio));--size-title:calc(var(--size-heading)*var(--ratio));--size-display:calc(var(--size-title)*var(--ratio));font-size:10px;@media (width>=640px){&{--size-body:2rem}}}body{background:var(--color-bg-primary);font-family:var(--font-family);font-size:var(--size-body);position:relative;margin:0}body:before{content:"";position:absolute;pointer-events:none;z-index:-1;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='filter'%3E%3CfeTurbulence baseFrequency='0.40'/%3E%3CfeColorMatrix values='0 0 0 9 -4 0 0 0 9 -4 0 0 0 9 -4 0 0 0 9 -4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23filter)'/%3E%3C/svg%3E");inset:0}
 </style></head>
   <body>
     <section-header></section-header>
@@ -57,7 +57,7 @@ function p(e) {
 }
 
 // scripts/fonts.js
-var k = `
+var x = `
 @font-face {
     font-family: "Archivo";
     src: url("${o("./assets/fonts/Archivo-Black.woff2")}") format("woff2");
@@ -72,11 +72,11 @@ var k = `
     font-display: swap;
   }
 `, y = document.createElement("style");
-y.textContent = k;
+y.textContent = x;
 document.head.appendChild(y);
 
 // lib/define.js
-function x(e, t) {
+function k(e, t) {
   if (e === void 0) {
     if (t === Array)
       return [];
@@ -94,7 +94,7 @@ function x(e, t) {
     return Number(e);
   return e;
 }
-function a(e, { props: t = {}, attrs: i = [], styles: r = "", template: l, onRender: h = null }) {
+function a(e, { props: t = {}, attrs: i = [], styles: r = "", template: l, onRender: f = null }) {
   let g = ["props", ...i];
 
   class d extends HTMLElement {
@@ -124,8 +124,8 @@ function a(e, { props: t = {}, attrs: i = [], styles: r = "", template: l, onRen
           s = {};
         }
       let m = {};
-      for (let f of Object.keys(t))
-        m[f] = x(s[f], t[f]);
+      for (let h of Object.keys(t))
+        m[h] = k(s[h], t[h]);
       return m;
     }
     _applyForwardedAttrs() {
@@ -144,8 +144,8 @@ function a(e, { props: t = {}, attrs: i = [], styles: r = "", template: l, onRen
       if (typeof this._cleanup === "function")
         this._cleanup(), this._cleanup = null;
       let s = this._getProps(), c = typeof l === "function" ? l(s) : l;
-      if (this.shadowRoot.innerHTML = `<style>${r}</style>${c}`, this._applyForwardedAttrs(), h) {
-        let m = h(this.shadowRoot, s, this);
+      if (this.shadowRoot.innerHTML = `<style>${r}</style>${c}`, this._applyForwardedAttrs(), f) {
+        let m = f(this.shadowRoot, s, this);
         if (typeof m === "function")
           this._cleanup = m;
       }
@@ -231,17 +231,17 @@ var _ = `
     max-height: 7rem;
     width: auto;
   }
-`, B = ["width", "height", "src", "alt"], T = () => "<img data-forward />";
-a("app-logo", { attrs: B, styles: _, template: T });
+`, C = ["width", "height", "src", "alt"], E = () => "<img data-forward />";
+a("app-logo", { attrs: C, styles: _, template: E });
 
 // scripts/breakpoints.js
 var n = "640px", w = "1024px";
 
 // scripts/header.js
-var L = `
+var B = `
   :host {
     display: block;
-    background: var(--color-bg-primary);
+    /* background: var(--color-bg-primary); */
     font-size: var(--size-small);
   }
 
@@ -285,7 +285,7 @@ var L = `
     height: 5rem;
     width: auto;
   }
-`, S = `
+`, T = `
   <header>
       <app-link variant="plain" href=${p("/")}>
         <img src=${o("./assets/images/logo.avif")}
@@ -311,10 +311,10 @@ var L = `
       </div>
   </header>
 `;
-a("section-header", { template: S, styles: L });
+a("section-header", { template: T, styles: B });
 
 // scripts/components/footer-nav.js
-var F = [
+var L = [
   { href: "/", name: "Home" },
   { href: "/about", name: "About" },
   { href: "/credits", name: "Credits" },
@@ -333,7 +333,7 @@ var F = [
     href: "/writings/foundation-building-interfaces-at-scale",
     name: "Foundation"
   }
-], D = `
+], F = `
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -380,12 +380,12 @@ var F = [
     margin-right: 5rem;
     margin-bottom: 0.3rem;
   }
-`, E = () => `
+`, S = () => `
     <nav>
         <span>Sitemap</span>
 
         <ol>
-            ${F.map((e) => `
+            ${L.map((e) => `
                 <li>
                     <app-link variant="sitemap" href=${p(e.href)} >${e.name}</app-link>
                 </li>
@@ -393,10 +393,10 @@ var F = [
         </ol>
     </nav>
 `;
-a("footer-nav", { styles: D, template: E });
+a("footer-nav", { styles: F, template: S });
 
 // scripts/components/footer-copyright.js
-var H = `
+var D = `
   :host {
    display: flex;
     justify-content: space-between;
@@ -479,7 +479,7 @@ var H = `
     text-decoration: none;
     color: var(--color-text);
   }
-`, C = () => `
+`, H = () => `
       <p>
           <img src=${o("./assets/images/logo.avif")}
           alt="Logo">
@@ -542,7 +542,7 @@ var H = `
           </ul>
         </nav>
 `;
-a("footer-copyright", { styles: H, template: C });
+a("footer-copyright", { styles: D, template: H });
 
 // scripts/footer.js
 var I = `
@@ -636,12 +636,12 @@ var I = `
   </footer>
 `;
 function U(e) {
-  let t = e.querySelector("footer"), i = e.getElementById("highlight-base"), r = e.getElementById("highlight-lens"), l = e.getElementById("lens-ring"), h = e.getElementById("highlight-wrap");
-  if (!t || !i || !r || !l || !h)
+  let t = e.querySelector("footer"), i = e.getElementById("highlight-base"), r = e.getElementById("highlight-lens"), l = e.getElementById("lens-ring"), f = e.getElementById("highlight-wrap");
+  if (!t || !i || !r || !l || !f)
     return;
   function g(c) {
-    let m = i.getBoundingClientRect(), f = c.clientX - m.left, b = c.clientY - m.top, u = l.offsetWidth / 2;
-    l.style.left = `${f - u}px`, l.style.top = `${b - u}px`, r.style.clipPath = `circle(${u}px at ${f}px ${b}px)`;
+    let m = i.getBoundingClientRect(), h = c.clientX - m.left, b = c.clientY - m.top, u = l.offsetWidth / 2;
+    l.style.left = `${h - u}px`, l.style.top = `${b - u}px`, r.style.clipPath = `circle(${u}px at ${h}px ${b}px)`;
   }
   function d() {
     l.setAttribute("data-visible", "true");
@@ -656,7 +656,7 @@ function U(e) {
 a("section-footer", { styles: I, template: M, onRender: U });
 
 // scripts/about/about-intro.js
-var O = `
+var q = `
   :host {
     display: block;
     margin-top: 10rem;
@@ -693,7 +693,7 @@ var O = `
   img {
     height: 10rem;
   }
-`, N = `
+`, O = `
   <section>
       <h1>About</h1>
       <div>
@@ -702,7 +702,7 @@ var O = `
 
         <article>
           <p>
-            I'm Han Htet Aung. I see it, capture it, sketch it and bring it to the web.
+             I'm Han Htet Aung. I believe everything is unique in its own way.
           </p>
 
           <p>I see patterns in chaos.</p>
@@ -710,10 +710,10 @@ var O = `
       </div>
   </section>
 `;
-a("section-about-intro", { styles: O, template: N });
+a("section-about-intro", { styles: q, template: O });
 
 // scripts/components/app-icon.js
-var P = `
+var N = `
   :host {
     --local-width: 3rem;
     --local-height: auto;
@@ -751,8 +751,8 @@ var P = `
   }
 
 
-`, q = ["src", "alt"], Y = () => '<img data-forward width="200" height="200"/>';
-a("app-icon", { attrs: q, styles: P, template: Y });
+`, P = ["src", "alt"], Y = () => '<img data-forward width="200" height="200"/>';
+a("app-icon", { attrs: P, styles: N, template: Y });
 
 // scripts/about/random-facts.js
 var G = [
@@ -903,8 +903,8 @@ var X = "3 Nov 2000", K = 70, R = `
     margin: 1rem;
   }
 `, V = (e, t) => {
-  let i = new Date(e), r = /* @__PURE__ */ new Date, l = r.getFullYear() - i.getFullYear() - (r.getMonth() < i.getMonth() || r.getMonth() === i.getMonth() && r.getDate() < i.getDate() ? 1 : 0), h = l * 52 + Math.min(51, Math.floor((r - new Date(i.getFullYear() + l, i.getMonth(), i.getDate())) / 604800000));
-  return Array.from({ length: t * 52 }, (g, d) => `<li class="${d < h ? "lived" : ""}"></li>`).join("");
+  let i = new Date(e), r = /* @__PURE__ */ new Date, l = r.getFullYear() - i.getFullYear() - (r.getMonth() < i.getMonth() || r.getMonth() === i.getMonth() && r.getDate() < i.getDate() ? 1 : 0), f = l * 52 + Math.min(51, Math.floor((r - new Date(i.getFullYear() + l, i.getMonth(), i.getDate())) / 604800000));
+  return Array.from({ length: t * 52 }, (g, d) => `<li class="${d < f ? "lived" : ""}"></li>`).join("");
 }, J = () => `
   <section>
     <h2>Life in Weeks</h2>

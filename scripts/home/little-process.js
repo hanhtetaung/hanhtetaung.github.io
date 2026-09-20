@@ -37,11 +37,11 @@ const styles = /* css */ `
     padding: 0;
     margin: 0;
     align-items: flex-start;
-
-    @media (min-width: ${TABLET}) {
+    
+    @media (min-width: ${DESKTOP}) {
       display: flex;
       gap: 5rem;
-      align-items: normal;
+      border-bottom: 1px solid var(--color-text);
     }
   }
 
@@ -49,15 +49,18 @@ const styles = /* css */ `
     padding-bottom: 3rem;
     padding-top: 2rem;
     border-bottom: 1px solid var(--color-text);
-    min-width: 20ch;
-    width: fit-content;
     text-align: start;
-
-     @media (min-width: ${TABLET}) {
-      min-width: auto;
-      /* border-right: 1px solid var(--color-text); */
+    
+    @media (min-width: ${TABLET}) {
+      max-width: 70%;
       width: 100%;
     }
+
+
+    @media (min-width: ${DESKTOP}) {
+      border: none;
+    }
+    
   }
 
   h3 {
@@ -87,8 +90,12 @@ const styles = /* css */ `
 
       opacity: 1;
       position: static;
-      max-height: 40rem;
+      max-height: 30rem;
       width: auto;
+    }
+
+    @media (min-width: ${DESKTOP}) {
+      max-height: 40rem;
     }
 
   }
@@ -100,6 +107,18 @@ const styles = /* css */ `
     /* text-decoration: none; */
     color: var(--color-primary);
   }
+
+  ol {
+    list-style-type: disc;
+    padding: 0;
+    padding-left: 1.5rem;
+  }
+
+  ol li {
+    border: none;
+    padding: 0;
+    padding-bottom: 0.5rem;
+  }
 `;
 
 const template = /* html */ `
@@ -107,7 +126,8 @@ const template = /* html */ `
 <section>
   <hgroup>
     <p>[ Process ]</p>
-    <h2><span>By</span> One Person</h2>
+    <!-- <h2><span>By</span> One Person</h2> -->
+     <h2>All in One Person</h2>
   </hgroup>
 
   <img src=${asset("./assets/images/home/process.avif")} alt="Little Process">
@@ -120,12 +140,18 @@ const template = /* html */ `
 
     <li>
       <h3>Step 2</h3>
-      <p>Crafting ...</p>
+      <ol>
+        <li>Design</li>
+        <li>illustrate</li>
+        <li>Develop</li>
+        <li>Deliver</li>
+      </ol>
+      <!-- <p>Design, illustrate, Develop, Deliver</p> -->
     </li>
 
     <li>
       <h3>Step 3</h3>
-      <p>Your Web Presence</p>
+      <p>Your Brand New Website</p>
     </li>
   </ul>
 </section>
