@@ -1,4 +1,4 @@
-// import "../fonts.js";
+import "../fonts.js";
 
 import "../header.js";
 import "../footer.js";

@@ -23,8 +23,42 @@
       <section-cta id="cta"></section-cta>
     </main>
     <section-footer></section-footer>
-  <script type="module">// lib/define.js
-function b(r, o) {
+  <script type="module">// lib/asset.js
+function u() {
+  let r = document.documentElement.dataset.base || "./";
+  return new URL(r, location.href);
+}
+function t(r) {
+  return new URL(r, u()).href;
+}
+function m(r) {
+  let o = r.replace(/^\//, ""), l = location.protocol === "file:", c = u();
+  if (o === "")
+    return l ? new URL("index.html", c).href : c.href;
+  return l ? new URL(`${o}.html`, c).href : new URL(o, c).href;
+}
+
+// studio-lah/scripts/fonts.js
+var b = `
+@font-face {
+    font-family: "Archivo";
+    src: url("${t("./assets/fonts/Archivo-Bold.woff2")}") format("woff2");
+    font-weight: 700;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "Archivo";
+    src: url("${t("./assets/fonts/Archivo-Regular.woff2")}") format("woff2");
+    font-weight: 400;
+    font-display: swap;
+  }
+`, y = document.createElement("style");
+y.textContent = b;
+document.head.appendChild(y);
+
+// lib/define.js
+function v(r, o) {
   if (r === void 0) {
     if (o === Array)
       return [];
@@ -43,10 +77,10 @@ function b(r, o) {
   return r;
 }
 function i(r, { props: o = {}, attrs: l = [], styles: c = "", template: f, onRender: p = null }) {
-  let y = ["props", ...l];
+  let w = ["props", ...l];
 
   class h extends HTMLElement {
-    static observedAttributes = y;
+    static observedAttributes = w;
     constructor() {
       super();
       this.attachShadow({ mode: "open" }), this._cleanup = null;
@@ -73,7 +107,7 @@ function i(r, { props: o = {}, attrs: l = [], styles: c = "", template: f, onRen
         }
       let d = {};
       for (let g of Object.keys(o))
-        d[g] = b(a[g], o[g]);
+        d[g] = v(a[g], o[g]);
       return d;
     }
     _applyForwardedAttrs() {
@@ -102,26 +136,11 @@ function i(r, { props: o = {}, attrs: l = [], styles: c = "", template: f, onRen
   customElements.define(r, h);
 }
 
-// lib/asset.js
-function u() {
-  let r = document.documentElement.dataset.base || "./";
-  return new URL(r, location.href);
-}
-function t(r) {
-  return new URL(r, u()).href;
-}
-function m(r) {
-  let o = r.replace(/^\//, ""), l = location.protocol === "file:", c = u();
-  if (o === "")
-    return l ? new URL("index.html", c).href : c.href;
-  return l ? new URL(`${o}.html`, c).href : new URL(o, c).href;
-}
-
 // studio-lah/scripts/breakpoints.js
 var e = "640px", n = "1024px";
 
 // studio-lah/scripts/header.js
-var w = `
+var x = `
   :host {
     display: block;
     /* background: var(--color-bg-primary); */
@@ -170,7 +189,7 @@ var w = `
   }
 
 
-`, v = `
+`, k = `
   <header>
       <a href=${m("/")}>
         <img src=${t("./assets/studio-lah.svg")}
@@ -196,10 +215,10 @@ var w = `
       </div>
   </header>
 `;
-i("section-header", { template: v, styles: w });
+i("section-header", { template: k, styles: x });
 
 // studio-lah/scripts/footer.js
-var x = `
+var T = `
   :host {
     display: block;
     /* background: var(--color-primary); */
@@ -237,7 +256,7 @@ var x = `
       justify-content: space-between;
     }
   }
-`, k = `
+`, $ = `
   <footer>
     <img src=${t("./assets/studio-lah.svg")} alt="LOGO">
       <p>
@@ -246,10 +265,10 @@ var x = `
       </p>
     </footer>
 `;
-i("section-footer", { template: k, styles: x });
+i("section-footer", { template: $, styles: T });
 
 // studio-lah/scripts/home/hero.js
-var T = `
+var L = `
   :host {
     display: block;
     margin-block: 15rem;
@@ -285,7 +304,7 @@ var T = `
   p {
     margin: 0;
   }
-`, $ = `
+`, A = `
   <section>
     <hgroup>
         <h1>Studio LAH</h1>
@@ -294,10 +313,10 @@ var T = `
 </section>
 <img id="visible-img" src=${t("./assets/hero.png")} alt="Dawei">
 `;
-i("section-hero", { styles: T, template: $ });
+i("section-hero", { styles: L, template: A });
 
 // studio-lah/scripts/home/services.js
-var L = `
+var S = `
   :host {
     display: block;
     padding-block: 10rem;
@@ -358,7 +377,7 @@ var L = `
     text-align: center;
 
   }
-`, S = `
+`, E = `
   <section>
     <h2>Our Services</h2>
 
@@ -392,10 +411,10 @@ var L = `
 
   </section>
 `;
-i("section-services", { styles: L, template: S });
+i("section-services", { styles: S, template: E });
 
 // studio-lah/scripts/home/work.js
-var A = `
+var _ = `
   :host {
     display: block;
     margin-block: 20rem;
@@ -464,7 +483,7 @@ var A = `
 
     }
 
-`, E = `
+`, H = `
   <section>
       <h2>Our Work</h2>
 
@@ -506,10 +525,10 @@ var A = `
 
   </section>
 `;
-i("section-work", { styles: A, template: E });
+i("section-work", { styles: _, template: H });
 
 // studio-lah/scripts/home/behind-the-scene.js
-var _ = `
+var P = `
   :host {
     display: block;
     margin-block: 20rem;
@@ -565,7 +584,7 @@ var _ = `
     text-align: center;
 
   }
-`, H = `
+`, z = `
   <section>
     <!-- <ul>
         <li>
@@ -609,10 +628,10 @@ var _ = `
 
   </section>
 `;
-i("section-behind-the-scene", { styles: _, template: H });
+i("section-behind-the-scene", { styles: P, template: z });
 
 // studio-lah/scripts/home/team.js
-var P = `
+var C = `
   :host {
     display: block;
     margin-block: 20rem;
@@ -673,7 +692,7 @@ var P = `
     text-align: center;
 
   }
-`, z = `
+`, O = `
   <section>
     <h2>Meet Our Team</h2>
 
@@ -730,10 +749,10 @@ var P = `
 
   </section>
 `;
-i("section-team", { styles: P, template: z });
+i("section-team", { styles: C, template: O });
 
 // studio-lah/scripts/home/cta.js
-var O = `
+var B = `
   :host {
     display: block;
     padding-block: 10rem;
@@ -863,6 +882,6 @@ a {
 
   </section>
 `;
-i("section-cta", { styles: O, template: D });
+i("section-cta", { styles: B, template: D });
 </script></body>
 </html>
