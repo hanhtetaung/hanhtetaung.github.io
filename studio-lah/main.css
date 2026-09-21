@@ -1,0 +1,37 @@
+@charset "UTF-8";
+
+:root {
+  --color-background: #fff;
+
+  --color-primary: #dc1919;
+  --color-text: #382d0e;
+
+  --color-transparent: #00000000;
+
+  --font-family: "Archivo", sans-serif;
+
+  --font-regular: 400;
+  --font-bold: 700;
+
+  font-size: 10px;
+
+  --ratio: 1.4;
+  --font-body: 1.6rem;
+  --font-small: calc(var(--font-body) / var(--ratio));
+  --font-heading: calc(var(--font-body) * var(--ratio));
+  --font-title: calc(var(--font-heading) * var(--ratio));
+  --font-display: calc(var(--font-title) * var(--ratio));
+
+  @media (min-width: 640px) {
+    --font-body: 2rem;
+  }
+}
+
+body {
+  background: var(--color-background);
+  font-family: var(--font-family);
+  font-size: var(--font-body);
+  color: var(--color-text);
+  margin: 0;
+  text-align: center;
+}

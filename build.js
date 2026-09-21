@@ -45,7 +45,7 @@ async function copyAssets(src, dest) {
   await $`cp -r ${src} ${dest}`;
 }
 
-const subProjects = ["terra", "map", "maple"];
+const subProjects = ["terra", "map", "maple", "studio-lah"];
 
 async function getMountRoutes() {
   const settingsRaw = await Bun.file(".vscode/settings.json").text();
