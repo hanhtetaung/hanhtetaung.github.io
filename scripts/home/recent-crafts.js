@@ -77,12 +77,16 @@ const template = /* html */ `
 
   <ul>
     <li>
+      <a href="/studio-lah" target="_blank">
+        <img src=${asset("./assets/images/home/studio-lah.png")} alt="Studio LAH">
+      </a>
+    </li>
+
+    <li>
       <a href="/maple" target="_blank">
         <img src=${asset("./assets/images/home/maple-montessori.avif")} alt="Maple Montessori">
       </a>
     </li>
-
-
 
      <li>
       <a href="/map" target="_blank">

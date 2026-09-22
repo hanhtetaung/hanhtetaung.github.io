@@ -37,14 +37,14 @@
     <section-footer></section-footer>
   <script type="module">// lib/asset.js
 function $() {
-  let i = document.documentElement.dataset.base || "./";
-  return new URL(i, location.href);
+  let o = document.documentElement.dataset.base || "./";
+  return new URL(o, location.href);
 }
-function o(i) {
-  return new URL(i, $()).href;
+function i(o) {
+  return new URL(o, $()).href;
 }
-function b(i) {
-  let e = i.replace(/^\//, ""), s = location.protocol === "file:", m = $();
+function b(o) {
+  let e = o.replace(/^\//, ""), s = location.protocol === "file:", m = $();
   if (e === "")
     return s ? new URL("index.html", m).href : m.href;
   return s ? new URL(`${e}.html`, m).href : new URL(e, m).href;
@@ -54,14 +54,14 @@ function b(i) {
 var A = `
 @font-face {
     font-family: "Archivo";
-    src: url("${o("./assets/fonts/Archivo-Black.woff2")}") format("woff2");
+    src: url("${i("./assets/fonts/Archivo-Black.woff2")}") format("woff2");
     font-weight: 700;
     font-display: swap;
   }
 
   @font-face {
     font-family: "Archivo";
-    src: url("${o("./assets/fonts/Archivo-Regular.woff2")}") format("woff2");
+    src: url("${i("./assets/fonts/Archivo-Regular.woff2")}") format("woff2");
     font-weight: 400;
     font-display: swap;
   }
@@ -70,8 +70,8 @@ z.textContent = A;
 document.head.appendChild(z);
 
 // lib/define.js
-function C(i, e) {
-  if (i === void 0) {
+function C(o, e) {
+  if (o === void 0) {
     if (e === Array)
       return [];
     if (e === Object)
@@ -83,16 +83,16 @@ function C(i, e) {
     return;
   }
   if (e === Boolean)
-    return Boolean(i);
+    return Boolean(o);
   if (e === Number)
-    return Number(i);
-  return i;
+    return Number(o);
+  return o;
 }
-function a(i, { props: e = {}, attrs: s = [], styles: m = "", template: r, onRender: h = null }) {
-  let g = ["props", ...s];
+function a(o, { props: e = {}, attrs: s = [], styles: m = "", template: r, onRender: h = null }) {
+  let f = ["props", ...s];
 
-  class f extends HTMLElement {
-    static observedAttributes = g;
+  class g extends HTMLElement {
+    static observedAttributes = f;
     constructor() {
       super();
       this.attachShadow({ mode: "open" }), this._cleanup = null;
@@ -145,7 +145,7 @@ function a(i, { props: e = {}, attrs: s = [], styles: m = "", template: r, onRen
       }
     }
   }
-  customElements.define(i, f);
+  customElements.define(o, g);
 }
 
 // scripts/components/app-link.js
@@ -232,7 +232,7 @@ a("app-logo", { attrs: D, styles: E, template: T });
 var t = "640px", c = "1024px", y = "1920px";
 
 // scripts/header.js
-var P = `
+var L = `
   :host {
     display: block;
     /* background: var(--color-bg-primary); */
@@ -279,10 +279,10 @@ var P = `
     height: 5rem;
     width: auto;
   }
-`, L = `
+`, P = `
   <header>
       <app-link variant="plain" href=${b("/")}>
-        <img src=${o("./assets/images/logo.avif")}
+        <img src=${i("./assets/images/logo.avif")}
           alt="Logo">
       </app-link>
 
@@ -305,7 +305,7 @@ var P = `
       </div>
   </header>
 `;
-a("section-header", { template: L, styles: P });
+a("section-header", { template: P, styles: L });
 
 // scripts/components/footer-nav.js
 var O = [
@@ -379,9 +379,9 @@ var O = [
         <span>Sitemap</span>
 
         <ol>
-            ${O.map((i) => `
+            ${O.map((o) => `
                 <li>
-                    <app-link variant="sitemap" href=${b(i.href)} >${i.name}</app-link>
+                    <app-link variant="sitemap" href=${b(o.href)} >${o.name}</app-link>
                 </li>
             `).join("")}
         </ol>
@@ -473,9 +473,9 @@ var G = `
     text-decoration: none;
     color: var(--color-text);
   }
-`, N = () => `
+`, H = () => `
       <p>
-          <img src=${o("./assets/images/logo.avif")}
+          <img src=${i("./assets/images/logo.avif")}
           alt="Logo">
           <a href="https://hanhtetaung.dev/">
             Crafted by Han
@@ -492,7 +492,7 @@ var G = `
               <li>
                   <a href="https://wa.me/message/DVOPVSAGBDENB1" target="_blank">
                   <img
-                      src=${o("./assets/icons/whatsapp.svg")}
+                      src=${i("./assets/icons/whatsapp.svg")}
                       alt="Email Icon"
                   />
                   </a>    
@@ -504,7 +504,7 @@ var G = `
                   rel="noopener"
                   >
                   <img
-                      src=${o("./assets/icons/instagram.svg")}
+                      src=${i("./assets/icons/instagram.svg")}
                       alt="Linkedin Icon"
                   />
                   </a>
@@ -516,7 +516,7 @@ var G = `
                   rel="noopener"
                   >
                   <img
-                      src=${o("./assets/icons/linkedin.svg")}
+                      src=${i("./assets/icons/linkedin.svg")}
                       alt="Linkedin Icon"
                   />
                   </a>
@@ -528,7 +528,7 @@ var G = `
                   rel="noopener"
                   >
                   <img
-                      src=${o("./assets/icons/github.svg")}
+                      src=${i("./assets/icons/github.svg")}
                       alt="Github Icon"
                   />
                   </a>
@@ -536,10 +536,10 @@ var G = `
           </ul>
         </nav>
 `;
-a("footer-copyright", { styles: G, template: N });
+a("footer-copyright", { styles: G, template: H });
 
 // scripts/footer.js
-var H = `
+var N = `
   :host {
     display: block;
   }
@@ -616,38 +616,38 @@ var H = `
   <footer>
 
     <div id="highlight-wrap">
-      <img id="highlight-base" src=${o("./assets/images/footer/highlight.png")} alt="Parting phrase">
-      <img id="highlight-lens" src=${o("./assets/images/footer/highlight-with-color.png")} alt="Parting phrase with color" aria-hidden="true">
+      <img id="highlight-base" src=${i("./assets/images/footer/highlight.png")} alt="Parting phrase">
+      <img id="highlight-lens" src=${i("./assets/images/footer/highlight-with-color.png")} alt="Parting phrase with color" aria-hidden="true">
       <div id="lens-ring"></div>
     </div>
 
-    <img id="thank-you" src=${o("./assets/images/footer/thank-you.avif")} alt="Thank you phrase">
-    <img id="looking-forward" src=${o("./assets/images/footer/looking-forward.avif")} alt="Parting Phrase">
+    <img id="thank-you" src=${i("./assets/images/footer/thank-you.avif")} alt="Thank you phrase">
+    <img id="looking-forward" src=${i("./assets/images/footer/looking-forward.avif")} alt="Parting Phrase">
 
     <!-- <footer-nav></footer-nav> -->
 
     <footer-copyright></footer-copyright>
   </footer>
 `;
-function q(i) {
-  let e = i.querySelector("footer"), s = i.getElementById("highlight-base"), m = i.getElementById("highlight-lens"), r = i.getElementById("lens-ring"), h = i.getElementById("highlight-wrap");
+function q(o) {
+  let e = o.querySelector("footer"), s = o.getElementById("highlight-base"), m = o.getElementById("highlight-lens"), r = o.getElementById("lens-ring"), h = o.getElementById("highlight-wrap");
   if (!e || !s || !m || !r || !h)
     return;
-  function g(l) {
+  function f(l) {
     let p = s.getBoundingClientRect(), d = l.clientX - p.left, u = l.clientY - p.top, v = r.offsetWidth / 2;
     r.style.left = `${d - v}px`, r.style.top = `${u - v}px`, m.style.clipPath = `circle(${v}px at ${d}px ${u}px)`;
   }
-  function f() {
+  function g() {
     r.setAttribute("data-visible", "true");
   }
   function n() {
     r.removeAttribute("data-visible"), m.style.clipPath = "circle(0px at 50% 50%)";
   }
-  return e.addEventListener("mousemove", g), e.addEventListener("mouseenter", f), e.addEventListener("mouseleave", n), () => {
-    e.removeEventListener("mousemove", g), e.removeEventListener("mouseenter", f), e.removeEventListener("mouseleave", n);
+  return e.addEventListener("mousemove", f), e.addEventListener("mouseenter", g), e.addEventListener("mouseleave", n), () => {
+    e.removeEventListener("mousemove", f), e.removeEventListener("mouseenter", g), e.removeEventListener("mouseleave", n);
   };
 }
-a("section-footer", { styles: H, template: j, onRender: q });
+a("section-footer", { styles: N, template: j, onRender: q });
 
 // scripts/home/hero.js
 var K = `
@@ -767,26 +767,26 @@ var K = `
     </div>
   </section>
 `, V = `(min-width: ${t})`;
-function W(i) {
-  let e = i.getElementById("img-wrap"), s = i.getElementById("visible-img"), m = i.getElementById("lens-img"), r = i.getElementById("lens-ring");
+function W(o) {
+  let e = o.getElementById("img-wrap"), s = o.getElementById("visible-img"), m = o.getElementById("lens-img"), r = o.getElementById("lens-ring");
   if (!e || !s || !m || !r)
     return;
   let h = window.matchMedia(V);
-  function g(u) {
+  function f(u) {
     let v = s.getBoundingClientRect(), x = u.clientX - v.left, k = u.clientY - v.top, w = r.offsetWidth / 2;
     r.style.left = `${x - w}px`, r.style.top = `${k - w}px`, m.style.clipPath = `circle(${w}px at ${x}px ${k}px)`;
   }
-  function f() {
+  function g() {
     r.setAttribute("data-visible", "true");
   }
   function n() {
     r.removeAttribute("data-visible"), m.style.clipPath = "circle(0px at 50% 50%)";
   }
   function l() {
-    e.addEventListener("mousemove", g), e.addEventListener("mouseenter", f), e.addEventListener("mouseleave", n);
+    e.addEventListener("mousemove", f), e.addEventListener("mouseenter", g), e.addEventListener("mouseleave", n);
   }
   function p() {
-    e.removeEventListener("mousemove", g), e.removeEventListener("mouseenter", f), e.removeEventListener("mouseleave", n), n();
+    e.removeEventListener("mousemove", f), e.removeEventListener("mouseenter", g), e.removeEventListener("mouseleave", n), n();
   }
   function d(u) {
     if (u.matches)
@@ -929,7 +929,7 @@ var X = `
      <h2>All in One Person</h2>
   </hgroup>
 
-  <img src=${o("./assets/images/home/process.avif")} alt="Little Process">
+  <img src=${i("./assets/images/home/process.avif")} alt="Little Process">
 
   <ul>
     <li>
@@ -1074,7 +1074,7 @@ var Z = `
   }
 `, Q = `
   <div>
-    <img src=${o("./assets/images/home/sketching.avif")} alt="Sketching SEA">
+    <img src=${i("./assets/images/home/sketching.avif")} alt="Sketching SEA">
   </div>
 
   <section>
@@ -1159,23 +1159,27 @@ var R = `
 
   <ul>
     <li>
-      <a href="/maple" target="_blank">
-        <img src=${o("./assets/images/home/maple-montessori.avif")} alt="Maple Montessori">
+      <a href="/studio-lah" target="_blank">
+        <img src=${i("./assets/images/home/studio-lah.png")} alt="Studio LAH">
       </a>
     </li>
 
-
+    <li>
+      <a href="/maple" target="_blank">
+        <img src=${i("./assets/images/home/maple-montessori.avif")} alt="Maple Montessori">
+      </a>
+    </li>
 
      <li>
       <a href="/map" target="_blank">
-        <img src=${o("./assets/images/home/story-map.avif")} alt="Story Map">
+        <img src=${i("./assets/images/home/story-map.avif")} alt="Story Map">
       </a>
     </li>
 
     
      <li>
        <a href="https://skssolarmyanmar.com/" target="_blank">
-         <img src=${o("./assets/images/home/sks-solar.avif")} alt="SKS Solar">
+         <img src=${i("./assets/images/home/sks-solar.avif")} alt="SKS Solar">
       </a>
     </li>
     
@@ -1294,23 +1298,23 @@ var te = `
 
   <ul>
     <li>
-      <app-logo src=${o("./assets/icons/whatsapp.svg")} alt="Whatsapp icon"></app-logo>
+      <app-logo src=${i("./assets/icons/whatsapp.svg")} alt="Whatsapp icon"></app-logo>
       <a href="https://wa.me/message/DVOPVSAGBDENB1" target="_blank">wa/crafted.han</a>
     </li>
     <li>
-      <app-logo src=${o("./assets/icons/email.svg")} alt="Email icon"></app-logo>
+      <app-logo src=${i("./assets/icons/email.svg")} alt="Email icon"></app-logo>
       <a href="mailto:hanhtetaung.dev@gmail.com" target="_blank">hanhtetaung.dev@gmail.com</a>
       <button id="copyBtn">Copy</button>
     </li>
     <li>
-      <app-logo src=${o("./assets/icons/linkedin.svg")} alt="Linkedin icon"></app-logo>
+      <app-logo src=${i("./assets/icons/linkedin.svg")} alt="Linkedin icon"></app-logo>
       <a href="https://www.linkedin.com/in/han-htet-aung/" target="_blank">in/han-htet-aung</a>
     </li>
   </ul>
 </section>
 `;
-function oe(i) {
-  let e = i.getElementById("copyBtn");
+function oe(o) {
+  let e = o.getElementById("copyBtn");
   if (!e)
     return;
   e.addEventListener("click", () => {
