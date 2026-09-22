@@ -5,7 +5,8 @@ import { DESKTOP, TABLET } from "../breakpoints.js";
 const styles = /* css */ `
   :host {
     display: block;
-    margin-block: 15rem;
+    margin-block: 10rem;
+    overflow: hidden;
   }
 
   section {
@@ -19,8 +20,17 @@ const styles = /* css */ `
   }
 
   img {
+    height: 40rem;
+    position: relative;
+    object-fit: cover;
     width: 100%;
-    height: auto;
+    bottom: 0rem;
+
+    @media (min-width: ${TABLET}) {
+      position: static;
+      width: 100%;
+      height: auto;
+    }
   }
 
   hgroup {
@@ -37,6 +47,8 @@ const styles = /* css */ `
 
   p {
     margin: 0;
+    max-width: 72rem;
+    margin-inline: auto;
   }
 `;
 
@@ -44,7 +56,7 @@ const template = /* html */ `
   <section>
     <hgroup>
         <h1>Studio LAH</h1>
-        <p>First Live Streaming Team in Town</p>
+        <p>အထင်ကရ အခမ်းအနားများ၊ ပွဲတော်များကို တိုက်ရိုက် ထုတ်လွှင့်တင်ဆက်ပေးနေသည့် ထားဝယ်မြို့၏ ပထမဆုံးသော Live Streaming အဖွဲ့ တစ်ခုဖြစ်ပါသည်။</p>
     </hgroup>
 </section>
 <img id="visible-img" src=${asset("./assets/hero.png")} alt="Dawei">

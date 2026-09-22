@@ -5,13 +5,12 @@ import { DESKTOP, TABLET } from "../breakpoints.js";
 const styles = /* css */ `
   :host {
     display: block;
-    margin-block: 20rem;
+    margin-block: 10rem;
   }
 
   section {
     width: min(80%, 144rem);
     margin-inline: auto;
-    /* text-align: center; */
 
     @media (min-width: ${DESKTOP}) {
       justify-content: space-between;
@@ -27,17 +26,21 @@ const styles = /* css */ `
 
   ul {
     list-style-type: none;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
     padding: 0;
-    gap: 10rem;
+    gap: 5rem;
+    padding-bottom: 5rem;
     overflow: scroll;
 
      @media (min-width: ${TABLET}) {
-        display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;
-        gap: 10rem;
+        gap: 8rem;
     }
+  }
+
+  ul li {
+    min-width: 12ch;
   }
 
   p {
@@ -45,7 +48,6 @@ const styles = /* css */ `
   }
 
   img {
-
     height: 15rem;
     width: auto;
 
