@@ -5,7 +5,7 @@ import { DESKTOP, TABLET } from "../breakpoints.js";
 const styles = /* css */ `
   :host {
     display: block;
-    margin-block: 20rem;
+    margin-block: 10rem;
   }
 
   section {
@@ -47,29 +47,29 @@ const styles = /* css */ `
 
   }
 
-    table {
-        border-collapse: collapse;
-        width: 100%;
-        letter-spacing: 1px;
-        text-align: start;
-    }
+  table {
+      border-collapse: collapse;
+      width: 100%;
+      letter-spacing: 1px;
+      text-align: start;
+  }
 
-    th,
-    td {
-    border-bottom: 1px solid rgb(160 160 160);
-    padding: 8px 10px;
-    font-size: var(--font-small);
-    }
+  th,
+  td {
+  border-bottom: 1px solid rgb(160 160 160);
+  padding: 8px 10px;
+  font-size: var(--font-small);
+  }
 
-    td:nth-of-type(2) {
-        font-size: var(--font-body);
-    }
+  td:nth-of-type(2) {
+    font-size: var(--font-body);
+    min-width: 30ch;
+  }
 
-    th {
-        text-align: start;
-            color: var(--color-primary);
-
-    }
+  th {
+    text-align: start;
+    color: var(--color-primary);
+  }
 
 `;
 

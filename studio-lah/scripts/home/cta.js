@@ -5,7 +5,7 @@ import { DESKTOP, TABLET } from "../breakpoints.js";
 const styles = /* css */ `
   :host {
     display: block;
-    padding-block: 10rem;
+    margin-block: 15rem;
   }
 
   section {
@@ -22,7 +22,7 @@ const styles = /* css */ `
   h2 {
     margin: 0;
     font-size: var(--font-title);
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
   }
 
   ul {
@@ -74,6 +74,7 @@ const styles = /* css */ `
 td {
     padding: 0.8rem 1rem;
     width: 50%;
+    min-width: 14ch;
 }
 
 td:first-child {
@@ -104,11 +105,11 @@ const template = /* html */ `
              <tbody>
                  <tr>
                      <td>Primary Phone</td>
-                     <td> <a href="tel:+959422206996">09422206996</a></td>
+                     <td> <a href="tel:+959422206996" target="_blank">09422206996</a></td>
                  </tr>
                  <tr>
                      <td>Secondary Phone</td>
-                     <td> <a href="tel:+959699604222">09699604222</a></td>
+                     <td> <a href="tel:+959699604222" target="_blank">09699604222</a></td>
                  </tr>
                  <tr>
                      <td>Email</td>
@@ -122,11 +123,11 @@ const template = /* html */ `
      
                  <tr>
                      <td>Facebook </td>
-                     <td><a href="https://www.facebook.com/studiolahdawei">Studio LAH</a></td>
+                     <td><a href="https://www.facebook.com/studiolahdawei" target="_blank">Studio LAH</a></td>
                  </tr>
                  <tr>
                      <td>Tiktok</td>
-                     <td><a href="https://www.tiktok.com/@studiolah">Studio LAH</a></td>
+                     <td><a href="https://www.tiktok.com/@studiolah" target="_blank">Studio LAH</a></td>
                  </tr>
              </tbody>
          </table>

@@ -25,14 +25,14 @@
     <section-footer></section-footer>
   <script type="module">// lib/asset.js
 function u() {
-  let r = document.documentElement.dataset.base || "./";
-  return new URL(r, location.href);
+  let a = document.documentElement.dataset.base || "./";
+  return new URL(a, location.href);
 }
-function t(r) {
-  return new URL(r, u()).href;
+function t(a) {
+  return new URL(a, u()).href;
 }
-function m(r) {
-  let o = r.replace(/^\//, ""), l = location.protocol === "file:", c = u();
+function m(a) {
+  let o = a.replace(/^\//, ""), l = location.protocol === "file:", c = u();
   if (o === "")
     return l ? new URL("index.html", c).href : c.href;
   return l ? new URL(`${o}.html`, c).href : new URL(o, c).href;
@@ -53,13 +53,13 @@ var b = `
     font-weight: 400;
     font-display: swap;
   }
-`, y = document.createElement("style");
-y.textContent = b;
-document.head.appendChild(y);
+`, w = document.createElement("style");
+w.textContent = b;
+document.head.appendChild(w);
 
 // lib/define.js
-function v(r, o) {
-  if (r === void 0) {
+function v(a, o) {
+  if (a === void 0) {
     if (o === Array)
       return [];
     if (o === Object)
@@ -71,16 +71,16 @@ function v(r, o) {
     return;
   }
   if (o === Boolean)
-    return Boolean(r);
+    return Boolean(a);
   if (o === Number)
-    return Number(r);
-  return r;
+    return Number(a);
+  return a;
 }
-function i(r, { props: o = {}, attrs: l = [], styles: c = "", template: f, onRender: p = null }) {
-  let w = ["props", ...l];
+function i(a, { props: o = {}, attrs: l = [], styles: c = "", template: f, onRender: h = null }) {
+  let y = ["props", ...l];
 
-  class h extends HTMLElement {
-    static observedAttributes = w;
+  class p extends HTMLElement {
+    static observedAttributes = y;
     constructor() {
       super();
       this.attachShadow({ mode: "open" }), this._cleanup = null;
@@ -98,46 +98,46 @@ function i(r, { props: o = {}, attrs: l = [], styles: c = "", template: f, onRen
         this._render();
     }
     _getProps() {
-      let a = {}, s = this.getAttribute("props");
+      let n = {}, s = this.getAttribute("props");
       if (s)
         try {
-          a = JSON.parse(s);
+          n = JSON.parse(s);
         } catch {
-          a = {};
+          n = {};
         }
       let d = {};
       for (let g of Object.keys(o))
-        d[g] = v(a[g], o[g]);
+        d[g] = v(n[g], o[g]);
       return d;
     }
     _applyForwardedAttrs() {
       if (l.length === 0)
         return;
-      let a = this.shadowRoot.querySelector("[data-forward]");
-      if (!a)
+      let n = this.shadowRoot.querySelector("[data-forward]");
+      if (!n)
         return;
       for (let s of l)
         if (this.hasAttribute(s))
-          a.setAttribute(s, this.getAttribute(s));
+          n.setAttribute(s, this.getAttribute(s));
         else
-          a.removeAttribute(s);
+          n.removeAttribute(s);
     }
     _render() {
       if (typeof this._cleanup === "function")
         this._cleanup(), this._cleanup = null;
-      let a = this._getProps(), s = typeof f === "function" ? f(a) : f;
-      if (this.shadowRoot.innerHTML = `<style>${c}</style>${s}`, this._applyForwardedAttrs(), p) {
-        let d = p(this.shadowRoot, a, this);
+      let n = this._getProps(), s = typeof f === "function" ? f(n) : f;
+      if (this.shadowRoot.innerHTML = `<style>${c}</style>${s}`, this._applyForwardedAttrs(), h) {
+        let d = h(this.shadowRoot, n, this);
         if (typeof d === "function")
           this._cleanup = d;
       }
     }
   }
-  customElements.define(r, h);
+  customElements.define(a, p);
 }
 
 // studio-lah/scripts/breakpoints.js
-var e = "640px", n = "1024px";
+var e = "640px", r = "1024px";
 
 // studio-lah/scripts/header.js
 var x = `
@@ -148,13 +148,17 @@ var x = `
   }
 
   header {
-    width: 80%;
+    width: 90%;
     margin-inline: auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding-block: 2rem;
     gap: 5rem;
+
+    @media (min-width: ${e}) {
+      width: 80%;
+    }
   }
 
   div {
@@ -180,11 +184,19 @@ var x = `
   }
 
   img {
-    max-width: 20rem;
+    max-width: 12rem;
+
+    @media (min-width: ${e}) {
+      max-width: 15rem;
+    }
   }
 
   a {
     text-decoration: none;
+   display: flex;
+  align-items: center;
+  justify-content: center;
+  height: fit-content;
     color: var(--color-text);
   }
 
@@ -218,7 +230,7 @@ var x = `
 i("section-header", { template: k, styles: x });
 
 // studio-lah/scripts/footer.js
-var T = `
+var $ = `
   :host {
     display: block;
     /* background: var(--color-primary); */
@@ -256,7 +268,7 @@ var T = `
       justify-content: space-between;
     }
   }
-`, $ = `
+`, T = `
   <footer>
     <img src=${t("./assets/studio-lah.svg")} alt="LOGO">
       <p>
@@ -265,28 +277,38 @@ var T = `
       </p>
     </footer>
 `;
-i("section-footer", { template: $, styles: T });
+i("section-footer", { template: T, styles: $ });
 
 // studio-lah/scripts/home/hero.js
-var L = `
+var S = `
   :host {
     display: block;
-    margin-block: 15rem;
+    margin-block: 10rem;
+    overflow: hidden;
   }
 
   section {
     width: min(80%, 144rem);
     margin-inline: auto;
     
-    @media (min-width: ${n}) {
+    @media (min-width: ${r}) {
       display: flex;
       justify-content: space-between;
     }
   }
 
   img {
+    height: 40rem;
+    position: relative;
+    object-fit: cover;
     width: 100%;
-    height: auto;
+    bottom: 0rem;
+
+    @media (min-width: ${e}) {
+      position: static;
+      width: 100%;
+      height: auto;
+    }
   }
 
   hgroup {
@@ -303,20 +325,22 @@ var L = `
 
   p {
     margin: 0;
+    max-width: 72rem;
+    margin-inline: auto;
   }
 `, A = `
   <section>
     <hgroup>
         <h1>Studio LAH</h1>
-        <p>First Live Streaming Team in Town</p>
+        <p>အထင်ကရ အခမ်းအနားများ၊ ပွဲတော်များကို တိုက်ရိုက် ထုတ်လွှင့်တင်ဆက်ပေးနေသည့် ထားဝယ်မြို့၏ ပထမဆုံးသော Live Streaming အဖွဲ့ တစ်ခုဖြစ်ပါသည်။</p>
     </hgroup>
 </section>
 <img id="visible-img" src=${t("./assets/hero.png")} alt="Dawei">
 `;
-i("section-hero", { styles: L, template: A });
+i("section-hero", { styles: S, template: A });
 
 // studio-lah/scripts/home/services.js
-var S = `
+var L = `
   :host {
     display: block;
     padding-block: 10rem;
@@ -327,7 +351,7 @@ var S = `
     margin-inline: auto;
     /* text-align: center; */
 
-    @media (min-width: ${n}) {
+    @media (min-width: ${r}) {
       justify-content: space-between;
     }
   }
@@ -336,7 +360,7 @@ var S = `
   h2 {
     margin: 0;
     font-size: var(--font-title);
-    margin-bottom: 4rem;
+    margin-bottom: 8rem;
   }
 
   ul {
@@ -344,38 +368,46 @@ var S = `
     display: flex;
     flex-direction: column;
     padding: 0;
-    gap: 10rem;
+    gap: 7rem;
     overflow: scroll;
 
      @media (min-width: ${e}) {
-      display: grid;
-          grid-template-columns: 1fr 1fr 1fr;
+      /* display: grid; */
+          /* grid-template-columns: 1fr 1fr 1fr; */
 
-      gap: 20rem;
+      gap: 10rem;
     }
-  }
-
-  p {
-    margin: 0;
   }
 
   img {
-    max-height: 8rem;
+    max-height: 12rem;
     width: auto;
-
-    @media (min-width: ${e}) {
-      max-height: 12rem;
-    }
   }
 
   figcaption {
     margin-top: 1rem;
+    font-size: var(--font-body);
+    font-weight: var(--font-bold);
   }
 
   figure {
     margin: 0;
-    text-align: center;
+    min-width: 20ch;
+  }
 
+  article {
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+    gap: 10rem;
+  }
+
+  p {
+    margin: 0;
+    /* text-align: start; */
+    max-width: 72rem;
+    margin-inline: auto;
+    margin-top: 3rem;
   }
 `, E = `
   <section>
@@ -383,48 +415,58 @@ var S = `
 
     <ul>
         <li>
-          <figure>
-            <img src=${t("./assets/live-streaming.png")} alt="Teamwork">
-            <figcaption>
-              Live Streaming
-            </figcaption>
-          </figure>
+          <article>
+            <figure>
+              <img src=${t("./assets/live-streaming.png")} alt="Teamwork">
+              <figcaption>Live Streaming</figcaption>
+            </figure>
+              <p>
+                Event အခမ်းအနားများ, Wedding, Promotion, Facebook Live Sales, Music Concert, Live Show, Festival အစရှိသည့်အခမ်းအနားပေါင်းများစွာကို နောက်ဆုံးပေါ် နည်းပညာများဖြင့် ကြည်လင်ပြတ်သားသော ရုပ်သံ (Full HD) တို့ဖြင့်တိုက်ရိုက် ထုတ်လွှင့်ပေးပါသည်။
+              </p>
+            </article>
         </li>
         <li>
-          <figure>
-            <img src=${t("./assets/photography.png")} alt="Drawing">
-            <figcaption>
-              Photography
-            </figcaption>
-          </figure>
-        </li>
-        <li>
-          <figure>
-            <img src=${t("./assets/videography.png")} alt="Literacy">
-            <figcaption>
-              Videography
-            </figcaption>
-
-          </figure>
+          <article>
+            <figure>
+              <img src=${t("./assets/photography.png")} alt="Drawing">
+              <figcaption>Photography</figcaption>
+            </figure>
+            <p>
+              အလှူမင်္ဂလာပွဲ၊ အခမ်းအနား၊ မင်္ဂလာပွဲများ အပြင် Portrait, Food, Convocation အစရှိသည့် Photography များစွာကို ပွဲအစအဆုံး ဓာတ်ပုံများထုတ်ပေးခြင်း၊ ဘောင်တပ်ပေးခြင်းအထိ တစ်နေရာတည်း (One-Stop) စနစ်ဖြင့် ဝန်ဆောင်မှုပေးပါသည်။
+            </p>
+              </article>
+          </li>
+          <li>
+            <article>
+              <figure>
+                <img src=${t("./assets/videography.png")} alt="Literacy">
+                <figcaption>Videography</figcaption>
+                
+              </figure>
+              <p>
+                မင်္ဂလာပွဲများ၊ အလှူပွဲများ Promotion ပွဲများအပြင် လုပ်ငန်းများအတွက် Short Film များ၊ Documentary များ အစရှိသည့် ဝန်ဆောင်မှုများကို ရုပ်သံ ကြည်လင်ပြတ်သားစွာဖြင့် ရိုက်ကူးတင်ဆက် ပေးပါသည်။
+              </p>
+            </article>
+        
         </li>
     </ul>
 
   </section>
 `;
-i("section-services", { styles: S, template: E });
+i("section-services", { styles: L, template: E });
 
 // studio-lah/scripts/home/work.js
 var _ = `
   :host {
     display: block;
-    margin-block: 20rem;
+    margin-block: 10rem;
   }
 
   section {
     width: min(80%, 144rem);
     margin-inline: auto;
 
-    @media (min-width: ${n}) {
+    @media (min-width: ${r}) {
       justify-content: space-between;
     }
   }
@@ -459,31 +501,31 @@ var _ = `
 
   }
 
-    table {
-        border-collapse: collapse;
-        width: 100%;
-        letter-spacing: 1px;
-        text-align: start;
-    }
+  table {
+      border-collapse: collapse;
+      width: 100%;
+      letter-spacing: 1px;
+      text-align: start;
+  }
 
-    th,
-    td {
-    border-bottom: 1px solid rgb(160 160 160);
-    padding: 8px 10px;
-    font-size: var(--font-small);
-    }
+  th,
+  td {
+  border-bottom: 1px solid rgb(160 160 160);
+  padding: 8px 10px;
+  font-size: var(--font-small);
+  }
 
-    td:nth-of-type(2) {
-        font-size: var(--font-body);
-    }
+  td:nth-of-type(2) {
+    font-size: var(--font-body);
+    min-width: 30ch;
+  }
 
-    th {
-        text-align: start;
-            color: var(--color-primary);
+  th {
+    text-align: start;
+    color: var(--color-primary);
+  }
 
-    }
-
-`, H = `
+`, j = `
   <section>
       <h2>Our Work</h2>
 
@@ -525,21 +567,22 @@ var _ = `
 
   </section>
 `;
-i("section-work", { styles: _, template: H });
+i("section-work", { styles: _, template: j });
 
 // studio-lah/scripts/home/behind-the-scene.js
-var P = `
+var D = `
   :host {
     display: block;
     margin-block: 20rem;
+    margin-inline: 0.2rem;
   }
 
   section {
-    width: min(80%, 144rem);
-    margin-inline: auto;
-    /* text-align: center; */
-
-    @media (min-width: ${n}) {
+    width: 100%;
+    
+    @media (min-width: ${e}) {
+      width: min(80%, 144rem);
+      margin-inline: auto;
       justify-content: space-between;
     }
   }
@@ -548,101 +591,155 @@ var P = `
   h2 {
     margin: 0;
     font-size: var(--font-title);
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
+
+    @media (min-width: ${e}) {
+      display: none;
+    }
   }
 
   ul {
     list-style-type: none;
-    display: flex;
-    flex-direction: column;
     padding: 0;
-    gap: 10rem;
+    gap: 1rem;
     overflow: scroll;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-areas:
+      "a e d"
+      "a b b"
+      "c c c"
+      "c c c";
+    height: 60rem;
 
-     @media (min-width: ${e}) {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        gap: 10rem;
+    @media (min-width: ${e}) {
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(5, 1fr);
+      height: 70rem;
+      grid-template-areas:
+        "b b a"
+        "text text a"
+        "d e a"
+        "c c c"
+        "c c c";
+    }
+
+    @media (min-width: ${r}) {
+      height: 70rem;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      grid-template-areas:
+        "a b b c"
+        "a text text c"
+        "a d e .";
     }
   }
 
+  ul li {
+    border: 1px solid var(--color-text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .img-a    { grid-area: a; }
+  .img-b    { grid-area: b; }
+  .img-c    { 
+    grid-area: c;
+
+    @media(min-width: ${r}) {
+      display: block;
+    }
+  }
+
+  .img-d    { grid-area: d; }
+  .img-e    { grid-area: e; }
+
+  .img-f    { 
+    grid-area: f;
+    display: none;
+
+    @media(min-width: ${r}) {
+      display: block;
+    }
+  }
+
+
+  .title { 
+    display: none;
+    
+    @media (min-width: ${e}) {
+      grid-area: text;
+      display: flex;
+      border: 1px dashed var(--color-text);
+    }
+  }
+
+
   p {
     margin: 0;
+    font-size: var(--font-heading);
+    font-weight: var(--font-bold);
+
+    @media (min-width: ${r}) {
+      font-size: var(--font-title);
+    }
   }
 
   img {
-    height: 20rem;
-    width: auto;
+    width: 100%;
+    height: 100%;
   }
-
-  figcaption {
-    margin-top: 1rem;
-  }
-
-  figure {
-    margin: 0;
-    text-align: center;
-
-  }
-`, z = `
+`, P = `
   <section>
-    <!-- <ul>
-        <li>
-          <figure>
-            <img src=${t("./assets/live-streaming.png")} alt="Teamwork">
-            <figcaption>
-              Live Streaming
-            </figcaption>
-          </figure>
-        </li>
-        <li>
-            <h2>Behind the Scene</h2>
-        </li>
-        <li>
-          <figure>
-            <img src=${t("./assets/photography.png")} alt="Drawing">
-            <figcaption>
-              Photography
-            </figcaption>
-          </figure>
-        </li>
-        <li>
-          <figure>
-            <img src=${t("./assets/videography.png")} alt="Literacy">
-            <figcaption>
-              Videography
-            </figcaption>
+    <h2>Behind the Scene</h2>
 
-          </figure>
+    <ul>
+        <li class="title">
+          <p>Behind the Scene</p>
         </li>
-        <li>
-          <figure>
-            <img src=${t("./assets/videography.png")} alt="Literacy">
-            <figcaption>
-              Videography
-            </figcaption>
 
-          </figure>
+
+        <li class="img-a">
+            <img src=${t("./assets/record-1.jpg")} alt="Teamwork">
         </li>
-    </ul> -->
+       
+
+        <li class="img-b">
+          <img src=${t("./assets/record-2.jpg")} alt="Drawing">
+        </li>
+
+        <li class="img-c">
+          <img src=${t("./assets/record-3.jpg")} alt="Drawing">
+        </li>
+
+        <li class="img-d">
+          <img src=${t("./assets/record-4.jpg")} alt="Drawing">
+        </li>
+
+        <li class="img-e">
+          <img src=${t("./assets/record-5.jpg")} alt="Drawing">
+        </li>
+    </ul>
 
   </section>
 `;
-i("section-behind-the-scene", { styles: P, template: z });
+i("section-behind-the-scene", { styles: D, template: P });
 
 // studio-lah/scripts/home/team.js
-var C = `
+var z = `
   :host {
     display: block;
-    margin-block: 20rem;
+    margin-block: 10rem;
   }
 
   section {
     width: min(80%, 144rem);
     margin-inline: auto;
-    /* text-align: center; */
 
-    @media (min-width: ${n}) {
+    @media (min-width: ${r}) {
       justify-content: space-between;
     }
   }
@@ -656,17 +753,21 @@ var C = `
 
   ul {
     list-style-type: none;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
     padding: 0;
-    gap: 10rem;
+    gap: 5rem;
+    padding-bottom: 5rem;
     overflow: scroll;
 
      @media (min-width: ${e}) {
-        display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;
-        gap: 10rem;
+        gap: 8rem;
     }
+  }
+
+  ul li {
+    min-width: 12ch;
   }
 
   p {
@@ -674,7 +775,6 @@ var C = `
   }
 
   img {
-
     height: 15rem;
     width: auto;
 
@@ -692,7 +792,7 @@ var C = `
     text-align: center;
 
   }
-`, O = `
+`, C = `
   <section>
     <h2>Meet Our Team</h2>
 
@@ -749,13 +849,13 @@ var C = `
 
   </section>
 `;
-i("section-team", { styles: C, template: O });
+i("section-team", { styles: z, template: C });
 
 // studio-lah/scripts/home/cta.js
-var B = `
+var H = `
   :host {
     display: block;
-    padding-block: 10rem;
+    margin-block: 15rem;
   }
 
   section {
@@ -763,7 +863,7 @@ var B = `
     margin-inline: auto;
     /* text-align: center; */
 
-    @media (min-width: ${n}) {
+    @media (min-width: ${r}) {
       justify-content: space-between;
     }
   }
@@ -772,7 +872,7 @@ var B = `
   h2 {
     margin: 0;
     font-size: var(--font-title);
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
   }
 
   ul {
@@ -824,6 +924,7 @@ var B = `
 td {
     padding: 0.8rem 1rem;
     width: 50%;
+    min-width: 14ch;
 }
 
 td:first-child {
@@ -843,7 +944,7 @@ a {
     text-decoration: none;
     color: var(--color-text);
 }
-`, D = `
+`, O = `
   <section>
     <h2>Contact</h2>
 
@@ -852,11 +953,11 @@ a {
              <tbody>
                  <tr>
                      <td>Primary Phone</td>
-                     <td> <a href="tel:+959422206996">09422206996</a></td>
+                     <td> <a href="tel:+959422206996" target="_blank">09422206996</a></td>
                  </tr>
                  <tr>
                      <td>Secondary Phone</td>
-                     <td> <a href="tel:+959699604222">09699604222</a></td>
+                     <td> <a href="tel:+959699604222" target="_blank">09699604222</a></td>
                  </tr>
                  <tr>
                      <td>Email</td>
@@ -870,11 +971,11 @@ a {
      
                  <tr>
                      <td>Facebook </td>
-                     <td><a href="https://www.facebook.com/studiolahdawei">Studio LAH</a></td>
+                     <td><a href="https://www.facebook.com/studiolahdawei" target="_blank">Studio LAH</a></td>
                  </tr>
                  <tr>
                      <td>Tiktok</td>
-                     <td><a href="https://www.tiktok.com/@studiolah">Studio LAH</a></td>
+                     <td><a href="https://www.tiktok.com/@studiolah" target="_blank">Studio LAH</a></td>
                  </tr>
              </tbody>
          </table>
@@ -882,6 +983,6 @@ a {
 
   </section>
 `;
-i("section-cta", { styles: B, template: D });
+i("section-cta", { styles: H, template: O });
 </script></body>
 </html>

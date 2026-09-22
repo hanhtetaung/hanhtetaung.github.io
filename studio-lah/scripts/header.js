@@ -10,13 +10,17 @@ const styles = /* css */ `
   }
 
   header {
-    width: 80%;
+    width: 90%;
     margin-inline: auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding-block: 2rem;
     gap: 5rem;
+
+    @media (min-width: ${TABLET}) {
+      width: 80%;
+    }
   }
 
   div {
@@ -42,11 +46,19 @@ const styles = /* css */ `
   }
 
   img {
-    max-width: 20rem;
+    max-width: 12rem;
+
+    @media (min-width: ${TABLET}) {
+      max-width: 15rem;
+    }
   }
 
   a {
     text-decoration: none;
+   display: flex;
+  align-items: center;
+  justify-content: center;
+  height: fit-content;
     color: var(--color-text);
   }
 
