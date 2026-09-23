@@ -5,7 +5,8 @@ import { DESKTOP, TABLET } from "../breakpoints.js";
 const styles = /* css */ `
   :host {
     display: block;
-    margin-block: 10rem;
+    margin-top: 10rem;
+    margin-bottom: 25rem;
   }
 
   section {
@@ -28,89 +29,45 @@ const styles = /* css */ `
     margin: 0;
   }
 
-  div {
+  ul {
+    list-style-type: none;
+    padding: 0;
+    padding-bottom: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    gap: 1.5rem;
     overflow: scroll;
+
+    @media (min-width: ${TABLET}) {
+      justify-content: center;
+    }
   }
 
   img {
-    height: 20rem;
     width: auto;
+    height: 5rem;
+
+
+    @media (min-width: ${TABLET}) {
+      height: 7rem;
+    }
   }
-
-  figcaption {
-    margin-top: 1rem;
-  }
-
-  figure {
-    margin: 0;
-    text-align: center;
-
-  }
-
-  table {
-      border-collapse: collapse;
-      width: 100%;
-      letter-spacing: 1px;
-      text-align: start;
-  }
-
-  th,
-  td {
-  border-bottom: 1px solid rgb(160 160 160);
-  padding: 8px 10px;
-  font-size: var(--font-small);
-  }
-
-  td:nth-of-type(2) {
-    font-size: var(--font-body);
-    min-width: 30ch;
-  }
-
-  th {
-    text-align: start;
-    color: var(--color-primary);
-  }
-
 `;
 
 const template = /* html */ `
   <section>
-      <h2>Our Work</h2>
+    <h2>Our Work</h2>
 
-      <div>
-          <table>
-              <thead>
-                  <tr>
-                      <th scope="col">Date</th>
-                      <th scope="col">Event</th>
-                      <th scope="col">Service</th>
-                  </tr>
-              </thead>
-      
-              <tbody>
-                  <tr>
-                      <td>10/12/2021</th>
-                      <td>Miss Crystal Thanintharyi</td>
-                      <td>Videography</td>
-                  </tr>
-                  <tr>
-                      <td>12/01/2022</th>
-                      <td>University Water Festival</td>
-                      <td>Live Streaming</td>
-                  </tr>
-                  <tr>
-                      <td>09/11/2021</th>
-                      <td>Facebook Live Sales </td>
-                      <td>Photography</td>
-                  </tr>
-                  <tr>
-                      <td>04/03/2020</th>
-                      <td>Dawei DDPC</td>
-                      <td>Live Streaming</td>
-                  </tr>
-              </tbody>
-          </table>
-      </div>
+    <ul>
+      <li><img src=${asset("./assets/work-1.svg")} alt="Work 1"></li>
+      <li><img src=${asset("./assets/work-2.svg")} alt="Work 1"></li>
+      <li><img src=${asset("./assets/work-3.svg")} alt="Work 1"></li>
+      <li><img src=${asset("./assets/work-4.svg")} alt="Work 1"></li>
+      <li><img src=${asset("./assets/work-5.svg")} alt="Work 1"></li>
+      <li><img src=${asset("./assets/work-6.svg")} alt="Work 1"></li>
+      <li><img src=${asset("./assets/work-7.svg")} alt="Work 1"></li>
+    </ul>
 
 
   </section>

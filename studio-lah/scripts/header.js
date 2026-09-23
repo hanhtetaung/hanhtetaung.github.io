@@ -6,7 +6,7 @@ const styles = /* css */ `
   :host {
     display: block;
     /* background: var(--color-bg-primary); */
-    font-size: var(--size-small);
+    font-size: var(--font-small);
   }
 
   header {

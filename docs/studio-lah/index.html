@@ -32,10 +32,10 @@ function t(a) {
   return new URL(a, u()).href;
 }
 function m(a) {
-  let o = a.replace(/^\//, ""), l = location.protocol === "file:", c = u();
-  if (o === "")
+  let r = a.replace(/^\//, ""), l = location.protocol === "file:", c = u();
+  if (r === "")
     return l ? new URL("index.html", c).href : c.href;
-  return l ? new URL(`${o}.html`, c).href : new URL(o, c).href;
+  return l ? new URL(`${r}.html`, c).href : new URL(r, c).href;
 }
 
 // studio-lah/scripts/fonts.js
@@ -58,28 +58,28 @@ w.textContent = b;
 document.head.appendChild(w);
 
 // lib/define.js
-function v(a, o) {
+function v(a, r) {
   if (a === void 0) {
-    if (o === Array)
+    if (r === Array)
       return [];
-    if (o === Object)
+    if (r === Object)
       return {};
-    if (o === Boolean)
+    if (r === Boolean)
       return !1;
-    if (o === Number)
+    if (r === Number)
       return 0;
     return;
   }
-  if (o === Boolean)
+  if (r === Boolean)
     return Boolean(a);
-  if (o === Number)
+  if (r === Number)
     return Number(a);
   return a;
 }
-function i(a, { props: o = {}, attrs: l = [], styles: c = "", template: f, onRender: h = null }) {
+function i(a, { props: r = {}, attrs: l = [], styles: c = "", template: g, onRender: p = null }) {
   let y = ["props", ...l];
 
-  class p extends HTMLElement {
+  class h extends HTMLElement {
     static observedAttributes = y;
     constructor() {
       super();
@@ -106,8 +106,8 @@ function i(a, { props: o = {}, attrs: l = [], styles: c = "", template: f, onRen
           n = {};
         }
       let d = {};
-      for (let g of Object.keys(o))
-        d[g] = v(n[g], o[g]);
+      for (let f of Object.keys(r))
+        d[f] = v(n[f], r[f]);
       return d;
     }
     _applyForwardedAttrs() {
@@ -125,26 +125,26 @@ function i(a, { props: o = {}, attrs: l = [], styles: c = "", template: f, onRen
     _render() {
       if (typeof this._cleanup === "function")
         this._cleanup(), this._cleanup = null;
-      let n = this._getProps(), s = typeof f === "function" ? f(n) : f;
-      if (this.shadowRoot.innerHTML = `<style>${c}</style>${s}`, this._applyForwardedAttrs(), h) {
-        let d = h(this.shadowRoot, n, this);
+      let n = this._getProps(), s = typeof g === "function" ? g(n) : g;
+      if (this.shadowRoot.innerHTML = `<style>${c}</style>${s}`, this._applyForwardedAttrs(), p) {
+        let d = p(this.shadowRoot, n, this);
         if (typeof d === "function")
           this._cleanup = d;
       }
     }
   }
-  customElements.define(a, p);
+  customElements.define(a, h);
 }
 
 // studio-lah/scripts/breakpoints.js
-var e = "640px", r = "1024px";
+var e = "640px", o = "1024px";
 
 // studio-lah/scripts/header.js
 var x = `
   :host {
     display: block;
     /* background: var(--color-bg-primary); */
-    font-size: var(--size-small);
+    font-size: var(--font-small);
   }
 
   header {
@@ -280,7 +280,7 @@ var $ = `
 i("section-footer", { template: T, styles: $ });
 
 // studio-lah/scripts/home/hero.js
-var S = `
+var A = `
   :host {
     display: block;
     margin-block: 10rem;
@@ -291,7 +291,7 @@ var S = `
     width: min(80%, 144rem);
     margin-inline: auto;
     
-    @media (min-width: ${r}) {
+    @media (min-width: ${o}) {
       display: flex;
       justify-content: space-between;
     }
@@ -306,8 +306,9 @@ var S = `
 
     @media (min-width: ${e}) {
       position: static;
-      width: 100%;
-      height: auto;
+      /* width: 100%; */
+      height: 60rem;
+      width: auto;
     }
   }
 
@@ -328,7 +329,7 @@ var S = `
     max-width: 72rem;
     margin-inline: auto;
   }
-`, A = `
+`, S = `
   <section>
     <hgroup>
         <h1>Studio LAH</h1>
@@ -337,7 +338,7 @@ var S = `
 </section>
 <img id="visible-img" src=${t("./assets/hero.png")} alt="Dawei">
 `;
-i("section-hero", { styles: S, template: A });
+i("section-hero", { styles: A, template: S });
 
 // studio-lah/scripts/home/services.js
 var L = `
@@ -351,7 +352,7 @@ var L = `
     margin-inline: auto;
     /* text-align: center; */
 
-    @media (min-width: ${r}) {
+    @media (min-width: ${o}) {
       justify-content: space-between;
     }
   }
@@ -409,7 +410,7 @@ var L = `
     margin-inline: auto;
     margin-top: 3rem;
   }
-`, E = `
+`, j = `
   <section>
     <h2>Our Services</h2>
 
@@ -453,20 +454,21 @@ var L = `
 
   </section>
 `;
-i("section-services", { styles: L, template: E });
+i("section-services", { styles: L, template: j });
 
 // studio-lah/scripts/home/work.js
-var _ = `
+var E = `
   :host {
     display: block;
-    margin-block: 10rem;
+    margin-top: 10rem;
+    margin-bottom: 25rem;
   }
 
   section {
     width: min(80%, 144rem);
     margin-inline: auto;
 
-    @media (min-width: ${r}) {
+    @media (min-width: ${o}) {
       justify-content: space-between;
     }
   }
@@ -482,98 +484,54 @@ var _ = `
     margin: 0;
   }
 
-  div {
+  ul {
+    list-style-type: none;
+    padding: 0;
+    padding-bottom: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    gap: 1.5rem;
     overflow: scroll;
+
+    @media (min-width: ${e}) {
+      justify-content: center;
+    }
   }
 
   img {
-    height: 20rem;
     width: auto;
+    height: 5rem;
+
+
+    @media (min-width: ${e}) {
+      height: 7rem;
+    }
   }
-
-  figcaption {
-    margin-top: 1rem;
-  }
-
-  figure {
-    margin: 0;
-    text-align: center;
-
-  }
-
-  table {
-      border-collapse: collapse;
-      width: 100%;
-      letter-spacing: 1px;
-      text-align: start;
-  }
-
-  th,
-  td {
-  border-bottom: 1px solid rgb(160 160 160);
-  padding: 8px 10px;
-  font-size: var(--font-small);
-  }
-
-  td:nth-of-type(2) {
-    font-size: var(--font-body);
-    min-width: 30ch;
-  }
-
-  th {
-    text-align: start;
-    color: var(--color-primary);
-  }
-
-`, j = `
+`, _ = `
   <section>
-      <h2>Our Work</h2>
+    <h2>Our Work</h2>
 
-      <div>
-          <table>
-              <thead>
-                  <tr>
-                      <th scope="col">Date</th>
-                      <th scope="col">Event</th>
-                      <th scope="col">Service</th>
-                  </tr>
-              </thead>
-      
-              <tbody>
-                  <tr>
-                      <td>10/12/2021</th>
-                      <td>Miss Crystal Thanintharyi</td>
-                      <td>Videography</td>
-                  </tr>
-                  <tr>
-                      <td>12/01/2022</th>
-                      <td>University Water Festival</td>
-                      <td>Live Streaming</td>
-                  </tr>
-                  <tr>
-                      <td>09/11/2021</th>
-                      <td>Facebook Live Sales </td>
-                      <td>Photography</td>
-                  </tr>
-                  <tr>
-                      <td>04/03/2020</th>
-                      <td>Dawei DDPC</td>
-                      <td>Live Streaming</td>
-                  </tr>
-              </tbody>
-          </table>
-      </div>
+    <ul>
+      <li><img src=${t("./assets/work-1.svg")} alt="Work 1"></li>
+      <li><img src=${t("./assets/work-2.svg")} alt="Work 1"></li>
+      <li><img src=${t("./assets/work-3.svg")} alt="Work 1"></li>
+      <li><img src=${t("./assets/work-4.svg")} alt="Work 1"></li>
+      <li><img src=${t("./assets/work-5.svg")} alt="Work 1"></li>
+      <li><img src=${t("./assets/work-6.svg")} alt="Work 1"></li>
+      <li><img src=${t("./assets/work-7.svg")} alt="Work 1"></li>
+    </ul>
 
 
   </section>
 `;
-i("section-work", { styles: _, template: j });
+i("section-work", { styles: E, template: _ });
 
 // studio-lah/scripts/home/behind-the-scene.js
-var D = `
+var P = `
   :host {
     display: block;
-    margin-block: 20rem;
+    margin-bottom: 20rem;
     margin-inline: 0.2rem;
   }
 
@@ -625,14 +583,14 @@ var D = `
         "c c c";
     }
 
-    @media (min-width: ${r}) {
+    @media (min-width: ${o}) {
       height: 70rem;
       grid-template-columns: repeat(4, 1fr);
       grid-template-rows: repeat(3, 1fr);
       grid-template-areas:
         "a b b c"
         "a text text c"
-        "a d e .";
+        "a d e empty";
     }
   }
 
@@ -649,7 +607,7 @@ var D = `
   .img-c    { 
     grid-area: c;
 
-    @media(min-width: ${r}) {
+    @media(min-width: ${o}) {
       display: block;
     }
   }
@@ -661,7 +619,7 @@ var D = `
     grid-area: f;
     display: none;
 
-    @media(min-width: ${r}) {
+    @media(min-width: ${o}) {
       display: block;
     }
   }
@@ -677,13 +635,18 @@ var D = `
     }
   }
 
+  .empty-block {
+    grid-area: empty;
+    border: 1px dashed var(--color-text);
+  }
+
 
   p {
     margin: 0;
     font-size: var(--font-heading);
     font-weight: var(--font-bold);
 
-    @media (min-width: ${r}) {
+    @media (min-width: ${o}) {
       font-size: var(--font-title);
     }
   }
@@ -691,8 +654,10 @@ var D = `
   img {
     width: 100%;
     height: 100%;
+    object-position: 50% 50%;
+    object-fit: cover;
   }
-`, P = `
+`, z = `
   <section>
     <h2>Behind the Scene</h2>
 
@@ -722,14 +687,17 @@ var D = `
         <li class="img-e">
           <img src=${t("./assets/record-5.jpg")} alt="Drawing">
         </li>
+
+         <li class="empty-block">
+        </li>
     </ul>
 
   </section>
 `;
-i("section-behind-the-scene", { styles: D, template: P });
+i("section-behind-the-scene", { styles: P, template: z });
 
 // studio-lah/scripts/home/team.js
-var z = `
+var H = `
   :host {
     display: block;
     margin-block: 10rem;
@@ -739,7 +707,7 @@ var z = `
     width: min(80%, 144rem);
     margin-inline: auto;
 
-    @media (min-width: ${r}) {
+    @media (min-width: ${o}) {
       justify-content: space-between;
     }
   }
@@ -753,17 +721,14 @@ var z = `
 
   ul {
     list-style-type: none;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
     padding: 0;
-    gap: 5rem;
-    padding-bottom: 5rem;
     overflow: scroll;
-
-     @media (min-width: ${e}) {
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        gap: 8rem;
-    }
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5rem;
+    max-width: 80%;
+    margin-inline: auto;
   }
 
   ul li {
@@ -772,6 +737,9 @@ var z = `
 
   p {
     margin: 0;
+    font-size: var(--font-body);
+    font-weight: var(--font-bold);
+    margin-bottom: 0.5rem;
   }
 
   img {
@@ -785,14 +753,14 @@ var z = `
 
   figcaption {
     margin-top: 1rem;
+    font-size: var(--font-small);
   }
 
   figure {
     margin: 0;
     text-align: center;
-
   }
-`, C = `
+`, O = `
   <section>
     <h2>Meet Our Team</h2>
 
@@ -801,7 +769,10 @@ var z = `
           <figure>
             <img src=${t("./assets/chan-hein.png")} alt="Chan Hein">
             <figcaption>
-              Chan Hein
+              <p>
+                Chan Hein
+              </p>
+              Manager
             </figcaption>
           </figure>
         </li>
@@ -809,7 +780,10 @@ var z = `
           <figure>
             <img src=${t("./assets/nay-thurein.png")} alt="Nay Thurein">
             <figcaption>
-              Nay Thurein
+              <p>
+                Nay Thurein
+              </p>
+              Photographer
             </figcaption>
           </figure>
         </li>
@@ -817,7 +791,10 @@ var z = `
           <figure>
             <img src=${t("./assets/aung-thura.png")} alt="Aung Thura">
             <figcaption>
-              Aung Thura
+              <p>
+                 Aung Thura
+                </p>
+                Videographer
             </figcaption>
           </figure>
         </li>
@@ -825,7 +802,10 @@ var z = `
           <figure>
             <img src=${t("./assets/tin-nyo.png")} alt="Tin Nyo">
             <figcaption>
-              Tin Nyo
+              <p>
+                 Tin Nyo
+                 </p>
+                 Assistant Videographer
             </figcaption>
           </figure>
         </li>
@@ -833,7 +813,10 @@ var z = `
           <figure>
             <img src=${t("./assets/thein-min-htike.png")} alt="Thein Min Htike">
             <figcaption>
-              Thein Min Htike
+              <p>
+                 Thein Min Htike
+                </p>
+                Photographer/Videographer
             </figcaption>
           </figure>
         </li>
@@ -841,7 +824,10 @@ var z = `
           <figure>
             <img src=${t("./assets/than-sein.png")} alt="Than Sein">
             <figcaption>
-              Than Sein
+              <p>
+                 Than Sein
+                </p>
+                Planner
             </figcaption>
           </figure>
         </li>
@@ -849,10 +835,10 @@ var z = `
 
   </section>
 `;
-i("section-team", { styles: z, template: C });
+i("section-team", { styles: H, template: O });
 
 // studio-lah/scripts/home/cta.js
-var H = `
+var B = `
   :host {
     display: block;
     margin-block: 15rem;
@@ -863,7 +849,7 @@ var H = `
     margin-inline: auto;
     /* text-align: center; */
 
-    @media (min-width: ${r}) {
+    @media (min-width: ${o}) {
       justify-content: space-between;
     }
   }
@@ -929,11 +915,12 @@ td {
 
 td:first-child {
     text-align: end;
-    font-size: var(--font-small);
+    /* font-size: var(--font-small); */
 }
 
 th {
   padding-block: 2rem;
+  font-weight: var(--font-regular);
 }
 
 td:last-child {
@@ -943,8 +930,9 @@ td:last-child {
 a {
     text-decoration: none;
     color: var(--color-text);
+    font-weight: var(--font-bold);
 }
-`, O = `
+`, C = `
   <section>
     <h2>Contact</h2>
 
@@ -983,6 +971,6 @@ a {
 
   </section>
 `;
-i("section-cta", { styles: H, template: O });
+i("section-cta", { styles: B, template: C });
 </script></body>
 </html>

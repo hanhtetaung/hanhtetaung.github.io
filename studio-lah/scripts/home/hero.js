@@ -28,8 +28,9 @@ const styles = /* css */ `
 
     @media (min-width: ${TABLET}) {
       position: static;
-      width: 100%;
-      height: auto;
+      /* width: 100%; */
+      height: 60rem;
+      width: auto;
     }
   }
 
