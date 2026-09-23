@@ -21,7 +21,7 @@
     ></script>
     
   <style>/* main.css */
-:root{--color-bg-primary:#fff5e8;--color-primary:#7e4c37;--color-text:#000;--color-transparent:#0000;--font-family:"Archivo",sans-serif;--font-regular:400;--font-bold:700;--ratio:1.4;--size-body:1.6rem;--size-small:calc(var(--size-body)/var(--ratio));--size-heading:calc(var(--size-body)*var(--ratio));--size-title:calc(var(--size-heading)*var(--ratio));--size-display:calc(var(--size-title)*var(--ratio));font-size:10px;@media (width>=640px){&{--size-body:2rem}}}body{background:var(--color-bg-primary);font-family:var(--font-family);font-size:var(--size-body);margin:0}
+:root{--color-bg-primary:#fff5e8;--color-primary:#7e4c37;--color-text:#000;--color-transparent:#0000;--font-family:"Archivo",sans-serif;--font-regular:400;--font-bold:700;--ratio:1.4;--size-body:1.6rem;--size-small:calc(var(--size-body)/var(--ratio));--size-heading:calc(var(--size-body)*var(--ratio));--size-title:calc(var(--size-heading)*var(--ratio));--size-display:calc(var(--size-title)*var(--ratio));font-size:10px;@media (width>=640px){&{--size-body:2rem}}}body{font-family:var(--font-family);font-size:var(--size-body);background-color:var(--color-bg-primary);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'%3E%3Cfilter id='roughpaper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.04' result='noise' numOctaves='5' stitchTiles='stitch'/%3E%3CfeDiffuseLighting in='noise' lighting-color='%23fff5e8' surfaceScale='1.5'%3E%3CfeDistantLight azimuth='45' elevation='72'/%3E%3C/feDiffuseLighting%3E%3C/filter%3E%3Crect width='300' height='300' fill='%23fff5e8' filter='url(%23roughpaper)'/%3E%3C/svg%3E");background-repeat:repeat;background-size:30rem 30rem;margin:0}
 </style></head>
   <body>
     <section-header></section-header>
@@ -46,15 +46,15 @@
 
     <section-footer variant="secondary"></section-footer>
   <script type="module">// lib/asset.js
-function b() {
+function y() {
   let i = document.documentElement.dataset.base || "./";
   return new URL(i, location.href);
 }
 function t(i) {
-  return new URL(i, b()).href;
+  return new URL(i, y()).href;
 }
 function p(i) {
-  let a = i.replace(/^\//, ""), m = location.protocol === "file:", s = b();
+  let a = i.replace(/^\//, ""), m = location.protocol === "file:", s = y();
   if (a === "")
     return m ? new URL("index.html", s).href : s.href;
   return m ? new URL(`${a}.html`, s).href : new URL(a, s).href;
@@ -75,9 +75,9 @@ var k = `
     font-weight: 400;
     font-display: swap;
   }
-`, y = document.createElement("style");
-y.textContent = k;
-document.head.appendChild(y);
+`, b = document.createElement("style");
+b.textContent = k;
+document.head.appendChild(b);
 
 // lib/define.js
 function x(i, a) {
@@ -220,13 +220,13 @@ var $ = `
        content: "➶";
      }
   }
-`, z = ["href", "target", "rel", "download"], A = `
+`, z = ["href", "target", "rel", "download"], S = `
   <a data-forward><slot></slot></a>
 `;
-e("app-link", { attrs: z, styles: $, template: A });
+e("app-link", { attrs: z, styles: $, template: S });
 
 // scripts/components/app-logo.js
-var S = `
+var A = `
   :host {
     display: block;
   }
@@ -236,7 +236,7 @@ var S = `
     width: auto;
   }
 `, B = ["width", "height", "src", "alt"], C = () => "<img data-forward />";
-e("app-logo", { attrs: B, styles: S, template: C });
+e("app-logo", { attrs: B, styles: A, template: C });
 
 // scripts/breakpoints.js
 var n = "640px", w = "1024px";
@@ -245,7 +245,6 @@ var n = "640px", w = "1024px";
 var E = `
   :host {
     display: block;
-    /* background: var(--color-bg-primary); */
     font-size: var(--size-small);
   }
 
@@ -400,7 +399,7 @@ var _ = [
 e("footer-nav", { styles: F, template: L });
 
 // scripts/components/footer-copyright.js
-var I = `
+var D = `
   :host {
    display: flex;
     justify-content: space-between;
@@ -483,7 +482,7 @@ var I = `
     text-decoration: none;
     color: var(--color-text);
   }
-`, D = () => `
+`, I = () => `
       <p>
           <img src=${t("./assets/images/logo.avif")}
           alt="Logo">
@@ -546,7 +545,7 @@ var I = `
           </ul>
         </nav>
 `;
-e("footer-copyright", { styles: I, template: D });
+e("footer-copyright", { styles: D, template: I });
 
 // scripts/footer.js
 var O = `
@@ -691,11 +690,11 @@ var H = `
    :host([variant="full"]) {
     --local-width: 100%;
   }
-`, M = ["width", "height", "src", "alt"], j = () => "<img data-forward />";
-e("app-image", { attrs: M, styles: H, template: j });
+`, j = ["width", "height", "src", "alt"], q = () => "<img data-forward />";
+e("app-image", { attrs: j, styles: H, template: q });
 
 // scripts/work/mmo/intro.js
-var q = `
+var M = `
   :host {
     display: block;
     padding-block: 10rem;
@@ -802,7 +801,7 @@ var q = `
       </article>
   </section>
 `;
-e("section-mmo-intro", { styles: q, template: W });
+e("section-mmo-intro", { styles: M, template: W });
 
 // scripts/work/mmo/about.js
 var G = `
@@ -825,7 +824,7 @@ var G = `
   p {
     margin: 0;
   }
-`, R = `
+`, N = `
   <section>
       <h2>About the Business</h2>
 
@@ -839,10 +838,10 @@ var G = `
       </article>
   </section>
 `;
-e("section-mmo-about", { styles: G, template: R });
+e("section-mmo-about", { styles: G, template: N });
 
 // scripts/work/mmo/voices-from-field.js
-var N = `
+var R = `
   :host {
     display: block;
     margin-block: 10rem;
@@ -911,7 +910,7 @@ var N = `
         </ul>
   </section>
 `;
-e("section-mmo-voices-from-field", { styles: N, template: X });
+e("section-mmo-voices-from-field", { styles: R, template: X });
 
 // scripts/work/mmo/designing-workflow.js
 var V = `

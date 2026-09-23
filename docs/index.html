@@ -20,7 +20,7 @@
 
     
   <style>/* main.css */
-:root{--color-bg-primary:#fff5e8;--color-primary:#7e4c37;--color-text:#000;--color-transparent:#0000;--font-family:"Archivo",sans-serif;--font-regular:400;--font-bold:700;--ratio:1.4;--size-body:1.6rem;--size-small:calc(var(--size-body)/var(--ratio));--size-heading:calc(var(--size-body)*var(--ratio));--size-title:calc(var(--size-heading)*var(--ratio));--size-display:calc(var(--size-title)*var(--ratio));font-size:10px;@media (width>=640px){&{--size-body:2rem}}}body{background:var(--color-bg-primary);font-family:var(--font-family);font-size:var(--size-body);margin:0}
+:root{--color-bg-primary:#fff5e8;--color-primary:#7e4c37;--color-text:#000;--color-transparent:#0000;--font-family:"Archivo",sans-serif;--font-regular:400;--font-bold:700;--ratio:1.4;--size-body:1.6rem;--size-small:calc(var(--size-body)/var(--ratio));--size-heading:calc(var(--size-body)*var(--ratio));--size-title:calc(var(--size-heading)*var(--ratio));--size-display:calc(var(--size-title)*var(--ratio));font-size:10px;@media (width>=640px){&{--size-body:2rem}}}body{font-family:var(--font-family);font-size:var(--size-body);background-color:var(--color-bg-primary);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'%3E%3Cfilter id='roughpaper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.04' result='noise' numOctaves='5' stitchTiles='stitch'/%3E%3CfeDiffuseLighting in='noise' lighting-color='%23fff5e8' surfaceScale='1.5'%3E%3CfeDistantLight azimuth='45' elevation='72'/%3E%3C/feDiffuseLighting%3E%3C/filter%3E%3Crect width='300' height='300' fill='%23fff5e8' filter='url(%23roughpaper)'/%3E%3C/svg%3E");background-repeat:repeat;background-size:30rem 30rem;margin:0}
 </style></head>
   <body>
     <section-header></section-header>
@@ -68,7 +68,7 @@ z.textContent = _;
 document.head.appendChild(z);
 
 // lib/define.js
-function A(a, e) {
+function C(a, e) {
   if (a === void 0) {
     if (e === Array)
       return [];
@@ -117,7 +117,7 @@ function r(a, { props: e = {}, attrs: s = [], styles: m = "", template: o, onRen
         }
       let c = {};
       for (let p of Object.keys(e))
-        c[p] = A(n[p], e[p]);
+        c[p] = C(n[p], e[p]);
       return c;
     }
     _applyForwardedAttrs() {
@@ -147,7 +147,7 @@ function r(a, { props: e = {}, attrs: s = [], styles: m = "", template: o, onRen
 }
 
 // scripts/components/app-link.js
-var C = `
+var A = `
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -208,13 +208,13 @@ var C = `
        content: "➶";
      }
   }
-`, S = ["href", "target", "rel", "download"], B = `
+`, S = ["href", "target", "rel", "download"], E = `
   <a data-forward><slot></slot></a>
 `;
-r("app-link", { attrs: S, styles: C, template: B });
+r("app-link", { attrs: S, styles: A, template: E });
 
 // scripts/components/app-logo.js
-var E = `
+var B = `
   :host {
     display: block;
   }
@@ -223,17 +223,16 @@ var E = `
     max-height: 7rem;
     width: auto;
   }
-`, D = ["width", "height", "src", "alt"], P = () => "<img data-forward />";
-r("app-logo", { attrs: D, styles: E, template: P });
+`, D = ["width", "height", "src", "alt"], L = () => "<img data-forward />";
+r("app-logo", { attrs: D, styles: B, template: L });
 
 // scripts/breakpoints.js
-var t = "640px", d = "1024px", x = "1920px";
+var t = "640px", d = "1024px", w = "1920px";
 
 // scripts/header.js
 var O = `
   :host {
     display: block;
-    /* background: var(--color-bg-primary); */
     font-size: var(--size-small);
   }
 
@@ -277,7 +276,7 @@ var O = `
     height: 5rem;
     width: auto;
   }
-`, F = `
+`, P = `
   <header>
       <app-link variant="plain" href=${b("/")}>
         <img src=${i("./assets/images/logo.avif")}
@@ -303,10 +302,10 @@ var O = `
       </div>
   </header>
 `;
-r("section-header", { template: F, styles: O });
+r("section-header", { template: P, styles: O });
 
 // scripts/components/footer-nav.js
-var L = [
+var F = [
   { href: "/", name: "Home" },
   { href: "/about", name: "About" },
   { href: "/credits", name: "Credits" },
@@ -372,12 +371,12 @@ var L = [
     margin-right: 5rem;
     margin-bottom: 0.3rem;
   }
-`, U = () => `
+`, N = () => `
     <nav>
         <span>Sitemap</span>
 
         <ol>
-            ${L.map((a) => `
+            ${F.map((a) => `
                 <li>
                     <app-link variant="sitemap" href=${b(a.href)} >${a.name}</app-link>
                 </li>
@@ -385,10 +384,10 @@ var L = [
         </ol>
     </nav>
 `;
-r("footer-nav", { styles: T, template: U });
+r("footer-nav", { styles: T, template: N });
 
 // scripts/components/footer-copyright.js
-var G = `
+var U = `
   :host {
    display: flex;
     justify-content: space-between;
@@ -471,7 +470,7 @@ var G = `
     text-decoration: none;
     color: var(--color-text);
   }
-`, N = () => `
+`, G = () => `
       <p>
           <img src=${i("./assets/images/logo.avif")}
           alt="Logo">
@@ -534,7 +533,7 @@ var G = `
           </ul>
         </nav>
 `;
-r("footer-copyright", { styles: G, template: N });
+r("footer-copyright", { styles: U, template: G });
 
 // scripts/footer.js
 var H = `
@@ -753,7 +752,7 @@ var K = `
     width: 100%;
     height: auto;
   }
-`, M = `
+`, V = `
   <section>
     <hgroup>
       <p>Han Htet Aung | GMT+7</p>
@@ -769,15 +768,15 @@ var K = `
       <div id="lens-ring"></div>
     </div>
   </section>
-`, V = `(min-width: ${t})`;
-function W(a) {
+`, W = `(min-width: ${t})`;
+function M(a) {
   let e = a.getElementById("img-wrap"), s = a.getElementById("visible-img"), m = a.getElementById("lens-img"), o = a.getElementById("lens-ring");
   if (!e || !s || !m || !o)
     return;
-  let h = window.matchMedia(V);
+  let h = window.matchMedia(W);
   function g(u) {
-    let v = s.getBoundingClientRect(), w = u.clientX - v.left, k = u.clientY - v.top, y = o.offsetWidth / 2;
-    o.style.left = `${w - y}px`, o.style.top = `${k - y}px`, m.style.clipPath = `circle(${y}px at ${w}px ${k}px)`;
+    let v = s.getBoundingClientRect(), x = u.clientX - v.left, k = u.clientY - v.top, y = o.offsetWidth / 2;
+    o.style.left = `${x - y}px`, o.style.top = `${k - y}px`, m.style.clipPath = `circle(${y}px at ${x}px ${k}px)`;
   }
   function f() {
     o.setAttribute("data-visible", "true");
@@ -803,7 +802,7 @@ function W(a) {
     c(), h.removeEventListener("change", p);
   };
 }
-r("section-hero", { styles: K, template: M, onRender: W });
+r("section-hero", { styles: K, template: V, onRender: M });
 
 // scripts/home/recent-crafts.js
 var X = `
@@ -1072,7 +1071,7 @@ var Z = `
       height: 90%;
     }
 
-    @media (min-width: ${x}) {
+    @media (min-width: ${w}) {
       position: relative;
       overflow: hidden;
     }

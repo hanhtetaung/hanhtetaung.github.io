@@ -25,7 +25,7 @@
 
     
   <style>/* main.css */
-:root{--color-bg-primary:#fff5e8;--color-primary:#7e4c37;--color-text:#000;--color-transparent:#0000;--font-family:"Archivo",sans-serif;--font-regular:400;--font-bold:700;--ratio:1.4;--size-body:1.6rem;--size-small:calc(var(--size-body)/var(--ratio));--size-heading:calc(var(--size-body)*var(--ratio));--size-title:calc(var(--size-heading)*var(--ratio));--size-display:calc(var(--size-title)*var(--ratio));font-size:10px;@media (width>=640px){&{--size-body:2rem}}}body{background:var(--color-bg-primary);font-family:var(--font-family);font-size:var(--size-body);margin:0}
+:root{--color-bg-primary:#fff5e8;--color-primary:#7e4c37;--color-text:#000;--color-transparent:#0000;--font-family:"Archivo",sans-serif;--font-regular:400;--font-bold:700;--ratio:1.4;--size-body:1.6rem;--size-small:calc(var(--size-body)/var(--ratio));--size-heading:calc(var(--size-body)*var(--ratio));--size-title:calc(var(--size-heading)*var(--ratio));--size-display:calc(var(--size-title)*var(--ratio));font-size:10px;@media (width>=640px){&{--size-body:2rem}}}body{font-family:var(--font-family);font-size:var(--size-body);background-color:var(--color-bg-primary);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'%3E%3Cfilter id='roughpaper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.04' result='noise' numOctaves='5' stitchTiles='stitch'/%3E%3CfeDiffuseLighting in='noise' lighting-color='%23fff5e8' surfaceScale='1.5'%3E%3CfeDistantLight azimuth='45' elevation='72'/%3E%3C/feDiffuseLighting%3E%3C/filter%3E%3Crect width='300' height='300' fill='%23fff5e8' filter='url(%23roughpaper)'/%3E%3C/svg%3E");background-repeat:repeat;background-size:30rem 30rem;margin:0}
 </style></head>
   <body>
     <section-header></section-header>
@@ -51,7 +51,7 @@ function w() {
 function a(e) {
   return new URL(e, w()).href;
 }
-function p(e) {
+function d(e) {
   let i = e.replace(/^\//, ""), o = location.protocol === "file:", n = w();
   if (i === "")
     return o ? new URL("index.html", n).href : n.href;
@@ -96,10 +96,10 @@ function x(e, i) {
     return Number(e);
   return e;
 }
-function t(e, { props: i = {}, attrs: o = [], styles: n = "", template: s, onRender: g = null }) {
+function t(e, { props: i = {}, attrs: o = [], styles: n = "", template: s, onRender: h = null }) {
   let f = ["props", ...o];
 
-  class d extends HTMLElement {
+  class p extends HTMLElement {
     static observedAttributes = f;
     constructor() {
       super();
@@ -126,8 +126,8 @@ function t(e, { props: i = {}, attrs: o = [], styles: n = "", template: s, onRen
           l = {};
         }
       let c = {};
-      for (let h of Object.keys(i))
-        c[h] = x(l[h], i[h]);
+      for (let g of Object.keys(i))
+        c[g] = x(l[g], i[g]);
       return c;
     }
     _applyForwardedAttrs() {
@@ -146,14 +146,14 @@ function t(e, { props: i = {}, attrs: o = [], styles: n = "", template: s, onRen
       if (typeof this._cleanup === "function")
         this._cleanup(), this._cleanup = null;
       let l = this._getProps(), m = typeof s === "function" ? s(l) : s;
-      if (this.shadowRoot.innerHTML = `<style>${n}</style>${m}`, this._applyForwardedAttrs(), g) {
-        let c = g(this.shadowRoot, l, this);
+      if (this.shadowRoot.innerHTML = `<style>${n}</style>${m}`, this._applyForwardedAttrs(), h) {
+        let c = h(this.shadowRoot, l, this);
         if (typeof c === "function")
           this._cleanup = c;
       }
     }
   }
-  customElements.define(e, d);
+  customElements.define(e, p);
 }
 
 // scripts/components/app-link.js
@@ -218,10 +218,10 @@ var $ = `
        content: "➶";
      }
   }
-`, A = ["href", "target", "rel", "download"], z = `
+`, z = ["href", "target", "rel", "download"], A = `
   <a data-forward><slot></slot></a>
 `;
-t("app-link", { attrs: A, styles: $, template: z });
+t("app-link", { attrs: z, styles: $, template: A });
 
 // scripts/components/app-logo.js
 var E = `
@@ -233,17 +233,16 @@ var E = `
     max-height: 7rem;
     width: auto;
   }
-`, T = ["width", "height", "src", "alt"], _ = () => "<img data-forward />";
-t("app-logo", { attrs: T, styles: E, template: _ });
+`, T = ["width", "height", "src", "alt"], B = () => "<img data-forward />";
+t("app-logo", { attrs: T, styles: E, template: B });
 
 // scripts/breakpoints.js
 var r = "640px", u = "1024px";
 
 // scripts/header.js
-var B = `
+var L = `
   :host {
     display: block;
-    /* background: var(--color-bg-primary); */
     font-size: var(--size-small);
   }
 
@@ -287,9 +286,9 @@ var B = `
     height: 5rem;
     width: auto;
   }
-`, S = `
+`, _ = `
   <header>
-      <app-link variant="plain" href=${p("/")}>
+      <app-link variant="plain" href=${d("/")}>
         <img src=${a("./assets/images/logo.avif")}
           alt="Logo">
       </app-link>
@@ -298,25 +297,25 @@ var B = `
         <nav>
           <ul>
             <li>
-              <app-link variant="plain" href=${p("/")}>Home</app-link>
+              <app-link variant="plain" href=${d("/")}>Home</app-link>
             </li>
 
             <li>
-              <app-link variant="plain" href=${p("/about")}>About</app-link>
+              <app-link variant="plain" href=${d("/about")}>About</app-link>
             </li>
           </ul>
         </nav>
 
-        <app-link variant="secondary" href=${p("/#cta")}>
+        <app-link variant="secondary" href=${d("/#cta")}>
           Let's Craft &#8629;
         </app-link>
       </div>
   </header>
 `;
-t("section-header", { template: S, styles: B });
+t("section-header", { template: _, styles: L });
 
 // scripts/components/footer-nav.js
-var C = [
+var S = [
   { href: "/", name: "Home" },
   { href: "/about", name: "About" },
   { href: "/credits", name: "Credits" },
@@ -335,7 +334,7 @@ var C = [
     href: "/writings/foundation-building-interfaces-at-scale",
     name: "Foundation"
   }
-], L = `
+], C = `
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -387,15 +386,15 @@ var C = [
         <span>Sitemap</span>
 
         <ol>
-            ${C.map((e) => `
+            ${S.map((e) => `
                 <li>
-                    <app-link variant="sitemap" href=${p(e.href)} >${e.name}</app-link>
+                    <app-link variant="sitemap" href=${d(e.href)} >${e.name}</app-link>
                 </li>
             `).join("")}
         </ol>
     </nav>
 `;
-t("footer-nav", { styles: L, template: D });
+t("footer-nav", { styles: C, template: D });
 
 // scripts/components/footer-copyright.js
 var F = `
@@ -637,25 +636,25 @@ var U = `
     <footer-copyright></footer-copyright>
   </footer>
 `;
-function M(e) {
-  let i = e.querySelector("footer"), o = e.getElementById("highlight-base"), n = e.getElementById("highlight-lens"), s = e.getElementById("lens-ring"), g = e.getElementById("highlight-wrap");
-  if (!i || !o || !n || !s || !g)
+function O(e) {
+  let i = e.querySelector("footer"), o = e.getElementById("highlight-base"), n = e.getElementById("highlight-lens"), s = e.getElementById("lens-ring"), h = e.getElementById("highlight-wrap");
+  if (!i || !o || !n || !s || !h)
     return;
   function f(m) {
-    let c = o.getBoundingClientRect(), h = m.clientX - c.left, v = m.clientY - c.top, b = s.offsetWidth / 2;
-    s.style.left = `${h - b}px`, s.style.top = `${v - b}px`, n.style.clipPath = `circle(${b}px at ${h}px ${v}px)`;
+    let c = o.getBoundingClientRect(), g = m.clientX - c.left, v = m.clientY - c.top, b = s.offsetWidth / 2;
+    s.style.left = `${g - b}px`, s.style.top = `${v - b}px`, n.style.clipPath = `circle(${b}px at ${g}px ${v}px)`;
   }
-  function d() {
+  function p() {
     s.setAttribute("data-visible", "true");
   }
   function l() {
     s.removeAttribute("data-visible"), n.style.clipPath = "circle(0px at 50% 50%)";
   }
-  return i.addEventListener("mousemove", f), i.addEventListener("mouseenter", d), i.addEventListener("mouseleave", l), () => {
-    i.removeEventListener("mousemove", f), i.removeEventListener("mouseenter", d), i.removeEventListener("mouseleave", l);
+  return i.addEventListener("mousemove", f), i.addEventListener("mouseenter", p), i.addEventListener("mouseleave", l), () => {
+    i.removeEventListener("mousemove", f), i.removeEventListener("mouseenter", p), i.removeEventListener("mouseleave", l);
   };
 }
-t("section-footer", { styles: U, template: I, onRender: M });
+t("section-footer", { styles: U, template: I, onRender: O });
 
 // scripts/about/about-intro.js
 var j = `
@@ -707,7 +706,7 @@ var j = `
     margin-bottom: 1.5rem;
     max-width: 40ch;
   }
-`, O = `
+`, M = `
   <section>
       <h1>About</h1>
         
@@ -733,7 +732,7 @@ var j = `
           </article>
   </section>
 `;
-t("section-about-intro", { styles: j, template: O });
+t("section-about-intro", { styles: j, template: M });
 
 // scripts/about/hobby.js
 var q = `
@@ -776,7 +775,7 @@ var q = `
       width: 100%;
     }
   }
-`, G = `
+`, N = `
 
 
 <section>
@@ -789,10 +788,10 @@ var q = `
   </hgroup>
 </section>
 `;
-t("section-hobby", { styles: q, template: G });
+t("section-hobby", { styles: q, template: N });
 
 // scripts/about/education.js
-var N = `
+var G = `
   :host {
     display: block;
   }
@@ -833,7 +832,7 @@ var N = `
   </section>
 
 `;
-t("section-education", { styles: N, template: Y });
+t("section-education", { styles: G, template: Y });
 
 // scripts/components/app-icon.js
 var K = `
@@ -1027,8 +1026,8 @@ var Q = "3 Nov 2000", Z = 70, ee = `
     margin: 1rem;
   }
 `, te = (e, i) => {
-  let o = new Date(e), n = /* @__PURE__ */ new Date, s = n.getFullYear() - o.getFullYear() - (n.getMonth() < o.getMonth() || n.getMonth() === o.getMonth() && n.getDate() < o.getDate() ? 1 : 0), g = s * 52 + Math.min(51, Math.floor((n - new Date(o.getFullYear() + s, o.getMonth(), o.getDate())) / 604800000));
-  return Array.from({ length: i * 52 }, (f, d) => `<li class="${d < g ? "lived" : ""}"></li>`).join("");
+  let o = new Date(e), n = /* @__PURE__ */ new Date, s = n.getFullYear() - o.getFullYear() - (n.getMonth() < o.getMonth() || n.getMonth() === o.getMonth() && n.getDate() < o.getDate() ? 1 : 0), h = s * 52 + Math.min(51, Math.floor((n - new Date(o.getFullYear() + s, o.getMonth(), o.getDate())) / 604800000));
+  return Array.from({ length: i * 52 }, (f, p) => `<li class="${p < h ? "lived" : ""}"></li>`).join("");
 }, ie = () => `
   <section>
     <h2>Life in Weeks</h2>
