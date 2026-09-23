@@ -10,7 +10,10 @@ const styles = /* css */ `
     position: relative;
     overflow: hidden;
     margin-top: 20rem;
-    margin-bottom: 10rem;
+
+    @media (min-width: ${TABLET}) {
+      margin-bottom: 10rem;  
+    }
   }
 
   section {

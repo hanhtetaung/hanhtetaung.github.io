@@ -23,7 +23,7 @@ const styles = /* css */ `
     position: relative;
 
     @media (min-width: ${DESKTOP}) {
-      justify-content: space-between;
+      justify-content: end;
     }
   }
 
@@ -46,14 +46,11 @@ const styles = /* css */ `
 
   p {
     margin: 0;
+    /* font-size: var(--size-heading); */
   }
 
-  hgroup + p {
-    max-width: min(50ch, 90%);
-
-    @media (min-width: ${DESKTOP}) {
-      font-size: 2.3rem;
-    }
+  hgroup {
+    max-width: min(50ch, 100%);
   }
 
    #img-wrap {
@@ -111,8 +108,9 @@ const template = /* html */ `
     <hgroup>
       <p>Han Htet Aung | GMT+7</p>
       <h1>Craft Web identity</h1>
+      <p>Web Designer & Developer who brings hand-drawn illustrations to create unique experiences.</p>
     </hgroup>
-    <p>Web Designer & Developer who brings hand-drawn illustrations to create unique experiences.</p>
+
     <div id="img-wrap">
       <img id="visible-img" src="./assets/images/home/walking-holding-luggage.avif" alt="Man walking and holding luggage">
       <img id="lens-img" src="./assets/images/home/walking-holding-luggage-color.avif" alt="Man walking and holding luggage with color" aria-hidden="true">
