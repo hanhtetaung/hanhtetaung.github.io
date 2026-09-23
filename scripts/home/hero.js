@@ -1,3 +1,4 @@
+import { asset } from "../../lib/asset.js";
 import { define } from "../../lib/define.js";
 import { DESKTOP, TABLET } from "../breakpoints.js";
 
@@ -40,7 +41,7 @@ const styles = /* css */ `
   h1 {
     margin: 0;
     font-size: var(--size-display);
-    margin-top: 1rem;
+    margin-top: 1.5rem;
     margin-bottom: 2rem;
   }
 
@@ -101,13 +102,20 @@ const styles = /* css */ `
       display: block;
     }
   }
+
+  .hero-title {
+    width: 100%;
+    height: auto;
+  }
 `;
 
 const template = /* html */ `
   <section>
     <hgroup>
       <p>Han Htet Aung | GMT+7</p>
-      <h1>Craft Web identity</h1>
+       <h1>
+         <img class="hero-title" src=${asset("./assets/images/home/hero-title.svg")} alt="Craft Web identity">
+       </h1>
       <p>Web Designer & Developer who brings hand-drawn illustrations to create unique experiences.</p>
     </hgroup>
 
