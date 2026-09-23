@@ -5,11 +5,12 @@ import { DESKTOP, TABLET } from "../breakpoints.js";
 const styles = /* css */ `
   :host {
     display: block;
-    height: min(calc(100vh - 108px - 10rem), 70rem);
+    height: min(calc(100vh - 108px - 10rem), 50rem);
     margin-top: 5rem;
     overflow: hidden;
 
     @media (min-width: ${TABLET}) {
+      height: min(calc(100vh - 108px - 10rem), 60rem);
       margin-top: 7rem;
     }
   }
@@ -29,12 +30,12 @@ const styles = /* css */ `
   }
 
   img {
-    max-height: 25rem;
+    max-height: 20rem;
     width: auto;
     display: block;
 
     @media (min-width: ${TABLET}) {
-      max-height: 35rem;
+      max-height: 30rem;
     }
   }
 
@@ -47,7 +48,6 @@ const styles = /* css */ `
 
   p {
     margin: 0;
-    /* font-size: var(--size-heading); */
   }
 
   hgroup {

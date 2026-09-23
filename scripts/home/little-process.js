@@ -60,13 +60,18 @@ const styles = /* css */ `
 
   img {
     width: 100%;
-    max-width: 30rem;
+    width: 20rem;
     height: auto;
     margin-left: auto;
 
     @media (min-width: ${TABLET}) {
-      max-height: 40rem;
+      height: 28rem;
+      width: auto;
       grid-column: span 2; 
+    }
+
+    @media (min-width: ${DESKTOP}) {
+      height: 35rem;
     }
 
   }
