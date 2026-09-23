@@ -79,11 +79,12 @@ td {
 
 td:first-child {
     text-align: end;
-    font-size: var(--font-small);
+    /* font-size: var(--font-small); */
 }
 
 th {
   padding-block: 2rem;
+  font-weight: var(--font-regular);
 }
 
 td:last-child {
@@ -93,6 +94,7 @@ td:last-child {
 a {
     text-decoration: none;
     color: var(--color-text);
+    font-weight: var(--font-bold);
 }
 `;
 

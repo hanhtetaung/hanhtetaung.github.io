@@ -1,14 +1,16 @@
+import { asset } from "../../lib/asset.js";
 import { define } from "../../lib/define.js";
 import { DESKTOP, TABLET } from "../breakpoints.js";
 
 const styles = /* css */ `
   :host {
     display: block;
-    height: min(calc(100vh - 108px - 10rem), 70rem);
+    height: min(calc(100vh - 108px - 10rem), 50rem);
     margin-top: 5rem;
     overflow: hidden;
 
     @media (min-width: ${TABLET}) {
+      height: min(calc(100vh - 108px - 10rem), 60rem);
       margin-top: 7rem;
     }
   }
@@ -23,24 +25,24 @@ const styles = /* css */ `
     position: relative;
 
     @media (min-width: ${DESKTOP}) {
-      justify-content: space-between;
+      justify-content: end;
     }
   }
 
   img {
-    max-height: 25rem;
+    max-height: 20rem;
     width: auto;
     display: block;
 
     @media (min-width: ${TABLET}) {
-      max-height: 35rem;
+      max-height: 30rem;
     }
   }
 
   h1 {
     margin: 0;
     font-size: var(--size-display);
-    margin-top: 1rem;
+    margin-top: 1.5rem;
     margin-bottom: 2rem;
   }
 
@@ -48,12 +50,8 @@ const styles = /* css */ `
     margin: 0;
   }
 
-  hgroup + p {
-    max-width: min(50ch, 90%);
-
-    @media (min-width: ${DESKTOP}) {
-      font-size: 2.3rem;
-    }
+  hgroup {
+    max-width: min(50ch, 100%);
   }
 
    #img-wrap {
@@ -104,15 +102,23 @@ const styles = /* css */ `
       display: block;
     }
   }
+
+  .hero-title {
+    width: 100%;
+    height: auto;
+  }
 `;
 
 const template = /* html */ `
   <section>
     <hgroup>
       <p>Han Htet Aung | GMT+7</p>
-      <h1>Craft Web identity</h1>
+       <h1>
+         <img class="hero-title" src=${asset("./assets/images/home/hero-title.svg")} alt="Craft Web identity">
+       </h1>
+      <p>Web Designer & Developer who brings hand-drawn illustrations to create unique experiences.</p>
     </hgroup>
-    <p>Web Designer & Developer who brings hand-drawn illustrations to create unique experiences.</p>
+
     <div id="img-wrap">
       <img id="visible-img" src="./assets/images/home/walking-holding-luggage.avif" alt="Man walking and holding luggage">
       <img id="lens-img" src="./assets/images/home/walking-holding-luggage-color.avif" alt="Man walking and holding luggage with color" aria-hidden="true">

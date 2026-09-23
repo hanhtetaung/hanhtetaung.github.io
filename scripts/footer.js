@@ -16,7 +16,7 @@ const styles = /* css */ `
   }
 
   footer {
-    width: 80%;
+    width: min(80%, 144rem);
     margin-inline: auto;
     padding-block: 10rem;
   }

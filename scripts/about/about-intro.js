@@ -1,5 +1,6 @@
+import { asset } from "../../lib/asset.js";
 import { define } from "../../lib/define.js";
-import { TABLET } from "../breakpoints.js";
+import { DESKTOP, TABLET } from "../breakpoints.js";
 
 const styles = /*css*/ `
   :host {
@@ -8,53 +9,74 @@ const styles = /*css*/ `
   }
 
   section {
-    width: 80%;
+    width: min(80%, 144rem);
     margin-inline: auto;
-     display: grid;
-    grid-template-columns: 1fr 1fr;
-
-    @media (max-width: ${TABLET}) {
-      display: block; 
-        text-align: center;
-    }
   }
 
    h1 {
     margin: 0;
+    margin-bottom: 2rem;
     font-size: var(--size-display);
     font-family: var(--font-heading);
+
+    @media (min-width: ${TABLET}) {
+      margin-bottom: 4rem;
+    }
   }
 
-  div {
-    display: flex;
-    align-items: center;
-    gap: 3rem;
-
-     @media (max-width: ${TABLET}) {
-      display: block; 
+  article {
+    @media (min-width: ${TABLET}) {
+      display: flex;
+      align-items: center;
+      gap: 4rem;
     }
   }
 
   img {
     height: 10rem;
+    width: auto;
+  }
+
+  figure {
+    padding: 0;
+    margin: 0;
+    width: fit-content;
+    text-align: center;
+    font-size: var(--size-small);
+    margin-bottom: 2rem;
+  }
+
+  p {
+    margin: 0;
+    margin-bottom: 1.5rem;
+    max-width: 40ch;
   }
 `;
 
 const template = /* html */ `
   <section>
       <h1>About</h1>
-      <div>
-        <img src="./assets/images/about-profile.avif"
-          alt="profile">
-
+        
         <article>
-          <p>
-             I'm Han Htet Aung. I believe everything is unique in its own way.
-          </p>
+          <figure>
+            <img src=${asset("./assets/images/about/profile.png")}
+            alt="profile">
+            <figcaption>Han Htet Aung</figcaption>
+          </figure>
 
-          <p>I see patterns in chaos.</p>
-        </article>
-      </div>
+          <div>
+            <p>
+              Hello world. You can call me "Han". I grew up in Dawei, a lovely coastal town. 
+              
+              
+              
+            </p>
+            <p>
+              I believe everything is unique in its own way.
+            </p>
+              <!-- <p>I see patterns in chaos.</p> -->
+          </div>
+          </article>
   </section>
 `;
 

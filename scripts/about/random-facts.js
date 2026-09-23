@@ -37,7 +37,7 @@ const styles = /*css*/ `
   }
 
   section {
-    width: 80%;
+    width: min(80%, 144rem);
     margin-inline: auto;
   }
 

@@ -20,38 +20,36 @@
 
     
   <style>/* main.css */
-:root{--color-bg-primary:#fff5e8;--color-primary:#7e4c37;--color-text:#000;--color-transparent:#0000;--font-family:"Archivo",sans-serif;--font-regular:400;--font-bold:700;--ratio:1.4;--size-body:1.6rem;--size-small:calc(var(--size-body)/var(--ratio));--size-heading:calc(var(--size-body)*var(--ratio));--size-title:calc(var(--size-heading)*var(--ratio));--size-display:calc(var(--size-title)*var(--ratio));font-size:10px;@media (width>=640px){&{--size-body:2rem}}}body{background:var(--color-bg-primary);font-family:var(--font-family);font-size:var(--size-body);position:relative;margin:0}body:before{content:"";position:absolute;pointer-events:none;z-index:-1;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='filter'%3E%3CfeTurbulence baseFrequency='0.40'/%3E%3CfeColorMatrix values='0 0 0 9 -4 0 0 0 9 -4 0 0 0 9 -4 0 0 0 9 -4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23filter)'/%3E%3C/svg%3E");inset:0}
+:root{--color-bg-primary:#fff5e8;--color-primary:#7e4c37;--color-text:#000;--color-transparent:#0000;--font-family:"Archivo",sans-serif;--font-regular:400;--font-bold:700;--ratio:1.4;--size-body:1.6rem;--size-small:calc(var(--size-body)/var(--ratio));--size-heading:calc(var(--size-body)*var(--ratio));--size-title:calc(var(--size-heading)*var(--ratio));--size-display:calc(var(--size-title)*var(--ratio));font-size:10px;@media (width>=640px){&{--size-body:2rem}}}body{background:var(--color-bg-primary);font-family:var(--font-family);font-size:var(--size-body);margin:0}
 </style></head>
   <body>
     <section-header></section-header>
 
     <main>
       <section-hero></section-hero>
-      <section-little-process></section-little-process>
-      <section-education></section-education>
-      <section-hobby></section-hobby>
       <section-recent-crafts></section-recent-crafts>
+      <section-little-process></section-little-process>
       <section-cta id="cta"></section-cta>
     </main>
 
     <section-footer></section-footer>
   <script type="module">// lib/asset.js
 function $() {
-  let o = document.documentElement.dataset.base || "./";
-  return new URL(o, location.href);
+  let a = document.documentElement.dataset.base || "./";
+  return new URL(a, location.href);
 }
-function i(o) {
-  return new URL(o, $()).href;
+function i(a) {
+  return new URL(a, $()).href;
 }
-function b(o) {
-  let e = o.replace(/^\//, ""), s = location.protocol === "file:", m = $();
+function b(a) {
+  let e = a.replace(/^\//, ""), s = location.protocol === "file:", m = $();
   if (e === "")
     return s ? new URL("index.html", m).href : m.href;
   return s ? new URL(`${e}.html`, m).href : new URL(e, m).href;
 }
 
 // scripts/fonts.js
-var A = `
+var _ = `
 @font-face {
     font-family: "Archivo";
     src: url("${i("./assets/fonts/Archivo-Black.woff2")}") format("woff2");
@@ -66,12 +64,12 @@ var A = `
     font-display: swap;
   }
 `, z = document.createElement("style");
-z.textContent = A;
+z.textContent = _;
 document.head.appendChild(z);
 
 // lib/define.js
-function C(o, e) {
-  if (o === void 0) {
+function A(a, e) {
+  if (a === void 0) {
     if (e === Array)
       return [];
     if (e === Object)
@@ -83,16 +81,16 @@ function C(o, e) {
     return;
   }
   if (e === Boolean)
-    return Boolean(o);
+    return Boolean(a);
   if (e === Number)
-    return Number(o);
-  return o;
+    return Number(a);
+  return a;
 }
-function a(o, { props: e = {}, attrs: s = [], styles: m = "", template: r, onRender: h = null }) {
-  let f = ["props", ...s];
+function r(a, { props: e = {}, attrs: s = [], styles: m = "", template: o, onRender: h = null }) {
+  let g = ["props", ...s];
 
-  class g extends HTMLElement {
-    static observedAttributes = f;
+  class f extends HTMLElement {
+    static observedAttributes = g;
     constructor() {
       super();
       this.attachShadow({ mode: "open" }), this._cleanup = null;
@@ -117,10 +115,10 @@ function a(o, { props: e = {}, attrs: s = [], styles: m = "", template: r, onRen
         } catch {
           n = {};
         }
-      let p = {};
-      for (let d of Object.keys(e))
-        p[d] = C(n[d], e[d]);
-      return p;
+      let c = {};
+      for (let p of Object.keys(e))
+        c[p] = A(n[p], e[p]);
+      return c;
     }
     _applyForwardedAttrs() {
       if (s.length === 0)
@@ -137,19 +135,19 @@ function a(o, { props: e = {}, attrs: s = [], styles: m = "", template: r, onRen
     _render() {
       if (typeof this._cleanup === "function")
         this._cleanup(), this._cleanup = null;
-      let n = this._getProps(), l = typeof r === "function" ? r(n) : r;
+      let n = this._getProps(), l = typeof o === "function" ? o(n) : o;
       if (this.shadowRoot.innerHTML = `<style>${m}</style>${l}`, this._applyForwardedAttrs(), h) {
-        let p = h(this.shadowRoot, n, this);
-        if (typeof p === "function")
-          this._cleanup = p;
+        let c = h(this.shadowRoot, n, this);
+        if (typeof c === "function")
+          this._cleanup = c;
       }
     }
   }
-  customElements.define(o, g);
+  customElements.define(a, f);
 }
 
 // scripts/components/app-link.js
-var S = `
+var C = `
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -210,10 +208,10 @@ var S = `
        content: "➶";
      }
   }
-`, _ = ["href", "target", "rel", "download"], B = `
+`, S = ["href", "target", "rel", "download"], B = `
   <a data-forward><slot></slot></a>
 `;
-a("app-link", { attrs: _, styles: S, template: B });
+r("app-link", { attrs: S, styles: C, template: B });
 
 // scripts/components/app-logo.js
 var E = `
@@ -225,14 +223,14 @@ var E = `
     max-height: 7rem;
     width: auto;
   }
-`, D = ["width", "height", "src", "alt"], T = () => "<img data-forward />";
-a("app-logo", { attrs: D, styles: E, template: T });
+`, D = ["width", "height", "src", "alt"], P = () => "<img data-forward />";
+r("app-logo", { attrs: D, styles: E, template: P });
 
 // scripts/breakpoints.js
-var t = "640px", c = "1024px", y = "1920px";
+var t = "640px", d = "1024px", x = "1920px";
 
 // scripts/header.js
-var L = `
+var O = `
   :host {
     display: block;
     /* background: var(--color-bg-primary); */
@@ -240,7 +238,7 @@ var L = `
   }
 
   header {
-    width: 80%;
+    width: min(80%, 144rem);
     margin-inline: auto;
     display: flex;
     justify-content: space-between;
@@ -279,7 +277,7 @@ var L = `
     height: 5rem;
     width: auto;
   }
-`, P = `
+`, F = `
   <header>
       <app-link variant="plain" href=${b("/")}>
         <img src=${i("./assets/images/logo.avif")}
@@ -305,10 +303,10 @@ var L = `
       </div>
   </header>
 `;
-a("section-header", { template: P, styles: L });
+r("section-header", { template: F, styles: O });
 
 // scripts/components/footer-nav.js
-var O = [
+var L = [
   { href: "/", name: "Home" },
   { href: "/about", name: "About" },
   { href: "/credits", name: "Credits" },
@@ -327,7 +325,7 @@ var O = [
     href: "/writings/foundation-building-interfaces-at-scale",
     name: "Foundation"
   }
-], U = `
+], T = `
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -374,20 +372,20 @@ var O = [
     margin-right: 5rem;
     margin-bottom: 0.3rem;
   }
-`, F = () => `
+`, U = () => `
     <nav>
         <span>Sitemap</span>
 
         <ol>
-            ${O.map((o) => `
+            ${L.map((a) => `
                 <li>
-                    <app-link variant="sitemap" href=${b(o.href)} >${o.name}</app-link>
+                    <app-link variant="sitemap" href=${b(a.href)} >${a.name}</app-link>
                 </li>
             `).join("")}
         </ol>
     </nav>
 `;
-a("footer-nav", { styles: U, template: F });
+r("footer-nav", { styles: T, template: U });
 
 // scripts/components/footer-copyright.js
 var G = `
@@ -473,7 +471,7 @@ var G = `
     text-decoration: none;
     color: var(--color-text);
   }
-`, H = () => `
+`, N = () => `
       <p>
           <img src=${i("./assets/images/logo.avif")}
           alt="Logo">
@@ -536,10 +534,10 @@ var G = `
           </ul>
         </nav>
 `;
-a("footer-copyright", { styles: G, template: H });
+r("footer-copyright", { styles: G, template: N });
 
 // scripts/footer.js
-var N = `
+var H = `
   :host {
     display: block;
   }
@@ -550,7 +548,7 @@ var N = `
   }
 
   footer {
-    width: 80%;
+    width: min(80%, 144rem);
     margin-inline: auto;
     padding-block: 10rem;
   }
@@ -612,7 +610,7 @@ var N = `
       display: none;
     }
   }
-`, j = `
+`, q = `
   <footer>
 
     <div id="highlight-wrap">
@@ -629,35 +627,36 @@ var N = `
     <footer-copyright></footer-copyright>
   </footer>
 `;
-function q(o) {
-  let e = o.querySelector("footer"), s = o.getElementById("highlight-base"), m = o.getElementById("highlight-lens"), r = o.getElementById("lens-ring"), h = o.getElementById("highlight-wrap");
-  if (!e || !s || !m || !r || !h)
+function j(a) {
+  let e = a.querySelector("footer"), s = a.getElementById("highlight-base"), m = a.getElementById("highlight-lens"), o = a.getElementById("lens-ring"), h = a.getElementById("highlight-wrap");
+  if (!e || !s || !m || !o || !h)
     return;
-  function f(l) {
-    let p = s.getBoundingClientRect(), d = l.clientX - p.left, u = l.clientY - p.top, v = r.offsetWidth / 2;
-    r.style.left = `${d - v}px`, r.style.top = `${u - v}px`, m.style.clipPath = `circle(${v}px at ${d}px ${u}px)`;
+  function g(l) {
+    let c = s.getBoundingClientRect(), p = l.clientX - c.left, u = l.clientY - c.top, v = o.offsetWidth / 2;
+    o.style.left = `${p - v}px`, o.style.top = `${u - v}px`, m.style.clipPath = `circle(${v}px at ${p}px ${u}px)`;
   }
-  function g() {
-    r.setAttribute("data-visible", "true");
+  function f() {
+    o.setAttribute("data-visible", "true");
   }
   function n() {
-    r.removeAttribute("data-visible"), m.style.clipPath = "circle(0px at 50% 50%)";
+    o.removeAttribute("data-visible"), m.style.clipPath = "circle(0px at 50% 50%)";
   }
-  return e.addEventListener("mousemove", f), e.addEventListener("mouseenter", g), e.addEventListener("mouseleave", n), () => {
-    e.removeEventListener("mousemove", f), e.removeEventListener("mouseenter", g), e.removeEventListener("mouseleave", n);
+  return e.addEventListener("mousemove", g), e.addEventListener("mouseenter", f), e.addEventListener("mouseleave", n), () => {
+    e.removeEventListener("mousemove", g), e.removeEventListener("mouseenter", f), e.removeEventListener("mouseleave", n);
   };
 }
-a("section-footer", { styles: N, template: j, onRender: q });
+r("section-footer", { styles: H, template: q, onRender: j });
 
 // scripts/home/hero.js
 var K = `
   :host {
     display: block;
-    height: min(calc(100vh - 108px - 10rem), 70rem);
+    height: min(calc(100vh - 108px - 10rem), 50rem);
     margin-top: 5rem;
     overflow: hidden;
 
     @media (min-width: ${t}) {
+      height: min(calc(100vh - 108px - 10rem), 60rem);
       margin-top: 7rem;
     }
   }
@@ -671,25 +670,25 @@ var K = `
     justify-content: start;
     position: relative;
 
-    @media (min-width: ${c}) {
-      justify-content: space-between;
+    @media (min-width: ${d}) {
+      justify-content: end;
     }
   }
 
   img {
-    max-height: 25rem;
+    max-height: 20rem;
     width: auto;
     display: block;
 
     @media (min-width: ${t}) {
-      max-height: 35rem;
+      max-height: 30rem;
     }
   }
 
   h1 {
     margin: 0;
     font-size: var(--size-display);
-    margin-top: 1rem;
+    margin-top: 1.5rem;
     margin-bottom: 2rem;
   }
 
@@ -697,12 +696,8 @@ var K = `
     margin: 0;
   }
 
-  hgroup + p {
-    max-width: min(50ch, 90%);
-
-    @media (min-width: ${c}) {
-      font-size: 2.3rem;
-    }
+  hgroup {
+    max-width: min(50ch, 100%);
   }
 
    #img-wrap {
@@ -753,13 +748,21 @@ var K = `
       display: block;
     }
   }
+
+  .hero-title {
+    width: 100%;
+    height: auto;
+  }
 `, M = `
   <section>
     <hgroup>
       <p>Han Htet Aung | GMT+7</p>
-      <h1>Craft Web identity</h1>
+       <h1>
+         <img class="hero-title" src=${i("./assets/images/home/hero-title.svg")} alt="Craft Web identity">
+       </h1>
+      <p>Web Designer & Developer who brings hand-drawn illustrations to create unique experiences.</p>
     </hgroup>
-    <p>Web Designer & Developer who brings hand-drawn illustrations to create unique experiences.</p>
+
     <div id="img-wrap">
       <img id="visible-img" src="./assets/images/home/walking-holding-luggage.avif" alt="Man walking and holding luggage">
       <img id="lens-img" src="./assets/images/home/walking-holding-luggage-color.avif" alt="Man walking and holding luggage with color" aria-hidden="true">
@@ -767,326 +770,43 @@ var K = `
     </div>
   </section>
 `, V = `(min-width: ${t})`;
-function W(o) {
-  let e = o.getElementById("img-wrap"), s = o.getElementById("visible-img"), m = o.getElementById("lens-img"), r = o.getElementById("lens-ring");
-  if (!e || !s || !m || !r)
+function W(a) {
+  let e = a.getElementById("img-wrap"), s = a.getElementById("visible-img"), m = a.getElementById("lens-img"), o = a.getElementById("lens-ring");
+  if (!e || !s || !m || !o)
     return;
   let h = window.matchMedia(V);
-  function f(u) {
-    let v = s.getBoundingClientRect(), x = u.clientX - v.left, k = u.clientY - v.top, w = r.offsetWidth / 2;
-    r.style.left = `${x - w}px`, r.style.top = `${k - w}px`, m.style.clipPath = `circle(${w}px at ${x}px ${k}px)`;
+  function g(u) {
+    let v = s.getBoundingClientRect(), w = u.clientX - v.left, k = u.clientY - v.top, y = o.offsetWidth / 2;
+    o.style.left = `${w - y}px`, o.style.top = `${k - y}px`, m.style.clipPath = `circle(${y}px at ${w}px ${k}px)`;
   }
-  function g() {
-    r.setAttribute("data-visible", "true");
+  function f() {
+    o.setAttribute("data-visible", "true");
   }
   function n() {
-    r.removeAttribute("data-visible"), m.style.clipPath = "circle(0px at 50% 50%)";
+    o.removeAttribute("data-visible"), m.style.clipPath = "circle(0px at 50% 50%)";
   }
   function l() {
-    e.addEventListener("mousemove", f), e.addEventListener("mouseenter", g), e.addEventListener("mouseleave", n);
+    e.addEventListener("mousemove", g), e.addEventListener("mouseenter", f), e.addEventListener("mouseleave", n);
   }
-  function p() {
-    e.removeEventListener("mousemove", f), e.removeEventListener("mouseenter", g), e.removeEventListener("mouseleave", n), n();
+  function c() {
+    e.removeEventListener("mousemove", g), e.removeEventListener("mouseenter", f), e.removeEventListener("mouseleave", n), n();
   }
-  function d(u) {
+  function p(u) {
     if (u.matches)
       l();
     else
-      p();
+      c();
   }
   if (h.matches)
     l();
-  return h.addEventListener("change", d), () => {
-    p(), h.removeEventListener("change", d);
+  return h.addEventListener("change", p), () => {
+    c(), h.removeEventListener("change", p);
   };
 }
-a("section-hero", { styles: K, template: M, onRender: W });
-
-// scripts/home/little-process.js
-var X = `
-  :host {
-    position: relative;
-    display: block;
-    overflow: hidden;
-    margin-block: 15rem;
-
-    @media (min-width: ${c}) {
-      margin-top: 20rem;
-      margin-bottom: 25rem;
-    }
-  }
-
-  section {
-    width: min(80%, 144rem);
-    margin-inline: auto;
-    text-align: center;
-  }
-
-  hgroup {
-    margin-bottom: 2rem;
-    text-align: start;
-  }
-
-  h2 {
-    margin: 0;
-    margin-top: 1rem;
-    font-size: var(--size-title);
-  }
-
-  ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    align-items: flex-start;
-    
-    @media (min-width: ${c}) {
-      display: flex;
-      gap: 5rem;
-      border-bottom: 1px solid var(--color-text);
-    }
-  }
-
-  li {
-    padding-bottom: 3rem;
-    padding-top: 2rem;
-    border-bottom: 1px solid var(--color-text);
-    text-align: start;
-    
-    @media (min-width: ${t}) {
-      max-width: 70%;
-      width: 100%;
-    }
-
-
-    @media (min-width: ${c}) {
-      border: none;
-    }
-    
-  }
-
-  h3 {
-    margin: 0;
-    font-size: var(--size-body);
-    margin-bottom: 1rem;
-  }
-
-  p {
-    margin: 0;
-  }
-
-  img {
-    width: 100%;
-    max-width: 30rem;
-    height: auto;
-    position: absolute;
-    right: 1rem;
-    top: 1rem;
-    opacity: 0.1;
-    z-index: -2;
-  
-
-    @media (min-width: ${t}) {
-      margin-bottom: 3rem;
-      margin-top: 2rem;
-
-      opacity: 1;
-      position: static;
-      max-height: 30rem;
-      width: auto;
-    }
-
-    @media (min-width: ${c}) {
-      max-height: 40rem;
-    }
-
-  }
-  span {
-    font-size: var(--size-body);
-  }
-
-  a {
-    /* text-decoration: none; */
-    color: var(--color-primary);
-  }
-
-  ol {
-    list-style-type: disc;
-    padding: 0;
-    padding-left: 1.5rem;
-  }
-
-  ol li {
-    border: none;
-    padding: 0;
-    padding-bottom: 0.5rem;
-  }
-`, I = `
-
-<section>
-  <hgroup>
-    <p>[ Process ]</p>
-    <!-- <h2><span>By</span> One Person</h2> -->
-     <h2>All in One Person</h2>
-  </hgroup>
-
-  <img src=${i("./assets/images/home/process.avif")} alt="Little Process">
-
-  <ul>
-    <li>
-      <h3>Step 1</h3>
-      <p>Ask a little question</p>
-    </li>
-
-    <li>
-      <h3>Step 2</h3>
-      <ol>
-        <li>Design</li>
-        <li>illustrate</li>
-        <li>Develop</li>
-        <li>Deliver</li>
-      </ol>
-      <!-- <p>Design, illustrate, Develop, Deliver</p> -->
-    </li>
-
-    <li>
-      <h3>Step 3</h3>
-      <p>Your Brand New Website</p>
-    </li>
-  </ul>
-</section>
-
-`;
-a("section-little-process", { styles: X, template: I });
-
-// scripts/home/education.js
-var J = `
-  :host {
-    position: relative;
-    display: block;
-    height: 70rem;
-    margin-bottom: 10rem;
-    overflow-x: hidden;
-    overflow-y: visible;
-
-    @media (min-width: ${y}) {
-      height: auto;
-    }
-  }
-
-  section {
-    width: min(80%, 144rem);
-    margin-inline: auto;
-    margin-top: 5rem;
-
-    @media (min-width: ${y}) {
-      position: relative;
-      overflow: hidden;
-      height: 70rem;
-    }
-  }
-
-   h2 {
-     margin: 0;
-     margin-top: 1rem;
-    font-size: var(--size-title);
-    margin-bottom: 1rem;
-  }
-
-  p {
-    margin: 0;
-    max-width: 50ch;
-  }
-
-
-  img {
-    width: auto;
-    height: 65rem;
-    bottom: 5px;
-    opacity: 0.1;
-    
-    position: absolute;
-    left: 0;
-    bottom: 5rem;
-    z-index: -1;
-    
-    @media (min-width: ${t}) {
-      left: 40%;
-    }
-
-    @media (min-width: ${c}) {
-      opacity: 1;
-      right: 10%;
-      left: auto;
-    }
-    
-  }
-`, Y = `
-  <section>
-    <hgroup>
-      <p>[ Education ]</p>
-      <h2>Computer Science Graduate</h2>
-    </hgroup>
-    <!-- <p>Completed a bachelor's degree in Computer Science from Assumption University, Thailand, in 2025</p> -->
-    <p>Bachelor's Degree in Computer Science, Assumption University, Thailand — 2025</p>
-    <img src="./assets/images/home/assumption-university.avif" alt="Assumption University">
-  </section>
-
-`;
-a("section-education", { styles: J, template: Y });
-
-// scripts/home/hobby.js
-var Z = `
-  :host {
-    display: block;
-    overflow: hidden;
-  }
-
-  section {
-    width: min(80%, 144rem);
-    margin-inline: auto;
-    margin-top: 5rem;
-  }
-
-  p {
-    margin: 0;
-  }
-
-  div {
-    overflow: scroll;
-  }
-
-  h2 {
-    margin: 0;
-    margin-top: 1rem;
-    font-size: var(--size-title);
-    margin-bottom: 1rem;
-  }
-
-
-  img {
-    height: 50rem;
-    width: auto;
-
-    @media (min-width: ${t}) {
-      width: 100%;
-      height: auto;
-    }
-  }
-`, Q = `
-  <div>
-    <img src=${i("./assets/images/home/sketching.avif")} alt="Sketching SEA">
-  </div>
-
-  <section>
-    <p>[ Hobby ]</p>
-    <h2>Self-taught in illustration</h2>
-    <p>All hand-drawn. Bring the same approach to make each website feel memorable.</p>
-  </section>
-`;
-a("section-hobby", { styles: Z, template: Q });
+r("section-hero", { styles: K, template: M, onRender: W });
 
 // scripts/home/recent-crafts.js
-var R = `
+var X = `
   :host {
     position: relative;
     display: block;
@@ -1125,7 +845,7 @@ var R = `
     }
 
 
-    @media (min-width: ${c}) {
+    @media (min-width: ${d}) {
       grid-template-columns: repeat(3, 1fr);
     }
   }
@@ -1150,7 +870,7 @@ var R = `
     height: 20rem;
   }
 
-`, ee = `
+`, I = `
 <section>
   <hgroup>
     <p>[ Recent Crafts ]</p>
@@ -1186,17 +906,158 @@ var R = `
   </ul>
 </section>
 `;
-a("section-recent-crafts", { styles: R, template: ee });
+r("section-recent-crafts", { styles: X, template: I });
+
+// scripts/home/little-process.js
+var J = `
+  :host {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    margin-block: 15rem;
+
+    @media (min-width: ${d}) {
+      margin-top: 20rem;
+      margin-bottom: 25rem;
+    }
+  }
+
+  section {
+    width: min(80%, 144rem);
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  hgroup {
+    margin-bottom: 5rem;
+    text-align: start;
+  }
+
+  h2 {
+    margin: 0;
+    margin-top: 1rem;
+    font-size: var(--size-title);
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    align-items: flex-start;
+    grid-column: span 3;
+  }
+
+  li {
+    padding-bottom: 3rem;
+    padding-top: 2rem;
+    border-bottom: 1px solid var(--color-text);
+    text-align: start;
+    /* min-width: 60rem;     */
+  }
+
+  h3 {
+    margin: 0;
+    font-size: var(--size-body);
+    margin-bottom: 1rem;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  img {
+    width: 100%;
+    width: 20rem;
+    height: auto;
+    margin-left: auto;
+
+    @media (min-width: ${t}) {
+      height: 28rem;
+      width: auto;
+      grid-column: span 2; 
+    }
+
+    @media (min-width: ${d}) {
+      height: 35rem;
+    }
+
+  }
+
+  a {
+    color: var(--color-primary);
+  }
+
+  ol {
+    list-style-type: disc;
+    padding: 0;
+    padding-left: 1.5rem;
+  }
+
+  ol li {
+    border: none;
+    padding: 0;
+    padding-bottom: 0.5rem;
+  }
+
+  article {
+    @media (min-width: ${t}) {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+      gap: 12rem;
+    }
+  }
+`, Y = `
+
+<section>
+  <hgroup>
+    <p>[ Process ]</p>
+     <h2>All in One Person</h2>
+  </hgroup>
+
+  <article>
+    <img src=${i("./assets/images/home/process.avif")} alt="Little Process">
+  
+    <ul>
+      <li>
+        <h3>Step 1</h3>
+        <p>Ask a little question</p>
+      </li>
+  
+      <li>
+        <h3>Step 2</h3>
+        <ol>
+          <li>Design</li>
+          <li>illustrate</li>
+          <li>Develop</li>
+          <li>Deliver</li>
+        </ol>
+      </li>
+  
+      <li>
+        <h3>Step 3</h3>
+        <p>Your Brand New Website</p>
+      </li>
+    </ul>
+
+  </article>
+  
+</section>
+
+`;
+r("section-little-process", { styles: J, template: Y });
 
 // scripts/home/cta.js
-var te = `
+var Z = `
   :host {
     display: block;
     height: 70rem;
     position: relative;
     overflow: hidden;
     margin-top: 20rem;
-    margin-bottom: 10rem;
+
+    @media (min-width: ${t}) {
+      margin-bottom: 10rem;  
+    }
   }
 
   section {
@@ -1211,7 +1072,7 @@ var te = `
       height: 90%;
     }
 
-    @media (min-width: ${y}) {
+    @media (min-width: ${x}) {
       position: relative;
       overflow: hidden;
     }
@@ -1261,7 +1122,7 @@ var te = `
       top: 20rem;
     }
 
-    @media (min-width: ${c}) {
+    @media (min-width: ${d}) {
       opacity: 1;
     }
   }
@@ -1287,7 +1148,7 @@ var te = `
     text-decoration: none;
     color: var(--color-text);
   }
-`, ie = `
+`, Q = `
 <section>
   <img src="./assets/images/home/red-telephone-box.avif" alt="Red Telephone Box">
 
@@ -1313,8 +1174,8 @@ var te = `
   </ul>
 </section>
 `;
-function oe(o) {
-  let e = o.getElementById("copyBtn");
+function R(a) {
+  let e = a.getElementById("copyBtn");
   if (!e)
     return;
   e.addEventListener("click", () => {
@@ -1326,6 +1187,6 @@ function oe(o) {
     });
   });
 }
-a("section-cta", { styles: te, template: ie, onRender: oe });
+r("section-cta", { styles: Z, template: Q, onRender: R });
 </script></body>
 </html>

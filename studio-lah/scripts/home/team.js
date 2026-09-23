@@ -26,17 +26,14 @@ const styles = /* css */ `
 
   ul {
     list-style-type: none;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
     padding: 0;
-    gap: 5rem;
-    padding-bottom: 5rem;
     overflow: scroll;
-
-     @media (min-width: ${TABLET}) {
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        gap: 8rem;
-    }
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5rem;
+    max-width: 80%;
+    margin-inline: auto;
   }
 
   ul li {
@@ -45,6 +42,9 @@ const styles = /* css */ `
 
   p {
     margin: 0;
+    font-size: var(--font-body);
+    font-weight: var(--font-bold);
+    margin-bottom: 0.5rem;
   }
 
   img {
@@ -58,12 +58,12 @@ const styles = /* css */ `
 
   figcaption {
     margin-top: 1rem;
+    font-size: var(--font-small);
   }
 
   figure {
     margin: 0;
     text-align: center;
-
   }
 `;
 
@@ -76,7 +76,10 @@ const template = /* html */ `
           <figure>
             <img src=${asset("./assets/chan-hein.png")} alt="Chan Hein">
             <figcaption>
-              Chan Hein
+              <p>
+                Chan Hein
+              </p>
+              Manager
             </figcaption>
           </figure>
         </li>
@@ -84,7 +87,10 @@ const template = /* html */ `
           <figure>
             <img src=${asset("./assets/nay-thurein.png")} alt="Nay Thurein">
             <figcaption>
-              Nay Thurein
+              <p>
+                Nay Thurein
+              </p>
+              Photographer
             </figcaption>
           </figure>
         </li>
@@ -92,7 +98,10 @@ const template = /* html */ `
           <figure>
             <img src=${asset("./assets/aung-thura.png")} alt="Aung Thura">
             <figcaption>
-              Aung Thura
+              <p>
+                 Aung Thura
+                </p>
+                Videographer
             </figcaption>
           </figure>
         </li>
@@ -100,7 +109,10 @@ const template = /* html */ `
           <figure>
             <img src=${asset("./assets/tin-nyo.png")} alt="Tin Nyo">
             <figcaption>
-              Tin Nyo
+              <p>
+                 Tin Nyo
+                 </p>
+                 Assistant Videographer
             </figcaption>
           </figure>
         </li>
@@ -108,7 +120,10 @@ const template = /* html */ `
           <figure>
             <img src=${asset("./assets/thein-min-htike.png")} alt="Thein Min Htike">
             <figcaption>
-              Thein Min Htike
+              <p>
+                 Thein Min Htike
+                </p>
+                Photographer/Videographer
             </figcaption>
           </figure>
         </li>
@@ -116,7 +131,10 @@ const template = /* html */ `
           <figure>
             <img src=${asset("./assets/than-sein.png")} alt="Than Sein">
             <figcaption>
-              Than Sein
+              <p>
+                 Than Sein
+                </p>
+                Planner
             </figcaption>
           </figure>
         </li>

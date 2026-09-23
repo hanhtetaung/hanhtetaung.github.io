@@ -5,7 +5,7 @@ import { DESKTOP, TABLET } from "../breakpoints.js";
 const styles = /* css */ `
   :host {
     display: block;
-    margin-block: 20rem;
+    margin-bottom: 20rem;
     margin-inline: 0.2rem;
   }
 
@@ -64,7 +64,7 @@ const styles = /* css */ `
       grid-template-areas:
         "a b b c"
         "a text text c"
-        "a d e .";
+        "a d e empty";
     }
   }
 
@@ -109,6 +109,11 @@ const styles = /* css */ `
     }
   }
 
+  .empty-block {
+    grid-area: empty;
+    border: 1px dashed var(--color-text);
+  }
+
 
   p {
     margin: 0;
@@ -123,6 +128,8 @@ const styles = /* css */ `
   img {
     width: 100%;
     height: 100%;
+    object-position: 50% 50%;
+    object-fit: cover;
   }
 `;
 
@@ -155,6 +162,9 @@ const template = /* html */ `
 
         <li class="img-e">
           <img src=${asset("./assets/record-5.jpg")} alt="Drawing">
+        </li>
+
+         <li class="empty-block">
         </li>
     </ul>
 

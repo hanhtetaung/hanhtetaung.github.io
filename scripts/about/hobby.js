@@ -1,7 +1,7 @@
 import { define } from "../../lib/define.js";
 import { asset } from "../../lib/asset.js";
 
-import { TABLET } from "../breakpoints.js";
+import { TABLET, LARGE } from "../breakpoints.js";
 
 const styles = /* css */ `
   :host {
@@ -12,7 +12,6 @@ const styles = /* css */ `
   section {
     width: min(80%, 144rem);
     margin-inline: auto;
-    margin-top: 5rem;
   }
 
   p {
@@ -21,6 +20,10 @@ const styles = /* css */ `
 
   div {
     overflow: scroll;
+  }
+
+  hgroup {
+    margin-top: 2rem; 
   }
 
   h2 {
@@ -36,22 +39,24 @@ const styles = /* css */ `
     width: auto;
 
     @media (min-width: ${TABLET}) {
-      width: 100%;
       height: auto;
+      width: 100%;
     }
   }
 `;
 
 const template = /* html */ `
+
+
+<section>
   <div>
     <img src=${asset("./assets/images/home/sketching.avif")} alt="Sketching SEA">
   </div>
-
-  <section>
-    <p>[ Hobby ]</p>
+  <hgroup>
     <h2>Self-taught in illustration</h2>
     <p>All hand-drawn. Bring the same approach to make each website feel memorable.</p>
-  </section>
+  </hgroup>
+</section>
 `;
 
 define("section-hobby", { styles, template });

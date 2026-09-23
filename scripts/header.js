@@ -12,7 +12,7 @@ const styles = /* css */ `
   }
 
   header {
-    width: 80%;
+    width: min(80%, 144rem);
     margin-inline: auto;
     display: flex;
     justify-content: space-between;
