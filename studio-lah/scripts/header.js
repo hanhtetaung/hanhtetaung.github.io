@@ -5,22 +5,18 @@ import { TABLET } from "./breakpoints.js";
 const styles = /* css */ `
   :host {
     display: block;
-    /* background: var(--color-bg-primary); */
     font-size: var(--font-small);
+
   }
 
   header {
-    width: 90%;
+    width: min(90%, 144rem);
     margin-inline: auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding-block: 2rem;
     gap: 5rem;
-
-    @media (min-width: ${TABLET}) {
-      width: 80%;
-    }
   }
 
   div {
