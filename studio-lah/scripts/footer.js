@@ -5,18 +5,16 @@ import { TABLET } from "./breakpoints.js";
 const styles = /* css */ `
   :host {
     display: block;
-    /* background: var(--color-primary); */
     color: #030f03;
   }
 
   footer {
-    width: 90%;
+    width: min(90%, 144rem);
     margin-inline: auto;
   }
 
 
   a {
-    /* text-decoration: none; */
     color: var(--color-text);
     font-size: var(--font-small);
 

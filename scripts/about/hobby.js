@@ -43,6 +43,22 @@ const styles = /* css */ `
       width: 100%;
     }
   }
+
+  a {
+    display: inline-block;
+    color: var(--color-primary);
+    text-decoration: none;
+  }
+
+  a img {
+    width: 1.5rem;
+    height: auto;  
+    vertical-align: bottom;
+
+    @media (min-width: ${TABLET}) {
+      width: 2rem;
+    }
+  }
 `;
 
 const template = /* html */ `
@@ -54,8 +70,23 @@ const template = /* html */ `
   </div>
   <hgroup>
     <h2>Self-taught in illustration</h2>
-    <p>All hand-drawn. Bring the same approach to make each website feel memorable.</p>
+    <p>All hand-drawn. I use ink drawing. You can also find my Procreate diary on 
+      <a
+    href="https://www.instagram.com/crafted.han"
+    target="_blank"
+    rel="noopener"
+    >
+      Instagram
+      <img
+        src=${asset("./assets/icons/instagram-primary-color.svg")}
+        alt="Linkedin Icon"
+      />
+    </a>
+    .
+    </p>
   </hgroup>
+
+  
 </section>
 `;
 
