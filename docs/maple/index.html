@@ -24,17 +24,17 @@
     <section-footer></section-footer>
   <script type="module">// lib/asset.js
 function u() {
-  let r = document.documentElement.dataset.base || "./";
-  return new URL(r, location.href);
+  let o = document.documentElement.dataset.base || "./";
+  return new URL(o, location.href);
 }
-function e(r) {
-  return new URL(r, u()).href;
+function e(o) {
+  return new URL(o, u()).href;
 }
-function f(r) {
-  let o = r.replace(/^\//, ""), l = location.protocol === "file:", m = u();
-  if (o === "")
-    return l ? new URL("index.html", m).href : m.href;
-  return l ? new URL(`${o}.html`, m).href : new URL(o, m).href;
+function g(o) {
+  let t = o.replace(/^\//, ""), s = location.protocol === "file:", c = u();
+  if (t === "")
+    return s ? new URL("index.html", c).href : c.href;
+  return s ? new URL(`${t}.html`, c).href : new URL(t, c).href;
 }
 
 // maple/scripts/fonts.js
@@ -57,28 +57,28 @@ b.textContent = w;
 document.head.appendChild(b);
 
 // lib/define.js
-function v(r, o) {
-  if (r === void 0) {
-    if (o === Array)
+function x(o, t) {
+  if (o === void 0) {
+    if (t === Array)
       return [];
-    if (o === Object)
+    if (t === Object)
       return {};
-    if (o === Boolean)
+    if (t === Boolean)
       return !1;
-    if (o === Number)
+    if (t === Number)
       return 0;
     return;
   }
-  if (o === Boolean)
-    return Boolean(r);
-  if (o === Number)
-    return Number(r);
-  return r;
+  if (t === Boolean)
+    return Boolean(o);
+  if (t === Number)
+    return Number(o);
+  return o;
 }
-function t(r, { props: o = {}, attrs: l = [], styles: m = "", template: d, onRender: g = null }) {
-  let y = ["props", ...l];
+function n(o, { props: t = {}, attrs: s = [], styles: c = "", template: a, onRender: h = null }) {
+  let y = ["props", ...s];
 
-  class h extends HTMLElement {
+  class f extends HTMLElement {
     static observedAttributes = y;
     constructor() {
       super();
@@ -97,109 +97,214 @@ function t(r, { props: o = {}, attrs: l = [], styles: m = "", template: d, onRen
         this._render();
     }
     _getProps() {
-      let a = {}, s = this.getAttribute("props");
-      if (s)
+      let l = {}, m = this.getAttribute("props");
+      if (m)
         try {
-          a = JSON.parse(s);
+          l = JSON.parse(m);
         } catch {
-          a = {};
+          l = {};
         }
-      let c = {};
-      for (let p of Object.keys(o))
-        c[p] = v(a[p], o[p]);
-      return c;
+      let d = {};
+      for (let p of Object.keys(t))
+        d[p] = x(l[p], t[p]);
+      return d;
     }
     _applyForwardedAttrs() {
-      if (l.length === 0)
+      if (s.length === 0)
         return;
-      let a = this.shadowRoot.querySelector("[data-forward]");
-      if (!a)
+      let l = this.shadowRoot.querySelector("[data-forward]");
+      if (!l)
         return;
-      for (let s of l)
-        if (this.hasAttribute(s))
-          a.setAttribute(s, this.getAttribute(s));
+      for (let m of s)
+        if (this.hasAttribute(m))
+          l.setAttribute(m, this.getAttribute(m));
         else
-          a.removeAttribute(s);
+          l.removeAttribute(m);
     }
     _render() {
       if (typeof this._cleanup === "function")
         this._cleanup(), this._cleanup = null;
-      let a = this._getProps(), s = typeof d === "function" ? d(a) : d;
-      if (this.shadowRoot.innerHTML = `<style>${m}</style>${s}`, this._applyForwardedAttrs(), g) {
-        let c = g(this.shadowRoot, a, this);
-        if (typeof c === "function")
-          this._cleanup = c;
+      let l = this._getProps(), m = typeof a === "function" ? a(l) : a;
+      if (this.shadowRoot.innerHTML = `<style>${c}</style>${m}`, this._applyForwardedAttrs(), h) {
+        let d = h(this.shadowRoot, l, this);
+        if (typeof d === "function")
+          this._cleanup = d;
       }
     }
   }
-  customElements.define(r, h);
+  customElements.define(o, f);
 }
 
 // maple/scripts/breakpoints.js
-var i = "640px", n = "1024px";
+var i = "640px", r = "1024px";
 
 // maple/scripts/header.js
-var x = `
+var v = `
   :host {
     display: block;
     background: var(--color-primary);
     font-size: var(--size-small);
     color: var(--color-background);
-  }
-
-  header {
-    padding-block: 3rem;
-    padding-inline: 5rem;
-    display: flex;
-    justify-content: end;
-
     position: relative;
+  }
+  
+  header {
+    width: min(80%, 144rem);
+    margin-inline: auto;
     
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-block: 2rem;
+    
+    @media (min-width: ${i}) {
+      justify-content: end;
+      padding-block: 3rem;
+    }
+
   }
 
   nav {
     width: 100%;
     display: none;
 
-    @media (min-width: ${i}) {
+    @media (min-width: ${r}) {
       display: block;
     }
   }
 
   img {
-    height: 6rem;
+    height: 4.5rem;
     width: auto;
+    vertical-align: middle;
+
+    @media (min-width: ${i}) {
+      height: 6rem;
+    }
   }
 
   ul {
+    list-style-type: none;
     margin: 0;
     padding: 0;
+    margin-inline: auto;
     display: flex;
-    justify-content: space-between;
-    list-style-type: none;
+    flex-direction: column;
+    gap: 1rem;
+
+    @media (min-width: ${i}) {
+      padding-top: 3rem;
+      display: flex;
+      flex-direction: row;
+      gap: 2rem;
+      justify-content: center;
+    }
+      
+      @media (min-width: ${r}) {
+        padding-top: 0;
+      display: flex;
+      justify-content: space-between;
+    }
   }
 
   ol {
     margin: 0;
     padding: 0;
-    display: flex;
     list-style-type: none;
-    gap: 5rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+
+
+    @media (min-width: ${i}) {
+      display: flex;
+      flex-direction: row;
+      gap: 2rem;
+    }
+
+    @media (min-width: ${r}) {
+      gap: 5rem;
+    }
   }
 
-  a {
+  .logo {
     display: inline-block;
+
+    @media (min-width: ${i}) {
+      display: inline-block;
+      position: absolute;
+      left: 50%;
+      bottom: -35%;
+      transform: translateX(-50%);
+      z-index: 3;
+    }
+  }
+
+  .burger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 3rem;
+    height: 2.2rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 10;
+
+    @media (min-width: ${r}) {
+      display: none;
+    }
+  }
+
+  .burger span {
+    display: block;
+    height: 2px;
+    width: 100%;
+    background: var(--color-background);
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+
+  :host([open]) .burger span:nth-child(1) {
+    transform: translateY(0.9rem) rotate(45deg);
+  }
+  :host([open]) .burger span:nth-child(2) {
+    opacity: 0;
+  }
+  :host([open]) .burger span:nth-child(3) {
+    transform: translateY(-0.9rem) rotate(-45deg);
+  }
+
+  :host([open]) nav {
+    display: block;
     position: absolute;
-    left: 50%;
-    bottom: -35%;
-    transform: translateX(-50%);
+    top: 100%;
+    left: 0;
+    right: 0;
+
+    background: var(--color-primary);
+
+    text-align: center;
+    padding-bottom: 2rem;
+
+    @media (min-width: ${i}) {
+      padding-block: 2rem;
+    }
   }
 `, k = `
   <header>
-      <a href=${f("/")}>
+      <a class="logo" href=${g("/")}>
         <img src=${e("./assets/logo.png")}
           alt="Logo">
       </a>
+
+       <button class="burger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
 
       <nav>
         <ul>
@@ -220,29 +325,48 @@ var x = `
       </nav>
   </header>
 `;
-t("section-header", { template: k, styles: x });
+function j(o) {
+  let t = o.host, s = o.querySelector(".burger"), c = o.querySelector("nav");
+  s.addEventListener("click", () => {
+    let a = t.hasAttribute("open");
+    t.toggleAttribute("open", !a), s.setAttribute("aria-expanded", String(!a));
+  }), c.addEventListener("click", (a) => {
+    if (a.target.closest("li"))
+      t.removeAttribute("open"), s.setAttribute("aria-expanded", "false");
+  }), document.addEventListener("click", (a) => {
+    if (!t.contains(a.target) && !a.composedPath().includes(t))
+      t.removeAttribute("open"), s.setAttribute("aria-expanded", "false");
+  }), document.addEventListener("keydown", (a) => {
+    if (a.key === "Escape" && t.hasAttribute("open"))
+      t.removeAttribute("open"), s.setAttribute("aria-expanded", "false");
+  });
+}
+n("section-header", { styles: v, template: k, onRender: j });
 
 // maple/scripts/footer.js
-var j = `
+var q = `
   :host {
     display: block;
     background: var(--color-primary);
-    color: #030f03;
   }
 
   footer {
-    width: 80%;
-    margin-inline: auto;    
+    width: min(80%, 144rem);
+    margin-inline: auto;
     
     padding-top: 10rem;
     padding-bottom: 5rem;
 
     position: relative;
 
-     @media (min-width: ${i}) {
-      display: flex;
-      justify-content: space-between;
-    }
+  }
+  
+  article {
+    
+    @media (min-width: ${i}) {
+     display: flex;
+     justify-content: space-between;
+   }
   }
 
   img {
@@ -272,10 +396,13 @@ var j = `
 
   figure {
     display: flex;
+    align-items: center;
     gap: 1rem;
+    color: var(--color-background);
   }
-
+  
   figcaption {
+    opacity: 0.9;
     
     @media (min-width: ${i}) {
       max-width: 15ch;
@@ -306,43 +433,46 @@ var j = `
 
   a {
     text-decoration: none;
-    color: #030f03;
+    color: var(--color-background);
   }
 
-    p {
-        margin: 0;
-        padding: 2rem;
-        font-size: var(--font-small);
+  p {
+      margin: 0;
+      padding-top: 2rem;
+      font-size: var(--font-small);
+      margin-inline: -5%;
+          color: var(--color-text);
 
-        @media (min-width: ${i}) {
-          display: flex;
-          justify-content: space-between;
-        }
-    }
 
-    p a {
-        color: var(--color-background);
-    }
-`, q = `
+      @media (min-width: ${i}) {
+        display: flex;
+        justify-content: space-between;
+      }
+  }
+
+  p a {
+    color: var(--color-background);
+  }
+`, T = `
   <footer>
+      <article>
         <a href="#" class="arrow"><img src=${e("./assets/arrow.png")} alt="Up arrow"></a>
 
-           <nav>
-                <figure>
-                    <img src=${e("./assets/logo.png")}
-                    alt="Logo">
-                    <figcaption>Maple Montessori Preschool</figcaption>
-                </figure>
-        
-         
-                <ol>
-                    <li><a href="">Home</a></li>
-                    <li><a href="">About</a></li>
-                    <li><a href="">Testimonials</a></li>
-                    <li><a href="">Registration & Fees</a></li>
-                </ol>
-            </nav>
-
+        <nav>
+          <figure>
+              <img src=${e("./assets/logo.png")}
+              alt="Logo">
+              <figcaption>Maple Montessori Preschool</figcaption>
+          </figure>
+  
+    
+          <ol>
+              <li><a href="">Home</a></li>
+              <li><a href="">About</a></li>
+              <li><a href="">Testimonials</a></li>
+              <li><a href="">Registration & Fees</a></li>
+          </ol>
+        </nav>
 
         <ul>
             <li><img src=${e("./assets/footer-1.jpg")} alt="Welcome Maple Photo"></li>
@@ -351,28 +481,30 @@ var j = `
             <li><img src=${e("./assets/footer-4.jpg")} alt="Welcome Maple Photo"></li>
             <li><img src=${e("./assets/footer-5.jpg")} alt="Welcome Maple Photo"></li>
         </ul>
+      </article>
 
+        <p>
+            <small>© 2026 Maple Montessori Preschoool. All rights reserved</small>
+            <a href="https://hanhtetaung.dev/">Crafted by Han</a>
+        </p>
     </footer>
 
-    <p>
-        <small>© 2026 Maple Montessori Preschoool. All rights reserved</small>
-        <a href="https://hanhtetaung.dev/">Crafted by Han</a>
-    </p>
 `;
-t("section-footer", { template: q, styles: j });
+n("section-footer", { template: T, styles: q });
 
 // maple/scripts/home/hero.js
-var T = `
+var _ = `
   :host {
     display: block;
     margin-block: 15rem;
+    overflow: hidden;
   }
 
   section {
     width: min(80%, 144rem);
     margin-inline: auto;
     
-    @media (min-width: ${n}) {
+    @media (min-width: ${r}) {
       display: flex;
       justify-content: space-between;
     }
@@ -409,7 +541,7 @@ var T = `
   p {
     margin: 0;
   }
-`, _ = `
+`, S = `
   <section>
     <hgroup>
         <p>Welcome!</p>
@@ -418,11 +550,11 @@ var T = `
     </hgroup>
 
 
-    <img id="visible-img" src=${e("./assets/hero.jpg")} alt="Classroom">
+    <img src=${e("./assets/hero.jpg")} alt="Classroom">
 
   </section>
 `;
-t("section-hero", { styles: T, template: _ });
+n("section-hero", { styles: _, template: S });
 
 // maple/scripts/home/story.js
 var P = `
@@ -434,10 +566,9 @@ var P = `
   section {
     width: min(80%, 144rem);
     margin-inline: auto;
-    display: flex;
-    flex-direction: column;
 
-    @media (min-width: ${n}) {
+    @media (min-width: ${r}) {
+      display: flex;
       justify-content: end;
       flex-direction: row;
       gap: 20rem;
@@ -445,12 +576,16 @@ var P = `
   }
 
   img {
-    width: 20rem;
     display: block;
+    height: 25rem;
+    width: auto;
     
     @media (min-width: ${i}) {
+      height: 30rem;
+    }
+
+    @media (min-width: ${r}) {
       height: 35rem;
-      width: auto;
     }
   }
 
@@ -483,7 +618,7 @@ var P = `
 `, z = `
   <section>
 
-   <img id="visible-img" src=${e("./assets/sketch-logo.png")} alt="Original Logo">
+   <img src=${e("./assets/sketch-logo.png")} alt="Original Logo">
 
     <article>
         <h2>Our Story</h2>
@@ -494,10 +629,10 @@ var P = `
 
   </section>
 `;
-t("section-story", { styles: P, template: z });
+n("section-story", { styles: P, template: z });
 
 // maple/scripts/home/activities.js
-var S = `
+var W = `
   :host {
     display: block;
     margin-block: 20rem;
@@ -507,7 +642,7 @@ var S = `
     width: min(80%, 144rem);
     margin-inline: auto;
 
-    @media (min-width: ${n}) {
+    @media (min-width: ${r}) {
       justify-content: space-between;
     }
   }
@@ -551,7 +686,7 @@ var S = `
     text-align: center;
 
   }
-`, W = `
+`, V = `
   <section>
     <h2>Our Activities</h2>
 
@@ -585,10 +720,10 @@ var S = `
 
   </section>
 `;
-t("section-activities", { styles: S, template: W });
+n("section-activities", { styles: W, template: V });
 
 // maple/scripts/home/testimonials.js
-var V = `
+var U = `
   :host {
     display: block;
     margin-block: 20rem;
@@ -598,7 +733,7 @@ var V = `
     width: min(80%, 144rem);
     margin-inline: auto;
 
-    @media (min-width: ${n}) {
+    @media (min-width: ${r}) {
       justify-content: space-between;
     }
   }
@@ -656,7 +791,7 @@ var V = `
       justify-content: space-between;
     }
   }
-`, U = `
+`, X = `
   <section>
     <hgroup>
         <h2>Testimonials</h2>
@@ -680,10 +815,10 @@ var V = `
 
   </section>
 `;
-t("section-testimonials", { styles: V, template: U });
+n("section-testimonials", { styles: U, template: X });
 
 // maple/scripts/home/cta.js
-var X = `
+var Y = `
   :host {
     display: block;
     margin-block: 20rem;
@@ -693,7 +828,7 @@ var X = `
     width: min(80%, 144rem);
     margin-inline: auto;
 
-    @media (min-width: ${n}) {
+    @media (min-width: ${r}) {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 5rem;
@@ -753,6 +888,10 @@ var X = `
     }
   }
 
+  ul li {
+    overflow: scroll;
+  }
+
   a {
     color: var(--color-text);
     text-decoration: none;
@@ -771,7 +910,7 @@ var X = `
     align-items: center;
     gap: 1rem;
   }
-`, Y = `
+`, L = `
   <section>
     <h2>Contact</h2>
 
@@ -822,6 +961,6 @@ var X = `
     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2698.8052723821975!2d-0.10059059999999999!3d51.6356074!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487619887d9c6401%3A0xf05714aae17b836b!2sMaple%20Montessori%20Preschool!5e1!3m2!1sen!2suk!4v1789721307146!5m2!1sen!2suk" width="600" height="450" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
   </section>
 `;
-t("section-cta", { styles: X, template: Y });
+n("section-cta", { styles: Y, template: L });
 </script></body>
 </html>

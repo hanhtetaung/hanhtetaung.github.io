@@ -15,7 +15,7 @@
   <body>
     <section-header></section-header>
   <script type="module">// lib/define.js
-function b(t, e) {
+function y(t, e) {
   if (t === void 0) {
     if (e === Array)
       return [];
@@ -33,11 +33,11 @@ function b(t, e) {
     return Number(t);
   return t;
 }
-function c(t, { props: e = {}, attrs: a = [], styles: l = "", template: f, onRender: m = null }) {
-  let g = ["props", ...a];
+function p(t, { props: e = {}, attrs: i = [], styles: s = "", template: o, onRender: u = null }) {
+  let b = ["props", ...i];
 
-  class u extends HTMLElement {
-    static observedAttributes = g;
+  class h extends HTMLElement {
+    static observedAttributes = b;
     constructor() {
       super();
       this.attachShadow({ mode: "open" }), this._cleanup = null;
@@ -55,124 +55,229 @@ function c(t, { props: e = {}, attrs: a = [], styles: l = "", template: f, onRen
         this._render();
     }
     _getProps() {
-      let o = {}, i = this.getAttribute("props");
-      if (i)
+      let n = {}, l = this.getAttribute("props");
+      if (l)
         try {
-          o = JSON.parse(i);
+          n = JSON.parse(l);
         } catch {
-          o = {};
+          n = {};
         }
-      let s = {};
-      for (let d of Object.keys(e))
-        s[d] = b(o[d], e[d]);
-      return s;
+      let c = {};
+      for (let m of Object.keys(e))
+        c[m] = y(n[m], e[m]);
+      return c;
     }
     _applyForwardedAttrs() {
-      if (a.length === 0)
+      if (i.length === 0)
         return;
-      let o = this.shadowRoot.querySelector("[data-forward]");
-      if (!o)
+      let n = this.shadowRoot.querySelector("[data-forward]");
+      if (!n)
         return;
-      for (let i of a)
-        if (this.hasAttribute(i))
-          o.setAttribute(i, this.getAttribute(i));
+      for (let l of i)
+        if (this.hasAttribute(l))
+          n.setAttribute(l, this.getAttribute(l));
         else
-          o.removeAttribute(i);
+          n.removeAttribute(l);
     }
     _render() {
       if (typeof this._cleanup === "function")
         this._cleanup(), this._cleanup = null;
-      let o = this._getProps(), i = typeof f === "function" ? f(o) : f;
-      if (this.shadowRoot.innerHTML = `<style>${l}</style>${i}`, this._applyForwardedAttrs(), m) {
-        let s = m(this.shadowRoot, o, this);
-        if (typeof s === "function")
-          this._cleanup = s;
+      let n = this._getProps(), l = typeof o === "function" ? o(n) : o;
+      if (this.shadowRoot.innerHTML = `<style>${s}</style>${l}`, this._applyForwardedAttrs(), u) {
+        let c = u(this.shadowRoot, n, this);
+        if (typeof c === "function")
+          this._cleanup = c;
       }
     }
   }
-  customElements.define(t, u);
+  customElements.define(t, h);
 }
 
 // lib/asset.js
-function h() {
+function g() {
   let t = document.documentElement.dataset.base || "./";
   return new URL(t, location.href);
 }
-function r(t) {
-  return new URL(t, h()).href;
+function a(t) {
+  return new URL(t, g()).href;
 }
-function p(t) {
-  let e = t.replace(/^\//, ""), a = location.protocol === "file:", l = h();
+function f(t) {
+  let e = t.replace(/^\//, ""), i = location.protocol === "file:", s = g();
   if (e === "")
-    return a ? new URL("index.html", l).href : l.href;
-  return a ? new URL(`${e}.html`, l).href : new URL(e, l).href;
+    return i ? new URL("index.html", s).href : s.href;
+  return i ? new URL(`${e}.html`, s).href : new URL(e, s).href;
 }
 
 // maple/scripts/breakpoints.js
-var n = "640px";
+var r = "640px", d = "1024px";
 
 // maple/scripts/header.js
-var y = `
+var x = `
   :host {
     display: block;
     background: var(--color-primary);
     font-size: var(--size-small);
     color: var(--color-background);
-  }
-
-  header {
-    padding-block: 3rem;
-    padding-inline: 5rem;
-    display: flex;
-    justify-content: end;
-
     position: relative;
+  }
+  
+  header {
+    width: min(80%, 144rem);
+    margin-inline: auto;
     
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-block: 2rem;
+    
+    @media (min-width: ${r}) {
+      justify-content: end;
+      padding-block: 3rem;
+    }
+
   }
 
   nav {
     width: 100%;
     display: none;
 
-    @media (min-width: ${n}) {
+    @media (min-width: ${d}) {
       display: block;
     }
   }
 
   img {
-    height: 6rem;
+    height: 4.5rem;
     width: auto;
+    vertical-align: middle;
+
+    @media (min-width: ${r}) {
+      height: 6rem;
+    }
   }
 
   ul {
+    list-style-type: none;
     margin: 0;
     padding: 0;
+    margin-inline: auto;
     display: flex;
-    justify-content: space-between;
-    list-style-type: none;
+    flex-direction: column;
+    gap: 1rem;
+
+    @media (min-width: ${r}) {
+      padding-top: 3rem;
+      display: flex;
+      flex-direction: row;
+      gap: 2rem;
+      justify-content: center;
+    }
+      
+      @media (min-width: ${d}) {
+        padding-top: 0;
+      display: flex;
+      justify-content: space-between;
+    }
   }
 
   ol {
     margin: 0;
     padding: 0;
-    display: flex;
     list-style-type: none;
-    gap: 5rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+
+
+    @media (min-width: ${r}) {
+      display: flex;
+      flex-direction: row;
+      gap: 2rem;
+    }
+
+    @media (min-width: ${d}) {
+      gap: 5rem;
+    }
   }
 
-  a {
+  .logo {
     display: inline-block;
+
+    @media (min-width: ${r}) {
+      display: inline-block;
+      position: absolute;
+      left: 50%;
+      bottom: -35%;
+      transform: translateX(-50%);
+      z-index: 3;
+    }
+  }
+
+  .burger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 3rem;
+    height: 2.2rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 10;
+
+    @media (min-width: ${d}) {
+      display: none;
+    }
+  }
+
+  .burger span {
+    display: block;
+    height: 2px;
+    width: 100%;
+    background: var(--color-background);
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+
+  :host([open]) .burger span:nth-child(1) {
+    transform: translateY(0.9rem) rotate(45deg);
+  }
+  :host([open]) .burger span:nth-child(2) {
+    opacity: 0;
+  }
+  :host([open]) .burger span:nth-child(3) {
+    transform: translateY(-0.9rem) rotate(-45deg);
+  }
+
+  :host([open]) nav {
+    display: block;
     position: absolute;
-    left: 50%;
-    bottom: -35%;
-    transform: translateX(-50%);
+    top: 100%;
+    left: 0;
+    right: 0;
+
+    background: var(--color-primary);
+
+    text-align: center;
+    padding-bottom: 2rem;
+
+    @media (min-width: ${r}) {
+      padding-block: 2rem;
+    }
   }
 `, v = `
   <header>
-      <a href=${p("/")}>
-        <img src=${r("./assets/logo.png")}
+      <a class="logo" href=${f("/")}>
+        <img src=${a("./assets/logo.png")}
           alt="Logo">
       </a>
+
+       <button class="burger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
 
       <nav>
         <ul>
@@ -193,29 +298,48 @@ var y = `
       </nav>
   </header>
 `;
-c("section-header", { template: v, styles: y });
+function w(t) {
+  let e = t.host, i = t.querySelector(".burger"), s = t.querySelector("nav");
+  i.addEventListener("click", () => {
+    let o = e.hasAttribute("open");
+    e.toggleAttribute("open", !o), i.setAttribute("aria-expanded", String(!o));
+  }), s.addEventListener("click", (o) => {
+    if (o.target.closest("li"))
+      e.removeAttribute("open"), i.setAttribute("aria-expanded", "false");
+  }), document.addEventListener("click", (o) => {
+    if (!e.contains(o.target) && !o.composedPath().includes(e))
+      e.removeAttribute("open"), i.setAttribute("aria-expanded", "false");
+  }), document.addEventListener("keydown", (o) => {
+    if (o.key === "Escape" && e.hasAttribute("open"))
+      e.removeAttribute("open"), i.setAttribute("aria-expanded", "false");
+  });
+}
+p("section-header", { styles: x, template: v, onRender: w });
 
 // maple/scripts/footer.js
-var x = `
+var $ = `
   :host {
     display: block;
     background: var(--color-primary);
-    color: #030f03;
   }
 
   footer {
-    width: 80%;
-    margin-inline: auto;    
+    width: min(80%, 144rem);
+    margin-inline: auto;
     
     padding-top: 10rem;
     padding-bottom: 5rem;
 
     position: relative;
 
-     @media (min-width: ${n}) {
-      display: flex;
-      justify-content: space-between;
-    }
+  }
+  
+  article {
+    
+    @media (min-width: ${r}) {
+     display: flex;
+     justify-content: space-between;
+   }
   }
 
   img {
@@ -245,12 +369,15 @@ var x = `
 
   figure {
     display: flex;
+    align-items: center;
     gap: 1rem;
+    color: var(--color-background);
   }
-
+  
   figcaption {
+    opacity: 0.9;
     
-    @media (min-width: ${n}) {
+    @media (min-width: ${r}) {
       max-width: 15ch;
 
     }
@@ -279,59 +406,63 @@ var x = `
 
   a {
     text-decoration: none;
-    color: #030f03;
+    color: var(--color-background);
   }
 
-    p {
-        margin: 0;
-        padding: 2rem;
-        font-size: var(--font-small);
+  p {
+      margin: 0;
+      padding-top: 2rem;
+      font-size: var(--font-small);
+      margin-inline: -5%;
+          color: var(--color-text);
 
-        @media (min-width: ${n}) {
-          display: flex;
-          justify-content: space-between;
-        }
-    }
 
-    p a {
-        color: var(--color-background);
-    }
-`, w = `
+      @media (min-width: ${r}) {
+        display: flex;
+        justify-content: space-between;
+      }
+  }
+
+  p a {
+    color: var(--color-background);
+  }
+`, k = `
   <footer>
-        <a href="#" class="arrow"><img src=${r("./assets/arrow.png")} alt="Up arrow"></a>
+      <article>
+        <a href="#" class="arrow"><img src=${a("./assets/arrow.png")} alt="Up arrow"></a>
 
-           <nav>
-                <figure>
-                    <img src=${r("./assets/logo.png")}
-                    alt="Logo">
-                    <figcaption>Maple Montessori Preschool</figcaption>
-                </figure>
-        
-         
-                <ol>
-                    <li><a href="">Home</a></li>
-                    <li><a href="">About</a></li>
-                    <li><a href="">Testimonials</a></li>
-                    <li><a href="">Registration & Fees</a></li>
-                </ol>
-            </nav>
-
+        <nav>
+          <figure>
+              <img src=${a("./assets/logo.png")}
+              alt="Logo">
+              <figcaption>Maple Montessori Preschool</figcaption>
+          </figure>
+  
+    
+          <ol>
+              <li><a href="">Home</a></li>
+              <li><a href="">About</a></li>
+              <li><a href="">Testimonials</a></li>
+              <li><a href="">Registration & Fees</a></li>
+          </ol>
+        </nav>
 
         <ul>
-            <li><img src=${r("./assets/footer-1.jpg")} alt="Welcome Maple Photo"></li>
-            <li><img src=${r("./assets/footer-2.jpg")} alt="Welcome Maple Photo"></li>
-            <li><img src=${r("./assets/footer-3.jpg")} alt="Welcome Maple Photo"></li>
-            <li><img src=${r("./assets/footer-4.jpg")} alt="Welcome Maple Photo"></li>
-            <li><img src=${r("./assets/footer-5.jpg")} alt="Welcome Maple Photo"></li>
+            <li><img src=${a("./assets/footer-1.jpg")} alt="Welcome Maple Photo"></li>
+            <li><img src=${a("./assets/footer-2.jpg")} alt="Welcome Maple Photo"></li>
+            <li><img src=${a("./assets/footer-3.jpg")} alt="Welcome Maple Photo"></li>
+            <li><img src=${a("./assets/footer-4.jpg")} alt="Welcome Maple Photo"></li>
+            <li><img src=${a("./assets/footer-5.jpg")} alt="Welcome Maple Photo"></li>
         </ul>
+      </article>
 
+        <p>
+            <small>© 2026 Maple Montessori Preschoool. All rights reserved</small>
+            <a href="https://hanhtetaung.dev/">Crafted by Han</a>
+        </p>
     </footer>
 
-    <p>
-        <small>© 2026 Maple Montessori Preschoool. All rights reserved</small>
-        <a href="https://hanhtetaung.dev/">Crafted by Han</a>
-    </p>
 `;
-c("section-footer", { template: w, styles: x });
+p("section-footer", { template: k, styles: $ });
 </script></body>
 </html>

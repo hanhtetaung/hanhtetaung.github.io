@@ -6,7 +6,6 @@ const styles = /* css */ `
   :host {
     display: block;
     background: var(--color-primary);
-    color: #030f03;
   }
 
   footer {
@@ -55,10 +54,13 @@ const styles = /* css */ `
 
   figure {
     display: flex;
+    align-items: center;
     gap: 1rem;
+    color: var(--color-background);
   }
-
+  
   figcaption {
+    opacity: 0.9;
     
     @media (min-width: ${TABLET}) {
       max-width: 15ch;
@@ -89,7 +91,7 @@ const styles = /* css */ `
 
   a {
     text-decoration: none;
-    color: #030f03;
+    color: var(--color-background);
   }
 
   p {
@@ -97,6 +99,8 @@ const styles = /* css */ `
       padding-top: 2rem;
       font-size: var(--font-small);
       margin-inline: -5%;
+          color: var(--color-text);
+
 
       @media (min-width: ${TABLET}) {
         display: flex;
@@ -105,7 +109,7 @@ const styles = /* css */ `
   }
 
   p a {
-      color: var(--color-background);
+    color: var(--color-background);
   }
 `;
 
