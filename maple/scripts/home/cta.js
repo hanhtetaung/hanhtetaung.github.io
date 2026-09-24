@@ -72,6 +72,10 @@ const styles = /* css */ `
     }
   }
 
+  ul li {
+    overflow: scroll;
+  }
+
   a {
     color: var(--color-text);
     text-decoration: none;

@@ -60,7 +60,7 @@ const template = /* html */ `
         <p>အထင်ကရ အခမ်းအနားများ၊ ပွဲတော်များကို တိုက်ရိုက် ထုတ်လွှင့်တင်ဆက်ပေးနေသည့် ထားဝယ်မြို့၏ ပထမဆုံးသော Live Streaming အဖွဲ့ တစ်ခုဖြစ်ပါသည်။</p>
     </hgroup>
 </section>
-<img id="visible-img" src=${asset("./assets/hero.png")} alt="Dawei">
+<img src=${asset("./assets/hero.png")} alt="Dawei">
 `;
 
 define("section-hero", { styles, template });

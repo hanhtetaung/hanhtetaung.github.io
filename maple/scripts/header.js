@@ -9,10 +9,12 @@ const styles = /* css */ `
     font-size: var(--size-small);
     color: var(--color-background);
   }
-
+  
   header {
+    width: min(80%, 144rem);
+    margin-inline: auto;
+    
     padding-block: 3rem;
-    padding-inline: 5rem;
     display: flex;
     justify-content: end;
 
@@ -38,6 +40,7 @@ const styles = /* css */ `
     margin: 0;
     padding: 0;
     display: flex;
+    gap: 5rem;
     justify-content: space-between;
     list-style-type: none;
   }

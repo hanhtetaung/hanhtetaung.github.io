@@ -10,18 +10,22 @@ const styles = /* css */ `
   }
 
   footer {
-    width: 80%;
-    margin-inline: auto;    
+    width: min(80%, 144rem);
+    margin-inline: auto;
     
     padding-top: 10rem;
     padding-bottom: 5rem;
 
     position: relative;
 
-     @media (min-width: ${TABLET}) {
-      display: flex;
-      justify-content: space-between;
-    }
+  }
+  
+  article {
+    
+    @media (min-width: ${TABLET}) {
+     display: flex;
+     justify-content: space-between;
+   }
   }
 
   img {
@@ -88,42 +92,43 @@ const styles = /* css */ `
     color: #030f03;
   }
 
-    p {
-        margin: 0;
-        padding: 2rem;
-        font-size: var(--font-small);
+  p {
+      margin: 0;
+      padding-top: 2rem;
+      font-size: var(--font-small);
+      margin-inline: -5%;
 
-        @media (min-width: ${TABLET}) {
-          display: flex;
-          justify-content: space-between;
-        }
-    }
+      @media (min-width: ${TABLET}) {
+        display: flex;
+        justify-content: space-between;
+      }
+  }
 
-    p a {
-        color: var(--color-background);
-    }
+  p a {
+      color: var(--color-background);
+  }
 `;
 
 const template = /* html */ `
   <footer>
+      <article>
         <a href="#" class="arrow"><img src=${asset("./assets/arrow.png")} alt="Up arrow"></a>
 
-           <nav>
-                <figure>
-                    <img src=${asset("./assets/logo.png")}
-                    alt="Logo">
-                    <figcaption>Maple Montessori Preschool</figcaption>
-                </figure>
-        
-         
-                <ol>
-                    <li><a href="">Home</a></li>
-                    <li><a href="">About</a></li>
-                    <li><a href="">Testimonials</a></li>
-                    <li><a href="">Registration & Fees</a></li>
-                </ol>
-            </nav>
-
+        <nav>
+          <figure>
+              <img src=${asset("./assets/logo.png")}
+              alt="Logo">
+              <figcaption>Maple Montessori Preschool</figcaption>
+          </figure>
+  
+    
+          <ol>
+              <li><a href="">Home</a></li>
+              <li><a href="">About</a></li>
+              <li><a href="">Testimonials</a></li>
+              <li><a href="">Registration & Fees</a></li>
+          </ol>
+        </nav>
 
         <ul>
             <li><img src=${asset("./assets/footer-1.jpg")} alt="Welcome Maple Photo"></li>
@@ -132,13 +137,14 @@ const template = /* html */ `
             <li><img src=${asset("./assets/footer-4.jpg")} alt="Welcome Maple Photo"></li>
             <li><img src=${asset("./assets/footer-5.jpg")} alt="Welcome Maple Photo"></li>
         </ul>
+      </article>
 
+        <p>
+            <small>© 2026 Maple Montessori Preschoool. All rights reserved</small>
+            <a href="https://hanhtetaung.dev/">Crafted by Han</a>
+        </p>
     </footer>
 
-    <p>
-        <small>© 2026 Maple Montessori Preschoool. All rights reserved</small>
-        <a href="https://hanhtetaung.dev/">Crafted by Han</a>
-    </p>
 `;
 
 define("section-footer", { template, styles });

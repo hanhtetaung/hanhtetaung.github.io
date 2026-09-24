@@ -11,10 +11,9 @@ const styles = /* css */ `
   section {
     width: min(80%, 144rem);
     margin-inline: auto;
-    display: flex;
-    flex-direction: column;
 
     @media (min-width: ${DESKTOP}) {
+      display: flex;
       justify-content: end;
       flex-direction: row;
       gap: 20rem;
@@ -22,12 +21,16 @@ const styles = /* css */ `
   }
 
   img {
-    width: 20rem;
     display: block;
+    height: 25rem;
+    width: auto;
     
     @media (min-width: ${TABLET}) {
+      height: 30rem;
+    }
+
+    @media (min-width: ${DESKTOP}) {
       height: 35rem;
-      width: auto;
     }
   }
 
@@ -62,7 +65,7 @@ const styles = /* css */ `
 const template = /* html */ `
   <section>
 
-   <img id="visible-img" src=${asset("./assets/sketch-logo.png")} alt="Original Logo">
+   <img src=${asset("./assets/sketch-logo.png")} alt="Original Logo">
 
     <article>
         <h2>Our Story</h2>

@@ -6,6 +6,7 @@ const styles = /* css */ `
   :host {
     display: block;
     margin-block: 15rem;
+    overflow: hidden;
   }
 
   section {
@@ -60,7 +61,7 @@ const template = /* html */ `
     </hgroup>
 
 
-    <img id="visible-img" src=${asset("./assets/hero.jpg")} alt="Classroom">
+    <img src=${asset("./assets/hero.jpg")} alt="Classroom">
 
   </section>
 `;
