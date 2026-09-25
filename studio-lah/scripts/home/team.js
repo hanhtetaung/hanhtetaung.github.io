@@ -35,8 +35,8 @@ const styles = /* css */ `
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 5rem;
-    max-width: 80%;
+    gap: 2rem;
+    max-width: 100%;
     margin-inline: auto;
   }
 

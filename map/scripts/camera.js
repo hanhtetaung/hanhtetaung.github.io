@@ -5,6 +5,16 @@ export const camera = { x: -2000, y: 2000, zoom: 0.3 };
 const MIN_ZOOM = 0.05,
   MAX_ZOOM = 5;
 
+let rafPending = false;
+export function requestDraw() {
+  if (rafPending) return;
+  rafPending = true;
+  requestAnimationFrame(() => {
+    rafPending = false;
+    draw();
+  });
+}
+
 export function zoomAt(screenX, screenY, factor) {
   const newZoom = Math.min(MAX_ZOOM, Math.max(MIN_ZOOM, camera.zoom * factor));
 
@@ -15,5 +25,5 @@ export function zoomAt(screenX, screenY, factor) {
   camera.x = screenX - worldX * camera.zoom;
   camera.y = screenY - worldY * camera.zoom;
 
-  draw();
+  requestDraw();
 }

@@ -25,15 +25,15 @@
     </main>
     <section-footer></section-footer>
   <script type="module">// lib/asset.js
-function b() {
+function v() {
   let a = document.documentElement.dataset.base || "./";
   return new URL(a, location.href);
 }
 function t(a) {
-  return new URL(a, b()).href;
+  return new URL(a, v()).href;
 }
 function g(a) {
-  let o = a.replace(/^\//, ""), m = location.protocol === "file:", c = b();
+  let o = a.replace(/^\//, ""), m = location.protocol === "file:", c = v();
   if (o === "")
     return m ? new URL("index.html", c).href : c.href;
   return m ? new URL(`${o}.html`, c).href : new URL(o, c).href;
@@ -403,16 +403,16 @@ var H = `
 `;
 function D(a) {
   let o = a.host, m = [245, 60, 50], c = [255, 255, 255], d = 0, l = 0, u = !1, w = null;
-  function r(f, y, v) {
-    return f + (y - f) * v;
+  function r(f, y, b) {
+    return f + (y - f) * b;
   }
   function s() {
-    let f = o.getBoundingClientRect(), y = f.height, v = -f.top;
-    return Math.min(Math.max(v / (y * 0.05), 0), 1);
+    let f = o.getBoundingClientRect(), y = f.height, b = -f.top;
+    return Math.min(Math.max(b / (y * 0.05), 0), 1);
   }
   function h(f) {
-    let y = Math.round(r(m[0], c[0], f)), v = Math.round(r(m[1], c[1], f)), k = Math.round(r(m[2], c[2], f));
-    o.style.background = `rgb(${y}, ${v}, ${k})`;
+    let y = Math.round(r(m[0], c[0], f)), b = Math.round(r(m[1], c[1], f)), k = Math.round(r(m[2], c[2], f));
+    o.style.background = `rgb(${y}, ${b}, ${k})`;
   }
   function p() {
     if (l += (d - l) * 0.12, h(l), Math.abs(d - l) > 0.001)
@@ -585,7 +585,7 @@ var R = `
     padding-bottom: 2rem;
     display: flex;
     flex-wrap: wrap;
-    justify-content: start;
+    justify-content: center;
     gap: 1.5rem;
     overflow: scroll;
 
@@ -732,8 +732,13 @@ var M = `
   }
 
   .empty-block {
-    grid-area: empty;
-    border: 1px dashed var(--color-text);
+    display: none;
+    
+    @media (min-width: ${n}) {
+      display: block;   
+      grid-area: empty;
+      border: 1px dashed var(--color-text);
+    }
   }
 
 
@@ -826,8 +831,8 @@ var K = `
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 5rem;
-    max-width: 80%;
+    gap: 2rem;
+    max-width: 100%;
     margin-inline: auto;
   }
 

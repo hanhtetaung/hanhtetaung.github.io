@@ -111,8 +111,13 @@ const styles = /* css */ `
   }
 
   .empty-block {
-    grid-area: empty;
-    border: 1px dashed var(--color-text);
+    display: none;
+    
+    @media (min-width: ${DESKTOP}) {
+      display: block;   
+      grid-area: empty;
+      border: 1px dashed var(--color-text);
+    }
   }
 
 
