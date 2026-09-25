@@ -15,31 +15,32 @@
   <body>
     <section-header></section-header>
     <main>
+      <section-about></section-about>
       <section-hero></section-hero>
-      <section-services id="services"></section-services>
       <section-work></section-work>
-      <section-behind-the-scene></section-behind-the-scene>
+      <section-services id="services"></section-services>
       <section-team></section-team>
+      <section-behind-the-scene></section-behind-the-scene>
       <section-cta id="cta"></section-cta>
     </main>
     <section-footer></section-footer>
   <script type="module">// lib/asset.js
-function u() {
+function b() {
   let a = document.documentElement.dataset.base || "./";
   return new URL(a, location.href);
 }
 function t(a) {
-  return new URL(a, u()).href;
+  return new URL(a, b()).href;
 }
-function c(a) {
-  let r = a.replace(/^\//, ""), l = location.protocol === "file:", m = u();
-  if (r === "")
-    return l ? new URL("index.html", m).href : m.href;
-  return l ? new URL(`${r}.html`, m).href : new URL(r, m).href;
+function g(a) {
+  let o = a.replace(/^\//, ""), m = location.protocol === "file:", c = b();
+  if (o === "")
+    return m ? new URL("index.html", c).href : c.href;
+  return m ? new URL(`${o}.html`, c).href : new URL(o, c).href;
 }
 
 // studio-lah/scripts/fonts.js
-var b = `
+var T = `
 @font-face {
     font-family: "Archivo";
     src: url("${t("./assets/fonts/Archivo-Bold.woff2")}") format("woff2");
@@ -53,34 +54,34 @@ var b = `
     font-weight: 400;
     font-display: swap;
   }
-`, w = document.createElement("style");
-w.textContent = b;
-document.head.appendChild(w);
+`, x = document.createElement("style");
+x.textContent = T;
+document.head.appendChild(x);
 
 // lib/define.js
-function v(a, r) {
+function A(a, o) {
   if (a === void 0) {
-    if (r === Array)
+    if (o === Array)
       return [];
-    if (r === Object)
+    if (o === Object)
       return {};
-    if (r === Boolean)
+    if (o === Boolean)
       return !1;
-    if (r === Number)
+    if (o === Number)
       return 0;
     return;
   }
-  if (r === Boolean)
+  if (o === Boolean)
     return Boolean(a);
-  if (r === Number)
+  if (o === Number)
     return Number(a);
   return a;
 }
-function i(a, { props: r = {}, attrs: l = [], styles: m = "", template: f, onRender: p = null }) {
-  let y = ["props", ...l];
+function e(a, { props: o = {}, attrs: m = [], styles: c = "", template: d, onRender: l = null }) {
+  let u = ["props", ...m];
 
-  class h extends HTMLElement {
-    static observedAttributes = y;
+  class w extends HTMLElement {
+    static observedAttributes = u;
     constructor() {
       super();
       this.attachShadow({ mode: "open" }), this._cleanup = null;
@@ -98,52 +99,56 @@ function i(a, { props: r = {}, attrs: l = [], styles: m = "", template: f, onRen
         this._render();
     }
     _getProps() {
-      let n = {}, s = this.getAttribute("props");
+      let r = {}, s = this.getAttribute("props");
       if (s)
         try {
-          n = JSON.parse(s);
+          r = JSON.parse(s);
         } catch {
-          n = {};
+          r = {};
         }
-      let d = {};
-      for (let g of Object.keys(r))
-        d[g] = v(n[g], r[g]);
-      return d;
+      let h = {};
+      for (let p of Object.keys(o))
+        h[p] = A(r[p], o[p]);
+      return h;
     }
     _applyForwardedAttrs() {
-      if (l.length === 0)
+      if (m.length === 0)
         return;
-      let n = this.shadowRoot.querySelector("[data-forward]");
-      if (!n)
+      let r = this.shadowRoot.querySelector("[data-forward]");
+      if (!r)
         return;
-      for (let s of l)
+      for (let s of m)
         if (this.hasAttribute(s))
-          n.setAttribute(s, this.getAttribute(s));
+          r.setAttribute(s, this.getAttribute(s));
         else
-          n.removeAttribute(s);
+          r.removeAttribute(s);
     }
     _render() {
       if (typeof this._cleanup === "function")
         this._cleanup(), this._cleanup = null;
-      let n = this._getProps(), s = typeof f === "function" ? f(n) : f;
-      if (this.shadowRoot.innerHTML = `<style>${m}</style>${s}`, this._applyForwardedAttrs(), p) {
-        let d = p(this.shadowRoot, n, this);
-        if (typeof d === "function")
-          this._cleanup = d;
+      let r = this._getProps(), s = typeof d === "function" ? d(r) : d;
+      if (this.shadowRoot.innerHTML = `<style>${c}</style>${s}`, this._applyForwardedAttrs(), l) {
+        let h = l(this.shadowRoot, r, this);
+        if (typeof h === "function")
+          this._cleanup = h;
       }
     }
   }
-  customElements.define(a, h);
+  customElements.define(a, w);
 }
 
 // studio-lah/scripts/breakpoints.js
-var e = "640px", o = "1024px";
+var i = "640px", n = "1024px";
 
 // studio-lah/scripts/header.js
-var x = `
+var S = `
   :host {
     display: block;
     font-size: var(--font-small);
+
+    @media (min-width: ${i}) {
+      display: none;
+    }
 
   }
 
@@ -173,7 +178,7 @@ var x = `
     margin: 0;
   }
 
-  @media (max-width: ${e}) {
+  @media (max-width: ${i}) {
     .header__navigation {
       gap: 4rem;
     }
@@ -182,7 +187,7 @@ var x = `
   img {
     max-width: 12rem;
 
-    @media (min-width: ${e}) {
+    @media (min-width: ${i}) {
       max-width: 15rem;
     }
   }
@@ -197,9 +202,9 @@ var x = `
   }
 
 
-`, k = `
+`, L = `
   <header>
-      <a href=${c("/")}>
+      <a href=${g("/")}>
         <img src=${t("./assets/studio-lah.svg")}
           alt="Logo">
       </a>
@@ -208,25 +213,25 @@ var x = `
         <nav>
           <ul>
             <li>
-              <a href=${c("/")}>Home</a>
+              <a href=${g("/")}>Home</a>
             </li>
 
             <li>
-              <a href=${c("/#services")}>Services</a>
+              <a href=${g("/#services")}>Services</a>
             </li>
           </ul>
         </nav>
 
-        <a href=${c("/#cta")}>
+        <a href=${g("/#cta")}>
           Contact
         </a>
       </div>
   </header>
 `;
-i("section-header", { template: k, styles: x });
+e("section-header", { template: L, styles: S });
 
 // studio-lah/scripts/footer.js
-var $ = `
+var j = `
   :host {
     display: block;
     color: #030f03;
@@ -242,7 +247,7 @@ var $ = `
     color: var(--color-text);
     font-size: var(--font-small);
 
-    @media (min-width: ${e}) {
+    @media (min-width: ${i}) {
       text-decoration: none;
     }
 
@@ -257,12 +262,12 @@ var $ = `
     width: 100%;
     text-align: start;
 
-    @media (min-width: ${e}) {
+    @media (min-width: ${i}) {
       display: flex;
       justify-content: space-between;
     }
   }
-`, T = `
+`, E = `
   <footer>
     <img src=${t("./assets/studio-lah.svg")} alt="LOGO">
       <p>
@@ -271,21 +276,25 @@ var $ = `
       </p>
     </footer>
 `;
-i("section-footer", { template: T, styles: $ });
+e("section-footer", { template: E, styles: j });
 
 // studio-lah/scripts/home/hero.js
-var A = `
+var z = `
   :host {
     display: block;
     margin-block: 10rem;
     overflow: hidden;
+
+    @media (min-width: ${i}) {
+      margin-top: -545rem;
+    }
   }
 
   section {
     width: min(80%, 144rem);
     margin-inline: auto;
     
-    @media (min-width: ${o}) {
+    @media (min-width: ${n}) {
       display: flex;
       justify-content: space-between;
     }
@@ -298,7 +307,7 @@ var A = `
     width: 100%;
     bottom: 0rem;
 
-    @media (min-width: ${e}) {
+    @media (min-width: ${i}) {
       position: static;
       /* width: 100%; */
       height: 60rem;
@@ -316,6 +325,10 @@ var A = `
     font-size: var(--font-display);
     margin-top: 1rem;
     margin-bottom: 2.5rem;
+
+    @media (min-width: ${i}) {
+      display: none;
+    }
   }
 
   p {
@@ -323,7 +336,7 @@ var A = `
     max-width: 72rem;
     margin-inline: auto;
   }
-`, S = `
+`, _ = `
   <section>
     <hgroup>
         <h1>Studio LAH</h1>
@@ -332,10 +345,91 @@ var A = `
 </section>
 <img src=${t("./assets/hero.png")} alt="Dawei">
 `;
-i("section-hero", { styles: A, template: S });
+e("section-hero", { styles: z, template: _ });
+
+// studio-lah/scripts/home/about.js
+var H = `
+  :host {
+        display: none;
+        overflow: hidden;
+        height: 95dvh;
+        padding-bottom: 550rem;
+        transition: background 0.05s ease;
+
+        @media (min-width: ${i}) {
+            display: block;
+        }
+    }
+
+  section {
+    width: min(100%, 144rem);
+    height: 100%;
+    margin-inline: auto;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  h1 {
+    margin: 0;
+    width: 100%;
+  }
+
+  h1 img {
+    width: 100%;
+    height: auto;
+  }
+
+  img {
+    width: 60%;
+    height: auto;
+  }
+
+  p {
+    margin: 0;
+    max-width: 72rem;
+    margin-inline: auto;
+  }
+`, O = `
+  <section>
+    <h1>
+        <img src=${t("./assets/studio-lah-title.svg")} alt="Studio LAH">
+    </h1>
+    
+    <img src=${t("./assets/hero-text.svg")} alt="We Create. We Present">
+</section>
+`;
+function D(a) {
+  let o = a.host, m = [245, 60, 50], c = [255, 255, 255], d = 0, l = 0, u = !1, w = null;
+  function r(f, y, v) {
+    return f + (y - f) * v;
+  }
+  function s() {
+    let f = o.getBoundingClientRect(), y = f.height, v = -f.top;
+    return Math.min(Math.max(v / (y * 0.05), 0), 1);
+  }
+  function h(f) {
+    let y = Math.round(r(m[0], c[0], f)), v = Math.round(r(m[1], c[1], f)), k = Math.round(r(m[2], c[2], f));
+    o.style.background = `rgb(${y}, ${v}, ${k})`;
+  }
+  function p() {
+    if (l += (d - l) * 0.12, h(l), Math.abs(d - l) > 0.001)
+      w = requestAnimationFrame(p);
+    else
+      l = d, h(l), u = !1;
+  }
+  function $() {
+    if (d = s(), !u)
+      u = !0, w = requestAnimationFrame(p);
+  }
+  window.addEventListener("scroll", $, { passive: !0 }), d = s(), l = d, h(l);
+}
+e("section-about", { styles: H, template: O, onRender: D });
 
 // studio-lah/scripts/home/services.js
-var L = `
+var B = `
   :host {
     display: block;
     padding-block: 10rem;
@@ -344,9 +438,8 @@ var L = `
   section {
     width: min(80%, 144rem);
     margin-inline: auto;
-    /* text-align: center; */
 
-    @media (min-width: ${o}) {
+    @media (min-width: ${n}) {
       justify-content: space-between;
     }
   }
@@ -356,6 +449,10 @@ var L = `
     margin: 0;
     font-size: var(--font-title);
     margin-bottom: 8rem;
+
+     @media (min-width: ${i}) {
+      font-size: var(--font-display);
+    }
   }
 
   ul {
@@ -366,7 +463,7 @@ var L = `
     gap: 7rem;
     overflow: scroll;
 
-     @media (min-width: ${e}) {
+     @media (min-width: ${i}) {
       /* display: grid; */
           /* grid-template-columns: 1fr 1fr 1fr; */
 
@@ -404,7 +501,7 @@ var L = `
     margin-inline: auto;
     margin-top: 3rem;
   }
-`, j = `
+`, F = `
   <section>
     <h2>Our Services</h2>
 
@@ -448,21 +545,21 @@ var L = `
 
   </section>
 `;
-i("section-services", { styles: L, template: j });
+e("section-services", { styles: B, template: F });
 
 // studio-lah/scripts/home/work.js
-var E = `
+var R = `
   :host {
     display: block;
     margin-top: 10rem;
-    margin-bottom: 25rem;
+    margin-bottom: 10rem;
   }
 
   section {
     width: min(80%, 144rem);
     margin-inline: auto;
 
-    @media (min-width: ${o}) {
+    @media (min-width: ${n}) {
       justify-content: space-between;
     }
   }
@@ -472,6 +569,10 @@ var E = `
     margin: 0;
     font-size: var(--font-title);
     margin-bottom: 4rem;
+
+    @media (min-width: ${i}) {
+      font-size: var(--font-display);
+    }
   }
 
   p {
@@ -488,7 +589,7 @@ var E = `
     gap: 1.5rem;
     overflow: scroll;
 
-    @media (min-width: ${e}) {
+    @media (min-width: ${i}) {
       justify-content: center;
     }
   }
@@ -498,11 +599,11 @@ var E = `
     height: 5rem;
 
 
-    @media (min-width: ${e}) {
+    @media (min-width: ${i}) {
       height: 7rem;
     }
   }
-`, _ = `
+`, W = `
   <section>
     <h2>Our Work</h2>
 
@@ -519,20 +620,20 @@ var E = `
 
   </section>
 `;
-i("section-work", { styles: E, template: _ });
+e("section-work", { styles: R, template: W });
 
 // studio-lah/scripts/home/behind-the-scene.js
-var P = `
+var M = `
   :host {
     display: block;
-    margin-bottom: 20rem;
+    margin-block: 20rem;
     margin-inline: 0.2rem;
   }
 
   section {
     width: 100%;
     
-    @media (min-width: ${e}) {
+    @media (min-width: ${i}) {
       width: min(80%, 144rem);
       margin-inline: auto;
       justify-content: space-between;
@@ -545,8 +646,9 @@ var P = `
     font-size: var(--font-title);
     margin-bottom: 3rem;
 
-    @media (min-width: ${e}) {
+    @media (min-width: ${i}) {
       display: none;
+      
     }
   }
 
@@ -565,7 +667,7 @@ var P = `
       "c c c";
     height: 60rem;
 
-    @media (min-width: ${e}) {
+    @media (min-width: ${i}) {
       grid-template-columns: repeat(3, 1fr);
       grid-template-rows: repeat(5, 1fr);
       height: 70rem;
@@ -577,7 +679,7 @@ var P = `
         "c c c";
     }
 
-    @media (min-width: ${o}) {
+    @media (min-width: ${n}) {
       height: 70rem;
       grid-template-columns: repeat(4, 1fr);
       grid-template-rows: repeat(3, 1fr);
@@ -601,7 +703,7 @@ var P = `
   .img-c    { 
     grid-area: c;
 
-    @media(min-width: ${o}) {
+    @media(min-width: ${n}) {
       display: block;
     }
   }
@@ -613,7 +715,7 @@ var P = `
     grid-area: f;
     display: none;
 
-    @media(min-width: ${o}) {
+    @media(min-width: ${n}) {
       display: block;
     }
   }
@@ -622,7 +724,7 @@ var P = `
   .title { 
     display: none;
     
-    @media (min-width: ${e}) {
+    @media (min-width: ${i}) {
       grid-area: text;
       display: flex;
       border: 1px dashed var(--color-text);
@@ -640,7 +742,7 @@ var P = `
     font-size: var(--font-heading);
     font-weight: var(--font-bold);
 
-    @media (min-width: ${o}) {
+    @media (min-width: ${n}) {
       font-size: var(--font-title);
     }
   }
@@ -651,7 +753,7 @@ var P = `
     object-position: 50% 50%;
     object-fit: cover;
   }
-`, z = `
+`, N = `
   <section>
     <h2>Behind the Scene</h2>
 
@@ -688,10 +790,10 @@ var P = `
 
   </section>
 `;
-i("section-behind-the-scene", { styles: P, template: z });
+e("section-behind-the-scene", { styles: M, template: N });
 
 // studio-lah/scripts/home/team.js
-var H = `
+var K = `
   :host {
     display: block;
     margin-block: 10rem;
@@ -701,7 +803,7 @@ var H = `
     width: min(80%, 144rem);
     margin-inline: auto;
 
-    @media (min-width: ${o}) {
+    @media (min-width: ${n}) {
       justify-content: space-between;
     }
   }
@@ -711,6 +813,10 @@ var H = `
     margin: 0;
     font-size: var(--font-title);
     margin-bottom: 4rem;
+
+     @media (min-width: ${i}) {
+      font-size: var(--font-display);
+    }
   }
 
   ul {
@@ -740,7 +846,7 @@ var H = `
     height: 15rem;
     width: auto;
 
-    @media (min-width: ${e}) {
+    @media (min-width: ${i}) {
       height: 20rem;
     }
   }
@@ -754,7 +860,7 @@ var H = `
     margin: 0;
     text-align: center;
   }
-`, O = `
+`, U = `
   <section>
     <h2>Meet Our Team</h2>
 
@@ -829,10 +935,10 @@ var H = `
 
   </section>
 `;
-i("section-team", { styles: H, template: O });
+e("section-team", { styles: K, template: U });
 
 // studio-lah/scripts/home/cta.js
-var B = `
+var C = `
   :host {
     display: block;
     margin-block: 15rem;
@@ -843,7 +949,7 @@ var B = `
     margin-inline: auto;
     /* text-align: center; */
 
-    @media (min-width: ${o}) {
+    @media (min-width: ${n}) {
       justify-content: space-between;
     }
   }
@@ -853,6 +959,10 @@ var B = `
     margin: 0;
     font-size: var(--font-title);
     margin-bottom: 3rem;
+
+     @media (min-width: ${i}) {
+      font-size: var(--font-display);
+    }
   }
 
   ul {
@@ -863,7 +973,7 @@ var B = `
     gap: 10rem;
     overflow: scroll;
 
-     @media (min-width: ${e}) {
+     @media (min-width: ${i}) {
       display: grid;
           grid-template-columns: 1fr 1fr 1fr;
 
@@ -926,7 +1036,7 @@ a {
     color: var(--color-text);
     font-weight: var(--font-bold);
 }
-`, C = `
+`, P = `
   <section>
     <h2>Contact</h2>
 
@@ -965,6 +1075,6 @@ a {
 
   </section>
 `;
-i("section-cta", { styles: B, template: C });
+e("section-cta", { styles: C, template: P });
 </script></body>
 </html>

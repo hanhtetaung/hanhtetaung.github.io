@@ -7,6 +7,10 @@ const styles = /* css */ `
     display: block;
     font-size: var(--font-small);
 
+    @media (min-width: ${TABLET}) {
+      display: none;
+    }
+
   }
 
   header {

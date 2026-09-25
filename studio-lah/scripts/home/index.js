@@ -4,6 +4,7 @@ import "../header.js";
 import "../footer.js";
 
 import "./hero.js";
+import "./about.js";
 import "./services.js";
 import "./work.js";
 import "./behind-the-scene.js";

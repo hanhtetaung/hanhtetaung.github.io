@@ -5,7 +5,7 @@ import { DESKTOP, TABLET } from "../breakpoints.js";
 const styles = /* css */ `
   :host {
     display: block;
-    margin-bottom: 20rem;
+    margin-block: 20rem;
     margin-inline: 0.2rem;
   }
 
@@ -27,6 +27,7 @@ const styles = /* css */ `
 
     @media (min-width: ${TABLET}) {
       display: none;
+      
     }
   }
 

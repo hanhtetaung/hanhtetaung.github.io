@@ -6,7 +6,7 @@ const styles = /* css */ `
   :host {
     display: block;
     margin-top: 10rem;
-    margin-bottom: 25rem;
+    margin-bottom: 10rem;
   }
 
   section {
@@ -23,6 +23,10 @@ const styles = /* css */ `
     margin: 0;
     font-size: var(--font-title);
     margin-bottom: 4rem;
+
+    @media (min-width: ${TABLET}) {
+      font-size: var(--font-display);
+    }
   }
 
   p {

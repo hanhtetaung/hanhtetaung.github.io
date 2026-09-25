@@ -7,6 +7,10 @@ const styles = /* css */ `
     display: block;
     margin-block: 10rem;
     overflow: hidden;
+
+    @media (min-width: ${TABLET}) {
+      margin-top: -545rem;
+    }
   }
 
   section {
@@ -44,6 +48,10 @@ const styles = /* css */ `
     font-size: var(--font-display);
     margin-top: 1rem;
     margin-bottom: 2.5rem;
+
+    @media (min-width: ${TABLET}) {
+      display: none;
+    }
   }
 
   p {
