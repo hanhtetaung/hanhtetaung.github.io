@@ -65,7 +65,7 @@ const styles = /* css */ `
   }
 
   img.cover {
-    width: 100%;
+    width: auto;
     max-width: 100%;
     height: 20rem;
     object-fit: cover;
@@ -73,26 +73,27 @@ const styles = /* css */ `
   }
 
  .stack-img {
-  display: none;
+    display: none;
 
-  @media (min-width: ${TABLET}) {
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: auto;
-    height: 10rem;
-    object-fit: cover;
-    border-radius: 1rem;
-    box-shadow: 0 0.8rem 2rem rgba(0, 0, 0, 0.3);
-    pointer-events: none;
-    z-index: 10;
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(0.85);
-    transition: opacity 0.25s ease, transform 0.4s ease;
-    will-change: transform, opacity;
+    @media (min-width: ${TABLET}) {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: auto;
+      height: 10rem;
+      object-fit: cover;
+      border-radius: 1rem;
+      box-shadow: 0 0.8rem 2rem rgba(0, 0, 0, 0.3);
+      pointer-events: none;
+      z-index: 10;
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.85);
+      transition: opacity 0.25s ease, transform 0.4s ease;
+      will-change: transform, opacity;
+    }
   }
-}
+
   .stack-img.visible {
     opacity: 1;
     transform: translate(-50%, -50%) scale(1);
