@@ -39,7 +39,7 @@ const styles = /* css */ `
     padding-bottom: 2rem;
     display: flex;
     flex-wrap: wrap;
-    justify-content: start;
+    justify-content: center;
     gap: 1.5rem;
     overflow: scroll;
 
