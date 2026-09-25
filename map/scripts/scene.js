@@ -280,8 +280,19 @@ const sceneObjects = [
   { name: "red-luggage", x: 700, y: 200, height: 100 },
 ];
 
-export function drawObjects() {
+export function drawObjects(view) {
   for (const { name, x, y, height } of sceneObjects) {
+    // Bounding-box test using height as a stand-in for width too (most
+    // sprites aren't wildly wider than they are tall, and view already
+    // has generous padding baked in from draw.js).
+    if (
+      x + height < view.left ||
+      x - height > view.right ||
+      y + height < view.top ||
+      y - height > view.bottom
+    ) {
+      continue;
+    }
     drawAssetAtHeight(name, x, y, height);
   }
 }

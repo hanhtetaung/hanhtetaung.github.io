@@ -1,6 +1,5 @@
 import { canvas } from "./main.js";
-import { camera, zoomAt } from "./camera.js";
-import { draw } from "./draw.js";
+import { camera, zoomAt, requestDraw } from "./camera.js";
 
 let dragging = false,
   lastX = 0,
@@ -24,7 +23,7 @@ window.addEventListener("mousemove", (e) => {
   camera.y += e.clientY - lastY;
   lastX = e.clientX;
   lastY = e.clientY;
-  draw();
+  requestDraw();
 });
 
 canvas.addEventListener(
@@ -64,7 +63,7 @@ canvas.addEventListener(
       camera.x += t.clientX - lastTouch.x;
       camera.y += t.clientY - lastTouch.y;
       lastTouch = { x: t.clientX, y: t.clientY };
-      draw();
+      requestDraw();
     } else if (e.touches.length === 2) {
       const dist = getTouchDist(e.touches);
       const rect = canvas.getBoundingClientRect();
