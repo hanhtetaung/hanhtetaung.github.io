@@ -34,63 +34,63 @@
 
     <section-footer></section-footer>
   <script type="module">// lib/asset.js
-function $() {
-  let a = document.documentElement.dataset.base || "./";
-  return new URL(a, location.href);
+function _() {
+  let i = document.documentElement.dataset.base || "./";
+  return new URL(i, location.href);
 }
-function i(a) {
-  return new URL(a, $()).href;
+function e(i) {
+  return new URL(i, _()).href;
 }
-function b(a) {
-  let e = a.replace(/^\//, ""), s = location.protocol === "file:", m = $();
-  if (e === "")
-    return s ? new URL("index.html", m).href : m.href;
-  return s ? new URL(`${e}.html`, m).href : new URL(e, m).href;
+function x(i) {
+  let t = i.replace(/^\//, ""), m = location.protocol === "file:", r = _();
+  if (t === "")
+    return m ? new URL("index.html", r).href : r.href;
+  return m ? new URL(`${t}.html`, r).href : new URL(t, r).href;
 }
 
 // scripts/fonts.js
-var _ = `
+var E = `
 @font-face {
     font-family: "Archivo";
-    src: url("${i("./assets/fonts/Archivo-Black.woff2")}") format("woff2");
+    src: url("${e("./assets/fonts/Archivo-Black.woff2")}") format("woff2");
     font-weight: 700;
     font-display: swap;
   }
 
   @font-face {
     font-family: "Archivo";
-    src: url("${i("./assets/fonts/Archivo-Regular.woff2")}") format("woff2");
+    src: url("${e("./assets/fonts/Archivo-Regular.woff2")}") format("woff2");
     font-weight: 400;
     font-display: swap;
   }
-`, z = document.createElement("style");
-z.textContent = _;
-document.head.appendChild(z);
+`, A = document.createElement("style");
+A.textContent = E;
+document.head.appendChild(A);
 
 // lib/define.js
-function C(a, e) {
-  if (a === void 0) {
-    if (e === Array)
+function L(i, t) {
+  if (i === void 0) {
+    if (t === Array)
       return [];
-    if (e === Object)
+    if (t === Object)
       return {};
-    if (e === Boolean)
+    if (t === Boolean)
       return !1;
-    if (e === Number)
+    if (t === Number)
       return 0;
     return;
   }
-  if (e === Boolean)
-    return Boolean(a);
-  if (e === Number)
-    return Number(a);
-  return a;
+  if (t === Boolean)
+    return Boolean(i);
+  if (t === Number)
+    return Number(i);
+  return i;
 }
-function r(a, { props: e = {}, attrs: s = [], styles: m = "", template: o, onRender: h = null }) {
-  let g = ["props", ...s];
+function n(i, { props: t = {}, attrs: m = [], styles: r = "", template: s, onRender: g = null }) {
+  let u = ["props", ...m];
 
-  class f extends HTMLElement {
-    static observedAttributes = g;
+  class p extends HTMLElement {
+    static observedAttributes = u;
     constructor() {
       super();
       this.attachShadow({ mode: "open" }), this._cleanup = null;
@@ -108,46 +108,46 @@ function r(a, { props: e = {}, attrs: s = [], styles: m = "", template: o, onRen
         this._render();
     }
     _getProps() {
-      let n = {}, l = this.getAttribute("props");
+      let o = {}, l = this.getAttribute("props");
       if (l)
         try {
-          n = JSON.parse(l);
+          o = JSON.parse(l);
         } catch {
-          n = {};
+          o = {};
         }
-      let c = {};
-      for (let p of Object.keys(e))
-        c[p] = C(n[p], e[p]);
-      return c;
+      let f = {};
+      for (let c of Object.keys(t))
+        f[c] = L(o[c], t[c]);
+      return f;
     }
     _applyForwardedAttrs() {
-      if (s.length === 0)
+      if (m.length === 0)
         return;
-      let n = this.shadowRoot.querySelector("[data-forward]");
-      if (!n)
+      let o = this.shadowRoot.querySelector("[data-forward]");
+      if (!o)
         return;
-      for (let l of s)
+      for (let l of m)
         if (this.hasAttribute(l))
-          n.setAttribute(l, this.getAttribute(l));
+          o.setAttribute(l, this.getAttribute(l));
         else
-          n.removeAttribute(l);
+          o.removeAttribute(l);
     }
     _render() {
       if (typeof this._cleanup === "function")
         this._cleanup(), this._cleanup = null;
-      let n = this._getProps(), l = typeof o === "function" ? o(n) : o;
-      if (this.shadowRoot.innerHTML = `<style>${m}</style>${l}`, this._applyForwardedAttrs(), h) {
-        let c = h(this.shadowRoot, n, this);
-        if (typeof c === "function")
-          this._cleanup = c;
+      let o = this._getProps(), l = typeof s === "function" ? s(o) : s;
+      if (this.shadowRoot.innerHTML = `<style>${r}</style>${l}`, this._applyForwardedAttrs(), g) {
+        let f = g(this.shadowRoot, o, this);
+        if (typeof f === "function")
+          this._cleanup = f;
       }
     }
   }
-  customElements.define(a, f);
+  customElements.define(i, p);
 }
 
 // scripts/components/app-link.js
-var A = `
+var B = `
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -208,13 +208,13 @@ var A = `
        content: "➶";
      }
   }
-`, S = ["href", "target", "rel", "download"], E = `
+`, O = ["href", "target", "rel", "download"], D = `
   <a data-forward><slot></slot></a>
 `;
-r("app-link", { attrs: S, styles: A, template: E });
+n("app-link", { attrs: O, styles: B, template: D });
 
 // scripts/components/app-logo.js
-var B = `
+var N = `
   :host {
     display: block;
   }
@@ -223,14 +223,14 @@ var B = `
     max-height: 7rem;
     width: auto;
   }
-`, D = ["width", "height", "src", "alt"], L = () => "<img data-forward />";
-r("app-logo", { attrs: D, styles: B, template: L });
+`, F = ["width", "height", "src", "alt"], P = () => "<img data-forward />";
+n("app-logo", { attrs: F, styles: N, template: P });
 
 // scripts/breakpoints.js
-var t = "640px", d = "1024px", w = "1920px";
+var a = "640px", y = "1024px", S = "1920px";
 
 // scripts/header.js
-var O = `
+var T = `
   :host {
     display: block;
     font-size: var(--size-small);
@@ -266,7 +266,7 @@ var O = `
     box-shadow: none;
   }
 
-  @media (max-width: ${t}) {
+  @media (max-width: ${a}) {
     .header__navigation {
       gap: 4rem;
     }
@@ -276,10 +276,10 @@ var O = `
     height: 5rem;
     width: auto;
   }
-`, P = `
+`, M = `
   <header>
-      <app-link variant="plain" href=${b("/")}>
-        <img src=${i("./assets/images/logo.avif")}
+      <app-link variant="plain" href=${x("/")}>
+        <img src=${e("./assets/images/logo.avif")}
           alt="Logo">
       </app-link>
 
@@ -287,25 +287,25 @@ var O = `
         <nav>
           <ul>
             <li>
-              <app-link variant="plain" href=${b("/")}>Home</app-link>
+              <app-link variant="plain" href=${x("/")}>Home</app-link>
             </li>
 
             <li>
-              <app-link variant="plain" href=${b("/about")}>About</app-link>
+              <app-link variant="plain" href=${x("/about")}>About</app-link>
             </li>
           </ul>
         </nav>
 
-        <app-link variant="secondary" href=${b("/#cta")}>
+        <app-link variant="secondary" href=${x("/#cta")}>
           Let's Craft &#8629;
         </app-link>
       </div>
   </header>
 `;
-r("section-header", { template: P, styles: O });
+n("section-header", { template: M, styles: T });
 
 // scripts/components/footer-nav.js
-var F = [
+var U = [
   { href: "/", name: "Home" },
   { href: "/about", name: "About" },
   { href: "/credits", name: "Credits" },
@@ -324,7 +324,7 @@ var F = [
     href: "/writings/foundation-building-interfaces-at-scale",
     name: "Foundation"
   }
-], T = `
+], q = `
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -333,7 +333,7 @@ var F = [
    display: flex;
    gap: 5rem;
 
-   @media (max-width: ${t}) {
+   @media (max-width: ${a}) {
         flex-direction: column;
         gap: 3rem;
         margin-block: 2rem;
@@ -362,7 +362,7 @@ var F = [
     max-height: 12.5ch;
     overflow: scroll;
 
-    @media (max-width: ${t}) {
+    @media (max-width: ${a}) {
         max-height: 20ch;
     }
   }
@@ -371,23 +371,23 @@ var F = [
     margin-right: 5rem;
     margin-bottom: 0.3rem;
   }
-`, N = () => `
+`, G = () => `
     <nav>
         <span>Sitemap</span>
 
         <ol>
-            ${F.map((a) => `
+            ${U.map((i) => `
                 <li>
-                    <app-link variant="sitemap" href=${b(a.href)} >${a.name}</app-link>
+                    <app-link variant="sitemap" href=${x(i.href)} >${i.name}</app-link>
                 </li>
             `).join("")}
         </ol>
     </nav>
 `;
-r("footer-nav", { styles: T, template: N });
+n("footer-nav", { styles: q, template: G });
 
 // scripts/components/footer-copyright.js
-var U = `
+var I = `
   :host {
    display: flex;
     justify-content: space-between;
@@ -395,7 +395,7 @@ var U = `
     padding-top: 1rem;
     margin-top: 3rem;
 
-   @media (max-width: ${t}) {
+   @media (max-width: ${a}) {
         flex-direction: column-reverse;
         gap: 2rem;
         border: none;
@@ -411,7 +411,7 @@ var U = `
     align-items: end;
     gap: 0.2rem;
 
-    @media (min-width: ${t}) {
+    @media (min-width: ${a}) {
       border: none;
       padding-top: none;
     }
@@ -435,7 +435,7 @@ var U = `
   nav {
     display: block;
 
-    @media (min-width: ${t}) {
+    @media (min-width: ${a}) {
       display: block;
     }
   }
@@ -446,7 +446,7 @@ var U = `
     font-weight: var(--font-bold);
     
 
-    @media (max-width: ${t}) {
+    @media (max-width: ${a}) {
       display: inline-block;
       margin-bottom: 0.5rem;
     }
@@ -455,7 +455,7 @@ var U = `
   p img {
     height: 2.3rem;
 
-     @media (max-width: ${t}) {
+     @media (max-width: ${a}) {
       
       height: 2.5rem;
     }
@@ -470,9 +470,9 @@ var U = `
     text-decoration: none;
     color: var(--color-text);
   }
-`, G = () => `
+`, H = () => `
       <p>
-          <img src=${i("./assets/images/logo.avif")}
+          <img src=${e("./assets/images/logo.avif")}
           alt="Logo">
           <a href="https://hanhtetaung.dev/">
             Crafted by Han
@@ -489,7 +489,7 @@ var U = `
               <li>
                   <a href="https://wa.me/message/DVOPVSAGBDENB1" target="_blank">
                   <img
-                      src=${i("./assets/icons/whatsapp.svg")}
+                      src=${e("./assets/icons/whatsapp.svg")}
                       alt="Email Icon"
                   />
                   </a>    
@@ -501,7 +501,7 @@ var U = `
                   rel="noopener"
                   >
                   <img
-                      src=${i("./assets/icons/instagram.svg")}
+                      src=${e("./assets/icons/instagram.svg")}
                       alt="Linkedin Icon"
                   />
                   </a>
@@ -513,7 +513,7 @@ var U = `
                   rel="noopener"
                   >
                   <img
-                      src=${i("./assets/icons/linkedin.svg")}
+                      src=${e("./assets/icons/linkedin.svg")}
                       alt="Linkedin Icon"
                   />
                   </a>
@@ -525,7 +525,7 @@ var U = `
                   rel="noopener"
                   >
                   <img
-                      src=${i("./assets/icons/github.svg")}
+                      src=${e("./assets/icons/github.svg")}
                       alt="Github Icon"
                   />
                   </a>
@@ -533,10 +533,10 @@ var U = `
           </ul>
         </nav>
 `;
-r("footer-copyright", { styles: U, template: G });
+n("footer-copyright", { styles: I, template: H });
 
 // scripts/footer.js
-var H = `
+var j = `
   :host {
     display: block;
   }
@@ -599,7 +599,7 @@ var H = `
     display: block;
   }
 
-  @media (min-width: ${t}) {
+  @media (min-width: ${a}) {
     #highlight-wrap {
       display: block;
     }
@@ -609,42 +609,42 @@ var H = `
       display: none;
     }
   }
-`, q = `
+`, J = `
   <footer>
 
     <div id="highlight-wrap">
-      <img id="highlight-base" src=${i("./assets/images/footer/highlight.png")} alt="Parting phrase">
-      <img id="highlight-lens" src=${i("./assets/images/footer/highlight-with-color.png")} alt="Parting phrase with color" aria-hidden="true">
+      <img id="highlight-base" src=${e("./assets/images/footer/highlight.png")} alt="Parting phrase">
+      <img id="highlight-lens" src=${e("./assets/images/footer/highlight-with-color.png")} alt="Parting phrase with color" aria-hidden="true">
       <div id="lens-ring"></div>
     </div>
 
-    <img id="thank-you" src=${i("./assets/images/footer/thank-you.avif")} alt="Thank you phrase">
-    <img id="looking-forward" src=${i("./assets/images/footer/looking-forward.avif")} alt="Parting Phrase">
+    <img id="thank-you" src=${e("./assets/images/footer/thank-you.avif")} alt="Thank you phrase">
+    <img id="looking-forward" src=${e("./assets/images/footer/looking-forward.avif")} alt="Parting Phrase">
 
     <!-- <footer-nav></footer-nav> -->
 
     <footer-copyright></footer-copyright>
   </footer>
 `;
-function j(a) {
-  let e = a.querySelector("footer"), s = a.getElementById("highlight-base"), m = a.getElementById("highlight-lens"), o = a.getElementById("lens-ring"), h = a.getElementById("highlight-wrap");
-  if (!e || !s || !m || !o || !h)
+function X(i) {
+  let t = i.querySelector("footer"), m = i.getElementById("highlight-base"), r = i.getElementById("highlight-lens"), s = i.getElementById("lens-ring"), g = i.getElementById("highlight-wrap");
+  if (!t || !m || !r || !s || !g)
     return;
-  function g(l) {
-    let c = s.getBoundingClientRect(), p = l.clientX - c.left, u = l.clientY - c.top, v = o.offsetWidth / 2;
-    o.style.left = `${p - v}px`, o.style.top = `${u - v}px`, m.style.clipPath = `circle(${v}px at ${p}px ${u}px)`;
+  function u(l) {
+    let f = m.getBoundingClientRect(), c = l.clientX - f.left, b = l.clientY - f.top, v = s.offsetWidth / 2;
+    s.style.left = `${c - v}px`, s.style.top = `${b - v}px`, r.style.clipPath = `circle(${v}px at ${c}px ${b}px)`;
   }
-  function f() {
-    o.setAttribute("data-visible", "true");
+  function p() {
+    s.setAttribute("data-visible", "true");
   }
-  function n() {
-    o.removeAttribute("data-visible"), m.style.clipPath = "circle(0px at 50% 50%)";
+  function o() {
+    s.removeAttribute("data-visible"), r.style.clipPath = "circle(0px at 50% 50%)";
   }
-  return e.addEventListener("mousemove", g), e.addEventListener("mouseenter", f), e.addEventListener("mouseleave", n), () => {
-    e.removeEventListener("mousemove", g), e.removeEventListener("mouseenter", f), e.removeEventListener("mouseleave", n);
+  return t.addEventListener("mousemove", u), t.addEventListener("mouseenter", p), t.addEventListener("mouseleave", o), () => {
+    t.removeEventListener("mousemove", u), t.removeEventListener("mouseenter", p), t.removeEventListener("mouseleave", o);
   };
 }
-r("section-footer", { styles: H, template: q, onRender: j });
+n("section-footer", { styles: j, template: J, onRender: X });
 
 // scripts/home/hero.js
 var K = `
@@ -654,7 +654,7 @@ var K = `
     margin-top: 5rem;
     overflow: hidden;
 
-    @media (min-width: ${t}) {
+    @media (min-width: ${a}) {
       height: min(calc(100vh - 108px - 10rem), 60rem);
       margin-top: 7rem;
     }
@@ -669,7 +669,7 @@ var K = `
     justify-content: start;
     position: relative;
 
-    @media (min-width: ${d}) {
+    @media (min-width: ${y}) {
       justify-content: end;
     }
   }
@@ -679,7 +679,7 @@ var K = `
     width: auto;
     display: block;
 
-    @media (min-width: ${t}) {
+    @media (min-width: ${a}) {
       max-height: 30rem;
     }
   }
@@ -711,7 +711,7 @@ var K = `
   #visible-img {
     cursor: auto;
 
-    @media (min-width: ${t}) {
+    @media (min-width: ${a}) {
       cursor: none;
     }
   }
@@ -726,7 +726,7 @@ var K = `
     clip-path: circle(0px at 50% 50%);
     display: none;
 
-    @media (min-width: ${t}) {
+    @media (min-width: ${a}) {
       display: block;
     }
   }
@@ -742,7 +742,7 @@ var K = `
     display: none;
   }
 
-  @media (min-width: ${t}) {
+  @media (min-width: ${a}) {
     #lens-ring[data-visible="true"] {
       display: block;
     }
@@ -757,7 +757,7 @@ var K = `
     <hgroup>
       <p>Han Htet Aung | GMT+7</p>
        <h1>
-         <img class="hero-title" src=${i("./assets/images/home/hero-title.svg")} alt="Craft Web identity">
+         <img class="hero-title" src=${e("./assets/images/home/hero-title.svg")} alt="Craft Web identity">
        </h1>
       <p>Web Designer & Developer who brings hand-drawn illustrations to create unique experiences.</p>
     </hgroup>
@@ -768,44 +768,44 @@ var K = `
       <div id="lens-ring"></div>
     </div>
   </section>
-`, W = `(min-width: ${t})`;
-function M(a) {
-  let e = a.getElementById("img-wrap"), s = a.getElementById("visible-img"), m = a.getElementById("lens-img"), o = a.getElementById("lens-ring");
-  if (!e || !s || !m || !o)
+`, W = `(min-width: ${a})`;
+function Y(i) {
+  let t = i.getElementById("img-wrap"), m = i.getElementById("visible-img"), r = i.getElementById("lens-img"), s = i.getElementById("lens-ring");
+  if (!t || !m || !r || !s)
     return;
-  let h = window.matchMedia(W);
-  function g(u) {
-    let v = s.getBoundingClientRect(), x = u.clientX - v.left, k = u.clientY - v.top, y = o.offsetWidth / 2;
-    o.style.left = `${x - y}px`, o.style.top = `${k - y}px`, m.style.clipPath = `circle(${y}px at ${x}px ${k}px)`;
+  let g = window.matchMedia(W);
+  function u(b) {
+    let v = m.getBoundingClientRect(), $ = b.clientX - v.left, z = b.clientY - v.top, h = s.offsetWidth / 2;
+    s.style.left = `${$ - h}px`, s.style.top = `${z - h}px`, r.style.clipPath = `circle(${h}px at ${$}px ${z}px)`;
   }
-  function f() {
-    o.setAttribute("data-visible", "true");
+  function p() {
+    s.setAttribute("data-visible", "true");
   }
-  function n() {
-    o.removeAttribute("data-visible"), m.style.clipPath = "circle(0px at 50% 50%)";
+  function o() {
+    s.removeAttribute("data-visible"), r.style.clipPath = "circle(0px at 50% 50%)";
   }
   function l() {
-    e.addEventListener("mousemove", g), e.addEventListener("mouseenter", f), e.addEventListener("mouseleave", n);
+    t.addEventListener("mousemove", u), t.addEventListener("mouseenter", p), t.addEventListener("mouseleave", o);
   }
-  function c() {
-    e.removeEventListener("mousemove", g), e.removeEventListener("mouseenter", f), e.removeEventListener("mouseleave", n), n();
+  function f() {
+    t.removeEventListener("mousemove", u), t.removeEventListener("mouseenter", p), t.removeEventListener("mouseleave", o), o();
   }
-  function p(u) {
-    if (u.matches)
+  function c(b) {
+    if (b.matches)
       l();
     else
-      c();
+      f();
   }
-  if (h.matches)
+  if (g.matches)
     l();
-  return h.addEventListener("change", p), () => {
-    c(), h.removeEventListener("change", p);
+  return g.addEventListener("change", c), () => {
+    f(), g.removeEventListener("change", c);
   };
 }
-r("section-hero", { styles: K, template: V, onRender: M });
+n("section-hero", { styles: K, template: V, onRender: Y });
 
 // scripts/home/recent-crafts.js
-var X = `
+var Q = `
   :host {
     position: relative;
     display: block;
@@ -824,10 +824,9 @@ var X = `
     margin-bottom: 5rem;
   }
 
-   p {
+  p {
     margin: 0;
   }
-
 
   ul {
     list-style: none;
@@ -838,23 +837,28 @@ var X = `
     flex-wrap: wrap;
     gap: 3rem;
 
-    @media (min-width: ${t}) {
+    @media (min-width: ${a}) {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
     }
 
-
-    @media (min-width: ${d}) {
+    @media (min-width: ${y}) {
       grid-template-columns: repeat(3, 1fr);
     }
   }
 
   li {
-    border: 1px solid var(--color-primary);
-    border-radius: 3rem;
-    width: 100%;
-    text-align: center;
+  position: relative;
+  border: 1px solid var(--color-primary);
+  border-radius: 3rem;
+  width: 100%;
+  text-align: center;
+  overflow: hidden;
+
+  @media (min-width: ${a}) {
+    cursor: none;
   }
+}
 
   a {
     display: block;
@@ -863,13 +867,45 @@ var X = `
     color: var(--color-text);
   }
 
-  img {
-    width: auto;
+  img.cover {
+    width: 100%;
     max-width: 100%;
     height: 20rem;
+    object-fit: cover;
+    display: block;
   }
 
-`, I = `
+ .stack-img {
+  display: none;
+
+  @media (min-width: ${a}) {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: auto;
+    height: 10rem;
+    object-fit: cover;
+    border-radius: 1rem;
+    box-shadow: 0 0.8rem 2rem rgba(0, 0, 0, 0.3);
+    pointer-events: none;
+    z-index: 10;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.85);
+    transition: opacity 0.25s ease, transform 0.4s ease;
+    will-change: transform, opacity;
+  }
+}
+  .stack-img.visible {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  .stack-img.fade-out {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.9);
+  }
+`, Z = `
 <section>
   <hgroup>
     <p>[ Recent Crafts ]</p>
@@ -877,45 +913,116 @@ var X = `
   </hgroup>
 
   <ul>
-    <li>
+    <li class="scrub-item">
       <a href="/studio-lah" target="_blank">
-        <img src=${i("./assets/images/home/studio-lah.png")} alt="Studio LAH">
+        <img class="cover" 
+          src=${e("./assets/images/home/studio-lah.png")} 
+          data-images='${JSON.stringify([
+  e("./assets/images/home/studio-lah-1.png"),
+  e("./assets/images/home/studio-lah-2.png"),
+  e("./assets/images/home/studio-lah-3.png")
+])}'
+          alt="Studio LAH">
       </a>
     </li>
 
-    <li>
+    <li class="scrub-item">
       <a href="/maple" target="_blank">
-        <img src=${i("./assets/images/home/maple-montessori.avif")} alt="Maple Montessori">
+        <img class="cover" 
+          src=${e("./assets/images/home/maple-montessori.avif")}
+          data-images='${JSON.stringify([
+  e("./assets/images/home/maple-1.png"),
+  e("./assets/images/home/maple-2.png")
+])}'
+          alt="Maple Montessori">
       </a>
     </li>
 
-     <li>
+    <li class="scrub-item">
       <a href="/map" target="_blank">
-        <img src=${i("./assets/images/home/story-map.avif")} alt="Story Map">
+        <img class="cover" 
+          src=${e("./assets/images/home/story-map.avif")}
+          data-images='${JSON.stringify([
+  e("./assets/images/home/map-1.png"),
+  e("./assets/images/home/map-2.png")
+])}'
+          alt="Story Map">
       </a>
     </li>
 
-    
-     <li>
-       <a href="https://skssolarmyanmar.com/" target="_blank">
-         <img src=${i("./assets/images/home/sks-solar.avif")} alt="SKS Solar">
+    <li class="scrub-item">
+      <a href="https://skssolarmyanmar.com/" target="_blank">
+        <img class="cover" 
+          src=${e("./assets/images/home/sks-solar.avif")}
+          data-images='${JSON.stringify([
+  e("./assets/images/home/sks-solar-1.png"),
+  e("./assets/images/home/sks-solar-2.png"),
+  e("./assets/images/home/sks-solar-3.png")
+])}'
+          alt="SKS Solar">
       </a>
     </li>
-    
   </ul>
 </section>
 `;
-r("section-recent-crafts", { styles: X, template: I });
+function R(i) {
+  if (!window.matchMedia(`(min-width: ${a})`).matches)
+    return;
+  i.querySelectorAll(".scrub-item").forEach((r) => {
+    let s = r.querySelector("img.cover"), g = JSON.parse(s.dataset.images || "[]");
+    if (g.length === 0)
+      return;
+    g.forEach((h) => {
+      let k = new Image;
+      k.src = h;
+    });
+    let u = 0, p = null, o = null, l = 40, f = 4, c = [];
+    function b(h, k) {
+      let d = document.createElement("img");
+      d.className = "stack-img", d.src = g[u], d.style.left = `${h}px`, d.style.top = `${k}px`;
+      let w = (Math.random() * 16 - 8).toFixed(1);
+      if (d.style.transform = `translate(-50%, -50%) rotate(${w}deg) scale(0.85)`, r.appendChild(d), c.push(d), requestAnimationFrame(() => {
+        d.classList.add("visible"), d.style.transform = `translate(-50%, -50%) rotate(${w}deg) scale(1)`;
+      }), c.length > f) {
+        let C = c.shift();
+        v(C);
+      }
+      u = (u + 1) % g.length;
+    }
+    function v(h) {
+      h.classList.add("fade-out"), h.classList.remove("visible"), setTimeout(() => {
+        h.remove();
+      }, 300);
+    }
+    function $(h) {
+      let k = r.getBoundingClientRect(), d = h.clientX - k.left, w = h.clientY - k.top;
+      if (p === null) {
+        p = d, o = w, b(d, w);
+        return;
+      }
+      if (Math.hypot(d - p, w - o) > l)
+        b(d, w), p = d, o = w;
+    }
+    function z() {
+      p = null, o = null;
+      while (c.length)
+        v(c.shift());
+      u = 0;
+    }
+    r.addEventListener("mousemove", $), r.addEventListener("mouseleave", z);
+  });
+}
+n("section-recent-crafts", { styles: Q, template: Z, onRender: R });
 
 // scripts/home/little-process.js
-var J = `
+var ee = `
   :host {
     position: relative;
     display: block;
     overflow: hidden;
     margin-block: 15rem;
 
-    @media (min-width: ${d}) {
+    @media (min-width: ${y}) {
       margin-top: 20rem;
       margin-bottom: 25rem;
     }
@@ -970,13 +1077,13 @@ var J = `
     height: auto;
     margin-left: auto;
 
-    @media (min-width: ${t}) {
+    @media (min-width: ${a}) {
       height: 28rem;
       width: auto;
       grid-column: span 2; 
     }
 
-    @media (min-width: ${d}) {
+    @media (min-width: ${y}) {
       height: 35rem;
     }
 
@@ -999,13 +1106,13 @@ var J = `
   }
 
   article {
-    @media (min-width: ${t}) {
+    @media (min-width: ${a}) {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
       gap: 12rem;
     }
   }
-`, Y = `
+`, te = `
 
 <section>
   <hgroup>
@@ -1014,7 +1121,7 @@ var J = `
   </hgroup>
 
   <article>
-    <img src=${i("./assets/images/home/process.avif")} alt="Little Process">
+    <img src=${e("./assets/images/home/process.avif")} alt="Little Process">
   
     <ul>
       <li>
@@ -1043,10 +1150,10 @@ var J = `
 </section>
 
 `;
-r("section-little-process", { styles: J, template: Y });
+n("section-little-process", { styles: ee, template: te });
 
 // scripts/home/cta.js
-var Z = `
+var ae = `
   :host {
     display: block;
     height: 70rem;
@@ -1054,7 +1161,7 @@ var Z = `
     overflow: hidden;
     margin-top: 20rem;
 
-    @media (min-width: ${t}) {
+    @media (min-width: ${a}) {
       margin-bottom: 10rem;  
     }
   }
@@ -1067,11 +1174,11 @@ var Z = `
     justify-content: space-between;
     margin-top: 5rem;
 
-    @media (min-width: ${t}) {
+    @media (min-width: ${a}) {
       height: 90%;
     }
 
-    @media (min-width: ${w}) {
+    @media (min-width: ${S}) {
       position: relative;
       overflow: hidden;
     }
@@ -1101,7 +1208,7 @@ var Z = `
     padding-block: 2rem;
     overflow: scroll;
 
-    @media (min-width: ${t}) {
+    @media (min-width: ${a}) {
       max-width: 50%;
       gap: 3rem;
     }
@@ -1115,13 +1222,13 @@ var Z = `
     left: -0%;
     top: 30%;
 
-    @media (min-width: ${t}) {
+    @media (min-width: ${a}) {
       left: auto;
       right: 20%;
       top: 20rem;
     }
 
-    @media (min-width: ${d}) {
+    @media (min-width: ${y}) {
       opacity: 1;
     }
   }
@@ -1147,7 +1254,7 @@ var Z = `
     text-decoration: none;
     color: var(--color-text);
   }
-`, Q = `
+`, ie = `
 <section>
   <img src="./assets/images/home/red-telephone-box.avif" alt="Red Telephone Box">
 
@@ -1158,34 +1265,34 @@ var Z = `
 
   <ul>
     <li>
-      <app-logo src=${i("./assets/icons/whatsapp.svg")} alt="Whatsapp icon"></app-logo>
+      <app-logo src=${e("./assets/icons/whatsapp.svg")} alt="Whatsapp icon"></app-logo>
       <a href="https://wa.me/message/DVOPVSAGBDENB1" target="_blank">wa/crafted.han</a>
     </li>
     <li>
-      <app-logo src=${i("./assets/icons/email.svg")} alt="Email icon"></app-logo>
+      <app-logo src=${e("./assets/icons/email.svg")} alt="Email icon"></app-logo>
       <a href="mailto:hanhtetaung.dev@gmail.com" target="_blank">hanhtetaung.dev@gmail.com</a>
       <button id="copyBtn">Copy</button>
     </li>
     <li>
-      <app-logo src=${i("./assets/icons/linkedin.svg")} alt="Linkedin icon"></app-logo>
+      <app-logo src=${e("./assets/icons/linkedin.svg")} alt="Linkedin icon"></app-logo>
       <a href="https://www.linkedin.com/in/han-htet-aung/" target="_blank">in/han-htet-aung</a>
     </li>
   </ul>
 </section>
 `;
-function R(a) {
-  let e = a.getElementById("copyBtn");
-  if (!e)
+function oe(i) {
+  let t = i.getElementById("copyBtn");
+  if (!t)
     return;
-  e.addEventListener("click", () => {
+  t.addEventListener("click", () => {
     navigator.clipboard.writeText("hanhtetaung.dev@gmail.com").then(() => {
-      let s = e.textContent;
-      e.textContent = "Copied!", e.classList.add("copied"), setTimeout(() => {
-        e.textContent = s, e.classList.remove("copied");
+      let m = t.textContent;
+      t.textContent = "Copied!", t.classList.add("copied"), setTimeout(() => {
+        t.textContent = m, t.classList.remove("copied");
       }, 1500);
     });
   });
 }
-r("section-cta", { styles: Z, template: Q, onRender: R });
+n("section-cta", { styles: ae, template: ie, onRender: oe });
 </script></body>
 </html>

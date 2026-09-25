@@ -23,6 +23,10 @@ const styles = /* css */ `
     margin: 0;
     font-size: var(--font-title);
     margin-bottom: 3rem;
+
+     @media (min-width: ${TABLET}) {
+      font-size: var(--font-display);
+    }
   }
 
   ul {

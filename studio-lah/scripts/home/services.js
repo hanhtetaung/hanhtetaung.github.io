@@ -11,7 +11,6 @@ const styles = /* css */ `
   section {
     width: min(80%, 144rem);
     margin-inline: auto;
-    /* text-align: center; */
 
     @media (min-width: ${DESKTOP}) {
       justify-content: space-between;
@@ -23,6 +22,10 @@ const styles = /* css */ `
     margin: 0;
     font-size: var(--font-title);
     margin-bottom: 8rem;
+
+     @media (min-width: ${TABLET}) {
+      font-size: var(--font-display);
+    }
   }
 
   ul {
