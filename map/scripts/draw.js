@@ -3,6 +3,7 @@ import { asset, isAssetReady, onAssetReady } from "./assets.js";
 import { roadPath, setRoadPath, generateRoadPath } from "./road.js";
 import { roadInstructions, drawObjects } from "./scene.js";
 import { camera } from "./camera.js";
+import { updateEmbeds } from "./embeds.js";
 
 function getVisibleWorldRect(pad = 0) {
   // canvas.width/height are device pixels (canvas.width = innerWidth * dpr);
@@ -34,6 +35,8 @@ export function draw() {
   drawObjects(view);
 
   ctx.restore();
+
+  updateEmbeds();
 }
 
 function drawAsset(name, x, y) {

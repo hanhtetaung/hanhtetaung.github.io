@@ -3,5 +3,6 @@ import "./road.js";
 import "./assets.js";
 import "./draw.js";
 import "./scene.js";
+import "./embeds.js";
 import "./main.js";
 import "./input.js";

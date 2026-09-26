@@ -280,11 +280,21 @@ const sceneObjects = [
   { name: "red-luggage", x: 700, y: 200, height: 100 },
 ];
 
+export const sceneEmbeds = [
+  {
+    x: 200,
+    y: 900,
+    src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2179892375&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false",
+  },
+  {
+    x: 4000,
+    y: 800,
+    src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2179891723&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false",
+  },
+];
+
 export function drawObjects(view) {
   for (const { name, x, y, height } of sceneObjects) {
-    // Bounding-box test using height as a stand-in for width too (most
-    // sprites aren't wildly wider than they are tall, and view already
-    // has generous padding baked in from draw.js).
     if (
       x + height < view.left ||
       x - height > view.right ||
