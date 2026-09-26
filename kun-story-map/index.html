@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Story Map</title>
+    <link rel="icon" href="../favicon.ico" sizes="30x30" type="image/x-icon" />
+
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        background: #eae5ce;
+        overflow: hidden;
+      }
+      canvas {
+        display: block;
+        width: 100vw;
+        height: 100vh;
+        cursor: grab;
+        touch-action: none;
+      }
+      canvas.dragging {
+        cursor: grabbing;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="c"></canvas>
+
+    <script type="module" src="./scripts/index.js"></script>
+  </body>
+</html>
