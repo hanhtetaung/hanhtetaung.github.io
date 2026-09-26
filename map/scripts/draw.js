@@ -68,15 +68,20 @@ function drawRoad(view) {
       midY < view.top ||
       midY > view.bottom
     ) {
-      continue; // segment is off-screen, skip the transform+draw entirely
+      continue;
     }
 
     const angle = Math.atan2(p2.y - p1.y, p2.x - p1.x);
 
+    // draw curve tiles at half width so they don't overlap
+    // despite being spaced half a tile-width apart
+    const w = p2.curve ? road.width * 0.5 : road.width;
+    const h = road.height;
+
     ctx.save();
     ctx.translate(midX, midY);
     ctx.rotate(angle);
-    ctx.drawImage(road, -road.width / 2, -road.height / 2);
+    ctx.drawImage(road, -w / 2, -h / 2, w, h);
     ctx.restore();
   }
 }
@@ -84,6 +89,10 @@ function drawRoad(view) {
 function updateRoadPath() {
   const road = asset("road", "svg");
   const tileSpacing = road.width * 0.92;
+
+  // turnSteps doubled (7 -> 14), so spacing must halve to keep
+  // the same total arc length (curveSpacing * turnSteps constant):
+  // old: tileSpacing * 7  ==  new: (tileSpacing*0.5) * 14
   const curveSpacing = tileSpacing * 0.5;
 
   setRoadPath(

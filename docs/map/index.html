@@ -32,69 +32,71 @@
 
     
   <script type="module">// map/scripts/main.js
-var r = document.getElementById("c"), e = r.getContext("2d");
-function F() {
-  let t = window.devicePixelRatio || 1, o = 4096, n = 16777216, s = Math.min(t, 4096 / window.innerWidth, 4096 / window.innerHeight), u = window.innerWidth * s * window.innerHeight * s;
-  if (u > 16777216)
-    s *= Math.sqrt(16777216 / u);
-  r.width = Math.floor(window.innerWidth * s), r.height = Math.floor(window.innerHeight * s), r.style.width = window.innerWidth + "px", r.style.height = window.innerHeight + "px", e.setTransform(s, 0, 0, s, 0, 0), e.imageSmoothingEnabled = !0, e.imageSmoothingQuality = "high", $();
+var c = document.getElementById("c"), f = c.getContext("2d");
+function G() {
+  let o = window.devicePixelRatio || 1, t = 4096, l = 16777216, u = Math.min(o, 4096 / window.innerWidth, 4096 / window.innerHeight), s = window.innerWidth * u * window.innerHeight * u;
+  if (s > 16777216)
+    u *= Math.sqrt(16777216 / s);
+  c.width = Math.floor(window.innerWidth * u), c.height = Math.floor(window.innerHeight * u), c.style.width = window.innerWidth + "px", c.style.height = window.innerHeight + "px", f.setTransform(u, 0, 0, u, 0, 0), f.imageSmoothingEnabled = !0, f.imageSmoothingQuality = "high", h();
 }
-window.addEventListener("resize", F);
-window.addEventListener("load", F);
+window.addEventListener("resize", G);
+window.addEventListener("load", G);
 
 // map/scripts/assets.js
-var P = "png", z = {}, g = {}, Y = {};
-function y(t, o = P) {
-  if (z[t])
-    return z[t];
-  let n = new Image;
-  z[t] = n, g[t] = !1;
-  let s = t.replace(/_/g, "-");
-  return n.onerror = () => console.warn(`Failed to load assets/${s}.${o}`), n.onload = () => {
-    if (g[t] = !0, Y[t])
-      Y[t]();
-    $();
-  }, n.src = `assets/${s}.${o}`, n;
+var A = "png", b = {}, i = {}, q = {};
+function Y(o, t = A) {
+  if (b[o])
+    return b[o];
+  let l = new Image;
+  b[o] = l, i[o] = !1;
+  let u = o.replace(/_/g, "-");
+  return l.onerror = () => console.warn(`Failed to load assets/${u}.${t}`), l.onload = () => {
+    if (i[o] = !0, q[o])
+      q[o]();
+    h();
+  }, l.src = `assets/${u}.${t}`, l;
 }
-function M(t) {
-  return !!g[t];
+function L(o) {
+  return !!i[o];
 }
-function T(t, o) {
-  Y[t] = o;
+function N(o, t) {
+  q[o] = t;
 }
 
 // map/scripts/road.js
-var d = [];
-function k(t) {
-  d = t;
+var y = [];
+function O(o) {
+  y = o;
 }
-function G(t, o, n, s, u) {
-  let c = [{ x: t, y: o }], i = 0;
-  for (let f of u)
-    if (f.straight)
-      for (let m = 0;m < f.straight; m++) {
-        let p = c[c.length - 1];
-        c.push({
-          x: p.x + Math.cos(i) * n,
-          y: p.y + Math.sin(i) * n
+function U(o, t, l, u, s) {
+  let r = [{ x: o, y: t, curve: !1 }], $ = 0;
+  for (let z of s)
+    if (z.straight)
+      for (let X = 0;X < z.straight; X++) {
+        let d = r[r.length - 1];
+        r.push({
+          x: d.x + Math.cos($) * l,
+          y: d.y + Math.sin($) * l,
+          curve: !1
         });
       }
-    else if (f.curve) {
-      let p = f.curve * Math.PI / 180 / 14;
-      for (let _ = 0;_ < 14; _++) {
-        i += p;
-        let B = c[c.length - 1];
-        c.push({
-          x: B.x + Math.cos(i) * s,
-          y: B.y + Math.sin(i) * s
+    else if (z.curve) {
+      let d = z.curve * Math.PI / 180 / 14;
+      for (let T = 0;T < 14; T++) {
+        $ += d;
+        let k = r[r.length - 1];
+        r.push({
+          x: k.x + Math.cos($) * u,
+          y: k.y + Math.sin($) * u,
+          curve: !0
         });
       }
     }
-  return c;
+  return r;
 }
 
 // map/scripts/scene.js
-var I = [
+var x = [
   { straight: 4 },
   { curve: -30 },
   { straight: 2 },
@@ -199,7 +201,7 @@ var I = [
   { curve: -90 },
   { straight: 5 },
   { curve: 90 }
-], Q = [
+], D = [
   { name: "09-09-2026", x: -850, y: 7150, height: 100 },
   { name: "05-09-2026", x: -2680, y: 5350, height: 100 },
   { name: "16-06-2026", x: 1000, y: 5350, height: 100 },
@@ -333,109 +335,109 @@ var I = [
   { name: "roses", x: 250, y: 500, height: 100 },
   { name: "red-luggage", x: 700, y: 200, height: 100 }
 ];
-function N(t) {
-  for (let { name: o, x: n, y: s, height: u } of Q) {
-    if (n + u < t.left || n - u > t.right || s + u < t.top || s - u > t.bottom)
+function C(o) {
+  for (let { name: t, x: l, y: u, height: s } of D) {
+    if (l + s < o.left || l - s > o.right || u + s < o.top || u - s > o.bottom)
       continue;
-    O(o, n, s, u);
+    I(t, l, u, s);
   }
 }
 
 // map/scripts/draw.js
-function S(t = 0) {
-  let o = r.clientWidth, n = r.clientHeight;
+function K(o = 0) {
+  let t = c.clientWidth, l = c.clientHeight;
   return {
-    left: -l.x / l.zoom - t,
-    top: -l.y / l.zoom - t,
-    right: (o - l.x) / l.zoom + t,
-    bottom: (n - l.y) / l.zoom + t
+    left: -n.x / n.zoom - o,
+    top: -n.y / n.zoom - o,
+    right: (t - n.x) / n.zoom + o,
+    bottom: (l - n.y) / n.zoom + o
   };
 }
-function $() {
-  e.clearRect(0, 0, r.width, r.height), e.save(), e.translate(l.x, l.y), e.scale(l.zoom, l.zoom), e.imageSmoothingEnabled = l.zoom < 2;
-  let t = S(400);
-  J(t), N(t), e.restore();
+function h() {
+  f.clearRect(0, 0, c.width, c.height), f.save(), f.translate(n.x, n.y), f.scale(n.zoom, n.zoom), f.imageSmoothingEnabled = n.zoom < 2;
+  let o = K(400);
+  V(o), C(o), f.restore();
 }
-function O(t, o, n, s) {
-  let u = y(t);
-  if (!M(t))
+function I(o, t, l, u) {
+  let s = Y(o);
+  if (!L(o))
     return;
-  let c = s / u.naturalHeight, i = u.naturalWidth * c;
-  e.drawImage(u, o, n, i, s);
+  let r = u / s.naturalHeight, $ = s.naturalWidth * r;
+  f.drawImage(s, t, l, $, u);
 }
-function J(t) {
-  let o = y("road", "svg");
-  if (!M("road"))
+function V(o) {
+  let t = Y("road", "svg");
+  if (!L("road"))
     return;
-  for (let n = 0;n < d.length - 1; n++) {
-    let s = d[n], u = d[n + 1], c = (s.x + u.x) / 2, i = (s.y + u.y) / 2;
-    if (c < t.left || c > t.right || i < t.top || i > t.bottom)
+  for (let l = 0;l < y.length - 1; l++) {
+    let u = y[l], s = y[l + 1], r = (u.x + s.x) / 2, $ = (u.y + s.y) / 2;
+    if (r < o.left || r > o.right || $ < o.top || $ > o.bottom)
       continue;
-    let f = Math.atan2(u.y - s.y, u.x - s.x);
-    e.save(), e.translate(c, i), e.rotate(f), e.drawImage(o, -o.width / 2, -o.height / 2), e.restore();
+    let z = Math.atan2(s.y - u.y, s.x - u.x), X = s.curve ? t.width * 0.5 : t.width, d = t.height;
+    f.save(), f.translate(r, $), f.rotate(z), f.drawImage(t, -X / 2, -d / 2, X, d), f.restore();
   }
 }
-function A() {
-  let o = y("road", "svg").width * 0.92, n = o * 0.5;
-  k(G(0, 400, o, n, I));
+function W() {
+  let t = Y("road", "svg").width * 0.92, l = t * 0.5;
+  O(U(0, 400, t, l, x));
 }
-T("road", A);
+N("road", W);
 
 // map/scripts/camera.js
-var l = { x: -2000, y: 2000, zoom: 0.3 }, D = 0.05, K = 5, x = !1;
-function X() {
-  if (x)
+var n = { x: -2000, y: 2000, zoom: 0.3 }, H = 0.05, R = 5, M = !1;
+function E() {
+  if (M)
     return;
-  x = !0, requestAnimationFrame(() => {
-    x = !1, $();
+  M = !0, requestAnimationFrame(() => {
+    M = !1, h();
   });
 }
-function E(t, o, n) {
-  let s = Math.min(K, Math.max(D, l.zoom * n)), u = (t - l.x) / l.zoom, c = (o - l.y) / l.zoom;
-  l.zoom = s, l.x = t - u * l.zoom, l.y = o - c * l.zoom, X();
+function Z(o, t, l) {
+  let u = Math.min(R, Math.max(H, n.zoom * l)), s = (o - n.x) / n.zoom, r = (t - n.y) / n.zoom;
+  n.zoom = u, n.x = o - s * n.zoom, n.y = t - r * n.zoom, E();
 }
 
 // map/scripts/input.js
-var L = !1, b = 0, q = 0;
-r.addEventListener("mousedown", (t) => {
-  L = !0, b = t.clientX, q = t.clientY, r.classList.add("dragging");
+var e = !1, _ = 0, B = 0;
+c.addEventListener("mousedown", (o) => {
+  e = !0, _ = o.clientX, B = o.clientY, c.classList.add("dragging");
 });
 window.addEventListener("mouseup", () => {
-  L = !1, r.classList.remove("dragging");
+  e = !1, c.classList.remove("dragging");
 });
-window.addEventListener("mousemove", (t) => {
-  if (!L)
+window.addEventListener("mousemove", (o) => {
+  if (!e)
     return;
-  l.x += t.clientX - b, l.y += t.clientY - q, b = t.clientX, q = t.clientY, X();
+  n.x += o.clientX - _, n.y += o.clientY - B, _ = o.clientX, B = o.clientY, E();
 });
-r.addEventListener("wheel", (t) => {
-  t.preventDefault();
-  let o = r.getBoundingClientRect(), n = t.clientX - o.left, s = t.clientY - o.top, u = t.deltaY < 0 ? 1.1 : 0.9;
-  E(n, s, u);
+c.addEventListener("wheel", (o) => {
+  o.preventDefault();
+  let t = c.getBoundingClientRect(), l = o.clientX - t.left, u = o.clientY - t.top, s = o.deltaY < 0 ? 1.1 : 0.9;
+  Z(l, u, s);
 }, { passive: !1 });
-var h = null, Z = null, U = 1;
-r.addEventListener("touchstart", (t) => {
-  if (t.touches.length === 1)
-    h = { x: t.touches[0].clientX, y: t.touches[0].clientY };
-  else if (t.touches.length === 2)
-    h = null, Z = C(t.touches), U = l.zoom;
+var m = null, F = null, Q = 1;
+c.addEventListener("touchstart", (o) => {
+  if (o.touches.length === 1)
+    m = { x: o.touches[0].clientX, y: o.touches[0].clientY };
+  else if (o.touches.length === 2)
+    m = null, F = J(o.touches), Q = n.zoom;
 });
-r.addEventListener("touchmove", (t) => {
-  if (t.preventDefault(), t.touches.length === 1 && h) {
-    let o = t.touches[0];
-    l.x += o.clientX - h.x, l.y += o.clientY - h.y, h = { x: o.clientX, y: o.clientY }, X();
-  } else if (t.touches.length === 2) {
-    let o = C(t.touches), n = r.getBoundingClientRect(), s = (t.touches[0].clientX + t.touches[1].clientX) / 2 - n.left, u = (t.touches[0].clientY + t.touches[1].clientY) / 2 - n.top, i = U * (o / Z) / l.zoom;
-    E(s, u, i);
+c.addEventListener("touchmove", (o) => {
+  if (o.preventDefault(), o.touches.length === 1 && m) {
+    let t = o.touches[0];
+    n.x += t.clientX - m.x, n.y += t.clientY - m.y, m = { x: t.clientX, y: t.clientY }, E();
+  } else if (o.touches.length === 2) {
+    let t = J(o.touches), l = c.getBoundingClientRect(), u = (o.touches[0].clientX + o.touches[1].clientX) / 2 - l.left, s = (o.touches[0].clientY + o.touches[1].clientY) / 2 - l.top, $ = Q * (t / F) / n.zoom;
+    Z(u, s, $);
   }
 }, { passive: !1 });
-r.addEventListener("touchend", (t) => {
-  if (h = null, Z = null, t.touches.length === 1)
-    h = { x: t.touches[0].clientX, y: t.touches[0].clientY };
+c.addEventListener("touchend", (o) => {
+  if (m = null, F = null, o.touches.length === 1)
+    m = { x: o.touches[0].clientX, y: o.touches[0].clientY };
 });
-function C(t) {
-  let o = t[0].clientX - t[1].clientX, n = t[0].clientY - t[1].clientY;
-  return Math.hypot(o, n);
+function J(o) {
+  let t = o[0].clientX - o[1].clientX, l = o[0].clientY - o[1].clientY;
+  return Math.hypot(t, l);
 }
 </script></body>
 </html>
