@@ -89,7 +89,7 @@ function L(i, t) {
 function n(i, { props: t = {}, attrs: m = [], styles: r = "", template: s, onRender: g = null }) {
   let u = ["props", ...m];
 
-  class p extends HTMLElement {
+  class d extends HTMLElement {
     static observedAttributes = u;
     constructor() {
       super();
@@ -143,11 +143,11 @@ function n(i, { props: t = {}, attrs: m = [], styles: r = "", template: s, onRen
       }
     }
   }
-  customElements.define(i, p);
+  customElements.define(i, d);
 }
 
 // scripts/components/app-link.js
-var B = `
+var O = `
   :host {
     --local-bg: transparent;
     --local-color: var(--color-text);
@@ -208,10 +208,10 @@ var B = `
        content: "➶";
      }
   }
-`, O = ["href", "target", "rel", "download"], D = `
+`, B = ["href", "target", "rel", "download"], D = `
   <a data-forward><slot></slot></a>
 `;
-n("app-link", { attrs: O, styles: B, template: D });
+n("app-link", { attrs: B, styles: O, template: D });
 
 // scripts/components/app-logo.js
 var N = `
@@ -223,8 +223,8 @@ var N = `
     max-height: 7rem;
     width: auto;
   }
-`, F = ["width", "height", "src", "alt"], P = () => "<img data-forward />";
-n("app-logo", { attrs: F, styles: N, template: P });
+`, P = ["width", "height", "src", "alt"], F = () => "<img data-forward />";
+n("app-logo", { attrs: P, styles: N, template: F });
 
 // scripts/breakpoints.js
 var a = "640px", y = "1024px", S = "1920px";
@@ -276,7 +276,7 @@ var T = `
     height: 5rem;
     width: auto;
   }
-`, M = `
+`, I = `
   <header>
       <app-link variant="plain" href=${x("/")}>
         <img src=${e("./assets/images/logo.avif")}
@@ -302,10 +302,10 @@ var T = `
       </div>
   </header>
 `;
-n("section-header", { template: M, styles: T });
+n("section-header", { template: I, styles: T });
 
 // scripts/components/footer-nav.js
-var U = [
+var M = [
   { href: "/", name: "Home" },
   { href: "/about", name: "About" },
   { href: "/credits", name: "Credits" },
@@ -324,7 +324,7 @@ var U = [
     href: "/writings/foundation-building-interfaces-at-scale",
     name: "Foundation"
   }
-], q = `
+], U = `
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -371,12 +371,12 @@ var U = [
     margin-right: 5rem;
     margin-bottom: 0.3rem;
   }
-`, G = () => `
+`, q = () => `
     <nav>
         <span>Sitemap</span>
 
         <ol>
-            ${U.map((i) => `
+            ${M.map((i) => `
                 <li>
                     <app-link variant="sitemap" href=${x(i.href)} >${i.name}</app-link>
                 </li>
@@ -384,10 +384,10 @@ var U = [
         </ol>
     </nav>
 `;
-n("footer-nav", { styles: q, template: G });
+n("footer-nav", { styles: U, template: q });
 
 // scripts/components/footer-copyright.js
-var I = `
+var G = `
   :host {
    display: flex;
     justify-content: space-between;
@@ -533,7 +533,7 @@ var I = `
           </ul>
         </nav>
 `;
-n("footer-copyright", { styles: I, template: H });
+n("footer-copyright", { styles: G, template: H });
 
 // scripts/footer.js
 var j = `
@@ -634,14 +634,14 @@ function X(i) {
     let f = m.getBoundingClientRect(), c = l.clientX - f.left, b = l.clientY - f.top, v = s.offsetWidth / 2;
     s.style.left = `${c - v}px`, s.style.top = `${b - v}px`, r.style.clipPath = `circle(${v}px at ${c}px ${b}px)`;
   }
-  function p() {
+  function d() {
     s.setAttribute("data-visible", "true");
   }
   function o() {
     s.removeAttribute("data-visible"), r.style.clipPath = "circle(0px at 50% 50%)";
   }
-  return t.addEventListener("mousemove", u), t.addEventListener("mouseenter", p), t.addEventListener("mouseleave", o), () => {
-    t.removeEventListener("mousemove", u), t.removeEventListener("mouseenter", p), t.removeEventListener("mouseleave", o);
+  return t.addEventListener("mousemove", u), t.addEventListener("mouseenter", d), t.addEventListener("mouseleave", o), () => {
+    t.removeEventListener("mousemove", u), t.removeEventListener("mouseenter", d), t.removeEventListener("mouseleave", o);
   };
 }
 n("section-footer", { styles: j, template: J, onRender: X });
@@ -768,27 +768,27 @@ var K = `
       <div id="lens-ring"></div>
     </div>
   </section>
-`, W = `(min-width: ${a})`;
-function Y(i) {
+`, Y = `(min-width: ${a})`;
+function W(i) {
   let t = i.getElementById("img-wrap"), m = i.getElementById("visible-img"), r = i.getElementById("lens-img"), s = i.getElementById("lens-ring");
   if (!t || !m || !r || !s)
     return;
-  let g = window.matchMedia(W);
+  let g = window.matchMedia(Y);
   function u(b) {
     let v = m.getBoundingClientRect(), $ = b.clientX - v.left, z = b.clientY - v.top, h = s.offsetWidth / 2;
     s.style.left = `${$ - h}px`, s.style.top = `${z - h}px`, r.style.clipPath = `circle(${h}px at ${$}px ${z}px)`;
   }
-  function p() {
+  function d() {
     s.setAttribute("data-visible", "true");
   }
   function o() {
     s.removeAttribute("data-visible"), r.style.clipPath = "circle(0px at 50% 50%)";
   }
   function l() {
-    t.addEventListener("mousemove", u), t.addEventListener("mouseenter", p), t.addEventListener("mouseleave", o);
+    t.addEventListener("mousemove", u), t.addEventListener("mouseenter", d), t.addEventListener("mouseleave", o);
   }
   function f() {
-    t.removeEventListener("mousemove", u), t.removeEventListener("mouseenter", p), t.removeEventListener("mouseleave", o), o();
+    t.removeEventListener("mousemove", u), t.removeEventListener("mouseenter", d), t.removeEventListener("mouseleave", o), o();
   }
   function c(b) {
     if (b.matches)
@@ -802,7 +802,7 @@ function Y(i) {
     f(), g.removeEventListener("change", c);
   };
 }
-n("section-hero", { styles: K, template: V, onRender: Y });
+n("section-hero", { styles: K, template: V, onRender: W });
 
 // scripts/home/recent-crafts.js
 var Q = `
@@ -977,13 +977,13 @@ function R(i) {
       let k = new Image;
       k.src = h;
     });
-    let u = 0, p = null, o = null, l = 40, f = 4, c = [];
+    let u = 0, d = null, o = null, l = 40, f = 4, c = [];
     function b(h, k) {
-      let d = document.createElement("img");
-      d.className = "stack-img", d.src = g[u], d.style.left = `${h}px`, d.style.top = `${k}px`;
+      let p = document.createElement("img");
+      p.className = "stack-img", p.src = g[u], p.style.left = `${h}px`, p.style.top = `${k}px`;
       let w = (Math.random() * 16 - 8).toFixed(1);
-      if (d.style.transform = `translate(-50%, -50%) rotate(${w}deg) scale(0.85)`, r.appendChild(d), c.push(d), requestAnimationFrame(() => {
-        d.classList.add("visible"), d.style.transform = `translate(-50%, -50%) rotate(${w}deg) scale(1)`;
+      if (p.style.transform = `translate(-50%, -50%) rotate(${w}deg) scale(0.85)`, r.appendChild(p), c.push(p), requestAnimationFrame(() => {
+        p.classList.add("visible"), p.style.transform = `translate(-50%, -50%) rotate(${w}deg) scale(1)`;
       }), c.length > f) {
         let C = c.shift();
         v(C);
@@ -996,16 +996,16 @@ function R(i) {
       }, 300);
     }
     function $(h) {
-      let k = r.getBoundingClientRect(), d = h.clientX - k.left, w = h.clientY - k.top;
-      if (p === null) {
-        p = d, o = w, b(d, w);
+      let k = r.getBoundingClientRect(), p = h.clientX - k.left, w = h.clientY - k.top;
+      if (d === null) {
+        d = p, o = w, b(p, w);
         return;
       }
-      if (Math.hypot(d - p, w - o) > l)
-        b(d, w), p = d, o = w;
+      if (Math.hypot(p - d, w - o) > l)
+        b(p, w), d = p, o = w;
     }
     function z() {
-      p = null, o = null;
+      d = null, o = null;
       while (c.length)
         v(c.shift());
       u = 0;
@@ -1261,7 +1261,8 @@ var ae = `
 
   <hgroup>
     <p>[ Let's Craft ]</p>
-    <h2>Bring Brand identity <br> to the Web</h2>
+    <h2>You Name the Price</h2>
+    <p>I’ll bring you a brand-new website that’s 100% yours.</p>
   </hgroup>
 
   <ul>

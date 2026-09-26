@@ -7,7 +7,7 @@ const styles = /* css */ `
         display: none;
         overflow: hidden;
         height: 95dvh;
-        padding-bottom: 550rem;
+        padding-bottom: 520rem;
         transition: background 0.05s ease;
 
         @media (min-width: ${TABLET}) {

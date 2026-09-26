@@ -9,7 +9,7 @@ const styles = /* css */ `
     overflow: hidden;
 
     @media (min-width: ${TABLET}) {
-      margin-top: -545rem;
+      margin-top: -515rem;
     }
   }
 
