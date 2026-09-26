@@ -223,8 +223,8 @@ var N = `
     max-height: 7rem;
     width: auto;
   }
-`, F = ["width", "height", "src", "alt"], P = () => "<img data-forward />";
-n("app-logo", { attrs: F, styles: N, template: P });
+`, P = ["width", "height", "src", "alt"], F = () => "<img data-forward />";
+n("app-logo", { attrs: P, styles: N, template: F });
 
 // scripts/breakpoints.js
 var a = "640px", y = "1024px", S = "1920px";
@@ -1261,7 +1261,7 @@ var ae = `
 
   <hgroup>
     <p>[ Let's Craft ]</p>
-    <h2>You name the price</h2>
+    <h2>You Name the Price</h2>
     <p>I’ll bring you a brand-new website that’s 100% yours.</p>
   </hgroup>
 
