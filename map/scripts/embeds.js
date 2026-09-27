@@ -9,8 +9,8 @@
 import { camera } from "./camera.js";
 import { sceneEmbeds } from "./scene.js";
 
-const DEFAULT_WIDTH = 600; // SoundCloud's default embed size
-const DEFAULT_HEIGHT = 175;
+const DEFAULT_WIDTH = 300; // SoundCloud's default embed size
+const DEFAULT_HEIGHT = 300;
 
 let container = null;
 const elements = new Map(); // embed object -> wrapper element
