@@ -221,14 +221,14 @@ var A = `
     max-height: 7rem;
     width: auto;
   }
-`, C = ["width", "height", "src", "alt"], _ = () => "<img data-forward />";
-r("app-logo", { attrs: C, styles: A, template: _ });
+`, C = ["width", "height", "src", "alt"], E = () => "<img data-forward />";
+r("app-logo", { attrs: C, styles: A, template: E });
 
 // scripts/breakpoints.js
 var i = "640px";
 
 // scripts/header.js
-var E = `
+var _ = `
   :host {
     display: block;
     font-size: var(--size-small);
@@ -258,16 +258,6 @@ var E = `
     list-style: none;
     padding: 0;
     margin: 0;
-  }
-
-  .button--primary {
-    box-shadow: none;
-  }
-
-  @media (max-width: ${i}) {
-    .header__navigation {
-      gap: 4rem;
-    }
   }
 
   img {
@@ -300,7 +290,7 @@ var E = `
       </div>
   </header>
 `;
-r("section-header", { template: B, styles: E });
+r("section-header", { template: B, styles: _ });
 
 // scripts/components/footer-nav.js
 var L = [

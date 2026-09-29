@@ -264,21 +264,11 @@ var C = `
     margin: 0;
   }
 
-  .button--primary {
-    box-shadow: none;
-  }
-
-  @media (max-width: ${o}) {
-    .header__navigation {
-      gap: 4rem;
-    }
-  }
-
   img {
     height: 5rem;
     width: auto;
   }
-`, _ = `
+`, E = `
   <header>
       <app-link variant="plain" href=${p("/")}>
         <img src=${e("./assets/images/logo.avif")}
@@ -304,10 +294,10 @@ var C = `
       </div>
   </header>
 `;
-a("section-header", { template: _, styles: C });
+a("section-header", { template: E, styles: C });
 
 // scripts/components/footer-nav.js
-var E = [
+var L = [
   { href: "/", name: "Home" },
   { href: "/about", name: "About" },
   { href: "/credits", name: "Credits" },
@@ -326,7 +316,7 @@ var E = [
     href: "/writings/foundation-building-interfaces-at-scale",
     name: "Foundation"
   }
-], L = `
+], _ = `
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -378,7 +368,7 @@ var E = [
         <span>Sitemap</span>
 
         <ol>
-            ${E.map((t) => `
+            ${L.map((t) => `
                 <li>
                     <app-link variant="sitemap" href=${p(t.href)} >${t.name}</app-link>
                 </li>
@@ -386,7 +376,7 @@ var E = [
         </ol>
     </nav>
 `;
-a("footer-nav", { styles: L, template: B });
+a("footer-nav", { styles: _, template: B });
 
 // scripts/components/footer-copyright.js
 var D = `

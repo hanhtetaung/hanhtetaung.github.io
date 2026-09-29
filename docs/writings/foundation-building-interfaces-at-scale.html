@@ -113,10 +113,10 @@ function i(t, { props: a = {}, attrs: c = [], styles: l = "", template: s, onRen
         this._render();
     }
     _getProps() {
-      let o = {}, r = this.getAttribute("props");
-      if (r)
+      let o = {}, n = this.getAttribute("props");
+      if (n)
         try {
-          o = JSON.parse(r);
+          o = JSON.parse(n);
         } catch {
           o = {};
         }
@@ -131,17 +131,17 @@ function i(t, { props: a = {}, attrs: c = [], styles: l = "", template: s, onRen
       let o = this.shadowRoot.querySelector("[data-forward]");
       if (!o)
         return;
-      for (let r of c)
-        if (this.hasAttribute(r))
-          o.setAttribute(r, this.getAttribute(r));
+      for (let n of c)
+        if (this.hasAttribute(n))
+          o.setAttribute(n, this.getAttribute(n));
         else
-          o.removeAttribute(r);
+          o.removeAttribute(n);
     }
     _render() {
       if (typeof this._cleanup === "function")
         this._cleanup(), this._cleanup = null;
-      let o = this._getProps(), r = typeof s === "function" ? s(o) : s;
-      if (this.shadowRoot.innerHTML = `<style>${l}</style>${r}`, this._applyForwardedAttrs(), h) {
+      let o = this._getProps(), n = typeof s === "function" ? s(o) : s;
+      if (this.shadowRoot.innerHTML = `<style>${l}</style>${n}`, this._applyForwardedAttrs(), h) {
         let m = h(this.shadowRoot, o, this);
         if (typeof m === "function")
           this._cleanup = m;
@@ -232,7 +232,7 @@ var z = `
 i("app-logo", { attrs: T, styles: z, template: S });
 
 // scripts/breakpoints.js
-var n = "640px";
+var r = "640px";
 
 // scripts/header.js
 var _ = `
@@ -265,16 +265,6 @@ var _ = `
     list-style: none;
     padding: 0;
     margin: 0;
-  }
-
-  .button--primary {
-    box-shadow: none;
-  }
-
-  @media (max-width: ${n}) {
-    .header__navigation {
-      gap: 4rem;
-    }
   }
 
   img {
@@ -338,7 +328,7 @@ var E = [
    display: flex;
    gap: 5rem;
 
-   @media (max-width: ${n}) {
+   @media (max-width: ${r}) {
         flex-direction: column;
         gap: 3rem;
         margin-block: 2rem;
@@ -367,7 +357,7 @@ var E = [
     max-height: 12.5ch;
     overflow: scroll;
 
-    @media (max-width: ${n}) {
+    @media (max-width: ${r}) {
         max-height: 20ch;
     }
   }
@@ -400,7 +390,7 @@ var L = `
     padding-top: 1rem;
     margin-top: 3rem;
 
-   @media (max-width: ${n}) {
+   @media (max-width: ${r}) {
         flex-direction: column-reverse;
         gap: 2rem;
         border: none;
@@ -416,7 +406,7 @@ var L = `
     align-items: end;
     gap: 0.2rem;
 
-    @media (min-width: ${n}) {
+    @media (min-width: ${r}) {
       border: none;
       padding-top: none;
     }
@@ -440,7 +430,7 @@ var L = `
   nav {
     display: block;
 
-    @media (min-width: ${n}) {
+    @media (min-width: ${r}) {
       display: block;
     }
   }
@@ -451,7 +441,7 @@ var L = `
     font-weight: var(--font-bold);
     
 
-    @media (max-width: ${n}) {
+    @media (max-width: ${r}) {
       display: inline-block;
       margin-bottom: 0.5rem;
     }
@@ -460,7 +450,7 @@ var L = `
   p img {
     height: 2.3rem;
 
-     @media (max-width: ${n}) {
+     @media (max-width: ${r}) {
       
       height: 2.5rem;
     }
@@ -604,7 +594,7 @@ var P = `
     display: block;
   }
 
-  @media (min-width: ${n}) {
+  @media (min-width: ${r}) {
     #highlight-wrap {
       display: block;
     }
@@ -635,8 +625,8 @@ function H(t) {
   let a = t.querySelector("footer"), c = t.getElementById("highlight-base"), l = t.getElementById("highlight-lens"), s = t.getElementById("lens-ring"), h = t.getElementById("highlight-wrap");
   if (!a || !c || !l || !s || !h)
     return;
-  function g(r) {
-    let m = c.getBoundingClientRect(), d = r.clientX - m.left, v = r.clientY - m.top, u = s.offsetWidth / 2;
+  function g(n) {
+    let m = c.getBoundingClientRect(), d = n.clientX - m.left, v = n.clientY - m.top, u = s.offsetWidth / 2;
     s.style.left = `${d - u}px`, s.style.top = `${v - u}px`, l.style.clipPath = `circle(${u}px at ${d}px ${v}px)`;
   }
   function f() {

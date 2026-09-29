@@ -36,16 +36,6 @@ const styles = /* css */ `
     margin: 0;
   }
 
-  .button--primary {
-    box-shadow: none;
-  }
-
-  @media (max-width: ${TABLET}) {
-    .header__navigation {
-      gap: 4rem;
-    }
-  }
-
   img {
     height: 5rem;
     width: auto;

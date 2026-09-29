@@ -240,7 +240,7 @@ t("app-logo", { attrs: T, styles: E, template: L });
 var r = "640px", u = "1024px";
 
 // scripts/header.js
-var _ = `
+var B = `
   :host {
     display: block;
     font-size: var(--size-small);
@@ -272,21 +272,11 @@ var _ = `
     margin: 0;
   }
 
-  .button--primary {
-    box-shadow: none;
-  }
-
-  @media (max-width: ${r}) {
-    .header__navigation {
-      gap: 4rem;
-    }
-  }
-
   img {
     height: 5rem;
     width: auto;
   }
-`, B = `
+`, S = `
   <header>
       <app-link variant="plain" href=${p("/")}>
         <img src=${a("./assets/images/logo.avif")}
@@ -312,10 +302,10 @@ var _ = `
       </div>
   </header>
 `;
-t("section-header", { template: B, styles: _ });
+t("section-header", { template: S, styles: B });
 
 // scripts/components/footer-nav.js
-var S = [
+var _ = [
   { href: "/", name: "Home" },
   { href: "/about", name: "About" },
   { href: "/credits", name: "Credits" },
@@ -386,7 +376,7 @@ var S = [
         <span>Sitemap</span>
 
         <ol>
-            ${S.map((e) => `
+            ${_.map((e) => `
                 <li>
                     <app-link variant="sitemap" href=${p(e.href)} >${e.name}</app-link>
                 </li>

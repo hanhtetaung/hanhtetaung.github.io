@@ -28,24 +28,25 @@
     <main>
       <section-hero></section-hero>
       <section-recent-crafts></section-recent-crafts>
+      <section-menu></section-menu>
       <section-little-process></section-little-process>
       <section-cta id="cta"></section-cta>
     </main>
 
     <section-footer></section-footer>
   <script type="module">// lib/asset.js
-function _() {
-  let i = document.documentElement.dataset.base || "./";
-  return new URL(i, location.href);
+function C() {
+  let a = document.documentElement.dataset.base || "./";
+  return new URL(a, location.href);
 }
-function e(i) {
-  return new URL(i, _()).href;
+function e(a) {
+  return new URL(a, C()).href;
 }
-function x(i) {
-  let t = i.replace(/^\//, ""), m = location.protocol === "file:", r = _();
+function x(a) {
+  let t = a.replace(/^\//, ""), m = location.protocol === "file:", n = C();
   if (t === "")
-    return m ? new URL("index.html", r).href : r.href;
-  return m ? new URL(`${t}.html`, r).href : new URL(t, r).href;
+    return m ? new URL("index.html", n).href : n.href;
+  return m ? new URL(`${t}.html`, n).href : new URL(t, n).href;
 }
 
 // scripts/fonts.js
@@ -63,13 +64,13 @@ var E = `
     font-weight: 400;
     font-display: swap;
   }
-`, A = document.createElement("style");
-A.textContent = E;
-document.head.appendChild(A);
+`, _ = document.createElement("style");
+_.textContent = E;
+document.head.appendChild(_);
 
 // lib/define.js
-function L(i, t) {
-  if (i === void 0) {
+function L(a, t) {
+  if (a === void 0) {
     if (t === Array)
       return [];
     if (t === Object)
@@ -81,15 +82,15 @@ function L(i, t) {
     return;
   }
   if (t === Boolean)
-    return Boolean(i);
+    return Boolean(a);
   if (t === Number)
-    return Number(i);
-  return i;
+    return Number(a);
+  return a;
 }
-function n(i, { props: t = {}, attrs: m = [], styles: r = "", template: s, onRender: g = null }) {
+function o(a, { props: t = {}, attrs: m = [], styles: n = "", template: s, onRender: g = null }) {
   let u = ["props", ...m];
 
-  class d extends HTMLElement {
+  class p extends HTMLElement {
     static observedAttributes = u;
     constructor() {
       super();
@@ -108,42 +109,42 @@ function n(i, { props: t = {}, attrs: m = [], styles: r = "", template: s, onRen
         this._render();
     }
     _getProps() {
-      let o = {}, l = this.getAttribute("props");
+      let r = {}, l = this.getAttribute("props");
       if (l)
         try {
-          o = JSON.parse(l);
+          r = JSON.parse(l);
         } catch {
-          o = {};
+          r = {};
         }
       let f = {};
       for (let c of Object.keys(t))
-        f[c] = L(o[c], t[c]);
+        f[c] = L(r[c], t[c]);
       return f;
     }
     _applyForwardedAttrs() {
       if (m.length === 0)
         return;
-      let o = this.shadowRoot.querySelector("[data-forward]");
-      if (!o)
+      let r = this.shadowRoot.querySelector("[data-forward]");
+      if (!r)
         return;
       for (let l of m)
         if (this.hasAttribute(l))
-          o.setAttribute(l, this.getAttribute(l));
+          r.setAttribute(l, this.getAttribute(l));
         else
-          o.removeAttribute(l);
+          r.removeAttribute(l);
     }
     _render() {
       if (typeof this._cleanup === "function")
         this._cleanup(), this._cleanup = null;
-      let o = this._getProps(), l = typeof s === "function" ? s(o) : s;
-      if (this.shadowRoot.innerHTML = `<style>${r}</style>${l}`, this._applyForwardedAttrs(), g) {
-        let f = g(this.shadowRoot, o, this);
+      let r = this._getProps(), l = typeof s === "function" ? s(r) : s;
+      if (this.shadowRoot.innerHTML = `<style>${n}</style>${l}`, this._applyForwardedAttrs(), g) {
+        let f = g(this.shadowRoot, r, this);
         if (typeof f === "function")
           this._cleanup = f;
       }
     }
   }
-  customElements.define(i, d);
+  customElements.define(a, p);
 }
 
 // scripts/components/app-link.js
@@ -211,10 +212,10 @@ var O = `
 `, B = ["href", "target", "rel", "download"], D = `
   <a data-forward><slot></slot></a>
 `;
-n("app-link", { attrs: B, styles: O, template: D });
+o("app-link", { attrs: B, styles: O, template: D });
 
 // scripts/components/app-logo.js
-var N = `
+var T = `
   :host {
     display: block;
   }
@@ -223,14 +224,14 @@ var N = `
     max-height: 7rem;
     width: auto;
   }
-`, P = ["width", "height", "src", "alt"], F = () => "<img data-forward />";
-n("app-logo", { attrs: P, styles: N, template: F });
+`, N = ["width", "height", "src", "alt"], P = () => "<img data-forward />";
+o("app-logo", { attrs: N, styles: T, template: P });
 
 // scripts/breakpoints.js
-var a = "640px", y = "1024px", S = "1920px";
+var i = "640px", b = "1024px", S = "1920px";
 
 // scripts/header.js
-var T = `
+var F = `
   :host {
     display: block;
     font-size: var(--size-small);
@@ -262,21 +263,11 @@ var T = `
     margin: 0;
   }
 
-  .button--primary {
-    box-shadow: none;
-  }
-
-  @media (max-width: ${a}) {
-    .header__navigation {
-      gap: 4rem;
-    }
-  }
-
   img {
     height: 5rem;
     width: auto;
   }
-`, I = `
+`, M = `
   <header>
       <app-link variant="plain" href=${x("/")}>
         <img src=${e("./assets/images/logo.avif")}
@@ -302,10 +293,10 @@ var T = `
       </div>
   </header>
 `;
-n("section-header", { template: I, styles: T });
+o("section-header", { template: M, styles: F });
 
 // scripts/components/footer-nav.js
-var M = [
+var I = [
   { href: "/", name: "Home" },
   { href: "/about", name: "About" },
   { href: "/credits", name: "Credits" },
@@ -333,7 +324,7 @@ var M = [
    display: flex;
    gap: 5rem;
 
-   @media (max-width: ${a}) {
+   @media (max-width: ${i}) {
         flex-direction: column;
         gap: 3rem;
         margin-block: 2rem;
@@ -362,7 +353,7 @@ var M = [
     max-height: 12.5ch;
     overflow: scroll;
 
-    @media (max-width: ${a}) {
+    @media (max-width: ${i}) {
         max-height: 20ch;
     }
   }
@@ -376,15 +367,15 @@ var M = [
         <span>Sitemap</span>
 
         <ol>
-            ${M.map((i) => `
+            ${I.map((a) => `
                 <li>
-                    <app-link variant="sitemap" href=${x(i.href)} >${i.name}</app-link>
+                    <app-link variant="sitemap" href=${x(a.href)} >${a.name}</app-link>
                 </li>
             `).join("")}
         </ol>
     </nav>
 `;
-n("footer-nav", { styles: U, template: q });
+o("footer-nav", { styles: U, template: q });
 
 // scripts/components/footer-copyright.js
 var G = `
@@ -395,7 +386,7 @@ var G = `
     padding-top: 1rem;
     margin-top: 3rem;
 
-   @media (max-width: ${a}) {
+   @media (max-width: ${i}) {
         flex-direction: column-reverse;
         gap: 2rem;
         border: none;
@@ -411,7 +402,7 @@ var G = `
     align-items: end;
     gap: 0.2rem;
 
-    @media (min-width: ${a}) {
+    @media (min-width: ${i}) {
       border: none;
       padding-top: none;
     }
@@ -435,7 +426,7 @@ var G = `
   nav {
     display: block;
 
-    @media (min-width: ${a}) {
+    @media (min-width: ${i}) {
       display: block;
     }
   }
@@ -446,7 +437,7 @@ var G = `
     font-weight: var(--font-bold);
     
 
-    @media (max-width: ${a}) {
+    @media (max-width: ${i}) {
       display: inline-block;
       margin-bottom: 0.5rem;
     }
@@ -455,7 +446,7 @@ var G = `
   p img {
     height: 2.3rem;
 
-     @media (max-width: ${a}) {
+     @media (max-width: ${i}) {
       
       height: 2.5rem;
     }
@@ -533,7 +524,7 @@ var G = `
           </ul>
         </nav>
 `;
-n("footer-copyright", { styles: G, template: H });
+o("footer-copyright", { styles: G, template: H });
 
 // scripts/footer.js
 var j = `
@@ -599,7 +590,7 @@ var j = `
     display: block;
   }
 
-  @media (min-width: ${a}) {
+  @media (min-width: ${i}) {
     #highlight-wrap {
       display: block;
     }
@@ -626,35 +617,35 @@ var j = `
     <footer-copyright></footer-copyright>
   </footer>
 `;
-function X(i) {
-  let t = i.querySelector("footer"), m = i.getElementById("highlight-base"), r = i.getElementById("highlight-lens"), s = i.getElementById("lens-ring"), g = i.getElementById("highlight-wrap");
-  if (!t || !m || !r || !s || !g)
+function K(a) {
+  let t = a.querySelector("footer"), m = a.getElementById("highlight-base"), n = a.getElementById("highlight-lens"), s = a.getElementById("lens-ring"), g = a.getElementById("highlight-wrap");
+  if (!t || !m || !n || !s || !g)
     return;
   function u(l) {
-    let f = m.getBoundingClientRect(), c = l.clientX - f.left, b = l.clientY - f.top, v = s.offsetWidth / 2;
-    s.style.left = `${c - v}px`, s.style.top = `${b - v}px`, r.style.clipPath = `circle(${v}px at ${c}px ${b}px)`;
+    let f = m.getBoundingClientRect(), c = l.clientX - f.left, v = l.clientY - f.top, y = s.offsetWidth / 2;
+    s.style.left = `${c - y}px`, s.style.top = `${v - y}px`, n.style.clipPath = `circle(${y}px at ${c}px ${v}px)`;
   }
-  function d() {
+  function p() {
     s.setAttribute("data-visible", "true");
   }
-  function o() {
-    s.removeAttribute("data-visible"), r.style.clipPath = "circle(0px at 50% 50%)";
+  function r() {
+    s.removeAttribute("data-visible"), n.style.clipPath = "circle(0px at 50% 50%)";
   }
-  return t.addEventListener("mousemove", u), t.addEventListener("mouseenter", d), t.addEventListener("mouseleave", o), () => {
-    t.removeEventListener("mousemove", u), t.removeEventListener("mouseenter", d), t.removeEventListener("mouseleave", o);
+  return t.addEventListener("mousemove", u), t.addEventListener("mouseenter", p), t.addEventListener("mouseleave", r), () => {
+    t.removeEventListener("mousemove", u), t.removeEventListener("mouseenter", p), t.removeEventListener("mouseleave", r);
   };
 }
-n("section-footer", { styles: j, template: J, onRender: X });
+o("section-footer", { styles: j, template: J, onRender: K });
 
 // scripts/home/hero.js
-var K = `
+var W = `
   :host {
     display: block;
     height: min(calc(100vh - 108px - 10rem), 50rem);
     margin-top: 5rem;
     overflow: hidden;
 
-    @media (min-width: ${a}) {
+    @media (min-width: ${i}) {
       height: min(calc(100vh - 108px - 10rem), 60rem);
       margin-top: 7rem;
     }
@@ -669,7 +660,7 @@ var K = `
     justify-content: start;
     position: relative;
 
-    @media (min-width: ${y}) {
+    @media (min-width: ${b}) {
       justify-content: end;
     }
   }
@@ -679,7 +670,7 @@ var K = `
     width: auto;
     display: block;
 
-    @media (min-width: ${a}) {
+    @media (min-width: ${i}) {
       max-height: 30rem;
     }
   }
@@ -711,7 +702,7 @@ var K = `
   #visible-img {
     cursor: auto;
 
-    @media (min-width: ${a}) {
+    @media (min-width: ${i}) {
       cursor: none;
     }
   }
@@ -726,7 +717,7 @@ var K = `
     clip-path: circle(0px at 50% 50%);
     display: none;
 
-    @media (min-width: ${a}) {
+    @media (min-width: ${i}) {
       display: block;
     }
   }
@@ -742,7 +733,7 @@ var K = `
     display: none;
   }
 
-  @media (min-width: ${a}) {
+  @media (min-width: ${i}) {
     #lens-ring[data-visible="true"] {
       display: block;
     }
@@ -752,7 +743,7 @@ var K = `
     width: 100%;
     height: auto;
   }
-`, V = `
+`, X = `
   <section>
     <hgroup>
       <p>Han Htet Aung | GMT+7</p>
@@ -768,30 +759,30 @@ var K = `
       <div id="lens-ring"></div>
     </div>
   </section>
-`, Y = `(min-width: ${a})`;
-function W(i) {
-  let t = i.getElementById("img-wrap"), m = i.getElementById("visible-img"), r = i.getElementById("lens-img"), s = i.getElementById("lens-ring");
-  if (!t || !m || !r || !s)
+`, V = `(min-width: ${i})`;
+function Y(a) {
+  let t = a.getElementById("img-wrap"), m = a.getElementById("visible-img"), n = a.getElementById("lens-img"), s = a.getElementById("lens-ring");
+  if (!t || !m || !n || !s)
     return;
-  let g = window.matchMedia(Y);
-  function u(b) {
-    let v = m.getBoundingClientRect(), $ = b.clientX - v.left, z = b.clientY - v.top, h = s.offsetWidth / 2;
-    s.style.left = `${$ - h}px`, s.style.top = `${z - h}px`, r.style.clipPath = `circle(${h}px at ${$}px ${z}px)`;
+  let g = window.matchMedia(V);
+  function u(v) {
+    let y = m.getBoundingClientRect(), $ = v.clientX - y.left, z = v.clientY - y.top, h = s.offsetWidth / 2;
+    s.style.left = `${$ - h}px`, s.style.top = `${z - h}px`, n.style.clipPath = `circle(${h}px at ${$}px ${z}px)`;
   }
-  function d() {
+  function p() {
     s.setAttribute("data-visible", "true");
   }
-  function o() {
-    s.removeAttribute("data-visible"), r.style.clipPath = "circle(0px at 50% 50%)";
+  function r() {
+    s.removeAttribute("data-visible"), n.style.clipPath = "circle(0px at 50% 50%)";
   }
   function l() {
-    t.addEventListener("mousemove", u), t.addEventListener("mouseenter", d), t.addEventListener("mouseleave", o);
+    t.addEventListener("mousemove", u), t.addEventListener("mouseenter", p), t.addEventListener("mouseleave", r);
   }
   function f() {
-    t.removeEventListener("mousemove", u), t.removeEventListener("mouseenter", d), t.removeEventListener("mouseleave", o), o();
+    t.removeEventListener("mousemove", u), t.removeEventListener("mouseenter", p), t.removeEventListener("mouseleave", r), r();
   }
-  function c(b) {
-    if (b.matches)
+  function c(v) {
+    if (v.matches)
       l();
     else
       f();
@@ -802,7 +793,7 @@ function W(i) {
     f(), g.removeEventListener("change", c);
   };
 }
-n("section-hero", { styles: K, template: V, onRender: W });
+o("section-hero", { styles: W, template: X, onRender: Y });
 
 // scripts/home/recent-crafts.js
 var Q = `
@@ -837,12 +828,12 @@ var Q = `
     flex-wrap: wrap;
     gap: 3rem;
 
-    @media (min-width: ${a}) {
+    @media (min-width: ${i}) {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
     }
 
-    @media (min-width: ${y}) {
+    @media (min-width: ${b}) {
       grid-template-columns: repeat(3, 1fr);
     }
   }
@@ -855,7 +846,7 @@ var Q = `
   text-align: center;
   overflow: hidden;
 
-  @media (min-width: ${a}) {
+  @media (min-width: ${i}) {
     cursor: none;
   }
 }
@@ -878,7 +869,7 @@ var Q = `
  .stack-img {
     display: none;
 
-    @media (min-width: ${a}) {
+    @media (min-width: ${i}) {
       display: block;
       position: absolute;
       top: 0;
@@ -966,64 +957,223 @@ var Q = `
   </ul>
 </section>
 `;
-function R(i) {
-  if (!window.matchMedia(`(min-width: ${a})`).matches)
+function R(a) {
+  if (!window.matchMedia(`(min-width: ${i})`).matches)
     return;
-  i.querySelectorAll(".scrub-item").forEach((r) => {
-    let s = r.querySelector("img.cover"), g = JSON.parse(s.dataset.images || "[]");
+  a.querySelectorAll(".scrub-item").forEach((n) => {
+    let s = n.querySelector("img.cover"), g = JSON.parse(s.dataset.images || "[]");
     if (g.length === 0)
       return;
     g.forEach((h) => {
       let k = new Image;
       k.src = h;
     });
-    let u = 0, d = null, o = null, l = 40, f = 4, c = [];
-    function b(h, k) {
-      let p = document.createElement("img");
-      p.className = "stack-img", p.src = g[u], p.style.left = `${h}px`, p.style.top = `${k}px`;
+    let u = 0, p = null, r = null, l = 40, f = 4, c = [];
+    function v(h, k) {
+      let d = document.createElement("img");
+      d.className = "stack-img", d.src = g[u], d.style.left = `${h}px`, d.style.top = `${k}px`;
       let w = (Math.random() * 16 - 8).toFixed(1);
-      if (p.style.transform = `translate(-50%, -50%) rotate(${w}deg) scale(0.85)`, r.appendChild(p), c.push(p), requestAnimationFrame(() => {
-        p.classList.add("visible"), p.style.transform = `translate(-50%, -50%) rotate(${w}deg) scale(1)`;
+      if (d.style.transform = `translate(-50%, -50%) rotate(${w}deg) scale(0.85)`, n.appendChild(d), c.push(d), requestAnimationFrame(() => {
+        d.classList.add("visible"), d.style.transform = `translate(-50%, -50%) rotate(${w}deg) scale(1)`;
       }), c.length > f) {
-        let C = c.shift();
-        v(C);
+        let A = c.shift();
+        y(A);
       }
       u = (u + 1) % g.length;
     }
-    function v(h) {
+    function y(h) {
       h.classList.add("fade-out"), h.classList.remove("visible"), setTimeout(() => {
         h.remove();
       }, 300);
     }
     function $(h) {
-      let k = r.getBoundingClientRect(), p = h.clientX - k.left, w = h.clientY - k.top;
-      if (d === null) {
-        d = p, o = w, b(p, w);
+      let k = n.getBoundingClientRect(), d = h.clientX - k.left, w = h.clientY - k.top;
+      if (p === null) {
+        p = d, r = w, v(d, w);
         return;
       }
-      if (Math.hypot(p - d, w - o) > l)
-        b(p, w), d = p, o = w;
+      if (Math.hypot(d - p, w - r) > l)
+        v(d, w), p = d, r = w;
     }
     function z() {
-      d = null, o = null;
+      p = null, r = null;
       while (c.length)
-        v(c.shift());
+        y(c.shift());
       u = 0;
     }
-    r.addEventListener("mousemove", $), r.addEventListener("mouseleave", z);
+    n.addEventListener("mousemove", $), n.addEventListener("mouseleave", z);
   });
 }
-n("section-recent-crafts", { styles: Q, template: Z, onRender: R });
+o("section-recent-crafts", { styles: Q, template: Z, onRender: R });
+
+// scripts/home/menu.js
+var ee = `
+  :host {
+    position: relative;
+    display: block;
+    margin-block: 20rem;
+  }
+
+  section {
+    width: min(80%, 144rem);
+    margin-inline: auto;
+  }
+
+  h2 {
+    margin: 0;
+    margin-top: 1rem;
+    font-size: var(--size-title);
+    margin-bottom: 5rem;
+  }
+
+  h3 {
+    margin: 0;
+    font-size: var(--size-heading);
+    width: fit-content;
+  }
+
+  p {
+    margin: 0;
+    margin-bottom: 2rem;
+  }
+
+  hgroup p {
+    margin: 0;
+  }
+
+  ul {
+    list-style: none;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    gap: 5rem;
+    padding-bottom: 2rem;
+    align-items: flex-start;
+    
+    @media (min-width:${i}) {
+        display: flex;
+        overflow: scroll;
+        gap: 5rem;
+    }
+    
+    @media (min-width:${b}) {
+        gap: 25rem;
+    }
+
+  }
+
+  li {
+        position: relative;
+        border: 1px solid var(--color-text);
+        border-radius: 1rem;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin-bottom: 5rem;
+
+        @media (min-width: ${i}) {
+            min-width: 30ch;
+            width: 30ch;
+        }
+    }
+
+    @media (min-width: ${i}) {
+        li:last-child {
+            --road: 40px;
+            position: relative;
+            overflow: hidden;
+            padding-left: var(--road);
+            padding-right: var(--road);
+            border-style: dashed;
+            border-left: none;
+            border-right: none;
+        }
+    
+        li:last-child::before,
+        li:last-child::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            width: 99rem;           
+            height: var(--road);
+            background: url("${e("./assets/images/home/road.svg")}") repeat-x left / auto var(--road);
+            transform-origin: top left;
+            transform: rotate(90deg);
+            pointer-events: none;
+        }
+    
+        li:last-child::before { left: var(--road); }
+        li:last-child::after  { left: 100%; }        
+    }
+
+    article {
+        padding-inline: 3rem;
+        padding-block: 2rem;
+    }
+
+  a {
+    display: inline-block;
+    text-decoration: none;
+    color: var(--color-text);
+    padding: 1rem 2rem;
+    border: 1px solid var(--color-text);
+    width: fit-content;
+    margin-top: 3rem;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+
+
+  h3 img {
+    width: 100%;
+    height: 3rem;
+  }
+
+  
+`, te = `
+<section>
+  <hgroup>
+    <p>[ Menu ]</p>
+    <h2>Provide Two Things</h2>
+  </hgroup>
+
+    <ul>
+        <li>
+            <img src=${e("./assets/images/home/web-identity.png")} alt="Web Identity">
+            <article >
+                <h3><img src=${e("./assets/images/home/web-identity.svg")} alt="Web Identity"></h3>
+                <p>Landing page, illustrations plus human taste</p>
+            </article>
+        </li>
+        
+        <li>
+            <img src=${e("./assets/images/home/story-map.png")} alt="Story Map">
+
+            <article>
+                <h3><img src=${e("./assets/images/home/story-map.svg")} alt="Story Map"></h3>
+                <p>Everything in your memory, your own characters plus infinite patience</p>
+    
+                <a href="/map" target="_blank">Preview</a>
+            </article>
+        </li>
+
+    </ul>
+</section>
+`;
+o("section-menu", { styles: ee, template: te });
 
 // scripts/home/little-process.js
-var ee = `
+var ie = `
   :host {
     position: relative;
     display: block;
     overflow: hidden;
     margin-block: 15rem;
 
-    @media (min-width: ${y}) {
+    @media (min-width: ${b}) {
       margin-top: 20rem;
       margin-bottom: 25rem;
     }
@@ -1078,13 +1228,13 @@ var ee = `
     height: auto;
     margin-left: auto;
 
-    @media (min-width: ${a}) {
+    @media (min-width: ${i}) {
       height: 28rem;
       width: auto;
       grid-column: span 2; 
     }
 
-    @media (min-width: ${y}) {
+    @media (min-width: ${b}) {
       height: 35rem;
     }
 
@@ -1107,13 +1257,13 @@ var ee = `
   }
 
   article {
-    @media (min-width: ${a}) {
+    @media (min-width: ${i}) {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
       gap: 12rem;
     }
   }
-`, te = `
+`, ae = `
 
 <section>
   <hgroup>
@@ -1151,10 +1301,10 @@ var ee = `
 </section>
 
 `;
-n("section-little-process", { styles: ee, template: te });
+o("section-little-process", { styles: ie, template: ae });
 
 // scripts/home/cta.js
-var ae = `
+var re = `
   :host {
     display: block;
     height: 70rem;
@@ -1162,7 +1312,7 @@ var ae = `
     overflow: hidden;
     margin-top: 20rem;
 
-    @media (min-width: ${a}) {
+    @media (min-width: ${i}) {
       margin-bottom: 10rem;  
     }
   }
@@ -1175,7 +1325,7 @@ var ae = `
     justify-content: space-between;
     margin-top: 5rem;
 
-    @media (min-width: ${a}) {
+    @media (min-width: ${i}) {
       height: 90%;
     }
 
@@ -1209,7 +1359,7 @@ var ae = `
     padding-block: 2rem;
     overflow: scroll;
 
-    @media (min-width: ${a}) {
+    @media (min-width: ${i}) {
       max-width: 50%;
       gap: 3rem;
     }
@@ -1223,13 +1373,13 @@ var ae = `
     left: -0%;
     top: 30%;
 
-    @media (min-width: ${a}) {
+    @media (min-width: ${i}) {
       left: auto;
       right: 20%;
       top: 20rem;
     }
 
-    @media (min-width: ${y}) {
+    @media (min-width: ${b}) {
       opacity: 1;
     }
   }
@@ -1255,7 +1405,7 @@ var ae = `
     text-decoration: none;
     color: var(--color-text);
   }
-`, ie = `
+`, oe = `
 <section>
   <img src="./assets/images/home/red-telephone-box.avif" alt="Red Telephone Box">
 
@@ -1282,8 +1432,8 @@ var ae = `
   </ul>
 </section>
 `;
-function oe(i) {
-  let t = i.getElementById("copyBtn");
+function ne(a) {
+  let t = a.getElementById("copyBtn");
   if (!t)
     return;
   t.addEventListener("click", () => {
@@ -1295,6 +1445,6 @@ function oe(i) {
     });
   });
 }
-n("section-cta", { styles: ae, template: ie, onRender: oe });
+o("section-cta", { styles: re, template: oe, onRender: ne });
 </script></body>
 </html>

@@ -268,21 +268,11 @@ var A = `
     margin: 0;
   }
 
-  .button--primary {
-    box-shadow: none;
-  }
-
-  @media (max-width: ${r}) {
-    .header__navigation {
-      gap: 4rem;
-    }
-  }
-
   img {
     height: 5rem;
     width: auto;
   }
-`, _ = `
+`, E = `
   <header>
       <app-link variant="plain" href=${d("/")}>
         <img src=${e("./assets/images/logo.avif")}
@@ -308,10 +298,10 @@ var A = `
       </div>
   </header>
 `;
-t("section-header", { template: _, styles: A });
+t("section-header", { template: E, styles: A });
 
 // scripts/components/footer-nav.js
-var E = [
+var _ = [
   { href: "/", name: "Home" },
   { href: "/about", name: "About" },
   { href: "/credits", name: "Credits" },
@@ -382,7 +372,7 @@ var E = [
         <span>Sitemap</span>
 
         <ol>
-            ${E.map((a) => `
+            ${_.map((a) => `
                 <li>
                     <app-link variant="sitemap" href=${d(a.href)} >${a.name}</app-link>
                 </li>
