@@ -52,7 +52,7 @@ const styles = /* css */ `
     }
     
     @media (min-width:${DESKTOP}) {
-        gap: 25rem;
+        gap: 15rem;
     }
 
   }
