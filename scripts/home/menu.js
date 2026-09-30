@@ -76,6 +76,7 @@ const styles = /* css */ `
         li:last-child {
             --road: 40px;
             position: relative;
+            margin-top: 7rem;
             overflow: hidden;
             padding-left: var(--road);
             padding-right: var(--road);
@@ -113,7 +114,7 @@ const styles = /* css */ `
     padding: 1rem 2rem;
     border: 1px solid var(--color-text);
     width: fit-content;
-    margin-top: 3rem;
+    margin-top: 1.5rem;
   }
 
   img {
