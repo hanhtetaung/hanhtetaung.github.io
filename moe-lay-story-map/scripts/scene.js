@@ -114,9 +114,10 @@ export const sceneEmbeds = [
     src: "https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/wonton-248173221/ahn-jae-wook-friend-1&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true",
   },
   {
-    x: 2750,
+    x: 2900,
     y: 1100,
-    src: "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A142841979&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=true",
+    width: 450,
+    src: "https://open.spotify.com/embed/track/0W1eHrIACKah9l0Q9v611q",
   },
 ];
 
