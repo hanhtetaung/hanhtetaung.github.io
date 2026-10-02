@@ -55,8 +55,7 @@ const template = /* html */ `
      <p>Use the Figma design as a reference, not a blueprint. Let the design evolve naturally and make sure everything feels right across mobile, tablet, and laptop screens.</p>
   </hgroup>
 
-    <img src=${asset("./assets/images/workflow/develop.png")} alt="Two Screens Setup">
-
+  <img src=${asset("./assets/images/workflow/develop.png")} alt="Two Screens Setup">
 
 </section>
 

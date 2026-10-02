@@ -97,7 +97,7 @@ function $(i, o) {
 function t(i, { props: o = {}, attrs: c = [], styles: s = "", template: m, onRender: u = null }) {
   let w = ["props", ...c];
 
-  class g extends HTMLElement {
+  class f extends HTMLElement {
     static observedAttributes = w;
     constructor() {
       super();
@@ -151,7 +151,7 @@ function t(i, { props: o = {}, attrs: c = [], styles: s = "", template: m, onRen
       }
     }
   }
-  customElements.define(i, g);
+  customElements.define(i, f);
 }
 
 // scripts/components/app-link.js
@@ -636,14 +636,14 @@ function U(i) {
     let p = c.getBoundingClientRect(), h = l.clientX - p.left, v = l.clientY - p.top, b = m.offsetWidth / 2;
     m.style.left = `${h - b}px`, m.style.top = `${v - b}px`, s.style.clipPath = `circle(${b}px at ${h}px ${v}px)`;
   }
-  function g() {
+  function f() {
     m.setAttribute("data-visible", "true");
   }
   function n() {
     m.removeAttribute("data-visible"), s.style.clipPath = "circle(0px at 50% 50%)";
   }
-  return o.addEventListener("mousemove", w), o.addEventListener("mouseenter", g), o.addEventListener("mouseleave", n), () => {
-    o.removeEventListener("mousemove", w), o.removeEventListener("mouseenter", g), o.removeEventListener("mouseleave", n);
+  return o.addEventListener("mousemove", w), o.addEventListener("mouseenter", f), o.addEventListener("mouseleave", n), () => {
+    o.removeEventListener("mousemove", w), o.removeEventListener("mouseenter", f), o.removeEventListener("mouseleave", n);
   };
 }
 t("section-footer", { styles: O, template: G, onRender: U });
@@ -714,19 +714,7 @@ var q = `
   }
 
   span {
-    display: inline-block;
-    border: 1px solid var(--color-primary);
-    border-radius: 0.2rem;
-    background: var(--color-primary);
-    color: var(--color-bg-primary);
-    margin-top: 0.8rem;
-    padding-block: 0.2rem;
-    padding-inline: 0.5rem;
-
-     @media (min-width: ${r}) {
-       padding-block: 0.5rem;
-       padding-inline: 1rem;
-    }
+    color: var(--color-primary);
   }
 `, j = `
 
@@ -799,7 +787,7 @@ var K = `
 `, N = `
 <section>
   <hgroup>
-     <h2>Brainstorming</h2>
+     <h2>Brainstorm</h2>
      <p>Learn about the business and its story. Uncover its unique character, identity, and vibe through questions and conversation.</p>
   </hgroup>
 
@@ -990,8 +978,7 @@ var X = `
      <p>Use the Figma design as a reference, not a blueprint. Let the design evolve naturally and make sure everything feels right across mobile, tablet, and laptop screens.</p>
   </hgroup>
 
-    <img src=${e("./assets/images/workflow/develop.png")} alt="Two Screens Setup">
-
+  <img src=${e("./assets/images/workflow/develop.png")} alt="Two Screens Setup">
 
 </section>
 

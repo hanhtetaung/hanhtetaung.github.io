@@ -47,7 +47,7 @@ const styles = /* css */ `
 const template = /* html */ `
 <section>
   <hgroup>
-     <h2>Brainstorming</h2>
+     <h2>Brainstorm</h2>
      <p>Learn about the business and its story. Uncover its unique character, identity, and vibe through questions and conversation.</p>
   </hgroup>
 

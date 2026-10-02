@@ -67,19 +67,7 @@ const styles = /* css */ `
   }
 
   span {
-    display: inline-block;
-    border: 1px solid var(--color-primary);
-    border-radius: 0.2rem;
-    background: var(--color-primary);
-    color: var(--color-bg-primary);
-    margin-top: 0.8rem;
-    padding-block: 0.2rem;
-    padding-inline: 0.5rem;
-
-     @media (min-width: ${TABLET}) {
-       padding-block: 0.5rem;
-       padding-inline: 1rem;
-    }
+    color: var(--color-primary);
   }
 `;
 
