@@ -10,6 +10,7 @@
   "liveServer.settings.mount": [
     ["/about", "./about.html"],
     ["/404", "./404.html"],
+    ["/workflow", "./workflow.html"],
     [
       "/writings/foundation-building-interfaces-at-scale",
       "./writings/foundation-building-interfaces-at-scale.html"

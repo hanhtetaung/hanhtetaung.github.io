@@ -39,7 +39,7 @@ function v() {
 function a(e) {
   return new URL(e, v()).href;
 }
-function d(e) {
+function p(e) {
   let t = e.replace(/^\//, ""), c = location.protocol === "file:", l = v();
   if (t === "")
     return c ? new URL("index.html", l).href : l.href;
@@ -114,8 +114,8 @@ function r(e, { props: t = {}, attrs: c = [], styles: l = "", template: s, onRen
           o = {};
         }
       let m = {};
-      for (let p of Object.keys(t))
-        m[p] = x(o[p], t[p]);
+      for (let d of Object.keys(t))
+        m[d] = x(o[d], t[d]);
       return m;
     }
     _applyForwardedAttrs() {
@@ -266,7 +266,7 @@ var _ = `
   }
 `, B = `
   <header>
-      <app-link variant="plain" href=${d("/")}>
+      <app-link variant="plain" href=${p("/")}>
         <img src=${a("./assets/images/logo.avif")}
           alt="Logo">
       </app-link>
@@ -275,16 +275,20 @@ var _ = `
         <nav>
           <ul>
             <li>
-              <app-link variant="plain" href=${d("/")}>Home</app-link>
+              <app-link variant="plain" href=${p("/")}>Home</app-link>
             </li>
 
             <li>
-              <app-link variant="plain" href=${d("/about")}>About</app-link>
+              <app-link variant="plain" href=${p("/about")}>About</app-link>
+            </li>
+
+            <li>
+              <app-link variant="plain" href=${p("/workflow")}>Workflow</app-link>
             </li>
           </ul>
         </nav>
 
-        <app-link variant="secondary" href=${d("/#cta")}>
+        <app-link variant="secondary" href=${p("/#cta")}>
           Let's Craft &#8629;
         </app-link>
       </div>
@@ -366,7 +370,7 @@ var L = [
         <ol>
             ${L.map((e) => `
                 <li>
-                    <app-link variant="sitemap" href=${d(e.href)} >${e.name}</app-link>
+                    <app-link variant="sitemap" href=${p(e.href)} >${e.name}</app-link>
                 </li>
             `).join("")}
         </ol>
@@ -619,8 +623,8 @@ function D(e) {
   if (!t || !c || !l || !s || !h)
     return;
   function g(n) {
-    let m = c.getBoundingClientRect(), p = n.clientX - m.left, b = n.clientY - m.top, u = s.offsetWidth / 2;
-    s.style.left = `${p - u}px`, s.style.top = `${b - u}px`, l.style.clipPath = `circle(${u}px at ${p}px ${b}px)`;
+    let m = c.getBoundingClientRect(), d = n.clientX - m.left, b = n.clientY - m.top, u = s.offsetWidth / 2;
+    s.style.left = `${d - u}px`, s.style.top = `${b - u}px`, l.style.clipPath = `circle(${u}px at ${d}px ${b}px)`;
   }
   function f() {
     s.setAttribute("data-visible", "true");

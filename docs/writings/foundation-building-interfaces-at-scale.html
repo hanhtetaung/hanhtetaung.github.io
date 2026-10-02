@@ -46,7 +46,7 @@ function b() {
 function e(t) {
   return new URL(t, b()).href;
 }
-function p(t) {
+function m(t) {
   let a = t.replace(/^\//, ""), c = location.protocol === "file:", l = b();
   if (a === "")
     return c ? new URL("index.html", l).href : l.href;
@@ -120,10 +120,10 @@ function i(t, { props: a = {}, attrs: c = [], styles: l = "", template: s, onRen
         } catch {
           o = {};
         }
-      let m = {};
+      let p = {};
       for (let d of Object.keys(a))
-        m[d] = k(o[d], a[d]);
-      return m;
+        p[d] = k(o[d], a[d]);
+      return p;
     }
     _applyForwardedAttrs() {
       if (c.length === 0)
@@ -142,9 +142,9 @@ function i(t, { props: a = {}, attrs: c = [], styles: l = "", template: s, onRen
         this._cleanup(), this._cleanup = null;
       let o = this._getProps(), n = typeof s === "function" ? s(o) : s;
       if (this.shadowRoot.innerHTML = `<style>${l}</style>${n}`, this._applyForwardedAttrs(), h) {
-        let m = h(this.shadowRoot, o, this);
-        if (typeof m === "function")
-          this._cleanup = m;
+        let p = h(this.shadowRoot, o, this);
+        if (typeof p === "function")
+          this._cleanup = p;
       }
     }
   }
@@ -273,7 +273,7 @@ var _ = `
   }
 `, C = `
   <header>
-      <app-link variant="plain" href=${p("/")}>
+      <app-link variant="plain" href=${m("/")}>
         <img src=${e("./assets/images/logo.avif")}
           alt="Logo">
       </app-link>
@@ -282,16 +282,20 @@ var _ = `
         <nav>
           <ul>
             <li>
-              <app-link variant="plain" href=${p("/")}>Home</app-link>
+              <app-link variant="plain" href=${m("/")}>Home</app-link>
             </li>
 
             <li>
-              <app-link variant="plain" href=${p("/about")}>About</app-link>
+              <app-link variant="plain" href=${m("/about")}>About</app-link>
+            </li>
+
+            <li>
+              <app-link variant="plain" href=${m("/workflow")}>Workflow</app-link>
             </li>
           </ul>
         </nav>
 
-        <app-link variant="secondary" href=${p("/#cta")}>
+        <app-link variant="secondary" href=${m("/#cta")}>
           Let's Craft &#8629;
         </app-link>
       </div>
@@ -373,7 +377,7 @@ var E = [
         <ol>
             ${E.map((t) => `
                 <li>
-                    <app-link variant="sitemap" href=${p(t.href)} >${t.name}</app-link>
+                    <app-link variant="sitemap" href=${m(t.href)} >${t.name}</app-link>
                 </li>
             `).join("")}
         </ol>
@@ -626,7 +630,7 @@ function H(t) {
   if (!a || !c || !l || !s || !h)
     return;
   function g(n) {
-    let m = c.getBoundingClientRect(), d = n.clientX - m.left, v = n.clientY - m.top, u = s.offsetWidth / 2;
+    let p = c.getBoundingClientRect(), d = n.clientX - p.left, v = n.clientY - p.top, u = s.offsetWidth / 2;
     s.style.left = `${d - u}px`, s.style.top = `${v - u}px`, l.style.clipPath = `circle(${u}px at ${d}px ${v}px)`;
   }
   function f() {

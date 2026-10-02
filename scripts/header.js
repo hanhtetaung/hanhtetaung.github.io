@@ -59,6 +59,10 @@ const template = /* html */ `
             <li>
               <app-link variant="plain" href=${navHref("/about")}>About</app-link>
             </li>
+
+            <li>
+              <app-link variant="plain" href=${navHref("/workflow")}>Workflow</app-link>
+            </li>
           </ul>
         </nav>
 

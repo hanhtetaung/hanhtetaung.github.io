@@ -47,11 +47,11 @@ function v() {
 function e(a) {
   return new URL(a, v()).href;
 }
-function d(a) {
-  let i = a.replace(/^\//, ""), c = location.protocol === "file:", s = v();
+function c(a) {
+  let i = a.replace(/^\//, ""), d = location.protocol === "file:", s = v();
   if (i === "")
-    return c ? new URL("index.html", s).href : s.href;
-  return c ? new URL(`${i}.html`, s).href : new URL(i, s).href;
+    return d ? new URL("index.html", s).href : s.href;
+  return d ? new URL(`${i}.html`, s).href : new URL(i, s).href;
 }
 
 // scripts/fonts.js
@@ -92,8 +92,8 @@ function k(a, i) {
     return Number(a);
   return a;
 }
-function t(a, { props: i = {}, attrs: c = [], styles: s = "", template: l, onRender: f = null }) {
-  let g = ["props", ...c];
+function t(a, { props: i = {}, attrs: d = [], styles: s = "", template: l, onRender: f = null }) {
+  let g = ["props", ...d];
 
   class h extends HTMLElement {
     static observedAttributes = g;
@@ -127,12 +127,12 @@ function t(a, { props: i = {}, attrs: c = [], styles: s = "", template: l, onRen
       return m;
     }
     _applyForwardedAttrs() {
-      if (c.length === 0)
+      if (d.length === 0)
         return;
       let o = this.shadowRoot.querySelector("[data-forward]");
       if (!o)
         return;
-      for (let n of c)
+      for (let n of d)
         if (this.hasAttribute(n))
           o.setAttribute(n, this.getAttribute(n));
         else
@@ -274,7 +274,7 @@ var A = `
   }
 `, E = `
   <header>
-      <app-link variant="plain" href=${d("/")}>
+      <app-link variant="plain" href=${c("/")}>
         <img src=${e("./assets/images/logo.avif")}
           alt="Logo">
       </app-link>
@@ -283,16 +283,20 @@ var A = `
         <nav>
           <ul>
             <li>
-              <app-link variant="plain" href=${d("/")}>Home</app-link>
+              <app-link variant="plain" href=${c("/")}>Home</app-link>
             </li>
 
             <li>
-              <app-link variant="plain" href=${d("/about")}>About</app-link>
+              <app-link variant="plain" href=${c("/about")}>About</app-link>
+            </li>
+
+            <li>
+              <app-link variant="plain" href=${c("/workflow")}>Workflow</app-link>
             </li>
           </ul>
         </nav>
 
-        <app-link variant="secondary" href=${d("/#cta")}>
+        <app-link variant="secondary" href=${c("/#cta")}>
           Let's Craft &#8629;
         </app-link>
       </div>
@@ -374,7 +378,7 @@ var _ = [
         <ol>
             ${_.map((a) => `
                 <li>
-                    <app-link variant="sitemap" href=${d(a.href)} >${a.name}</app-link>
+                    <app-link variant="sitemap" href=${c(a.href)} >${a.name}</app-link>
                 </li>
             `).join("")}
         </ol>
@@ -623,11 +627,11 @@ var H = `
   </footer>
 `;
 function P(a) {
-  let i = a.querySelector("footer"), c = a.getElementById("highlight-base"), s = a.getElementById("highlight-lens"), l = a.getElementById("lens-ring"), f = a.getElementById("highlight-wrap");
-  if (!i || !c || !s || !l || !f)
+  let i = a.querySelector("footer"), d = a.getElementById("highlight-base"), s = a.getElementById("highlight-lens"), l = a.getElementById("lens-ring"), f = a.getElementById("highlight-wrap");
+  if (!i || !d || !s || !l || !f)
     return;
   function g(n) {
-    let m = c.getBoundingClientRect(), p = n.clientX - m.left, b = n.clientY - m.top, u = l.offsetWidth / 2;
+    let m = d.getBoundingClientRect(), p = n.clientX - m.left, b = n.clientY - m.top, u = l.offsetWidth / 2;
     l.style.left = `${p - u}px`, l.style.top = `${b - u}px`, s.style.clipPath = `circle(${u}px at ${p}px ${b}px)`;
   }
   function h() {
@@ -742,7 +746,7 @@ var j = `
 
       <app-link
         variant="secondary"
-        href=${d("/terra")}
+        href=${c("/terra")}
         target="_blank"
         >Visit ➶</app-link>
     </article>
@@ -765,7 +769,7 @@ var I = `
   p {
     margin-block: 2rem;
   }
-`, X = `
+`, W = `
   <section>
   
 
@@ -792,10 +796,10 @@ var I = `
       </article>
   </section>
 `;
-t("section-terra-overview", { styles: I, template: X });
+t("section-terra-overview", { styles: I, template: W });
 
 // scripts/work/terra/building-block.js
-var M = `
+var X = `
   :host {
     display: block;
     margin-block: 10rem;
@@ -830,7 +834,7 @@ var M = `
     display: block;
     margin-bottom: 2rem;
   }
-`, V = `
+`, M = `
   <section>
       <h2>Design Foundation</h2>
           <app-image
@@ -879,10 +883,10 @@ var M = `
           </article>
   </section>
 `;
-t("section-terra-building-block", { styles: M, template: V });
+t("section-terra-building-block", { styles: X, template: M });
 
 // scripts/work/terra/need-one-interface.js
-var W = `
+var V = `
   :host {
     display: block;
   }
@@ -987,7 +991,7 @@ var W = `
      
   </section>
 `;
-t("section-terra-need-one-interface", { styles: W, template: J });
+t("section-terra-need-one-interface", { styles: V, template: J });
 
 // scripts/work/terra/conclusion.js
 var Q = `

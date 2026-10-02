@@ -284,6 +284,10 @@ var F = `
             <li>
               <app-link variant="plain" href=${x("/about")}>About</app-link>
             </li>
+
+            <li>
+              <app-link variant="plain" href=${x("/workflow")}>Workflow</app-link>
+            </li>
           </ul>
         </nav>
 
@@ -617,7 +621,7 @@ var j = `
     <footer-copyright></footer-copyright>
   </footer>
 `;
-function K(a) {
+function W(a) {
   let t = a.querySelector("footer"), m = a.getElementById("highlight-base"), n = a.getElementById("highlight-lens"), s = a.getElementById("lens-ring"), g = a.getElementById("highlight-wrap");
   if (!t || !m || !n || !s || !g)
     return;
@@ -635,10 +639,10 @@ function K(a) {
     t.removeEventListener("mousemove", u), t.removeEventListener("mouseenter", p), t.removeEventListener("mouseleave", r);
   };
 }
-o("section-footer", { styles: j, template: J, onRender: K });
+o("section-footer", { styles: j, template: J, onRender: W });
 
 // scripts/home/hero.js
-var W = `
+var K = `
   :host {
     display: block;
     height: min(calc(100vh - 108px - 10rem), 50rem);
@@ -793,7 +797,7 @@ function Y(a) {
     f(), g.removeEventListener("change", c);
   };
 }
-o("section-hero", { styles: W, template: X, onRender: Y });
+o("section-hero", { styles: K, template: X, onRender: Y });
 
 // scripts/home/recent-crafts.js
 var Q = `
@@ -1146,7 +1150,7 @@ var ee = `
             <img src=${e("./assets/images/home/web-identity.png")} alt="Web Identity">
             <article >
                 <h3><img src=${e("./assets/images/home/web-identity.svg")} alt="Web Identity"></h3>
-                <p>Landing page, illustrations plus human taste</p>
+                <p>Landing page or multiple pages, illustrations plus human taste</p>
             </article>
         </li>
         

@@ -143,7 +143,7 @@ const template = /* html */ `
             <img src=${asset("./assets/images/home/web-identity.png")} alt="Web Identity">
             <article >
                 <h3><img src=${asset("./assets/images/home/web-identity.svg")} alt="Web Identity"></h3>
-                <p>Landing page, illustrations plus human taste</p>
+                <p>Landing page or multiple pages, illustrations plus human taste</p>
             </article>
         </li>
         

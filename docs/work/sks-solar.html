@@ -43,7 +43,7 @@ function y() {
 function e(t) {
   return new URL(t, y()).href;
 }
-function p(t) {
+function m(t) {
   let i = t.replace(/^\//, ""), c = location.protocol === "file:", n = y();
   if (i === "")
     return c ? new URL("index.html", n).href : n.href;
@@ -117,10 +117,10 @@ function a(t, { props: i = {}, attrs: c = [], styles: n = "", template: l, onRen
         } catch {
           r = {};
         }
-      let m = {};
+      let p = {};
       for (let d of Object.keys(i))
-        m[d] = k(r[d], i[d]);
-      return m;
+        p[d] = k(r[d], i[d]);
+      return p;
     }
     _applyForwardedAttrs() {
       if (c.length === 0)
@@ -139,9 +139,9 @@ function a(t, { props: i = {}, attrs: c = [], styles: n = "", template: l, onRen
         this._cleanup(), this._cleanup = null;
       let r = this._getProps(), s = typeof l === "function" ? l(r) : l;
       if (this.shadowRoot.innerHTML = `<style>${n}</style>${s}`, this._applyForwardedAttrs(), f) {
-        let m = f(this.shadowRoot, r, this);
-        if (typeof m === "function")
-          this._cleanup = m;
+        let p = f(this.shadowRoot, r, this);
+        if (typeof p === "function")
+          this._cleanup = p;
       }
     }
   }
@@ -270,7 +270,7 @@ var C = `
   }
 `, E = `
   <header>
-      <app-link variant="plain" href=${p("/")}>
+      <app-link variant="plain" href=${m("/")}>
         <img src=${e("./assets/images/logo.avif")}
           alt="Logo">
       </app-link>
@@ -279,16 +279,20 @@ var C = `
         <nav>
           <ul>
             <li>
-              <app-link variant="plain" href=${p("/")}>Home</app-link>
+              <app-link variant="plain" href=${m("/")}>Home</app-link>
             </li>
 
             <li>
-              <app-link variant="plain" href=${p("/about")}>About</app-link>
+              <app-link variant="plain" href=${m("/about")}>About</app-link>
+            </li>
+
+            <li>
+              <app-link variant="plain" href=${m("/workflow")}>Workflow</app-link>
             </li>
           </ul>
         </nav>
 
-        <app-link variant="secondary" href=${p("/#cta")}>
+        <app-link variant="secondary" href=${m("/#cta")}>
           Let's Craft &#8629;
         </app-link>
       </div>
@@ -370,7 +374,7 @@ var L = [
         <ol>
             ${L.map((t) => `
                 <li>
-                    <app-link variant="sitemap" href=${p(t.href)} >${t.name}</app-link>
+                    <app-link variant="sitemap" href=${m(t.href)} >${t.name}</app-link>
                 </li>
             `).join("")}
         </ol>
@@ -623,7 +627,7 @@ function j(t) {
   if (!i || !c || !n || !l || !f)
     return;
   function g(s) {
-    let m = c.getBoundingClientRect(), d = s.clientX - m.left, v = s.clientY - m.top, u = l.offsetWidth / 2;
+    let p = c.getBoundingClientRect(), d = s.clientX - p.left, v = s.clientY - p.top, u = l.offsetWidth / 2;
     l.style.left = `${d - u}px`, l.style.top = `${v - u}px`, n.style.clipPath = `circle(${u}px at ${d}px ${v}px)`;
   }
   function h() {
@@ -846,7 +850,7 @@ var V = `
     article p {
       margin-bottom: 2rem;
     }
-`, X = `
+`, W = `
   <section>
 
     <h2>Process</h2>
@@ -949,10 +953,10 @@ var V = `
     </ul>
   </section>
 `;
-a("section-sks-solar-process", { styles: V, template: X });
+a("section-sks-solar-process", { styles: V, template: W });
 
 // scripts/work/sks-solar/result.js
-var W = `
+var X = `
   :host {
     display: block;
         margin-bottom: 10rem;
@@ -1014,6 +1018,6 @@ var W = `
     </ul>
   </section>
 `;
-a("section-sks-solar-result", { styles: W, template: J });
+a("section-sks-solar-result", { styles: X, template: J });
 </script></body>
 </html>
