@@ -47,11 +47,11 @@ function v() {
 function e(a) {
   return new URL(a, v()).href;
 }
-function c(a) {
-  let i = a.replace(/^\//, ""), d = location.protocol === "file:", s = v();
+function d(a) {
+  let i = a.replace(/^\//, ""), c = location.protocol === "file:", l = v();
   if (i === "")
-    return d ? new URL("index.html", s).href : s.href;
-  return d ? new URL(`${i}.html`, s).href : new URL(i, s).href;
+    return c ? new URL("index.html", l).href : l.href;
+  return c ? new URL(`${i}.html`, l).href : new URL(i, l).href;
 }
 
 // scripts/fonts.js
@@ -92,8 +92,8 @@ function k(a, i) {
     return Number(a);
   return a;
 }
-function t(a, { props: i = {}, attrs: d = [], styles: s = "", template: l, onRender: f = null }) {
-  let g = ["props", ...d];
+function t(a, { props: i = {}, attrs: c = [], styles: l = "", template: s, onRender: f = null }) {
+  let g = ["props", ...c];
 
   class h extends HTMLElement {
     static observedAttributes = g;
@@ -114,36 +114,36 @@ function t(a, { props: i = {}, attrs: d = [], styles: s = "", template: l, onRen
         this._render();
     }
     _getProps() {
-      let o = {}, n = this.getAttribute("props");
+      let r = {}, n = this.getAttribute("props");
       if (n)
         try {
-          o = JSON.parse(n);
+          r = JSON.parse(n);
         } catch {
-          o = {};
+          r = {};
         }
       let m = {};
       for (let p of Object.keys(i))
-        m[p] = k(o[p], i[p]);
+        m[p] = k(r[p], i[p]);
       return m;
     }
     _applyForwardedAttrs() {
-      if (d.length === 0)
+      if (c.length === 0)
         return;
-      let o = this.shadowRoot.querySelector("[data-forward]");
-      if (!o)
+      let r = this.shadowRoot.querySelector("[data-forward]");
+      if (!r)
         return;
-      for (let n of d)
+      for (let n of c)
         if (this.hasAttribute(n))
-          o.setAttribute(n, this.getAttribute(n));
+          r.setAttribute(n, this.getAttribute(n));
         else
-          o.removeAttribute(n);
+          r.removeAttribute(n);
     }
     _render() {
       if (typeof this._cleanup === "function")
         this._cleanup(), this._cleanup = null;
-      let o = this._getProps(), n = typeof l === "function" ? l(o) : l;
-      if (this.shadowRoot.innerHTML = `<style>${s}</style>${n}`, this._applyForwardedAttrs(), f) {
-        let m = f(this.shadowRoot, o, this);
+      let r = this._getProps(), n = typeof s === "function" ? s(r) : s;
+      if (this.shadowRoot.innerHTML = `<style>${l}</style>${n}`, this._applyForwardedAttrs(), f) {
+        let m = f(this.shadowRoot, r, this);
         if (typeof m === "function")
           this._cleanup = m;
       }
@@ -229,14 +229,11 @@ var z = `
     max-height: 7rem;
     width: auto;
   }
-`, T = ["width", "height", "src", "alt"], C = () => "<img data-forward />";
-t("app-logo", { attrs: T, styles: z, template: C });
-
-// scripts/breakpoints.js
-var r = "640px";
+`, A = ["width", "height", "src", "alt"], C = () => "<img data-forward />";
+t("app-logo", { attrs: A, styles: z, template: C });
 
 // scripts/header.js
-var A = `
+var T = `
   :host {
     display: block;
     font-size: var(--size-small);
@@ -272,9 +269,25 @@ var A = `
     height: 5rem;
     width: auto;
   }
+
+  a {
+    color: var(--color-text);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    text-decoration: none;
+    border: 1px solid var(--color-text);
+    padding-inline: 2rem;
+    padding-block: 1rem;
+  }
+
+  a svg {
+    width: 2rem;
+    height: auto;
+  }
 `, E = `
   <header>
-      <app-link variant="plain" href=${c("/")}>
+      <app-link variant="plain" href=${d("/")}>
         <img src=${e("./assets/images/logo.avif")}
           alt="Logo">
       </app-link>
@@ -283,26 +296,30 @@ var A = `
         <nav>
           <ul>
             <li>
-              <app-link variant="plain" href=${c("/")}>Home</app-link>
+              <app-link variant="plain" href=${d("/")}>Home</app-link>
             </li>
 
             <li>
-              <app-link variant="plain" href=${c("/about")}>About</app-link>
+              <app-link variant="plain" href=${d("/about")}>About</app-link>
             </li>
 
-            <li>
-              <app-link variant="plain" href=${c("/workflow")}>Workflow</app-link>
-            </li>
+            <!-- <li>
+              <app-link variant="plain" href=${d("/workflow")}>Workflow</app-link>
+            </li> -->
           </ul>
         </nav>
 
-        <app-link variant="secondary" href=${c("/#cta")}>
-          Let's Craft &#8629;
-        </app-link>
+        <a href="/#cta">
+          Let's Craft
+          <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" aria-label="target" viewBox="0 0 197 170"><path d="M163.4 13a78 78 0 0 0-8.2 6.3c-.7.8-1.5 4.3-1.8 7.8-.8 7.3-1.2 7.9-7.1 12.1l-4.4 2.9-8.3-7.8A71 71 0 0 0 104 16.8a57 57 0 0 0-20-2.3 63 63 0 0 0-34 7.7 55 55 0 0 0-18 13.7A68 68 0 0 0 11.9 71C9.1 82 9.6 99 13 109a75 75 0 0 0 47.5 49 51 51 0 0 0 23.5 3.4c11.7-.1 14.5-.4 21.2-2.6 12.2-4 20.4-9.2 29.8-18.7 9.8-9.9 14-16.5 18.3-28.8a58 58 0 0 0 3.5-20.4 67 67 0 0 0-7.8-36.2l-4-8.2c0-.3 2.4-2.2 5.3-4.4l5.3-4 5.4 1.4a44 44 0 0 0 7.8 1.5c3.2 0 19.4-12.7 19-14.9q-.2-1.6-6.5-2.9l-6.2-1.4-.3-6.6c-.3-5.8-.6-6.7-2.3-7-1.1-.1-5.2 2-9.1 4.8m6.6 4.8c0 3.5-.5 4.3-6 8.5a76 76 0 0 1-6.3 4.7c-.2 0 0-2.1.3-4.6.5-4.2 1-4.9 6-8.4l5.8-3.9c.1-.1.2 1.6.2 3.7m-69.8 3.1a70 70 0 0 1 25.4 12.5c6.8 5.1 12.1 11.3 10.8 12.6-.5.5-4.2 3.4-8.3 6.4l-7.4 5.5-5.6-5.1A46.5 46.5 0 0 0 62 45.6a47.7 47.7 0 0 0-11.4 76.9c9.8 9.6 26.9 15 40.1 12.8a48.5 48.5 0 0 0 39.4-38.4c1.8-9.2.7-19.7-3-27.6a61 61 0 0 1-3.1-7.2c0-.4 2.4-2.4 5.3-4.6l8.4-6.3 3.3-2.4 3.9 8.2a63 63 0 0 1 6.8 34.4 63 63 0 0 1-14 38.8 68.2 68.2 0 0 1-106 2.9 92 92 0 0 1-15.2-29.6 86 86 0 0 1 0-31.2 70 70 0 0 1 47-50.6 76 76 0 0 1 36.7-.8m77.6 6.1c3.3 0 2.5 1.3-3.6 5.9-5 3.7-5.5 3.8-9 2.9-2-.6-3.8-1.1-4-1.3s2.1-2.2 5-4.4q5.3-4.1 7.3-3.6c1.1.2 3.1.5 4.3.5M96.2 47c6.6 2 17 8.7 18.8 12 .9 1.6 0 2.7-7 8l-8 6.1-3.7-2.5c-10.4-6.9-25.1-4.1-31.2 5.8-1.3 2-2.5 6-2.8 8.9A21 21 0 0 0 79.4 109c16 3.3 30.4-13.6 24.2-28.4l-1.4-3.4 7.9-5.8c4.3-3.3 8.3-6 8.9-6.2 1.6-.6 5.9 9.8 6.9 16.8a44 44 0 0 1-29.6 47A42.6 42.6 0 0 1 41 88.4c0-29.3 27.5-50 55.2-41.4m-5.4 26c2.3 1 4.2 2.3 4.2 2.8s-1.5 2.1-3.2 3.4c-5.6 4.1-6 4.3-5.6 1.7q.3-2.4-1.3-2.7c-2.3-.4-7.2 8.4-6.4 11.6.7 2.9 5.3 4.8 7.7 3.3 1-.6 2.8-1.1 4-1.1 7.3-.1 9.5-3.7 2.6-4.2l-4.1-.3 4.7-3.9c2.6-2.1 5-3.5 5.4-3.1s.7 3.7.7 7.3c0 8-2.3 12.1-8.8 15.3-7.9 4.1-19 .3-22.3-7.7-2.2-5.2-1.8-12.5.9-16.5C71.9 75 79 71 83.5 71c1.6 0 4.9.9 7.3 2"/></svg>
+        </a>
       </div>
   </header>
 `;
-t("section-header", { template: E, styles: A });
+t("section-header", { template: E, styles: T });
+
+// scripts/breakpoints.js
+var o = "640px";
 
 // scripts/components/footer-nav.js
 var _ = [
@@ -324,7 +341,7 @@ var _ = [
     href: "/writings/foundation-building-interfaces-at-scale",
     name: "Foundation"
   }
-], L = `
+], B = `
   :host {
     --local-bg: var(--color-secondary);
     --local-color: var(--color-bg-primary);
@@ -333,7 +350,7 @@ var _ = [
    display: flex;
    gap: 5rem;
 
-   @media (max-width: ${r}) {
+   @media (max-width: ${o}) {
         flex-direction: column;
         gap: 3rem;
         margin-block: 2rem;
@@ -362,7 +379,7 @@ var _ = [
     max-height: 12.5ch;
     overflow: scroll;
 
-    @media (max-width: ${r}) {
+    @media (max-width: ${o}) {
         max-height: 20ch;
     }
   }
@@ -371,20 +388,20 @@ var _ = [
     margin-right: 5rem;
     margin-bottom: 0.3rem;
   }
-`, B = () => `
+`, L = () => `
     <nav>
         <span>Sitemap</span>
 
         <ol>
             ${_.map((a) => `
                 <li>
-                    <app-link variant="sitemap" href=${c(a.href)} >${a.name}</app-link>
+                    <app-link variant="sitemap" href=${d(a.href)} >${a.name}</app-link>
                 </li>
             `).join("")}
         </ol>
     </nav>
 `;
-t("footer-nav", { styles: L, template: B });
+t("footer-nav", { styles: B, template: L });
 
 // scripts/components/footer-copyright.js
 var F = `
@@ -395,7 +412,7 @@ var F = `
     padding-top: 1rem;
     margin-top: 3rem;
 
-   @media (max-width: ${r}) {
+   @media (max-width: ${o}) {
         flex-direction: column-reverse;
         gap: 2rem;
         border: none;
@@ -411,7 +428,7 @@ var F = `
     align-items: end;
     gap: 0.2rem;
 
-    @media (min-width: ${r}) {
+    @media (min-width: ${o}) {
       border: none;
       padding-top: none;
     }
@@ -435,7 +452,7 @@ var F = `
   nav {
     display: block;
 
-    @media (min-width: ${r}) {
+    @media (min-width: ${o}) {
       display: block;
     }
   }
@@ -446,7 +463,7 @@ var F = `
     font-weight: var(--font-bold);
     
 
-    @media (max-width: ${r}) {
+    @media (max-width: ${o}) {
       display: inline-block;
       margin-bottom: 0.5rem;
     }
@@ -455,7 +472,7 @@ var F = `
   p img {
     height: 2.3rem;
 
-     @media (max-width: ${r}) {
+     @media (max-width: ${o}) {
       
       height: 2.5rem;
     }
@@ -599,7 +616,7 @@ var H = `
     display: block;
   }
 
-  @media (min-width: ${r}) {
+  @media (min-width: ${o}) {
     #highlight-wrap {
       display: block;
     }
@@ -627,21 +644,21 @@ var H = `
   </footer>
 `;
 function P(a) {
-  let i = a.querySelector("footer"), d = a.getElementById("highlight-base"), s = a.getElementById("highlight-lens"), l = a.getElementById("lens-ring"), f = a.getElementById("highlight-wrap");
-  if (!i || !d || !s || !l || !f)
+  let i = a.querySelector("footer"), c = a.getElementById("highlight-base"), l = a.getElementById("highlight-lens"), s = a.getElementById("lens-ring"), f = a.getElementById("highlight-wrap");
+  if (!i || !c || !l || !s || !f)
     return;
   function g(n) {
-    let m = d.getBoundingClientRect(), p = n.clientX - m.left, b = n.clientY - m.top, u = l.offsetWidth / 2;
-    l.style.left = `${p - u}px`, l.style.top = `${b - u}px`, s.style.clipPath = `circle(${u}px at ${p}px ${b}px)`;
+    let m = c.getBoundingClientRect(), p = n.clientX - m.left, b = n.clientY - m.top, u = s.offsetWidth / 2;
+    s.style.left = `${p - u}px`, s.style.top = `${b - u}px`, l.style.clipPath = `circle(${u}px at ${p}px ${b}px)`;
   }
   function h() {
-    l.setAttribute("data-visible", "true");
+    s.setAttribute("data-visible", "true");
   }
-  function o() {
-    l.removeAttribute("data-visible"), s.style.clipPath = "circle(0px at 50% 50%)";
+  function r() {
+    s.removeAttribute("data-visible"), l.style.clipPath = "circle(0px at 50% 50%)";
   }
-  return i.addEventListener("mousemove", g), i.addEventListener("mouseenter", h), i.addEventListener("mouseleave", o), () => {
-    i.removeEventListener("mousemove", g), i.removeEventListener("mouseenter", h), i.removeEventListener("mouseleave", o);
+  return i.addEventListener("mousemove", g), i.addEventListener("mouseenter", h), i.addEventListener("mouseleave", r), () => {
+    i.removeEventListener("mousemove", g), i.removeEventListener("mouseenter", h), i.removeEventListener("mouseleave", r);
   };
 }
 t("section-footer", { styles: H, template: G, onRender: P });
@@ -678,11 +695,11 @@ var U = `
    :host([variant="full"]) {
     --local-width: 100%;
   }
-`, N = ["width", "height", "src", "alt"], O = () => "<img data-forward />";
-t("app-image", { attrs: N, styles: U, template: O });
+`, q = ["width", "height", "src", "alt"], N = () => "<img data-forward />";
+t("app-image", { attrs: q, styles: U, template: N });
 
 // scripts/work/terra/intro.js
-var j = `
+var O = `
   :host {
     display: block;
     margin-block: 10rem;
@@ -697,7 +714,7 @@ var j = `
     justify-content: space-between;
     gap: 3rem;
 
-    @media (max-width: ${r}) {
+    @media (max-width: ${o}) {
       flex-direction: column;
     }
   }
@@ -722,7 +739,7 @@ var j = `
     font-weight: var(--font-bold);
     text-transform: uppercase;
   }
-`, q = `
+`, j = `
   <section>
     <app-image
       variant="large"
@@ -746,13 +763,13 @@ var j = `
 
       <app-link
         variant="secondary"
-        href=${c("/terra")}
+        href=${d("/terra")}
         target="_blank"
         >Visit ➶</app-link>
     </article>
   </section>
 `;
-t("section-terra-intro", { styles: j, template: q });
+t("section-terra-intro", { styles: O, template: j });
 
 // scripts/work/terra/overview.js
 var I = `
@@ -769,7 +786,7 @@ var I = `
   p {
     margin-block: 2rem;
   }
-`, W = `
+`, M = `
   <section>
   
 
@@ -796,10 +813,10 @@ var I = `
       </article>
   </section>
 `;
-t("section-terra-overview", { styles: I, template: W });
+t("section-terra-overview", { styles: I, template: M });
 
 // scripts/work/terra/building-block.js
-var X = `
+var W = `
   :host {
     display: block;
     margin-block: 10rem;
@@ -834,7 +851,7 @@ var X = `
     display: block;
     margin-bottom: 2rem;
   }
-`, M = `
+`, X = `
   <section>
       <h2>Design Foundation</h2>
           <app-image
@@ -883,7 +900,7 @@ var X = `
           </article>
   </section>
 `;
-t("section-terra-building-block", { styles: X, template: M });
+t("section-terra-building-block", { styles: W, template: X });
 
 // scripts/work/terra/need-one-interface.js
 var V = `

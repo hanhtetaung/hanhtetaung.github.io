@@ -45,7 +45,6 @@ const styles = /* css */ `
     padding-top: 2rem;
     border-bottom: 1px solid var(--color-text);
     text-align: start;
-    /* min-width: 60rem;     */
   }
 
   h3 {
@@ -78,12 +77,23 @@ const styles = /* css */ `
 
   a {
     color: var(--color-primary);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.1rem;
+    font-size: var(--size-small);
+    text-decoration-style: dotted;
+  }
+
+  a img {
+    width: 2.3rem;
+    height: auto;
   }
 
   ol {
     list-style-type: disc;
     padding: 0;
     padding-left: 1.5rem;
+    padding-bottom: 0.6rem;
   }
 
   ol li {
@@ -126,6 +136,11 @@ const template = /* html */ `
           <li>Develop</li>
           <li>Deliver</li>
         </ol>
+
+        <a href="/workflow">
+          Workflow details
+          <!-- <img src=${asset("./assets/icons/link.svg")} alt="Link"> -->
+        </a>
       </li>
   
       <li>
