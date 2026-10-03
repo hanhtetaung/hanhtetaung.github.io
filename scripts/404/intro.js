@@ -1,4 +1,3 @@
-import "../components/app-icon.js";
 import { TABLET } from "../breakpoints.js";
 import { define } from "../../lib/define.js";
 
@@ -8,18 +7,18 @@ const styles = /*css*/ `
     margin-block: 10rem;
   }
 
-    section {
-        margin-inline: auto;
-        width: 80%;
-        display: flex;
-        gap: 3rem;
+  section {
+    margin-inline: auto;
+    width: 80%;
+    display: flex;
+    gap: 3rem;
 
-        @media (max-width: ${TABLET}) {
-          display: block;
-        }
+    @media (max-width: ${TABLET}) {
+      display: block;
     }
+  }
 
-     h1 {
+  h1 {
     margin: 0;
     font-size: var(--size-display);
     font-family: var(--font-heading);
@@ -38,11 +37,6 @@ const template = /* html */ `
         <p>Sorry. Page not found.</p>
       </hgroup>
 
-      <app-icon
-        variant="large"
-        src="./assets/icons/bird-with-flower.svg"
-        alt="Coming Soon"
-      ></app-icon>
   </section>
 `;
 

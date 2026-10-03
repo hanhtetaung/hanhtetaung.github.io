@@ -32,63 +32,63 @@
 
     <section-footer></section-footer>
   <script type="module">// lib/asset.js
-function b() {
-  let e = document.documentElement.dataset.base || "./";
-  return new URL(e, location.href);
+function v() {
+  let t = document.documentElement.dataset.base || "./";
+  return new URL(t, location.href);
 }
-function a(e) {
-  return new URL(e, b()).href;
+function i(t) {
+  return new URL(t, v()).href;
 }
-function d(e) {
-  let t = e.replace(/^\//, ""), c = location.protocol === "file:", l = b();
-  if (t === "")
-    return c ? new URL("index.html", l).href : l.href;
-  return c ? new URL(`${t}.html`, l).href : new URL(t, l).href;
+function p(t) {
+  let e = t.replace(/^\//, ""), l = location.protocol === "file:", n = v();
+  if (e === "")
+    return l ? new URL("index.html", n).href : n.href;
+  return l ? new URL(`${e}.html`, n).href : new URL(e, n).href;
 }
 
 // scripts/fonts.js
-var y = `
+var w = `
 @font-face {
     font-family: "Archivo";
-    src: url("${a("./assets/fonts/Archivo-Black.woff2")}") format("woff2");
+    src: url("${i("./assets/fonts/Archivo-Black.woff2")}") format("woff2");
     font-weight: 700;
     font-display: swap;
   }
 
   @font-face {
     font-family: "Archivo";
-    src: url("${a("./assets/fonts/Archivo-Regular.woff2")}") format("woff2");
+    src: url("${i("./assets/fonts/Archivo-Regular.woff2")}") format("woff2");
     font-weight: 400;
     font-display: swap;
   }
-`, w = document.createElement("style");
-w.textContent = y;
-document.head.appendChild(w);
+`, y = document.createElement("style");
+y.textContent = w;
+document.head.appendChild(y);
 
 // lib/define.js
-function x(e, t) {
-  if (e === void 0) {
-    if (t === Array)
+function x(t, e) {
+  if (t === void 0) {
+    if (e === Array)
       return [];
-    if (t === Object)
+    if (e === Object)
       return {};
-    if (t === Boolean)
+    if (e === Boolean)
       return !1;
-    if (t === Number)
+    if (e === Number)
       return 0;
     return;
   }
-  if (t === Boolean)
-    return Boolean(e);
-  if (t === Number)
-    return Number(e);
-  return e;
+  if (e === Boolean)
+    return Boolean(t);
+  if (e === Number)
+    return Number(t);
+  return t;
 }
-function r(e, { props: t = {}, attrs: c = [], styles: l = "", template: s, onRender: h = null }) {
-  let g = ["props", ...c];
+function m(t, { props: e = {}, attrs: l = [], styles: n = "", template: o, onRender: h = null }) {
+  let u = ["props", ...l];
 
   class f extends HTMLElement {
-    static observedAttributes = g;
+    static observedAttributes = u;
     constructor() {
       super();
       this.attachShadow({ mode: "open" }), this._cleanup = null;
@@ -106,126 +106,46 @@ function r(e, { props: t = {}, attrs: c = [], styles: l = "", template: s, onRen
         this._render();
     }
     _getProps() {
-      let i = {}, n = this.getAttribute("props");
-      if (n)
+      let a = {}, r = this.getAttribute("props");
+      if (r)
         try {
-          i = JSON.parse(n);
+          a = JSON.parse(r);
         } catch {
-          i = {};
+          a = {};
         }
-      let m = {};
-      for (let p of Object.keys(t))
-        m[p] = x(i[p], t[p]);
-      return m;
+      let c = {};
+      for (let d of Object.keys(e))
+        c[d] = x(a[d], e[d]);
+      return c;
     }
     _applyForwardedAttrs() {
-      if (c.length === 0)
+      if (l.length === 0)
         return;
-      let i = this.shadowRoot.querySelector("[data-forward]");
-      if (!i)
+      let a = this.shadowRoot.querySelector("[data-forward]");
+      if (!a)
         return;
-      for (let n of c)
-        if (this.hasAttribute(n))
-          i.setAttribute(n, this.getAttribute(n));
+      for (let r of l)
+        if (this.hasAttribute(r))
+          a.setAttribute(r, this.getAttribute(r));
         else
-          i.removeAttribute(n);
+          a.removeAttribute(r);
     }
     _render() {
       if (typeof this._cleanup === "function")
         this._cleanup(), this._cleanup = null;
-      let i = this._getProps(), n = typeof s === "function" ? s(i) : s;
-      if (this.shadowRoot.innerHTML = `<style>${l}</style>${n}`, this._applyForwardedAttrs(), h) {
-        let m = h(this.shadowRoot, i, this);
-        if (typeof m === "function")
-          this._cleanup = m;
+      let a = this._getProps(), r = typeof o === "function" ? o(a) : o;
+      if (this.shadowRoot.innerHTML = `<style>${n}</style>${r}`, this._applyForwardedAttrs(), h) {
+        let c = h(this.shadowRoot, a, this);
+        if (typeof c === "function")
+          this._cleanup = c;
       }
     }
   }
-  customElements.define(e, f);
+  customElements.define(t, f);
 }
 
-// scripts/components/app-link.js
-var k = `
-  :host {
-    --local-bg: transparent;
-    --local-color: var(--color-text);
-    --local-border: 1px solid var(--local-color);
-    --local-decoration: none;
-    --local-direction: row;
-    --local-padding: 1rem 2rem;
-    display: inline-block;
-  }
-
-  a {
-    display: inline-flex;
-    gap: 0.5rem;
-    background: var(--local-bg);
-    color: var(--local-color);
-    border: var(--local-border);
-    text-decoration: var(--local-decoration);
-    padding: var(--local-padding);
-    white-space: nowrap;
-    flex-direction: var(--local-direction);
-  }
-
-  :host([variant="primary"]) {
-    --local-bg: var(--color-primary);
-    --local-color: var(--color-bg-primary);
-  }
-
-  :host([variant="secondary"]) {
-    --local-color: var(--color-text);
-  }
-
-  :host([variant="underline"]) {
-    --local-color: var(--color-tertiary);
-    --local-border: none;
-    --local-decoration: underline;
-    --local-padding: 0;
-  }
-
-  :host([variant="plain"]) {
-    --local-border: none;
-    --local-padding: 0.2rem 0;
-  }
-
-  :host([variant="image"]) {
-    --local-border: none;
-    /* --local-decoration: underline; */
-    --local-padding: 0.2rem 0;
-    --local-color: var(--color-tertiary);
-    --local-border: none;
-    --local-direction: column;
-  }
-
-  :host([variant="sitemap"]) {
-     --local-padding: 0.2rem 0;
-     --local-border: none;
-
-     a::before {
-       content: "➶";
-     }
-  }
-`, $ = ["href", "target", "rel", "download"], z = `
-  <a data-forward><slot></slot></a>
-`;
-r("app-link", { attrs: $, styles: k, template: z });
-
-// scripts/components/app-logo.js
-var A = `
-  :host {
-    display: block;
-  }
-
-  img {
-    max-height: 7rem;
-    width: auto;
-  }
-`, C = ["width", "height", "src", "alt"], E = () => "<img data-forward />";
-r("app-logo", { attrs: C, styles: A, template: E });
-
 // scripts/header.js
-var _ = `
+var $ = `
   :host {
     display: block;
     font-size: var(--size-small);
@@ -241,7 +161,7 @@ var _ = `
     gap: 5rem;
   }
 
-  div {
+  nav {
     display: flex;
     align-items: center;
     gap: 8rem;
@@ -264,139 +184,59 @@ var _ = `
 
   a {
     color: var(--color-text);
+    padding: 0.2rem 0;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .action {
     display: inline-flex;
     align-items: center;
     gap: 0.4rem;
-    text-decoration: none;
     border: 1px solid var(--color-text);
     padding-inline: 2rem;
     padding-block: 1rem;
+
   }
 
   a svg {
     width: 2rem;
     height: auto;
   }
-`, B = `
+
+  
+`, k = `
   <header>
-      <app-link variant="plain" href=${d("/")}>
-        <img src=${a("./assets/images/logo.avif")}
-          alt="Logo">
-      </app-link>
+    <a href=${p("/")}>
+      <img src=${i("./assets/images/logo.avif")}
+        alt="Logo">
+    </a>
 
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <app-link variant="plain" href=${d("/")}>Home</app-link>
-            </li>
+    <nav>
+      <ul>
+        <li>
+          <a href=${p("/")}>Home</a>
+        </li>
 
-            <li>
-              <app-link variant="plain" href=${d("/about")}>About</app-link>
-            </li>
+        <li>
+          <a href=${p("/about")}>About</a>
+        </li>
+      </ul>
 
-            <!-- <li>
-              <app-link variant="plain" href=${d("/workflow")}>Workflow</app-link>
-            </li> -->
-          </ul>
-        </nav>
-
-        <a href="/#cta">
-          Let's Craft
-          <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" aria-label="target" viewBox="0 0 197 170"><path d="M163.4 13a78 78 0 0 0-8.2 6.3c-.7.8-1.5 4.3-1.8 7.8-.8 7.3-1.2 7.9-7.1 12.1l-4.4 2.9-8.3-7.8A71 71 0 0 0 104 16.8a57 57 0 0 0-20-2.3 63 63 0 0 0-34 7.7 55 55 0 0 0-18 13.7A68 68 0 0 0 11.9 71C9.1 82 9.6 99 13 109a75 75 0 0 0 47.5 49 51 51 0 0 0 23.5 3.4c11.7-.1 14.5-.4 21.2-2.6 12.2-4 20.4-9.2 29.8-18.7 9.8-9.9 14-16.5 18.3-28.8a58 58 0 0 0 3.5-20.4 67 67 0 0 0-7.8-36.2l-4-8.2c0-.3 2.4-2.2 5.3-4.4l5.3-4 5.4 1.4a44 44 0 0 0 7.8 1.5c3.2 0 19.4-12.7 19-14.9q-.2-1.6-6.5-2.9l-6.2-1.4-.3-6.6c-.3-5.8-.6-6.7-2.3-7-1.1-.1-5.2 2-9.1 4.8m6.6 4.8c0 3.5-.5 4.3-6 8.5a76 76 0 0 1-6.3 4.7c-.2 0 0-2.1.3-4.6.5-4.2 1-4.9 6-8.4l5.8-3.9c.1-.1.2 1.6.2 3.7m-69.8 3.1a70 70 0 0 1 25.4 12.5c6.8 5.1 12.1 11.3 10.8 12.6-.5.5-4.2 3.4-8.3 6.4l-7.4 5.5-5.6-5.1A46.5 46.5 0 0 0 62 45.6a47.7 47.7 0 0 0-11.4 76.9c9.8 9.6 26.9 15 40.1 12.8a48.5 48.5 0 0 0 39.4-38.4c1.8-9.2.7-19.7-3-27.6a61 61 0 0 1-3.1-7.2c0-.4 2.4-2.4 5.3-4.6l8.4-6.3 3.3-2.4 3.9 8.2a63 63 0 0 1 6.8 34.4 63 63 0 0 1-14 38.8 68.2 68.2 0 0 1-106 2.9 92 92 0 0 1-15.2-29.6 86 86 0 0 1 0-31.2 70 70 0 0 1 47-50.6 76 76 0 0 1 36.7-.8m77.6 6.1c3.3 0 2.5 1.3-3.6 5.9-5 3.7-5.5 3.8-9 2.9-2-.6-3.8-1.1-4-1.3s2.1-2.2 5-4.4q5.3-4.1 7.3-3.6c1.1.2 3.1.5 4.3.5M96.2 47c6.6 2 17 8.7 18.8 12 .9 1.6 0 2.7-7 8l-8 6.1-3.7-2.5c-10.4-6.9-25.1-4.1-31.2 5.8-1.3 2-2.5 6-2.8 8.9A21 21 0 0 0 79.4 109c16 3.3 30.4-13.6 24.2-28.4l-1.4-3.4 7.9-5.8c4.3-3.3 8.3-6 8.9-6.2 1.6-.6 5.9 9.8 6.9 16.8a44 44 0 0 1-29.6 47A42.6 42.6 0 0 1 41 88.4c0-29.3 27.5-50 55.2-41.4m-5.4 26c2.3 1 4.2 2.3 4.2 2.8s-1.5 2.1-3.2 3.4c-5.6 4.1-6 4.3-5.6 1.7q.3-2.4-1.3-2.7c-2.3-.4-7.2 8.4-6.4 11.6.7 2.9 5.3 4.8 7.7 3.3 1-.6 2.8-1.1 4-1.1 7.3-.1 9.5-3.7 2.6-4.2l-4.1-.3 4.7-3.9c2.6-2.1 5-3.5 5.4-3.1s.7 3.7.7 7.3c0 8-2.3 12.1-8.8 15.3-7.9 4.1-19 .3-22.3-7.7-2.2-5.2-1.8-12.5.9-16.5C71.9 75 79 71 83.5 71c1.6 0 4.9.9 7.3 2"/></svg>
-        </a>
-      </div>
+      <a href=${p("/#cta")} class="action">
+        Let's Craft
+        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" aria-label="target" viewBox="0 0 197 170"><path d="M163.4 13a78 78 0 0 0-8.2 6.3c-.7.8-1.5 4.3-1.8 7.8-.8 7.3-1.2 7.9-7.1 12.1l-4.4 2.9-8.3-7.8A71 71 0 0 0 104 16.8a57 57 0 0 0-20-2.3 63 63 0 0 0-34 7.7 55 55 0 0 0-18 13.7A68 68 0 0 0 11.9 71C9.1 82 9.6 99 13 109a75 75 0 0 0 47.5 49 51 51 0 0 0 23.5 3.4c11.7-.1 14.5-.4 21.2-2.6 12.2-4 20.4-9.2 29.8-18.7 9.8-9.9 14-16.5 18.3-28.8a58 58 0 0 0 3.5-20.4 67 67 0 0 0-7.8-36.2l-4-8.2c0-.3 2.4-2.2 5.3-4.4l5.3-4 5.4 1.4a44 44 0 0 0 7.8 1.5c3.2 0 19.4-12.7 19-14.9q-.2-1.6-6.5-2.9l-6.2-1.4-.3-6.6c-.3-5.8-.6-6.7-2.3-7-1.1-.1-5.2 2-9.1 4.8m6.6 4.8c0 3.5-.5 4.3-6 8.5a76 76 0 0 1-6.3 4.7c-.2 0 0-2.1.3-4.6.5-4.2 1-4.9 6-8.4l5.8-3.9c.1-.1.2 1.6.2 3.7m-69.8 3.1a70 70 0 0 1 25.4 12.5c6.8 5.1 12.1 11.3 10.8 12.6-.5.5-4.2 3.4-8.3 6.4l-7.4 5.5-5.6-5.1A46.5 46.5 0 0 0 62 45.6a47.7 47.7 0 0 0-11.4 76.9c9.8 9.6 26.9 15 40.1 12.8a48.5 48.5 0 0 0 39.4-38.4c1.8-9.2.7-19.7-3-27.6a61 61 0 0 1-3.1-7.2c0-.4 2.4-2.4 5.3-4.6l8.4-6.3 3.3-2.4 3.9 8.2a63 63 0 0 1 6.8 34.4 63 63 0 0 1-14 38.8 68.2 68.2 0 0 1-106 2.9 92 92 0 0 1-15.2-29.6 86 86 0 0 1 0-31.2 70 70 0 0 1 47-50.6 76 76 0 0 1 36.7-.8m77.6 6.1c3.3 0 2.5 1.3-3.6 5.9-5 3.7-5.5 3.8-9 2.9-2-.6-3.8-1.1-4-1.3s2.1-2.2 5-4.4q5.3-4.1 7.3-3.6c1.1.2 3.1.5 4.3.5M96.2 47c6.6 2 17 8.7 18.8 12 .9 1.6 0 2.7-7 8l-8 6.1-3.7-2.5c-10.4-6.9-25.1-4.1-31.2 5.8-1.3 2-2.5 6-2.8 8.9A21 21 0 0 0 79.4 109c16 3.3 30.4-13.6 24.2-28.4l-1.4-3.4 7.9-5.8c4.3-3.3 8.3-6 8.9-6.2 1.6-.6 5.9 9.8 6.9 16.8a44 44 0 0 1-29.6 47A42.6 42.6 0 0 1 41 88.4c0-29.3 27.5-50 55.2-41.4m-5.4 26c2.3 1 4.2 2.3 4.2 2.8s-1.5 2.1-3.2 3.4c-5.6 4.1-6 4.3-5.6 1.7q.3-2.4-1.3-2.7c-2.3-.4-7.2 8.4-6.4 11.6.7 2.9 5.3 4.8 7.7 3.3 1-.6 2.8-1.1 4-1.1 7.3-.1 9.5-3.7 2.6-4.2l-4.1-.3 4.7-3.9c2.6-2.1 5-3.5 5.4-3.1s.7 3.7.7 7.3c0 8-2.3 12.1-8.8 15.3-7.9 4.1-19 .3-22.3-7.7-2.2-5.2-1.8-12.5.9-16.5C71.9 75 79 71 83.5 71c1.6 0 4.9.9 7.3 2"/></svg>
+      </a>
+    </nav>
   </header>
 `;
-r("section-header", { template: B, styles: _ });
+m("section-header", { template: k, styles: $ });
 
 // scripts/breakpoints.js
-var o = "640px";
-
-// scripts/components/footer-nav.js
-var L = [
-  { href: "/", name: "Home" },
-  { href: "/about", name: "About" },
-  { href: "/credits", name: "Credits" },
-  { href: "/hire-me", name: "Hire Me" },
-  { href: "/thank-you", name: "Thank You" },
-  { href: "/capabilities/design-system", name: "Design System" },
-  { href: "/capabilities/user-interfaces", name: "User Interfaces" },
-  { href: "/capabilities/web-interfaces", name: "Web Interfaces" },
-  { href: "/work/terra", name: "Terra" },
-  { href: "/work/bamboo", name: "Bamboo" },
-  { href: "/work/mmo", name: "MMO" },
-  { href: "/work/au-van", name: "AU Van" },
-  { href: "/work/portfolio", name: "Portfolio" },
-  { href: "/work/sks-solar", name: "SKS Solar" },
-  {
-    href: "/writings/foundation-building-interfaces-at-scale",
-    name: "Foundation"
-  }
-], S = `
-  :host {
-    --local-bg: var(--color-secondary);
-    --local-color: var(--color-bg-primary);
-    --local-border: none;
-
-   display: flex;
-   gap: 5rem;
-
-   @media (max-width: ${o}) {
-        flex-direction: column;
-        gap: 3rem;
-        margin-block: 2rem;
-   }
-  }
-
-    ol {
-    padding: 0;
-    list-style-type: none;
-    display: flex;
-    margin: 0;
-  }
-
-  span {
-    color: var(--color-secondary);
-    font-size: var(--size-small);
-    font-weight: var(--font-bold);
-    text-transform: uppercase;
-    display: inline-block;
-    margin-bottom: 0.5rem;
-  }
-
-  nav ol {
-    flex-wrap: wrap;
-    flex-direction: column;
-    max-height: 12.5ch;
-    overflow: scroll;
-
-    @media (max-width: ${o}) {
-        max-height: 20ch;
-    }
-  }
-
-  ol li {
-    margin-right: 5rem;
-    margin-bottom: 0.3rem;
-  }
-`, T = () => `
-    <nav>
-        <span>Sitemap</span>
-
-        <ol>
-            ${L.map((e) => `
-                <li>
-                    <app-link variant="sitemap" href=${d(e.href)} >${e.name}</app-link>
-                </li>
-            `).join("")}
-        </ol>
-    </nav>
-`;
-r("footer-nav", { styles: S, template: T });
+var s = "640px";
 
 // scripts/components/footer-copyright.js
-var U = `
+var z = `
   :host {
    display: flex;
     justify-content: space-between;
@@ -404,7 +244,7 @@ var U = `
     padding-top: 1rem;
     margin-top: 3rem;
 
-   @media (max-width: ${o}) {
+   @media (max-width: ${s}) {
         flex-direction: column-reverse;
         gap: 2rem;
         border: none;
@@ -420,7 +260,7 @@ var U = `
     align-items: end;
     gap: 0.2rem;
 
-    @media (min-width: ${o}) {
+    @media (min-width: ${s}) {
       border: none;
       padding-top: none;
     }
@@ -444,7 +284,7 @@ var U = `
   nav {
     display: block;
 
-    @media (min-width: ${o}) {
+    @media (min-width: ${s}) {
       display: block;
     }
   }
@@ -455,7 +295,7 @@ var U = `
     font-weight: var(--font-bold);
     
 
-    @media (max-width: ${o}) {
+    @media (max-width: ${s}) {
       display: inline-block;
       margin-bottom: 0.5rem;
     }
@@ -464,7 +304,7 @@ var U = `
   p img {
     height: 2.3rem;
 
-     @media (max-width: ${o}) {
+     @media (max-width: ${s}) {
       
       height: 2.5rem;
     }
@@ -479,9 +319,9 @@ var U = `
     text-decoration: none;
     color: var(--color-text);
   }
-`, q = () => `
+`, A = () => `
       <p>
-          <img src=${a("./assets/images/logo.avif")}
+          <img src=${i("./assets/images/logo.avif")}
           alt="Logo">
           <a href="https://hanhtetaung.dev/">
             Crafted by Han
@@ -498,7 +338,7 @@ var U = `
               <li>
                   <a href="https://wa.me/message/DVOPVSAGBDENB1" target="_blank">
                   <img
-                      src=${a("./assets/icons/whatsapp.svg")}
+                      src=${i("./assets/icons/whatsapp.svg")}
                       alt="Email Icon"
                   />
                   </a>    
@@ -510,7 +350,7 @@ var U = `
                   rel="noopener"
                   >
                   <img
-                      src=${a("./assets/icons/instagram.svg")}
+                      src=${i("./assets/icons/instagram.svg")}
                       alt="Linkedin Icon"
                   />
                   </a>
@@ -522,7 +362,7 @@ var U = `
                   rel="noopener"
                   >
                   <img
-                      src=${a("./assets/icons/linkedin.svg")}
+                      src=${i("./assets/icons/linkedin.svg")}
                       alt="Linkedin Icon"
                   />
                   </a>
@@ -534,7 +374,7 @@ var U = `
                   rel="noopener"
                   >
                   <img
-                      src=${a("./assets/icons/github.svg")}
+                      src=${i("./assets/icons/github.svg")}
                       alt="Github Icon"
                   />
                   </a>
@@ -542,10 +382,10 @@ var U = `
           </ul>
         </nav>
 `;
-r("footer-copyright", { styles: U, template: q });
+m("footer-copyright", { styles: z, template: A });
 
 // scripts/footer.js
-var F = `
+var C = `
   :host {
     display: block;
   }
@@ -608,7 +448,7 @@ var F = `
     display: block;
   }
 
-  @media (min-width: ${o}) {
+  @media (min-width: ${s}) {
     #highlight-wrap {
       display: block;
     }
@@ -618,104 +458,61 @@ var F = `
       display: none;
     }
   }
-`, H = `
+`, _ = `
   <footer>
 
     <div id="highlight-wrap">
-      <img id="highlight-base" src=${a("./assets/images/footer/highlight.png")} alt="Parting phrase">
-      <img id="highlight-lens" src=${a("./assets/images/footer/highlight-with-color.png")} alt="Parting phrase with color" aria-hidden="true">
+      <img id="highlight-base" src=${i("./assets/images/footer/highlight.png")} alt="Parting phrase">
+      <img id="highlight-lens" src=${i("./assets/images/footer/highlight-with-color.png")} alt="Parting phrase with color" aria-hidden="true">
       <div id="lens-ring"></div>
     </div>
 
-    <img id="thank-you" src=${a("./assets/images/footer/thank-you.avif")} alt="Thank you phrase">
-    <img id="looking-forward" src=${a("./assets/images/footer/looking-forward.avif")} alt="Parting Phrase">
+    <img id="thank-you" src=${i("./assets/images/footer/thank-you.avif")} alt="Thank you phrase">
+    <img id="looking-forward" src=${i("./assets/images/footer/looking-forward.avif")} alt="Parting Phrase">
 
-    <!-- <footer-nav></footer-nav> -->
 
     <footer-copyright></footer-copyright>
   </footer>
 `;
-function D(e) {
-  let t = e.querySelector("footer"), c = e.getElementById("highlight-base"), l = e.getElementById("highlight-lens"), s = e.getElementById("lens-ring"), h = e.getElementById("highlight-wrap");
-  if (!t || !c || !l || !s || !h)
+function E(t) {
+  let e = t.querySelector("footer"), l = t.getElementById("highlight-base"), n = t.getElementById("highlight-lens"), o = t.getElementById("lens-ring"), h = t.getElementById("highlight-wrap");
+  if (!e || !l || !n || !o || !h)
     return;
-  function g(n) {
-    let m = c.getBoundingClientRect(), p = n.clientX - m.left, v = n.clientY - m.top, u = s.offsetWidth / 2;
-    s.style.left = `${p - u}px`, s.style.top = `${v - u}px`, l.style.clipPath = `circle(${u}px at ${p}px ${v}px)`;
+  function u(r) {
+    let c = l.getBoundingClientRect(), d = r.clientX - c.left, b = r.clientY - c.top, g = o.offsetWidth / 2;
+    o.style.left = `${d - g}px`, o.style.top = `${b - g}px`, n.style.clipPath = `circle(${g}px at ${d}px ${b}px)`;
   }
   function f() {
-    s.setAttribute("data-visible", "true");
+    o.setAttribute("data-visible", "true");
   }
-  function i() {
-    s.removeAttribute("data-visible"), l.style.clipPath = "circle(0px at 50% 50%)";
+  function a() {
+    o.removeAttribute("data-visible"), n.style.clipPath = "circle(0px at 50% 50%)";
   }
-  return t.addEventListener("mousemove", g), t.addEventListener("mouseenter", f), t.addEventListener("mouseleave", i), () => {
-    t.removeEventListener("mousemove", g), t.removeEventListener("mouseenter", f), t.removeEventListener("mouseleave", i);
+  return e.addEventListener("mousemove", u), e.addEventListener("mouseenter", f), e.addEventListener("mouseleave", a), () => {
+    e.removeEventListener("mousemove", u), e.removeEventListener("mouseenter", f), e.removeEventListener("mouseleave", a);
   };
 }
-r("section-footer", { styles: F, template: H, onRender: D });
-
-// scripts/components/app-icon.js
-var N = `
-  :host {
-    --local-width: 3rem;
-    --local-height: auto;
-
-    display: block;
-  }
-
-  img {
-    width: var(--local-width);
-    height: var(--local-height);
-  }
-
-  :host([variant="medium"]) {
-     --local-width: auto;
-    --local-height: 5rem;
-  }
-
-  :host([variant="bigger"]) {
-    --local-width: auto;
-    --local-height: 6rem;
-  }
-
-  :host([variant="large"]) {
-    --local-width: auto;
-    --local-height: 10rem;
-  }
-
-  :host([variant="creator"]) {
-    img {
-      min-width: 5rem;
-      max-width: 10rem;
-      height: 10rem;
-      width: auto;
-    }
-  }
-
-
-`, O = ["src", "alt"], P = () => '<img data-forward width="200" height="200"/>';
-r("app-icon", { attrs: O, styles: N, template: P });
+m("section-footer", { styles: C, template: _, onRender: E });
 
 // scripts/404/intro.js
-var j = `
+var B = `
   :host {
     display: block;
     margin-block: 10rem;
   }
 
-    section {
-        margin-inline: auto;
-        width: 80%;
-        display: flex;
-        gap: 3rem;
+  section {
+    margin-inline: auto;
+    width: 80%;
+    display: flex;
+    gap: 3rem;
 
-        @media (max-width: ${o}) {
-          display: block;
-        }
+    @media (max-width: ${s}) {
+      display: block;
     }
+  }
 
-     h1 {
+  h1 {
     margin: 0;
     font-size: var(--size-display);
     font-family: var(--font-heading);
@@ -725,20 +522,15 @@ var j = `
     margin: 0;
     margin-bottom: 1.5rem;
   }
-`, G = `
+`, L = `
   <section>
       <hgroup>
         <h1>404</h1>
         <p>Sorry. Page not found.</p>
       </hgroup>
 
-      <app-icon
-        variant="large"
-        src="./assets/icons/bird-with-flower.svg"
-        alt="Coming Soon"
-      ></app-icon>
   </section>
 `;
-r("section-404-intro", { styles: j, template: G });
+m("section-404-intro", { styles: B, template: L });
 </script></body>
 </html>

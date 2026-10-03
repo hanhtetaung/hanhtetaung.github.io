@@ -1,4 +1,3 @@
-import "../components/app-logo.js";
 import { asset } from "../../lib/asset.js";
 import { define } from "../../lib/define.js";
 import { DESKTOP, LARGE, TABLET } from "../breakpoints.js";
@@ -64,9 +63,10 @@ const styles = /* css */ `
     }
   }
 
-  img {
+  .highlight {
     position: absolute;
     height: 40rem;
+    width: auto;
     z-index: -1;
     opacity: 0.1;
     left: -0%;
@@ -104,11 +104,16 @@ const styles = /* css */ `
     text-decoration: none;
     color: var(--color-text);
   }
+
+  img {
+    height: auto;
+    width: 2rem;
+  }
 `;
 
 const template = /* html */ `
 <section>
-  <img src="./assets/images/home/red-telephone-box.avif" alt="Red Telephone Box">
+  <img class="highlight" src="./assets/images/home/red-telephone-box.avif" alt="Red Telephone Box">
 
   <hgroup>
     <p>[ Let's Craft ]</p>
@@ -118,16 +123,16 @@ const template = /* html */ `
 
   <ul>
     <li>
-      <app-logo src=${asset("./assets/icons/whatsapp.svg")} alt="Whatsapp icon"></app-logo>
+      <img src=${asset("./assets/icons/whatsapp.svg")} alt="Whatsapp icon" />
       <a href="https://wa.me/message/DVOPVSAGBDENB1" target="_blank">wa/crafted.han</a>
     </li>
     <li>
-      <app-logo src=${asset("./assets/icons/email.svg")} alt="Email icon"></app-logo>
+      <img src=${asset("./assets/icons/email.svg")} alt="Email icon" />
       <a href="mailto:hanhtetaung.dev@gmail.com" target="_blank">hanhtetaung.dev@gmail.com</a>
       <button id="copyBtn">Copy</button>
     </li>
     <li>
-      <app-logo src=${asset("./assets/icons/linkedin.svg")} alt="Linkedin icon"></app-logo>
+      <img src=${asset("./assets/icons/linkedin.svg")} alt="Linkedin icon" />
       <a href="https://www.linkedin.com/in/han-htet-aung/" target="_blank">in/han-htet-aung</a>
     </li>
   </ul>

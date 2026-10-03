@@ -1,8 +1,6 @@
 import { define } from "../../../lib/define.js";
 import { asset } from "../../../lib/asset.js";
 
-import "../../components/app-image.js";
-
 const styles = /* css */ `
   :host {
     display: block;
@@ -40,6 +38,11 @@ const styles = /* css */ `
     margin: 0;
     margin-bottom: 2rem;
   }
+
+  img {
+    width: 100%;
+    height: auto;
+  }
 `;
 
 const template = /* html */ `
@@ -49,13 +52,12 @@ const template = /* html */ `
 
     <p>A two-tier architecture is enough: Primitive and Semantic.</p>
 
-    <app-image
-      variant="full"
+    <img
       src=${asset("./assets/images/foundation-building-software/token-architecture.avif")}
       alt="Token architecture overview"
       width="1398"
       height="1236"
-    ></app-image>
+    />
 
     <ul>
       <li>
@@ -67,13 +69,12 @@ const template = /* html */ `
             but it can be converted to a preferred platform convention like
             dashes or camelCase.
           </p>
-          <app-image
-            variant="full"
+          <img
             src=${asset("./assets/images/foundation-building-software/single-source-of-truth.avif")}
             alt="Single source of truth overview"
             width="1398"
             height="1236"
-          ></app-image>
+          />
         </article>
       </li>
 
@@ -84,13 +85,12 @@ const template = /* html */ `
             A token can point to different values related to a mode, and when
             the mode changes, the reference values are updated automatically.
           </p>
-          <app-image
-            variant="full"
+          <img
             src=${asset("./assets/images/foundation-building-software/theming.avif")}
             alt="Theming overview"
             width="1398"
             height="1236"
-          ></app-image>
+          />
         </article>
       </li>
 
@@ -102,13 +102,12 @@ const template = /* html */ `
             <li>Base</li>
             <li>Modifier (optional)</li>
           </ol>
-          <app-image
-            variant="full"
+          <img
             src=${asset("./assets/images/foundation-building-software/token-structure.avif")}
             alt="Token structure overview"
             width="1398"
             height="1236"
-          ></app-image>
+          />
         </article>
       </li>
 
@@ -119,13 +118,12 @@ const template = /* html */ `
             The diagram below shows how primitive and semantic tokens combine
             base and modifier.
           </p>
-          <app-image
-            variant="full"
+          <img
             src=${asset("./assets/images/foundation-building-software/design-token-anatomy.avif")}
             alt="Design token anatomy overview"
             width="1398"
             height="1236"
-          ></app-image>
+          />
         </article>
       </li>
 
@@ -136,16 +134,15 @@ const template = /* html */ `
             Here is an example of how semantic tokens are used throughout a
             Strava activities page.
           </p>
-          <app-image
-            variant="full"
+          <img
             src=${asset("./assets/images/foundation-building-software/applying-token.avif")}
             alt="Applying token overview"
             width="1398"
             height="1236"
-          ></app-image>
+          />
         </article>
       </li>
-</ul>
+    </ul>
   </section>
 `;
 

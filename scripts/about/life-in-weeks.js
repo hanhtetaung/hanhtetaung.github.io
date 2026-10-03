@@ -1,6 +1,4 @@
 import { define } from "../../lib/define.js";
-import "../components/app-icon.js";
-import "../components/app-link.js";
 
 const DOB = "3 Nov 2000";
 const YEARS = 70;
@@ -58,15 +56,19 @@ const styles = /*css*/ `
     border-radius: 0.2rem;
   }
 
-    li.lived {
-        background: var(--color-primary);
-        border-color: var(--color-primary);
-    }
+  li.lived {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+  }
 
    h2 {
     font-size: var(--size-title);
     margin: 0;
     margin: 1rem;
+  }
+
+  a {
+    color: var(--color-text);
   }
 `;
 
@@ -105,7 +107,9 @@ const template = () => /* html */ `
       <ul>${generateWeeksHTML(DOB, YEARS)}</ul>
     </article>
 
-    <p>Based on this post: <app-link variant="underline" href="https://waitbutwhy.com/2014/05/life-weeks.html" target="_blank">Your Life in Weeks</app-link></p>
+    <p>Based on this post: 
+      <a href="https://waitbutwhy.com/2014/05/life-weeks.html" target="_blank">Your Life in Weeks</a>
+    </p>
   </section>
 `;
 

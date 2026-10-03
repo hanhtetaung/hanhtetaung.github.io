@@ -1,7 +1,5 @@
 import { define } from "../../../lib/define.js";
 
-import "../../components/app-link.js";
-
 const styles = /* css */ `
   :host {
     display: block;
@@ -41,6 +39,10 @@ const styles = /* css */ `
   hgroup span {
     font-weight: var(--font-regular);
   }
+
+  a {
+    color: var(--color-text);
+  }
 `;
 
 const template = /* html */ `
@@ -59,14 +61,14 @@ const template = /* html */ `
 
     <ul>
       <li>
-        <app-link href="#atomic-design-principle" variant="underline">
+        <a href="#atomic-design-principle">
           Atomic design principle
-        </app-link>
+        </a>
       </li>
       <li>
-        <app-link href="#design-token-architecture" variant="underline">
+        <a href="#design-token-architecture">
           Design token architecture
-        </app-link>
+        </a>
       </li>
     </ul>
   </section>

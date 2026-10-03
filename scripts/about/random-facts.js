@@ -1,6 +1,6 @@
 import { define } from "../../lib/define.js";
 import { DESKTOP } from "../breakpoints.js";
-import "../components/app-icon.js";
+import { asset } from "../../lib/asset.js";
 
 const randomFacts = [
   {
@@ -53,6 +53,7 @@ const styles = /*css*/ `
     overflow-y: hidden;                  
     width: 100%; 
     gap: 5rem;
+    padding-bottom: 2rem;
 
     @media (min-width: ${DESKTOP}) {
       display: flex;
@@ -70,6 +71,11 @@ const styles = /*css*/ `
     margin-bottom: 2rem;
     font-size: var(--size-title);
   }
+
+  img {
+    height: 10rem;
+    width: auto;
+  }
 `;
 
 const template = () => /* html */ `
@@ -82,7 +88,7 @@ const template = () => /* html */ `
             (fact) => /* html */ `
               <li>
                 <figure>
-                  <app-icon variant="large" src="${fact.src}" alt="${fact.alt}"></app-icon>
+                  <img src="${asset(fact.src)}" alt="${fact.alt}" />
                   <figcaption>${fact.text}</figcaption>
                 </figure>
               </li>

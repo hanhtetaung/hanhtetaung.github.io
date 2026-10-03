@@ -10,14 +10,10 @@
   "liveServer.settings.mount": [
     ["/about", "./about.html"],
     ["/404", "./404.html"],
-    ["/workflow", "./workflow.html"],
     [
       "/writings/foundation-building-interfaces-at-scale",
       "./writings/foundation-building-interfaces-at-scale.html"
     ],
-    ["/work/mmo", "./work/mmo.html"],
-    ["/work/sks-solar", "./work/sks-solar.html"],
-    ["/work/terra", "./work/terra.html"],
 
     ["/maple/about", "./maple/about.html"]
   ]

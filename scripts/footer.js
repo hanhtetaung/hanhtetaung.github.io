@@ -1,9 +1,8 @@
 import { define } from "../lib/define.js";
 import { asset } from "../lib/asset.js";
-
-import "./components/footer-nav.js";
-import "./components/footer-copyright.js";
 import { TABLET } from "./breakpoints.js";
+
+import "./components/footer-copyright.js";
 
 const styles = /* css */ `
   :host {
@@ -92,7 +91,6 @@ const template = /* html */ `
     <img id="thank-you" src=${asset("./assets/images/footer/thank-you.avif")} alt="Thank you phrase">
     <img id="looking-forward" src=${asset("./assets/images/footer/looking-forward.avif")} alt="Parting Phrase">
 
-    <!-- <footer-nav></footer-nav> -->
 
     <footer-copyright></footer-copyright>
   </footer>

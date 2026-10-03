@@ -92,7 +92,7 @@ const styles = /* css */ `
             top: 0;
             width: 99rem;           
             height: var(--road);
-            background: url("${asset("./assets/images/home/road.svg")}") repeat-x left / auto var(--road);
+            background: url("${asset("./assets/icons/road.svg")}") repeat-x left / auto var(--road);
             transform-origin: top left;
             transform: rotate(90deg);
             pointer-events: none;

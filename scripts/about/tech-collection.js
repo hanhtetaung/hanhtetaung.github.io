@@ -1,5 +1,4 @@
 import { define } from "../../define.js";
-import "../../components/app-link.js";
 import { asset, navHref } from "../../asset.js";
 
 const techCollection = [
@@ -162,14 +161,14 @@ const template = () => /* html */ `
           .map(
             (item) => /* html */ `
               <li>
-                <app-link href="${navHref(item.href)}" target="_blank" variant="image">
+                <a href="${navHref(item.href)}" target="_blank">
                   <img
                     src="${asset(item.src)}"
                     alt="${item.alt}"
                     width="102"
                     height="73"
                   />
-                </app-link>
+                </a>
               </li>
             `,
           )

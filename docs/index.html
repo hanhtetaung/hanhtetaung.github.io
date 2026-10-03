@@ -35,18 +35,18 @@
 
     <section-footer></section-footer>
   <script type="module">// lib/asset.js
-function C() {
+function A() {
   let a = document.documentElement.dataset.base || "./";
   return new URL(a, location.href);
 }
 function e(a) {
-  return new URL(a, C()).href;
+  return new URL(a, A()).href;
 }
-function x(a) {
-  let t = a.replace(/^\//, ""), m = location.protocol === "file:", n = C();
+function $(a) {
+  let t = a.replace(/^\//, ""), m = location.protocol === "file:", o = A();
   if (t === "")
-    return m ? new URL("index.html", n).href : n.href;
-  return m ? new URL(`${t}.html`, n).href : new URL(t, n).href;
+    return m ? new URL("index.html", o).href : o.href;
+  return m ? new URL(`${t}.html`, o).href : new URL(t, o).href;
 }
 
 // scripts/fonts.js
@@ -87,7 +87,7 @@ function L(a, t) {
     return Number(a);
   return a;
 }
-function r(a, { props: t = {}, attrs: m = [], styles: n = "", template: s, onRender: g = null }) {
+function l(a, { props: t = {}, attrs: m = [], styles: o = "", template: s, onRender: g = null }) {
   let u = ["props", ...m];
 
   class p extends HTMLElement {
@@ -109,36 +109,36 @@ function r(a, { props: t = {}, attrs: m = [], styles: n = "", template: s, onRen
         this._render();
     }
     _getProps() {
-      let o = {}, l = this.getAttribute("props");
-      if (l)
+      let r = {}, n = this.getAttribute("props");
+      if (n)
         try {
-          o = JSON.parse(l);
+          r = JSON.parse(n);
         } catch {
-          o = {};
+          r = {};
         }
       let f = {};
       for (let c of Object.keys(t))
-        f[c] = L(o[c], t[c]);
+        f[c] = L(r[c], t[c]);
       return f;
     }
     _applyForwardedAttrs() {
       if (m.length === 0)
         return;
-      let o = this.shadowRoot.querySelector("[data-forward]");
-      if (!o)
+      let r = this.shadowRoot.querySelector("[data-forward]");
+      if (!r)
         return;
-      for (let l of m)
-        if (this.hasAttribute(l))
-          o.setAttribute(l, this.getAttribute(l));
+      for (let n of m)
+        if (this.hasAttribute(n))
+          r.setAttribute(n, this.getAttribute(n));
         else
-          o.removeAttribute(l);
+          r.removeAttribute(n);
     }
     _render() {
       if (typeof this._cleanup === "function")
         this._cleanup(), this._cleanup = null;
-      let o = this._getProps(), l = typeof s === "function" ? s(o) : s;
-      if (this.shadowRoot.innerHTML = `<style>${n}</style>${l}`, this._applyForwardedAttrs(), g) {
-        let f = g(this.shadowRoot, o, this);
+      let r = this._getProps(), n = typeof s === "function" ? s(r) : s;
+      if (this.shadowRoot.innerHTML = `<style>${o}</style>${n}`, this._applyForwardedAttrs(), g) {
+        let f = g(this.shadowRoot, r, this);
         if (typeof f === "function")
           this._cleanup = f;
       }
@@ -147,88 +147,8 @@ function r(a, { props: t = {}, attrs: m = [], styles: n = "", template: s, onRen
   customElements.define(a, p);
 }
 
-// scripts/components/app-link.js
-var O = `
-  :host {
-    --local-bg: transparent;
-    --local-color: var(--color-text);
-    --local-border: 1px solid var(--local-color);
-    --local-decoration: none;
-    --local-direction: row;
-    --local-padding: 1rem 2rem;
-    display: inline-block;
-  }
-
-  a {
-    display: inline-flex;
-    gap: 0.5rem;
-    background: var(--local-bg);
-    color: var(--local-color);
-    border: var(--local-border);
-    text-decoration: var(--local-decoration);
-    padding: var(--local-padding);
-    white-space: nowrap;
-    flex-direction: var(--local-direction);
-  }
-
-  :host([variant="primary"]) {
-    --local-bg: var(--color-primary);
-    --local-color: var(--color-bg-primary);
-  }
-
-  :host([variant="secondary"]) {
-    --local-color: var(--color-text);
-  }
-
-  :host([variant="underline"]) {
-    --local-color: var(--color-tertiary);
-    --local-border: none;
-    --local-decoration: underline;
-    --local-padding: 0;
-  }
-
-  :host([variant="plain"]) {
-    --local-border: none;
-    --local-padding: 0.2rem 0;
-  }
-
-  :host([variant="image"]) {
-    --local-border: none;
-    /* --local-decoration: underline; */
-    --local-padding: 0.2rem 0;
-    --local-color: var(--color-tertiary);
-    --local-border: none;
-    --local-direction: column;
-  }
-
-  :host([variant="sitemap"]) {
-     --local-padding: 0.2rem 0;
-     --local-border: none;
-
-     a::before {
-       content: "➶";
-     }
-  }
-`, B = ["href", "target", "rel", "download"], D = `
-  <a data-forward><slot></slot></a>
-`;
-r("app-link", { attrs: B, styles: O, template: D });
-
-// scripts/components/app-logo.js
-var N = `
-  :host {
-    display: block;
-  }
-
-  img {
-    max-height: 7rem;
-    width: auto;
-  }
-`, P = ["width", "height", "src", "alt"], T = () => "<img data-forward />";
-r("app-logo", { attrs: P, styles: N, template: T });
-
 // scripts/header.js
-var M = `
+var O = `
   :host {
     display: block;
     font-size: var(--size-small);
@@ -244,7 +164,7 @@ var M = `
     gap: 5rem;
   }
 
-  div {
+  nav {
     display: flex;
     align-items: center;
     gap: 8rem;
@@ -267,139 +187,59 @@ var M = `
 
   a {
     color: var(--color-text);
+    padding: 0.2rem 0;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .action {
     display: inline-flex;
     align-items: center;
     gap: 0.4rem;
-    text-decoration: none;
     border: 1px solid var(--color-text);
     padding-inline: 2rem;
     padding-block: 1rem;
+
   }
 
   a svg {
     width: 2rem;
     height: auto;
   }
-`, F = `
+
+  
+`, D = `
   <header>
-      <app-link variant="plain" href=${x("/")}>
-        <img src=${e("./assets/images/logo.avif")}
-          alt="Logo">
-      </app-link>
+    <a href=${$("/")}>
+      <img src=${e("./assets/images/logo.avif")}
+        alt="Logo">
+    </a>
 
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <app-link variant="plain" href=${x("/")}>Home</app-link>
-            </li>
+    <nav>
+      <ul>
+        <li>
+          <a href=${$("/")}>Home</a>
+        </li>
 
-            <li>
-              <app-link variant="plain" href=${x("/about")}>About</app-link>
-            </li>
+        <li>
+          <a href=${$("/about")}>About</a>
+        </li>
+      </ul>
 
-            <!-- <li>
-              <app-link variant="plain" href=${x("/workflow")}>Workflow</app-link>
-            </li> -->
-          </ul>
-        </nav>
-
-        <a href="/#cta">
-          Let's Craft
-          <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" aria-label="target" viewBox="0 0 197 170"><path d="M163.4 13a78 78 0 0 0-8.2 6.3c-.7.8-1.5 4.3-1.8 7.8-.8 7.3-1.2 7.9-7.1 12.1l-4.4 2.9-8.3-7.8A71 71 0 0 0 104 16.8a57 57 0 0 0-20-2.3 63 63 0 0 0-34 7.7 55 55 0 0 0-18 13.7A68 68 0 0 0 11.9 71C9.1 82 9.6 99 13 109a75 75 0 0 0 47.5 49 51 51 0 0 0 23.5 3.4c11.7-.1 14.5-.4 21.2-2.6 12.2-4 20.4-9.2 29.8-18.7 9.8-9.9 14-16.5 18.3-28.8a58 58 0 0 0 3.5-20.4 67 67 0 0 0-7.8-36.2l-4-8.2c0-.3 2.4-2.2 5.3-4.4l5.3-4 5.4 1.4a44 44 0 0 0 7.8 1.5c3.2 0 19.4-12.7 19-14.9q-.2-1.6-6.5-2.9l-6.2-1.4-.3-6.6c-.3-5.8-.6-6.7-2.3-7-1.1-.1-5.2 2-9.1 4.8m6.6 4.8c0 3.5-.5 4.3-6 8.5a76 76 0 0 1-6.3 4.7c-.2 0 0-2.1.3-4.6.5-4.2 1-4.9 6-8.4l5.8-3.9c.1-.1.2 1.6.2 3.7m-69.8 3.1a70 70 0 0 1 25.4 12.5c6.8 5.1 12.1 11.3 10.8 12.6-.5.5-4.2 3.4-8.3 6.4l-7.4 5.5-5.6-5.1A46.5 46.5 0 0 0 62 45.6a47.7 47.7 0 0 0-11.4 76.9c9.8 9.6 26.9 15 40.1 12.8a48.5 48.5 0 0 0 39.4-38.4c1.8-9.2.7-19.7-3-27.6a61 61 0 0 1-3.1-7.2c0-.4 2.4-2.4 5.3-4.6l8.4-6.3 3.3-2.4 3.9 8.2a63 63 0 0 1 6.8 34.4 63 63 0 0 1-14 38.8 68.2 68.2 0 0 1-106 2.9 92 92 0 0 1-15.2-29.6 86 86 0 0 1 0-31.2 70 70 0 0 1 47-50.6 76 76 0 0 1 36.7-.8m77.6 6.1c3.3 0 2.5 1.3-3.6 5.9-5 3.7-5.5 3.8-9 2.9-2-.6-3.8-1.1-4-1.3s2.1-2.2 5-4.4q5.3-4.1 7.3-3.6c1.1.2 3.1.5 4.3.5M96.2 47c6.6 2 17 8.7 18.8 12 .9 1.6 0 2.7-7 8l-8 6.1-3.7-2.5c-10.4-6.9-25.1-4.1-31.2 5.8-1.3 2-2.5 6-2.8 8.9A21 21 0 0 0 79.4 109c16 3.3 30.4-13.6 24.2-28.4l-1.4-3.4 7.9-5.8c4.3-3.3 8.3-6 8.9-6.2 1.6-.6 5.9 9.8 6.9 16.8a44 44 0 0 1-29.6 47A42.6 42.6 0 0 1 41 88.4c0-29.3 27.5-50 55.2-41.4m-5.4 26c2.3 1 4.2 2.3 4.2 2.8s-1.5 2.1-3.2 3.4c-5.6 4.1-6 4.3-5.6 1.7q.3-2.4-1.3-2.7c-2.3-.4-7.2 8.4-6.4 11.6.7 2.9 5.3 4.8 7.7 3.3 1-.6 2.8-1.1 4-1.1 7.3-.1 9.5-3.7 2.6-4.2l-4.1-.3 4.7-3.9c2.6-2.1 5-3.5 5.4-3.1s.7 3.7.7 7.3c0 8-2.3 12.1-8.8 15.3-7.9 4.1-19 .3-22.3-7.7-2.2-5.2-1.8-12.5.9-16.5C71.9 75 79 71 83.5 71c1.6 0 4.9.9 7.3 2"/></svg>
-        </a>
-      </div>
+      <a href=${$("/#cta")} class="action">
+        Let's Craft
+        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" aria-label="target" viewBox="0 0 197 170"><path d="M163.4 13a78 78 0 0 0-8.2 6.3c-.7.8-1.5 4.3-1.8 7.8-.8 7.3-1.2 7.9-7.1 12.1l-4.4 2.9-8.3-7.8A71 71 0 0 0 104 16.8a57 57 0 0 0-20-2.3 63 63 0 0 0-34 7.7 55 55 0 0 0-18 13.7A68 68 0 0 0 11.9 71C9.1 82 9.6 99 13 109a75 75 0 0 0 47.5 49 51 51 0 0 0 23.5 3.4c11.7-.1 14.5-.4 21.2-2.6 12.2-4 20.4-9.2 29.8-18.7 9.8-9.9 14-16.5 18.3-28.8a58 58 0 0 0 3.5-20.4 67 67 0 0 0-7.8-36.2l-4-8.2c0-.3 2.4-2.2 5.3-4.4l5.3-4 5.4 1.4a44 44 0 0 0 7.8 1.5c3.2 0 19.4-12.7 19-14.9q-.2-1.6-6.5-2.9l-6.2-1.4-.3-6.6c-.3-5.8-.6-6.7-2.3-7-1.1-.1-5.2 2-9.1 4.8m6.6 4.8c0 3.5-.5 4.3-6 8.5a76 76 0 0 1-6.3 4.7c-.2 0 0-2.1.3-4.6.5-4.2 1-4.9 6-8.4l5.8-3.9c.1-.1.2 1.6.2 3.7m-69.8 3.1a70 70 0 0 1 25.4 12.5c6.8 5.1 12.1 11.3 10.8 12.6-.5.5-4.2 3.4-8.3 6.4l-7.4 5.5-5.6-5.1A46.5 46.5 0 0 0 62 45.6a47.7 47.7 0 0 0-11.4 76.9c9.8 9.6 26.9 15 40.1 12.8a48.5 48.5 0 0 0 39.4-38.4c1.8-9.2.7-19.7-3-27.6a61 61 0 0 1-3.1-7.2c0-.4 2.4-2.4 5.3-4.6l8.4-6.3 3.3-2.4 3.9 8.2a63 63 0 0 1 6.8 34.4 63 63 0 0 1-14 38.8 68.2 68.2 0 0 1-106 2.9 92 92 0 0 1-15.2-29.6 86 86 0 0 1 0-31.2 70 70 0 0 1 47-50.6 76 76 0 0 1 36.7-.8m77.6 6.1c3.3 0 2.5 1.3-3.6 5.9-5 3.7-5.5 3.8-9 2.9-2-.6-3.8-1.1-4-1.3s2.1-2.2 5-4.4q5.3-4.1 7.3-3.6c1.1.2 3.1.5 4.3.5M96.2 47c6.6 2 17 8.7 18.8 12 .9 1.6 0 2.7-7 8l-8 6.1-3.7-2.5c-10.4-6.9-25.1-4.1-31.2 5.8-1.3 2-2.5 6-2.8 8.9A21 21 0 0 0 79.4 109c16 3.3 30.4-13.6 24.2-28.4l-1.4-3.4 7.9-5.8c4.3-3.3 8.3-6 8.9-6.2 1.6-.6 5.9 9.8 6.9 16.8a44 44 0 0 1-29.6 47A42.6 42.6 0 0 1 41 88.4c0-29.3 27.5-50 55.2-41.4m-5.4 26c2.3 1 4.2 2.3 4.2 2.8s-1.5 2.1-3.2 3.4c-5.6 4.1-6 4.3-5.6 1.7q.3-2.4-1.3-2.7c-2.3-.4-7.2 8.4-6.4 11.6.7 2.9 5.3 4.8 7.7 3.3 1-.6 2.8-1.1 4-1.1 7.3-.1 9.5-3.7 2.6-4.2l-4.1-.3 4.7-3.9c2.6-2.1 5-3.5 5.4-3.1s.7 3.7.7 7.3c0 8-2.3 12.1-8.8 15.3-7.9 4.1-19 .3-22.3-7.7-2.2-5.2-1.8-12.5.9-16.5C71.9 75 79 71 83.5 71c1.6 0 4.9.9 7.3 2"/></svg>
+      </a>
+    </nav>
   </header>
 `;
-r("section-header", { template: F, styles: M });
+l("section-header", { template: D, styles: O });
 
 // scripts/breakpoints.js
-var i = "640px", v = "1024px", S = "1920px";
-
-// scripts/components/footer-nav.js
-var q = [
-  { href: "/", name: "Home" },
-  { href: "/about", name: "About" },
-  { href: "/credits", name: "Credits" },
-  { href: "/hire-me", name: "Hire Me" },
-  { href: "/thank-you", name: "Thank You" },
-  { href: "/capabilities/design-system", name: "Design System" },
-  { href: "/capabilities/user-interfaces", name: "User Interfaces" },
-  { href: "/capabilities/web-interfaces", name: "Web Interfaces" },
-  { href: "/work/terra", name: "Terra" },
-  { href: "/work/bamboo", name: "Bamboo" },
-  { href: "/work/mmo", name: "MMO" },
-  { href: "/work/au-van", name: "AU Van" },
-  { href: "/work/portfolio", name: "Portfolio" },
-  { href: "/work/sks-solar", name: "SKS Solar" },
-  {
-    href: "/writings/foundation-building-interfaces-at-scale",
-    name: "Foundation"
-  }
-], I = `
-  :host {
-    --local-bg: var(--color-secondary);
-    --local-color: var(--color-bg-primary);
-    --local-border: none;
-
-   display: flex;
-   gap: 5rem;
-
-   @media (max-width: ${i}) {
-        flex-direction: column;
-        gap: 3rem;
-        margin-block: 2rem;
-   }
-  }
-
-    ol {
-    padding: 0;
-    list-style-type: none;
-    display: flex;
-    margin: 0;
-  }
-
-  span {
-    color: var(--color-secondary);
-    font-size: var(--size-small);
-    font-weight: var(--font-bold);
-    text-transform: uppercase;
-    display: inline-block;
-    margin-bottom: 0.5rem;
-  }
-
-  nav ol {
-    flex-wrap: wrap;
-    flex-direction: column;
-    max-height: 12.5ch;
-    overflow: scroll;
-
-    @media (max-width: ${i}) {
-        max-height: 20ch;
-    }
-  }
-
-  ol li {
-    margin-right: 5rem;
-    margin-bottom: 0.3rem;
-  }
-`, U = () => `
-    <nav>
-        <span>Sitemap</span>
-
-        <ol>
-            ${q.map((a) => `
-                <li>
-                    <app-link variant="sitemap" href=${x(a.href)} >${a.name}</app-link>
-                </li>
-            `).join("")}
-        </ol>
-    </nav>
-`;
-r("footer-nav", { styles: I, template: U });
+var i = "640px", b = "1024px", S = "1920px";
 
 // scripts/components/footer-copyright.js
-var G = `
+var N = `
   :host {
    display: flex;
     justify-content: space-between;
@@ -482,7 +322,7 @@ var G = `
     text-decoration: none;
     color: var(--color-text);
   }
-`, H = () => `
+`, B = () => `
       <p>
           <img src=${e("./assets/images/logo.avif")}
           alt="Logo">
@@ -545,10 +385,10 @@ var G = `
           </ul>
         </nav>
 `;
-r("footer-copyright", { styles: G, template: H });
+l("footer-copyright", { styles: N, template: B });
 
 // scripts/footer.js
-var W = `
+var P = `
   :host {
     display: block;
   }
@@ -621,7 +461,7 @@ var W = `
       display: none;
     }
   }
-`, j = `
+`, q = `
   <footer>
 
     <div id="highlight-wrap">
@@ -633,33 +473,32 @@ var W = `
     <img id="thank-you" src=${e("./assets/images/footer/thank-you.avif")} alt="Thank you phrase">
     <img id="looking-forward" src=${e("./assets/images/footer/looking-forward.avif")} alt="Parting Phrase">
 
-    <!-- <footer-nav></footer-nav> -->
 
     <footer-copyright></footer-copyright>
   </footer>
 `;
-function J(a) {
-  let t = a.querySelector("footer"), m = a.getElementById("highlight-base"), n = a.getElementById("highlight-lens"), s = a.getElementById("lens-ring"), g = a.getElementById("highlight-wrap");
-  if (!t || !m || !n || !s || !g)
+function F(a) {
+  let t = a.querySelector("footer"), m = a.getElementById("highlight-base"), o = a.getElementById("highlight-lens"), s = a.getElementById("lens-ring"), g = a.getElementById("highlight-wrap");
+  if (!t || !m || !o || !s || !g)
     return;
-  function u(l) {
-    let f = m.getBoundingClientRect(), c = l.clientX - f.left, b = l.clientY - f.top, y = s.offsetWidth / 2;
-    s.style.left = `${c - y}px`, s.style.top = `${b - y}px`, n.style.clipPath = `circle(${y}px at ${c}px ${b}px)`;
+  function u(n) {
+    let f = m.getBoundingClientRect(), c = n.clientX - f.left, v = n.clientY - f.top, y = s.offsetWidth / 2;
+    s.style.left = `${c - y}px`, s.style.top = `${v - y}px`, o.style.clipPath = `circle(${y}px at ${c}px ${v}px)`;
   }
   function p() {
     s.setAttribute("data-visible", "true");
   }
-  function o() {
-    s.removeAttribute("data-visible"), n.style.clipPath = "circle(0px at 50% 50%)";
+  function r() {
+    s.removeAttribute("data-visible"), o.style.clipPath = "circle(0px at 50% 50%)";
   }
-  return t.addEventListener("mousemove", u), t.addEventListener("mouseenter", p), t.addEventListener("mouseleave", o), () => {
-    t.removeEventListener("mousemove", u), t.removeEventListener("mouseenter", p), t.removeEventListener("mouseleave", o);
+  return t.addEventListener("mousemove", u), t.addEventListener("mouseenter", p), t.addEventListener("mouseleave", r), () => {
+    t.removeEventListener("mousemove", u), t.removeEventListener("mouseenter", p), t.removeEventListener("mouseleave", r);
   };
 }
-r("section-footer", { styles: W, template: j, onRender: J });
+l("section-footer", { styles: P, template: q, onRender: F });
 
 // scripts/home/hero.js
-var K = `
+var M = `
   :host {
     display: block;
     height: min(calc(100vh - 108px - 10rem), 50rem);
@@ -681,7 +520,7 @@ var K = `
     justify-content: start;
     position: relative;
 
-    @media (min-width: ${v}) {
+    @media (min-width: ${b}) {
       justify-content: end;
     }
   }
@@ -764,7 +603,7 @@ var K = `
     width: 100%;
     height: auto;
   }
-`, X = `
+`, T = `
   <section>
     <hgroup>
       <p>Han Htet Aung | GMT+7</p>
@@ -780,44 +619,44 @@ var K = `
       <div id="lens-ring"></div>
     </div>
   </section>
-`, V = `(min-width: ${i})`;
-function Y(a) {
-  let t = a.getElementById("img-wrap"), m = a.getElementById("visible-img"), n = a.getElementById("lens-img"), s = a.getElementById("lens-ring");
-  if (!t || !m || !n || !s)
+`, I = `(min-width: ${i})`;
+function G(a) {
+  let t = a.getElementById("img-wrap"), m = a.getElementById("visible-img"), o = a.getElementById("lens-img"), s = a.getElementById("lens-ring");
+  if (!t || !m || !o || !s)
     return;
-  let g = window.matchMedia(V);
-  function u(b) {
-    let y = m.getBoundingClientRect(), $ = b.clientX - y.left, z = b.clientY - y.top, h = s.offsetWidth / 2;
-    s.style.left = `${$ - h}px`, s.style.top = `${z - h}px`, n.style.clipPath = `circle(${h}px at ${$}px ${z}px)`;
+  let g = window.matchMedia(I);
+  function u(v) {
+    let y = m.getBoundingClientRect(), k = v.clientX - y.left, z = v.clientY - y.top, h = s.offsetWidth / 2;
+    s.style.left = `${k - h}px`, s.style.top = `${z - h}px`, o.style.clipPath = `circle(${h}px at ${k}px ${z}px)`;
   }
   function p() {
     s.setAttribute("data-visible", "true");
   }
-  function o() {
-    s.removeAttribute("data-visible"), n.style.clipPath = "circle(0px at 50% 50%)";
+  function r() {
+    s.removeAttribute("data-visible"), o.style.clipPath = "circle(0px at 50% 50%)";
   }
-  function l() {
-    t.addEventListener("mousemove", u), t.addEventListener("mouseenter", p), t.addEventListener("mouseleave", o);
+  function n() {
+    t.addEventListener("mousemove", u), t.addEventListener("mouseenter", p), t.addEventListener("mouseleave", r);
   }
   function f() {
-    t.removeEventListener("mousemove", u), t.removeEventListener("mouseenter", p), t.removeEventListener("mouseleave", o), o();
+    t.removeEventListener("mousemove", u), t.removeEventListener("mouseenter", p), t.removeEventListener("mouseleave", r), r();
   }
-  function c(b) {
-    if (b.matches)
-      l();
+  function c(v) {
+    if (v.matches)
+      n();
     else
       f();
   }
   if (g.matches)
-    l();
+    n();
   return g.addEventListener("change", c), () => {
     f(), g.removeEventListener("change", c);
   };
 }
-r("section-hero", { styles: K, template: X, onRender: Y });
+l("section-hero", { styles: M, template: T, onRender: G });
 
 // scripts/home/recent-crafts.js
-var Q = `
+var U = `
   :host {
     position: relative;
     display: block;
@@ -854,7 +693,7 @@ var Q = `
       grid-template-columns: repeat(2, 1fr);
     }
 
-    @media (min-width: ${v}) {
+    @media (min-width: ${b}) {
       grid-template-columns: repeat(3, 1fr);
     }
   }
@@ -918,7 +757,7 @@ var Q = `
     opacity: 0;
     transform: translate(-50%, -50%) scale(0.9);
   }
-`, Z = `
+`, j = `
 <section>
   <hgroup>
     <p>[ Recent Crafts ]</p>
@@ -978,27 +817,27 @@ var Q = `
   </ul>
 </section>
 `;
-function R(a) {
+function J(a) {
   if (!window.matchMedia(`(min-width: ${i})`).matches)
     return;
-  a.querySelectorAll(".scrub-item").forEach((n) => {
-    let s = n.querySelector("img.cover"), g = JSON.parse(s.dataset.images || "[]");
+  a.querySelectorAll(".scrub-item").forEach((o) => {
+    let s = o.querySelector("img.cover"), g = JSON.parse(s.dataset.images || "[]");
     if (g.length === 0)
       return;
     g.forEach((h) => {
-      let k = new Image;
-      k.src = h;
+      let x = new Image;
+      x.src = h;
     });
-    let u = 0, p = null, o = null, l = 40, f = 4, c = [];
-    function b(h, k) {
+    let u = 0, p = null, r = null, n = 40, f = 4, c = [];
+    function v(h, x) {
       let d = document.createElement("img");
-      d.className = "stack-img", d.src = g[u], d.style.left = `${h}px`, d.style.top = `${k}px`;
+      d.className = "stack-img", d.src = g[u], d.style.left = `${h}px`, d.style.top = `${x}px`;
       let w = (Math.random() * 16 - 8).toFixed(1);
-      if (d.style.transform = `translate(-50%, -50%) rotate(${w}deg) scale(0.85)`, n.appendChild(d), c.push(d), requestAnimationFrame(() => {
+      if (d.style.transform = `translate(-50%, -50%) rotate(${w}deg) scale(0.85)`, o.appendChild(d), c.push(d), requestAnimationFrame(() => {
         d.classList.add("visible"), d.style.transform = `translate(-50%, -50%) rotate(${w}deg) scale(1)`;
       }), c.length > f) {
-        let A = c.shift();
-        y(A);
+        let C = c.shift();
+        y(C);
       }
       u = (u + 1) % g.length;
     }
@@ -1007,28 +846,28 @@ function R(a) {
         h.remove();
       }, 300);
     }
-    function $(h) {
-      let k = n.getBoundingClientRect(), d = h.clientX - k.left, w = h.clientY - k.top;
+    function k(h) {
+      let x = o.getBoundingClientRect(), d = h.clientX - x.left, w = h.clientY - x.top;
       if (p === null) {
-        p = d, o = w, b(d, w);
+        p = d, r = w, v(d, w);
         return;
       }
-      if (Math.hypot(d - p, w - o) > l)
-        b(d, w), p = d, o = w;
+      if (Math.hypot(d - p, w - r) > n)
+        v(d, w), p = d, r = w;
     }
     function z() {
-      p = null, o = null;
+      p = null, r = null;
       while (c.length)
         y(c.shift());
       u = 0;
     }
-    n.addEventListener("mousemove", $), n.addEventListener("mouseleave", z);
+    o.addEventListener("mousemove", k), o.addEventListener("mouseleave", z);
   });
 }
-r("section-recent-crafts", { styles: Q, template: Z, onRender: R });
+l("section-recent-crafts", { styles: U, template: j, onRender: J });
 
 // scripts/home/menu.js
-var ee = `
+var W = `
   :host {
     position: relative;
     display: block;
@@ -1077,7 +916,7 @@ var ee = `
         gap: 5rem;
     }
     
-    @media (min-width:${v}) {
+    @media (min-width:${b}) {
         gap: 15rem;
     }
 
@@ -1118,7 +957,7 @@ var ee = `
             top: 0;
             width: 99rem;           
             height: var(--road);
-            background: url("${e("./assets/images/home/road.svg")}") repeat-x left / auto var(--road);
+            background: url("${e("./assets/icons/road.svg")}") repeat-x left / auto var(--road);
             transform-origin: top left;
             transform: rotate(90deg);
             pointer-events: none;
@@ -1155,7 +994,7 @@ var ee = `
   }
 
   
-`, te = `
+`, X = `
 <section>
   <hgroup>
     <p>[ Menu ]</p>
@@ -1185,17 +1024,17 @@ var ee = `
     </ul>
 </section>
 `;
-r("section-menu", { styles: ee, template: te });
+l("section-menu", { styles: W, template: X });
 
 // scripts/home/little-process.js
-var ie = `
+var H = `
   :host {
     position: relative;
     display: block;
     overflow: hidden;
     margin-block: 15rem;
 
-    @media (min-width: ${v}) {
+    @media (min-width: ${b}) {
       margin-top: 20rem;
       margin-bottom: 25rem;
     }
@@ -1255,7 +1094,7 @@ var ie = `
       grid-column: span 2; 
     }
 
-    @media (min-width: ${v}) {
+    @media (min-width: ${b}) {
       height: 35rem;
     }
 
@@ -1295,7 +1134,7 @@ var ie = `
       gap: 12rem;
     }
   }
-`, ae = `
+`, K = `
 
 <section>
   <hgroup>
@@ -1338,10 +1177,10 @@ var ie = `
 </section>
 
 `;
-r("section-little-process", { styles: ie, template: ae });
+l("section-little-process", { styles: H, template: K });
 
 // scripts/home/cta.js
-var oe = `
+var V = `
   :host {
     display: block;
     height: 70rem;
@@ -1402,9 +1241,10 @@ var oe = `
     }
   }
 
-  img {
+  .highlight {
     position: absolute;
     height: 40rem;
+    width: auto;
     z-index: -1;
     opacity: 0.1;
     left: -0%;
@@ -1416,7 +1256,7 @@ var oe = `
       top: 20rem;
     }
 
-    @media (min-width: ${v}) {
+    @media (min-width: ${b}) {
       opacity: 1;
     }
   }
@@ -1442,9 +1282,14 @@ var oe = `
     text-decoration: none;
     color: var(--color-text);
   }
-`, re = `
+
+  img {
+    height: auto;
+    width: 2rem;
+  }
+`, Y = `
 <section>
-  <img src="./assets/images/home/red-telephone-box.avif" alt="Red Telephone Box">
+  <img class="highlight" src="./assets/images/home/red-telephone-box.avif" alt="Red Telephone Box">
 
   <hgroup>
     <p>[ Let's Craft ]</p>
@@ -1454,22 +1299,22 @@ var oe = `
 
   <ul>
     <li>
-      <app-logo src=${e("./assets/icons/whatsapp.svg")} alt="Whatsapp icon"></app-logo>
+      <img src=${e("./assets/icons/whatsapp.svg")} alt="Whatsapp icon" />
       <a href="https://wa.me/message/DVOPVSAGBDENB1" target="_blank">wa/crafted.han</a>
     </li>
     <li>
-      <app-logo src=${e("./assets/icons/email.svg")} alt="Email icon"></app-logo>
+      <img src=${e("./assets/icons/email.svg")} alt="Email icon" />
       <a href="mailto:hanhtetaung.dev@gmail.com" target="_blank">hanhtetaung.dev@gmail.com</a>
       <button id="copyBtn">Copy</button>
     </li>
     <li>
-      <app-logo src=${e("./assets/icons/linkedin.svg")} alt="Linkedin icon"></app-logo>
+      <img src=${e("./assets/icons/linkedin.svg")} alt="Linkedin icon" />
       <a href="https://www.linkedin.com/in/han-htet-aung/" target="_blank">in/han-htet-aung</a>
     </li>
   </ul>
 </section>
 `;
-function ne(a) {
+function Q(a) {
   let t = a.getElementById("copyBtn");
   if (!t)
     return;
@@ -1482,6 +1327,6 @@ function ne(a) {
     });
   });
 }
-r("section-cta", { styles: oe, template: re, onRender: ne });
+l("section-cta", { styles: V, template: Y, onRender: Q });
 </script></body>
 </html>

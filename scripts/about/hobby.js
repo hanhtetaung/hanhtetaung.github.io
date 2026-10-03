@@ -47,13 +47,14 @@ const styles = /* css */ `
   a {
     display: inline-block;
     color: var(--color-primary);
-    text-decoration: none;
+    text-decoration-style: dotted;
   }
 
   a img {
     width: 1.5rem;
     height: auto;  
     vertical-align: bottom;
+
 
     @media (min-width: ${TABLET}) {
       width: 2rem;
@@ -72,16 +73,16 @@ const template = /* html */ `
     <h2>Self-taught in illustration</h2>
     <p>All hand-drawn. I use ink drawing. You can also find my Procreate diary on 
       <a
-    href="https://www.instagram.com/crafted.han"
-    target="_blank"
-    rel="noopener"
-    >
-      Instagram
-      <img
-        src=${asset("./assets/icons/instagram-primary-color.svg")}
-        alt="Linkedin Icon"
-      />
-    </a>
+      href="https://www.instagram.com/crafted.han"
+      target="_blank"
+      rel="noopener"
+      >
+        Instagram
+        <img
+          src=${asset("./assets/icons/instagram-primary-color.svg")}
+          alt="Linkedin Icon"
+        />
+      </a>
     .
     </p>
   </hgroup>

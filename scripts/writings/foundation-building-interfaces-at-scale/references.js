@@ -1,7 +1,5 @@
 import { define } from "../../../lib/define.js";
 
-import "../../components/app-link.js";
-
 const styles = /* css */ `
   :host {
     display: block;
@@ -19,6 +17,10 @@ const styles = /* css */ `
     flex-direction: column;
     gap: 0.5rem;
   }
+
+  a {
+    color: var(--color-text);
+  }
 `;
 
 const template = /* html */ `
@@ -28,24 +30,24 @@ const template = /* html */ `
 
     <ul>
       <li>
-        <app-link href="https://atomicdesign.bradfrost.com/chapter-2/" target="_blank" variant="underline">
+        <a href="https://atomicdesign.bradfrost.com/chapter-2/" target="_blank">
           Atomic Design Principle
-        </app-link>
+        </a>
       </li>
       <li>
-        <app-link href="https://playbook.ebay.com/foundations" target="_blank" variant="underline">
+        <a href="https://playbook.ebay.com/foundations" target="_blank">
           ebay Playbook
-        </app-link>
+        </a>
       </li>
       <li>
-        <app-link href="https://www.designsystem.tech.gov.sg/foundations/" target="_blank" variant="underline">
+        <a href="https://www.designsystem.tech.gov.sg/foundations/" target="_blank">
           SGDS Design
-        </app-link>
+        </a>
       </li>
       <li>
-        <app-link href="https://www.strava.com/" target="_blank" variant="underline">
+        <a href="https://www.strava.com/" target="_blank">
           Strava
-        </app-link>
+        </a>
       </li>
     </ul>
   </section>
