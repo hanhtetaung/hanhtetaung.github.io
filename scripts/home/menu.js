@@ -18,7 +18,11 @@ const styles = /* css */ `
     margin: 0;
     margin-top: 1rem;
     font-size: var(--size-title);
-    margin-bottom: 5rem;
+    margin-bottom: 4rem;
+
+    @media (min-width: ${DESKTOP}) {
+      margin-bottom: 5rem;
+    }
   }
 
   h3 {
@@ -73,33 +77,38 @@ const styles = /* css */ `
     }
 
     @media (min-width: ${TABLET}) {
-        li:last-child {
-            --road: 40px;
-            position: relative;
-            margin-top: 7rem;
-            overflow: hidden;
-            padding-left: var(--road);
-            padding-right: var(--road);
-            border-style: dashed;
-            border-left: none;
-            border-right: none;
-        }
-    
-        li:last-child::before,
-        li:last-child::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            width: 99rem;           
-            height: var(--road);
-            background: url("${asset("./assets/icons/road.svg")}") repeat-x left / auto var(--road);
-            transform-origin: top left;
-            transform: rotate(90deg);
-            pointer-events: none;
-        }
-    
-        li:last-child::before { left: var(--road); }
-        li:last-child::after  { left: 100%; }        
+      li:last-child {
+        --road: 40px;
+        position: relative;
+        overflow: hidden;
+        padding-left: var(--road);
+        padding-right: var(--road);
+        border-style: dashed;
+        border-left: none;
+        border-right: none;
+      }
+  
+      li:last-child::before,
+      li:last-child::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        width: 99rem;           
+        height: var(--road);
+        background: url("${asset("./assets/icons/road.svg")}") repeat-x left / auto var(--road);
+        transform-origin: top left;
+        transform: rotate(90deg);
+        pointer-events: none;
+      }
+  
+      li:last-child::before { left: var(--road); }
+      li:last-child::after  { left: 100%; }        
+    }
+
+    @media (min-width: ${DESKTOP}) {
+      li:last-child {
+        margin-top: 7rem;
+      }
     }
 
     article {
@@ -135,7 +144,7 @@ const template = /* html */ `
 <section>
   <hgroup>
     <p>[ Menu ]</p>
-    <h2>Provide Two Things</h2>
+    <h2>Two Options</h2>
   </hgroup>
 
     <ul>

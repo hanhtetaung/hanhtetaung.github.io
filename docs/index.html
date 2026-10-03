@@ -88,10 +88,10 @@ function L(a, t) {
   return a;
 }
 function l(a, { props: t = {}, attrs: m = [], styles: o = "", template: s, onRender: g = null }) {
-  let u = ["props", ...m];
+  let b = ["props", ...m];
 
   class p extends HTMLElement {
-    static observedAttributes = u;
+    static observedAttributes = b;
     constructor() {
       super();
       this.attachShadow({ mode: "open" }), this._cleanup = null;
@@ -236,7 +236,7 @@ var O = `
 l("section-header", { template: D, styles: O });
 
 // scripts/breakpoints.js
-var i = "640px", b = "1024px", S = "1920px";
+var i = "640px", u = "1024px", S = "1920px";
 
 // scripts/components/footer-copyright.js
 var N = `
@@ -481,7 +481,7 @@ function F(a) {
   let t = a.querySelector("footer"), m = a.getElementById("highlight-base"), o = a.getElementById("highlight-lens"), s = a.getElementById("lens-ring"), g = a.getElementById("highlight-wrap");
   if (!t || !m || !o || !s || !g)
     return;
-  function u(n) {
+  function b(n) {
     let f = m.getBoundingClientRect(), c = n.clientX - f.left, v = n.clientY - f.top, y = s.offsetWidth / 2;
     s.style.left = `${c - y}px`, s.style.top = `${v - y}px`, o.style.clipPath = `circle(${y}px at ${c}px ${v}px)`;
   }
@@ -491,8 +491,8 @@ function F(a) {
   function r() {
     s.removeAttribute("data-visible"), o.style.clipPath = "circle(0px at 50% 50%)";
   }
-  return t.addEventListener("mousemove", u), t.addEventListener("mouseenter", p), t.addEventListener("mouseleave", r), () => {
-    t.removeEventListener("mousemove", u), t.removeEventListener("mouseenter", p), t.removeEventListener("mouseleave", r);
+  return t.addEventListener("mousemove", b), t.addEventListener("mouseenter", p), t.addEventListener("mouseleave", r), () => {
+    t.removeEventListener("mousemove", b), t.removeEventListener("mouseenter", p), t.removeEventListener("mouseleave", r);
   };
 }
 l("section-footer", { styles: P, template: q, onRender: F });
@@ -520,7 +520,7 @@ var M = `
     justify-content: start;
     position: relative;
 
-    @media (min-width: ${b}) {
+    @media (min-width: ${u}) {
       justify-content: end;
     }
   }
@@ -625,7 +625,7 @@ function G(a) {
   if (!t || !m || !o || !s)
     return;
   let g = window.matchMedia(I);
-  function u(v) {
+  function b(v) {
     let y = m.getBoundingClientRect(), k = v.clientX - y.left, z = v.clientY - y.top, h = s.offsetWidth / 2;
     s.style.left = `${k - h}px`, s.style.top = `${z - h}px`, o.style.clipPath = `circle(${h}px at ${k}px ${z}px)`;
   }
@@ -636,10 +636,10 @@ function G(a) {
     s.removeAttribute("data-visible"), o.style.clipPath = "circle(0px at 50% 50%)";
   }
   function n() {
-    t.addEventListener("mousemove", u), t.addEventListener("mouseenter", p), t.addEventListener("mouseleave", r);
+    t.addEventListener("mousemove", b), t.addEventListener("mouseenter", p), t.addEventListener("mouseleave", r);
   }
   function f() {
-    t.removeEventListener("mousemove", u), t.removeEventListener("mouseenter", p), t.removeEventListener("mouseleave", r), r();
+    t.removeEventListener("mousemove", b), t.removeEventListener("mouseenter", p), t.removeEventListener("mouseleave", r), r();
   }
   function c(v) {
     if (v.matches)
@@ -693,7 +693,7 @@ var U = `
       grid-template-columns: repeat(2, 1fr);
     }
 
-    @media (min-width: ${b}) {
+    @media (min-width: ${u}) {
       grid-template-columns: repeat(3, 1fr);
     }
   }
@@ -828,10 +828,10 @@ function J(a) {
       let x = new Image;
       x.src = h;
     });
-    let u = 0, p = null, r = null, n = 40, f = 4, c = [];
+    let b = 0, p = null, r = null, n = 40, f = 4, c = [];
     function v(h, x) {
       let d = document.createElement("img");
-      d.className = "stack-img", d.src = g[u], d.style.left = `${h}px`, d.style.top = `${x}px`;
+      d.className = "stack-img", d.src = g[b], d.style.left = `${h}px`, d.style.top = `${x}px`;
       let w = (Math.random() * 16 - 8).toFixed(1);
       if (d.style.transform = `translate(-50%, -50%) rotate(${w}deg) scale(0.85)`, o.appendChild(d), c.push(d), requestAnimationFrame(() => {
         d.classList.add("visible"), d.style.transform = `translate(-50%, -50%) rotate(${w}deg) scale(1)`;
@@ -839,7 +839,7 @@ function J(a) {
         let C = c.shift();
         y(C);
       }
-      u = (u + 1) % g.length;
+      b = (b + 1) % g.length;
     }
     function y(h) {
       h.classList.add("fade-out"), h.classList.remove("visible"), setTimeout(() => {
@@ -859,7 +859,7 @@ function J(a) {
       p = null, r = null;
       while (c.length)
         y(c.shift());
-      u = 0;
+      b = 0;
     }
     o.addEventListener("mousemove", k), o.addEventListener("mouseleave", z);
   });
@@ -883,7 +883,11 @@ var W = `
     margin: 0;
     margin-top: 1rem;
     font-size: var(--size-title);
-    margin-bottom: 5rem;
+    margin-bottom: 4rem;
+
+    @media (min-width: ${u}) {
+      margin-bottom: 5rem;
+    }
   }
 
   h3 {
@@ -916,7 +920,7 @@ var W = `
         gap: 5rem;
     }
     
-    @media (min-width:${b}) {
+    @media (min-width:${u}) {
         gap: 15rem;
     }
 
@@ -938,33 +942,38 @@ var W = `
     }
 
     @media (min-width: ${i}) {
-        li:last-child {
-            --road: 40px;
-            position: relative;
-            margin-top: 7rem;
-            overflow: hidden;
-            padding-left: var(--road);
-            padding-right: var(--road);
-            border-style: dashed;
-            border-left: none;
-            border-right: none;
-        }
-    
-        li:last-child::before,
-        li:last-child::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            width: 99rem;           
-            height: var(--road);
-            background: url("${e("./assets/icons/road.svg")}") repeat-x left / auto var(--road);
-            transform-origin: top left;
-            transform: rotate(90deg);
-            pointer-events: none;
-        }
-    
-        li:last-child::before { left: var(--road); }
-        li:last-child::after  { left: 100%; }        
+      li:last-child {
+        --road: 40px;
+        position: relative;
+        overflow: hidden;
+        padding-left: var(--road);
+        padding-right: var(--road);
+        border-style: dashed;
+        border-left: none;
+        border-right: none;
+      }
+  
+      li:last-child::before,
+      li:last-child::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        width: 99rem;           
+        height: var(--road);
+        background: url("${e("./assets/icons/road.svg")}") repeat-x left / auto var(--road);
+        transform-origin: top left;
+        transform: rotate(90deg);
+        pointer-events: none;
+      }
+  
+      li:last-child::before { left: var(--road); }
+      li:last-child::after  { left: 100%; }        
+    }
+
+    @media (min-width: ${u}) {
+      li:last-child {
+        margin-top: 7rem;
+      }
     }
 
     article {
@@ -998,7 +1007,7 @@ var W = `
 <section>
   <hgroup>
     <p>[ Menu ]</p>
-    <h2>Provide Two Things</h2>
+    <h2>Two Options</h2>
   </hgroup>
 
     <ul>
@@ -1034,7 +1043,7 @@ var H = `
     overflow: hidden;
     margin-block: 15rem;
 
-    @media (min-width: ${b}) {
+    @media (min-width: ${u}) {
       margin-top: 20rem;
       margin-bottom: 25rem;
     }
@@ -1094,7 +1103,7 @@ var H = `
       grid-column: span 2; 
     }
 
-    @media (min-width: ${b}) {
+    @media (min-width: ${u}) {
       height: 35rem;
     }
 
@@ -1256,7 +1265,7 @@ var V = `
       top: 20rem;
     }
 
-    @media (min-width: ${b}) {
+    @media (min-width: ${u}) {
       opacity: 1;
     }
   }
