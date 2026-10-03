@@ -105,6 +105,11 @@ const styles = /* css */ `
     color: var(--color-text);
   }
 
+  a:hover {
+    text-decoration: underline;
+    text-decoration-style: dashed;
+  }
+
   img {
     height: auto;
     width: 2rem;
