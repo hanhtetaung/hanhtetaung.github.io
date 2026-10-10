@@ -656,7 +656,7 @@ function G(a) {
 l("section-hero", { styles: M, template: T, onRender: G });
 
 // scripts/home/recent-crafts.js
-var U = `
+var j = `
   :host {
     position: relative;
     display: block;
@@ -757,7 +757,7 @@ var U = `
     opacity: 0;
     transform: translate(-50%, -50%) scale(0.9);
   }
-`, j = `
+`, U = `
 <section>
   <hgroup>
     <p>[ Recent Crafts ]</p>
@@ -791,7 +791,7 @@ var U = `
     </li>
 
     <li class="scrub-item">
-      <a href="/map" target="_blank">
+      <a href="https://stoorymap.com/" target="_blank">
         <img class="cover" 
           src=${e("./assets/images/home/story-map.avif")}
           data-images='${JSON.stringify([
@@ -864,7 +864,7 @@ function J(a) {
     o.addEventListener("mousemove", k), o.addEventListener("mouseleave", z);
   });
 }
-l("section-recent-crafts", { styles: U, template: j, onRender: J });
+l("section-recent-crafts", { styles: j, template: U, onRender: J });
 
 // scripts/home/menu.js
 var W = `
@@ -1026,7 +1026,7 @@ var W = `
                 <h3><img src=${e("./assets/images/home/story-map.svg")} alt="Story Map"></h3>
                 <p>Everything in your memory, your own characters plus infinite patience</p>
     
-                <a href="/map" target="_blank">Preview</a>
+                <a href="https://stoorymap.com/juzbird" target="_blank">Preview</a>
             </article>
         </li>
 
