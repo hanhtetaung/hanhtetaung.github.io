@@ -19,8 +19,7 @@
     ></script>
 
     
-  <style>/* main.css */
-:root{--color-bg-primary:#fff5e8;--color-primary:#7e4c37;--color-text:#000;--color-transparent:#0000;--font-family:"Archivo",sans-serif;--font-regular:400;--font-bold:700;--ratio:1.4;--size-body:1.6rem;--size-small:calc(var(--size-body)/var(--ratio));--size-heading:calc(var(--size-body)*var(--ratio));--size-title:calc(var(--size-heading)*var(--ratio));--size-display:calc(var(--size-title)*var(--ratio));font-size:10px;@media (width>=640px){&{--size-body:2rem}}}body{font-family:var(--font-family);font-size:var(--size-body);background-color:var(--color-bg-primary);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'%3E%3Cfilter id='roughpaper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.04' result='noise' numOctaves='5' stitchTiles='stitch'/%3E%3CfeDiffuseLighting in='noise' lighting-color='%23fff5e8' surfaceScale='1.5'%3E%3CfeDistantLight azimuth='45' elevation='72'/%3E%3C/feDiffuseLighting%3E%3C/filter%3E%3Crect width='300' height='300' fill='%23fff5e8' filter='url(%23roughpaper)'/%3E%3C/svg%3E");background-repeat:repeat;background-size:30rem 30rem;margin:0}
+  <style>:root{--color-bg-primary:#fff5e8;--color-primary:#7e4c37;--color-text:#000;--color-transparent:#0000;--font-family:"Archivo",sans-serif;--font-regular:400;--font-bold:700;--ratio:1.4;--size-body:1.6rem;--size-small:calc(var(--size-body)/var(--ratio));--size-heading:calc(var(--size-body)*var(--ratio));--size-title:calc(var(--size-heading)*var(--ratio));--size-display:calc(var(--size-title)*var(--ratio));font-size:10px;@media (width>=640px){&{--size-body:2rem}}}body{font-family:var(--font-family);font-size:var(--size-body);background-color:var(--color-bg-primary);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'%3E%3Cfilter id='roughpaper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.04' result='noise' numOctaves='5' stitchTiles='stitch'/%3E%3CfeDiffuseLighting in='noise' lighting-color='%23fff5e8' surfaceScale='1.5'%3E%3CfeDistantLight azimuth='45' elevation='72'/%3E%3C/feDiffuseLighting%3E%3C/filter%3E%3Crect width='300' height='300' fill='%23fff5e8' filter='url(%23roughpaper)'/%3E%3C/svg%3E");background-repeat:repeat;background-size:30rem 30rem;margin:0}
 </style></head>
   <body>
     <section-header></section-header>
@@ -36,23 +35,7 @@
     </main>
 
     <section-footer></section-footer>
-  <script type="module">// lib/asset.js
-function y() {
-  let o = document.documentElement.dataset.base || "./";
-  return new URL(o, location.href);
-}
-function e(o) {
-  return new URL(o, y()).href;
-}
-function g(o) {
-  let t = o.replace(/^\//, ""), c = location.protocol === "file:", l = y();
-  if (t === "")
-    return c ? new URL("index.html", l).href : l.href;
-  return c ? new URL(`${t}.html`, l).href : new URL(t, l).href;
-}
-
-// scripts/fonts.js
-var x = `
+  <script type="module">function y(){let o=document.documentElement.dataset.base||"./";return new URL(o,location.href)}function e(o){return new URL(o,y()).href}function g(o){let t=o.replace(/^\//,""),c=location.protocol==="file:",l=y();if(t==="")return c?new URL("index.html",l).href:l.href;return c?new URL(`${t}.html`,l).href:new URL(t,l).href}var x=`
 @font-face {
     font-family: "Archivo";
     src: url("${e("./assets/fonts/Archivo-Black.woff2")}") format("woff2");
@@ -66,91 +49,7 @@ var x = `
     font-weight: 400;
     font-display: swap;
   }
-`, k = document.createElement("style");
-k.textContent = x;
-document.head.appendChild(k);
-
-// lib/define.js
-function $(o, t) {
-  if (o === void 0) {
-    if (t === Array)
-      return [];
-    if (t === Object)
-      return {};
-    if (t === Boolean)
-      return !1;
-    if (t === Number)
-      return 0;
-    return;
-  }
-  if (t === Boolean)
-    return Boolean(o);
-  if (t === Number)
-    return Number(o);
-  return o;
-}
-function i(o, { props: t = {}, attrs: c = [], styles: l = "", template: m, onRender: u = null }) {
-  let w = ["props", ...c];
-
-  class d extends HTMLElement {
-    static observedAttributes = w;
-    constructor() {
-      super();
-      this.attachShadow({ mode: "open" }), this._cleanup = null;
-    }
-    connectedCallback() {
-      this._render();
-    }
-    disconnectedCallback() {
-      if (typeof this._cleanup === "function")
-        this._cleanup();
-      this._cleanup = null;
-    }
-    attributeChangedCallback() {
-      if (this.isConnected)
-        this._render();
-    }
-    _getProps() {
-      let a = {}, s = this.getAttribute("props");
-      if (s)
-        try {
-          a = JSON.parse(s);
-        } catch {
-          a = {};
-        }
-      let p = {};
-      for (let h of Object.keys(t))
-        p[h] = $(a[h], t[h]);
-      return p;
-    }
-    _applyForwardedAttrs() {
-      if (c.length === 0)
-        return;
-      let a = this.shadowRoot.querySelector("[data-forward]");
-      if (!a)
-        return;
-      for (let s of c)
-        if (this.hasAttribute(s))
-          a.setAttribute(s, this.getAttribute(s));
-        else
-          a.removeAttribute(s);
-    }
-    _render() {
-      if (typeof this._cleanup === "function")
-        this._cleanup(), this._cleanup = null;
-      let a = this._getProps(), s = typeof m === "function" ? m(a) : m;
-      if (this.shadowRoot.innerHTML = `<style>${l}</style>${s}`, this._applyForwardedAttrs(), u) {
-        let p = u(this.shadowRoot, a, this);
-        if (typeof p === "function")
-          this._cleanup = p;
-      }
-    }
-  }
-  customElements.define(o, d);
-}
-
-// scripts/header.js
-var z = `
+`,k=document.createElement("style");k.textContent=x;document.head.appendChild(k);function $(o,t){if(o===void 0){if(t===Array)return[];if(t===Object)return{};if(t===Boolean)return!1;if(t===Number)return 0;return}if(t===Boolean)return Boolean(o);if(t===Number)return Number(o);return o}function i(o,{props:t={},attrs:c=[],styles:l="",template:m,onRender:u=null}){let w=["props",...c];class d extends HTMLElement{static observedAttributes=w;constructor(){super();this.attachShadow({mode:"open"}),this._cleanup=null}connectedCallback(){this._render()}disconnectedCallback(){if(typeof this._cleanup==="function")this._cleanup();this._cleanup=null}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let a={},s=this.getAttribute("props");if(s)try{a=JSON.parse(s)}catch{a={}}let p={};for(let h of Object.keys(t))p[h]=$(a[h],t[h]);return p}_applyForwardedAttrs(){if(c.length===0)return;let a=this.shadowRoot.querySelector("[data-forward]");if(!a)return;for(let s of c)if(this.hasAttribute(s))a.setAttribute(s,this.getAttribute(s));else a.removeAttribute(s)}_render(){if(typeof this._cleanup==="function")this._cleanup(),this._cleanup=null;let a=this._getProps(),s=typeof m==="function"?m(a):m;if(this.shadowRoot.innerHTML=`<style>${l}</style>${s}`,this._applyForwardedAttrs(),u){let p=u(this.shadowRoot,a,this);if(typeof p==="function")this._cleanup=p}}}customElements.define(o,d)}var z=`
   :host {
     display: block;
     font-size: var(--size-small);
@@ -210,7 +109,7 @@ var z = `
   }
 
   
-`, A = `
+`,A=`
   <header>
     <a href=${g("/")}>
       <img src=${e("./assets/images/logo.avif")}
@@ -234,14 +133,7 @@ var z = `
       </a>
     </nav>
   </header>
-`;
-i("section-header", { template: A, styles: z });
-
-// scripts/breakpoints.js
-var n = "640px", r = "1024px";
-
-// scripts/components/footer-copyright.js
-var E = `
+`;i("section-header",{template:A,styles:z});var n="640px",r="1024px";var E=`
   :host {
    display: flex;
     justify-content: space-between;
@@ -324,7 +216,7 @@ var E = `
     text-decoration: none;
     color: var(--color-text);
   }
-`, T = () => `
+`,T=()=>`
       <p>
           <img src=${e("./assets/images/logo.avif")}
           alt="Logo">
@@ -386,11 +278,7 @@ var E = `
               </li>
           </ul>
         </nav>
-`;
-i("footer-copyright", { styles: E, template: T });
-
-// scripts/footer.js
-var L = `
+`;i("footer-copyright",{styles:E,template:T});var L=`
   :host {
     display: block;
   }
@@ -463,7 +351,7 @@ var L = `
       display: none;
     }
   }
-`, C = `
+`,C=`
   <footer>
 
     <div id="highlight-wrap">
@@ -478,29 +366,7 @@ var L = `
 
     <footer-copyright></footer-copyright>
   </footer>
-`;
-function D(o) {
-  let t = o.querySelector("footer"), c = o.getElementById("highlight-base"), l = o.getElementById("highlight-lens"), m = o.getElementById("lens-ring"), u = o.getElementById("highlight-wrap");
-  if (!t || !c || !l || !m || !u)
-    return;
-  function w(s) {
-    let p = c.getBoundingClientRect(), h = s.clientX - p.left, v = s.clientY - p.top, b = m.offsetWidth / 2;
-    m.style.left = `${h - b}px`, m.style.top = `${v - b}px`, l.style.clipPath = `circle(${b}px at ${h}px ${v}px)`;
-  }
-  function d() {
-    m.setAttribute("data-visible", "true");
-  }
-  function a() {
-    m.removeAttribute("data-visible"), l.style.clipPath = "circle(0px at 50% 50%)";
-  }
-  return t.addEventListener("mousemove", w), t.addEventListener("mouseenter", d), t.addEventListener("mouseleave", a), () => {
-    t.removeEventListener("mousemove", w), t.removeEventListener("mouseenter", d), t.removeEventListener("mouseleave", a);
-  };
-}
-i("section-footer", { styles: L, template: C, onRender: D });
-
-// scripts/workflow/intro.js
-var S = `
+`;function D(o){let t=o.querySelector("footer"),c=o.getElementById("highlight-base"),l=o.getElementById("highlight-lens"),m=o.getElementById("lens-ring"),u=o.getElementById("highlight-wrap");if(!t||!c||!l||!m||!u)return;function w(s){let p=c.getBoundingClientRect(),h=s.clientX-p.left,v=s.clientY-p.top,b=m.offsetWidth/2;m.style.left=`${h-b}px`,m.style.top=`${v-b}px`,l.style.clipPath=`circle(${b}px at ${h}px ${v}px)`}function d(){m.setAttribute("data-visible","true")}function a(){m.removeAttribute("data-visible"),l.style.clipPath="circle(0px at 50% 50%)"}return t.addEventListener("mousemove",w),t.addEventListener("mouseenter",d),t.addEventListener("mouseleave",a),()=>{t.removeEventListener("mousemove",w),t.removeEventListener("mouseenter",d),t.removeEventListener("mouseleave",a)}}i("section-footer",{styles:L,template:C,onRender:D});var S=`
   :host {
     position: relative;
     display: block;
@@ -567,7 +433,7 @@ var S = `
   span {
     color: var(--color-primary);
   }
-`, B = `
+`,B=`
 
 <section>
   <hgroup>
@@ -591,11 +457,7 @@ var S = `
   </div>
 </section>
 
-`;
-i("section-workflow-intro", { styles: S, template: B });
-
-// scripts/workflow/brainstorming.js
-var _ = `
+`;i("section-workflow-intro",{styles:S,template:B});var _=`
   :host {
     position: relative;
     display: block;
@@ -635,7 +497,7 @@ var _ = `
     width: 100%;
     height: auto;
   }
-`, P = `
+`,P=`
 <section>
   <hgroup>
      <h2>Brainstorm</h2>
@@ -646,11 +508,7 @@ var _ = `
 
 </section>
 
-`;
-i("section-workflow-brainstorming", { styles: _, template: P });
-
-// scripts/workflow/design.js
-var q = `
+`;i("section-workflow-brainstorming",{styles:_,template:P});var q=`
   :host {
     position: relative;
     display: block;
@@ -695,7 +553,7 @@ var q = `
   }
 
 
-`, F = `
+`,F=`
 
 <section>
   <hgroup>
@@ -710,11 +568,7 @@ var q = `
 
 </section>
 
-`;
-i("section-workflow-design", { styles: q, template: F });
-
-// scripts/workflow/illustrate.js
-var G = `
+`;i("section-workflow-design",{styles:q,template:F});var G=`
   :host {
     position: relative;
     display: block;
@@ -759,7 +613,7 @@ var G = `
     height: auto;
   }
 
-`, O = `
+`,O=`
 
 <section>
     <hgroup>
@@ -774,11 +628,7 @@ var G = `
 
 </section>
 
-`;
-i("section-workflow-illustrate", { styles: G, template: O });
-
-// scripts/workflow/develop.js
-var H = `
+`;i("section-workflow-illustrate",{styles:G,template:O});var H=`
   :host {
     position: relative;
     display: block;
@@ -819,7 +669,7 @@ var H = `
   }
 
 
-`, U = `
+`,U=`
 
 <section>
   <hgroup>
@@ -833,11 +683,7 @@ var H = `
 
 </section>
 
-`;
-i("section-workflow-develop", { styles: H, template: U });
-
-// scripts/workflow/deploy.js
-var N = `
+`;i("section-workflow-develop",{styles:H,template:U});var N=`
   :host {
     position: relative;
     display: block;
@@ -874,7 +720,7 @@ var N = `
   }
 
 
-`, R = `
+`,R=`
 
 <section>
   <hgroup>
@@ -891,11 +737,7 @@ var N = `
 
 </section>
 
-`;
-i("section-workflow-deploy", { styles: N, template: R });
-
-// scripts/workflow/deliver.js
-var j = `
+`;i("section-workflow-deploy",{styles:N,template:R});var j=`
   :host {
     position: relative;
     display: block;
@@ -932,7 +774,7 @@ var j = `
   }
 
 
-`, K = `
+`,K=`
 
 <section>
   <hgroup>
@@ -944,7 +786,6 @@ var j = `
 
 </section>
 
-`;
-i("section-workflow-deliver", { styles: j, template: K });
+`;i("section-workflow-deliver",{styles:j,template:K});
 </script></body>
 </html>

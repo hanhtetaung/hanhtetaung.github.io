@@ -20,8 +20,7 @@
       data-website-id="bfa1522f-e14a-41de-984a-9dc703fd853b"
     ></script>
     
-  <style>/* main.css */
-:root{--color-bg-primary:#fff5e8;--color-primary:#7e4c37;--color-text:#000;--color-transparent:#0000;--font-family:"Archivo",sans-serif;--font-regular:400;--font-bold:700;--ratio:1.4;--size-body:1.6rem;--size-small:calc(var(--size-body)/var(--ratio));--size-heading:calc(var(--size-body)*var(--ratio));--size-title:calc(var(--size-heading)*var(--ratio));--size-display:calc(var(--size-title)*var(--ratio));font-size:10px;@media (width>=640px){&{--size-body:2rem}}}body{font-family:var(--font-family);font-size:var(--size-body);background-color:var(--color-bg-primary);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'%3E%3Cfilter id='roughpaper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.04' result='noise' numOctaves='5' stitchTiles='stitch'/%3E%3CfeDiffuseLighting in='noise' lighting-color='%23fff5e8' surfaceScale='1.5'%3E%3CfeDistantLight azimuth='45' elevation='72'/%3E%3C/feDiffuseLighting%3E%3C/filter%3E%3Crect width='300' height='300' fill='%23fff5e8' filter='url(%23roughpaper)'/%3E%3C/svg%3E");background-repeat:repeat;background-size:30rem 30rem;margin:0}
+  <style>:root{--color-bg-primary:#fff5e8;--color-primary:#7e4c37;--color-text:#000;--color-transparent:#0000;--font-family:"Archivo",sans-serif;--font-regular:400;--font-bold:700;--ratio:1.4;--size-body:1.6rem;--size-small:calc(var(--size-body)/var(--ratio));--size-heading:calc(var(--size-body)*var(--ratio));--size-title:calc(var(--size-heading)*var(--ratio));--size-display:calc(var(--size-title)*var(--ratio));font-size:10px;@media (width>=640px){&{--size-body:2rem}}}body{font-family:var(--font-family);font-size:var(--size-body);background-color:var(--color-bg-primary);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'%3E%3Cfilter id='roughpaper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.04' result='noise' numOctaves='5' stitchTiles='stitch'/%3E%3CfeDiffuseLighting in='noise' lighting-color='%23fff5e8' surfaceScale='1.5'%3E%3CfeDistantLight azimuth='45' elevation='72'/%3E%3C/feDiffuseLighting%3E%3C/filter%3E%3Crect width='300' height='300' fill='%23fff5e8' filter='url(%23roughpaper)'/%3E%3C/svg%3E");background-repeat:repeat;background-size:30rem 30rem;margin:0}
 </style></head>
   <body>
     <section-header></section-header>
@@ -31,23 +30,7 @@
     </main>
 
     <section-footer></section-footer>
-  <script type="module">// lib/asset.js
-function v() {
-  let t = document.documentElement.dataset.base || "./";
-  return new URL(t, location.href);
-}
-function i(t) {
-  return new URL(t, v()).href;
-}
-function p(t) {
-  let e = t.replace(/^\//, ""), l = location.protocol === "file:", n = v();
-  if (e === "")
-    return l ? new URL("index.html", n).href : n.href;
-  return l ? new URL(`${e}.html`, n).href : new URL(e, n).href;
-}
-
-// scripts/fonts.js
-var w = `
+  <script type="module">function v(){let t=document.documentElement.dataset.base||"./";return new URL(t,location.href)}function i(t){return new URL(t,v()).href}function p(t){let e=t.replace(/^\//,""),l=location.protocol==="file:",n=v();if(e==="")return l?new URL("index.html",n).href:n.href;return l?new URL(`${e}.html`,n).href:new URL(e,n).href}var w=`
 @font-face {
     font-family: "Archivo";
     src: url("${i("./assets/fonts/Archivo-Black.woff2")}") format("woff2");
@@ -61,91 +44,7 @@ var w = `
     font-weight: 400;
     font-display: swap;
   }
-`, y = document.createElement("style");
-y.textContent = w;
-document.head.appendChild(y);
-
-// lib/define.js
-function x(t, e) {
-  if (t === void 0) {
-    if (e === Array)
-      return [];
-    if (e === Object)
-      return {};
-    if (e === Boolean)
-      return !1;
-    if (e === Number)
-      return 0;
-    return;
-  }
-  if (e === Boolean)
-    return Boolean(t);
-  if (e === Number)
-    return Number(t);
-  return t;
-}
-function m(t, { props: e = {}, attrs: l = [], styles: n = "", template: o, onRender: h = null }) {
-  let u = ["props", ...l];
-
-  class f extends HTMLElement {
-    static observedAttributes = u;
-    constructor() {
-      super();
-      this.attachShadow({ mode: "open" }), this._cleanup = null;
-    }
-    connectedCallback() {
-      this._render();
-    }
-    disconnectedCallback() {
-      if (typeof this._cleanup === "function")
-        this._cleanup();
-      this._cleanup = null;
-    }
-    attributeChangedCallback() {
-      if (this.isConnected)
-        this._render();
-    }
-    _getProps() {
-      let a = {}, r = this.getAttribute("props");
-      if (r)
-        try {
-          a = JSON.parse(r);
-        } catch {
-          a = {};
-        }
-      let c = {};
-      for (let d of Object.keys(e))
-        c[d] = x(a[d], e[d]);
-      return c;
-    }
-    _applyForwardedAttrs() {
-      if (l.length === 0)
-        return;
-      let a = this.shadowRoot.querySelector("[data-forward]");
-      if (!a)
-        return;
-      for (let r of l)
-        if (this.hasAttribute(r))
-          a.setAttribute(r, this.getAttribute(r));
-        else
-          a.removeAttribute(r);
-    }
-    _render() {
-      if (typeof this._cleanup === "function")
-        this._cleanup(), this._cleanup = null;
-      let a = this._getProps(), r = typeof o === "function" ? o(a) : o;
-      if (this.shadowRoot.innerHTML = `<style>${n}</style>${r}`, this._applyForwardedAttrs(), h) {
-        let c = h(this.shadowRoot, a, this);
-        if (typeof c === "function")
-          this._cleanup = c;
-      }
-    }
-  }
-  customElements.define(t, f);
-}
-
-// scripts/header.js
-var $ = `
+`,y=document.createElement("style");y.textContent=w;document.head.appendChild(y);function x(t,e){if(t===void 0){if(e===Array)return[];if(e===Object)return{};if(e===Boolean)return!1;if(e===Number)return 0;return}if(e===Boolean)return Boolean(t);if(e===Number)return Number(t);return t}function m(t,{props:e={},attrs:l=[],styles:n="",template:o,onRender:h=null}){let u=["props",...l];class f extends HTMLElement{static observedAttributes=u;constructor(){super();this.attachShadow({mode:"open"}),this._cleanup=null}connectedCallback(){this._render()}disconnectedCallback(){if(typeof this._cleanup==="function")this._cleanup();this._cleanup=null}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let a={},r=this.getAttribute("props");if(r)try{a=JSON.parse(r)}catch{a={}}let c={};for(let d of Object.keys(e))c[d]=x(a[d],e[d]);return c}_applyForwardedAttrs(){if(l.length===0)return;let a=this.shadowRoot.querySelector("[data-forward]");if(!a)return;for(let r of l)if(this.hasAttribute(r))a.setAttribute(r,this.getAttribute(r));else a.removeAttribute(r)}_render(){if(typeof this._cleanup==="function")this._cleanup(),this._cleanup=null;let a=this._getProps(),r=typeof o==="function"?o(a):o;if(this.shadowRoot.innerHTML=`<style>${n}</style>${r}`,this._applyForwardedAttrs(),h){let c=h(this.shadowRoot,a,this);if(typeof c==="function")this._cleanup=c}}}customElements.define(t,f)}var $=`
   :host {
     display: block;
     font-size: var(--size-small);
@@ -205,7 +104,7 @@ var $ = `
   }
 
   
-`, k = `
+`,k=`
   <header>
     <a href=${p("/")}>
       <img src=${i("./assets/images/logo.avif")}
@@ -229,14 +128,7 @@ var $ = `
       </a>
     </nav>
   </header>
-`;
-m("section-header", { template: k, styles: $ });
-
-// scripts/breakpoints.js
-var s = "640px";
-
-// scripts/components/footer-copyright.js
-var z = `
+`;m("section-header",{template:k,styles:$});var s="640px";var z=`
   :host {
    display: flex;
     justify-content: space-between;
@@ -319,7 +211,7 @@ var z = `
     text-decoration: none;
     color: var(--color-text);
   }
-`, A = () => `
+`,A=()=>`
       <p>
           <img src=${i("./assets/images/logo.avif")}
           alt="Logo">
@@ -381,11 +273,7 @@ var z = `
               </li>
           </ul>
         </nav>
-`;
-m("footer-copyright", { styles: z, template: A });
-
-// scripts/footer.js
-var C = `
+`;m("footer-copyright",{styles:z,template:A});var C=`
   :host {
     display: block;
   }
@@ -458,7 +346,7 @@ var C = `
       display: none;
     }
   }
-`, _ = `
+`,_=`
   <footer>
 
     <div id="highlight-wrap">
@@ -473,29 +361,7 @@ var C = `
 
     <footer-copyright></footer-copyright>
   </footer>
-`;
-function E(t) {
-  let e = t.querySelector("footer"), l = t.getElementById("highlight-base"), n = t.getElementById("highlight-lens"), o = t.getElementById("lens-ring"), h = t.getElementById("highlight-wrap");
-  if (!e || !l || !n || !o || !h)
-    return;
-  function u(r) {
-    let c = l.getBoundingClientRect(), d = r.clientX - c.left, b = r.clientY - c.top, g = o.offsetWidth / 2;
-    o.style.left = `${d - g}px`, o.style.top = `${b - g}px`, n.style.clipPath = `circle(${g}px at ${d}px ${b}px)`;
-  }
-  function f() {
-    o.setAttribute("data-visible", "true");
-  }
-  function a() {
-    o.removeAttribute("data-visible"), n.style.clipPath = "circle(0px at 50% 50%)";
-  }
-  return e.addEventListener("mousemove", u), e.addEventListener("mouseenter", f), e.addEventListener("mouseleave", a), () => {
-    e.removeEventListener("mousemove", u), e.removeEventListener("mouseenter", f), e.removeEventListener("mouseleave", a);
-  };
-}
-m("section-footer", { styles: C, template: _, onRender: E });
-
-// scripts/404/intro.js
-var B = `
+`;function E(t){let e=t.querySelector("footer"),l=t.getElementById("highlight-base"),n=t.getElementById("highlight-lens"),o=t.getElementById("lens-ring"),h=t.getElementById("highlight-wrap");if(!e||!l||!n||!o||!h)return;function u(r){let c=l.getBoundingClientRect(),d=r.clientX-c.left,b=r.clientY-c.top,g=o.offsetWidth/2;o.style.left=`${d-g}px`,o.style.top=`${b-g}px`,n.style.clipPath=`circle(${g}px at ${d}px ${b}px)`}function f(){o.setAttribute("data-visible","true")}function a(){o.removeAttribute("data-visible"),n.style.clipPath="circle(0px at 50% 50%)"}return e.addEventListener("mousemove",u),e.addEventListener("mouseenter",f),e.addEventListener("mouseleave",a),()=>{e.removeEventListener("mousemove",u),e.removeEventListener("mouseenter",f),e.removeEventListener("mouseleave",a)}}m("section-footer",{styles:C,template:_,onRender:E});var B=`
   :host {
     display: block;
     margin-block: 10rem;
@@ -522,7 +388,7 @@ var B = `
     margin: 0;
     margin-bottom: 1.5rem;
   }
-`, L = `
+`,L=`
   <section>
       <hgroup>
         <h1>404</h1>
@@ -530,7 +396,6 @@ var B = `
       </hgroup>
 
   </section>
-`;
-m("section-404-intro", { styles: B, template: L });
+`;m("section-404-intro",{styles:B,template:L});
 </script></body>
 </html>

@@ -20,8 +20,7 @@
       data-website-id="bfa1522f-e14a-41de-984a-9dc703fd853b"
     ></script>
     
-  <style>/* main.css */
-:root{--color-bg-primary:#fff5e8;--color-primary:#7e4c37;--color-text:#000;--color-transparent:#0000;--font-family:"Archivo",sans-serif;--font-regular:400;--font-bold:700;--ratio:1.4;--size-body:1.6rem;--size-small:calc(var(--size-body)/var(--ratio));--size-heading:calc(var(--size-body)*var(--ratio));--size-title:calc(var(--size-heading)*var(--ratio));--size-display:calc(var(--size-title)*var(--ratio));font-size:10px;@media (width>=640px){&{--size-body:2rem}}}body{font-family:var(--font-family);font-size:var(--size-body);background-color:var(--color-bg-primary);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'%3E%3Cfilter id='roughpaper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.04' result='noise' numOctaves='5' stitchTiles='stitch'/%3E%3CfeDiffuseLighting in='noise' lighting-color='%23fff5e8' surfaceScale='1.5'%3E%3CfeDistantLight azimuth='45' elevation='72'/%3E%3C/feDiffuseLighting%3E%3C/filter%3E%3Crect width='300' height='300' fill='%23fff5e8' filter='url(%23roughpaper)'/%3E%3C/svg%3E");background-repeat:repeat;background-size:30rem 30rem;margin:0}
+  <style>:root{--color-bg-primary:#fff5e8;--color-primary:#7e4c37;--color-text:#000;--color-transparent:#0000;--font-family:"Archivo",sans-serif;--font-regular:400;--font-bold:700;--ratio:1.4;--size-body:1.6rem;--size-small:calc(var(--size-body)/var(--ratio));--size-heading:calc(var(--size-body)*var(--ratio));--size-title:calc(var(--size-heading)*var(--ratio));--size-display:calc(var(--size-title)*var(--ratio));font-size:10px;@media (width>=640px){&{--size-body:2rem}}}body{font-family:var(--font-family);font-size:var(--size-body);background-color:var(--color-bg-primary);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'%3E%3Cfilter id='roughpaper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.04' result='noise' numOctaves='5' stitchTiles='stitch'/%3E%3CfeDiffuseLighting in='noise' lighting-color='%23fff5e8' surfaceScale='1.5'%3E%3CfeDistantLight azimuth='45' elevation='72'/%3E%3C/feDiffuseLighting%3E%3C/filter%3E%3Crect width='300' height='300' fill='%23fff5e8' filter='url(%23roughpaper)'/%3E%3C/svg%3E");background-repeat:repeat;background-size:30rem 30rem;margin:0}
 </style></head>
   <body>
     <section-header></section-header>
@@ -38,23 +37,7 @@
     </main>
 
     <section-footer variant="secondary"></section-footer>
-  <script type="module">// lib/asset.js
-function v() {
-  let i = document.documentElement.dataset.base || "./";
-  return new URL(i, location.href);
-}
-function e(i) {
-  return new URL(i, v()).href;
-}
-function f(i) {
-  let t = i.replace(/^\//, ""), l = location.protocol === "file:", s = v();
-  if (t === "")
-    return l ? new URL("index.html", s).href : s.href;
-  return l ? new URL(`${t}.html`, s).href : new URL(t, s).href;
-}
-
-// scripts/fonts.js
-var y = `
+  <script type="module">function v(){let i=document.documentElement.dataset.base||"./";return new URL(i,location.href)}function e(i){return new URL(i,v()).href}function f(i){let t=i.replace(/^\//,""),l=location.protocol==="file:",s=v();if(t==="")return l?new URL("index.html",s).href:s.href;return l?new URL(`${t}.html`,s).href:new URL(t,s).href}var y=`
 @font-face {
     font-family: "Archivo";
     src: url("${e("./assets/fonts/Archivo-Black.woff2")}") format("woff2");
@@ -68,91 +51,7 @@ var y = `
     font-weight: 400;
     font-display: swap;
   }
-`, w = document.createElement("style");
-w.textContent = y;
-document.head.appendChild(w);
-
-// lib/define.js
-function k(i, t) {
-  if (i === void 0) {
-    if (t === Array)
-      return [];
-    if (t === Object)
-      return {};
-    if (t === Boolean)
-      return !1;
-    if (t === Number)
-      return 0;
-    return;
-  }
-  if (t === Boolean)
-    return Boolean(i);
-  if (t === Number)
-    return Number(i);
-  return i;
-}
-function a(i, { props: t = {}, attrs: l = [], styles: s = "", template: r, onRender: g = null }) {
-  let h = ["props", ...l];
-
-  class p extends HTMLElement {
-    static observedAttributes = h;
-    constructor() {
-      super();
-      this.attachShadow({ mode: "open" }), this._cleanup = null;
-    }
-    connectedCallback() {
-      this._render();
-    }
-    disconnectedCallback() {
-      if (typeof this._cleanup === "function")
-        this._cleanup();
-      this._cleanup = null;
-    }
-    attributeChangedCallback() {
-      if (this.isConnected)
-        this._render();
-    }
-    _getProps() {
-      let n = {}, o = this.getAttribute("props");
-      if (o)
-        try {
-          n = JSON.parse(o);
-        } catch {
-          n = {};
-        }
-      let c = {};
-      for (let d of Object.keys(t))
-        c[d] = k(n[d], t[d]);
-      return c;
-    }
-    _applyForwardedAttrs() {
-      if (l.length === 0)
-        return;
-      let n = this.shadowRoot.querySelector("[data-forward]");
-      if (!n)
-        return;
-      for (let o of l)
-        if (this.hasAttribute(o))
-          n.setAttribute(o, this.getAttribute(o));
-        else
-          n.removeAttribute(o);
-    }
-    _render() {
-      if (typeof this._cleanup === "function")
-        this._cleanup(), this._cleanup = null;
-      let n = this._getProps(), o = typeof r === "function" ? r(n) : r;
-      if (this.shadowRoot.innerHTML = `<style>${s}</style>${o}`, this._applyForwardedAttrs(), g) {
-        let c = g(this.shadowRoot, n, this);
-        if (typeof c === "function")
-          this._cleanup = c;
-      }
-    }
-  }
-  customElements.define(i, p);
-}
-
-// scripts/header.js
-var x = `
+`,w=document.createElement("style");w.textContent=y;document.head.appendChild(w);function k(i,t){if(i===void 0){if(t===Array)return[];if(t===Object)return{};if(t===Boolean)return!1;if(t===Number)return 0;return}if(t===Boolean)return Boolean(i);if(t===Number)return Number(i);return i}function a(i,{props:t={},attrs:l=[],styles:s="",template:r,onRender:g=null}){let h=["props",...l];class p extends HTMLElement{static observedAttributes=h;constructor(){super();this.attachShadow({mode:"open"}),this._cleanup=null}connectedCallback(){this._render()}disconnectedCallback(){if(typeof this._cleanup==="function")this._cleanup();this._cleanup=null}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let n={},o=this.getAttribute("props");if(o)try{n=JSON.parse(o)}catch{n={}}let c={};for(let d of Object.keys(t))c[d]=k(n[d],t[d]);return c}_applyForwardedAttrs(){if(l.length===0)return;let n=this.shadowRoot.querySelector("[data-forward]");if(!n)return;for(let o of l)if(this.hasAttribute(o))n.setAttribute(o,this.getAttribute(o));else n.removeAttribute(o)}_render(){if(typeof this._cleanup==="function")this._cleanup(),this._cleanup=null;let n=this._getProps(),o=typeof r==="function"?r(n):r;if(this.shadowRoot.innerHTML=`<style>${s}</style>${o}`,this._applyForwardedAttrs(),g){let c=g(this.shadowRoot,n,this);if(typeof c==="function")this._cleanup=c}}}customElements.define(i,p)}var x=`
   :host {
     display: block;
     font-size: var(--size-small);
@@ -212,7 +111,7 @@ var x = `
   }
 
   
-`, $ = `
+`,$=`
   <header>
     <a href=${f("/")}>
       <img src=${e("./assets/images/logo.avif")}
@@ -236,14 +135,7 @@ var x = `
       </a>
     </nav>
   </header>
-`;
-a("section-header", { template: $, styles: x });
-
-// scripts/breakpoints.js
-var m = "640px";
-
-// scripts/components/footer-copyright.js
-var A = `
+`;a("section-header",{template:$,styles:x});var m="640px";var A=`
   :host {
    display: flex;
     justify-content: space-between;
@@ -326,7 +218,7 @@ var A = `
     text-decoration: none;
     color: var(--color-text);
   }
-`, z = () => `
+`,z=()=>`
       <p>
           <img src=${e("./assets/images/logo.avif")}
           alt="Logo">
@@ -388,11 +280,7 @@ var A = `
               </li>
           </ul>
         </nav>
-`;
-a("footer-copyright", { styles: A, template: z });
-
-// scripts/footer.js
-var C = `
+`;a("footer-copyright",{styles:A,template:z});var C=`
   :host {
     display: block;
   }
@@ -465,7 +353,7 @@ var C = `
       display: none;
     }
   }
-`, T = `
+`,T=`
   <footer>
 
     <div id="highlight-wrap">
@@ -480,29 +368,7 @@ var C = `
 
     <footer-copyright></footer-copyright>
   </footer>
-`;
-function _(i) {
-  let t = i.querySelector("footer"), l = i.getElementById("highlight-base"), s = i.getElementById("highlight-lens"), r = i.getElementById("lens-ring"), g = i.getElementById("highlight-wrap");
-  if (!t || !l || !s || !r || !g)
-    return;
-  function h(o) {
-    let c = l.getBoundingClientRect(), d = o.clientX - c.left, b = o.clientY - c.top, u = r.offsetWidth / 2;
-    r.style.left = `${d - u}px`, r.style.top = `${b - u}px`, s.style.clipPath = `circle(${u}px at ${d}px ${b}px)`;
-  }
-  function p() {
-    r.setAttribute("data-visible", "true");
-  }
-  function n() {
-    r.removeAttribute("data-visible"), s.style.clipPath = "circle(0px at 50% 50%)";
-  }
-  return t.addEventListener("mousemove", h), t.addEventListener("mouseenter", p), t.addEventListener("mouseleave", n), () => {
-    t.removeEventListener("mousemove", h), t.removeEventListener("mouseenter", p), t.removeEventListener("mouseleave", n);
-  };
-}
-a("section-footer", { styles: C, template: T, onRender: _ });
-
-// scripts/writings/foundation-building-interfaces-at-scale/intro.js
-var S = `
+`;function _(i){let t=i.querySelector("footer"),l=i.getElementById("highlight-base"),s=i.getElementById("highlight-lens"),r=i.getElementById("lens-ring"),g=i.getElementById("highlight-wrap");if(!t||!l||!s||!r||!g)return;function h(o){let c=l.getBoundingClientRect(),d=o.clientX-c.left,b=o.clientY-c.top,u=r.offsetWidth/2;r.style.left=`${d-u}px`,r.style.top=`${b-u}px`,s.style.clipPath=`circle(${u}px at ${d}px ${b}px)`}function p(){r.setAttribute("data-visible","true")}function n(){r.removeAttribute("data-visible"),s.style.clipPath="circle(0px at 50% 50%)"}return t.addEventListener("mousemove",h),t.addEventListener("mouseenter",p),t.addEventListener("mouseleave",n),()=>{t.removeEventListener("mousemove",h),t.removeEventListener("mouseenter",p),t.removeEventListener("mouseleave",n)}}a("section-footer",{styles:C,template:T,onRender:_});var S=`
   :host {
     display: block;
     margin-block: 10rem;
@@ -545,7 +411,7 @@ var S = `
   a {
     color: var(--color-text);
   }
-`, D = `
+`,D=`
   <section>
     <hgroup>
       <span>[ Writing ]</span>
@@ -572,14 +438,7 @@ var S = `
       </li>
     </ul>
   </section>
-`;
-a("section-foundation-building-interfaces-at-scale-intro", {
-  styles: S,
-  template: D
-});
-
-// scripts/writings/foundation-building-interfaces-at-scale/atomic-design-principle.js
-var B = `
+`;a("section-foundation-building-interfaces-at-scale-intro",{styles:S,template:D});var B=`
   :host {
     display: block;
   }
@@ -616,7 +475,7 @@ var B = `
     width: 100%;
     height: auto;
   }
-`, E = `
+`,E=`
   <section >
 
     <h2>Atomic Design Principle</h2>
@@ -708,11 +567,7 @@ var B = `
       </li>
     </ul>
   </section>
-`;
-a("section-atomic-design-principle", { styles: B, template: E });
-
-// scripts/writings/foundation-building-interfaces-at-scale/design-token-architecture.js
-var L = `
+`;a("section-atomic-design-principle",{styles:B,template:E});var L=`
   :host {
     display: block;
   }
@@ -754,7 +609,7 @@ var L = `
     width: 100%;
     height: auto;
   }
-`, F = `
+`,F=`
   <section>
 
     <h2>Design Token Architecture</h2>
@@ -853,11 +708,7 @@ var L = `
       </li>
     </ul>
   </section>
-`;
-a("section-design-token-architecture", { styles: L, template: F });
-
-// scripts/writings/foundation-building-interfaces-at-scale/references.js
-var P = `
+`;a("section-design-token-architecture",{styles:L,template:F});var P=`
   :host {
     display: block;
   }
@@ -878,7 +729,7 @@ var P = `
   a {
     color: var(--color-text);
   }
-`, q = `
+`,q=`
   <section>
 
     <h2>Reference</h2>
@@ -906,10 +757,6 @@ var P = `
       </li>
     </ul>
   </section>
-`;
-a("section-foundation-building-interfaces-at-scale-references", {
-  styles: P,
-  template: q
-});
+`;a("section-foundation-building-interfaces-at-scale-references",{styles:P,template:q});
 </script></body>
 </html>

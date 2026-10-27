@@ -19,8 +19,7 @@
     ></script>
 
     
-  <style>/* main.css */
-:root{--color-bg-primary:#fff5e8;--color-primary:#7e4c37;--color-text:#000;--color-transparent:#0000;--font-family:"Archivo",sans-serif;--font-regular:400;--font-bold:700;--ratio:1.4;--size-body:1.6rem;--size-small:calc(var(--size-body)/var(--ratio));--size-heading:calc(var(--size-body)*var(--ratio));--size-title:calc(var(--size-heading)*var(--ratio));--size-display:calc(var(--size-title)*var(--ratio));font-size:10px;@media (width>=640px){&{--size-body:2rem}}}body{font-family:var(--font-family);font-size:var(--size-body);background-color:var(--color-bg-primary);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'%3E%3Cfilter id='roughpaper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.04' result='noise' numOctaves='5' stitchTiles='stitch'/%3E%3CfeDiffuseLighting in='noise' lighting-color='%23fff5e8' surfaceScale='1.5'%3E%3CfeDistantLight azimuth='45' elevation='72'/%3E%3C/feDiffuseLighting%3E%3C/filter%3E%3Crect width='300' height='300' fill='%23fff5e8' filter='url(%23roughpaper)'/%3E%3C/svg%3E");background-repeat:repeat;background-size:30rem 30rem;margin:0}
+  <style>:root{--color-bg-primary:#fff5e8;--color-primary:#7e4c37;--color-text:#000;--color-transparent:#0000;--font-family:"Archivo",sans-serif;--font-regular:400;--font-bold:700;--ratio:1.4;--size-body:1.6rem;--size-small:calc(var(--size-body)/var(--ratio));--size-heading:calc(var(--size-body)*var(--ratio));--size-title:calc(var(--size-heading)*var(--ratio));--size-display:calc(var(--size-title)*var(--ratio));font-size:10px;@media (width>=640px){&{--size-body:2rem}}}body{font-family:var(--font-family);font-size:var(--size-body);background-color:var(--color-bg-primary);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'%3E%3Cfilter id='roughpaper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.04' result='noise' numOctaves='5' stitchTiles='stitch'/%3E%3CfeDiffuseLighting in='noise' lighting-color='%23fff5e8' surfaceScale='1.5'%3E%3CfeDistantLight azimuth='45' elevation='72'/%3E%3C/feDiffuseLighting%3E%3C/filter%3E%3Crect width='300' height='300' fill='%23fff5e8' filter='url(%23roughpaper)'/%3E%3C/svg%3E");background-repeat:repeat;background-size:30rem 30rem;margin:0}
 </style></head>
   <body>
     <section-header></section-header>
@@ -34,23 +33,7 @@
     </main>
 
     <section-footer></section-footer>
-  <script type="module">// lib/asset.js
-function A() {
-  let a = document.documentElement.dataset.base || "./";
-  return new URL(a, location.href);
-}
-function e(a) {
-  return new URL(a, A()).href;
-}
-function $(a) {
-  let t = a.replace(/^\//, ""), m = location.protocol === "file:", o = A();
-  if (t === "")
-    return m ? new URL("index.html", o).href : o.href;
-  return m ? new URL(`${t}.html`, o).href : new URL(t, o).href;
-}
-
-// scripts/fonts.js
-var E = `
+  <script type="module">function A(){let a=document.documentElement.dataset.base||"./";return new URL(a,location.href)}function e(a){return new URL(a,A()).href}function $(a){let t=a.replace(/^\//,""),m=location.protocol==="file:",o=A();if(t==="")return m?new URL("index.html",o).href:o.href;return m?new URL(`${t}.html`,o).href:new URL(t,o).href}var E=`
 @font-face {
     font-family: "Archivo";
     src: url("${e("./assets/fonts/Archivo-Black.woff2")}") format("woff2");
@@ -64,91 +47,7 @@ var E = `
     font-weight: 400;
     font-display: swap;
   }
-`, _ = document.createElement("style");
-_.textContent = E;
-document.head.appendChild(_);
-
-// lib/define.js
-function L(a, t) {
-  if (a === void 0) {
-    if (t === Array)
-      return [];
-    if (t === Object)
-      return {};
-    if (t === Boolean)
-      return !1;
-    if (t === Number)
-      return 0;
-    return;
-  }
-  if (t === Boolean)
-    return Boolean(a);
-  if (t === Number)
-    return Number(a);
-  return a;
-}
-function l(a, { props: t = {}, attrs: m = [], styles: o = "", template: s, onRender: g = null }) {
-  let b = ["props", ...m];
-
-  class p extends HTMLElement {
-    static observedAttributes = b;
-    constructor() {
-      super();
-      this.attachShadow({ mode: "open" }), this._cleanup = null;
-    }
-    connectedCallback() {
-      this._render();
-    }
-    disconnectedCallback() {
-      if (typeof this._cleanup === "function")
-        this._cleanup();
-      this._cleanup = null;
-    }
-    attributeChangedCallback() {
-      if (this.isConnected)
-        this._render();
-    }
-    _getProps() {
-      let r = {}, n = this.getAttribute("props");
-      if (n)
-        try {
-          r = JSON.parse(n);
-        } catch {
-          r = {};
-        }
-      let f = {};
-      for (let c of Object.keys(t))
-        f[c] = L(r[c], t[c]);
-      return f;
-    }
-    _applyForwardedAttrs() {
-      if (m.length === 0)
-        return;
-      let r = this.shadowRoot.querySelector("[data-forward]");
-      if (!r)
-        return;
-      for (let n of m)
-        if (this.hasAttribute(n))
-          r.setAttribute(n, this.getAttribute(n));
-        else
-          r.removeAttribute(n);
-    }
-    _render() {
-      if (typeof this._cleanup === "function")
-        this._cleanup(), this._cleanup = null;
-      let r = this._getProps(), n = typeof s === "function" ? s(r) : s;
-      if (this.shadowRoot.innerHTML = `<style>${o}</style>${n}`, this._applyForwardedAttrs(), g) {
-        let f = g(this.shadowRoot, r, this);
-        if (typeof f === "function")
-          this._cleanup = f;
-      }
-    }
-  }
-  customElements.define(a, p);
-}
-
-// scripts/header.js
-var O = `
+`,_=document.createElement("style");_.textContent=E;document.head.appendChild(_);function L(a,t){if(a===void 0){if(t===Array)return[];if(t===Object)return{};if(t===Boolean)return!1;if(t===Number)return 0;return}if(t===Boolean)return Boolean(a);if(t===Number)return Number(a);return a}function l(a,{props:t={},attrs:m=[],styles:o="",template:s,onRender:g=null}){let b=["props",...m];class p extends HTMLElement{static observedAttributes=b;constructor(){super();this.attachShadow({mode:"open"}),this._cleanup=null}connectedCallback(){this._render()}disconnectedCallback(){if(typeof this._cleanup==="function")this._cleanup();this._cleanup=null}attributeChangedCallback(){if(this.isConnected)this._render()}_getProps(){let r={},n=this.getAttribute("props");if(n)try{r=JSON.parse(n)}catch{r={}}let f={};for(let c of Object.keys(t))f[c]=L(r[c],t[c]);return f}_applyForwardedAttrs(){if(m.length===0)return;let r=this.shadowRoot.querySelector("[data-forward]");if(!r)return;for(let n of m)if(this.hasAttribute(n))r.setAttribute(n,this.getAttribute(n));else r.removeAttribute(n)}_render(){if(typeof this._cleanup==="function")this._cleanup(),this._cleanup=null;let r=this._getProps(),n=typeof s==="function"?s(r):s;if(this.shadowRoot.innerHTML=`<style>${o}</style>${n}`,this._applyForwardedAttrs(),g){let f=g(this.shadowRoot,r,this);if(typeof f==="function")this._cleanup=f}}}customElements.define(a,p)}var O=`
   :host {
     display: block;
     font-size: var(--size-small);
@@ -208,7 +107,7 @@ var O = `
   }
 
   
-`, D = `
+`,D=`
   <header>
     <a href=${$("/")}>
       <img src=${e("./assets/images/logo.avif")}
@@ -232,14 +131,7 @@ var O = `
       </a>
     </nav>
   </header>
-`;
-l("section-header", { template: D, styles: O });
-
-// scripts/breakpoints.js
-var i = "640px", u = "1024px", S = "1920px";
-
-// scripts/components/footer-copyright.js
-var N = `
+`;l("section-header",{template:D,styles:O});var i="640px",u="1024px",S="1920px";var N=`
   :host {
    display: flex;
     justify-content: space-between;
@@ -322,7 +214,7 @@ var N = `
     text-decoration: none;
     color: var(--color-text);
   }
-`, B = () => `
+`,B=()=>`
       <p>
           <img src=${e("./assets/images/logo.avif")}
           alt="Logo">
@@ -384,11 +276,7 @@ var N = `
               </li>
           </ul>
         </nav>
-`;
-l("footer-copyright", { styles: N, template: B });
-
-// scripts/footer.js
-var P = `
+`;l("footer-copyright",{styles:N,template:B});var P=`
   :host {
     display: block;
   }
@@ -461,7 +349,7 @@ var P = `
       display: none;
     }
   }
-`, q = `
+`,q=`
   <footer>
 
     <div id="highlight-wrap">
@@ -476,29 +364,7 @@ var P = `
 
     <footer-copyright></footer-copyright>
   </footer>
-`;
-function F(a) {
-  let t = a.querySelector("footer"), m = a.getElementById("highlight-base"), o = a.getElementById("highlight-lens"), s = a.getElementById("lens-ring"), g = a.getElementById("highlight-wrap");
-  if (!t || !m || !o || !s || !g)
-    return;
-  function b(n) {
-    let f = m.getBoundingClientRect(), c = n.clientX - f.left, v = n.clientY - f.top, y = s.offsetWidth / 2;
-    s.style.left = `${c - y}px`, s.style.top = `${v - y}px`, o.style.clipPath = `circle(${y}px at ${c}px ${v}px)`;
-  }
-  function p() {
-    s.setAttribute("data-visible", "true");
-  }
-  function r() {
-    s.removeAttribute("data-visible"), o.style.clipPath = "circle(0px at 50% 50%)";
-  }
-  return t.addEventListener("mousemove", b), t.addEventListener("mouseenter", p), t.addEventListener("mouseleave", r), () => {
-    t.removeEventListener("mousemove", b), t.removeEventListener("mouseenter", p), t.removeEventListener("mouseleave", r);
-  };
-}
-l("section-footer", { styles: P, template: q, onRender: F });
-
-// scripts/home/hero.js
-var M = `
+`;function F(a){let t=a.querySelector("footer"),m=a.getElementById("highlight-base"),o=a.getElementById("highlight-lens"),s=a.getElementById("lens-ring"),g=a.getElementById("highlight-wrap");if(!t||!m||!o||!s||!g)return;function b(n){let f=m.getBoundingClientRect(),c=n.clientX-f.left,v=n.clientY-f.top,y=s.offsetWidth/2;s.style.left=`${c-y}px`,s.style.top=`${v-y}px`,o.style.clipPath=`circle(${y}px at ${c}px ${v}px)`}function p(){s.setAttribute("data-visible","true")}function r(){s.removeAttribute("data-visible"),o.style.clipPath="circle(0px at 50% 50%)"}return t.addEventListener("mousemove",b),t.addEventListener("mouseenter",p),t.addEventListener("mouseleave",r),()=>{t.removeEventListener("mousemove",b),t.removeEventListener("mouseenter",p),t.removeEventListener("mouseleave",r)}}l("section-footer",{styles:P,template:q,onRender:F});var M=`
   :host {
     display: block;
     height: min(calc(100vh - 108px - 10rem), 50rem);
@@ -603,7 +469,7 @@ var M = `
     width: 100%;
     height: auto;
   }
-`, T = `
+`,T=`
   <section>
     <hgroup>
       <p>Han Htet Aung | GMT+7</p>
@@ -619,44 +485,7 @@ var M = `
       <div id="lens-ring"></div>
     </div>
   </section>
-`, I = `(min-width: ${i})`;
-function G(a) {
-  let t = a.getElementById("img-wrap"), m = a.getElementById("visible-img"), o = a.getElementById("lens-img"), s = a.getElementById("lens-ring");
-  if (!t || !m || !o || !s)
-    return;
-  let g = window.matchMedia(I);
-  function b(v) {
-    let y = m.getBoundingClientRect(), k = v.clientX - y.left, z = v.clientY - y.top, h = s.offsetWidth / 2;
-    s.style.left = `${k - h}px`, s.style.top = `${z - h}px`, o.style.clipPath = `circle(${h}px at ${k}px ${z}px)`;
-  }
-  function p() {
-    s.setAttribute("data-visible", "true");
-  }
-  function r() {
-    s.removeAttribute("data-visible"), o.style.clipPath = "circle(0px at 50% 50%)";
-  }
-  function n() {
-    t.addEventListener("mousemove", b), t.addEventListener("mouseenter", p), t.addEventListener("mouseleave", r);
-  }
-  function f() {
-    t.removeEventListener("mousemove", b), t.removeEventListener("mouseenter", p), t.removeEventListener("mouseleave", r), r();
-  }
-  function c(v) {
-    if (v.matches)
-      n();
-    else
-      f();
-  }
-  if (g.matches)
-    n();
-  return g.addEventListener("change", c), () => {
-    f(), g.removeEventListener("change", c);
-  };
-}
-l("section-hero", { styles: M, template: T, onRender: G });
-
-// scripts/home/recent-crafts.js
-var j = `
+`,I=`(min-width: ${i})`;function G(a){let t=a.getElementById("img-wrap"),m=a.getElementById("visible-img"),o=a.getElementById("lens-img"),s=a.getElementById("lens-ring");if(!t||!m||!o||!s)return;let g=window.matchMedia(I);function b(v){let y=m.getBoundingClientRect(),k=v.clientX-y.left,z=v.clientY-y.top,h=s.offsetWidth/2;s.style.left=`${k-h}px`,s.style.top=`${z-h}px`,o.style.clipPath=`circle(${h}px at ${k}px ${z}px)`}function p(){s.setAttribute("data-visible","true")}function r(){s.removeAttribute("data-visible"),o.style.clipPath="circle(0px at 50% 50%)"}function n(){t.addEventListener("mousemove",b),t.addEventListener("mouseenter",p),t.addEventListener("mouseleave",r)}function f(){t.removeEventListener("mousemove",b),t.removeEventListener("mouseenter",p),t.removeEventListener("mouseleave",r),r()}function c(v){if(v.matches)n();else f()}if(g.matches)n();return g.addEventListener("change",c),()=>{f(),g.removeEventListener("change",c)}}l("section-hero",{styles:M,template:T,onRender:G});var U=`
   :host {
     position: relative;
     display: block;
@@ -757,7 +586,7 @@ var j = `
     opacity: 0;
     transform: translate(-50%, -50%) scale(0.9);
   }
-`, U = `
+`,j=`
 <section>
   <hgroup>
     <p>[ Selected Crafts ]</p>
@@ -769,11 +598,7 @@ var j = `
       <a href="/studio-lah" target="_blank">
         <img class="cover" 
           src=${e("./assets/images/home/studio-lah.png")} 
-          data-images='${JSON.stringify([
-  e("./assets/images/home/studio-lah-1.png"),
-  e("./assets/images/home/studio-lah-2.png"),
-  e("./assets/images/home/studio-lah-3.png")
-])}'
+          data-images='${JSON.stringify([e("./assets/images/home/studio-lah-1.png"),e("./assets/images/home/studio-lah-2.png"),e("./assets/images/home/studio-lah-3.png")])}'
           alt="Studio LAH">
       </a>
     </li>
@@ -782,10 +607,7 @@ var j = `
       <a href="/maple" target="_blank">
         <img class="cover" 
           src=${e("./assets/images/home/maple-montessori.avif")}
-          data-images='${JSON.stringify([
-  e("./assets/images/home/maple-1.png"),
-  e("./assets/images/home/maple-2.png")
-])}'
+          data-images='${JSON.stringify([e("./assets/images/home/maple-1.png"),e("./assets/images/home/maple-2.png")])}'
           alt="Maple Montessori">
       </a>
     </li>
@@ -794,11 +616,7 @@ var j = `
       <a href="https://stoorymap.com/" target="_blank">
         <img class="cover" 
           src=${e("./assets/images/home/story-map.avif")}
-          data-images='${JSON.stringify([
-  e("./assets/images/home/stoory-map-1.png"),
-  e("./assets/images/home/stoory-map-2.png"),
-  e("./assets/images/home/stoory-map-3.png")
-])}'
+          data-images='${JSON.stringify([e("./assets/images/home/stoory-map-1.png"),e("./assets/images/home/stoory-map-2.png"),e("./assets/images/home/stoory-map-3.png")])}'
           alt="Story Map">
       </a>
     </li>
@@ -807,68 +625,13 @@ var j = `
       <a href="https://skssolarmyanmar.com/" target="_blank">
         <img class="cover" 
           src=${e("./assets/images/home/sks-solar.avif")}
-          data-images='${JSON.stringify([
-  e("./assets/images/home/sks-solar-1.png"),
-  e("./assets/images/home/sks-solar-2.png"),
-  e("./assets/images/home/sks-solar-3.png")
-])}'
+          data-images='${JSON.stringify([e("./assets/images/home/sks-solar-1.png"),e("./assets/images/home/sks-solar-2.png"),e("./assets/images/home/sks-solar-3.png")])}'
           alt="SKS Solar">
       </a>
     </li> -->
   </ul>
 </section>
-`;
-function J(a) {
-  if (!window.matchMedia(`(min-width: ${i})`).matches)
-    return;
-  a.querySelectorAll(".scrub-item").forEach((o) => {
-    let s = o.querySelector("img.cover"), g = JSON.parse(s.dataset.images || "[]");
-    if (g.length === 0)
-      return;
-    g.forEach((h) => {
-      let x = new Image;
-      x.src = h;
-    });
-    let b = 0, p = null, r = null, n = 40, f = 4, c = [];
-    function v(h, x) {
-      let d = document.createElement("img");
-      d.className = "stack-img", d.src = g[b], d.style.left = `${h}px`, d.style.top = `${x}px`;
-      let w = (Math.random() * 16 - 8).toFixed(1);
-      if (d.style.transform = `translate(-50%, -50%) rotate(${w}deg) scale(0.85)`, o.appendChild(d), c.push(d), requestAnimationFrame(() => {
-        d.classList.add("visible"), d.style.transform = `translate(-50%, -50%) rotate(${w}deg) scale(1)`;
-      }), c.length > f) {
-        let C = c.shift();
-        y(C);
-      }
-      b = (b + 1) % g.length;
-    }
-    function y(h) {
-      h.classList.add("fade-out"), h.classList.remove("visible"), setTimeout(() => {
-        h.remove();
-      }, 300);
-    }
-    function k(h) {
-      let x = o.getBoundingClientRect(), d = h.clientX - x.left, w = h.clientY - x.top;
-      if (p === null) {
-        p = d, r = w, v(d, w);
-        return;
-      }
-      if (Math.hypot(d - p, w - r) > n)
-        v(d, w), p = d, r = w;
-    }
-    function z() {
-      p = null, r = null;
-      while (c.length)
-        y(c.shift());
-      b = 0;
-    }
-    o.addEventListener("mousemove", k), o.addEventListener("mouseleave", z);
-  });
-}
-l("section-recent-crafts", { styles: j, template: U, onRender: J });
-
-// scripts/home/menu.js
-var W = `
+`;function J(a){if(!window.matchMedia(`(min-width: ${i})`).matches)return;a.querySelectorAll(".scrub-item").forEach((o)=>{let s=o.querySelector("img.cover"),g=JSON.parse(s.dataset.images||"[]");if(g.length===0)return;g.forEach((h)=>{let x=new Image;x.src=h});let b=0,p=null,r=null,n=40,f=4,c=[];function v(h,x){let d=document.createElement("img");d.className="stack-img",d.src=g[b],d.style.left=`${h}px`,d.style.top=`${x}px`;let w=(Math.random()*16-8).toFixed(1);if(d.style.transform=`translate(-50%, -50%) rotate(${w}deg) scale(0.85)`,o.appendChild(d),c.push(d),requestAnimationFrame(()=>{d.classList.add("visible"),d.style.transform=`translate(-50%, -50%) rotate(${w}deg) scale(1)`}),c.length>f){let C=c.shift();y(C)}b=(b+1)%g.length}function y(h){h.classList.add("fade-out"),h.classList.remove("visible"),setTimeout(()=>{h.remove()},300)}function k(h){let x=o.getBoundingClientRect(),d=h.clientX-x.left,w=h.clientY-x.top;if(p===null){p=d,r=w,v(d,w);return}if(Math.hypot(d-p,w-r)>n)v(d,w),p=d,r=w}function z(){p=null,r=null;while(c.length)y(c.shift());b=0}o.addEventListener("mousemove",k),o.addEventListener("mouseleave",z)})}l("section-recent-crafts",{styles:U,template:j,onRender:J});var W=`
   :host {
     position: relative;
     display: block;
@@ -1004,7 +767,7 @@ var W = `
   }
 
   
-`, X = `
+`,X=`
 <section>
   <hgroup>
     <p>[ Menu ]</p>
@@ -1027,17 +790,13 @@ var W = `
                 <h3><img src=${e("./assets/images/home/story-map.svg")} alt="Story Map"></h3>
                 <p>Everything in your memory, your own characters plus infinite patience</p>
     
-                <a href="https://stoorymap.com/juzbird" target="_blank">Preview</a>
+                <a href="https://stoorymap.com/preview" target="_blank">Preview</a>
             </article>
         </li>
 
     </ul>
 </section>
-`;
-l("section-menu", { styles: W, template: X });
-
-// scripts/home/little-process.js
-var H = `
+`;l("section-menu",{styles:W,template:X});var H=`
   :host {
     position: relative;
     display: block;
@@ -1144,7 +903,7 @@ var H = `
       gap: 12rem;
     }
   }
-`, K = `
+`,K=`
 
 <section>
   <hgroup>
@@ -1186,11 +945,7 @@ var H = `
   
 </section>
 
-`;
-l("section-little-process", { styles: H, template: K });
-
-// scripts/home/cta.js
-var V = `
+`;l("section-little-process",{styles:H,template:K});var V=`
   :host {
     display: block;
     height: 70rem;
@@ -1302,7 +1057,7 @@ var V = `
     height: auto;
     width: 2rem;
   }
-`, Y = `
+`,Y=`
 <section>
   <img class="highlight" src="./assets/images/home/red-telephone-box.avif" alt="Red Telephone Box">
 
@@ -1328,20 +1083,6 @@ var V = `
     </li>
   </ul>
 </section>
-`;
-function Q(a) {
-  let t = a.getElementById("copyBtn");
-  if (!t)
-    return;
-  t.addEventListener("click", () => {
-    navigator.clipboard.writeText("hanhtetaung.dev@gmail.com").then(() => {
-      let m = t.textContent;
-      t.textContent = "Copied!", t.classList.add("copied"), setTimeout(() => {
-        t.textContent = m, t.classList.remove("copied");
-      }, 1500);
-    });
-  });
-}
-l("section-cta", { styles: V, template: Y, onRender: Q });
+`;function Q(a){let t=a.getElementById("copyBtn");if(!t)return;t.addEventListener("click",()=>{navigator.clipboard.writeText("hanhtetaung.dev@gmail.com").then(()=>{let m=t.textContent;t.textContent="Copied!",t.classList.add("copied"),setTimeout(()=>{t.textContent=m,t.classList.remove("copied")},1500)})})}l("section-cta",{styles:V,template:Y,onRender:Q});
 </script></body>
 </html>
